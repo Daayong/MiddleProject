@@ -1,4 +1,12 @@
 @charset "UTF-8";
+@font-face{
+	src: url("../fonts/malgunbd.ttf");
+	font-family: "malgun";
+}
+
+body{
+	font-family: "malgun";
+}
 
 header{
 	width:100%;
@@ -14,16 +22,27 @@ header{
 
 .ul_wrap{
 	float: right;
-	padding-top: 9px;
+	padding-top: 10px;
 	padding-right: 39px;
 }
 
 .ul_wrap ul li{
 	display: inline-block;
 	font-size: 12px;
-	font-weight: bold;
 	color: white;
-	margin-left: 25px;
+	letter-spacing: -0.5px;
+	margin-left: 19px;
+}
+
+.ul_wrap ul li::after{
+	content:"|";
+	float: right;
+	color: #4d4d4d;
+	margin-right: -17px;
+}
+
+.ul_wrap ul li:last-child::after{
+	content:"";
 }
 
 /* gnb_menu2 하단메뉴 */

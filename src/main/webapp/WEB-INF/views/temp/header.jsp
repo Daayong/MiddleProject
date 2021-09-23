@@ -6,11 +6,11 @@
 	<div id="gnb_menu1">
 		<div class="ul_wrap">
 			<ul>
-				<li>회원가입</li>
-				<li>로그인</li>
-				<li>고객행복센터</li>
-				<li>배송지역검색</li>
-				<li>기프트카드등록</li>
+				<li><a href="#">회원가입</a></li>
+				<li><a href="#">로그인</a></li>
+				<li><a href="#">고객행복센터</a></li>
+				<li><a href="#">배송지역검색</a></li>
+				<li><a href="#">기프트카드등록</a></li>
 			</ul>
 		</div>
 	</div>
