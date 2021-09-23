@@ -1,0 +1,37 @@
+@charset "UTF-8";
+
+header{
+	width:100%;
+	background-color: gray;
+}
+
+/* gnb_menu1 상단메뉴 */
+
+#gnb_menu1{
+	height: 35px;
+	background-color: #202020;
+}
+
+.ul_wrap{
+	float: right;
+	padding-top: 9px;
+	padding-right: 39px;
+}
+
+.ul_wrap ul li{
+	display: inline-block;
+	font-size: 12px;
+	font-weight: bold;
+	color: white;
+	margin-left: 25px;
+}
+
+/* gnb_menu2 하단메뉴 */
+
+#gnb_menu2{
+	height: 82px;
+	background-color: red;
+	opacity: 0.5;
+}
+
+
