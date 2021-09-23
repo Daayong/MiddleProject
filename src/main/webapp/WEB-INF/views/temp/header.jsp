@@ -16,5 +16,17 @@
 	</div>
 	
 	<div id="gnb_menu2">
+		<div class="logo">
+			<img src="./resources/images/logo.png">
+		</div>
+		<div class="ul_wrap2">
+			<ul>
+				<li><a href="#">COOKIT소개</a></li>
+				<li><a href="#">COOKIT메뉴</a></li>
+				<li><a href="#">리뷰</a></li>
+				<li><a href="#">이벤트</a></li>
+				<li><a href="#">MY쿡킷</a></li>
+			</ul>
+		</div>
 	</div>
 </header>

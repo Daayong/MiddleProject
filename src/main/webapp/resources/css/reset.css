@@ -52,4 +52,14 @@ table {
 	border-spacing: 0;
 }
 
+html, body{
+	height: 100%;
+}
+
+.wrapper{
+	display: flex;
+	min-height: 100vh;
+	flex-direction: column;
+}
+
 /**********************************************************/
