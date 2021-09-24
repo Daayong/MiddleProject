@@ -4,9 +4,11 @@
 <link href="${pageContext.request.contextPath}/resources/css/import_nav.css" rel="stylesheet">
 
 <!--First nav-->
-<nav id="info">
-	   <div id="info_nav">
-	     <ul>
+<nav id="header">
+		<div id="bline">
+	   <div id="info">
+	   	<div class="header_wrap">
+	     <ul id="info_ul">
 	        <li class="info_li">
 	          <a class="f" href="${pageContext.request.contextPath}/member/join">회원가입</a>
 	         <img src="${pageContext.request.contextPath}/resources/images/bar2x12.png">
@@ -47,16 +49,17 @@
 	      </ul>
 	    </div>
 	  </div>
-</nav>
-
+	</div>
 <!--Second nav-->
-<nav id="menu">
-<div class="second_nav">
+
+<div id="menu">
+   <div class="header_wrap">
     <div id="logo">
 	    <a href="${pageContext.request.contextPath}/" >
 	    	<img src="${pageContext.request.contextPath}/resources/images/colorLogo_103x33.png">
 	    </a>
     </div>
+    
     <div id="menu_tab">
         <ul id="menu_ul">
             <li class="menu_li menu_left">
@@ -94,6 +97,7 @@
             </li>
         </ul> 
     </div>
-    
-   </div> 
-</nav>
+    </div>
+   </div>
+   
+</nav> 
