@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<link href="./resources/css/import_nav.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/import_nav.css" rel="stylesheet">
 
 <!--First nav-->
 <nav id="info">
@@ -9,19 +9,19 @@
 	     <ul>
 	        <li class="info_li">
 	          <a class="f" href="${pageContext.request.contextPath}/member/join">회원가입</a>
-	         <img src="./resources/images/bar2x12.png">
+	         <img src="${pageContext.request.contextPath}/resources/images/bar2x12.png">
 	        </li>
 	        <li class="info_li">
 	          <a class="f" href="${pageContext.request.contextPath}/member/login">로그인</a>
-	        	<img src="./resources/images/bar2x12.png">
+	        	<img src="${pageContext.request.contextPath}/resources/images/bar2x12.png">
 	        </li>
 	        <li class="info_li">
 	          <a class="f" href="${pageContext.request.contextPath}/notice/fnq">고객행복센터</a>
-	        	<img src="./resources/images/bar2x12.png">
+	        	<img src="${pageContext.request.contextPath}/resources/images/bar2x12.png">
 	        </li>
 	        <li class="info_li">
 	          <a class="f" href="${pageContext.request.contextPath}/">배송지역검색</a>
-	        	<img src="./resources/images/bar2x12.png">
+	        	<img src="${pageContext.request.contextPath}/resources/images/bar2x12.png">
 	        </li>
 	        <li class="info_li">
 	          <a class="f" href="${pageContext.request.contextPath}/">기프트카드 등록</a>
@@ -54,7 +54,7 @@
 <div class="second_nav">
     <div id="logo">
 	    <a href="${pageContext.request.contextPath}/" >
-	    	<img src="./resources/images/colorLogo_103x33.png">
+	    	<img src="${pageContext.request.contextPath}/resources/images/colorLogo_103x33.png">
 	    </a>
     </div>
     <div id="menu_tab">
@@ -82,13 +82,13 @@
         <ul id="icon_ul">
             <li class="icon_li">
                 <a class="sr" href="#">
-	                <img class="icon" src="./resources/images/shopping-cart.png">
+	                <img class="icon" src="${pageContext.request.contextPath}/resources/images/shopping-cart.png">
 	                <span>장바구니</span>
                 </a>
             </li>
             <li class="icon_li">
                 <a class="sr" href="#">
- 	               <img class="icon" src="./resources/images/search01.png">
+ 	               <img class="icon" src="${pageContext.request.contextPath}/resources/images/search01.png">
     	           <span>메뉴찾기</span>
     	        </a>
             </li>
