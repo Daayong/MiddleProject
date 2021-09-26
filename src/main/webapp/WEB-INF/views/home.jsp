@@ -115,6 +115,7 @@
 			.etc_info{ /* 인분 및 조리시간 */
 				padding-top: 8px;
 				font-size: 14px;
+				color: #BDBDBD;
 			}
 			.item_title{ /* item 이름 */
 				padding-top: 5px;
