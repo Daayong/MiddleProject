@@ -79,6 +79,14 @@
 			.sortc_wrap{
 				display: inline-block;
 			}
+			.sortc_wrap a{
+				text-decoration: none;
+				color: black;
+			}
+			.sortc_wrap a::after{
+				content: "|";
+				padding-left: 8px;
+			}
 			
 			/* 메뉴 보이는 부분 */
 			.menu_wrap{
@@ -143,6 +151,15 @@
 				background-color: lime;
 				opacity: 0.5;
 			}
+			
+			
+			/* ======== 기능 관련 css ========*/
+			
+			/* 메뉴 클릭 (찜, 장바구니 버튼 제외) */
+			.click_menu{
+				cursor: pointer;
+			}
+			
 		</style>
 	</head>
 	<body>
@@ -169,11 +186,11 @@
 					<p>안녕하세요! COOKIT의 메뉴들 입니다.</p>
 					<p>COOKIT의 주문마감은 오전 7시입니다.</p>
 					<div class="sort_wrap">
-						<div class="sortc_wrap">신메뉴순</div>
-						<div class="sortc_wrap">인기메뉴순</div>
-						<div class="sortc_wrap">높은가격순</div>
-						<div class="sortc_wrap">낮은가격순</div>
-						<div class="sortc_wrap">만족도순</div>
+						<div class="sortc_wrap"><a href="#">신메뉴순</a></div>
+						<div class="sortc_wrap"><a href="#">인기메뉴순</a></div>
+						<div class="sortc_wrap"><a href="#">높은가격순</a></div>
+						<div class="sortc_wrap"><a href="#">낮은가격순</a></div>
+						<div class="sortc_wrap"><a href="#">만족도순</a></div>
 					</div>
 				</div>
 				
@@ -182,6 +199,32 @@
 					<div class="item_wrap">
 						<!-- 나중에 c:foreach 반복문 쓰기 -->
 						<div class="item_box">
+							<div class="click_menu"> <!-- div 버튼 만들기 -->
+								<div class="item_image">
+									<img alt="test" src="./resources/images/test_menu1.png">
+								</div>
+								<p class="etc_info">3인분 / 조리 20분</p>
+								<div class="item_title">
+									* 갈릭버터쉬림프
+								</div>
+								<div class="item_price">
+									26,800원
+								</div>
+								<div class="item_review">
+									<h3>별점하고 리뷰들개수</h3>
+								</div>
+							</div>
+							<div class="item_btnbox">
+								<div class="menu_btn zzim_btn">
+									<img alt="zzim" src="./resources/images/zzim_btn.png">
+								</div>
+								<div class="menu_btn cart_btn">
+									<img alt="cart" src="./resources/images/cart_btn.png">
+								</div>
+							</div>
+						</div>
+						<!-- c:foreach -->
+						<div class="item_box">
 							<div class="item_image">
 								<img alt="test" src="./resources/images/test_menu1.png">
 							</div>
@@ -320,8 +363,73 @@
 							</div>
 						</div>
 						<div class="item_box">
+							<div class="item_image">
+								<img alt="test" src="./resources/images/test_menu1.png">
+							</div>
+							<p class="etc_info">3인분 / 조리 20분</p>
+							<div class="item_title">
+								* 갈릭버터쉬림프
+							</div>
+							<div class="item_price">
+								26,800원
+							</div>
+							<div class="item_review">
+								<h3>별점하고 리뷰들개수</h3>
+							</div>
+							<div class="item_btnbox">
+								<div class="menu_btn zzim_btn">
+									<img alt="zzim" src="./resources/images/zzim_btn.png">
+								</div>
+								<div class="menu_btn cart_btn">
+									<img alt="cart" src="./resources/images/cart_btn.png">
+								</div>
+							</div>
 						</div>
 						<div class="item_box">
+							<div class="item_image">
+								<img alt="test" src="./resources/images/test_menu1.png">
+							</div>
+							<p class="etc_info">3인분 / 조리 20분</p>
+							<div class="item_title">
+								* 갈릭버터쉬림프
+							</div>
+							<div class="item_price">
+								26,800원
+							</div>
+							<div class="item_review">
+								<h3>별점하고 리뷰들개수</h3>
+							</div>
+							<div class="item_btnbox">
+								<div class="menu_btn zzim_btn">
+									<img alt="zzim" src="./resources/images/zzim_btn.png">
+								</div>
+								<div class="menu_btn cart_btn">
+									<img alt="cart" src="./resources/images/cart_btn.png">
+								</div>
+							</div>
+						</div>
+						<div class="item_box">
+							<div class="item_image">
+								<img alt="test" src="./resources/images/test_menu1.png">
+							</div>
+							<p class="etc_info">3인분 / 조리 20분</p>
+							<div class="item_title">
+								* 갈릭버터쉬림프
+							</div>
+							<div class="item_price">
+								26,800원
+							</div>
+							<div class="item_review">
+								<h3>별점하고 리뷰들개수</h3>
+							</div>
+							<div class="item_btnbox">
+								<div class="menu_btn zzim_btn">
+									<img alt="zzim" src="./resources/images/zzim_btn.png">
+								</div>
+								<div class="menu_btn cart_btn">
+									<img alt="cart" src="./resources/images/cart_btn.png">
+								</div>
+							</div>
 						</div>
 					</div>
 					<div class="pager_wrap">
@@ -334,4 +442,17 @@
 			<c:import url="./temp/footer.jsp"></c:import>
 		</div>
 	</body>
+	
+	<!-- ======= script area ======= -->
+	<script type="text/javascript">
+	
+		<!-- .click_menu -->
+		$(".click_menu").on("click", function() {
+			
+			location.href="menu_detail";
+			/* location.href="menu_detail?prdNum";  => 나중에 DB연결 후 상품 번호 전달 */
+			
+		});
+		
+	</script>
 </html>
