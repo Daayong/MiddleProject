@@ -12,10 +12,11 @@
 			}
 			.content_wrapper{
 				width: 1180px;
-				height: 1000px;
+				min-height: 100%;
 				margin: 0 auto;
 			}
 			
+			/* 페이지 타이틀 */
 			.title{
 				width: 100%;
 				height: 40px;
@@ -25,6 +26,8 @@
 				font-size: 40px;
 				font-weight: 700;
 			}
+			
+			/* 카테고리 선택 부분 */
 			.cate_wrap{
 				width: 100%;
 				height: 95px;
@@ -50,6 +53,7 @@
 				text-decoration: none;
 			}
 			
+			/* 서브타이틀 및 정렬하는 부분 */
 			.filter_wrap{
 				box-sizing: border-box;
 				width: 100%;
@@ -76,18 +80,68 @@
 				display: inline-block;
 			}
 			
+			/* 메뉴 보이는 부분 */
 			.menu_wrap{
 				width: 100%;
+				margin-top: 30px;
 			}
 			
 			.item_wrap{
 				display: inline-grid;
 				grid-template-columns: repeat(4, 1fr);
+				column-gap: 36px;
+				row-gap : 100px;
 			}
 			.item_box{
-				background-color: gray;
 				width: 268px;
 				height: 548px;
+				display: flex;
+				flex-direction: column;
+			}
+			
+			/* 메뉴 세부 박스들 */
+			.item_image{
+				width: 100%;
+				height: 320px;
+			}
+			.etc_info{ /* 인분 및 조리시간 */
+				padding-top: 8px;
+				font-size: 14px;
+			}
+			.item_title{ /* item 이름 */
+				padding-top: 5px;
+				font-size: 17px;
+			}
+			.item_price{
+				padding-top: 10px;
+				font-size: 24px;
+			}
+			.item_review{ /* 별점 및 리뷰갯수 박스 */
+				width: 100%;
+				height: 40px;
+				margin-top: 15px;
+				background-color: gray;
+				opacity: 0.5;
+			}
+			.item_btnbox{
+				width: 100%;
+				height: 40px;
+				margin-top: 20px;
+				display: flex;
+				flex-direction: row;
+			}
+			.menu_btn{
+				margin-right: 15px;
+				width: 40px;
+				height: 40px;
+			}
+			/* 메뉴안 페이저 부분 */
+			.pager_wrap{
+				width: 70%;
+				height: 80px;
+				margin: 130px auto 130px auto;
+				background-color: lime;
+				opacity: 0.5;
 			}
 		</style>
 	</head>
@@ -126,14 +180,151 @@
 				<!-- Menu Grid -->
 				<div class="menu_wrap">
 					<div class="item_wrap">
+						<!-- 나중에 c:foreach 반복문 쓰기 -->
 						<div class="item_box">
+							<div class="item_image">
+								<img alt="test" src="./resources/images/test_menu1.png">
+							</div>
+							<p class="etc_info">3인분 / 조리 20분</p>
+							<div class="item_title">
+								* 갈릭버터쉬림프
+							</div>
+							<div class="item_price">
+								26,800원
+							</div>
+							<div class="item_review">
+								<h3>별점하고 리뷰들개수</h3>
+							</div>
+							<div class="item_btnbox">
+								<div class="menu_btn zzim_btn">
+									<img alt="zzim" src="./resources/images/zzim_btn.png">
+								</div>
+								<div class="menu_btn cart_btn">
+									<img alt="cart" src="./resources/images/cart_btn.png">
+								</div>
+							</div>
+						</div>
+						<div class="item_box">
+							<div class="item_image">
+								<img alt="test" src="./resources/images/test_menu1.png">
+							</div>
+							<p class="etc_info">3인분 / 조리 20분</p>
+							<div class="item_title">
+								* 갈릭버터쉬림프
+							</div>
+							<div class="item_price">
+								26,800원
+							</div>
+							<div class="item_review">
+								<h3>별점하고 리뷰들개수</h3>
+							</div>
+							<div class="item_btnbox">
+								<div class="menu_btn zzim_btn">
+									<img alt="zzim" src="./resources/images/zzim_btn.png">
+								</div>
+								<div class="menu_btn cart_btn">
+									<img alt="cart" src="./resources/images/cart_btn.png">
+								</div>
+							</div>
+						</div>
+						<div class="item_box">
+							<div class="item_image">
+								<img alt="test" src="./resources/images/test_menu1.png">
+							</div>
+							<p class="etc_info">3인분 / 조리 20분</p>
+							<div class="item_title">
+								* 갈릭버터쉬림프
+							</div>
+							<div class="item_price">
+								26,800원
+							</div>
+							<div class="item_review">
+								<h3>별점하고 리뷰들개수</h3>
+							</div>
+							<div class="item_btnbox">
+								<div class="menu_btn zzim_btn">
+									<img alt="zzim" src="./resources/images/zzim_btn.png">
+								</div>
+								<div class="menu_btn cart_btn">
+									<img alt="cart" src="./resources/images/cart_btn.png">
+								</div>
+							</div>
+						</div>
+						<div class="item_box">
+							<div class="item_image">
+								<img alt="test" src="./resources/images/test_menu1.png">
+							</div>
+							<p class="etc_info">3인분 / 조리 20분</p>
+							<div class="item_title">
+								* 갈릭버터쉬림프
+							</div>
+							<div class="item_price">
+								26,800원
+							</div>
+							<div class="item_review">
+								<h3>별점하고 리뷰들개수</h3>
+							</div>
+							<div class="item_btnbox">
+								<div class="menu_btn zzim_btn">
+									<img alt="zzim" src="./resources/images/zzim_btn.png">
+								</div>
+								<div class="menu_btn cart_btn">
+									<img alt="cart" src="./resources/images/cart_btn.png">
+								</div>
+							</div>
+						</div>
+						<div class="item_box">
+							<div class="item_image">
+								<img alt="test" src="./resources/images/test_menu1.png">
+							</div>
+							<p class="etc_info">3인분 / 조리 20분</p>
+							<div class="item_title">
+								* 갈릭버터쉬림프
+							</div>
+							<div class="item_price">
+								26,800원
+							</div>
+							<div class="item_review">
+								<h3>별점하고 리뷰들개수</h3>
+							</div>
+							<div class="item_btnbox">
+								<div class="menu_btn zzim_btn">
+									<img alt="zzim" src="./resources/images/zzim_btn.png">
+								</div>
+								<div class="menu_btn cart_btn">
+									<img alt="cart" src="./resources/images/cart_btn.png">
+								</div>
+							</div>
+						</div>
+						<div class="item_box">
+							<div class="item_image">
+								<img alt="test" src="./resources/images/test_menu1.png">
+							</div>
+							<p class="etc_info">3인분 / 조리 20분</p>
+							<div class="item_title">
+								* 갈릭버터쉬림프
+							</div>
+							<div class="item_price">
+								26,800원
+							</div>
+							<div class="item_review">
+								<h3>별점하고 리뷰들개수</h3>
+							</div>
+							<div class="item_btnbox">
+								<div class="menu_btn zzim_btn">
+									<img alt="zzim" src="./resources/images/zzim_btn.png">
+								</div>
+								<div class="menu_btn cart_btn">
+									<img alt="cart" src="./resources/images/cart_btn.png">
+								</div>
+							</div>
 						</div>
 						<div class="item_box">
 						</div>
 						<div class="item_box">
 						</div>
-						<div class="item_box">
-						</div>
+					</div>
+					<div class="pager_wrap">
 					</div>
 				</div>
 			</div>
