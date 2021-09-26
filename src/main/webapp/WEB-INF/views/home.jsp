@@ -75,6 +75,20 @@
 			.sortc_wrap{
 				display: inline-block;
 			}
+			
+			.menu_wrap{
+				width: 100%;
+			}
+			
+			.item_wrap{
+				display: inline-grid;
+				grid-template-columns: repeat(4, 1fr);
+			}
+			.item_box{
+				background-color: gray;
+				width: 268px;
+				height: 548px;
+			}
 		</style>
 	</head>
 	<body>
@@ -108,7 +122,20 @@
 						<div class="sortc_wrap">만족도순</div>
 					</div>
 				</div>
-			
+				
+				<!-- Menu Grid -->
+				<div class="menu_wrap">
+					<div class="item_wrap">
+						<div class="item_box">
+						</div>
+						<div class="item_box">
+						</div>
+						<div class="item_box">
+						</div>
+						<div class="item_box">
+						</div>
+					</div>
+				</div>
 			</div>
 			
 			
