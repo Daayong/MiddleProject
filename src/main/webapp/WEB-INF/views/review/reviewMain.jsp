@@ -12,8 +12,7 @@
 		
 		.wrapper{
 		min-height:100%;
-		width:1900px;  
-		margin-top:116px; 
+		width:100%;
 		margin-bottom:-290px;
 		position:relative; 
 		left:50%;

@@ -1,0 +1,56 @@
+@charset "UTF-8";
+
+/************************************************************************
+* filename : common.css
+* description : 공통 css
+************************************************************************/
+/* Noto Sans */
+@font-face {
+	font-family:'Noto Sans'; /* Bold */
+	src: url('/cjkit/web/cjok/web/font/NotoSans-Bold.eot');
+	src:local(※),
+			url('/mp/resources/fonts/NotoSans-Bold.eot#iefix') format('embedded-opentype'),
+			url('/mp/resources/fonts/NotoSans-Bold.woff2') format('woff2'),
+			url('/mp/resources/fonts/NotoSans-Bold.woff') format('woff'),
+			url('/mp/resources/fonts/NotoSans-Bold.otf') format('opentype');
+	font-weight:700;
+	font-style:normal;
+}
+
+@font-face {
+	font-family:'Noto Sans'; /* Medium */
+	src: url('/mp/resources/fonts/NotoSans-Medium.eot');
+	src:local(※),
+			url('/mp/resources/fonts/NotoSans-Medium.eot#iefix') format('embedded-opentype'),
+			url('/mp/resources/fonts/NotoSans-Medium.woff2') format('woff2'),
+			url('/mp/resources/fonts/NotoSans-Medium.woff') format('woff'),
+			url('/mp/resources/fonts/NotoSans-Medium.otf') format('opentype');
+	font-weight:500;
+	font-style:normal;
+}
+ 
+@font-face {
+	font-family:'Noto Sans'; /* Regular */
+	src: url('/mp/resources/fonts/NotoSans-Regular.eot');
+	src:local(※),
+			url('/mp/resources/fonts/NotoSans-Regular.eot#iefix') format('embedded-opentype'),
+			url('/mp/resources/fonts/NotoSans-Regular.woff2') format('woff2'),
+			url('/mp/resources/fonts/NotoSans-Regular.woff') format('woff'),
+			url('/mp/resources/fonts/NotoSans-Regular.otf') format('opentype');
+	font-weight:400;
+	font-style:normal;
+}
+
+@font-face {
+	font-family:'Noto Sans'; /* Regular */
+	src: url('/mp/resources/fonts/NotoSans-Light.eot');
+	src:local(※),
+			url('/mp/resources/fonts/NotoSans-Light.eot#iefix') format('embedded-opentype'),
+			url('/mp/resources/fonts/NotoSans-Light.woff2') format('woff2'),
+			url('/mp/resources/fonts/NotoSans-Light.woff') format('woff'),
+			url('/mp/resources/fonts/NotoSans-Light.otf') format('opentype');
+	font-weight:200;
+	font-style:normal;
+}
+
+body, input, textarea, select, button, table {font-family:'Noto Sans', '맑은 고딕', 'Malgun Gothic', Dotum, '굴림', arial, sans-serif; font-size:15px; font-weight:400; line-height:23px;color:#606060;letter-spacing:-0.5px;}
