@@ -458,7 +458,7 @@
 	</script>
 </html> --%>
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <html>
 <head>
@@ -498,7 +498,7 @@
 <!-- 여기까지 -->
 <div class="push"></div>
 </div>
- <c:import url="./temp/boot_footer.jsp"></c:import>
+<c:import url="./temp/boot_footer.jsp"></c:import>
 
 </body>
 </html>
