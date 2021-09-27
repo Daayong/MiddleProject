@@ -1,0 +1,107 @@
+@charset "UTF-8";
+
+/* 기본 초기화  */
+
+*{margin:0;padding:0;-webkit-text-size-adjust:none;word-break:break-all;box-sizing:border-box;}
+*, *:after, *:before {-webkit-box-sizing:border-box; box-sizing:border-box;}
+dl, ul, ol, menu, li {list-style:none}
+a {color:black; text-decoration: none; outline: none;}
+
+
+
+#header{	
+	width:100%;
+}
+
+.gnb_wrap{
+	min-width:1260px;
+	margin:0 auto;
+	background-color:#fff;
+	border-bottom:1px solid #ccc;
+	text-align: center;	
+}
+
+
+
+/* First nav */
+#info{
+	min-width:1260px;
+	padding-top:7px;
+	background-color:#202020;
+	height:35px;
+	text-align:left;
+}
+
+.info_wrap{
+	max-width:1920px;
+	min-width:1260px;
+	margin:0 auto;
+}
+
+#info_ul{
+	float:right; 
+	margin-right:40px; 
+}
+
+.info_li{
+	float:left;
+	display:inline-block;
+	line-height:35px;
+}
+
+.info_li a:before {content:''; display:inline-block; position:relative; width:1px; height:12px; margin:0 12px; background-color:rgba(255, 255, 255, 0.2); vertical-align:middle;}
+.info_li:first-child a:before {display:none;}
+.f{	
+	font-size:13px; 
+	color:#fff;
+	line-height:21px;
+}
+
+
+
+/* Second nav */
+.menu_wrap {
+	position:relative;
+	max-width:1920px;
+	min-width:1260px;
+	height:81px;
+	margin:0 auto;
+	padding-top:24px;
+	text-align:center;
+}
+
+#logo{
+	position:absolute;
+	left:40px;
+	top:25px;
+}
+
+#logo a {display:block; width:100px; height:30px; background:url('/mp/resources/images/common/ico_set.png') -320px -385px no-repeat; background-size:800px 800px;}
+
+.menu_ul {
+	display:inline-block;
+	font-size:0;
+	line-height:0
+}
+
+.menu_li{
+	display:inline-block;
+	font-size:0;
+	line-height:0;
+}
+
+.menu_li a {display:inline-block; padding:0 32px; color:#101010; font-weight:700; font-size:22px; line-height:32px;}
+
+
+
+/* Second nav_right */
+.my_gmenu {position:absolute; right:40px; top:14px;}
+.my_gmenu ul {float:right;}
+.my_gmenu li {float:left; margin-left:20px;}
+.my_gmenu li a {display:block;}
+.my_gmenu li a:before {content:'';display:block; width:32px; height:32px; margin:0 auto; background:url('/mp/resources/images/common/ico_set.png') no-repeat; background-size:800px 800px;}
+.my_gmenu li a .txt{display:block;margin-top:-2px;font-size:12px;line-height:20px;letter-spacing:-1px;color:#101010;}
+.my_gmenu li.my_gmenu_cart {position:relative;}
+.my_gmenu li.my_gmenu_find a:before {background-position:-540px -320px}
+.my_gmenu li.my_gmenu_cart a:before {background-position:-584px -320px}
+.my_gmenu li.my_gmenu_find a:before {background-position:-628px -320px}
