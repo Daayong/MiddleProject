@@ -133,6 +133,10 @@
 		.detail_menubox{
 			width: 100%;
 			border-bottom: 1px solid #D5D5D5;
+			position: sticky;
+			background-color: white;
+			z-index: 3;
+			top:0;
 		}
 		.detail_menu{
 			width: 1190px;
@@ -152,9 +156,23 @@
 		.detail_info{
 			width: 1190px;
 			min-height: 100vh;
-			background-color: gray;
-			opacity: 0.5;
 			margin: 0 auto;
+			display: flex;
+			flex-direction: row;
+		}
+		
+		.left_detail{
+			width: 850px;
+			min-height: 200vh;
+		}
+		.right_detail{
+			position: sticky;
+			z-index: 1;
+			top: 64px;
+			width: 340px;
+			height: 910px;
+			border-left: 1px solid #D5D5D5;
+			border-right: 1px solid #D5D5D5;
 		}
 	</style>	
 	
@@ -221,6 +239,10 @@
 				</div>
 			</div>
 			<div class="detail_info">
+				<div class="left_detail">
+				</div>
+				<div class="right_detail">
+				</div>
 			</div>
 		</div>
 
