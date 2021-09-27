@@ -15,24 +15,18 @@
 		
 		.wrapper{
 			position:relative;
-			height:100%;
 			width: 100%;
-			left: 50%;
-			transform:translate(-50%);
+			
 			
 		}
 		
 		#container{
 			width: 1180px;
-			height:100%;
-			margin: 0 auto;
+			min-height:100%;
+			margin: -117 auto -290;
+			padding: 117 0 290;
 		}
 		
-		.push{
-		height: 290px;
-		}  
-		 
-
 	</style>
 		
 
@@ -186,7 +180,7 @@
 
 
 </div>
- <div class="push"> </div>  
+
  <c:import url="../temp/boot_footer.jsp"></c:import>
 
 </body>
