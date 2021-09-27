@@ -1,0 +1,191 @@
+@charset "UTF-8";
+
+.event_content{
+	min-height: 900px;
+	padding: 52px 0 140px;
+}
+
+.event_wrap .title{
+	width:100%;
+	height: 56px; 
+}
+
+.event_wrap .title h1{
+	color: #101010;
+	font-weight: 700;
+	font-size: 40px;
+	line-height: 56px;
+}
+
+/* tab 목록 */
+.tab_wrap{
+	margin-top: 24px;
+	width: 100%;
+	height: 45px;
+	
+}
+
+.tabs{
+	position: relative;
+	width: 100%;
+	font-size: 0;
+}
+
+.tabs li {
+	display: inline-block;
+	width: initial;
+	text-align: left;
+	vertical-align: top;
+}
+
+.tabs li a{
+	display: block;
+	width: 100%;
+	height: 100%;
+	padding: 0 12px;
+}
+
+.tabs li:first-child a{
+	padding-left: 0;
+}
+
+.tabs li a > span{
+	position: relative;
+	z-index: 1;
+	display: inline-block;
+	height: 41px;
+	font-size: 24px;
+	color: #101010;
+	font-weight: 700;
+	font-size: 24px;
+	line-height: 34px;
+}
+
+.tabs li:first-child a > span {
+	border-bottom: 3px solid #202020;
+}
+
+
+/* 이벤트 목록 */
+.event_list{
+	padding-top: 12px;
+}
+
+.event_list li{
+	display: inline-block;
+	margin: 52px 0 16px;
+	width: 380px;
+}
+
+
+.pro_module:first-child{
+	margin-top: 0;
+	margin-right: 15px;
+}
+
+.pro_module{
+	margin-top: 60px;
+}
+
+.pro_module a{
+	display: block;
+}
+
+.pro_module .img_wrap{
+	position: relative;
+	text-align: center;
+}
+
+.pro_module .img_wrap a{
+	text-align: center;
+}
+
+.pro_module .img_wrap img{
+	display: block;
+	width: 100%;	
+	cursor: pointer;
+}
+
+.pro_module .txt_wrap{
+	position: relative;
+	padding: 16px 0 0;
+}
+
+.pro_module .txt_wrap .conts{
+	display: block;
+}
+
+.pro_module .txt_wrap .flag_wrap{
+	margin-left: 0;
+	padding-bottom: 12px;
+	font-size: 0;
+	line-height: 0;
+}
+
+/* 이벤트 flag */
+.flag_wrap .flag.cate{
+	background-color: #101010;
+	color: #FFFFFF;
+	font-size: 15px;
+	font-weight: bolder;
+	text-align: center;
+}
+.flag_wrap .flag.dday{
+	background-color: #EE0700;
+	color: #FFFFFF;
+	font-size: 15px;
+	font-weight: 600;
+	text-align: center;
+}
+
+.flag_wrap .date{
+	margin-left: 8px;
+	font-size: 14px;
+	line-height: 20px;
+	color: #606060; 
+	vertical-align: sub;
+	
+}
+
+.flag_wrap .flag{
+	display: inline-block;
+	min-width: 55px;
+	height: 25px;
+	margin: 0;
+	padding: 0 5px;
+	font-size: 12px;
+	line-height: 22px;
+	text-align: center;
+	font-weight: 500;
+}
+
+.txt_wrap .mini_info .mini{
+	display: block;
+	color: #101010;
+	font-weight: bolder;
+	font-size: 17px;	
+}
+
+
+/* paging */
+
+.pagination{
+	padding-top: 56px;
+	text-align: center;
+}
+
+.pagination strong{
+	display: inline-block;
+	min-width: 40px;
+	height: 40px;
+	background-color: #202020;
+	color: #fff;
+	font-size: 14px;
+	font-weight: 700;
+	text-align: center;
+	line-height: 40px;
+	
+	
+}
+
+
