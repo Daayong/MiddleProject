@@ -1,64 +1,45 @@
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<link href="${pageContext.request.contextPath}/resources/css/common.css" rel="stylesheet">
 
 <html>
 <head>
+	<link href="${pageContext.request.contextPath}/resources/css/common.css" rel="stylesheet">
+	
 	<title>Home</title>
-	<style>
-		html,body{
-			height:100%;
-			margin:0; 
-		}
-		
+	
+	<style>		
 		.wrapper{
-		min-height:100%;
-		width:100%;
-		margin-bottom:-290px;
-		position:relative; 
-		left:50%;
-		transform:translate(-50%);
-		/*영역 확인용 색상 작업 완료시 삭제*/
-/* 		background-color:gray; */
-	
-	
+			position:relative;
+			width:100%;
 		}
 
 		#container{
-			width:1180px; 
-			min-height:100%; 
-			margin:0 auto; 
-		/*영역 확인용 색상 작업완료시 삭제*/
-/* 			background-color:ivory; */
+			width:1180px;
+			min-height:100%;
+			margin:-117 auto -290;
+			padding: 117 0 290;
 		}
-		.push{
-		height:290px;		
-		}
-	</style>	
+	</style>
 	
 </head>
 <body>
-<c:import url="./temp/boot_nav.jsp"></c:import>
-
-<div class="wrapper">		
+<div class="wrapper">
+	<c:import url="./temp/boot_nav.jsp"></c:import>	
 	<section id="container">
-<!-- 여기에 페이지 작업 -->
-
-
-
-
-<h1>Contents</h1>
-
-
-
-
-
-
-<!-- 여기까지 -->
+	
+	
+	
+	
+	
+		<h1>Contents</h1>
+		
+		
+		
+		
+		
 	</section>
-<div class="push"></div>
+ 	<c:import url="./temp/boot_footer.jsp"></c:import>
 </div>
- <c:import url="./temp/boot_footer.jsp"></c:import>
 
 </body>
 </html>

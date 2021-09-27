@@ -51,6 +51,7 @@
 	color:#fff;
 	line-height:21px;
 }
+#info :after{content:'';display:table;clear:both;}
 
 
 

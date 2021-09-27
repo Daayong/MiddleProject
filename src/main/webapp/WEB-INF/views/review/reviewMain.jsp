@@ -1,133 +1,34 @@
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<link href="${pageContext.request.contextPath}/resources/css/common.css" rel="stylesheet">
 
 <html>
 <head>
+	<link href="${pageContext.request.contextPath}/resources/css/common.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/resources/css/review/reviewMain.css" rel="stylesheet">
+	
 	<title>Home</title>
-	<style>
-		html,body{
-			height:100%;
-			margin:0; 
-		}
-		
+	
+	<style>		
 		.wrapper{
-		min-height:100%;
-		width:100%;
-		margin-bottom:-290px;
-		position:relative; 
-		left:50%;
-		transform:translate(-50%);
-		/*영역 확인용 색상 작업 완료시 삭제*/
-/* 		background-color:gray; */
-	
-	
+			position:relative;
+			width:100%;
 		}
 
 		#container{
-			width:1180px; 
-			min-height:100%; 
-			margin:0 auto; 
-		/*영역 확인용 색상 작업완료시 삭제*/
-/* 			background-color:ivory; */
+			width:1180px;
+			min-height:100%;
+			margin:-117 auto -290;
+			padding: 117 0 290;
 		}
-
-		.push{
-		height:290px;		
-		}
-		
-/* 		개인 작업 내용 */
-		
-		body{background: url(/mp/resources/images/bg_rv_wrapper.png) repeat-x 0 977px;}
-
-		.hide {display: inline-block;position:absolute;z-index:-10;width:0 !important;height:0 !important;overflow:hidden !important;font-size:medium;line-height:normal;word-break:break-all}
-
-		h2{padding-bottom: 36px;color: #101010;font-size: 40px;line-height: 56px;font-weight: 700;border-bottom: 4px solid #202020;}
-
-		#content{min-height: 900px;padding-bottom: 140px;padding-top: 52px;}
-		
-		.best_review{box-sizing:border-box;height:628px;padding:48px 0 0;}
-		
-		.family_review{padding:60px 0 46px;background:#f7f7f7;margin-top:85px;overflow:hidden;}
-		
-	/* 		taste_review */
-		.taste_review{padding-top:80px;}
-		
-		/* 		review_srch */
-		.review_srch{position: relative; box-sizing: border-box; width: 1180px; height: 133px; padding: 32px; border-top: 1px solid #202020;  background-color:#f7f7f7;}
-		.review_srch .srch_wrap{position:relative; z-index:30; width:644px; margin:0 auto;}
-		.review_srch .srch_wrap .txt{display: block; width:644px; height:68px; padding:0 106px 0 20px; border:2px solid #202020; color:#101010; font-weight:700; font-size:20px; opacity:1;}
-		.review_srch .srch_wrap .btn_srch{position: absolute; border:0; right:18px; top:50%; width:32px; height:32px; margin-top:-16px; background:url('/mp/resources/images/pd/ico_set.png') -600px -150px no-repeat; background-size:800px 800px;}
-			
-		/* 		review_top */
-		.review_top{position: relative; margin-top:56px; padding-bottom:16px; border-bottom:2px solid #202020;}
-		.review_top .total{display: inline-block; color: #101010;font-weight: 700;font-size: 22px;line-height: 32px;}
-		.review_top .list_sort {display: inline-block; position: absolute; right: 0px;}
-		.review_top .list_sort input{z-index:0; opacity:0; filter:alpha(opacity=0)}
-		.review_top .list_sort label:before {content:'';zoom:1;display:inline-block;width:25px;height:26px;margin:-3px 6px 0 0;background:url('/mp/resources/images/common/ico_set.png') no-repeat;background-position:-1px -40px; background-size:800px 800px; vertical-align:middle;}
-		.review_top .list_sort label{font-size:16px; line-height:24px;}
-		
-		/* 		review_area */
-		.review_area li {padding:24px 0; border-top:1px solid #e0e0e0;}
-		.review_area .review_module .top_wrap {margin-bottom:6px;}
-		.review_area .review_module .top_wrap .title {display: inline-block; padding-left:1px;}
-		.review_area .review_module .top_wrap .title .name {float: left; display:inline-block; width:560px; color:#101010; font-weight:700; font-size:16px; line-height:24px;}
-		.review_area .review_module .top_wrap time {display: inline-block; float: right; margin-top:2px; font-size:14px; line-height:24px;}
-		
-		.review_area .review_module .link_wrap .etc_info {float:left; width:100%; margin-bottom:20px;}
-		.review_area .review_module .link_wrap .etc_info .rating_star {display:inline-block; padding:7px 0; vertical-align:middle;}
-		.review_area .review_module .link_wrap .etc_info .rating_star .star,
-		.review_area .review_module .link_wrap .etc_info .rating_star span{display:block; width:88px; height:16px; background:url('/mp/resources/images/pd/ico_set.png') no-repeat -374px -26px; background-size:800px 800px;}
-		.review_area .review_module .link_wrap .etc_info .rating_star span{background-position:-374px 0;}
-		.review_area .review_module .link_wrap .etc_info .user_id {display:inline-block; color:#606060; font-size:14px; line-height:22px; vertical-align:middle}
-		.review_area .review_module .link_wrap .etc_info .user_id:before {content:''; display:inline-block; width:1px; height:14px; margin:0 10px; background-color:#e0e0e0; vertical-align:middle}
-		.review_area .review_module .link_wrap .etc_info .purchase_num {display:inline-block; color:#606060; font-size:14px; line-height:22px; vertical-align:middle}
-		.review_area .review_module .link_wrap .etc_info .purchase_num:before {content:''; display:inline-block; width:1px; height:14px; margin:-2px 10px 0; background-color:#e0e0e0; vertical-align:middle}
-		
-		.review_area .review_module .link_wrap .contents_wrap {float:right; width:100%;}
-		.review_area .review_module .link_wrap .contents_wrap .txt {font-size:14px; line-height:22px;}
-		.review_area .review_module .link_wrap .contents_wrap .txt {max-height:44px; font-size:14px; line-height:22px;}
-		.review_area .review_module .link_wrap .contents_wrap .tag_wrap {/* display:none; */ padding-top:8px; color:#008A00; font-size:13px; line-height:21px;}
-		.review_area .review_module .link_wrap .link_more .tip_wrap {position:relative; margin-top:8px; padding:8px 16px 8px 47px; -ms-border-radius:0 8px 8px 8px; -moz-border-radius:0 8px 8px 8px; -webkit-border-radius:0 8px 8px 8px; border-radius:0 8px 8px 8px; background-color:#f7f7f7;}
-		.review_area .review_module .link_wrap .link_more .tip_wrap .tip_ico {position:absolute; left:16px; top:14px; width:31px;}
-		.review_area .review_module .link_wrap .link_more .tip_wrap .tip_ico:before {content:''; position:absolute; left:0; top:0; width:23px; height:10px; background:url('/mp/resources/images/pd/ico_set.png') -490px -130px no-repeat; background-size:800px 800px;}
-		.review_area .review_module .link_wrap .link_more .tip_wrap .txt_tip{color:#606060; font-size:13px; line-height:21px; vertical-align:top;}
-		.review_area .review_module .link_wrap .link_more:after{content:'';display:table;clear:both;}
-		
-		/* 		pagination */
-		.pagination {padding-top:56px; font-size:0; text-align:center; border-top:1px solid #e0e0e0;}
-		.pagination a,
-		.pagination strong {display:inline-block; min-width:40px; height:40px; background-color:#fff; color:#606060; font-size:14px; font-weight:700; text-align:center; line-height:40px; vertical-align:top; }
-		.pagination strong {background-color:#202020; color:#fff;}
-		.pagination a:hover,
-		.pagination a:focus {text-decoration:underline;}
-		.pagination .page_num {display:inline-block; padding:0 20px; vertical-align:middle;}
-		.pagination .btn_first,
-		.pagination .btn_prev,
-		.pagination .btn_next,
-		.pagination .btn_last {display:inline-block; width:40px; height:40px; margin:0 -0.5px; padding:0; background:url('/mp/resources/images/common/ico_set.png') no-repeat; background-size:800px 800px; vertical-align:middle;}
-		.pagination .btn_first {background-position:0 -300px;}
-		.pagination .btn_prev {background-position:-40px -300px;}
-		.pagination .btn_next {background-position:-80px -300px;}
-		.pagination .btn_last {background-position:-120px -300px;}
-
-/* 		/개인 작업 내용 */
-	</style>	
+	</style>
 	
 </head>
 <body>
+
 <c:import url="../temp/boot_nav.jsp"></c:import>
-
-
-
-
 <div class="wrapper">		
-<!-- 여기에 페이지 작업 -->
-<!-- wrapper는 width:1900px 영역이므로 메인페이지 및 소개 페이지에서 슬라이드 이미지 작업시의 영역크기(gray색상) -->	
-	
-	
 	<section id="container">
-	<!-- section은 width:1180px로, 모든 컨텐츠 작업 영역(ivory색상) -->
+	
 		<div id="content">
 			<div class="review_wrap">
 				<h2>리뷰</h2>
@@ -137,8 +38,66 @@
 				
 				
 				<div class="best_review">
-					<div class="ui_carousel_track ui_static" style="opacity: 1; width: 25000px; transform: translate3d(-568px, 0px, 0px);">
-						<div class="slide_conts ui_carousel_slide ui_carousel_cloned" data-ui_carousel_index="-1" style="float: left;" aria-hidden="true">
+					<div class="slide_wrap ">
+						<div class="slide_list">
+							<div class="slide_track" style="opacity: 1; width: 25000px; transform: translate3d(-568px, 0px, 0px);">
+							<c:forEach begin="1" end="5">
+							
+							
+								<div class="slide_contents" data-slide_contents_index = "1" aria-hidden = "false">
+									<div class="item">
+										<a>
+											<div class="img_wrap">
+												<div class="best_flag">
+													<span class="flag_txt">Best</span>
+											 	</div>
+											 	<img alt="select product_name from product" src="/mp/resources/images/temp/review_temp.jpg">
+											</div>
+											
+											<div class="txt_wrap">
+											
+												<span class="tit">product_name
+												</span>
+												<div class="etc_info">	
+																		
+													<div class="rating_star">
+														<span class="star"> <!-- background image 커스텀 영역 -->
+															<span style="width:100.0%;"> <!-- background image 활성화 영역 (20%에 한개씩 점수가 채워 집니다.) -->
+															</span>
+														</span>
+													</div>
+													
+													<div class="user_id">
+														member_userId****
+													</div>
+													
+												</div>
+												
+												<div class="txt">
+													select contents from review where bestReview;select contents from review where bestReview<br>select contents from review where bestReview;
+												</div>
+												
+											</div>
+										</a>
+									</div>
+								</div>
+							
+							
+							</c:forEach>>
+							</div>
+							<div class="slide_nav_count">
+								<span class="num">
+									<em>1</em>/5
+								</span>
+							</div>
+							<div class="slide_nav_arrow">
+								<div class="arr_area">
+									<button type="button" class="btn_arrow prev" style="display: block;">
+									</button>
+									<button type="button" class="btn_arrow next" style="display: block;">
+									</button>
+								</div>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -148,6 +107,84 @@
 				
 				
 				<div class="family_review">
+					<div class="family_wrap">
+						<div class="title_box">
+							<h2>COOKIT Family Story</h2>
+							<a class="btn_review" href="https://www.instagram.com/chef.cookit/" target="_blank">쿡킷패밀리 더보기</a>
+						</div>
+						
+<!-- 						slide_wrap -->
+						<div class="slide_wrap">
+							<div class="slide_list">
+								<div class="slide_track" style="opacity: 1; width: 25000px; transform: translate3d(-349px, 0px, 0px);">
+								
+								<c:forEach begin="1" end="5">
+								
+								
+									<div class="slide_contents" data-slide_contents_index = "1" aria-hidden = "false">
+										<div class="item">
+											<a href="https://www.instagram.com/p/CC5GfQhnEEf/" target="_blank">
+												<div class="img_wrap">
+												 	<img src="/mp/resources/images/temp/@family_01.png">
+												</div>
+												
+												<div class="txt_wrap">
+												
+													<strong class="review_title">
+														주말의 낙,캠핑에 쿡킷이<br>
+														필수템이 되었어요
+													</strong>
+													<p class="review_txt">
+														맛있는 음식과 함께할 때 캠핑의 매력은 배가 돼요!<br>
+														바쁜 캠린이들이 가장 쉽게 만드는 캠핑 요리,쿡킷!<br>
+														오일까지 챙겨줘서 짐이 정말 많이 줄었어요.<br>
+														캠핑장에서 받는 부러움의 시선은 덤
+													</p>	
+													<div class="family_info_box">
+														<div class="thumb"><img src="/mp/resources/images/temp/@family_thumb_01.png" alt="">
+														</div>
+														<p>
+															<span>도시캠퍼 김지혜님</span>
+															<em>@jjihye13</em>
+														</p>
+													</div>												
+												</div>
+											</a>
+										</div>
+									</div>
+								</c:forEach>
+								
+								</div>
+								<div class="slide_nav_count">
+									<span class="num">
+										<em>1</em>/5
+									</span>
+								</div>
+								<div class="slide_nav_arrow">
+									<div class="arr_area">
+										<button type="button" class="btn_arrow prev" style="display: block;">
+										</button>
+										<button type="button" class="btn_arrow next" style="display: block;">
+										</button>
+									</div>
+								</div>
+							</div>
+						</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+					</div>
 				</div>
 				
 				
@@ -176,7 +213,7 @@
 					</div>
 					
 					<ul class="review_area">
-						<c:forEach begin="1" end="10">
+						<c:forEach begin="1" end="5">
 						<li>
 							<div class="review_module">
 							
@@ -185,31 +222,31 @@
 										<span class="name">select product_name where products</span>
 									</p>
 									<time datetime="YYYY-MM-DD">2021-09-27</time>
-								</div>		
+								</div>	
+								
+								<div class="etc_info">
+								
+									<div class="rating_star">
+										<span class="star"> <!-- background image 커스텀 영역 -->
+											<span style="width:80.0%;"> <!-- background image 활성화 영역 (20%에 한개씩 점수가 채워 집니다.) -->
+											</span>
+										</span>
+									</div>
+									
+									<div class="user_id">
+										<a href="#">
+											"userID****"
+										</a>
+									</div>
+									
+									<div class="purchase_num"> <!-- 구매 횟수 : 1회 구매 표시 안함  -->
+										"구매 purchase_num회"
+									</div>
+								</div>	
 										
 								<div class="link_wrap">
-								
-									<div class="etc_info">
-									
-										<div class="rating_star">
-											<span class="star"> <!-- background image 커스텀 영역 -->
-												<span style="width:80.0%;"> <!-- background image 활성화 영역 (20%에 한개씩 점수가 채워 집니다.) -->
-												</span>
-											</span>
-										</div>
-										
-										<div class="user_id">
-											<a href="#">
-												"userID****"
-											</a>
-										</div>
-										
-										<div class="purchase_num"> <!-- 구매 횟수 : 1회 구매 표시 안함  -->
-											"구매 purchase_num회"
-										</div>
-									</div>
 									<a href="#" class="link_more">
-										<div class="contents_wrap">
+										<div class="txt_wrap">
 										
 											<div class="txt_contents">
 												<p class="txt">
@@ -237,8 +274,94 @@
 							</div>
 						</li>
 						</c:forEach>
+						
+<!-- 						이미지 있는 케이스 -->
+						<c:forEach begin="1" end="5">
+						<li>
+							<div class="review_module photo"> <!-- 개발 요청 사항 : 이미지 있는 케이스에 photo 클래스 추가 -->
+							
+								<div class="top_wrap">
+									<p class="title">
+										<span class="name">select product_name where products</span>
+									</p>
+									<time datetime="YYYY-MM-DD">2021-09-27</time>
+								</div>	
+								
+								<div class="etc_info">
+								
+									<div class="rating_star">
+										<span class="star"> <!-- background image 커스텀 영역 -->
+											<span style="width:80.0%;"> <!-- background image 활성화 영역 (20%에 한개씩 점수가 채워 집니다.) -->
+											</span>
+										</span>
+									</div>
+									
+									<div class="user_id">
+										<a href="#">
+											"userID****"
+										</a>
+									</div>
+									
+									<div class="purchase_num"> <!-- 구매 횟수 : 1회 구매 표시 안함  -->
+										"구매 purchase_num회"
+									</div>
+								</div>	
+										
+								<div class="link_wrap">
+									<a href="#" class="link_more">
+										<div class="txt_wrap">
+										
+											<div class="txt_contents">
+												<p class="txt">
+													select contents from reviews where user_num = ? and product_num = ?
+												</p>
+											</div>
+											
+											<div class="tag_wrap">
+												<span class="tag">#select tag from reviews ~</span>
+												<span class="tag">#select tag from reviews ~</span>
+											</div>
+											
+											<div class="tip_wrap">
+												<div class="tip_ico">
+												</div>
+												<div class="tip_txt">
+													select tip from reviews ~
+												</div>
+											</div>
+											
+										</div>
+											
+<!-- 											이미지 -->
+										<div class="img_wrap">
+										
+											<!-- 첫번째 이미지 -->
+											<div class="thumb_img">													
+												<div class="img">
+													<img src="/mp/resources/images/temp/review_temp.jpg" alt="1번 이미지" onerror="">
+												</div>
+												<span class="lang">1</span> <!-- 총 사진 개수 : .review_module .img_wrap 안에 있는 .img 갯수 체크 -->
+											</div>
+											
+											<!-- 큰 이미지 영역 -->
+											<div class="bigger_img">												
+												<div class="img">
+													<img src="/mp/resources/images/temp/review_temp.jpg" alt="1번 이미지" onerror="">
+												</div>												
+											</div>
+											<!-- //큰 이미지 영역 -->
+										</div>
+									</a>
+								</div>	
+											
+							</div>
+						</li>
+						</c:forEach>
 					</ul>
 					
+					
+					
+<!-- 					pagination -->
 					<div class="pagination">
 						<a class="btn_first" href="#"></a>
 						<a class="btn_prev" href="#"></a>
@@ -255,17 +378,13 @@
 							<a href="#">20</a>
 						</span>
 						<a class="btn_next" href="#"></a>
-						<a class="btn_last" href="#"></a>
-						
+						<a class="btn_last" href="#"></a>						
 					</div>
 					
 				</div>
 			</div>
 		</div>
 	</section>
-	
-<!-- 여기까지 -->
-	<div class="push"></div>
 </div>
  <c:import url="../temp/boot_footer.jsp"></c:import>
 
