@@ -13,26 +13,26 @@
 		}
 		
 		.wrapper{
-		position: relative;
-		min-height: 100%;
-		width:100%;
-		margin-top: 116px;
-		left: 50%;
-		transform: translate(-50%);
-	
+			min-height:100%;
+			width:100%;
+			position:relative; 
+			margin-bottom: 290px;
+			left:50%;
+			transform:translate(-50%);
+			
 		}
 		
 		.section{
 			width: 1190px;
-			height: 100%;
+			min-height: 100%;
 			margin: 0 auto;
 		}
 		
 		
-		.push{
+		/*  .push{
 		height: 290px;
-		}
-		
+		} 
+		  */
 
 	</style>
 		
@@ -199,7 +199,7 @@
 
 
 <!-- 여기까지 -->
-<div class="push"> </div>
+<!--  <div class="push"> </div>  -->
  <c:import url="../temp/boot_footer.jsp"></c:import>
 
 </body>
