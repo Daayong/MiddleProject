@@ -16,13 +16,12 @@
 			min-height: 100%;
 			width:100%;
 			position:relative; 
-		
 			left:50%;
 			transform:translate(-50%);
 			
 		}
 		
-		#container{
+		.section{
 			width: 1190px;
 			min-height: 100%;
 			margin: 0 auto;
@@ -46,7 +45,7 @@
 <!-- 여기에 페이지 작업 -->
 
 	
-	<section id="container">
+	<div class="section">
 	
 		<div id="content" class="event_content">
 		
@@ -181,7 +180,7 @@
 			</div>			
 		</div>
 	
-	</section>
+	</div>
 	
 	</div>
 	
