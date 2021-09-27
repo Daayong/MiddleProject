@@ -1,5 +1,6 @@
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<link href="${pageContext.request.contextPath}/resources/css/common.css" rel="stylesheet">
 
 <html>
 <head>
@@ -23,8 +24,8 @@
 	
 		}
 
-		.section{
-			width:1190px; 
+		#container{
+			width:1180px; 
 			min-height:100%; 
 			margin:0 auto; 
 		/*영역 확인용 색상 작업완료시 삭제*/
@@ -53,7 +54,7 @@
 		.taste_review{padding-top:80px;}
 		
 		/* 		review_srch */
-		.review_srch{position: relative; box-sizing: border-box; width: 1190px; height: 133px; padding: 32px; border-top: 1px solid #202020;  background-color:#f7f7f7;}
+		.review_srch{position: relative; box-sizing: border-box; width: 1180px; height: 133px; padding: 32px; border-top: 1px solid #202020;  background-color:#f7f7f7;}
 		.review_srch .srch_wrap{position:relative; z-index:30; width:644px; margin:0 auto;}
 		.review_srch .srch_wrap .txt{display: block; width:644px; height:68px; padding:0 106px 0 20px; border:2px solid #202020; color:#101010; font-weight:700; font-size:20px; opacity:1;}
 		.review_srch .srch_wrap .btn_srch{position: absolute; border:0; right:18px; top:50%; width:32px; height:32px; margin-top:-16px; background:url('/mp/resources/images/pd/ico_set.png') -600px -150px no-repeat; background-size:800px 800px;}
@@ -125,8 +126,8 @@
 <!-- wrapper는 width:1900px 영역이므로 메인페이지 및 소개 페이지에서 슬라이드 이미지 작업시의 영역크기(gray색상) -->	
 	
 	
-	<div class="section">
-	<!-- section은 width:1190px로, 모든 컨텐츠 작업 영역(ivory색상) -->
+	<section id="container">
+	<!-- section은 width:1180px로, 모든 컨텐츠 작업 영역(ivory색상) -->
 		<div id="content">
 			<div class="review_wrap">
 				<h2>리뷰</h2>
@@ -261,7 +262,7 @@
 				</div>
 			</div>
 		</div>
-	</div>
+	</section>
 	
 <!-- 여기까지 -->
 	<div class="push"></div>
