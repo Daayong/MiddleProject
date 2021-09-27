@@ -11,14 +11,9 @@
 		}
 		
 		.wrapper{
-		min-height:100%;
-		width:100%;
+			min-height:100%;
+		margin-top:85px;
 		margin-bottom:-290px;
-		position:relative; 
-		left:50%;
-		transform:translate(-50%);
-		/*영역 확인용 색상 작업 완료시 삭제*/
-/* 		background-color:gray; */
 	
 	
 		}

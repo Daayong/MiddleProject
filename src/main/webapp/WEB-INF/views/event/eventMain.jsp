@@ -1,6 +1,7 @@
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <link href="${pageContext.request.contextPath}/resources/css/eventMain.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/common.css" rel="stylesheet">
 
 <html>
 <head>
@@ -13,23 +14,23 @@
 		}
 		
 		.wrapper{
-			min-height: 100%;
-			width:100%;
-			position:relative; 
-			left:50%;
+			position:relative;
+			height:100%;
+			width: 100%;
+			left: 50%;
 			transform:translate(-50%);
 			
 		}
 		
-		.section{
-			width: 1190px;
-			min-height: 100%;
+		#container{
+			width: 1180px;
+			height:100%;
 			margin: 0 auto;
 		}
 		
 		.push{
 		height: 290px;
-		} 
+		}  
 		 
 
 	</style>
@@ -45,9 +46,9 @@
 <!-- 여기에 페이지 작업 -->
 
 	
-	<div class="section">
+	<section id="container">
 	
-		<div id="content" class="event_content">
+		<div id="content">
 		
 			<div class="event_wrap">
 			
@@ -180,15 +181,11 @@
 			</div>			
 		</div>
 	
-	</div>
-	
-	</div>
-	
-	
+		
+</section>
 
 
-
-<!-- 여기까지 -->
+</div>
  <div class="push"> </div>  
  <c:import url="../temp/boot_footer.jsp"></c:import>
 

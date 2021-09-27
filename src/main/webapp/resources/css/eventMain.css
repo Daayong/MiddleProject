@@ -1,11 +1,10 @@
 @charset "UTF-8";
 
-#content{
-	
-	min-height: 900px;
+#content {
+	height: 1120px;
 	padding: 52px 0 140px;
 	
-}
+} 
 
 
 .event_wrap .title{
@@ -57,7 +56,6 @@
 	z-index: 1;
 	display: inline-block;
 	height: 41px;
-	font-size: 24px;
 	color: #101010;
 	font-weight: 700;
 	font-size: 24px;
@@ -72,22 +70,23 @@
 /* 이벤트 목록 */
 .event_list{
 	padding-top: 12px;
-	
+
 }
 
 .event_list li{
 	display: inline-block;
-	margin: 52px 0 16px;
-	width: 380px;
+	margin: 43px 0 16px;
+	width: 395px;
 }
 
 .event_list .eventListArea{
 	width: 1196px;
+	
 }
 
 .pro_module:first-child{
 	margin-top: 0;
-	margin-right: 13px;
+	margin-right: 15px;
 }
 
 .pro_module{
@@ -133,15 +132,15 @@
 .flag_wrap .flag.cate{
 	background-color: #101010;
 	color: #FFFFFF;
-	font-size: 15px;
-	font-weight: bolder;
+	font-size: 12px;
+	font-weight: 500;
 	text-align: center;
 }
 .flag_wrap .flag.dday{
 	background-color: #EE0700;
 	color: #FFFFFF;
-	font-size: 15px;
-	font-weight: 600;
+	font-size: 12px;
+	font-weight: 500;
 	text-align: center;
 }
 
