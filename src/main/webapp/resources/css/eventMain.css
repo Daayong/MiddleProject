@@ -1,9 +1,12 @@
 @charset "UTF-8";
 
-.event_content{
+#content{
+	width: 1180px;
 	min-height: 900px;
 	padding: 52px 0 140px;
+	
 }
+
 
 .event_wrap .title{
 	width:100%;
@@ -69,6 +72,7 @@
 /* 이벤트 목록 */
 .event_list{
 	padding-top: 12px;
+	
 }
 
 .event_list li{
@@ -77,10 +81,13 @@
 	width: 380px;
 }
 
+.event_list .eventListArea{
+	width: 1196px;
+}
 
 .pro_module:first-child{
 	margin-top: 0;
-	margin-right: 15px;
+	margin-right: 13px;
 }
 
 .pro_module{

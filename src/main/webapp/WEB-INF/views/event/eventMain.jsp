@@ -13,26 +13,25 @@
 		}
 		
 		.wrapper{
-			min-height:100%;
+			min-height: 100%;
 			width:100%;
 			position:relative; 
-			margin-bottom: 290px;
+		
 			left:50%;
 			transform:translate(-50%);
 			
 		}
 		
-		.section{
+		#container{
 			width: 1190px;
 			min-height: 100%;
 			margin: 0 auto;
 		}
 		
-		
-		/*  .push{
+		.push{
 		height: 290px;
 		} 
-		  */
+		 
 
 	</style>
 		
@@ -47,8 +46,9 @@
 <!-- 여기에 페이지 작업 -->
 
 	
-	<div class="section">
-		<div class="event_content">
+	<section id="container">
+	
+		<div id="content" class="event_content">
 		
 			<div class="event_wrap">
 			
@@ -181,25 +181,16 @@
 			</div>			
 		</div>
 	
+	</section>
 	
 	</div>
 	
 	
-
-
-	
-
-
-
-
-
-
-	</div>
 
 
 
 <!-- 여기까지 -->
-<!--  <div class="push"> </div>  -->
+ <div class="push"> </div>  
  <c:import url="../temp/boot_footer.jsp"></c:import>
 
 </body>
