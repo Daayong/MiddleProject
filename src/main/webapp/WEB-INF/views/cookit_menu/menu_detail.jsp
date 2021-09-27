@@ -7,15 +7,28 @@
 		<meta charset="UTF-8">
 		<title>Menu Detail Page</title>	
 		<style>
+			html,body{
+			height:100%;
+			margin:0; 
+			}
+			.wrapper{
+				min-height:100%;
+				margin-top:85px;
+				margin-bottom:-290px;
+				}
+			.push{
+				height:290px;		
+				}
+			
+			
 			.content_wrapper{
-				width: 1180px;
-				min-height: 100%;
+				width: 1190px;
 				margin: 0 auto;
 			}
 			
 			/* 상단 큰 박스 */
 			.top_info{
-				width: 1180px;
+				width: 1190px;
 				margin-top: 50px;
 				display: flex;
 				flex-direction: row;
@@ -124,7 +137,7 @@
 				border-bottom: 1px solid #D5D5D5;
 			}
 			.detail_menu{
-				width: 1180px;
+				width: 1190px;
 				margin: 0 auto;
 			}
 			.detail_menu ul li{
@@ -139,7 +152,7 @@
 			
 			/* detail_info 부분 설명 내용같은거 */
 			.detail_info{
-				width: 1180px;
+				width: 1190px;
 				min-height: 100vh;
 				background-color: gray;
 				opacity: 0.5;
@@ -149,6 +162,8 @@
 	</head>
 	<body>
 		<c:import url="../temp/boot_nav.jsp"></c:import>
+		
+		
 		
 		<div class="wrapper">
 			
@@ -212,8 +227,9 @@
 				</div>
 			</div>
 			
-			
-			<c:import url="../temp/boot_footer.jsp"></c:import>
+		<div class="push"></div>
 		</div>
+		
+		<c:import url="../temp/boot_footer.jsp"></c:import>
 	</body>
 </html>
