@@ -463,6 +463,7 @@
 <html>
 <head>
 	<title>Home</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<style>
 		html,body{
 			height:100%;
@@ -913,5 +914,17 @@
 </div>
 <c:import url="./temp/boot_footer.jsp"></c:import>
 
+	<!-- ======= script area ======= -->
+	<script type="text/javascript">
+	
+		<!-- .click_menu -->
+		$(".click_menu").on("click", function() {
+			
+			location.href="menu_detail";
+			/* location.href="menu_detail?prdNum";  => 나중에 DB연결 후 상품 번호 전달 */
+			
+		});
+		
+	</script>
 </body>
 </html>
