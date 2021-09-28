@@ -12,54 +12,19 @@
 
 	<style>
 
-		html,body{
-
-			height:100%;
-
-			margin:0; 
-
-		}
-
-		
-
 		.wrapper{
-
-		min-height:100%;
-
 		width:100%;
-
-		margin-bottom:290px;
-
 		position:relative; 
-
-		left:50%;
-
-		transform:translate(-50%);
-
-		/*영역 확인용 색상 작업 완료시 삭제*/
-
-/* 		background-color:gray; */
-
-	
-
-	
-
 		}
 
  
 
 		#container{
 
-			width:1190px; 
-
+			width:1180px; 
 			min-height:100%; 
-
-			margin:0 auto; 
-
-		/*영역 확인용 색상 작업완료시 삭제*/
-
-/* 			background-color:ivory; */
-
+			margin:-117px auto -290px; 
+			padding:117px 0 290px;
 		}
 	</style>	
 
