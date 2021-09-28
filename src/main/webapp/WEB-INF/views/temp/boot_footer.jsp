@@ -49,9 +49,6 @@
 			</div>
 				
 				
-				
-				
-				
 			<div class="footer_link">
 				<div class="cj_manage ui_familySite"> <!-- 스크립트요청사항 : 클릭 후 .on 클래스 추가 -->
 					<button type="button" class="hd"><span>CJ그룹계열사 바로가기</span></button>
