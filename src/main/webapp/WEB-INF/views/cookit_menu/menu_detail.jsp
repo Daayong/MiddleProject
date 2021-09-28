@@ -125,7 +125,7 @@
 		
 		/* 상품 디테일 박스 */
 		.detail_wrapper{
-			width: 1920px;
+			width: 100%;
 		}
 		
 		/* detail 메뉴 박스 상품정보 등등 */
@@ -196,17 +196,29 @@
 		.right_box1{
 			width:100%;
 			height:100px;
-			background-color: red;
+			border-bottom: 1px solid #D5D5D5;
 		}
 		.right_box2{
 			width:100%;
 			height:600px;
-			background-color: blue;
 		}
 		.right_box3{
 			width:100%;
 			height:210px;
-			background-color: gray;
+			text-align: center;
+			border-top: 1px solid #D5D5D5;
+		}
+		.prdCnt{
+			margin-top: 80px;
+		}
+		.cart_btn{
+			width: 200px;
+			height: 50px;
+			line-height: 50px;
+			font-size: 20px;
+			margin: 20px auto 0 auto;
+			background-color: violet;
+			opacity: 0.5;
 		}
 	</style>	
 	
@@ -309,6 +321,12 @@
 					<div class="right_box2">
 					</div>
 					<div class="right_box3">
+						<div class="prdCnt">
+							수량 0개 0원
+						</div>
+						<div class="cart_btn">
+							장바구니 담기
+						</div>
 					</div>
 				</div>
 			</div>
@@ -375,6 +393,9 @@
 		/* 페이지 로드시 상세설명 기본값 */
 		$(document).ready(function() {
 			$(".menuLi:first").css("border-bottom","solid 2px black");
+			$(".productInfo").hide();
+			$(".reviews").hide();
+			$(".orderHelp").hide();
 		});
 	</script>
 </body>
