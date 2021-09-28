@@ -36,14 +36,15 @@
 				
 				
 				
+<!-- ===== ===== ===== best_review ===== ===== ===== -->
 				<div class="best_review">
 					<div class="slide_wrap ">
 						<div class="slide_list">
 							<div class="slide_track" style="opacity: 1; width: 25000px; transform: translate3d(-568px, 0px, 0px); transition: transform 1200ms ease 0s;">
-							<c:forEach begin="1" end="5">
+							<c:forEach var="i" begin="0" end="9">
 							
 							
-								<div class="slide_contents" data-slide_contents_index = "1" aria-hidden = "false">
+								<div class="slide_contents" data-slide_contents_index = ${i-1} aria-hidden = "false">
 									<div class="item">
 										<a>
 											<div class="img_wrap">
@@ -91,9 +92,9 @@
 							</div>
 							<div class="slide_nav_arrow">
 								<div class="arr_area">
-									<button type="button" class="btn_arrow prev" style="display: block;">
+									<button type="button" class="btn_arrow prev" id="prev" style="display: block;">
 									</button>
-									<button type="button" class="btn_arrow next" style="display: block;">
+									<button type="button" class="btn_arrow next" id="next" style="display: block;">
 									</button>
 								</div>
 							</div>
@@ -105,6 +106,7 @@
 				
 				
 				
+<!-- ===== ===== ===== family_review ===== ===== ===== -->
 				<div class="family_review">
 					<div class="family_wrap">
 						<div class="title_box">
@@ -112,10 +114,9 @@
 							<a class="btn_review" href="https://www.instagram.com/chef.cookit/" target="_blank">쿡킷패밀리 더보기</a>
 						</div>
 						
-<!-- 						slide_wrap -->
 						<div class="slide_wrap">
 							<div class="slide_list">
-								<div class="slide_track" style="opacity: 1; width: 25000px; transform: translate3d(-349px, 0px, 0px);">
+								<div class="slide_track" style="opacity: 1; width: 25000px; transform: translate3d(-349px, 0px, 0px); transition: transform 1200ms ease 0s;">
 								
 								<c:forEach begin="1" end="5">
 								
@@ -161,9 +162,9 @@
 								</div>
 								<div class="slide_nav_arrow">
 									<div class="arr_area">
-										<button type="button" class="btn_arrow prev" style="display: block;">
+										<button type="button" class="btn_arrow prev" id="prev" style="display: block;">
 										</button>
-										<button type="button" class="btn_arrow next" style="display: block;">
+										<button type="button" class="btn_arrow next" id="next" style="display: block;">
 										</button>
 									</div>
 								</div>
@@ -190,6 +191,7 @@
 				
 				
 				
+<!-- ===== ===== ===== taste_review ===== ===== ===== -->
 				<div class="taste_review">
 				
 					<div class="review_srch">
@@ -212,6 +214,7 @@
 					</div>
 					
 					<ul class="review_area">
+<!-- ===== ===== ===== 이미지 없는 케이스 ===== ===== ===== -->
 						<c:forEach begin="1" end="5">
 						<li>
 							<div class="review_module">
@@ -274,7 +277,7 @@
 						</li>
 						</c:forEach>
 						
-<!-- 						이미지 있는 케이스 -->
+<!-- ===== ===== ===== 이미지 있는 케이스 ===== ===== ===== -->
 						<c:forEach begin="1" end="5">
 						<li>
 							<div class="review_module photo"> <!-- 개발 요청 사항 : 이미지 있는 케이스에 photo 클래스 추가 -->
@@ -360,7 +363,7 @@
 					
 					
 					
-<!-- 					pagination -->
+<!-- ===== ===== ===== pagination ===== ===== ===== -->
 					<div class="pagination">
 						<a class="btn_first" href="#"></a>
 						<a class="btn_prev" href="#"></a>
