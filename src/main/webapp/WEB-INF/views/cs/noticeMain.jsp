@@ -3,7 +3,8 @@
 
 <link href="${pageContext.request.contextPath}/resources/css/common.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/css/csMain.css" rel="stylesheet">
-
+<link href="${pageContext.request.contextPath}/resources/css/noticeMain.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/paging.css" rel="stylesheet">
 <html>
 <head>
 	<title>Home</title>
@@ -29,9 +30,10 @@
 	
 </head>
 <body>
-<c:import url="../temp/boot_nav.jsp"></c:import>
 
 <div class="wrapper">		
+
+<c:import url="../temp/boot_nav.jsp"></c:import>
 <!-- 여기에 페이지 작업 -->
 
 	<section id="container">
@@ -51,8 +53,66 @@
 					</ul>			
 				</div>
 				
-				<!-- csMain page 클릭시 faqList page 보이게 설정 -->
-				<c:import url="./faqList"></c:import>
+				<!-- notice -->
+					<div class="notice_conts" id="noticeContent">
+					
+				<!-- notice List -->
+					<div class="tb_row">
+					
+			<!-- table -->
+				<table class="table ">
+				  <thead>
+				    <tr>
+				      <th scope="col">#</th>
+				      <th scope="col">First</th>
+				      <th scope="col">Last</th>
+				      <th scope="col">Handle</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				    <tr>
+				      <th scope="row">1</th>
+				      <td>Mark</td>
+				      <td>Otto</td>
+				      <td>@mdo</td>
+				    </tr>
+				    <tr>
+				      <th scope="row">2</th>
+				      <td>Jacob</td>
+				      <td>Thornton</td>
+				      <td>@fat</td>
+				    </tr>
+				    <tr>
+				      <th scope="row">3</th>
+				      <td colspan="2">Larry the Bird</td>
+				      <td>@twitter</td>
+				    </tr>
+				  </tbody>
+				</table>
+						
+					
+					</div>
+					
+					<!-- paging -->
+					<div class="pagination">
+						<a class="btn_first" href="#"></a>
+							<a class="btn_prev" href="#"></a>
+							<span class="page_num">
+								<strong>1</strong>
+								<a href="#">2</a>
+								<a href="#">3</a>
+								<a href="#">4</a>
+								<a href="#">5</a>
+								
+						</span>
+					<a class="btn_next" href="#"></a>
+					<a class="btn_last" href="#"></a>
+				</div>
+						
+					</div>
+				
+				
+				
 			</div>
 	
 		</div>

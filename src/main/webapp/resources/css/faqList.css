@@ -141,67 +141,6 @@ div.input_wrap{
 
 }
 
-/* 페이징 처리 */
-.pagination {
-	padding-top:56px;
-	font-size:0;
-	text-align:center;
-	border-top:1px solid #e0e0e0;
-}
-
-.pagination a,
-.pagination strong {
-		display:inline-block;
-		min-width:40px;
-		height:40px;
-		background-color:#fff;
-		color:#606060;
-		font-size:14px;
-		font-weight:700;
-		text-align:center;
-		line-height:40px;
-		vertical-align:top;
-}
-.pagination strong {
-	background-color:#202020;
-	color:#fff;
-}
-.pagination a:hover,
-.pagination a:focus {
-	text-decoration:underline;
-	}
-.pagination .page_num {
-	display:inline-block;
-	padding:0 20px;
-	vertical-align:middle;
-	}
-	
-.pagination .btn_first,
-.pagination .btn_prev,
-.pagination .btn_next,
-.pagination .btn_last {
-	display:inline-block;
-	width:40px;
-	height:40px;
-	margin:0 -0.5px;
-	padding:0;
-	background:url('/mp/resources/images/common/ico_set.png') no-repeat;
-	background-size:800px 800px;
-	vertical-align:middle;
-	}
-.pagination .btn_first {
-	background-position:0 -300px;
-}
-.pagination .btn_prev {
-	background-position:-40px -300px;
-}
-.pagination .btn_next {
-	background-position:-80px -300px;
-}
-.pagination .btn_last {
-	background-position:-120px -300px;
-}
-
 
 
 /* 문의작성 소개 */

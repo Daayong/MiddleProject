@@ -4,6 +4,7 @@
 <link href="${pageContext.request.contextPath}/resources/css/common.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/css/csMain.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/css/faqList.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/paging.css" rel="stylesheet">
 
 <html>
 <head>
@@ -30,9 +31,10 @@
 	
 </head>
 <body>
-<c:import url="../temp/boot_nav.jsp"></c:import>
 
 <div class="wrapper">		
+
+<c:import url="../temp/boot_nav.jsp"></c:import>
 <!-- 여기에 페이지 작업 -->
 
 	<section id="container">
@@ -153,11 +155,7 @@
 							<a href="#">3</a>
 							<a href="#">4</a>
 							<a href="#">5</a>
-							<a href="#">6</a>
-							<a href="#">7</a>
-							<a href="#">8</a>
-							<a href="#">9</a>
-							<a href="#">10</a>
+							
 						</span>
 						<a class="btn_next" href="#"></a>
 						<a class="btn_last" href="#"></a>
