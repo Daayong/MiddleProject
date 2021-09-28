@@ -50,40 +50,46 @@
 						<li><a href="${pageContext.request.contextPath}/cs/noticeMain"><span id="nt">공지사항</span></a></li>
 						<li><a href=" ${pageContext.request.contextPath}/cs/userGuide"><span id="ug" >새벽배송/이용안내</span></a></li>
 					</ul>			
-				</div>
-				
+				</div>					
 				<!-- faq contents -->
 				<div class="faq_conts">
 				
 					<!-- search area -->
-					<div class="faq_search">
-					
+					<div class="f_search">
 						<h2 class="tit">FAQ 검색</h2>
-						
 						<div class="box_search">
-						
 						<div class="sch_wrap">
 							<div class="input_wrap">
-								<form name="searchForm" action="">
-									<input type="text" class="txt" id="fn_txt_srch" placeholder="검색어를 입력해주세요" name="keyWord" >
-									
+									<input type="text" class="txt" id="fn_txt_srch" placeholder="검색어를 입력해주세요" name="keyWord"  ><!-- value 사용자 입력 값 나중에 추가 -->
+									<button class="ico del"><span class="hide">입력 삭제</span></button>
 									<button type="button" class="btn btn_srch" onclick="javascript:goSearch()"><span class="hide">검색</span></button>
-									
-								</form>
-							
+								</div>
 							</div>
-							
-						</div>
+						</div>		
+					</div>				
+				<!-- faq type -->
+					<div class="f_type">
+					
 					</div>
-							
-					</div>
+				<!-- faq table view -->
+				<div id="tabView"></div>
+				
+				<!-- paging -->
+				<div class="pagination"></div>
+				
+				
+				<!-- bottom_info -->
+				<div class="bottom_info"></div>
 				</div>
+			
 			</div>
 	
 		</div>
+		
 	
 	</section>
-</div>
+
+	</div>
 
  <c:import url="../temp/boot_footer.jsp"></c:import>
 

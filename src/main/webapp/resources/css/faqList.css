@@ -1,11 +1,11 @@
 @charset "UTF-8";
 
-.fqq_conts{
+.faq_conts{
 	margin-top: 58px;
 }
 
-.faq_search{
-	margin-top: 56px;
+.f_search{
+	margin-top: 2px;
 }
 
 .faq_conts .tit{
@@ -15,32 +15,48 @@
 	color: #101010;
 }
 
-.faq_search .box_search{
+.f_search .box_search{
 	margin-top: 16px;
 	padding: 32px;
-	background-color: #F7F7F7;
+	background-color: #f7f7f7;
 }
 
 .sch_wrap{
-	position:relative;
-	 z-index:30;
-	  width:644px; 
-	  margin:0 auto;
+	position: relative;
+	width: 644px;
+	margin: 0 auto;
 }
 
-.scr_wrap .input_wrap{
+.sch_wrap .input_wrap{
 	height: 68px;
 }
 
+div.input_wrap{
+	width: 100%;
+}
+
+.input_wrap{
+	position: relative;
+	display: inline-block;
+}
+
 .sch_wrap input.txt {
+	display: inline-block;
 	height:68px;
+	width: 100%;
 	padding:0 106px 0 20px;
-	border:2px solid #202020; 
-	color:#101010; 
+	border:2px solid #202020;
+	color:#101010;
 	font-weight:700;
 	font-size:20px;
 	opacity:1;
+	
 	}
+	
+.sch_wrap input.txt::-webkit-input-placeholder {
+	color:#606060;
+	font-size:20px;
+	font-weight:700;}
 
 .sch_wrap .btn_srch {
 	position:absolute;
@@ -49,11 +65,30 @@
 	width:32px;
 	height:32px;
 	margin-top:-16px;
-	background:url('/mp/resources/images/common/ico_set.png') -600px -150px no-repeat;
+	background:url('/mp/resources/images/pd/ico_set.png') -600px -150px no-repeat;
 	background-size:800px 800px;
 	}
 
 
+.f_type{
+	margin-top: 56px;
+}
+
+#tabView{
+	display: block;
+}
+
+.pagination{
+	padding-top:  56px;
+	text-align: center;
+}
+
+.bottom_info{
+	position: relative;
+	margin-top: 56px;
+	padding: 32px;
+	background-color: #f7f7f7;
+}
 
 .hide {
 	display:inline-block;
