@@ -5,23 +5,15 @@
 <head>
 	<title>로그인-집밥을 특별하게,쿡킷</title>
 	<style>
-		html,body{
-			height:100%;
-			margin:0; 
-		}
-
 		.wrapper{
-		min-height:100%;
-		width:100%;
-		position:relative; 
-		margin-bottom:-290px; 
-		left:50%;
-		transform:translate(-50%);
+			position:relative;
+			width:100%;
 		}
 		#container{
-			width:1190px; 
-			min-height:100%; 
-			margin:0 auto; 
+			width:1180px;
+			min-height:100%;
+			margin:-117 auto -290;
+			padding: 117 0 290;
 		}
 		
 		.title{
@@ -41,16 +33,12 @@
 			height:722px; 
 			background-color:yellow; 
 			margin-top:96px;
-		
+			position:relative;
 		}
 		
-		.push{
-		height:290px; 
-		width:100%;
-		background-color:red; 
-		}
 		
 
+	
 	</style>	
 
 	
@@ -95,7 +83,6 @@
 
 	</section>
 
-<div class="push"></div>
 
 </div>
 
