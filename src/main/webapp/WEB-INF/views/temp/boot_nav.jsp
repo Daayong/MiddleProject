@@ -48,7 +48,7 @@
 					<a href="#">리뷰</a>
 				</li>
 				<li class="menu_li">
-					<a href="${pageContext.request.contextPath}/event/eventMain">이벤트</a>
+					<a href="#">이벤트</a>
 				</li>
 				<li class="menu_li">
 					<a href="#">MY쿡킷</a>
