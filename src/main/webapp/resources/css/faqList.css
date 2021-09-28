@@ -1,0 +1,68 @@
+@charset "UTF-8";
+
+.fqq_conts{
+	margin-top: 58px;
+}
+
+.faq_search{
+	margin-top: 56px;
+}
+
+.faq_conts .tit{
+	font-size: 22px;
+	line-height: 32px;
+	font-weight: 700;
+	color: #101010;
+}
+
+.faq_search .box_search{
+	margin-top: 16px;
+	padding: 32px;
+	background-color: #F7F7F7;
+}
+
+.sch_wrap{
+	position:relative;
+	 z-index:30;
+	  width:644px; 
+	  margin:0 auto;
+}
+
+.scr_wrap .input_wrap{
+	height: 68px;
+}
+
+.sch_wrap input.txt {
+	height:68px;
+	padding:0 106px 0 20px;
+	border:2px solid #202020; 
+	color:#101010; 
+	font-weight:700;
+	font-size:20px;
+	opacity:1;
+	}
+
+.sch_wrap .btn_srch {
+	position:absolute;
+	right:18px;
+	top:50%;
+	width:32px;
+	height:32px;
+	margin-top:-16px;
+	background:url('/mp/resources/images/common/ico_set.png') -600px -150px no-repeat;
+	background-size:800px 800px;
+	}
+
+
+
+.hide {
+	display:inline-block;
+	position:absolute;
+	z-index:-10;
+	width:0 !important;
+	height:0 !important;
+	overflow:hidden !important;
+	font-size:medium;
+	line-height:normal;
+	word-break:break-all
+	}

@@ -1,47 +1,44 @@
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<link href="${pageContext.request.contextPath}/resources/css/common.css" rel="stylesheet">
-
 
 <html>
 <head>
+	<link href="${pageContext.request.contextPath}/resources/css/common.css" rel="stylesheet">
+	
 	<title>Home</title>
-	<style>
-		html,body{
-			height:100%;
-			margin:0; 
-		}
+	
+	<style>		
 		.wrapper{
-		min-height:100%;
-		margin-top:85px;
-		margin-bottom:-290px;
+			position:relative;
+			width:100%;
 		}
-		.push{
-		height:290px;		
+		#container{
+			width:1180px;
+			min-height:100%;
+			margin:-117 auto -290;
+			padding: 117 0 290;
 		}
-	</style>	
+	</style>
 	
 </head>
 <body>
-<c:import url="./temp/boot_nav.jsp"></c:import>
-
-<div class="wrapper">		
-<!-- 여기에 페이지 작업 -->
-
-
-
-
-<h1>Contents</h1>
-
-
-
-
-
-
-<!-- 여기까지 -->
-<div class="push"></div>
+<div class="wrapper">
+	<c:import url="./temp/boot_nav.jsp"></c:import>	
+	<section id="container">
+	
+	
+	
+	
+	
+		<h1>Contents</h1>
+		
+		
+		
+		
+		
+	</section>
+ 	<c:import url="./temp/boot_footer.jsp"></c:import>
 </div>
- <c:import url="./temp/boot_footer.jsp"></c:import>
 
 </body>
 </html>

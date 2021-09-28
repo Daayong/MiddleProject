@@ -3,6 +3,7 @@
 
 <link href="${pageContext.request.contextPath}/resources/css/common.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/css/csMain.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/faqList.css" rel="stylesheet">
 
 <html>
 <head>
@@ -51,8 +52,32 @@
 					</ul>			
 				</div>
 				
-				<!-- csMain page 클릭시 faqList page 보이게 설정 -->
-				<c:import url="./faqList"></c:import>
+				<!-- faq contents -->
+				<div class="faq_conts">
+				
+					<!-- search area -->
+					<div class="faq_search">
+					
+						<h2 class="tit">FAQ 검색</h2>
+						
+						<div class="box_search">
+						
+						<div class="sch_wrap">
+							<div class="input_wrap">
+								<form name="searchForm" action="">
+									<input type="text" class="txt" id="fn_txt_srch" placeholder="검색어를 입력해주세요" name="keyWord" >
+									
+									<button type="button" class="btn btn_srch" onclick="javascript:goSearch()"><span class="hide">검색</span></button>
+									
+								</form>
+							
+							</div>
+							
+						</div>
+					</div>
+							
+					</div>
+				</div>
 			</div>
 	
 		</div>

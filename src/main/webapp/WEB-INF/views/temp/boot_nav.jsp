@@ -18,7 +18,7 @@
 						<a class="f" href="${pageContext.request.contextPath}/member/login">로그인</a>
 					</li>
 					<li class="info_li">
-						<a class="f" href="${pageContext.request.contextPath}/notice/fnq">고객행복센터</a>
+						<a class="f" href="${pageContext.request.contextPath}/cs/csMain">고객행복센터</a>
 					</li>
 					<li class="info_li">
 						<a class="f" href="${pageContext.request.contextPath}/">배송지역검색</a>
