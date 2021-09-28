@@ -24,9 +24,8 @@
 	
 </head>
 <body>
-
-<c:import url="../temp/boot_nav.jsp"></c:import>
 <div class="wrapper">		
+	<c:import url="../temp/boot_nav.jsp"></c:import>
 	<section id="container">
 	
 		<div id="content">
@@ -40,7 +39,7 @@
 				<div class="best_review">
 					<div class="slide_wrap ">
 						<div class="slide_list">
-							<div class="slide_track" style="opacity: 1; width: 25000px; transform: translate3d(-568px, 0px, 0px);">
+							<div class="slide_track" style="opacity: 1; width: 25000px; transform: translate3d(-568px, 0px, 0px); transition: transform 1200ms ease 0s;">
 							<c:forEach begin="1" end="5">
 							
 							
@@ -83,7 +82,7 @@
 								</div>
 							
 							
-							</c:forEach>>
+							</c:forEach>
 							</div>
 							<div class="slide_nav_count">
 								<span class="num">
@@ -385,8 +384,11 @@
 			</div>
 		</div>
 	</section>
+	<c:import url="../temp/boot_footer.jsp"></c:import>
 </div>
- <c:import url="../temp/boot_footer.jsp"></c:import>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript" src="/mp/resources/js/reviewMain.js"></script>
 
 </body>
 </html>
