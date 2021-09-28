@@ -4,10 +4,12 @@
 	margin-top: 58px;
 }
 
+/* faq search */
 .f_search{
 	margin-top: 2px;
 }
 
+/* faq 검색 txt */
 .faq_conts .tit{
 	font-size: 22px;
 	line-height: 32px;
@@ -15,6 +17,7 @@
 	color: #101010;
 }
 
+/* faq 검색창 */
 .f_search .box_search{
 	margin-top: 16px;
 	padding: 32px;
@@ -70,24 +73,199 @@ div.input_wrap{
 	}
 
 
+/* 문의유형 */
 .f_type{
 	margin-top: 56px;
 }
 
+/* 유형 모음 칸 */
+.f_type .cate_wrap {
+	display:table;
+	width:100%;
+	table-layout:fixed;
+	padding:16px 0 0;
+	font-size:0;
+	}
+	
+.f_type .cate_wrap > ul li {
+	width:20%;
+	float:left;
+	display:table-cell;
+	vertical-align:middle;
+	}
+.f_type .cate_wrap .tab_item {
+	display:block;
+	position:relative;
+	height:56px;
+	margin:0 -1px -1px 0;
+	}
+.f_type .cate_wrap .tab_item a {
+	display:block;
+	width:100%;
+	height:56px;
+	padding-left:0;
+	background:#fff;
+	border:1px solid #B0B0B0;
+	color:#606060;
+	font-size:15px;
+	line-height:54px;
+	text-align:center;
+	cursor:pointer;
+	}
+
+/* 유형 선택시 박스 변화 */
+.f_type .cate_wrap .tab_item.on a {
+	position:absolute;
+	top:0;
+	left:0;
+	border:3px solid #303030;
+	color:#101010;
+	font-weight:700;
+	line-height:50px;
+	box-shadow:0 2px 2px 0 rgba(0, 0, 0, .12);
+	z-index:1;
+	}
+
+
+/* faq table list */
 #tabView{
 	display: block;
 }
 
-.pagination{
-	padding-top:  56px;
-	text-align: center;
+.faq_view{
+	margin-top: 56px;
+}
+.faqListArea{
+	border-top: 2px solid #202020;
+	border-bottom: none;
+
 }
 
+/* 페이징 처리 */
+.pagination {
+	padding-top:56px;
+	font-size:0;
+	text-align:center;
+	border-top:1px solid #e0e0e0;
+}
+
+.pagination a,
+.pagination strong {
+		display:inline-block;
+		min-width:40px;
+		height:40px;
+		background-color:#fff;
+		color:#606060;
+		font-size:14px;
+		font-weight:700;
+		text-align:center;
+		line-height:40px;
+		vertical-align:top;
+}
+.pagination strong {
+	background-color:#202020;
+	color:#fff;
+}
+.pagination a:hover,
+.pagination a:focus {
+	text-decoration:underline;
+	}
+.pagination .page_num {
+	display:inline-block;
+	padding:0 20px;
+	vertical-align:middle;
+	}
+	
+.pagination .btn_first,
+.pagination .btn_prev,
+.pagination .btn_next,
+.pagination .btn_last {
+	display:inline-block;
+	width:40px;
+	height:40px;
+	margin:0 -0.5px;
+	padding:0;
+	background:url('/mp/resources/images/common/ico_set.png') no-repeat;
+	background-size:800px 800px;
+	vertical-align:middle;
+	}
+.pagination .btn_first {
+	background-position:0 -300px;
+}
+.pagination .btn_prev {
+	background-position:-40px -300px;
+}
+.pagination .btn_next {
+	background-position:-80px -300px;
+}
+.pagination .btn_last {
+	background-position:-120px -300px;
+}
+
+
+
+/* 문의작성 소개 */
 .bottom_info{
 	position: relative;
 	margin-top: 56px;
 	padding: 32px;
 	background-color: #f7f7f7;
+}
+
+.faq_conts .bottom_info .txt {
+	position:relative;
+	padding-left:52px;
+	color:#111;
+	font-size:16px;
+	line-height:24px;
+}
+.faq_conts .bottom_info .txt:before {
+	content:'';
+	display:block;
+	position:absolute;
+	top:-8px;
+	left:0;
+	width:40px;
+	height:40px;
+	background:url('/mp/resources/images/pd/ico_set1.png') no-repeat -612px -165px;
+	background-size:800px 800px;
+}
+
+.faq_conts .bottom_info .rec_link {
+	position:absolute;
+	top:20px;
+	right:32px;
+	padding:11px 20px;
+	background-color:#fff;
+}
+
+/* 문의작성 button */
+.rec_link{
+	display:inline-block;
+	min-width:142px;
+	padding:11px 20px 11px;
+	border:1px solid #ccc;
+	text-align:center;
+	}
+.rec_link span {
+	font-size:14px;
+	line-height:22px;
+	color:#101010;
+	font-weight:500
+}
+.rec_link span:after{
+	content:'';
+	display:inline-block;
+	width:8px;
+	height:8px;
+	margin:-3px 0 0 8px;
+	border-bottom:1.5px solid #202020;
+	border-right:1.5px solid #202020;
+	-ms-transform:rotate(-45deg);
+	-moz-transform:rotate(-45deg);
+	-webkit-transform:rotate(-45deg);
+	transform:rotate(-45deg);
+	vertical-align:middle
 }
 
 .hide {
