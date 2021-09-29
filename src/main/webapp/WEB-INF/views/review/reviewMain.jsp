@@ -208,7 +208,7 @@
 							리뷰 <span class="rvwTotalCnt">159,649</span>건
 						</p>
 						<div class="list_sort">
-							<input type="checkbox" id="sorting_photo" onchange="loadList(1)" class="accessibility-keyboard">
+							<input type="checkbox" id="sorting_photo" onchange="loadList(1)" class="">
 							<label for="sorting_photo">포토리뷰만 보기</label>
 						</div>
 					</div>
@@ -247,7 +247,7 @@
 								</div>	
 										
 								<div class="link_wrap">
-									<a href="#" class="link_more">
+									<a href="javascript:;" class="link_more">
 										<div class="txt_wrap">
 										
 											<div class="txt_contents">
@@ -310,7 +310,7 @@
 								</div>	
 										
 								<div class="link_wrap">
-									<a href="#" class="link_more">
+									<a href="javascript:;" class="link_more">
 										<div class="txt_wrap">
 										
 											<div class="txt_contents">
@@ -383,6 +383,37 @@
 						<a class="btn_last" href="#"></a>						
 					</div>
 					
+					
+					
+					
+					<div class="review_point_guide">
+						<p class="cj_point_txt">
+							리뷰 작성 시 CJ ONE 포인트 최대 <span>1,400P</span> 적립
+						</p>
+						<dl class="photo">
+							<dt>포토 리뷰 <span>300P</span></dt>
+							<dd>포토 + 텍스트(50자)</dd>
+						</dl>
+						<dl class="text">
+							<dt>텍스트 리뷰 <span>200P</span>	</dt>
+							<dd>텍스트(50자)</dd>
+						</dl>
+						<dl class="tip">
+							<dt>꿀팁 <span>+100P</span>	</dt>
+							<dd>30자 이상</dd>
+						</dl>
+						<dl class="best">
+							<dt>베스트 리뷰 <span>+1,000P</span></dt>
+							<dd>매주 선정</dd>
+						</dl>
+
+						<ul class="review_info_list">
+							<li><span class="list_dot"></span>리뷰는 배송 완료 후 30일 이내 작성 가능합니다.</li>
+							<li><span class="list_dot"></span>CJ ONE 포인트는 리뷰 작성 10일 이내 회원에 한해 지급됩니다. (CJ ONE 포인트 지급 전 수정 가능)</li>
+							<li><span class="list_dot"></span>리뷰의 저작권은 당사에 귀속되며, 광고 등의 목적으로 사용될 수 있습니다.</li>
+						</ul>
+						
+					</div>					
 				</div>
 			</div>
 		</div>

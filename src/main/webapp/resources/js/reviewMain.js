@@ -5,7 +5,7 @@
 $('.btn_arrow').click(function() {
 	
 //	transform 값 계산
-	let slide_list = $(this).parents('.slide_list');
+	const slide_list = $(this).parents('.slide_list');
 	let slide_track = slide_list.children('.slide_track');	
 	let transformVal = slide_track.css('transform').split(',')[4];	
 	
@@ -49,4 +49,23 @@ $('.btn_arrow').click(function() {
 
 
 
+function loadList(i){
+	console.log("hello");
+}
 
+
+
+
+
+$('.link_more').click(function(){
+	console.log("hello");
+	const review_module = $(this).parents('.review_module');
+	let className = review_module.attr('class');
+	let lastName = className.substring(className.length - 4, className.length);
+	
+	if (lastName == "open"){
+		review_module.attr('class', className.substring(0, className.length - 5));
+	} else {
+		review_module.attr('class', className + ' open');
+	}
+});

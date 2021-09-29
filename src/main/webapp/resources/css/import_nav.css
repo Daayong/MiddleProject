@@ -1,13 +1,10 @@
 @charset "UTF-8";
 
-/* 기본 초기화  */
-
-
-
 #header{	
 	width:100%;
 }
 
+/* ===== ===== ===== gnb_wrap ===== ===== ===== */
 .gnb_wrap{
 	min-width:1260px;
 	margin:0 auto;
@@ -16,46 +13,20 @@
 	text-align: center;	
 }
 
+.gnb_info{min-width:1260px; height:35px; padding-top:7px; background-color:#202020;text-align:left;}
+.gnb_info .info_wrap{	max-width:1920px; min-width:1260px; margin:0 auto; }
+.gnb_info .info_wrap:after{content:'';display:table;clear:both;}
 
-
-/* First nav */
-#info{
-	min-width:1260px;
-	padding-top:7px;
-	background-color:#202020;
-	height:35px;
-	text-align:left;
-}
-
-.info_wrap{
-	max-width:1920px;
-	min-width:1260px;
-	margin:0 auto;
-}
-
-#info_ul{
-	float:right; 
-	margin-right:40px; 
-}
-
-.info_li{
-	float:left;
-	display:inline-block;
-	line-height:35px;
-}
-
-.info_li a:before {content:''; display:inline-block; position:relative; width:1px; height:12px; margin:0 12px; background-color:rgba(255, 255, 255, 0.2); vertical-align:middle;}
-.info_li:first-child a:before {display:none;}
-.f{	
-	font-size:13px; 
-	color:#fff;
-	line-height:21px;
-}
-#info :after{content:'';display:table;clear:both;}
+.gnb_info .info_wrap ul { float:right; padding-right:40px; }
+.gnb_info .info_wrap li { float:left;}
+.gnb_info .info_wrap li > a { font-size:13px; color:#fff; line-height:21px; }
+.gnb_info .info_wrap li > a:before {content:''; display:inline-block; position:relative; width:1px; height:12px; margin:0 12px; background-color:rgba(255, 255, 255, 0.2); vertical-align:middle;}
+.gnb_info .info_wrap li:first-child a:before {display:none;}
 
 
 
-/* Second nav */
+
+/* ===== ===== ===== menu_wrap ===== ===== ===== */
 .menu_wrap {
 	position:relative;
 	max-width:1920px;

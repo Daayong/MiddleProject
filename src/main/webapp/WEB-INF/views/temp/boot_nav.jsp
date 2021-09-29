@@ -5,31 +5,22 @@
 
 <!-- navBar -->
 <nav id="header">
+	
+<!-- ===== ===== ===== gnb_wrap ===== ===== ===== -->
 	<div class="gnb_wrap">
-	<!--First nav-->
-		<div id="info">
+		<div class="gnb_info">
 			<div class="info_wrap">
-				<ul id="info_ul">			
-					<li class="info_li">
-						<a class="f" href="${pageContext.request.contextPath}/member/join">회원가입</a>
-					</li>
-					<li class="info_li">
-						<a class="f" href="${pageContext.request.contextPath}/member/login">로그인</a>
-					</li>
-					<li class="info_li">
-						<a class="f" href="${pageContext.request.contextPath}/notice/fnq">고객행복센터</a>
-					</li>
-					<li class="info_li">
-						<a class="f" href="${pageContext.request.contextPath}/">배송지역검색</a>
-					</li>
-					<li class="info_li">
-						<a class="f" href="${pageContext.request.contextPath}/">기프트카드 등록</a>
-					</li>
+				<ul>			
+					<li><a href="${pageContext.request.contextPath}/member/join">회원가입</a></li>
+					<li><a href="${pageContext.request.contextPath}/member/login">로그인</a></li>
+					<li><a href="${pageContext.request.contextPath}/notice/fnq">고객행복센터</a></li>
+					<li><a href="${pageContext.request.contextPath}/">배송지역검색</a></li>
+					<li><a href="${pageContext.request.contextPath}/">기프트카드 등록</a></li>
 				</ul>
 			</div>
 		</div>
 		
-	<!--Second nav-->
+<!-- ===== ===== ===== menu_wrap ===== ===== ===== -->
 		<div class="menu_wrap">
 			<div id="logo">
 				<a href="${pageContext.request.contextPath}/" >
@@ -44,7 +35,7 @@
 					<a href="#">COOKIT 메뉴</a>
 				</li>
 				<li class="menu_li">
-					<a href="#">리뷰</a>
+					<a href="./review/reviewMain">리뷰</a>
 				</li>
 				<li class="menu_li">
 					<a href="#">이벤트</a>
