@@ -51,7 +51,7 @@
 					<a href="#">이벤트</a>
 				</li>
 				<li class="menu_li">
-					<a href="${pageContext.request.contextPath}/member/mycookit">MY쿡킷</a>
+					<a href="${pageContext.request.contextPath}/member/login">MY쿡킷</a>
 				</li>
 			</ul>
 	

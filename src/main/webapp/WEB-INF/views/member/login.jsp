@@ -4,7 +4,7 @@
 <html>
 <head>
 	<link href="${pageContext.request.contextPath}/resources/css/common.css" rel="stylesheet">
-	<link href="${pageContext.request.contextPath}/resources/css/mycookit.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/resources/css/member/login.css" rel="stylesheet">
 	<title>로그인-집밥을 특별하게,쿡킷</title>
 	<style>
 		.wrapper{
@@ -36,24 +36,20 @@
 	<div class="login_wrap">
 		<h1 class="title">로그인</h1>
 		<div class="login_area">
-			<div class="tab_rad_menu">
+			<div class="tab_log_menu">
 				<ul>
 					<li style="display:inline-block; margin-right:20px; ">
-						<div class="rad_wrap">
-							<input type="radio"  id="log_menu01" name="log_menu" checked class="accessibility-keyboard accessibillity-mouse">
-							<label for = "log_menu01">
-								<span class="txt">회원 로그인</span>
-							</label>
+						<div class="log_Tab_wrap">
+							<button type="button" id="logMember"class="logMem logTab" style="color:#101010;font-weight:bolder;">회원 로그인</button>
+							<div class="dashed" id="dd" style="display:block;"></div>
 							<!--스크립트: 선택시 .login_cont none/block  -->
 						</div>
 					</li>
 					
 					<li style="display:inline-block; ">
-						<div class="rad_wrap">
-							<input type="radio" id="log_menu02" name="log_menu" class="accessibility-keyboard accessibillity-mouse">
-							<label for = "log_menu02">
-								<span class="txt">비회원 주문조회</span>
-							</label>
+						<div class="log_Tab_wrap">
+							<button type="button" id="nonlogMember" class="nonlogMem logTab" style="color:#606060;" >비회원 주문조회</button>
+							<div class="dashed" id="ndd" style="display:none;"></div>
 						</div>
 					</li>
 				</ul>
@@ -62,7 +58,7 @@
 			
 			<!-- 회원 로그인  -->
 			<div>
-				<div id="log_mem" class="login_cont" style="display:none; ">
+				<div id="log_mem" class="login_cont" style="display:block; ">
 					<div class="fieldset"> 
 						<form id="memFrm" class="frm" action="login" method="post" name="loginForm">
 							<input type="text" style="margin-bottom:10px;"  name="id" id="id" placeholder="&nbsp; CJ ONE 통합아이디 6~20자">
@@ -71,7 +67,8 @@
 							<div style="height:69px; padding-top:23px;">
 								
 								<div class="check_wrap">
-									<button type="button" class="id_save"><span>아이디 저장</span></button>
+										<input type="checkbox" id="logSave">
+										<label for="logSave"><span>아이디저장</span></label>
 								</div>
 								
 								<div class="find_wrap">
@@ -81,7 +78,7 @@
 							
 							</div>
 						
-							<button class="log_btn" type="button" onclick="location.href='myPage.jsp" id="log">로그인</button>
+							<button class="log_btn" type="submit" name="login" id="log">로그인</button>
 						</form>
 					
 					<div class="easy_login">
@@ -109,12 +106,12 @@
 			
 			
 			<!--비회원 주문 조회  -->
-				<div id="log_non_mem" style="display:block;">
+				<div id="log_non_mem" style="display:none;">
 						<form id="nonMemFrm" class="frm" action="ordSearch" method="post" name="nonMemForm">
 							<input type="text" style="margin-bottom:10px;" name="ordNum" id="ordNum" placeholder="&nbsp주문번호 입력">
 							<input type="text" name="ordPw" id="ordPw" placeholder="&nbsp주문 비밀번호 입력">	
 						
-							<button class="ordS_btn log_btn" style="margin-top:30px;" type="submit" id="log">주문/배송 조회</button>
+							<button class="ordS_btn log_btn" style="margin-top:30px;" type="submit" id="nonlog">주문/배송 조회</button>
 						
 						</form>
 						
@@ -155,8 +152,13 @@
 
 </div>
 
+
+
+
  <c:import url="../temp/boot_footer.jsp"></c:import>
 
+
+	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/login.js"></script>
  
 
 </body>
