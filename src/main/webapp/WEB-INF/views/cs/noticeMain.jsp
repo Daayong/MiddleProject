@@ -53,45 +53,54 @@
 					</ul>			
 				</div>
 				
-				<!-- notice -->
-					<div class="notice_conts" id="noticeContent">
+		<!-- notice -->
+		<div class="notice_conts" id="noticeContent">
 					
-				<!-- notice List -->
-					<div class="tb_row">
+		<!-- notice List -->
+			<div class="tb_row">
 					
 			<!-- table -->
-				<table class="table ">
-				  <thead>
-				    <tr>
-				      <th scope="col">#</th>
-				      <th scope="col">First</th>
-				      <th scope="col">Last</th>
-				      <th scope="col">Handle</th>
-				    </tr>
-				  </thead>
-				  <tbody>
-				    <tr>
-				      <th scope="row">1</th>
-				      <td>Mark</td>
-				      <td>Otto</td>
-				      <td>@mdo</td>
-				    </tr>
-				    <tr>
-				      <th scope="row">2</th>
-				      <td>Jacob</td>
-				      <td>Thornton</td>
-				      <td>@fat</td>
-				    </tr>
-				    <tr>
-				      <th scope="row">3</th>
-				      <td colspan="2">Larry the Bird</td>
-				      <td>@twitter</td>
-				    </tr>
-				  </tbody>
-				</table>
-						
+			
+			<table>
+				
+				
+				<!-- table head -->
+				<thead>
+					<tr>
+						<th scope="row">번호</th>
+						<th scope="row">제목</th>
+						<th scope="row">등록일</th>
+					</tr>
+				</thead>
+				
+				<!-- tablebody -->
+				
+				<tbody>
+					<!-- foreach, db추가 -->	
+					<!-- 제목 선택시 상세페이지 이동 -->
+					<tr>
+					<td>2</td>
+					<td class="tit"><a href="#">[9월2일차]쿡킷 전체 메뉴보기</a></td>
+					<td>2021-09-29</td>
+					</tr>
 					
-					</div>
+					<tr>
+					<td>1</td>
+					<td class="tit"><a href="#">[9월1일차]쿡킷 전체 메뉴보기</a></td>
+					<td>2021-09-29</td>
+					</tr>
+				
+				
+				
+				</tbody>
+			
+			
+			</table>
+						
+
+		</div>
+		
+
 					
 					<!-- paging -->
 					<div class="pagination">
@@ -109,7 +118,6 @@
 					<a class="btn_last" href="#"></a>
 				</div>
 						
-					</div>
 				
 				
 				
