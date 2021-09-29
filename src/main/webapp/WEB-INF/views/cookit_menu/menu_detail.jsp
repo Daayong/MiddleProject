@@ -80,11 +80,24 @@
 					</div>
 					<div class="addme">
 					</div>
-					<div class="">
+					<div class="prd_cnt">
+						<span class="cnt">수량 0개</span>
+						<span class="price">0원</span>
+					</div>
+					<div class="utiLBox_wrap">
+						<div class="zzim">
+							<button type="button" class="zzim_btn"></button>
+						</div>
+						<div class="cart">
+							<button type="button" class="cart_btn">장바구니 담기</button>
+						</div>
 					</div>
 				</div>
 			</div>
 		</div>
+		
+		<!-- =============================== 상 하단 구분선 ======================================  -->
+		
 		<div class="detail_wrapper">
 			<div class="detail_menubox">
 				<div class="detail_menu">
@@ -137,7 +150,7 @@
 							<div class="prdCnt">
 								수량 0개 0원
 							</div>
-							<div class="cart_btn">
+							<div class="detailCart_btn">
 								장바구니 담기
 							</div>
 						</div>

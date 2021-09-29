@@ -127,6 +127,55 @@ html,body{
 	border-bottom: 2px solid black;
 }
 
+/* 수량 가격 */
+.prd_cnt{
+	
+}
+.cnt{
+	float: left;
+	font-size: 18px;
+	font-weight: 700;
+	padding-top: 30px;
+}
+.price{
+	float: right;
+	font-size: 36px;
+	font-weight: 700;
+	color: red;
+	padding-top: 20px;
+}
+/* 찜하기 및 장바구니 담는버튼 */
+.utilBox_wrap{
+	margin-top: 20px;
+	background-color: gray;
+}
+.zzim{
+	float: left;
+    position: relative;
+    width: 74px;
+}
+.zzim_btn{
+	width: 64px;
+	height: 64px;
+}
+.zzim_btn::after{
+	background: url('../images/pd/ico_set.png') no-repeat -261px -2px;
+	width: 22px;
+	height: 20px;
+}
+.cart{
+	float: right;
+	position: relative;
+	text-align: center;
+}
+.cart_btn{
+	background-color: #bdd61a; 
+	width: 426px;
+	height: 64px;
+    font-size: 20px;
+    line-height: 27px;
+}
+
 /* 상품 디테일 박스 */
 .detail_wrapper{
 	width: 100%;
@@ -218,7 +267,7 @@ html,body{
 .prdCnt{
 	margin-top: 80px;
 }
-.cart_btn{
+.detailCart_btn{
 	width: 200px;
 	height: 50px;
 	line-height: 50px;
