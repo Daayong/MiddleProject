@@ -51,8 +51,8 @@
 					</ul>			
 				</div>
 				
-				<!-- csMain page 클릭시 faqList page 보이게 설정 -->
-				<c:import url="./faqList"></c:import>
+				
+				
 			</div>
 	
 		</div>

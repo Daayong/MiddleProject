@@ -62,7 +62,12 @@
 			<!-- table -->
 			
 			<table>
-				
+				<colgroup>
+					<col width="10%">
+					<col width="75%">
+					<col width="15%">
+					
+				</colgroup>
 				
 				<!-- table head -->
 				<thead>
