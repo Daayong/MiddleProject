@@ -79,41 +79,41 @@
 						
 						
 						
-							<li class="tab_item ui_tab_nav on">
+							<li class="tab_item ui_tab_nav" id="all">
 								<a href="#" class="tab_link" ><span>전체</span></a>
 							</li>
 						
-							<li class="tab_item ui_tab_nav ">
+							<li class="tab_item ui_tab_nav ship " id="shipping">
 								<a href="#" class="tab_link" ><span>배송</span></a>
 							</li>
 						
-							<li class="tab_item ui_tab_nav ">
+							<li class="tab_item ui_tab_nav " id="pay">
 								<a href="#" class="tab_link" ><span>결제/영수증</span></a>
 							</li>
-							<li class="tab_item ui_tab_nav ">
+							<li class="tab_item ui_tab_nav " id="order">
 								<a href="#" class="tab_link" ><span>주문</span></a>
 							</li>
 						
-							<li class="tab_item ui_tab_nav ">
+							<li class="tab_item ui_tab_nav " id="cancel">
 								<a href="#" class="tab_link" ><span>취소/반품</span></a>
 							</li>
 						
 							
-							<li class="tab_item ui_tab_nav ">
+							<li class="tab_item ui_tab_nav " id="rv">
 								<a href="#" class="tab_link" ><span>리뷰/포인트</span></a>
 							</li>
 							
 					
-							<li class="tab_item ui_tab_nav ">
+							<li class="tab_item ui_tab_nav " id="gift">
 								<a href="#" class="tab_link" ><span>선물하기</span></a>
 							</li>
 					
 							
-							<li class="tab_item ui_tab_nav ">
+							<li class="tab_item ui_tab_nav " id="mem">
 								<a href="#" class="tab_link" ><span>회원</span></a>
 							</li>
 							
-							<li class="tab_item ui_tab_nav ">
+							<li class="tab_item ui_tab_nav " id="etc">
 								<a href="#" class="tab_link" ><span>기타</span></a>
 							</li>	
 					</ul>
@@ -188,7 +188,31 @@
 
  <c:import url="../temp/boot_footer.jsp"></c:import>
 
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/faqList.js"></script>
+<script type="text/javascript">
+
+
+$(document).ready(function() {
+	
+
+$("#ship").click(function(){
+	if($("#ship").hasClass("on")){
+		$("#all").removeClass("on");
+		$("#pay").removeClass("on");
+		$("#order").removeClass("on");
+		$("#cancel").removeClass("on");
+		$("#rv").removeClass("on");
+		$("#gift").removeClass("on");
+		$("#etc").removeClass("on");
+	}else{
+		$("#ship").addClass("on");
+	}
+});
+
+});
+
+ 
+
+</script>
 
 </body>
 </html>
