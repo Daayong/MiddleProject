@@ -122,26 +122,35 @@
 			
 				<!-- faq table view -->
 				
-				<!-- 아코디언 기능 -->
+				
 				  <div id="tabView" class="ui_tab_panel" style="display:block;">
                    <div class="faq_view">
-                       <h2 class="hide"></h2>
-                       <p class="result_txt" id="cntKeyWord"></p>
-                       <div class="list_acco ui_accordion" data-accord-group="faq_list" data-single-open="false" data-open-index="-1">
+                       <!-- <h2 class="hide"></h2>
+                       <p class="result_txt" id="cntKeyWord"></p> -->
+                    
+				<div class="list_acco ui_accordion" data-accord-group="faq_list">
 						<ul class="faqListArea">
-							<!-- class=on 선택해서 열린 페이지 -->
-							<li class="on">
-								<div class="head btn_close">
-									<a href="#"></a><!--클릭시 아코디언 -->
-									<div class="tit"><strong>Q</strong></div>
-										"회원 아이디, 비밀번호를 분실한 경우 어떻게 찾을수 있나요 "
-								</div>
-							
-							</li>
-							
-							
-						</ul>
-					</div>
+		
+		  	<li class="on">
+	            <div class="head" id="question">
+	               	<a href="#"  class="link_cnt ui_accord_toggle"  >
+	                    <div class="tit">
+	                        <strong>Q</strong>회원 아이디, 비밀번호를 분실한 경우 어떻게 찾을 수 있나요.
+	                        <span class="cate"><span class="hide">해당 질문 분류</span>회원</span>
+	                    </div>     
+	                    <span class="hide ui_accord_text">내용 닫기</span>
+	                </a>
+	            </div>
+	            <div class="desc ui_accord_content" id="answer" style="display: block" >
+	                <strong>A</strong>
+	             	<p class="cont"><p>로그인 페이지에서 아이디/비밀번호 찾기를 통해 확인 가능합니다.<br><br>간편 로그인의 아이디/비밀번호를 잊으셨다면, 해당 SNS(카카오톡,네이버,페이스북) 사이트에서 <br>아이디/비밀번호를 확인하실 수 있습니다.&nbsp;</p></p>
+	            </div>
+           		</li>
+		
+
+			</ul>
+			</div>	
+								
 				</div>
 			</div>
 				
@@ -179,7 +188,7 @@
 
  <c:import url="../temp/boot_footer.jsp"></c:import>
 
-
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/faqList.js"></script>
 
 </body>
 </html>

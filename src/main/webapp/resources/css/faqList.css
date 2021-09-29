@@ -207,6 +207,98 @@ div.input_wrap{
 	vertical-align:middle
 }
 
+/* faq list */
+
+.list_acco{
+	background-color:#fff; 
+}
+
+.list_acco > ul {
+    border-top: 2px solid #202020;
+    border-bottom: none;
+}
+
+.list_acco > ul > li {
+    border-top: none;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+
+.list_acco li .head a {
+    display: block;
+    padding-right: 44px;
+}
+
+/* 펼치기 전 화살표 표시 */
+.list_acco li .head a:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    width: 12px;
+    height: 12px;
+    margin-top: -8px;
+    border: 1.5px solid #303030;
+    border-top: none;
+    border-left: none;
+}
+
+.faq_conts .faq_view li .head .tit {
+    position: relative;
+    padding: 20px 10px 20px 78px;
+    font-size: 16px;
+    line-height: 24px;
+    color: #101010;
+    font-weight: 500;
+}
+
+
+.faq_conts .faq_view li .head .tit strong {
+    position: absolute;
+    top: 27px;
+    left: 32px;
+    font-size: 22px;
+    line-height: 32px;
+    color: #606060;
+    font-weight: 700;
+}
+
+ .head .tit .cate {
+ 	display: block;
+    padding: 4px 0;
+    font-size: 14px;
+    line-height: 22px;
+    color: #606060;
+    font-weight: 400;
+}
+
+/* 아코디언 후 내용 */
+.faq_conts .faq_view li .desc {
+    position: relative;
+    padding: 24px 0 24px 78px;
+    background-color: #F7F7F7;
+    border-top: none;
+}
+
+.list_acco li .desc {
+    color: #101010;
+    font-size: 14px;
+    line-height: 22px;
+}
+
+
+.faq_conts .faq_view li .desc > strong {
+    position: absolute;
+    top: 22px;
+    left: 32px;
+    font-size: 22px;
+    line-height: 32px;
+    color: #008A00;
+    font-weight: 700;
+}
+
+
 .hide {
 	display:inline-block;
 	position:absolute;

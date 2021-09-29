@@ -51,6 +51,9 @@
 					</ul>			
 				</div>
 				
+				<!-- sub tab -->
+				<div class="sub_tab_wrap"></div>	
+					<ul class="tab"></ul>
 				
 				
 			</div>
