@@ -6,222 +6,16 @@
 <head>
 	<title>Home</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="./resources/js/lightslider.js"></script>
+	<link type="text/css" rel="stylesheet" href="./resources/css/lightslider.css" />
+	<link href="./resources/css/menu_detail.css" rel="stylesheet">
 	<style>
-		html,body{
-			height:100%;
-			margin:0; 
-		}
-		.wrapper{
-			min-height:100%;
-			margin-top:85px;
-			margin-bottom:-290px;
-			}
-		.push{
-			height:290px;		
-			}
-		.content_wrapper{
-			width: 1190px;
-			margin: 0 auto;
-		}
-		
-		/* 상단 큰 박스 */
-		.top_info{
-			width: 1190px;
-			display: flex;
-			margin-top: 50px;
-		}
-		
-		.left_con{
-			width: 600px;
-			display: flex;
-			flex-direction: column;
-		}
-		.right_con{
-			width: 500px;
-			display: flex;
-			flex-direction: column;
-			margin-left: 80px;
-			padding-top: 50px;
-		}
-		
-		/* left_con 영역 */
-		.image_slide{
-			display: flex;
-			flex-direction: row;
-			margin-top: 10px;
-		}
-		.image_slide div{
-			width: 90px;
-			height: 90px;
-			margin-right: 10px;
-			background-color: blue;
-			opacity: 0.5; /* 임시 박스 이미지들어가는곳임 */
-		}
-		.image_slide::before{
-			content: "<";
-			font-size: 90px;
-		}
-		.image_slide::after{
-			content: ">";
-			font-size: 90px;
-		} /* 버튼 수정해야함. */
-		
-		.etc_info{
-			width: 100%;
-			height: 80px;
-			margin-top: 10px;
-		}
-		
-		/* right_con 영역 */
-		
-		/* 메뉴 상품 이름 타이틀 */
-		.title_info{
-		}
-		.sub_title{
-			font-size: 30px;
-			font-weight: 700;
-		}
-		.title{
-			font-size: 30px;
-			font-weight: 700;
-			margin-top: 10px;
-		}
-		.prd_origin{
-			font-size: 30px;
-			font-weight: 300;
-			margin-top: 10px;
-		}
-		
-		/* 조리법 정보 */
-		.prd_cookinfo{
-			border-bottom: 1px solid #D5D5D5;
-			margin-top: 30px;
-			padding-bottom: 20px;
-			font-size: 16px;
-		}
-		.prd_cookinfo span::after{
-			content: "|";
-			color: #D5D5D5;
-			padding-left: 10px;
-		}
-		.prd_cookinfo span:last-child::after {
-			content: "※";
-		}
-		
-		/* 상품 가격 */
-		.prd_price{
-			border-bottom: 1px solid #D5D5D5;
-			margin-top: 20px;
-			padding-bottom: 20px;
-			font-size: 20px;
-			font-weight: 700;
-		}
-		
-		/* 추후 추가할 배송 및 쿠폰등등 */
-		.addme{
-			height: 100px;
-			border-bottom: 2px solid black;
-		}
-		
-		/* 상품 디테일 박스 */
-		.detail_wrapper{
-			width: 100%;
-		}
-		
-		/* detail 메뉴 박스 상품정보 등등 */
-		.detail_menubox{
-			width: 100%;
-			border-bottom: 1px solid #D5D5D5;
-			position: sticky;
-			background-color: white;
-			z-index: 3;
-			top:0;
-		}
-		.detail_menu{
-			width: 1190px;
-			margin: 0 auto;
-		}
-		.detail_menu ul li{
-			display: inline-block;
-			width: 195px;
-			height: 64px;
-			line-height: 62px;
-			font-size: 20px;
-			font-weight: 700;
-			text-align: center;
-		}
-		.detail_menu ul li a{
-			cursor: pointer;
-		}
-		
-		/* detail_info 부분 설명 내용같은거 */
-		.detail_info{
-			width: 1190px;
-			min-height: 100vh;
-			margin: 0 auto;
-			display: flex;
-			flex-direction: row;
-		}
-		
-		/* 상세설명, 정보, 리뷰, 배송문의 */
-		.left_detail{
-			width: 850px;
-			display: flex;
-			flex-direction: column;
-			padding-right: 35px;
-		}
-		.description_box1{	
-			width:100%;
-			margin-top: 20px;
-			height: 100px;
-			text-align: center;
-		}
-		.description_box2 img{
-			width: 100%;
-			margin-top:20px;
-		}
-		
-		/* 상세설명 오른쪽박스 장바구니, 선물하기?*/
-		.right_detail{
-			position: sticky;
-			display: flex;
-			flex-direction: column;
-			z-index: 1;
-			top: 64px;
-			width: 340px;
-			height: 910px;
-			border-left: 1px solid #D5D5D5;
-			border-right: 1px solid #D5D5D5;
-		}
-		.right_box1{
-			width:100%;
-			height:100px;
-			border-bottom: 1px solid #D5D5D5;
-		}
-		.right_box2{
-			width:100%;
-			height:600px;
-		}
-		.right_box3{
-			width:100%;
-			height:210px;
-			text-align: center;
-			border-top: 1px solid #D5D5D5;
-		}
-		.prdCnt{
-			margin-top: 80px;
-		}
-		.cart_btn{
-			width: 200px;
-			height: 50px;
-			line-height: 50px;
-			font-size: 20px;
-			margin: 20px auto 0 auto;
-			background-color: violet;
-			opacity: 0.5;
-		}
-	</style>	
-	
+	ul, li {
+		margin:0;
+		padding:0;
+		list-style:none
+	}
+	</style>
 </head>
 <body>
 <c:import url="../temp/boot_nav.jsp"></c:import>
@@ -233,19 +27,37 @@
 				<div class="left_con">
 					<!-- 이미지 슬라이드 및 바뀔시 큰 이미지 들어가게 만들기 -->
 					<div class="image_in">
-						<img alt="in" src="./resources/images/menu/image_in1.png">
+						<ul id="lightSlider2">
+							<!-- c:foreach -->
+							<li><img alt="in" src="./resources/images/menu/image_in1.png"></li>
+							<li><img alt="in" src="./resources/images/menu/menu_detail/snowcheese1.jpg"></li>
+							<li><img alt="in" src="./resources/images/menu/menu_detail/snowcheese2.jpg"></li>
+							<li><img alt="in" src="./resources/images/menu/menu_detail/snowcheese3.jpg"></li>
+							<li><img alt="in" src="./resources/images/menu/menu_detail/snowcheese4.jpg"></li>
+							<li><img alt="in" src="./resources/images/menu/menu_detail/snowcheese5.jpg"></li>
+							<!-- c:foreach -->
+						</ul>
 					</div>
-					<div class="imgSlider_wrap">
-						<div class="image_slide">
-							<div></div>
-							<div></div>
-							<div></div>
-							<div></div>
-							<div></div>
+					<div class="slider_wrapper">
+						<div class="slider_btn prev_btn" id="prev">
+							<div class="ico_set prev_img"></div>
 						</div>
+						<div class="slider_btn next_btn" id="next">
+							<div class="ico_set next_img"></div>
+						</div>
+						<ul id="lightSlider">
+							<!-- c:foreach -->
+							<li class="slide_item" value="0"><img alt="in" src="./resources/images/menu/image_in1.png" width="90px" height="90px"></li>
+							<li class="slide_item" value="1"><img alt="in" src="./resources/images/menu/menu_detail/snowcheese1.jpg" width="90px" height="90px"></li>
+							<li class="slide_item" value="2"><img alt="in" src="./resources/images/menu/menu_detail/snowcheese2.jpg" width="90px" height="90px"></li>
+							<li class="slide_item" value="3"><img alt="in" src="./resources/images/menu/menu_detail/snowcheese3.jpg" width="90px" height="90px"></li>
+							<li class="slide_item" value="4"><img alt="in" src="./resources/images/menu/menu_detail/snowcheese4.jpg" width="90px" height="90px"></li>
+							<li class="slide_item" value="5"><img alt="in" src="./resources/images/menu/menu_detail/snowcheese5.jpg" width="90px" height="90px"></li>
+							<!-- c:foreach -->
+						</ul>
 					</div>
 					<div class="etc_info">
-						리뷰 및 레시피공유하는 박스
+						<!-- 리뷰 및 레시피공유하는 박스 -->
 					</div>
 				</div>
 				<div class="right_con">
@@ -315,17 +127,19 @@
 						<h1>상품 주문 관련 문의사항 신청하기</h1>
 					</div>
 				</div>
-				<div class="right_detail">
-					<div class="right_box1">
-					</div>
-					<div class="right_box2">
-					</div>
-					<div class="right_box3">
-						<div class="prdCnt">
-							수량 0개 0원
+				<div class="border_hauto"><!-- border auto -->
+					<div class="right_detail">
+						<div class="right_box1">
 						</div>
-						<div class="cart_btn">
-							장바구니 담기
+						<div class="right_box2">
+						</div>
+						<div class="right_box3">
+							<div class="prdCnt">
+								수량 0개 0원
+							</div>
+							<div class="cart_btn">
+								장바구니 담기
+							</div>
 						</div>
 					</div>
 				</div>
@@ -397,6 +211,225 @@
 			$(".reviews").hide();
 			$(".orderHelp").hide();
 		});
+		
+		/* 슬라이더 */
+		$(document).ready(function() {
+			let number;
+		    $("#lightSlider").lightSlider({
+		        item: 5,
+		        autoWidth: 90,
+		        slideMove: 1, // slidemove will be 1 if loop is true
+		        slideMargin: 10,
+		 
+		        addClass: '',
+		        mode: "slide",
+		        useCSS: true,
+		        cssEasing: 'ease', //'cubic-bezier(0.25, 0, 0.25, 1)',//
+		        easing: 'linear', //'for jquery animation',////
+		 
+		        speed: 400, //ms'
+		        auto: false,
+		        loop: false,
+		        slideEndAnimation: true,
+		        pause: 2000,
+		 
+		        keyPress: false,
+		        controls: true,
+		        prevHtml: '',
+		        nextHtml: '',
+		 
+		        rtl:false,
+		        adaptiveHeight:false,
+		 
+		        vertical:false,
+		        verticalHeight:500,
+		        vThumbWidth:100,
+		 
+		        thumbItem:10,
+		        pager: false,
+		        gallery: false,
+		        galleryMargin: 5,
+		        thumbMargin: 5,
+		        currentPagerPosition: 'middle',
+		 
+		        enableTouch:true,
+		        enableDrag:true,
+		        freeMove:true,
+		        swipeThreshold: 40,
+		 
+		        responsive : [],
+		 
+		        onBeforeStart: function (el) {},
+		        onSliderLoad: function (el) {},
+		        onBeforeSlide: function (el) {},
+		        onAfterSlide: function (el) {},
+		        onBeforeNextSlide: function (el) {},
+		        onBeforePrevSlide: function (el) {}
+		    });
+		    
+		    let slider2 = $("#lightSlider2").lightSlider({
+		        item: 1,
+		        autoWidth: 600,
+		        slideMove: 1, // slidemove will be 1 if loop is true
+		        slideMargin: 0,
+		 
+		        addClass: '',
+		        mode: "slide",
+		        useCSS: true,
+		        cssEasing: 'ease', //'cubic-bezier(0.25, 0, 0.25, 1)',//
+		        easing: 'linear', //'for jquery animation',////
+		 
+		        speed: 400, //ms'
+		        auto: false,
+		        loop: false,
+		        slideEndAnimation: true,
+		        pause: 2000,
+		 
+		        keyPress: false,
+		        controls: false,
+		        prevHtml: '',
+		        nextHtml: '',
+		 
+		        rtl:false,
+		        adaptiveHeight:false,
+		 
+		        vertical:false,
+		        verticalHeight:500,
+		        vThumbWidth:100,
+		 
+		        thumbItem:10,
+		        pager: false,
+		        gallery: false,
+		        galleryMargin: 5,
+		        thumbMargin: 5,
+		        currentPagerPosition: 'middle',
+		 
+		        enableTouch:true,
+		        enableDrag:true,
+		        freeMove:true,
+		        swipeThreshold: 40,
+		 
+		        responsive : [],
+		 
+		        onBeforeStart: function (el) {},
+		        onSliderLoad: function (el) {},
+		        onBeforeSlide: function (el) {},
+		        onAfterSlide: function (el) {},
+		        onBeforeNextSlide: function (el) {},
+		        onBeforePrevSlide: function (el) {}
+		    });
+		    
+		    $(".slide_item:first").children().css({
+		    	"border": "5px solid #bdd61a",
+		    	"opacity": "1"
+		    });
+		    
+		    $(".slide_item").on("click", function () {
+		    	let select = $(this);
+		    	number = $(this).val();
+		    	slider2.goToSlide(number);
+		    	
+		    	$(".slide_item").children().not(select).css({
+		    		"border": "none",
+			    	"opacity": "0.5"
+		    	})
+		    	$(this).children().css({
+		    		"border": "5px solid #bdd61a",
+			    	"opacity": "1"
+		    	});
+			});
+		});
+		
+		
+		/* 작은 슬라이더 클릭시 위에 이미지 바꾸는 스크립트 */
+		/* 디폴트 */
+		
+
 	</script>
 </body>
 </html>
+
+<%-- <div class="slide_wrap ">
+	<div class="slide_list">
+		<div class="slide_track" style="opacity: 1; width: 25000px; transform: translate3d(-568px, 0px, 0px); transition: transform 1200ms ease 0s;">
+		<c:forEach begin="1" end="5">
+		
+		
+			<div class="slide_contents" data-slide_contents_index = "1" aria-hidden = "false">
+				<div class="item">
+					<a>
+						<div class="img_wrap">
+							<div class="best_flag">
+								<span class="flag_txt">Best</span>
+						 	</div>
+						 	<img alt="select product_name from product" src="/mp/resources/images/temp/review_temp.jpg">
+						</div>
+						
+						<div class="txt_wrap">
+						
+							<span class="tit">product_name
+							</span>
+							<div class="etc_info">	
+													
+								<div class="rating_star">
+									<span class="star"> <!-- background image 커스텀 영역 -->
+										<span style="width:100.0%;"> <!-- background image 활성화 영역 (20%에 한개씩 점수가 채워 집니다.) -->
+										</span>
+									</span>
+								</div>
+								
+								<div class="user_id">
+									member_userId****
+								</div>
+								
+							</div>
+							
+							<div class="txt">
+								select contents from review where bestReview;select contents from review where bestReview<br>select contents from review where bestReview;
+							</div>
+							
+						</div>
+					</a>
+				</div>
+			</div>
+		
+		
+		</c:forEach>
+		</div>
+		<div class="slide_nav_count">
+			<span class="num">
+				<em>1</em>/5
+			</span>
+		</div>
+		<div class="slide_nav_arrow">
+			<div class="arr_area">
+				<button type="button" class="btn_arrow prev" style="display: block;">
+				</button>
+				<button type="button" class="btn_arrow next" style="display: block;">
+				</button>
+			</div>
+		</div>
+	</div>
+</div> --%>
+
+
+<!-- $('.btn_arrow.next').click(function() {
+	
+	let transformVal = $('.slide_track').css('transform');
+	let arr = transformVal.split(',');
+	
+	let slideContentsWidth = 568;
+	let slideContentsCnt = 5;
+	
+	if(arr[4] % slideContentsWidth == 0) {
+		switch (arr[4] / -slideContentsWidth) {
+			case slideContentsCnt	: arr[4] = -slideContentsWidth; break;
+							default	: arr[4] -= slideContentsWidth;
+		}
+	console.log($(this).parents('.slide_list').children('.slide_track'));
+	$(this).parents('.slide_list').children('.slide_track').css(
+		'transform', 'translate3d(' + arr[4] + 'px, 0px, 0px)',
+	);
+		
+	}
+}); -->
