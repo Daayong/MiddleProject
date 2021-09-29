@@ -8,6 +8,8 @@
 
 <html>
 <head>
+
+<script src="http://code.jquery.com/jquery-latest.js"></script>
 	<title>Home</title>
 	
 	<style>
@@ -73,48 +75,46 @@
 				<!-- faq type -->
 					<div class="f_type">
 						<h2 class="tit">문의유형</h2>
-							<div class="cate_wrap ui_tab" data-selected-index="0">
-					<ul>
-							<!-- 클래스(on)로 제어, ajax 사용 -->
-						
-						
-						
-							<li class="tab_item ui_tab_nav" id="all">
-								<a href="#" class="tab_link" ><span>전체</span></a>
+							<div class="cate_wrap ui_tab">
+							
+							<ul>
+											
+							<li class="tab_item on"  id="all" >
+								<a class="tab_link " ><span>전체</span></a>
 							</li>
 						
-							<li class="tab_item ui_tab_nav ship " id="shipping">
-								<a href="#" class="tab_link" ><span>배송</span></a>
+							<li class="tab_item" id="ship" >
+								<a   class="tab_link" ><span>배송</span></a>
 							</li>
 						
-							<li class="tab_item ui_tab_nav " id="pay">
-								<a href="#" class="tab_link" ><span>결제/영수증</span></a>
+							<li class="tab_item" id="pay" >
+								<a class="tab_link" ><span>결제/영수증</span></a>
 							</li>
-							<li class="tab_item ui_tab_nav " id="order">
-								<a href="#" class="tab_link" ><span>주문</span></a>
+							<li class="tab_item "  id="order" >
+								<a class="tab_link" ><span>주문</span></a>
 							</li>
 						
-							<li class="tab_item ui_tab_nav " id="cancel">
-								<a href="#" class="tab_link" ><span>취소/반품</span></a>
+							<li class="tab_item " id="cancel" >
+								<a  class="tab_link" ><span>취소/반품</span></a>
 							</li>
 						
 							
-							<li class="tab_item ui_tab_nav " id="rv">
-								<a href="#" class="tab_link" ><span>리뷰/포인트</span></a>
+							<li class="tab_item" id="rv" >
+								<a  class="tab_link" ><span>리뷰/포인트</span></a>
 							</li>
 							
 					
-							<li class="tab_item ui_tab_nav " id="gift">
-								<a href="#" class="tab_link" ><span>선물하기</span></a>
+							<li class="tab_item" id="gift"  >
+								<a class="tab_link" ><span>선물하기</span></a>
 							</li>
 					
 							
-							<li class="tab_item ui_tab_nav " id="mem">
-								<a href="#" class="tab_link" ><span>회원</span></a>
+							<li class="tab_item " id="mem">
+								<a  class="tab_link" ><span>회원</span></a>
 							</li>
 							
-							<li class="tab_item ui_tab_nav " id="etc">
-								<a href="#" class="tab_link" ><span>기타</span></a>
+							<li class="tab_item "  id="etc" >
+								<a class="tab_link" ><span>기타</span></a>
 							</li>	
 					</ul>
 				</div>
@@ -122,26 +122,24 @@
 			
 				<!-- faq table view -->
 				
-				
-				  <div id="tabView" class="ui_tab_panel" style="display:block;">
-                   <div class="faq_view">
-                       <!-- <h2 class="hide"></h2>
-                       <p class="result_txt" id="cntKeyWord"></p> -->
-                    
+			 <div id="tabView" style="display:block;">
+                  
+                 <div class="faq_view">
+              
 				<div class="list_acco ui_accordion" data-accord-group="faq_list">
-						<ul class="faqListArea">
+					<ul class="faqListArea">
 		
-		  	<li class="on">
-	            <div class="head" id="question">
-	               	<a href="#"  class="link_cnt ui_accord_toggle"  >
+		  	<li>
+	            <div class="head">
+	               	<a href="#"  class="accord_toggle"  >
 	                    <div class="tit">
 	                        <strong>Q</strong>회원 아이디, 비밀번호를 분실한 경우 어떻게 찾을 수 있나요.
 	                        <span class="cate"><span class="hide">해당 질문 분류</span>회원</span>
 	                    </div>     
-	                    <span class="hide ui_accord_text">내용 닫기</span>
+	                    <span class="hide">내용 닫기</span>
 	                </a>
 	            </div>
-	            <div class="desc ui_accord_content" id="answer" style="display: block" >
+	            <div class="desc ui_accord_content" id="answer" style="display: none" >
 	                <strong>A</strong>
 	             	<p class="cont"><p>로그인 페이지에서 아이디/비밀번호 찾기를 통해 확인 가능합니다.<br><br>간편 로그인의 아이디/비밀번호를 잊으셨다면, 해당 SNS(카카오톡,네이버,페이스북) 사이트에서 <br>아이디/비밀번호를 확인하실 수 있습니다.&nbsp;</p></p>
 	            </div>
@@ -186,12 +184,60 @@
 
 	</div>
 
- <c:import url="../temp/boot_footer.jsp"></c:import>
+<c:import url="../temp/boot_footer.jsp"></c:import>
 
+<script type="text/javascript">
+	$(".tab_item").click(function() {
+		$(this).addClass("on")
+		$(".tab_item").not(this).removeClass("on");
+	});
 
+	
+	/* 
+	$("#all").click(function() {
+		$(".ui_tab").find("li").not(this).removeClass("on");
+		$(this).addClass("on");
+	});	
+	
+	$("#ship").click(function() {
+		$(".ui_tab").find("li").not(this).removeClass("on");
+		$(this).addClass("on");
+	});
 
+	$("#pay").click(function() {
+		$(".ui_tab").find("li").not(this).removeClass("on");
+		$(this).addClass("on");
+	});
+	
+	$("#order").click(function() {
+		$(".ui_tab").find("li").not(this).removeClass("on");
+		$(this).addClass("on");
+	});
+	
+	$("#rv").click(function() {
+		$(".ui_tab").find("li").not(this).removeClass("on");
+		$(this).addClass("on");
+	});
+	
+	$("#gift").click(function() {
+		$(".ui_tab").find("li").not(this).removeClass("on");
+		$(this).addClass("on");
+	});
+	
+	$("#mem").click(function() {
+		$(".ui_tab").find("li").not(this).removeClass("on");
+		$(this).addClass("on");
+	});
+	
+	$("#etc").click(function() {
+		$(".ui_tab").find("li").not(this).removeClass("on");
+		$(this).addClass("on");
+	});
+	
+ */
  
-
+ 
+</script>
 
 
 </body>

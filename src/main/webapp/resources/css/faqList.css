@@ -79,6 +79,9 @@ div.input_wrap{
 }
 
 /* 유형 모음 칸 */
+
+
+
 .f_type .cate_wrap {
 	display:table;
 	width:100%;
@@ -99,6 +102,22 @@ div.input_wrap{
 	height:56px;
 	margin:0 -1px -1px 0;
 	}
+	
+/* 유형 선택시 박스 변화 */
+.f_type .cate_wrap .tab_item.on a {
+	position:absolute;
+	top:0;
+	left:0;
+	border:3px solid #303030;
+	color:#101010;
+	font-weight:700;
+	line-height:50px;
+	box-shadow:0 2px 2px 0 rgba(0, 0, 0, .12);
+	z-index:1;
+	}
+	
+	
+	
 .f_type .cate_wrap .tab_item a {
 	display:block;
 	width:100%;
@@ -113,18 +132,6 @@ div.input_wrap{
 	cursor:pointer;
 	}
 
-/* 유형 선택시 박스 변화 */
-.f_type .cate_wrap .tab_item.on a {
-	position:absolute;
-	top:0;
-	left:0;
-	border:3px solid #303030;
-	color:#101010;
-	font-weight:700;
-	line-height:50px;
-	box-shadow:0 2px 2px 0 rgba(0, 0, 0, .12);
-	z-index:1;
-	}
 
 
 /* faq table list */
