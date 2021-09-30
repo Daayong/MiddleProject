@@ -100,6 +100,14 @@
 							  <label for="inputPrdDescription">상품설명</label>
 							</div>
 						  </div>
+						  <!-- SummerNote 상세설명 추가 -->
+						  <div class="row mb-3">
+						    <div class="form-floating">
+							  <textarea class="form-control" id="inputPrdDescription" style="height: 100px" name="prd_description"></textarea>
+							  <label for="inputPrdDescription">상품설명</label>
+							</div>
+						  </div>
+						  <!-- SummerNote 상세설명 추가 -->
 						  <div class="mb-3">
 							  <label for="inputPrdUpImg" class="form-label"> 상품 상단 슬라이더 이미지</label>
 							  <input class="form-control" name="files" type="file" id="inputPrdUpImg">

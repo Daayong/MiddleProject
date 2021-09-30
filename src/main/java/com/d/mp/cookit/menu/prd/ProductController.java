@@ -8,13 +8,13 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping("/admin/**")
+@RequestMapping("/cookit_menu/")
 public class ProductController {
 	
 	@Autowired
 	private ProductService productService;
 	
-	@RequestMapping("index")
+	@RequestMapping("admin/index")
 	public ModelAndView doAdmin() throws Exception{
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("admin/index");
@@ -22,7 +22,7 @@ public class ProductController {
 		return mv;
 	}
 	
-	@PostMapping("prdUpload")
+	@PostMapping("admin/prdUpload")
 	public ModelAndView setInsert(ProductDTO productDTO, MultipartFile files) throws Exception{
 
 		System.out.println(files.getOriginalFilename());
@@ -35,5 +35,7 @@ public class ProductController {
 		
 		return mv;
 	}
+	
+	
 	
 }

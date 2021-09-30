@@ -8,4 +8,7 @@
   		insert into product (prd_code, prd_name, prd_subName, prd_etc, prd_description, prd_price, prd_satisfaction, cnt_review)
   		values (#{prd_code}, #{prd_name}, #{prd_subName}, #{prd_etc}, #{prd_description}, #{prd_price}, 0, 0)
   	</insert>
+  	<select id="getPrdList" resultType="List">
+  		select * from product
+  	</select>
   </mapper>
