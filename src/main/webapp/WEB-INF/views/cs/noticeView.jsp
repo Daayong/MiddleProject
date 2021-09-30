@@ -4,7 +4,7 @@
 <link href="${pageContext.request.contextPath}/resources/css/common.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/css/csMain.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/css/noticeMain.css" rel="stylesheet">
-<link href="${pageContext.request.contextPath}/resources/css/paging.css" rel="stylesheet">
+
 <html>
 <head>
 	<title>Home</title>
@@ -55,81 +55,52 @@
 				
 		<!-- notice -->
 		<div class="notice_conts" id="noticeContent">
-					
-		<!-- notice List -->
-			<div class="tb_row">
-					
-			<!-- table -->
+			<div class="view">
 			
-			<table>
-				<colgroup>
-					<col width="10%">
-					<col width="75%">
-					<col width="15%">
-					
-				</colgroup>
-				
-				<!-- table head -->
-				<thead>
-					<tr>
-						<th scope="row">번호</th>
-						<th scope="row">제목</th>
-						<th scope="row">등록일</th>
-					</tr>
-				</thead>
-				
-				<!-- tablebody -->
-				
-				<tbody>
-					<!-- foreach, db추가 -->	
-					<!-- 제목 선택시 상세페이지 이동 -->
-					<tr>
-					<td>2</td>
-					<td class="tit"><a href="${pageContext.request.contextPath}/cs/noticeView">[9월2일차]쿡킷 전체 메뉴보기</a></td>
-					<td>2021-09-29</td>
-					</tr>
-					
-					<tr>
-					<td>1</td>
-					<td class="tit"><a href="#">[9월1일차]쿡킷 전체 메뉴보기</a></td>
-					<td>2021-09-29</td>
-					</tr>
-				
-				
-				
-				</tbody>
+				<!-- view head -->
+				<div class="head">
+                        <h2 class="tit">[9월 4차] 미리보는 쿡킷 전체 메뉴
+                        	<span class="date">2021-09-30</span></h2>
+                    </div>
 			
-			
-			</table>
-						
+				<!-- view contents -->
+					<div class="conts">
+                        <div class="txt">
+                         <p>※ 메뉴는 원물 준비사항에 따라 변동될 수 있습니다.</p><p>※ 신메뉴는 '월요일' 오전10시에 오픈됩니다.<br>&nbsp;</p>
 
-		</div>
+						
+						<!-- 첨부file 대체 -->
+							<img src="https://www.cjcookit.com/cjkit/design/notice/202109_new_02.jpg"><br><br><br>
+
+                        </div>
+						<div class="added_file">
+						    <ul>
+						        <!-- 첨부단위 -->
+							    
+						    </ul>
+						</div>
+                    </div>
+			
+			</div>			
+			
+			<!-- 목록으로 돌아가기 -->
+			
+				<div class="btn_wrap">
+                	<a href="${pageContext.request.contextPath}/cs/noticeMain" class="btn pop green" role="button" >
+                	<span>목록</span></a>
+                </div>
+			
+			
+			
 		
-
-					
-					<!-- paging -->
-					<div class="pagination">
-						<a class="btn_first" href="#"></a>
-							<a class="btn_prev" href="#"></a>
-							<span class="page_num">
-								<strong>1</strong>
-								<a href="#">2</a>
-								<a href="#">3</a>
-								<a href="#">4</a>
-								<a href="#">5</a>
-								
-						</span>
-					<a class="btn_next" href="#"></a>
-					<a class="btn_last" href="#"></a>
-				</div>
-						
-				
-				
+		<!-- //view -->
 				
 			</div>
-	
 		</div>
+		
 	</div>
+	
+	
 	</section>
 </div>
 

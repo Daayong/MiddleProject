@@ -230,6 +230,9 @@ div.input_wrap{
     border-bottom: 1px solid #e0e0e0;
 }
 
+.list_acco li .head {
+    position: relative;
+}
 
 .list_acco li .head a {
     display: block;
@@ -249,6 +252,12 @@ div.input_wrap{
     border: 1.5px solid #303030;
     border-top: none;
     border-left: none;
+    -ms-transform: rotate(45deg);
+    -webkit-transform: rotate(
+	45deg);
+    -moz-transform: rotate(45deg);
+    transform: rotate(
+	45deg);;
 }
 
 .faq_conts .faq_view li .head .tit {

@@ -213,6 +213,7 @@
 		if($(this).next().css("display")=="none"){
 			$(this).next().slideDown("fast");
 			$("#q").css('color','#101010');
+			
 		}else{
 			$(this).next().slideUp("fast");
 			$("#q").css('color','#606060');

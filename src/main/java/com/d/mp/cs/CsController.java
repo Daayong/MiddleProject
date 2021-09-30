@@ -28,5 +28,10 @@ public class CsController {
 		return "cs/userGuide";
 	}
 	
+	@GetMapping("noticeView")
+	public String noticeView() throws Exception{
+		return "cs/noticeView";
+	}
+	
 	
 }

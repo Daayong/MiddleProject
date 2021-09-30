@@ -3,6 +3,7 @@
 
 <link href="${pageContext.request.contextPath}/resources/css/common.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/css/csMain.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/userGuide.css" rel="stylesheet">
 
 <html>
 <head>
@@ -52,11 +53,14 @@
 				</div>
 				
 				<!-- sub tab -->
-				<div class="sub_tab_wrap"></div>	
-					<ul class="tab"></ul>
-				
-				
-			</div>
+				<div class="sub_tab_wrap">
+                      <ul class="tabs">
+                          <li class="on" id="tab_sunshineInfo"><a href="javascript:;"><span>새벽배송<em class="hide">선택됨</em></span></a></li>
+                          <li id="tab_orderInfo" class=""><a href="javascript:;"><span>주문하기</span></a></li>
+                          <li id="tab_giftInfo" class=""><a href="javascript:;"><span>선물하기</span></a></li>
+                          <li id="tab_cancelInfo" class=""><a href="javascript:;"><span>취소/변경/반품</span></a></li>
+                      </ul>
+                  </div>
 	
 		</div>
 	
