@@ -62,7 +62,7 @@ html,body{
 	transform: translate(0%, -50%);
 	width: 34px;
 	height: 64px;
-	background: url('../images/common/ico_set.png') no-repeat -1363px 0px;
+	background: url('../../images/common/ico_set.png') no-repeat -1363px 0px;
 }
 .next_btn{
 	top: 50%;
@@ -70,7 +70,7 @@ html,body{
 	transform: translate(0%, -50%);
 	width: 34px;
 	height: 64px;
-	background: url('../images/common/ico_set.png') no-repeat -1427px 0px;
+	background: url('../../images/common/ico_set.png') no-repeat -1427px 0px;
 }
 
 #lightSlider{

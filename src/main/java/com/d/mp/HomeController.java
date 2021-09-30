@@ -46,4 +46,12 @@ public class HomeController {
 		return mv;
 	}
 	
+	@RequestMapping("menu_main")
+	public ModelAndView menuMain() throws Exception{
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("cookit_menu/menu_main");
+		
+		return mv;
+	}
+	
 }

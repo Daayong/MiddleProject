@@ -42,7 +42,7 @@
 					<a href="#">COOKIT소개</a>
 				</li>
 				<li class="menu_li">
-					<a href="#">COOKIT 메뉴</a>
+					<a href="menu_main">COOKIT 메뉴</a>
 				</li>
 				<li class="menu_li">
 					<a href="#">리뷰</a>
