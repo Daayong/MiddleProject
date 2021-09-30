@@ -1,5 +1,6 @@
 package com.d.mp.cookit.menu.prd;
 
+
 public class ProductDTO {
 	
 	private String prd_code;
@@ -7,10 +8,23 @@ public class ProductDTO {
 	private String prd_subName;
 	private String prd_etc;
 	private String prd_description;
+	private String prd_info;
 	private Long prd_price;
 	private Double prd_satisfaction;
 	private Long cnt_review;
-
+	
+	public String getPrd_description() {
+		return prd_description;
+	}
+	public void setPrd_description(String prd_description) {
+		this.prd_description = prd_description;
+	}
+	public String getPrd_info() {
+		return prd_info;
+	}
+	public void setPrd_info(String prd_info) {
+		this.prd_info = prd_info;
+	}
 	public String getPrd_code() {
 		return prd_code;
 	}
@@ -34,12 +48,6 @@ public class ProductDTO {
 	}
 	public void setPrd_etc(String prd_etc) {
 		this.prd_etc = prd_etc;
-	}
-	public String getPrd_description() {
-		return prd_description;
-	}
-	public void setPrd_description(String prd_description) {
-		this.prd_description = prd_description;
 	}
 	public Long getPrd_price() {
 		return prd_price;

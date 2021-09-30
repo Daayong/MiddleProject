@@ -19,7 +19,7 @@
 			height:290px;		
 			}
 	</style>
-	<link href="./resources/css/menu/menu_main.css" rel="stylesheet" />	
+	<link href="../resources/css/menu/menu_main.css" rel="stylesheet" />	
 	
 </head>
 <body>
@@ -58,32 +58,34 @@
 			<div class="menus_wrap">
 				<div class="item_wrap">
 					<!-- 나중에 c:foreach 반복문 쓰기 -->
-					<div class="item_box">
-						<div class="click_menu"> <!-- div 버튼 만들기 -->
-							<div class="item_image">
-								<img alt="test" src="./resources/images/menu/test_menu1.png">
+					<c:forEach items="${prdDTO}" var="prd">
+						<div class="item_box">
+							<div class="click_menu"> <!-- div 버튼 만들기 -->
+								<div class="item_image">
+									<img alt="test" src="./resources/images/menu/test_menu1.png">
+								</div>
+								<p class="etc_info">${prd.prd_etc}</p>
+								<div class="item_title">
+									${prd.prd_name}
+								</div>
+								<div class="item_price">
+									${prd.prd_price}
+								</div>
+								<div class="item_review">
+									<h3>별점하고 리뷰들개수</h3>
+								</div>
 							</div>
-							<p class="etc_info">3인분 / 조리 20분</p>
-							<div class="item_title">
-								* 갈릭버터쉬림프
-							</div>
-							<div class="item_price">
-								26,800원
-							</div>
-							<div class="item_review">
-								<h3>별점하고 리뷰들개수</h3>
+							<div class="item_btnbox">
+								<div class="menu_btn zzim_btn">
+									<img alt="zzim" src="./resources/images/menu/zzim_btn.png">
+								</div>
+								<div class="menu_btn cart_btn">
+									<img alt="cart" src="./resources/images/menu/cart_btn.png">
+								</div>
 							</div>
 						</div>
-						<div class="item_btnbox">
-							<div class="menu_btn zzim_btn">
-								<img alt="zzim" src="./resources/images/menu/zzim_btn.png">
-							</div>
-							<div class="menu_btn cart_btn">
-								<img alt="cart" src="./resources/images/menu/cart_btn.png">
-							</div>
-						</div>
-					</div>
-					<!-- c:foreach -->		
+						<!-- c:foreach -->
+					</c:forEach>	
 				</div>
 				<div class="pager_wrap">
 				</div>
