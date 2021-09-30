@@ -7,8 +7,8 @@
 <link href="${pageContext.request.contextPath}/resources/css/paging.css" rel="stylesheet">
 <html>
 <head>
-	<title>Home</title>
-	
+	<title>고객행복센터 - 집밥을 특별하게, 쿡킷</title>
+		
 	<style>
 		html,body{
 			height:100%;

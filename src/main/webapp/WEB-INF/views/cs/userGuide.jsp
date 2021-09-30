@@ -10,7 +10,7 @@
 
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 
-	<title>userGuide</title>
+	<title>고객행복센터 - 집밥을 특별하게, 쿡킷</title>
 	
 	<style>
 		html,body{
@@ -192,11 +192,11 @@
                                 </li>
                             </ul>
 
-                            <!-- 190611_추가 -->
+                           
                             <div class="use_img_wrap">
                                 <img src="${pageContext.request.contextPath}/resources/images/img_cs_use_sub_2_05.jpg" alt="">
                             </div>
-                            <!-- //190611_추가 -->
+                     
                             
                         </div>
 
@@ -483,12 +483,7 @@
                             </ol>
                             
                         </div>
-                    </div>
-				
-				
-				
-				
-				
+                    </div>				
 		</div>
 	</div>
 	</section>
@@ -501,11 +496,36 @@
 
 <script type="text/javascript">
 	
-	$(".tab_sub").click(function() {
+	 
+	$("#tab_sunshineInfo").click(function() {
 		$(this).addClass("ch");
 		$(".tab_sub").not(this).removeClass("ch");
+		$("#view_sunshineInfo").css("display","block");
+		$(".cs_usep").not("#view_sunshineInfo").css("display","none");
+		
 	});
 	
+	 $("#tab_orderInfo").click(function() {
+		$(this).addClass("ch");
+		$(".tab_sub").not(this).removeClass("ch");
+		$("#view_orderInfo").css("display","block");
+		$(".cs_usep").not("#view_orderInfo").css("display","none");
+		});
+	 
+	 $("#tab_giftInfo").click(function() {
+		 	$(this).addClass("ch");
+			$(".tab_sub").not(this).removeClass("ch"); 		
+			$("#view_giftInfo").css("display","block");
+			$(".cs_usep").not("#view_giftInfo").css("display","none");
+	});
+	 
+	 $("#tab_cancelInfo").click(function() {
+		 	$(this).addClass("ch");
+			$(".tab_sub").not(this).removeClass("ch");
+			$("#view_cancelInfo").css("display","block");
+			$(".cs_usep").not("#view_cancelInfo").css("display","none");
+		});
+	 
 
 
 </script>

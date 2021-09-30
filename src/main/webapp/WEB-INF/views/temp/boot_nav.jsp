@@ -13,7 +13,7 @@
 				<ul>			
 					<li><a href="${pageContext.request.contextPath}/member/join">회원가입</a></li>
 					<li><a href="${pageContext.request.contextPath}/member/login">로그인</a></li>
-					<li><a href="${pageContext.request.contextPath}/notice/fnq">고객행복센터</a></li>
+					<li><a href="${pageContext.request.contextPath}/cs/csMain">고객행복센터</a></li>
 					<li><a href="${pageContext.request.contextPath}/">배송지역검색</a></li>
 					<li><a href="${pageContext.request.contextPath}/">기프트카드 등록</a></li>
 				</ul>
@@ -38,7 +38,7 @@
 					<a href="./review/reviewMain">리뷰</a>
 				</li>
 				<li class="menu_li">
-					<a href="#">이벤트</a>
+					<a href="./event/eventMain">이벤트</a>
 				</li>
 				<li class="menu_li">
 					<a href="#">MY쿡킷</a>
