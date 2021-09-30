@@ -33,9 +33,10 @@
 	
 </head>
 <body>
-<c:import url="../temp/boot_nav.jsp"></c:import>
 
 <div class="wrapper">		
+
+<c:import url="../temp/boot_nav.jsp"></c:import>
 <!-- 여기에 페이지 작업 -->
 
 	<section id="container">

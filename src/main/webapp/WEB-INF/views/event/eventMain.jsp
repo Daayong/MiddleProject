@@ -7,6 +7,8 @@
 
 <html>
 <head>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+
 	<title>Event Page</title>
 	<style>
 		
@@ -54,11 +56,11 @@
 				
 				<div class="tab_wrap">
 						<ul class="tabs">
-							<li>
-								<a href="javascript:getListData('EVENT');"><span>진행중</span></a>
+							<li class="tab_ev on" >
+								<a style="cursor: pointer;"><span>진행중</span></a>
 							</li>
-							<li>
-								<a href="javascript:getListData('WINNER');"><span>당첨자 발표</span></a>
+							<li class="tab_ev">
+								<a style="cursor: pointer;"><span>당첨자 발표</span></a>
 							</li>
 						</ul>
 					
@@ -189,5 +191,21 @@
 
 
 <!-- javaScript -->
+
+<script type="text/javascript">
+	$(".tab_ev").click(function() {
+		$(this).addClass("on");
+		$(".tab_ev").not(this).removeClass("on");
+		$(".event_list").css("display","block");
+	});
+	
+	$("#winner").click(function() {
+		$(this).addClass("on");
+		$("#pro").removeClass("on");
+		
+	});
+
+
+</script>
 
 </html>
