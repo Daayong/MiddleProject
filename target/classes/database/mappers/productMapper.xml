@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.d.mp.cookit.menu.prd.ProductDAO">
+  	<insert id="setInsert" parameterType="ProductDTO">
+  		insert into product (prd_code, prd_name, prd_subName, prd_etc, prd_description, prd_price, prd_satisfaction, cnt_review)
+  		values (#{prd_code}, #{prd_name}, #{prd_subName}, #{prd_etc}, #{prd_description}, #{prd_price}, 0, 0)
+  	</insert>
+  </mapper>

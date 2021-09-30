@@ -19,7 +19,7 @@
 			height:290px;		
 			}
 	</style>
-	<link href="./resources/css/menu/menu_main.css" rel="stylesheet">	
+	<link href="./resources/css/menu/menu_main.css" rel="stylesheet" />	
 	
 </head>
 <body>
