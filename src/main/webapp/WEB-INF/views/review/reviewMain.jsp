@@ -44,21 +44,21 @@
 							<c:forEach var="i" begin="0" end="9">
 							
 							
-								<div class="slide_contents" data-slide_contents_index = ${i-1} aria-hidden = "false">
+								<div class="slide_contents" data-slide_contents_index = ${i-1}>
 									<div class="item">
-										<a>
+										<a href="javascript:openDetail()">
 											<div class="img_wrap">
 												<div class="best_flag">
 													<span class="flag_txt">Best</span>
 											 	</div>
-											 	<img alt="select product_name from product" src="/mp/resources/images/temp/review_temp.jpg">
+											 	<img alt="select product_name from product" src="/mp/resources/images/temp/review_temp${i % 5}.jpg">
 											</div>
 											
 											<div class="txt_wrap">
 											
-												<span class="tit">product_name
+												<span class="tit">product_name ${i} index : ${i - 1}
 												</span>
-												<div class="etc_info">	
+												<div class="etc_info">
 																		
 													<div class="rating_star">
 														<span class="star"> <!-- background image 커스텀 영역 -->
@@ -118,10 +118,10 @@
 							<div class="slide_list">
 								<div class="slide_track" style="opacity: 1; width: 25000px; transform: translate3d(-349px, 0px, 0px); transition: transform 1200ms ease 0s;">
 								
-								<c:forEach begin="1" end="5">
+								<c:forEach var="i" begin="0" end="4">
 								
 								
-									<div class="slide_contents" data-slide_contents_index = "1" aria-hidden = "false">
+									<div class="slide_contents" data-slide_contents_index = "1">
 										<div class="item">
 											<a href="https://www.instagram.com/p/CC5GfQhnEEf/" target="_blank">
 												<div class="img_wrap">
@@ -340,7 +340,7 @@
 											<!-- 첫번째 이미지 -->
 											<div class="thumb_img">													
 												<div class="img">
-													<img src="/mp/resources/images/temp/review_temp.jpg" alt="1번 이미지" onerror="">
+													<img src="/mp/resources/images/temp/review_temp0.jpg" alt="1번 이미지" onerror="">
 												</div>
 												<span class="lang">1</span> <!-- 총 사진 개수 : .review_module .img_wrap 안에 있는 .img 갯수 체크 -->
 											</div>
@@ -348,7 +348,7 @@
 											<!-- 큰 이미지 영역 -->
 											<div class="bigger_img">												
 												<div class="img">
-													<img src="/mp/resources/images/temp/review_temp.jpg" alt="1번 이미지" onerror="">
+													<img src="/mp/resources/images/temp/review_temp0.jpg" alt="1번 이미지" onerror="">
 												</div>												
 											</div>
 											<!-- //큰 이미지 영역 -->

@@ -12,5 +12,10 @@ public class ReviewController {
 	public String reviewMain() {
 		return "review/reviewMain";		
 	}
+	
+	@GetMapping("reviewOpenDetail")
+	public String reviewOpenDetail() {
+		return "review/reviewOpenDetail";		
+	}
 
 }
