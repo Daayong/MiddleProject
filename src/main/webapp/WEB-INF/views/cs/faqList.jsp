@@ -203,7 +203,7 @@
 
 <script type="text/javascript">
 	$(".tab_item").click(function() {
-		$(this).addClass("on")
+		$(this).addClass("on");
 		$(".tab_item").not(this).removeClass("on");
 	});
 
