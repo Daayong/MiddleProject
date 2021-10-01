@@ -10,7 +10,7 @@
         <meta name="author" content="" />
         <title> 관리자 페이지 </title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
-        <link href="../../resources/css/admin/styles.css" rel="stylesheet"/>
+        <link href="../resources/css/admin/styles.css" rel="stylesheet"/>
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
         <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
         <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -103,14 +103,14 @@
 						  <!-- SummerNote 상세설명 추가 -->
 						  <div class="row mb-3">
 						    <div class="form-floating">
-							  <textarea class="form-control" id="inputPrdDescription" style="height: 100px" name="prd_description"></textarea>
-							  <label for="inputPrdDescription">상품설명</label>
+							  <textarea class="form-control" id="inputPrdDescription" style="height: 100px" name="prd_info"></textarea>
+							  <label for="inputPrdDescription">상품정보</label>
 							</div>
 						  </div>
 						  <!-- SummerNote 상세설명 추가 -->
 						  <div class="mb-3">
 							  <label for="inputPrdUpImg" class="form-label"> 상품 상단 슬라이더 이미지</label>
-							  <input class="form-control" name="files" type="file" id="inputPrdUpImg">
+							  <input class="form-control" name="files" type="file" id="inputPrdUpImg" multiple="multiple">
 						  </div>
 					<!-- 	  <div class="mb-3">
 							  <label for="inputPrdDownImg" class="form-label"> 상품 하단 정보 이미지</label>

@@ -8,7 +8,18 @@
   		insert into product (prd_code, prd_name, prd_subName, prd_etc, prd_description, prd_info, prd_price, prd_satisfaction, cnt_review)
   		values (#{prd_code}, #{prd_name}, #{prd_subName}, #{prd_etc}, #{prd_description}, #{prd_info}, #{prd_price}, 0, 0)
   	</insert>
+  	<insert id="setFile" parameterType="ProductFilesDTO">
+  		insert into productFiles (fileNum, prd_code, fileName, oriName)
+  		values (PF_SEQ.nextval, #{prd_code}, #{fileName}, #{oriName})
+  	</insert>
+  	<select id="getFile" parameterType="ProductDTO" resultType="ProductFilesDTO">
+  		select * from productFiles where prd_code = #{prd_code}
+  	</select>
+  	
   	<select id="getPrdList" resultType="ProductDTO">
   		select * from product
+  	</select>
+  	<select id="getPrdOne" parameterType="ProductDTO" resultType="ProductDTO">
+  		select * from product where prd_code = #{prd_code}
   	</select>
   </mapper>

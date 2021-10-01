@@ -1,6 +1,7 @@
 
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <html>
 <head>
@@ -31,12 +32,9 @@
 					<div class="image_in">
 						<ul id="lightSlider2">
 							<!-- c:foreach -->
-							<li><img alt="in" src="../resources/images/menu/image_in1.png"></li>
-							<li><img alt="in" src="../resources/images/menu/menu_detail/snowcheese1.jpg"></li>
-							<li><img alt="in" src="../resources/images/menu/menu_detail/snowcheese2.jpg"></li>
-							<li><img alt="in" src="../resources/images/menu/menu_detail/snowcheese3.jpg"></li>
-							<li><img alt="in" src="../resources/images/menu/menu_detail/snowcheese4.jpg"></li>
-							<li><img alt="in" src="../resources/images/menu/menu_detail/snowcheese5.jpg"></li>
+							<c:forEach items="${prdFileDTO}" var="files" begin="1" end="${fn:length(prdFileDTO)-2}">
+								<li><img alt="in" src="../resources/upload/menu/${prdDTO.prd_name}/${files.fileName}"></li>
+							</c:forEach>
 							<!-- c:foreach -->
 						</ul>
 					</div>
@@ -49,12 +47,9 @@
 						</div>
 						<ul id="lightSlider">
 							<!-- c:foreach -->
-							<li class="slide_item" value="0"><img alt="in" src="../resources/images/menu/image_in1.png" width="90px" height="90px"></li>
-							<li class="slide_item" value="1"><img alt="in" src="../resources/images/menu/menu_detail/snowcheese1.jpg" width="90px" height="90px"></li>
-							<li class="slide_item" value="2"><img alt="in" src="../resources/images/menu/menu_detail/snowcheese2.jpg" width="90px" height="90px"></li>
-							<li class="slide_item" value="3"><img alt="in" src="../resources/images/menu/menu_detail/snowcheese3.jpg" width="90px" height="90px"></li>
-							<li class="slide_item" value="4"><img alt="in" src="../resources/images/menu/menu_detail/snowcheese4.jpg" width="90px" height="90px"></li>
-							<li class="slide_item" value="5"><img alt="in" src="../resources/images/menu/menu_detail/snowcheese5.jpg" width="90px" height="90px"></li>
+							<c:forEach items="${prdFileDTO}" var="files" varStatus="findex" begin="1" end="${fn:length(prdFileDTO)-2}">
+								<li class="slide_item" value="${findex.index-1}"><img alt="in" src="../resources/upload/menu/${prdDTO.prd_name}/${files.fileName}" width="90px" height="90px"></li>
+							</c:forEach>
 							<!-- c:foreach -->
 						</ul>
 					</div>
@@ -68,7 +63,7 @@
 							달콤 갈릭버터의 풍미와 통통새우🍤
 						</div>
 						<div class="title">
-							* 갈릭버터쉬림프
+							${prdDTO.prd_name}
 						</div>
 						<p class="prd_origin">원산지 : 상품참조</p>
 					</div>
@@ -78,7 +73,7 @@
 						<span>준비 30분</span>
 					</div>
 					<div class="prd_price">
-						판매가 : 26,800원
+						${prdDTO.prd_price}
 					</div>
 					<div class="addme">
 					</div>
@@ -117,7 +112,7 @@
 					<div class="description">
 						<div class="description_box1">
 							<div class="leftbox_banner">
-								<img alt="banner" src="./resources/images/menu/menu_detail/leftbox_banner.png">
+								<img alt="banner" src="../resources/images/menu/menu_detail/leftbox_banner.png">
 							</div>
 						</div>
 						<div class="description_box2">

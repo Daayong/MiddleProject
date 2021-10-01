@@ -2,7 +2,8 @@
 
 $(".click_menu").on("click", function() {
 	
-	location.href="./menu_detail";
+	let prd_code = $(this).children("#prd_code").val();
+	location.href="./menu_detail?prd_code=" + prd_code;
 	/* location.href="cookit_menu/menu_detail?prdNum";  => 나중에 DB연결 후 상품 번호 전달 */
 	
 });

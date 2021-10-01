@@ -16,8 +16,19 @@ public class ProductDAO {
 	public int setInsert(ProductDTO productDTO) throws Exception{
 		return sqlSession.insert(NAMESPACE + "setInsert", productDTO);
 	}
+	public int setFile(ProductFilesDTO productFilesDTO) throws Exception{
+		return sqlSession.insert(NAMESPACE + "setFile", productFilesDTO);
+	}
+	public List<ProductFilesDTO> getFile(ProductDTO productDTO) throws Exception{
+		return sqlSession.selectList(NAMESPACE + "getFile", productDTO);
+	}
+	
 	
 	public List<ProductDTO> getPrdList() throws Exception{
 		return sqlSession.selectList(NAMESPACE + "getPrdList");
+	}
+	
+	public ProductDTO getPrdOne(ProductDTO productDTO) throws Exception{
+		return sqlSession.selectOne(NAMESPACE + "getPrdOne", productDTO);
 	}
 }

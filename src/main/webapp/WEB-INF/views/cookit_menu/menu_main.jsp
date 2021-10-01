@@ -61,8 +61,9 @@
 					<c:forEach items="${prdDTO}" var="prd">
 						<div class="item_box">
 							<div class="click_menu"> <!-- div 버튼 만들기 -->
+								<input type="hidden" value="${prd.prd_code}" id="prd_code">
 								<div class="item_image">
-									<img alt="test" src="./resources/images/menu/test_menu1.png">
+									<img alt="test" src="../resources/upload/menu/${prd.prd_name}/${prd.prd_name}.jpg">
 								</div>
 								<p class="etc_info">${prd.prd_etc}</p>
 								<div class="item_title">
@@ -77,10 +78,10 @@
 							</div>
 							<div class="item_btnbox">
 								<div class="menu_btn zzim_btn">
-									<img alt="zzim" src="./resources/images/menu/zzim_btn.png">
+									<img alt="zzim" src="../resources/images/menu/zzim_btn.png">
 								</div>
 								<div class="menu_btn cart_btn">
-									<img alt="cart" src="./resources/images/menu/cart_btn.png">
+									<img alt="cart" src="../resources/images/menu/cart_btn.png">
 								</div>
 							</div>
 						</div>

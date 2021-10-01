@@ -18,8 +18,14 @@ public class ProductController {
 	
 	
 	@RequestMapping("menu_detail")
-	public ModelAndView menuDetail() throws Exception{
+	public ModelAndView getPrdOne(ProductDTO productDTO) throws Exception{
+		
+		ProductDTO dto = productService.getPrdOne(productDTO);
+		List<ProductFilesDTO> prdAr = productService.getFile(productDTO);
+		
 		ModelAndView mv = new ModelAndView();
+		mv.addObject("prdFileDTO", prdAr);
+		mv.addObject("prdDTO", dto);
 		mv.setViewName("cookit_menu/menu_detail");
 		
 		return mv;
@@ -38,23 +44,25 @@ public class ProductController {
 	}
 	
 	
-	@RequestMapping("admin/index")
+	@RequestMapping("index")
 	public ModelAndView doAdmin() throws Exception{
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("cookit_menu/admin/index");
+		mv.setViewName("cookit_menu/index");
 		
 		return mv;
 	}
 	
-	@PostMapping("admin/prdUpload")
-	public ModelAndView setInsert(ProductDTO productDTO, MultipartFile files) throws Exception{
+	@PostMapping("prdUpload")
+	public ModelAndView setInsert(ProductDTO productDTO, MultipartFile [] files) throws Exception{
 
-		System.out.println(files.getOriginalFilename());
+		for(int i=0;i<files.length;i++) {
+			System.out.println(files[i].getOriginalFilename());
+		}
 		
-		int result = productService.setInsert(productDTO);
+		int result = productService.setInsert(productDTO, files);
 		
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("cookit_menu/admin/menu_add");
+		mv.setViewName("cookit_menu/menu_add");
 		mv.addObject("result", result);
 		
 		return mv;
