@@ -6,9 +6,9 @@
 <head>
 	<title>쿡킷 상세페이지</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-	<script src="./resources/js/menu/slider_js/lightslider.js"></script>
-	<link href="./resources/css/menu/slider/lightslider.css" type="text/css" rel="stylesheet"/>
-	<link href="./resources/css/menu/menu_detail.css" rel="stylesheet"/>
+	<script src="../resources/js/menu/slider_js/lightslider.js"></script>
+	<link href="../resources/css/menu/slider/lightslider.css" type="text/css" rel="stylesheet"/>
+	<link href="../resources/css/menu/menu_detail.css" rel="stylesheet"/>
 	
 	<style>
 	ul, li {
@@ -31,12 +31,12 @@
 					<div class="image_in">
 						<ul id="lightSlider2">
 							<!-- c:foreach -->
-							<li><img alt="in" src="./resources/images/menu/image_in1.png"></li>
-							<li><img alt="in" src="./resources/images/menu/menu_detail/snowcheese1.jpg"></li>
-							<li><img alt="in" src="./resources/images/menu/menu_detail/snowcheese2.jpg"></li>
-							<li><img alt="in" src="./resources/images/menu/menu_detail/snowcheese3.jpg"></li>
-							<li><img alt="in" src="./resources/images/menu/menu_detail/snowcheese4.jpg"></li>
-							<li><img alt="in" src="./resources/images/menu/menu_detail/snowcheese5.jpg"></li>
+							<li><img alt="in" src="../resources/images/menu/image_in1.png"></li>
+							<li><img alt="in" src="../resources/images/menu/menu_detail/snowcheese1.jpg"></li>
+							<li><img alt="in" src="../resources/images/menu/menu_detail/snowcheese2.jpg"></li>
+							<li><img alt="in" src="../resources/images/menu/menu_detail/snowcheese3.jpg"></li>
+							<li><img alt="in" src="../resources/images/menu/menu_detail/snowcheese4.jpg"></li>
+							<li><img alt="in" src="../resources/images/menu/menu_detail/snowcheese5.jpg"></li>
 							<!-- c:foreach -->
 						</ul>
 					</div>
@@ -49,12 +49,12 @@
 						</div>
 						<ul id="lightSlider">
 							<!-- c:foreach -->
-							<li class="slide_item" value="0"><img alt="in" src="./resources/images/menu/image_in1.png" width="90px" height="90px"></li>
-							<li class="slide_item" value="1"><img alt="in" src="./resources/images/menu/menu_detail/snowcheese1.jpg" width="90px" height="90px"></li>
-							<li class="slide_item" value="2"><img alt="in" src="./resources/images/menu/menu_detail/snowcheese2.jpg" width="90px" height="90px"></li>
-							<li class="slide_item" value="3"><img alt="in" src="./resources/images/menu/menu_detail/snowcheese3.jpg" width="90px" height="90px"></li>
-							<li class="slide_item" value="4"><img alt="in" src="./resources/images/menu/menu_detail/snowcheese4.jpg" width="90px" height="90px"></li>
-							<li class="slide_item" value="5"><img alt="in" src="./resources/images/menu/menu_detail/snowcheese5.jpg" width="90px" height="90px"></li>
+							<li class="slide_item" value="0"><img alt="in" src="../resources/images/menu/image_in1.png" width="90px" height="90px"></li>
+							<li class="slide_item" value="1"><img alt="in" src="../resources/images/menu/menu_detail/snowcheese1.jpg" width="90px" height="90px"></li>
+							<li class="slide_item" value="2"><img alt="in" src="../resources/images/menu/menu_detail/snowcheese2.jpg" width="90px" height="90px"></li>
+							<li class="slide_item" value="3"><img alt="in" src="../resources/images/menu/menu_detail/snowcheese3.jpg" width="90px" height="90px"></li>
+							<li class="slide_item" value="4"><img alt="in" src="../resources/images/menu/menu_detail/snowcheese4.jpg" width="90px" height="90px"></li>
+							<li class="slide_item" value="5"><img alt="in" src="../resources/images/menu/menu_detail/snowcheese5.jpg" width="90px" height="90px"></li>
 							<!-- c:foreach -->
 						</ul>
 					</div>
@@ -121,11 +121,11 @@
 							</div>
 						</div>
 						<div class="description_box2">
-							<img alt="main" src="./resources/images/menu/menu_detail/snowcheeze_main.png">
-							<img alt="sub1" src="./resources/images/menu/menu_detail/snowcheeze_sub1.png">
-							<img alt="sub2" src="./resources/images/menu/menu_detail/snowcheeze_sub2.png">
-							<img alt="sub3" src="./resources/images/menu/menu_detail/snowcheeze_sub3.png">
-							<img alt="sub4" src="./resources/images/menu/menu_detail/snowcheeze_sub4.png">
+							<img alt="main" src="../resources/images/menu/menu_detail/snowcheeze_main.png">
+							<img alt="sub1" src="../resources/images/menu/menu_detail/snowcheeze_sub1.png">
+							<img alt="sub2" src="../resources/images/menu/menu_detail/snowcheeze_sub2.png">
+							<img alt="sub3" src="../resources/images/menu/menu_detail/snowcheeze_sub3.png">
+							<img alt="sub4" src="../resources/images/menu/menu_detail/snowcheeze_sub4.png">
 						</div>
 					</div>
 					<!-- 상품 정보 박스 -->
@@ -168,6 +168,6 @@
 <c:import url="../temp/boot_footer.jsp"></c:import>
 </body>
 
-<script src="./resources/js/menu/menu_js.js"></script>
+<script src="../resources/js/menu/menu_js.js"></script>
 
 </html>

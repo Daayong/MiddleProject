@@ -2,8 +2,8 @@
 
 $(".click_menu").on("click", function() {
 	
-	location.href="menu_detail";
-	/* location.href="menu_detail?prdNum";  => 나중에 DB연결 후 상품 번호 전달 */
+	location.href="./menu_detail";
+	/* location.href="cookit_menu/menu_detail?prdNum";  => 나중에 DB연결 후 상품 번호 전달 */
 	
 });
 

@@ -1,8 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<link href="./resources/css/common.css" rel="stylesheet">
-<link href="./resources/css/import_nav.css" rel="stylesheet">
+<link href="../resources/css/common.css" rel="stylesheet">
+<link href="../resources/css/import_nav.css" rel="stylesheet">
 
 
 <nav id="header">
@@ -42,7 +42,7 @@
 					<a href="#">COOKIT소개</a>
 				</li>
 				<li class="menu_li">
-					<a href="menu_main">COOKIT 메뉴</a>
+					<a href="${pageContext.request.contextPath}/cookit_menu/menu_main">COOKIT 메뉴</a>
 				</li>
 				<li class="menu_li">
 					<a href="#">리뷰</a>

@@ -97,7 +97,7 @@
 </div>
 <c:import url="../temp/boot_footer.jsp"></c:import>
 
-<script src="./resources/js/menu/menu_js.js"></script>
+<script src="../resources/js/menu/menu_js.js"></script>
 
 </body>
 </html>

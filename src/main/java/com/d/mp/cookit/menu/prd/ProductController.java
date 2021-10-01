@@ -10,7 +10,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping("/cookit_menu/**")
+@RequestMapping(value = "/cookit_menu/**")
 public class ProductController {
 	
 	@Autowired
@@ -20,7 +20,7 @@ public class ProductController {
 	@RequestMapping("menu_detail")
 	public ModelAndView menuDetail() throws Exception{
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("menu_detail");
+		mv.setViewName("cookit_menu/menu_detail");
 		
 		return mv;
 	}
@@ -32,7 +32,7 @@ public class ProductController {
 		
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("prdDTO", prdAr);
-		mv.setViewName("menu_main");
+		mv.setViewName("cookit_menu/menu_main");
 		
 		return mv;
 	}
