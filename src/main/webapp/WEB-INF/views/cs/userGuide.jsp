@@ -68,7 +68,7 @@
 					
 				<!-- 새벽배송 -->	
 			
-					<div class="cs_usep guide_01" id="view_sunshineInfo"style="display:none;">
+					<div class="cs_usep guide_01" id="view_sunshineInfo"style="display:block;">
                       <h2 class="hide">새벽배송</h2>
                       
                       <div class="banner">
@@ -359,7 +359,7 @@
 				<!-- 취소/변경/반품  -->
 				
 				
-				<div class="cs_usep guide_01" id="view_cancelInfo" style="display:block;">
+				<div class="cs_usep guide_01" id="view_cancelInfo" style="display:none;">
                         <h2 class="hide">취소/변경/반품</h2>
                         
                         <div class="banner">
