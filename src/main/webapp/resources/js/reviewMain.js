@@ -14,7 +14,7 @@
 function openDetail(){
 	var url = "./review/reviewOpenDetail";
 	var name = "popup test";
-	var option = "width = 848, height = 820, top = 0, left = 0, location = no, scrollbars = yes"
+	var option = "width = 845, height = 820, top = 0, left = 0, location = no, scrollbars = yes"
 	window.open(url, name, option);
 }
 

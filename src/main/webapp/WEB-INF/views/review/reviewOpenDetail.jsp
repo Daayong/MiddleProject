@@ -17,11 +17,7 @@
 		<a href="/pc/prod/prodDetail?prdCd=40024428" target="_blank" class="btn_link" title="메뉴 상세보기">메뉴 상세보기</a>
 	</header>	
 	
-	<section class="pop_contents">	
-	
-		<div class="review_wrap">
-		
-			<div class="review_module">	
+	<section class="pop_contents">
 				
 				
 				
@@ -52,18 +48,30 @@
 				
 				
 				<div class="slide_wrap">
-				
-					<div class="img_wrap">	
-						<div class="bigger_img">												
-							<div class="img">
-								<img src="/mp/resources/images/temp/review_temp1.jpg" alt="1번 이미지" onerror="">
-							</div>
+					<div class="slide_track" style="opacity: 1; width: 780px; transform: translate3d(-780px, 0px, 0px);">
+	
+						
+						<div class="img_wrap">
+							<img src="/mp/resources/images/temp/review_temp1.jpg" alt="1번 이미지" onerror="">
+						</div>		
+						
+						<div class="img_wrap">
+							<img src="/mp/resources/images/temp/review_temp2.jpg" alt="2번 이미지" onerror="">
+						</div>	
+											
+						<div class="img_wrap">
+							<img src="/mp/resources/images/temp/review_temp1.jpg" alt="1번 이미지" onerror="">
+						</div>		
+						
+						<div class="img_wrap">
+							<img src="/mp/resources/images/temp/review_temp2.jpg" alt="2번 이미지" onerror="">
 						</div>
-					</div>	
+						
+					</div>
 					
 					<div class="slide_nav_count">
 						<span class="num">
-							<em>1</em>/5
+							<em>1</em>/<strong>2</strong>
 						</span>
 					</div>
 					<div class="slide_nav_arrow">
@@ -103,10 +111,6 @@
 							select tip from reviews ~
 						</div>
 					</div>
-					
-				</div>				
-				
-			</div>
 		</div>
 		
 		
@@ -115,6 +119,11 @@
 		
 	</section>
 </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+
+<script type="text/javascript" src="/mp/resources/js/reviewOpenDetail.js"></script>
 
 </body>
 </html>
