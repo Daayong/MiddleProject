@@ -120,14 +120,15 @@
 				</div>
 			</div>
 			
-				<!-- faq table view -->
+				<!-- faq list-->
 				
 			 <div id="tabView" style="display:block;">
                   
-                 <div class="faq_view">
+              <div class="faq_view">
               
 				<div class="list_acco ui_accordion" data-accord-group="faq_list">
-			<ul class="faqListArea">
+				
+				<ul class="faqListArea">
 		
 		  		<li>
 	            	<div class="head" style="cursor: pointer;">
@@ -221,48 +222,6 @@
 		
 	});
 	
-	/* 
-	$("#all").click(function() {
-		$(".ui_tab").find("li").not(this).removeClass("on");
-		$(this).addClass("on");
-	});	
-	
-	$("#ship").click(function() {
-		$(".ui_tab").find("li").not(this).removeClass("on");
-		$(this).addClass("on");
-	});
-
-	$("#pay").click(function() {
-		$(".ui_tab").find("li").not(this).removeClass("on");
-		$(this).addClass("on");
-	});
-	
-	$("#order").click(function() {
-		$(".ui_tab").find("li").not(this).removeClass("on");
-		$(this).addClass("on");
-	});
-	
-	$("#rv").click(function() {
-		$(".ui_tab").find("li").not(this).removeClass("on");
-		$(this).addClass("on");
-	});
-	
-	$("#gift").click(function() {
-		$(".ui_tab").find("li").not(this).removeClass("on");
-		$(this).addClass("on");
-	});
-	
-	$("#mem").click(function() {
-		$(".ui_tab").find("li").not(this).removeClass("on");
-		$(this).addClass("on");
-	});
-	
-	$("#etc").click(function() {
-		$(".ui_tab").find("li").not(this).removeClass("on");
-		$(this).addClass("on");
-	});
-	
- */
  
  
 </script>

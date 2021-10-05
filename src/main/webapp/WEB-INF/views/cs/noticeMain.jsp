@@ -57,12 +57,14 @@
 		<div class="notice_conts" id="noticeContent">
 					
 		<!-- notice List -->
+		
+		
 			<div class="tb_row">
 					
 			<!-- table -->
 			
 			<table>
-				<colgroup>
+				<colgroup> <!-- table 간격 기본설정 -->
 					<col width="10%">
 					<col width="75%">
 					<col width="15%">
@@ -94,9 +96,6 @@
 					<td class="tit"><a href="#">[9월1일차]쿡킷 전체 메뉴보기</a></td>
 					<td>2021-09-29</td>
 					</tr>
-				
-				
-				
 				</tbody>
 			
 			
