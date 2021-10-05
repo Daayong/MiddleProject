@@ -120,7 +120,7 @@
 				</div>
 			</div>
 			
-				<!-- faq list-->
+			<!-- faq list-->
 				
 			 <div id="tabView" style="display:block;">
                   
@@ -130,37 +130,25 @@
 				
 				<ul class="faqListArea">
 		
+			
+				<c:forEach items="${faqlist}" var="dto">
 		  		<li>
 	            	<div class="head" style="cursor: pointer;">
 	               		<a  class="accord_toggle"  >
 	                    	<div class="tit">
-	                        	<strong id="q">Q</strong>회원 아이디, 비밀번호를 분실한 경우 어떻게 찾을 수 있나요.
-	                        <span class="cate"><span class="hide">해당 질문 분류</span>회원</span>
+	                        	<strong id="q" style="color: #101010" >Q</strong>${dto.faq_subject}
+	                        <span class="cate"><span class="hide">해당 질문 분류</span>${dto.faq_type}</span>
 	                    </div>     
 	                    <span class="hide">내용 닫기</span>
 	                </a>
 	            </div>
 	            <div class="desc ui_accord_content" id="answer" style="display: none" >
 	                <strong>A</strong>
-	             	<p class="cont"><p>로그인 페이지에서 아이디/비밀번호 찾기를 통해 확인 가능합니다.<br><br>간편 로그인의 아이디/비밀번호를 잊으셨다면, 해당 SNS(카카오톡,네이버,페이스북) 사이트에서 <br>아이디/비밀번호를 확인하실 수 있습니다.&nbsp;</p></p>
+	             	<p class="cont">${dto.faq_content}</p>
 	            </div>
            		</li>
-		
-				<li>
-	            <div class="head" style="cursor: pointer;">
-	               		<a  class="accord_toggle"  >
-	                    	<div class="tit">
-	                        <strong id="q">Q</strong>자택이 아닌 다른 곳으로도 배송이 가능한가요. (ex. 회사,상가,학교 등)
-	                        <span class="cate"><span class="hide">해당 질문 분류</span>배송</span>
-	                    </div>     
-	                    <span class="hide" >내용 닫기</span>
-	                </a>
-	            </div>
-	            <div class="desc ui_accord_content"  style="display: none;">
-	                <strong>A</strong>
-	             	<p class="cont"><strong>​</strong><p>COOKIT은 새벽에 배송되어 새벽 출입이 제한되는 <br>회사, 관공서, 상가, 학교, 기숙사, 병원, 교회, 시장 등은 배송이 불가합니다.<br><br>또한 위의 장소들은 새벽 출입이 되더라도 주문자와 연락이 어려운 새벽이기 때문에 <br>넓은 장소에서 위탁 장소를 찾기가 어렵고 분실의 위험도 높습니다. <br><br><strong>되도록 자택으로 주문해 주시기 바랍니다.</strong>&nbsp;</p></p>
-	            </div>
-           	</li>
+           		
+           		</c:forEach>
 	
 			</ul>
 			</div>	
@@ -213,14 +201,14 @@
 	$(".head").click(function() {
 		if($(this).next().css("display")=="none"){
 			$(this).next().slideDown("fast");
-			$("#q").css('color','#101010');
 			
 		}else{
 			$(this).next().slideUp("fast");
-			$("#q").css('color','#606060');
+			
 		}
 		
 	});
+	
 	
  
  
