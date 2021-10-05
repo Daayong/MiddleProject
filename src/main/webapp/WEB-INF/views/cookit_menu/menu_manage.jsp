@@ -1,4 +1,5 @@
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -67,75 +68,21 @@
             <div id="layoutSidenav_content"> <!-- 내용 들어가는 곳! -->
                 <main>
                     <div class="container-fluid px-4 col-sm-8 mt-5">
-                       <form class="col-sm-8" action="prdUpload" method="post" enctype="multipart/form-data">
-						  <div class="row mb-3">
-						    <label for="inputPrdName" class="col-sm-2 col-form-label">상품명</label>
-						    <div class="col-sm-10">
-						      <input type="text" class="form-control" id="inputPrdName" name="product_name">
-						    </div>
-						  </div>
-						  <div class="row mb-3">
-						    <label for="inputPrdSubName" class="col-sm-2 col-form-label">상품서브명</label>
-						    <div class="col-sm-10">
-						      <input type="text" class="form-control" id="inputPrdSubName" name="product_sub_name">
-						    </div>
-						  </div>
-						  <div class="row mb-3">
-						    <label for="inputPrdPrice" class="col-sm-2 col-form-label">상품가격</label>
-						    <div class="col-sm-10">
-						      <input type="text" class="form-control" id="inputPrdPrice" name="product_price">
-						    </div>
-						  </div>
-						  <div class="row mb-3">
-						    <label for="inputPrdEtc" class="col-sm-2 col-form-label">상품조리법정보</label>
-						    <div class="col-sm-10">
-						      <input type="text" class="form-control" id="inputPrdEtc" name="product_recipe">
-						    </div>
-						  </div>
-						  <div class="row mb-3">
-						    <div class="form-floating">
-							  <textarea class="form-control" id="inputPrdDescription" style="height: 100px" name="product_description"></textarea>
-							  <label for="inputPrdDescription">상품설명</label>
-							</div>
-						  </div>
-						  <!-- SummerNote 상세설명 추가 -->
-						  <div class="row mb-3">
-						    <div class="form-floating">
-							  <textarea class="form-control" id="inputPrdDescription" style="height: 100px" name="product_info"></textarea>
-							  <label for="inputPrdDescription">상품정보</label>
-							</div>
-						  </div>
-						  <!-- SummerNote 상세설명 추가 -->
-						  <div class="mb-3">
-							  <label for="inputPrdUpImg" class="form-label"> 상품 상단 슬라이더 이미지</label>
-							  <input class="form-control" name="files" type="file" id="inputPrdUpImg" multiple="multiple">
-						  </div>
-					<!-- 	  <div class="mb-3">
-							  <label for="inputPrdDownImg" class="form-label"> 상품 하단 정보 이미지</label>
-							  <input class="form-control" type="file" id="inputPrdDownImg" multiple name="prd_downImg">
-						  </div> -->
-						  <label for="inputPrdOrderDate" class="form-label">배송 가능 일자</label>
-						  <div class="row g-2 mb-3">
-							  <div class="col-md">
-							    <div class="form-floating">
-							      	<input type="text" class="form-control datepicker" id="startDate">
-							      	<label for="floatingInputGrid">시작일자</label>
-							    </div>
-							  </div>
-							  <div class="col-md">
-							    <div class="form-floating">
-							 		<input type="text" class="form-control datepicker" id="endDate">
-							    	<label for="floatingSelectGrid">종료일자</label>
-							    </div>
-							  </div>
-						  </div>
-						 
-						 
-						 
-						 
-						 
-						  <button type="submit" class="btn btn-primary">상품디비추가</button>
-						</form>
+                       <table class="table table-striped text-center">
+						  <tr>
+						  	<th>번호<th>상품코드</th><th>상품명</th><th>상품가격</th><th>등록날짜</th><th></th>
+						  </tr>
+						  <c:forEach items="${prdDTO}" var="prd">
+  							  <tr>
+							  	<td>1</td>
+							  	<td>${prd.product_id}</td>
+							  	<td>${prd.product_sub_name}&nbsp;*&nbsp;${prd.product_name}</td>
+							  	<td>${prd.product_price}원</td>
+							  	<td>20211005</td>
+							  	<td>X</td>
+							  </tr>
+						  </c:forEach>
+					   </table>
                     </div>
                 </main>
                 <footer class="py-4 bg-light mt-auto">

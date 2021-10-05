@@ -68,9 +68,7 @@
 						<p class="prd_origin">원산지 : 상품참조</p>
 					</div>
 					<div class="prd_cookinfo">
-						<span>3인분</span>
-						<span>조리 20분</span>
-						<span>준비 30분</span>
+						${prdDTO.product_recipe}
 					</div>
 					<div class="prd_price">
 						판매가 ${prdDTO.product_price}원

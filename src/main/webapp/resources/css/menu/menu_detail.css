@@ -103,14 +103,6 @@ html,body{
 	padding-bottom: 20px;
 	font-size: 16px;
 }
-.prd_cookinfo span::after{
-	content: "|";
-	color: #D5D5D5;
-	padding-left: 10px;
-}
-.prd_cookinfo span:last-child::after {
-	content: "※";
-}
 
 /* 상품 가격 */
 .prd_price{

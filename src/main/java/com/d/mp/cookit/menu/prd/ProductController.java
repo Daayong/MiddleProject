@@ -43,6 +43,7 @@ public class ProductController {
 		return mv;
 	}
 	
+	// 어드민 관련 부분 //////////////////////////////////////////////
 	
 	@RequestMapping("index")
 	public ModelAndView doAdmin() throws Exception{
@@ -52,6 +53,19 @@ public class ProductController {
 		return mv;
 	}
 	
+	@RequestMapping("manage")
+	public ModelAndView doManage() throws Exception{
+		
+		List<ProductDTO> prdAr = productService.getPrdList();
+		
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("prdDTO", prdAr);
+		mv.setViewName("cookit_menu/menu_manage");
+		
+		return mv;
+	}
+	
+	// 어드민 관련 부분 끝 ////////////////////////////////////////////
 	@PostMapping("prdUpload")
 	public ModelAndView setInsert(ProductDTO productDTO, MultipartFile [] files) throws Exception{
 
@@ -62,7 +76,7 @@ public class ProductController {
 		int result = productService.setInsert(productDTO, files);
 		
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("cookit_menu/menu_add");
+		mv.setViewName("cookit_menu/menu_result");
 		mv.addObject("result", result);
 		
 		return mv;

@@ -73,7 +73,10 @@
 									${prd.product_price}
 								</div>
 								<div class="item_review">
-									<h3>별점하고 리뷰들개수</h3>
+									<ul>
+										<li></li>
+										<li>리뷰 4,000</li>
+									</ul>
 								</div>
 							</div>
 							<div class="item_btnbox">
@@ -89,6 +92,9 @@
 					</c:forEach>	
 				</div>
 				<div class="pager_wrap">
+					<ul class="pager">
+						<li class="pager_item"><a href="#">1</a></li>
+					</ul>
 				</div>
 			</div>
 		</div>

@@ -118,8 +118,21 @@
 	width: 100%;
 	height: 40px;
 	margin-top: 15px;
-	background-color: gray;
-	opacity: 0.5;
+}
+.item_review ul li{
+	display: inline-block;
+	line-height: 16px;
+}
+.item_review ul li:first-child{
+	background: url("../../images/pd/ico_set.png") no-repeat -374px 0;
+	width: 88px;
+	height: 14px;
+}
+.item_review ul li:last-child::before{
+	content: "|";
+	color: #BDBDBD;
+	padding-right: 10px;
+	padding-left: 10px;
 }
 .item_btnbox{
 	width: 100%;
@@ -138,8 +151,20 @@
 	width: 70%;
 	height: 80px;
 	margin: 130px auto 130px auto;
-	background-color: lime;
-	opacity: 0.5;
+}
+.pager{
+	width: 50px;
+	height: 50px;
+	margin: 0 auto;
+	background-color: #4C4C4C;
+}
+.pager_item{
+	text-align: center;
+	line-height: 50px;
+}
+.pager_item a{
+	font-size: 20px;
+	color: white;
 }
 
 
