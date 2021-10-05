@@ -19,4 +19,8 @@ public class FaqDAO {
 		return sqlSession.selectList(NAMESPACE+"getList");
 	}
 	
+	//insert
+	public int setInsert(FaqDTO faqDTO) throws Exception{
+		return sqlSession.insert(NAMESPACE+"setInsert", faqDTO);
+	}
 }

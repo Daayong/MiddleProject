@@ -239,6 +239,7 @@ div.input_wrap{
     padding-right: 44px;
 }
 
+
 /* 펼치기 전 화살표 표시 */
 .list_acco li .head a:before {
     content: '';
@@ -276,7 +277,7 @@ div.input_wrap{
     left: 32px;
     font-size: 22px;
     line-height: 32px;
-    color: #606060;
+    color: #202020;
     font-weight: 700;
 }
 

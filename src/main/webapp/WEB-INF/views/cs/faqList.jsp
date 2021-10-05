@@ -136,7 +136,7 @@
 	            	<div class="head" style="cursor: pointer;">
 	               		<a  class="accord_toggle"  >
 	                    	<div class="tit">
-	                        	<strong id="q" style="color: #101010" >Q</strong>${dto.faq_subject}
+	                        	<strong id="q" >Q</strong>${dto.faq_subject}
 	                        <span class="cate"><span class="hide">해당 질문 분류</span>${dto.faq_type}</span>
 	                    </div>     
 	                    <span class="hide">내용 닫기</span>
@@ -149,7 +149,7 @@
            		</li>
            		
            		</c:forEach>
-	
+
 			</ul>
 			</div>	
 								

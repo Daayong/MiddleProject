@@ -7,7 +7,12 @@
   
   <!-- list 불러오기 -->
   <select id="getList" resultType="com.d.mp.cs.faq.FaqDTO">
-  	SELECT * FROM FAQ
+  	SELECT * FROM faq ORDER BY faq_id DESC
   </select>
+  
+  <!-- faq 글 추가 -->
+  <insert id="setInsert" parameterType="com.d.mp.cs.faq.FaqDTO">
+  	INSERT INTO faq VALUES(faq_seq.nextval, #{faq_type}, #{faq_subject}, #{faq_content})
+  </insert>
   
   </mapper>
