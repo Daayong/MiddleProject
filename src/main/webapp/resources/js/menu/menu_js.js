@@ -2,8 +2,8 @@
 
 $(".click_menu").on("click", function() {
 	
-	let prd_code = $(this).children("#prd_code").val();
-	location.href="./menu_detail?prd_code=" + prd_code;
+	let id = $(this).children("#product_id").val();
+	location.href="./menu_detail?product_id=" + id;
 	/* location.href="cookit_menu/menu_detail?prdNum";  => 나중에 DB연결 후 상품 번호 전달 */
 	
 });
@@ -64,6 +64,25 @@ $(document).ready(function() {
 	$(".productInfo").hide();
 	$(".reviews").hide();
 	$(".orderHelp").hide();
+});
+
+/* 배송안내 더보기 버튼 */
+let dropBtnValue = $(".dropBtn_hide").attr("data-text-hide");
+
+$(".dropBtn").on("click", function(){
+	
+	if(dropBtnValue == "off"){
+		$(this).parent().next().css("display", "block");
+		$(this).children(".downArrow").css("transform", "rotate(-90deg)");
+		dropBtnValue = "on";
+		$(".dropBtn_hide").attr("data-text-hide", dropBtnValue);
+	}else{
+		$(this).parent().next().css("display", "none");
+		$(this).children(".downArrow").css("transform", "rotate(90deg)");
+		dropBtnValue = "off";
+		$(".dropBtn_hide").attr("data-text-hide", dropBtnValue);
+	}
+
 });
 
 /* 슬라이더 */

@@ -2,35 +2,33 @@ package com.d.mp.cookit.menu.prd;
 
 public class ProductFilesDTO {
 	
-	private Long fileNum;
-	private String prd_code;
-	private String fileName;
-	private String oriName;
+	private Long id;
+	private Long product_id;
+	private String product_file_name;
+	private String product_file_ori_name;
 	
 	public Long getFileNum() {
-		return fileNum;
+		return id;
 	}
-	public void setFileNum(Long fileNum) {
-		this.fileNum = fileNum;
+	public void setFileNum(Long id) {
+		this.id = id;
 	}
-	public String getPrd_code() {
-		return prd_code;
+	public Long getProduct_id() {
+		return product_id;
 	}
-	public void setPrd_code(String prd_code) {
-		this.prd_code = prd_code;
+	public void setProduct_id(Long product_id) {
+		this.product_id = product_id;
 	}
-	public String getFileName() {
-		return fileName;
+	public String getProduct_file_name() {
+		return product_file_name;
 	}
-	public void setFileName(String fileName) {
-		this.fileName = fileName;
+	public void setProduct_file_name(String product_file_name) {
+		this.product_file_name = product_file_name;
 	}
-	public String getOriName() {
-		return oriName;
+	public String getProduct_file_ori_name() {
+		return product_file_ori_name;
 	}
-	public void setOriName(String oriName) {
-		this.oriName = oriName;
+	public void setProduct_file_ori_name(String product_file_ori_name) {
+		this.product_file_ori_name = product_file_ori_name;
 	}
-	
-	
 }

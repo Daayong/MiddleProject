@@ -88,12 +88,12 @@ html,body{
 .title{
 	font-size: 30px;
 	font-weight: 700;
-	margin-top: 10px;
+	margin-top: 20px;
 }
 .prd_origin{
 	font-size: 30px;
 	font-weight: 300;
-	margin-top: 10px;
+	margin-top: 15px;
 }
 
 /* 조리법 정보 */
@@ -159,7 +159,7 @@ html,body{
 	height: 64px;
 }
 .zzim_btn::after{
-	background: url('../images/pd/ico_set.png') no-repeat -261px -2px;
+	background: url('../../images/pd/ico_set.png') no-repeat -261px -2px;
 	width: 22px;
 	height: 20px;
 }
@@ -233,7 +233,92 @@ html,body{
 	width: 100%;
 	margin-top:20px;
 }
+.productInfo p{
+	margin-top: 30px;
+}
+.productInfo h3{
+	margin-top: 30px;
+}
+.prdInfo_table{
+	margin-top: 20px;
+	border-collapse: collapse;
+	border-top: 2px solid black;
+	width: 100%;
+}
+.prdInfo_table tr{
+	border-bottom: 1px solid #D5D5D5;
+}
+.prdInfo_table tr td{
+	padding-left: 25px;
+}
+.prdInfo_table tr td:first-child{
+	background-color: #EAEAEA;
+	font-size: 14px;
+	width: 30%;
+}
 
+.orderHelp h3{
+	margin-top: 70px;
+	font-size: 24px;
+	color: black;
+}
+.orderHelp p{
+	position: relative;
+	margin-top: 10px;
+}
+.orderHelp p button{
+	position: absolute;
+	border: 1px solid #D5D5D5;
+	width: 130px;
+	height: 60px;
+	right: 0;
+	bottom: 0;
+}
+.orderHelp_table{
+	margin-top: 20px;
+	border-collapse: collapse;
+	border-top: 2px solid black;
+	width: 100%;
+}
+.dropBtn{
+	position: relative;
+	cursor: pointer;
+	font-size: 20px;
+	color: black;
+	padding-top: 25px;
+	padding-bottom: 25px;
+	border-bottom: 1px solid #D5D5D5;
+}
+.dropBtn_hide{
+	display: none;
+}
+.downArrow{
+	position: absolute;
+	right: 20px;
+	top: 25px;
+	background: url('../../images/common/ico_set.png') no-repeat -1282px -5px;
+	transform: rotate(90deg);
+	width: 17px;
+	height: 30px;
+}
+.dropInfo{
+	border-bottom: 1px solid #D5D5D5;
+	display: none;
+}
+.dropInfo_table{
+	margin-top: 20px;
+	margin-bottom: 20px;
+	border-collapse: collapse;
+	width: 100%;
+}
+.dropInfo_table tr td{
+	padding-top: 20px;
+}
+.dropInfo_table tr td:first-child{
+	width: 30%;
+	vertical-align: top;
+	color: black;
+}
 /* 상세설명 오른쪽박스 장바구니, 선물하기?*/
 .border_hauto{
 	border-left: 1px solid #D5D5D5;

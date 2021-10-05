@@ -24,9 +24,10 @@ public class ProductService {
 	public int setInsert(ProductDTO productDTO, MultipartFile [] files) throws Exception{
 		
 		int result = productDAO.setInsert(productDTO);
+		System.out.println(productDTO.getProduct_id());
 		
 		//1. 어느 폴더 /resources/upload/notice/
-		String realPath = servletContext.getRealPath("/resources/upload/menu/" + productDTO.getPrd_name());
+		String realPath = servletContext.getRealPath("/resources/upload/menu/" + productDTO.getProduct_name());
 		System.out.println(realPath);
 		
 		File menu_file = new File(realPath);
@@ -35,9 +36,9 @@ public class ProductService {
 			String fileName = fileManager.fileSave(menu_file, multipartFile);
 			System.out.println(fileName);
 			ProductFilesDTO productFilesDTO = new ProductFilesDTO();
-			productFilesDTO.setFileName(fileName);
-			productFilesDTO.setOriName(multipartFile.getOriginalFilename());
-			productFilesDTO.setPrd_code(productDTO.getPrd_code());
+			productFilesDTO.setProduct_file_name(fileName);
+			productFilesDTO.setProduct_file_ori_name(multipartFile.getOriginalFilename());
+			productFilesDTO.setProduct_id(productDTO.getProduct_id());
 			
 			result = productDAO.setFile(productFilesDTO);
 		}

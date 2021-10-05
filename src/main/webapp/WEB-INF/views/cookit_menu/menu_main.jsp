@@ -61,16 +61,16 @@
 					<c:forEach items="${prdDTO}" var="prd">
 						<div class="item_box">
 							<div class="click_menu"> <!-- div 버튼 만들기 -->
-								<input type="hidden" value="${prd.prd_code}" id="prd_code">
+								<input type="hidden" value="${prd.product_id}" id="product_id">
 								<div class="item_image">
-									<img alt="test" src="../resources/upload/menu/${prd.prd_name}/${prd.prd_name}.jpg">
+									<img alt="test" src="../resources/upload/menu/${prd.product_name}/${prd.product_name}.jpg">
 								</div>
-								<p class="etc_info">${prd.prd_etc}</p>
+								<p class="etc_info">${prd.product_recipe}</p>
 								<div class="item_title">
-									${prd.prd_name}
+									${prd.product_name}
 								</div>
 								<div class="item_price">
-									${prd.prd_price}
+									${prd.product_price}
 								</div>
 								<div class="item_review">
 									<h3>별점하고 리뷰들개수</h3>

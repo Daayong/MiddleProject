@@ -32,8 +32,8 @@
 					<div class="image_in">
 						<ul id="lightSlider2">
 							<!-- c:foreach -->
-							<c:forEach items="${prdFileDTO}" var="files" begin="1" end="${fn:length(prdFileDTO)-2}">
-								<li><img alt="in" src="../resources/upload/menu/${prdDTO.prd_name}/${files.fileName}"></li>
+							<c:forEach items="${prdFileDTO}" var="files" begin="0" end="${fn:length(prdFileDTO)-2}">
+								<li><img alt="in" src="../resources/upload/menu/${prdDTO.product_name}/${files.product_file_name}"></li>
 							</c:forEach>
 							<!-- c:foreach -->
 						</ul>
@@ -47,8 +47,8 @@
 						</div>
 						<ul id="lightSlider">
 							<!-- c:foreach -->
-							<c:forEach items="${prdFileDTO}" var="files" varStatus="findex" begin="1" end="${fn:length(prdFileDTO)-2}">
-								<li class="slide_item" value="${findex.index-1}"><img alt="in" src="../resources/upload/menu/${prdDTO.prd_name}/${files.fileName}" width="90px" height="90px"></li>
+							<c:forEach items="${prdFileDTO}" var="files" varStatus="findex" begin="0" end="${fn:length(prdFileDTO)-2}">
+								<li class="slide_item" value="${findex.index}"><img alt="in" src="../resources/upload/menu/${prdDTO.product_name}/${files.product_file_name}" width="90px" height="90px"></li>
 							</c:forEach>
 							<!-- c:foreach -->
 						</ul>
@@ -60,10 +60,10 @@
 				<div class="right_con">
 					<div class="title_info">
 						<div class="sub_title">
-							달콤 갈릭버터의 풍미와 통통새우🍤
+							${prdDTO.product_sub_name}
 						</div>
 						<div class="title">
-							${prdDTO.prd_name}
+							${prdDTO.product_name}
 						</div>
 						<p class="prd_origin">원산지 : 상품참조</p>
 					</div>
@@ -73,7 +73,7 @@
 						<span>준비 30분</span>
 					</div>
 					<div class="prd_price">
-						${prdDTO.prd_price}
+						판매가 ${prdDTO.product_price}원
 					</div>
 					<div class="addme">
 					</div>
@@ -125,8 +125,18 @@
 					</div>
 					<!-- 상품 정보 박스 -->
 					<div class="productInfo">
-						<h1>상품정보란 입니다.</h1>
-						<h3>상품코드: 11111111</h3>
+						<p>상품코드: ${prdDTO.product_id}</p>
+						<h3>함께 포장된 전체 구성품의 개별 정보를 확인하세요!</h3>
+						<table class="prdInfo_table">
+							<tr>
+								<td>본상품구성</td>
+								<td>본상품구성 본상품구성</td>
+							</tr>
+							<tr>
+								<td>식품의유형</td>
+								<td></td>
+							</tr>
+						</table>
 					</div>
 					<!-- 상품 리뷰 박스 -->
 					<div class="reviews">
@@ -134,7 +144,95 @@
 					</div>
 					<!-- 배송 문의 박스 -->
 					<div class="orderHelp">
-						<h1>상품 주문 관련 문의사항 신청하기</h1>
+						<h3>상품 관련 문의해 주세요.</h3>
+						<p>고객님의 질문에 정성껏 빠르게 답변해 드리겠습니다.<br>
+						작성해주신 문의내역 및 답변은 MY쿡킷>나의활동>1:1문의 내역 메뉴에서 확인 가능합니다.
+						<button type="button">1:1문의</button></p>
+						<table class="orderHelp_table">
+							<tr>
+								<td class="dropBtn">배송안내<div class="downArrow"></div>
+								<div class="dropBtn_hide" data-text-hide="off">hide</div>
+								</td>
+							</tr>
+							<tr class="dropInfo">
+								<td>
+									<table class="dropInfo_table">
+										<tr>
+											<td>배송지역</td>
+											<td>서울, 경기, 인천, 청주, 대전, 천안, 아산, 세종 (일부 지역 제외) 배송 가능 여부 확인</td>
+										</tr>
+										<tr>
+											<td>배송비</td>
+											<td>3,000원 (4만원 이상 구매 무료배송)</td>
+										</tr>
+										<tr>
+											<td>주문마감/배송정보</td>
+											<td>
+											<p>주문 마감 시간은 평일 오전 7시입니다.</p>
+
+											<p>토·일·공휴일은 마감이 없으며, 다음날인 일·월·공휴일 다음날은 배송이 없습니다.</p>
+											
+											<p>배송은 주문 시 지정한 배송일에 집 앞으로 새벽 배송(오전 7시 이전) 됩니다.  다만 일부 지역은 새벽이 아닌 전일 저녁 시간에 배송될 수 있으나, 모든 쿡킷은 배송 시간과 관계없이 아침까지 품질에 문제 없도록 보냉 포장하여 배송하오니 아침에 발견하더라도 안심하고 이용 부탁드립니다.</p>
+											
+											<p>지정한 배송일 오전 7시 이전에 배송될 수 있도록 노력하고 있으나, 교통상황 및 기상에 따라 1~2시간 정도 배송이 지연될 수 있습니다.</p>
+											
+											<p>고객님과 연락이 어려운 새벽에 배송되어, 새벽출입이 제한되는 곳(카드키로만 출입되는 공동현관 등)은 배송이 어렵습니다. 위의 경우 새벽 출입 여부를 확인하신 후, 주문시 '공동현관 출입방법'을 자세히 적어주시기 바랍니다.</p>
+											
+											<p>공동현관 출입방법 미기재 및 오기재로 인해 배송이 어려운 경우 공동현관 앞 또는 경비실로 대응 배송될 수 있으며, 반송될 경우 취소/반품/환불이 불가합니다.</p>
+											
+											<p>새벽배송 지역이라도 회사, 관공서, 학교, 기숙사, 병원, 시장, 공단, 산간 등은 배송이 불가합니다.</p>
+											</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+							<tr>
+								<td class="dropBtn">변경/취소/반품 안내<div class="downArrow"></div></td>
+								<td class="dropInfo"></td>
+							</tr>
+							<tr class="dropInfo">
+								<td>
+									<table class="dropInfo_table">
+										<tr>
+											<td>변경/취소 안내</td>
+											<td>서울, 경기, 인천, 청주, 대전, 천안, 아산, 세종 (일부 지역 제외) 배송 가능 여부 확인</td>
+										</tr>
+										<tr>
+											<td>교환/반품 신청 기간</td>
+											<td>3,000원 (4만원 이상 구매 무료배송)</td>
+										</tr>
+										<tr>
+											<td>교환/반품 불가 안내</td>
+											<td>
+											<p>주문 마감 시간은 평일 오전 7시입니다.</p>
+
+											<p>토·일·공휴일은 마감이 없으며, 다음날인 일·월·공휴일 다음날은 배송이 없습니다.</p>
+											
+											<p>배송은 주문 시 지정한 배송일에 집 앞으로 새벽 배송(오전 7시 이전) 됩니다.  다만 일부 지역은 새벽이 아닌 전일 저녁 시간에 배송될 수 있으나, 모든 쿡킷은 배송 시간과 관계없이 아침까지 품질에 문제 없도록 보냉 포장하여 배송하오니 아침에 발견하더라도 안심하고 이용 부탁드립니다.</p>
+											
+											<p>지정한 배송일 오전 7시 이전에 배송될 수 있도록 노력하고 있으나, 교통상황 및 기상에 따라 1~2시간 정도 배송이 지연될 수 있습니다.</p>
+											
+											<p>고객님과 연락이 어려운 새벽에 배송되어, 새벽출입이 제한되는 곳(카드키로만 출입되는 공동현관 등)은 배송이 어렵습니다. 위의 경우 새벽 출입 여부를 확인하신 후, 주문시 '공동현관 출입방법'을 자세히 적어주시기 바랍니다.</p>
+											
+											<p>공동현관 출입방법 미기재 및 오기재로 인해 배송이 어려운 경우 공동현관 앞 또는 경비실로 대응 배송될 수 있으며, 반송될 경우 취소/반품/환불이 불가합니다.</p>
+											
+											<p>새벽배송 지역이라도 회사, 관공서, 학교, 기숙사, 병원, 시장, 공단, 산간 등은 배송이 불가합니다.</p>
+											</td>
+										</tr>
+										<tr>
+											<td>반품 안내</td>
+											<td>
+											</td>
+										</tr>
+										<tr>
+											<td>환불 안내</td>
+											<td>
+											</td>
+										</tr>
+									</table>
+								</td>
+							</tr>
+						</table>
 					</div>
 				</div>
 				<div class="border_hauto"><!-- border auto -->

@@ -3,68 +3,55 @@ package com.d.mp.cookit.menu.prd;
 
 public class ProductDTO {
 	
-	private String prd_code;
-	private String prd_name;
-	private String prd_subName;
-	private String prd_etc;
-	private String prd_description;
-	private String prd_info;
-	private Long prd_price;
-	private Double prd_satisfaction;
-	private Long cnt_review;
+	private Long product_id;
+	private String product_name;
+	private String product_sub_name;
+	private String product_recipe;
+	private String product_description;
+	private String product_info;
+	private Long product_price;
 	
-	public String getPrd_description() {
-		return prd_description;
+	
+	public Long getProduct_id() {
+		return product_id;
 	}
-	public void setPrd_description(String prd_description) {
-		this.prd_description = prd_description;
+	public void setProduct_id(Long product_id) {
+		this.product_id = product_id;
 	}
-	public String getPrd_info() {
-		return prd_info;
+	public String getProduct_name() {
+		return product_name;
 	}
-	public void setPrd_info(String prd_info) {
-		this.prd_info = prd_info;
+	public void setProduct_name(String product_name) {
+		this.product_name = product_name;
 	}
-	public String getPrd_code() {
-		return prd_code;
+	public String getProduct_sub_name() {
+		return product_sub_name;
 	}
-	public void setPrd_code(String prd_code) {
-		this.prd_code = prd_code;
+	public void setProduct_sub_name(String product_sub_name) {
+		this.product_sub_name = product_sub_name;
 	}
-	public String getPrd_name() {
-		return prd_name;
+	public String getProduct_recipe() {
+		return product_recipe;
 	}
-	public void setPrd_name(String prd_name) {
-		this.prd_name = prd_name;
+	public void setProduct_recipe(String product_recipe) {
+		this.product_recipe = product_recipe;
 	}
-	public String getPrd_subName() {
-		return prd_subName;
+	public String getProduct_description() {
+		return product_description;
 	}
-	public void setPrd_subName(String prd_subName) {
-		this.prd_subName = prd_subName;
+	public void setProduct_description(String product_description) {
+		this.product_description = product_description;
 	}
-	public String getPrd_etc() {
-		return prd_etc;
+	public String getProduct_info() {
+		return product_info;
 	}
-	public void setPrd_etc(String prd_etc) {
-		this.prd_etc = prd_etc;
+	public void setProduct_info(String product_info) {
+		this.product_info = product_info;
 	}
-	public Long getPrd_price() {
-		return prd_price;
+	public Long getProduct_price() {
+		return product_price;
 	}
-	public void setPrd_price(Long prd_price) {
-		this.prd_price = prd_price;
-	}
-	public Double getPrd_satisfaction() {
-		return prd_satisfaction;
-	}
-	public void setPrd_satisfaction(Double prd_satisfaction) {
-		this.prd_satisfaction = prd_satisfaction;
-	}
-	public Long getCnt_review() {
-		return cnt_review;
-	}
-	public void setCnt_review(Long cnt_review) {
-		this.cnt_review = cnt_review;
+	public void setProduct_price(Long product_price) {
+		this.product_price = product_price;
 	}
 }

@@ -47,10 +47,14 @@
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
                         <div class="nav">
-                            <div class="sb-sidenav-menu-heading">Core</div>
-                            <a class="nav-link" href="index.html">
+                            <div class="sb-sidenav-menu-heading">메뉴</div>
+                            <a class="nav-link" href="index">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                Dashboard
+                                상품추가
+                            </a> 
+                            <a class="nav-link" href="">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                상품추가
                             </a> 
                         </div>
                     </div>
@@ -64,46 +68,40 @@
                 <main>
                     <div class="container-fluid px-4 mt-5">
                        <form class="col-sm-8" action="prdUpload" method="post" enctype="multipart/form-data">
-                       	  <div class="row mb-3">
-						  <label for="inputPrdName" class="col-sm-2 col-form-label">상품코드</label>
-						  <div class="col-sm-10">
-						    <input type="text" class="form-control" id="inputPrdName" name="prd_code">
-						  </div>
-						  </div>
 						  <div class="row mb-3">
 						    <label for="inputPrdName" class="col-sm-2 col-form-label">상품명</label>
 						    <div class="col-sm-10">
-						      <input type="text" class="form-control" id="inputPrdName" name="prd_name">
+						      <input type="text" class="form-control" id="inputPrdName" name="product_name">
 						    </div>
 						  </div>
 						  <div class="row mb-3">
 						    <label for="inputPrdSubName" class="col-sm-2 col-form-label">상품서브명</label>
 						    <div class="col-sm-10">
-						      <input type="text" class="form-control" id="inputPrdSubName" name="prd_subName">
+						      <input type="text" class="form-control" id="inputPrdSubName" name="product_sub_name">
 						    </div>
 						  </div>
 						  <div class="row mb-3">
 						    <label for="inputPrdPrice" class="col-sm-2 col-form-label">상품가격</label>
 						    <div class="col-sm-10">
-						      <input type="text" class="form-control" id="inputPrdPrice" name="prd_price">
+						      <input type="text" class="form-control" id="inputPrdPrice" name="product_price">
 						    </div>
 						  </div>
 						  <div class="row mb-3">
 						    <label for="inputPrdEtc" class="col-sm-2 col-form-label">상품조리법정보</label>
 						    <div class="col-sm-10">
-						      <input type="text" class="form-control" id="inputPrdEtc" name="prd_etc">
+						      <input type="text" class="form-control" id="inputPrdEtc" name="product_recipe">
 						    </div>
 						  </div>
 						  <div class="row mb-3">
 						    <div class="form-floating">
-							  <textarea class="form-control" id="inputPrdDescription" style="height: 100px" name="prd_description"></textarea>
+							  <textarea class="form-control" id="inputPrdDescription" style="height: 100px" name="product_description"></textarea>
 							  <label for="inputPrdDescription">상품설명</label>
 							</div>
 						  </div>
 						  <!-- SummerNote 상세설명 추가 -->
 						  <div class="row mb-3">
 						    <div class="form-floating">
-							  <textarea class="form-control" id="inputPrdDescription" style="height: 100px" name="prd_info"></textarea>
+							  <textarea class="form-control" id="inputPrdDescription" style="height: 100px" name="product_info"></textarea>
 							  <label for="inputPrdDescription">상품정보</label>
 							</div>
 						  </div>

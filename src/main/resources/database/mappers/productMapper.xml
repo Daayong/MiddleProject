@@ -5,21 +5,24 @@
   
   <mapper namespace="com.d.mp.cookit.menu.prd.ProductDAO">
   	<insert id="setInsert" parameterType="ProductDTO">
-  		insert into product (prd_code, prd_name, prd_subName, prd_etc, prd_description, prd_info, prd_price, prd_satisfaction, cnt_review)
-  		values (#{prd_code}, #{prd_name}, #{prd_subName}, #{prd_etc}, #{prd_description}, #{prd_info}, #{prd_price}, 0, 0)
+  		<selectKey order="BEFORE" resultType="Long" keyProperty="product_id">
+  			SELECT PRD_SEQ.nextval from dual
+  		</selectKey>
+  		insert into product (product_id, product_name, product_sub_name, product_recipe, product_description, product_info, product_price)
+  		values (#{product_id}, #{product_name}, #{product_sub_name}, #{product_recipe}, #{product_description}, #{product_info}, #{product_price})
   	</insert>
   	<insert id="setFile" parameterType="ProductFilesDTO">
-  		insert into productFiles (fileNum, prd_code, fileName, oriName)
-  		values (PF_SEQ.nextval, #{prd_code}, #{fileName}, #{oriName})
+  		insert into product_file (id, product_id, product_file_name, product_file_ori_name)
+  		values (PF_SEQ.nextval, #{product_id}, #{product_file_name}, #{product_file_ori_name})
   	</insert>
   	<select id="getFile" parameterType="ProductDTO" resultType="ProductFilesDTO">
-  		select * from productFiles where prd_code = #{prd_code}
+  		select * from product_file where product_id = #{product_id}
   	</select>
   	
   	<select id="getPrdList" resultType="ProductDTO">
   		select * from product
   	</select>
   	<select id="getPrdOne" parameterType="ProductDTO" resultType="ProductDTO">
-  		select * from product where prd_code = #{prd_code}
+  		select * from product where product_id = #{product_id}
   	</select>
   </mapper>
