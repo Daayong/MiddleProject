@@ -48,5 +48,19 @@ public class FaqController {
 		return mv;
 	}
 	
+	
+	@RequestMapping(value = "/cs/faqTypeList.do")
+		public ModelAndView getTypeList(HttpServletRequest request, HttpServletResponse response, FaqDTO faqDTO) throws Exception{
+		
+		String faq_type = request.getParameter("faq_type");
+		
+		List<FaqDTO> ar = faqService.getTypeList(faqDTO);
+		
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("faq_type", faq_type);
+		mv.addObject("faqlist", ar);
+		mv.setViewName("cs/faqList");
+		return mv;
+	}
 
 }	

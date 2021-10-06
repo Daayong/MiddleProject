@@ -80,42 +80,49 @@
 							<ul>
 											
 							<li class="tab_item on"  id="all" >
-								<button type="button" value="전체"><span>전체</span></button>
+							 <button type="button" value="전체"><span>전체</span></button>
 							</li>
 						
 							<li class="tab_item" id="ship" >
 								<!-- <a class="tab_link" ><span>배송</span></a> -->
-								<button type="button" value="배송"><span>배송</span></button>
+								 <button type="button" value="배송"><span>배송</span></button>
 							</li>
 						
 							<li class="tab_item" id="pay" >
-								<button type="button" value="결제/영수증"><span>결제/영수증</span></button>
+								<button type="button" value="결제/영수증"><span>결제/영수증</span></button> 
+								 
 							</li>
 							<li class="tab_item "  id="order" >
-								<button type="button" value="주문"><span>주문</span></button>
+								 <button type="button" value="주문"><span>주문</span></button> 
+								 
 							</li>
 						
 							<li class="tab_item " id="cancel" >
-								<button type="button" value="취소/반품"><span>취소/반품</span></button>
+								<button type="button" value="취소/반품"><span>취소/반품</span></button> 
+								 
 							</li>
 						
 							
 							<li class="tab_item" id="rv" >
-							<button type="button" value="리뷰/포인트"><span>리뷰/포인트</span></button>
+								<button type="button" value="리뷰/포인트"><span>리뷰/포인트</span></button> 
+							 
 							</li>
 							
 					
 							<li class="tab_item" id="gift"  >
-								<button type="button" value="선물하기"><span>선물하기</span></button>
+								<button type="button" value="선물하기"><span>선물하기</span></button> 
+								 
 							</li>
 					
 							
 							<li class="tab_item " id="mem">
-								<button type="button" value="회원"><span>회원</span></button>
+								 <button type="button" value="회원"><span>회원</span></button> 
+								 
 							</li>
 							
 							<li class="tab_item "  id="etc" >
-								<button type="button" value="기타"><span>기타</span></button>
+								<button type="button" value="기타"><span>기타</span></button> 
+								 
 							</li>	
 					</ul>
 				</div>
@@ -132,6 +139,7 @@
 				<ul class="faqListArea">
 				
 			<c:forEach items="${faqlist}" var="dto">
+				
 		  		<li class="faq_list">
 	            	<div class="head" style="cursor: pointer;">
 	               		<a  class="accord_toggle"  >
@@ -208,17 +216,23 @@
 		}
 		
 	});
-		
+	
+
+	
 	    $(function(){
 	    	$("button").on('click',function(){
 	    			var faq_type = $(this).val();
 	    			console.log(faq_type);//버튼이 클릭 되었을 때 그 버튼의 value를 var kind로 가져와서	
 	    			$.ajax({
-	    				 url : './faqTypeList.do', // 이 주소로 
+	    				 url : '/cs/faqTypeList.do', // 이 주소로 
 	    	              type : "post", // 포스트 방식으로 보내는데
 	    	              cache: false,
 	    	              headers: {"cache-control":"no-cache", "pragma": "no-cache"},
-	    	              data : {"faq_type" : faq_type}, 
+	    	              data : {
+	    	            	  id : $(this).val(),
+	    	            	  "faq_type" : faq_type
+	    	            	  
+	    	              }, 
 	    	              success : function(data){ 
 	    	                 console.log(data);
 	    	                

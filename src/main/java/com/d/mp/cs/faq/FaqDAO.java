@@ -33,5 +33,9 @@ public class FaqDAO {
 		return sqlSession.selectOne(NAMESPACE+"getCount", pager);
 	}
 	
+	public List<FaqDTO> getTypeList(FaqDTO faqDTO) throws Exception{
+		return sqlSession.selectList(NAMESPACE+"getTypeList", faqDTO);
+	}
+	
 	
 }

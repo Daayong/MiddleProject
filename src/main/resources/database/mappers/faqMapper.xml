@@ -15,17 +15,19 @@
   	INSERT INTO faq VALUES(faq_seq.nextval, #{faq_type}, #{faq_subject}, #{faq_content})
   </insert>
   
-  <select id="getTypeList" parameterType="Map" resultType="FaqDTO" >
-  	SELECT * FROM faq WHERE faq_type LIKE '%'||#{faq_type}||'%'
-		  
-  	
-  </select>
+
   
   <select id="getCount" parameterType="Pager" resultType="Long">
   	
   SELECT COUNT(faq_id) FROM faq
  		WHERE faq_type
  		LIKE '%' || #{faq_type} || '%'
+  </select>
+  
+  <select id="getTypeList" parameterType="FaqDTO" resultType="FaqDTO">
+  
+  	SELECT * FROM faq WHERE faq_type LIKE '%' || #{faq_type} || '%' 
+  
   </select>
   
   <!-- 삭제 -->
