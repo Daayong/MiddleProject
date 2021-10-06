@@ -1,6 +1,7 @@
 package com.d.mp.cs.faq;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,7 @@ public class FaqDAO {
 	
 	@Autowired
 	private SqlSession sqlSession;
+	
 	
 	private String NAMESPACE="com.d.mp.cs.faq.FaqDAO.";
 	
@@ -24,10 +26,11 @@ public class FaqDAO {
 		return sqlSession.insert(NAMESPACE+"setInsert", faqDTO);
 	}
 	
-	//type별 list 보기
-	/*
-	 * public List<FaqDTO> getTypeList(FaqDTO faqDTO) throws Exception{ return
-	 * sqlSession.selectList(NAMESPACE+"getTypeList", faqDTO); }
-	 */	
+	public List<FaqDTO> getTypeList(FaqDTO faqDTO) throws Exception{ 
+			
+	     return sqlSession.selectList(NAMESPACE+"getTypeList", faqDTO);
+	}
+
+	
 	
 }

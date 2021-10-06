@@ -1,6 +1,7 @@
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
+
 <html>
 <head>
 
@@ -8,8 +9,7 @@
 <link href="${pageContext.request.contextPath}/resources/css/csMain.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/css/faqList.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/css/paging.css" rel="stylesheet">
-
-
+<script src="http://code.jquery.com/jquery-latest.js"></script>
 	<title>Home</title>
 	
 	<style>
@@ -80,41 +80,42 @@
 							<ul>
 											
 							<li class="tab_item on"  id="all" >
-								<a class="tab_link "><span>전체</span></a>
+								<button type="button" value="전체"><span>전체</span></button>
 							</li>
 						
 							<li class="tab_item" id="ship" >
-								<a class="tab_link" ><span>배송</span></a>
+								<!-- <a class="tab_link" ><span>배송</span></a> -->
+								<button type="button" value="배송"><span>배송</span></button>
 							</li>
 						
 							<li class="tab_item" id="pay" >
-								<a class="tab_link" ><span>결제/영수증</span></a>
+								<button type="button" value="결제/영수증"><span>결제/영수증</span></button>
 							</li>
 							<li class="tab_item "  id="order" >
-								<a class="tab_link" ><span>주문</span></a>
+								<button type="button" value="주문"><span>주문</span></button>
 							</li>
 						
 							<li class="tab_item " id="cancel" >
-								<a  class="tab_link" ><span>취소/반품</span></a>
+								<button type="button" value="취소/반품"><span>취소/반품</span></button>
 							</li>
 						
 							
 							<li class="tab_item" id="rv" >
-								<a  class="tab_link" ><span>리뷰/포인트</span></a>
+							<button type="button" value="리뷰/포인트"><span>리뷰/포인트</span></button>
 							</li>
 							
 					
 							<li class="tab_item" id="gift"  >
-								<a class="tab_link" ><span>선물하기</span></a>
+								<button type="button" value="선물하기"><span>선물하기</span></button>
 							</li>
 					
 							
 							<li class="tab_item " id="mem">
-								<a  class="tab_link" ><span>회원</span></a>
+								<button type="button" value="회원"><span>회원</span></button>
 							</li>
 							
 							<li class="tab_item "  id="etc" >
-								<a class="tab_link" ><span>기타</span></a>
+								<button type="button" value="기타"><span>기타</span></button>
 							</li>	
 					</ul>
 				</div>
@@ -208,8 +209,30 @@
 		}
 		
 	});
+		
+	    $(function(){
+	    	$("button").on('click',function(){
+	    			var type = $(this).val();  //버튼이 클릭 되었을 때 그 버튼의 value를 var kind로 가져와서	
+	    			$.ajax({
+	    				 url : './bbs_kind.nhn', // 이 주소로 
+	    	              type : "post", // 포스트 방식으로 보내는데
+	    	              cache: false,
+	    	              headers: {"cache-control":"no-cache", "pragma": "no-cache"},
+	    	              data : {"type" : type}, // kind를 kind로 명명하여 보내겠다
+	    	              success : function(data){ 
+	    	                 console.log(data);
+	    	                
+	    	                 $('.faqListArea').html(data); //성공할시에 body부분에 data라는 html문장들을 다 적용시키겠다
+	    	              },
+	    	              error : function(data){
+	    	            	 alert('error');
+	    	               
+	    	              }//error
+	    			})//ajax
+	    		});//click
+	    });//ready
 	
-
+	
 </script>
 
 

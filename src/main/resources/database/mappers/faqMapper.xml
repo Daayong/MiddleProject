@@ -15,10 +15,11 @@
   	INSERT INTO faq VALUES(faq_seq.nextval, #{faq_type}, #{faq_subject}, #{faq_content})
   </insert>
   
-  <!-- 유형별 list 보기 -->
- <!--  <select id="getTypeList" parameterType="com.d.mp.cs.faq.FaqDTO" resultType="com.d.mp.cs.faq.FaqDTO" >
-  	SELECT * FROM faq WHERE faq_type like #{faq_type} ORDER BY faq_id DESC
+  <select id="getTypeList" parameterType="com.d.mp.cs.faq.FaqDTO" resultType="com.d.mp.cs.faq.FaqDTO" >
+  	SELECT * FROM faq WHERE faq_type like '%'||#{faq_type}||'%'
+  	
   </select>
-  -->
   
-   </mapper>
+  
+ 
+  </mapper>
