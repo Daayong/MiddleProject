@@ -123,6 +123,7 @@
 							<img alt="sub2" src="../resources/images/menu/menu_detail/snowcheeze_sub2.png">
 							<img alt="sub3" src="../resources/images/menu/menu_detail/snowcheeze_sub3.png">
 							<img alt="sub4" src="../resources/images/menu/menu_detail/snowcheeze_sub4.png">
+							${prdDTO.product_description}
 						</div>
 					</div>
 					<!-- 상품 정보 박스 -->
