@@ -130,10 +130,9 @@
 				<div class="list_acco ui_accordion" data-accord-group="faq_list">
 				
 				<ul class="faqListArea">
-		
-			
-				<c:forEach items="${faqlist}" var="dto">
-		  		<li>
+				
+			<c:forEach items="${faqlist}" var="dto">
+		  		<li class="faq_list">
 	            	<div class="head" style="cursor: pointer;">
 	               		<a  class="accord_toggle"  >
 	                    	<div class="tit">
@@ -212,17 +211,18 @@
 		
 	    $(function(){
 	    	$("button").on('click',function(){
-	    			var type = $(this).val();  //버튼이 클릭 되었을 때 그 버튼의 value를 var kind로 가져와서	
+	    			var faq_type = $(this).val();
+	    			console.log(faq_type);//버튼이 클릭 되었을 때 그 버튼의 value를 var kind로 가져와서	
 	    			$.ajax({
-	    				 url : './bbs_kind.nhn', // 이 주소로 
+	    				 url : './faqTypeList.do', // 이 주소로 
 	    	              type : "post", // 포스트 방식으로 보내는데
 	    	              cache: false,
 	    	              headers: {"cache-control":"no-cache", "pragma": "no-cache"},
-	    	              data : {"type" : type}, // kind를 kind로 명명하여 보내겠다
+	    	              data : {"faq_type" : faq_type}, 
 	    	              success : function(data){ 
 	    	                 console.log(data);
 	    	                
-	    	                 $('.faqListArea').html(data); //성공할시에 body부분에 data라는 html문장들을 다 적용시키겠다
+	    	                 $('.faq_list').html(data); 
 	    	              },
 	    	              error : function(data){
 	    	            	 alert('error');

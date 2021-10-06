@@ -48,18 +48,5 @@ public class FaqController {
 		return mv;
 	}
 	
-	@RequestMapping(value = "/bbs_kind.nhn")
-	   public ModelAndView bbs_kind(
-	         HttpServletRequest request, HttpServletResponse response, FaqDTO faqDTO) throws Exception {
-		   String type = request.getParameter("type");
-	      
-	      List<FaqDTO> ar = faqService.getTypeList(faqDTO); // 카테고리에 해당하는 부분만 불러오기
-	      
-	      ModelAndView mv = new ModelAndView();
-	      mv.addObject("type",type);
-	      mv.addObject("faqList", ar);
-	      mv.setViewName("cs/faqList");
-	      return mv;
-	   }
-	
+
 }	

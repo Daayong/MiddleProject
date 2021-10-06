@@ -5,7 +5,15 @@
  "http://mybatis.org/dtd/mybatis-3-config.dtd">
   
   <configuration>
-
+	<typeAliases>
+	
+		<typeAlias type="com.d.mp.cs.faq.FaqDTO" alias="FaqDTO"/>
+		<typeAlias type="java.util.List" alias="List"/>
+  		<typeAlias type="java.lang.Long" alias="Long"/>
+  		<typeAlias type="java.util.Map" alias="Map"/>
+  		<typeAlias type="com.d.mp.util.Pager" alias="Pager"/>
+	
+	</typeAliases>
   	
   	
   </configuration>

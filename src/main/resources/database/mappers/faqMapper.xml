@@ -6,20 +6,32 @@
   <mapper namespace="com.d.mp.cs.faq.FaqDAO">
   
   <!-- list 불러오기 -->
-  <select id="getList" resultType="com.d.mp.cs.faq.FaqDTO">
+  <select id="getList" resultType="FaqDTO">
   	SELECT * FROM faq ORDER BY faq_id DESC
   </select>
   
   <!-- faq 글 추가 -->
-  <insert id="setInsert" parameterType="com.d.mp.cs.faq.FaqDTO">
+  <insert id="setInsert" parameterType="FaqDTO">
   	INSERT INTO faq VALUES(faq_seq.nextval, #{faq_type}, #{faq_subject}, #{faq_content})
   </insert>
   
-  <select id="getTypeList" parameterType="com.d.mp.cs.faq.FaqDTO" resultType="com.d.mp.cs.faq.FaqDTO" >
-  	SELECT * FROM faq WHERE faq_type like '%'||#{faq_type}||'%'
+  <select id="getTypeList" parameterType="Map" resultType="FaqDTO" >
+  	SELECT * FROM faq WHERE faq_type LIKE '%'||#{faq_type}||'%'
+		  
   	
   </select>
   
+  <select id="getCount" parameterType="Pager" resultType="Long">
+  	
+  SELECT COUNT(faq_id) FROM faq
+ 		WHERE faq_type
+ 		LIKE '%' || #{faq_type} || '%'
+  </select>
+  
+  <!-- 삭제 -->
+  <delete id="setDelete" parameterType="FaqDTO" >
+  	DELETE faq WHERE faq_id = #{faq_id}
+  </delete>
   
  
   </mapper>
