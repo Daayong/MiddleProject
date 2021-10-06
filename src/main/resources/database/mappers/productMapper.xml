@@ -19,8 +19,20 @@
   		select * from product_file where product_id = #{product_id}
   	</select>
   	
-  	<select id="getPrdList" resultType="ProductDTO">
+  	<select id="getPrdList" parameterType="ProductDTO" resultType="ProductDTO">
   		select * from product
+  		order by
+  			<choose>
+  				<when test="kind == 'upPrice'">
+  					product_price desc
+  				</when>
+  				<when test="kind == 'downPrice'">
+  					product_price asc
+  				</when>
+  				<otherwise>
+  					product_price
+  				</otherwise>
+  			</choose>
   	</select>
   	<select id="getPrdOne" parameterType="ProductDTO" resultType="ProductDTO">
   		select * from product where product_id = #{product_id}

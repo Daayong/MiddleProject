@@ -60,6 +60,8 @@
 	font-weight: 700;
 }
 
+/* 신메누순 가격순 만족도순 등등 정렬방식.... */
+
 .sort_wrap{
 	position: absolute;
 	right: 0;
@@ -72,9 +74,34 @@
 	text-decoration: none;
 	color: black;
 }
+/* .sortc_wrap a::before{
+	content: "";
+	background: url("../../images/pd/ico_set.png") no-repeat -49px -3px;
+	display: inline-block;
+	margin-right: 5px;
+	width: 14px;
+	height: 11px;
+} */
+.sortc_wrap a::before{
+	content: "";
+}
+
+.sortc_wrap .add a::before{
+	content: "";
+	background: url("../../images/pd/ico_set.png") no-repeat -49px -3px;
+	display: inline-block;
+	margin-right: 5px;
+	width: 14px;
+	height: 11px;
+}
+
 .sortc_wrap a::after{
 	content: "|";
 	padding-left: 8px;
+	padding-right: 8px;
+}
+.sortc_wrap:last-child a::after{
+	content: "";
 }
 
 /* 메뉴 보이는 부분 */

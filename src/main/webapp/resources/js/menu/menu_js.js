@@ -1,4 +1,4 @@
-/* menu_main 페이지 */
+/* =================== menu_main 페이지 */
 
 $(".click_menu").on("click", function() {
 	
@@ -8,7 +8,18 @@ $(".click_menu").on("click", function() {
 	
 });
 
-/* menu_detail 페이지 */
+/* 신메뉴, 인기순, 가격순 등등 정렬하는 부분. */
+$(".sortc_wrap").on("click", function(){
+	
+	$(this).toggleClass('add');
+	
+});
+
+
+
+
+
+/* ============== menu_detail 페이지 */
 $("#description").click(function() {
 	$(".description").show();
 	$(".productInfo").hide();
@@ -57,6 +68,7 @@ $("#orderHelp").click(function() {
 	$(".menuLi:last").css("border-bottom","solid 2px black");
 });
 
+/* 이거 너무 김 더 좋은방법으로 바꾸기 */
 
 /* detail_menu 수량변경시 나타나는 이벤트들 */
 $("#prd_count").change(function(){

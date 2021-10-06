@@ -3,6 +3,9 @@ package com.d.mp.cookit.menu.prd;
 
 public class ProductDTO {
 	
+	// 임시로 해놓은 방식 페이저에들어가야함	
+	private String kind;
+	
 	private Long product_id;
 	private String product_name;
 	private String product_sub_name;
@@ -53,5 +56,17 @@ public class ProductDTO {
 	}
 	public void setProduct_price(Long product_price) {
 		this.product_price = product_price;
+	}
+	
+	
+	
+	public String getKind() {
+		return kind;
+	}
+	public void setKind(String kind) {
+		if(this.kind == null) {
+			this.kind = "";
+		}
+		this.kind = kind;
 	}
 }

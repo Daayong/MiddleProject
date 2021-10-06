@@ -44,9 +44,9 @@ public class ProductController {
 	}
 	
 	@RequestMapping("menu_main")
-	public ModelAndView getPrdList() throws Exception{
+	public ModelAndView getPrdList(ProductDTO productDTO) throws Exception{
 		
-		List<ProductDTO> prdAr = productService.getPrdList();
+		List<ProductDTO> prdAr = productService.getPrdList(productDTO);
 		
 		ModelAndView mv = new ModelAndView();
 		

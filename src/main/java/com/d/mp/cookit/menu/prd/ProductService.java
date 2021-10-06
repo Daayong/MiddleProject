@@ -66,9 +66,9 @@ public class ProductService {
 		return productDAO.getFile(productDTO);
 	}
 	
-	public List<ProductDTO> getPrdList() throws Exception{
+	public List<ProductDTO> getPrdList(ProductDTO productDTO) throws Exception{
 		
-		return productDAO.getPrdList();
+		return productDAO.getPrdList(productDTO);
 	}
 	
 	public ProductDTO getPrdOne(ProductDTO productDTO) throws Exception{

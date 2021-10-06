@@ -46,11 +46,11 @@
 				<p>안녕하세요! COOKIT의 메뉴들 입니다.</p>
 				<p>COOKIT의 주문마감은 오전 7시입니다.</p>
 				<div class="sort_wrap">
-					<div class="sortc_wrap"><a href="#">신메뉴순</a></div>
-					<div class="sortc_wrap"><a href="#">인기메뉴순</a></div>
-					<div class="sortc_wrap"><a href="#">높은가격순</a></div>
-					<div class="sortc_wrap"><a href="#">낮은가격순</a></div>
-					<div class="sortc_wrap"><a href="#">만족도순</a></div>
+					<div class="sortc_wrap"><a href="menu_main" class="sortc_btn">신메뉴순</a></div>
+					<div class="sortc_wrap"><a href="menu_main" class="sortc_btn">인기메뉴순</a></div>
+					<div class="sortc_wrap"><a href="menu_main?kind=upPrice" class="sortc_btn">높은가격순</a></div>
+					<div class="sortc_wrap"><a href="menu_main?kind=downPrice" class="sortc_btn">낮은가격순</a></div>
+					<div class="sortc_wrap"><a href="menu_main" class="sortc_btn">만족도순</a></div>
 				</div>
 			</div>
 			
