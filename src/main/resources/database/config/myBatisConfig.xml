@@ -5,14 +5,7 @@
  "http://mybatis.org/dtd/mybatis-3-config.dtd">
   
   <configuration>
-  	<typeAliases>
-  		
-  		<typeAlias type="com.d.mp.util.Pager" alias="Pager"/>
-  		<typeAlias type="java.util.List" alias="List"/>
-  		<typeAlias type="java.lang.Long" alias="Long"/>
-  		
-  	</typeAliases>
-  
+
   	
   	
   </configuration>

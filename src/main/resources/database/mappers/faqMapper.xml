@@ -15,4 +15,6 @@
   	INSERT INTO faq VALUES(faq_seq.nextval, #{faq_type}, #{faq_subject}, #{faq_content})
   </insert>
   
+  <!-- 유형별 list 보기 -->
+  
   </mapper>
