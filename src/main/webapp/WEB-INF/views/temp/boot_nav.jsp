@@ -35,7 +35,7 @@
 					<a href="#">COOKIT 메뉴</a>
 				</li>
 				<li class="menu_li">
-					<a href="./review/reviewMain">리뷰</a>
+					<a href="${pageContext.request.contextPath}/review/reviewMain">리뷰</a>
 				</li>
 				<li class="menu_li">
 					<a href="#">이벤트</a>

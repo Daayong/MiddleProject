@@ -28,7 +28,7 @@
 .pop_contents .etc_info .rating_star span{background-position:-374px 0;}
 
 /* slide_wrap */
-.pop_contents .slide_wrap {position:relative; width: 780px; overflow: hidden;}
+.pop_contents .slide_wrap {position:relative; width: 780px; overflow: hidden; margin: 0 auto;}
 .pop_contents .slide_track {display:flex;}
 .pop_contents .img_wrap img {width:780px; -webkit-user-drag: none;-moz-user-drag: none;-ms-user-drag: none;user-drag: none;}
 
