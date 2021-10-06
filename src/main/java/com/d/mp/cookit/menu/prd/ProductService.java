@@ -30,6 +30,8 @@ public class ProductService {
 		String main_realPath = servletContext.getRealPath("/resources/upload/menu/main/" + productDTO.getProduct_id());
 		String slider_realPath = servletContext.getRealPath("/resources/upload/menu/slider/" + productDTO.getProduct_id());
 		
+		System.out.println(slider_realPath);
+		
 		File main_file_path = new File(main_realPath);
 		File slider_file_path = new File(slider_realPath);
 		

@@ -61,36 +61,46 @@
 						<!-- 리뷰 및 레시피공유하는 박스 -->
 					</div>
 				</div>
+				
+				<!-- 장바구니 및 찜목록 들어갈때 파라미터값 필요! -->
 				<div class="right_con">
-					<div class="title_info">
-						<div class="sub_title">
-							${prdDTO.product_sub_name}
+					<form action="cart" method="get">
+						<div class="title_info">
+							<div class="sub_title">
+								${prdDTO.product_sub_name}
+								<input type="hidden" value="${prdDTO.product_sub_name}" name="product_sub_name">
+							</div>
+							<div class="title">
+								${prdDTO.product_name}
+								<input type="hidden" value="${prdDTO.product_name}" name="product_name">
+							</div>
+							<p class="prd_origin">원산지 : 상품참조</p>
 						</div>
-						<div class="title">
-							${prdDTO.product_name}
+						<div class="prd_cookinfo">
+							${prdDTO.product_recipe}
+							<input type="hidden" value="${prdDTO.product_recipe}" name="product_recipe">
 						</div>
-						<p class="prd_origin">원산지 : 상품참조</p>
-					</div>
-					<div class="prd_cookinfo">
-						${prdDTO.product_recipe}
-					</div>
-					<div class="prd_price">
-						판매가 ${prdDTO.product_price}원
-					</div>
-					<div class="addme">
-					</div>
-					<div class="prd_cnt">
-						<span class="cnt">수량 0개</span>
-						<span class="price">0원</span>
-					</div>
-					<div class="utiLBox_wrap">
-						<div class="zzim">
-							<button type="button" class="zzim_btn"></button>
+						<div class="prd_price">
+							판매가 ${prdDTO.product_price}원
+							<input type="hidden" value="${prdDTO.product_price}" name="product_price" id="prd_price">
 						</div>
-						<div class="cart">
-							<button type="button" class="cart_btn">장바구니 담기</button>
+						<div class="prd_count">
+							<input type="number" min="0" max="5" name="product_count" id="prd_count" placeholder="수량선택 (최대 5개)">
 						</div>
-					</div>
+						<div class="prd_total">
+							<span class="cnt">수량 <span id="cnt_value">0</span>개</span>
+							<span class="price"><span id="total_value">0</span>원</span>
+							<input type="hidden" value="" name="product_total" id="product_total_price">
+						</div>
+						<div class="utiLBox_wrap">
+							<div class="zzim">
+								<button type="button" class="zzim_btn"></button>
+							</div>
+							<div class="cart">
+								<button type="button" class="cart_btn">장바구니 담기</button>
+							</div>
+						</div>
+					</form>
 				</div>
 			</div>
 		</div>
@@ -116,13 +126,11 @@
 							<div class="leftbox_banner">
 								<img alt="banner" src="../resources/images/menu/menu_detail/leftbox_banner.png">
 							</div>
+							<div class="leftbox_banner">
+								<img alt="banner" src="../resources/images/menu/menu_detail/leftbox_banner2.jpg">
+							</div>
 						</div>
 						<div class="description_box2">
-							<img alt="main" src="../resources/images/menu/menu_detail/snowcheeze_main.png">
-							<img alt="sub1" src="../resources/images/menu/menu_detail/snowcheeze_sub1.png">
-							<img alt="sub2" src="../resources/images/menu/menu_detail/snowcheeze_sub2.png">
-							<img alt="sub3" src="../resources/images/menu/menu_detail/snowcheeze_sub3.png">
-							<img alt="sub4" src="../resources/images/menu/menu_detail/snowcheeze_sub4.png">
 							${prdDTO.product_description}
 						</div>
 					</div>

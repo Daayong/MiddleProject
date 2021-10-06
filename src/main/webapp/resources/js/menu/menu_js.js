@@ -57,6 +57,18 @@ $("#orderHelp").click(function() {
 	$(".menuLi:last").css("border-bottom","solid 2px black");
 });
 
+
+/* detail_menu 수량변경시 나타나는 이벤트들 */
+$("#prd_count").change(function(){
+	let cnt = $(this).val();
+	let perprice = $("#prd_price").val();
+	let total = parseInt(cnt) * parseInt(perprice);
+	$("#cnt_value").text(cnt);
+	$("#total_value").text(total);
+	
+	$("#product_total_price").val(total);
+});
+
 /* detail_menu 선택한거 아래밑줄표시 */
 /* 페이지 로드시 상세설명 기본값 */
 $(document).ready(function() {
