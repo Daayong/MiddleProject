@@ -1,5 +1,6 @@
 package com.d.mp.cookit.menu.prd;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,9 +23,20 @@ public class ProductController {
 		
 		ProductDTO dto = productService.getPrdOne(productDTO);
 		List<ProductFilesDTO> prdAr = productService.getFile(productDTO);
+		List<ProductFilesDTO> mainFiles = new ArrayList<ProductFilesDTO>();
+		List<ProductFilesDTO> sliderFiles = new ArrayList<ProductFilesDTO>();
+		for(int i=0;i<prdAr.size();i++) {
+			if(prdAr.get(i).getProduct_file_path().equals("main")) {
+				mainFiles.add(prdAr.get(i));
+			}
+			else {
+				sliderFiles.add(prdAr.get(i));
+			}
+		}
 		
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("prdFileDTO", prdAr);
+		mv.addObject("mainFiles", mainFiles);
+		mv.addObject("sliderFiles", sliderFiles);
 		mv.addObject("prdDTO", dto);
 		mv.setViewName("cookit_menu/menu_detail");
 		
