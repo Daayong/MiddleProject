@@ -63,7 +63,7 @@
 							<div class="click_menu"> <!-- div 버튼 만들기 -->
 								<input type="hidden" value="${prd.product_id}" id="product_id">
 								<div class="item_image">
-									<img alt="test" src="../resources/upload/menu/${prd.product_name}/${prd.product_name}.jpg">
+									<img alt="test" src="../resources/upload/menu/main/${prd.product_id}/${prd.product_name}.jpg">
 								</div>
 								<p class="etc_info">${prd.product_recipe}</p>
 								<div class="item_title">

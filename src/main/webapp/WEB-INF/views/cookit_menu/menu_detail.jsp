@@ -32,8 +32,10 @@
 					<div class="image_in">
 						<ul id="lightSlider2">
 							<!-- c:foreach -->
-							<c:forEach items="${prdFileDTO}" var="files" begin="0" end="${fn:length(prdFileDTO)-2}">
-								<li><img alt="in" src="../resources/upload/menu/${prdDTO.product_name}/${files.product_file_name}"></li>
+							<c:forEach items="${prdFileDTO}" var="files">
+								<c:if test="${files.product_file_path eq 'slider'}">
+									<li><img alt="in" src="../resources/upload/menu/slider/${prdDTO.product_id}/${files.product_file_name}"></li>
+								</c:if>
 							</c:forEach>
 							<!-- c:foreach -->
 						</ul>
@@ -47,8 +49,10 @@
 						</div>
 						<ul id="lightSlider">
 							<!-- c:foreach -->
-							<c:forEach items="${prdFileDTO}" var="files" varStatus="findex" begin="0" end="${fn:length(prdFileDTO)-2}">
-								<li class="slide_item" value="${findex.index}"><img alt="in" src="../resources/upload/menu/${prdDTO.product_name}/${files.product_file_name}" width="90px" height="90px"></li>
+							<c:forEach items="${prdFileDTO}" var="files" varStatus="findex">
+								<c:if test="${files.product_file_path eq 'slider'}">
+									<li class="slide_item" value="${findex.index-1}"><img alt="in" src="../resources/upload/menu/slider/${prdDTO.product_id}/${files.product_file_name}" width="90px" height="90px"></li>
+								</c:if>
 							</c:forEach>
 							<!-- c:foreach -->
 						</ul>

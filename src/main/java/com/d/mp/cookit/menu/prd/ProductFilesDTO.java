@@ -2,16 +2,23 @@ package com.d.mp.cookit.menu.prd;
 
 public class ProductFilesDTO {
 	
-	private Long id;
+	private Long product_file_id;
 	private Long product_id;
 	private String product_file_name;
 	private String product_file_ori_name;
+	private String product_file_path;
 	
-	public Long getFileNum() {
-		return id;
+	public Long getProduct_file_id() {
+		return product_file_id;
 	}
-	public void setFileNum(Long id) {
-		this.id = id;
+	public void setProduct_file_id(Long product_file_id) {
+		this.product_file_id = product_file_id;
+	}
+	public String getProduct_file_path() {
+		return product_file_path;
+	}
+	public void setProduct_file_path(String product_file_path) {
+		this.product_file_path = product_file_path;
 	}
 	public Long getProduct_id() {
 		return product_id;

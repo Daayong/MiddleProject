@@ -121,12 +121,13 @@
 }
 .item_review ul li{
 	display: inline-block;
+	font-size: 16px;
 	line-height: 16px;
 }
 .item_review ul li:first-child{
 	background: url("../../images/pd/ico_set.png") no-repeat -374px 0;
 	width: 88px;
-	height: 14px;
+	height: 16px;
 }
 .item_review ul li:last-child::before{
 	content: "|";

@@ -21,24 +21,38 @@ public class ProductService {
 	@Autowired
 	private FileManager fileManager;
 	
-	public int setInsert(ProductDTO productDTO, MultipartFile [] files) throws Exception{
+	public int setInsert(ProductDTO productDTO, MultipartFile [] main_files, MultipartFile [] slider_files) throws Exception{
 		
 		int result = productDAO.setInsert(productDTO);
 		System.out.println(productDTO.getProduct_id());
 		
 		//1. 어느 폴더 /resources/upload/notice/
-		String realPath = servletContext.getRealPath("/resources/upload/menu/" + productDTO.getProduct_name());
-		System.out.println(realPath);
+		String main_realPath = servletContext.getRealPath("/resources/upload/menu/main/" + productDTO.getProduct_id());
+		String slider_realPath = servletContext.getRealPath("/resources/upload/menu/slider/" + productDTO.getProduct_id());
 		
-		File menu_file = new File(realPath);
+		File main_file_path = new File(main_realPath);
+		File slider_file_path = new File(slider_realPath);
 		
-		for(MultipartFile multipartFile:files) {
-			String fileName = fileManager.fileSave(menu_file, multipartFile);
+		for(MultipartFile multipartFile:main_files) {
+			String fileName = fileManager.fileSave(main_file_path, multipartFile);
 			System.out.println(fileName);
 			ProductFilesDTO productFilesDTO = new ProductFilesDTO();
 			productFilesDTO.setProduct_file_name(fileName);
 			productFilesDTO.setProduct_file_ori_name(multipartFile.getOriginalFilename());
 			productFilesDTO.setProduct_id(productDTO.getProduct_id());
+			productFilesDTO.setProduct_file_path("main");
+			
+			result = productDAO.setFile(productFilesDTO);
+		}
+		
+		for(MultipartFile multipartFile:slider_files) {
+			String fileName = fileManager.fileSave(slider_file_path, multipartFile);
+			System.out.println(fileName);
+			ProductFilesDTO productFilesDTO = new ProductFilesDTO();
+			productFilesDTO.setProduct_file_name(fileName);
+			productFilesDTO.setProduct_file_ori_name(multipartFile.getOriginalFilename());
+			productFilesDTO.setProduct_id(productDTO.getProduct_id());
+			productFilesDTO.setProduct_file_path("slider");
 			
 			result = productDAO.setFile(productFilesDTO);
 		}

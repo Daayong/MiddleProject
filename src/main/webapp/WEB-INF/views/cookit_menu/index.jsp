@@ -67,7 +67,7 @@
             <div id="layoutSidenav_content"> <!-- 내용 들어가는 곳! -->
                 <main>
                     <div class="container-fluid px-4 col-sm-8 mt-5">
-                       <form class="col-sm-8" action="prdUpload" method="post" enctype="multipart/form-data">
+                       <form class="col-sm-8 mx-auto" action="prdUpload" method="post" enctype="multipart/form-data">
 						  <div class="row mb-3">
 						    <label for="inputPrdName" class="col-sm-2 col-form-label">상품명</label>
 						    <div class="col-sm-10">
@@ -105,15 +105,16 @@
 							  <label for="inputPrdDescription">상품정보</label>
 							</div>
 						  </div>
-						  <!-- SummerNote 상세설명 추가 -->
+						  <!-- 상품 메인 이미지 -->
 						  <div class="mb-3">
-							  <label for="inputPrdUpImg" class="form-label"> 상품 상단 슬라이더 이미지</label>
-							  <input class="form-control" name="files" type="file" id="inputPrdUpImg" multiple="multiple">
+							  <label for="inputPrdUpImg" class="form-label"> 상품 썸네일 이미지</label>
+							  <input class="form-control" name="main_files" type="file" id="inputPrdUpImg" multiple="multiple">
 						  </div>
-					<!-- 	  <div class="mb-3">
-							  <label for="inputPrdDownImg" class="form-label"> 상품 하단 정보 이미지</label>
-							  <input class="form-control" type="file" id="inputPrdDownImg" multiple name="prd_downImg">
-						  </div> -->
+						  <!-- 상품 슬라이더 이미지 -->
+						  <div class="mb-3">
+							  <label for="inputPrdUpImg" class="form-label"> 상품 슬라이더 이미지</label>
+							  <input class="form-control" name="slider_files" type="file" id="inputPrdUpImg" multiple="multiple">
+						  </div>
 						  <label for="inputPrdOrderDate" class="form-label">배송 가능 일자</label>
 						  <div class="row g-2 mb-3">
 							  <div class="col-md">

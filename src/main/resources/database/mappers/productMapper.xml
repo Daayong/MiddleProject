@@ -12,8 +12,8 @@
   		values (#{product_id}, #{product_name}, #{product_sub_name}, #{product_recipe}, #{product_description}, #{product_info}, #{product_price})
   	</insert>
   	<insert id="setFile" parameterType="ProductFilesDTO">
-  		insert into product_file (id, product_id, product_file_name, product_file_ori_name)
-  		values (PF_SEQ.nextval, #{product_id}, #{product_file_name}, #{product_file_ori_name})
+  		insert into product_file (product_file_id, product_id, product_file_name, product_file_ori_name, product_file_path)
+  		values (PF_SEQ.nextval, #{product_id}, #{product_file_name}, #{product_file_ori_name}, #{product_file_path})
   	</insert>
   	<select id="getFile" parameterType="ProductDTO" resultType="ProductFilesDTO">
   		select * from product_file where product_id = #{product_id}

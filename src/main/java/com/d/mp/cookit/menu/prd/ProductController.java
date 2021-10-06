@@ -37,6 +37,7 @@ public class ProductController {
 		List<ProductDTO> prdAr = productService.getPrdList();
 		
 		ModelAndView mv = new ModelAndView();
+		
 		mv.addObject("prdDTO", prdAr);
 		mv.setViewName("cookit_menu/menu_main");
 		
@@ -67,13 +68,18 @@ public class ProductController {
 	
 	// 어드민 관련 부분 끝 ////////////////////////////////////////////
 	@PostMapping("prdUpload")
-	public ModelAndView setInsert(ProductDTO productDTO, MultipartFile [] files) throws Exception{
+	public ModelAndView setInsert(ProductDTO productDTO, MultipartFile [] main_files, MultipartFile [] slider_files) throws Exception{
 
-		for(int i=0;i<files.length;i++) {
-			System.out.println(files[i].getOriginalFilename());
+		for(int i=0;i<main_files.length;i++) {
+			System.out.println(main_files[i].getOriginalFilename());
+		}
+		System.out.println("========================================");
+		
+		for(int i=0;i<slider_files.length;i++) {
+			System.out.println(slider_files[i].getOriginalFilename());
 		}
 		
-		int result = productService.setInsert(productDTO, files);
+		int result = productService.setInsert(productDTO, main_files, slider_files);
 		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("cookit_menu/menu_result");
