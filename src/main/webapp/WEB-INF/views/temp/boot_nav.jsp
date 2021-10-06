@@ -49,7 +49,7 @@
 			<div class="my_gmenu">  
 				<ul>
 					<li class="my_gmenu_cart">
-						<a class="sr" href="#">
+						<a class="sr" href="${pageContext.request.contextPath}/order/cartList">
 							<span class="txt">장바구니</span>
 						</a>
 					</li>

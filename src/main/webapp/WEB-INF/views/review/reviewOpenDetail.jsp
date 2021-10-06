@@ -78,6 +78,9 @@
 						<div class="arr_area">
 							<button type="button" class="btn_arrow prev" id="prev" style="display: block;">
 							</button>
+							
+							<em>1</em>/<strong>2</strong>
+							
 							<button type="button" class="btn_arrow next" id="next" style="display: block;">
 							</button>
 						</div>
