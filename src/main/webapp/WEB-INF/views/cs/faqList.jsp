@@ -1,15 +1,15 @@
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
+<html>
+<head>
+
 <link href="${pageContext.request.contextPath}/resources/css/common.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/css/csMain.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/css/faqList.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/css/paging.css" rel="stylesheet">
 
-<html>
-<head>
 
-<script src="http://code.jquery.com/jquery-latest.js"></script>
 	<title>Home</title>
 	
 	<style>
@@ -80,11 +80,11 @@
 							<ul>
 											
 							<li class="tab_item on"  id="all" >
-								<a class="tab_link " ><span>전체</span></a>
+								<a class="tab_link "><span>전체</span></a>
 							</li>
 						
 							<li class="tab_item" id="ship" >
-								<a   class="tab_link" ><span>배송</span></a>
+								<a class="tab_link" ><span>배송</span></a>
 							</li>
 						
 							<li class="tab_item" id="pay" >
@@ -209,9 +209,7 @@
 		
 	});
 	
-	
- 
- 
+
 </script>
 
 

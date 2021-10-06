@@ -21,4 +21,11 @@ public class FaqService {
 	public int setInsert(FaqDTO faqDTO) throws Exception{
 		return faqDAO.setInsert(faqDTO);
 	}
+	
+	//typeList
+	
+	/*
+	 * public List<FaqDTO> getTypeList(FaqDTO faqDTO) throws Exception{ return
+	 * faqDAO.getTypeList(faqDTO); }
+	 */
 }

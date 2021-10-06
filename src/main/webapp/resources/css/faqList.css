@@ -104,7 +104,7 @@ div.input_wrap{
 	}
 	
 /* 유형 선택시 박스 변화 */
-.f_type .cate_wrap .tab_item.on a {
+.f_type .cate_wrap .tab_item.on a{
 	position:absolute;
 	top:0;
 	left:0;

@@ -19,8 +19,15 @@ public class FaqDAO {
 		return sqlSession.selectList(NAMESPACE+"getList");
 	}
 	
-	//insert
+	//글 추가
 	public int setInsert(FaqDTO faqDTO) throws Exception{
 		return sqlSession.insert(NAMESPACE+"setInsert", faqDTO);
 	}
+	
+	//type별 list 보기
+	/*
+	 * public List<FaqDTO> getTypeList(FaqDTO faqDTO) throws Exception{ return
+	 * sqlSession.selectList(NAMESPACE+"getTypeList", faqDTO); }
+	 */	
+	
 }
