@@ -30,14 +30,14 @@ public class FaqController {
 		return mv;
 	}
 	
-	@GetMapping("faqInsert")
+	@GetMapping("faqUpload")
 	public ModelAndView setInsert() throws Exception{
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("cs/faqInsert");
+		mv.setViewName("cs/faqUpload");
 		return mv;
 	}
 	
-	@PostMapping("faqInsert")
+	@PostMapping("faqUpload")
 	public ModelAndView setInsert(FaqDTO faqDTO) throws Exception{
 		
 		ModelAndView mv = new ModelAndView();

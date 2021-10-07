@@ -83,25 +83,19 @@
 				<!-- tablebody -->
 				
 				<tbody>
-					<!-- foreach, db추가 -->	
+				
 					<!-- 제목 선택시 상세페이지 이동 -->
+				<c:forEach items="${noticelist}" var="list">
 					<tr>
-					<td>2</td>
-					<td class="tit"><a href="${pageContext.request.contextPath}/cs/noticeView">[9월2일차]쿡킷 전체 메뉴보기</a></td>
-					<td>2021-09-29</td>
+					<td scope="row">${list.notice_id}</td>
+					<td class="tit"><a href="#">${list.notice_subject}</a></td>
+					<td>${list.notice_regDate}</td>
 					</tr>
-					
-					<tr>
-					<td>1</td>
-					<td class="tit"><a href="#">[9월1일차]쿡킷 전체 메뉴보기</a></td>
-					<td>2021-09-29</td>
-					</tr>
+				</c:forEach>
 				</tbody>
-			
 			
 			</table>
 						
-
 		</div>
 		
 

@@ -52,7 +52,7 @@
 
 	<section id="container">
 	
-			<form class="w-100" action="./faqInsert" method="POST" enctype="multipart/form-data">
+			<form class="w-100" action="./faqUpload" method="POST" enctype="multipart/form-data">
 		
 				<select class="form-select" style="width: 8%; line-height:2.5; margin: 30 0 15" name="faq_type" aria-label="Default select example">
   					<option selected>문의 유형</option>
@@ -68,13 +68,13 @@
 		
 		
 			<div class="mb-3">
-		  		<label for="subject" class="form-label"></label>
+		  		<label for=faq_subject" class="form-label">Subject</label>
 		  		<input type="text" class="form-control" name="faq_subject" id="subject" placeholder="Enter Subject">
 			</div>
 			
 			<div class="mb-3">
-				<label for="contents" class="form-label">Contents</label>
-				<textarea class="form-control" id="contents" name="faq_content"  placeholder="Input some text."></textarea>
+				<label for="faq_content" class="form-label">Contents</label>
+				<textarea class="form-control" id="faq_content" name="faq_content"  placeholder="Input some text."></textarea>
 			</div>
 		
 		
@@ -91,7 +91,7 @@
 
 <script type="text/javascript">
 
-	$('#contents').summernote({
+	$('#faq_content').summernote({
 		 height: 200
 	});
 		
