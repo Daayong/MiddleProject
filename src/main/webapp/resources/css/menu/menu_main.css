@@ -82,12 +82,8 @@
 	width: 14px;
 	height: 11px;
 } */
-.sortc_wrap a::before{
-	content: "";
-}
 
-.sortc_wrap .add a::before{
-	content: "";
+.add{
 	background: url("../../images/pd/ico_set.png") no-repeat -49px -3px;
 	display: inline-block;
 	margin-right: 5px;
@@ -95,22 +91,22 @@
 	height: 11px;
 }
 
-.sortc_wrap a::after{
+.sortc_wrap button::after{
 	content: "|";
 	padding-left: 8px;
 	padding-right: 8px;
 }
-.sortc_wrap:last-child a::after{
+.sortc_wrap:last-child button::after{
 	content: "";
 }
 
 /* 메뉴 보이는 부분 */
-.menus_wrap{
+#menus_wrap{
 	width: 100%;
 	margin-top: 30px;
 }
 
-.item_wrap{
+#item_wrap{
 	display: inline-grid;
 	grid-template-columns: repeat(4, 1fr);
 	column-gap: 36px;

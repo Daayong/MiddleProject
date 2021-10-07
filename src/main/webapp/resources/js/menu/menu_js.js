@@ -1,6 +1,6 @@
 /* =================== menu_main 페이지 */
 
-$(".click_menu").on("click", function() {
+$(document).on("click", ".click_menu", function() {
 	
 	let id = $(this).children("#product_id").val();
 	location.href="./menu_detail?product_id=" + id;
@@ -9,10 +9,20 @@ $(".click_menu").on("click", function() {
 });
 
 /* 신메뉴, 인기순, 가격순 등등 정렬하는 부분. */
-$(".sortc_wrap").on("click", function(){
+$(document).on("click", ".sortc_btn", function(){
+	$(".sortc_check.add").removeClass("add");
+	$(this).prev(".sortc_check").addClass("add");
+	let sort_type = $(this).val();
 	
-	$(this).toggleClass('add');
-	
+	$.ajax({
+		url: 'menu_main?kind=' + sort_type,
+		type: "get",
+		dataType: "html",
+		success: function(res){
+			let a = $(res).find("#item_wrap").html();
+			$("#item_wrap").html(a);
+		}
+	});
 });
 
 
@@ -82,7 +92,7 @@ $("#prd_count").change(function(){
 });
 
 /* detail_menu 선택한거 아래밑줄표시 */
-/* 페이지 로드시 상세설명 기본값 */
+/* 페이지 로드시 기본값 */
 $(document).ready(function() {
 	$(".menuLi:first").css("border-bottom","solid 2px black");
 	$(".productInfo").hide();

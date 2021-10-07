@@ -5,8 +5,10 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -18,7 +20,7 @@ public class ProductController {
 	private ProductService productService;
 	
 	
-	@RequestMapping("menu_detail")
+	@GetMapping("menu_detail")
 	public ModelAndView getPrdOne(ProductDTO productDTO) throws Exception{
 		
 		ProductDTO dto = productService.getPrdOne(productDTO);
@@ -43,9 +45,9 @@ public class ProductController {
 		return mv;
 	}
 	
-	@RequestMapping("menu_main")
+	@ResponseBody
+	@GetMapping("menu_main")
 	public ModelAndView getPrdList(ProductDTO productDTO) throws Exception{
-		
 		List<ProductDTO> prdAr = productService.getPrdList(productDTO);
 		
 		ModelAndView mv = new ModelAndView();

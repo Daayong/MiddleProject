@@ -70,7 +70,7 @@ public class ProductService {
 		
 		return productDAO.getPrdList(productDTO);
 	}
-	
+		
 	public ProductDTO getPrdOne(ProductDTO productDTO) throws Exception{
 		
 		return productDAO.getPrdOne(productDTO);

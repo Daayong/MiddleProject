@@ -26,7 +26,7 @@ public class ProductDAO {
 	
 	public List<ProductDTO> getPrdList(ProductDTO productDTO) throws Exception{
 		return sqlSession.selectList(NAMESPACE + "getPrdList", productDTO);
-	}
+	}	
 	
 	public ProductDTO getPrdOne(ProductDTO productDTO) throws Exception{
 		return sqlSession.selectOne(NAMESPACE + "getPrdOne", productDTO);
