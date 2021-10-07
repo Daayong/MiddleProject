@@ -34,10 +34,10 @@ html,body{
 	display: flex;
 	flex-direction: column;
 	margin-left: 80px;
-	padding-top: 50px;
+	padding-top: 20px;
 }
 
-/* left_con 영역 */
+/* ============= left_con 영역 =================== */
 
 /* 슬라이더 */
 .slide_item{
@@ -76,7 +76,7 @@ html,body{
 #lightSlider{
 	width: 500px;
 }
-/* right_con 영역 */
+/* ============ right_con 영역 ============== */
 
 /* 메뉴 상품 이름 타이틀 */
 .title_info{
@@ -84,16 +84,18 @@ html,body{
 .sub_title{
 	font-size: 30px;
 	font-weight: 700;
+	color: black;
 }
 .title{
 	font-size: 30px;
 	font-weight: 700;
 	margin-top: 20px;
+	color: black;
 }
 .prd_origin{
 	font-size: 30px;
 	font-weight: 300;
-	margin-top: 15px;
+	margin-top: 25px;
 }
 
 /* 조리법 정보 */
@@ -109,15 +111,52 @@ html,body{
 	border-bottom: 1px solid #D5D5D5;
 	margin-top: 20px;
 	padding-bottom: 20px;
-	font-size: 20px;
 	font-weight: 700;
+}
+.prd_price span{
+	font-size: 16px;
+	padding-right: 70px;
+	color: black;
+}
+.prd_price .inPrice{
+	font-size: 28px;
 }
 
 /* 추후 추가할 배송 및 쿠폰등등 */
+/* 상품 쿠폰 관련 */
+.prd_coupon{
+	border-bottom: 1px solid #D5D5D5;
+	margin-top: 10px;
+	padding-bottom: 10px;
+}
+.prd_coupon span{
+	font-size: 14px;
+	padding-right: 70px;
+	color: black;
+}
+.prd_coupon .inCoupon{
+	font-size: 14px;
+	color: black;
+}
+/* 상품 배송 관련 */
+.prd_delivery{
+	border-bottom: 2px solid black;
+	margin-top: 10px;
+	padding-bottom: 40px;
+}
+.prd_delivery span{
+	font-size: 14px;
+	padding-right: 70px;
+	color: black;
+}
+.prd_delivery .inDelivery{
+	font-size: 14px;
+	color: black;
+}
+/* 상품 수량 */
 .prd_count{
 	margin-top: 20px;
 	padding-bottom: 20px;
-	border-bottom: 2px solid black;
 	text-align: right;
 }
 .prd_count input[type=number]{
@@ -130,56 +169,62 @@ html,body{
 
 /* 수량 가격 */
 .prd_total{
-	
+	display: flex;
+	flex-direction: row;
 }
 .cnt{
-	float: left;
 	font-size: 18px;
 	font-weight: 700;
 	padding-top: 30px;
 }
 .price{
-	float: right;
 	font-size: 36px;
 	font-weight: 700;
 	color: red;
+	margin-left: auto;
 	padding-top: 20px;
 }
 /* 찜하기 및 장바구니 담는버튼 */
 .utilBox_wrap{
-	margin-top: 20px;
-	background-color: gray;
+	margin-top: 60px;
+	display: flex;
+	flex-direction: row;
 }
 .zzim{
-	float: left;
     position: relative;
-    width: 74px;
+    width: 70px;
+    height: 70px;
+    border: 1px solid #D5D5D5;
 }
 .zzim_btn{
-	width: 64px;
-	height: 64px;
-}
-.zzim_btn::after{
+	position: absolute;
 	background: url('../../images/pd/ico_set.png') no-repeat -261px -2px;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 	width: 22px;
 	height: 20px;
 }
+
 .cart{
-	float: right;
 	position: relative;
+	margin-left: auto;
 	text-align: center;
 }
 .cart_btn{
 	background-color: #bdd61a; 
 	width: 426px;
-	height: 64px;
+	height: 70px;
     font-size: 20px;
+    font-weight: 700;
+    color: black;
     line-height: 27px;
 }
 
 /* 상품 디테일 박스 */
 .detail_wrapper{
 	width: 100%;
+	margin-top: 80px;
 }
 
 /* detail 메뉴 박스 상품정보 등등 */

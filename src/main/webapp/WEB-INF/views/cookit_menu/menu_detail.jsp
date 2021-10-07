@@ -2,6 +2,7 @@
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <html>
 <head>
@@ -81,8 +82,23 @@
 							<input type="hidden" value="${prdDTO.product_recipe}" name="product_recipe">
 						</div>
 						<div class="prd_price">
-							판매가 ${prdDTO.product_price}원
+							<span>판매가</span>
+							<span class="inPrice">
+								<fmt:formatNumber value="${prdDTO.product_price}" type="number" maxFractionDigits="3"/>원
+							</span>
 							<input type="hidden" value="${prdDTO.product_price}" name="product_price" id="prd_price">
+						</div>
+						<div class="prd_coupon">
+							<span>할인쿠폰</span>
+							<span class="inCoupon">
+								쿠폰적용제외
+							</span>
+						</div>
+						<div class="prd_delivery">
+							<span>배송방법</span>
+							<span class="inDelivery">
+								새벽배송
+							</span>
 						</div>
 						<div class="prd_count">
 							<input type="number" min="0" max="5" name="product_count" id="prd_count" placeholder="수량선택 (최대 5개)">
@@ -93,9 +109,9 @@
 							<input type="hidden" value="" name="product_total" id="product_total_price">
 						</div>
 						<div class="utiLBox_wrap">
-							<div class="zzim">
-								<button type="button" class="zzim_btn"></button>
-							</div>
+							<button type="button" class="zzim">
+								<div class="zzim_btn"></div>
+							</button>
 							<div class="cart">
 								<button type="button" class="cart_btn">장바구니 담기</button>
 							</div>

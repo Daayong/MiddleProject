@@ -63,7 +63,7 @@ public class ProductController {
 	@RequestMapping("index")
 	public ModelAndView doAdmin() throws Exception{
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("cookit_menu/index");
+		mv.setViewName("cookit_menu/admin/index");
 		
 		return mv;
 	}
@@ -75,7 +75,7 @@ public class ProductController {
 		
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("prdDTO", prdAr);
-		mv.setViewName("cookit_menu/menu_manage");
+		mv.setViewName("cookit_menu/admin/menu_manage");
 		
 		return mv;
 	}

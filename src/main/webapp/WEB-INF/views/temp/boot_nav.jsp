@@ -24,7 +24,7 @@
 						<a class="f" href="${pageContext.request.contextPath}/">배송지역검색</a>
 					</li>
 					<li class="info_li">
-						<a class="f" href="${pageContext.request.contextPath}/">기프트카드 등록</a>
+						<a class="f" href="index">기프트카드 등록</a>
 					</li>
 				</ul>
 			</div>

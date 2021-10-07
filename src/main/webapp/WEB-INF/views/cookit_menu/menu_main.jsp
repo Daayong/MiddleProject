@@ -1,5 +1,6 @@
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <html>
 <head>
@@ -82,10 +83,10 @@
 								</div>
 								<p class="etc_info">${prd.product_recipe}</p>
 								<div class="item_title">
-									${prd.product_name}
+									*${prd.product_name}
 								</div>
 								<div class="item_price">
-									${prd.product_price}
+									<fmt:formatNumber value="${prd.product_price}" type="number" maxFractionDigits="3"/>원
 								</div>
 								<div class="item_review">
 									<ul>
