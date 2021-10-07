@@ -41,7 +41,7 @@
 						<span>장바구니</span>
 					</li>
 					<li class="step02">
-						<span>주문결제</span>
+						<span>주문/결제</span>
 					</li>
 					<li class="step03 on">
 						<span>주문완료</span>
@@ -71,7 +71,7 @@
 				
 <!-- ===== ===== ===== tip ===== ===== ===== -->
 				<div class="tip">
-					<div class="head">
+					<div class="tip_head">
 						<a href="#tip" class="ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
 							<div class="tit">쿡킷 TIP을 확인해주세요!</div>
 						</a>
@@ -132,6 +132,194 @@
 							
 						</div>
 					</div>
+				</div>
+				
+<!-- ===== ===== ===== delivery_info ===== ===== ===== -->
+				<div class="delivery_info ">
+					<div class="delivery_head">
+						<h3>배송지 정보를 꼭 확인하세요!</h3>
+					</div>
+					<div class="delivery_location">
+						<div class="location_detail">
+							<div class="detail_head">
+								<h4>배송지</h4>
+							</div>
+							<div class="detail_content">
+								<dl>
+									<dt>
+									<strong>"받는분"</strong>
+									</dt>
+									<dd>
+										<ul>
+											<li>
+												<!-- 배송주소 -->
+												<span>[04001]  서울 마포구 월드컵북로 21 풍성빌딩 2, 3, 4 층</span>
+											</li>
+											<li>
+												<!-- 휴대폰 -->
+												<span>010-1234-5678</span>
+											</li>
+											<li class="method">
+												<!-- 배송방법 -->
+												<div class="detail">
+													<span>공동현관 비밀번호 있음 <span>#1234#</span></span>
+													<span>배송완료 메시지 <span>오전7시</span></span>
+												</div>
+											</li>
+										</ul>
+									</dd>
+								</dl>
+							</div>
+						</div>
+						<div class="product_detail">
+						
+							<div class="recieve_date">
+								<strong>2021-10-08(금) 도착예정</strong>
+								<span>주문상품 총 1개</span>
+								<span class="recieve_txt">배송비 3,000원</span>
+							</div>
+							
+							<div class="product_list">
+								<ul>
+									<!-- Loop -->
+									<li>
+										<div class="product_info">
+										
+											<div class="img_wrap">
+												<img src="/mp/resources/images/temp/review_temp2.jpg" alt="">
+											</div>
+											
+											<div class="info_wrap">
+												<span class="tit">부채살 찹스테이크</span><br>
+												<span class="price">20,800원</span>
+												<span class="amount">수량 1개</span>
+											</div>
+											
+										</div>
+									</li>
+									<li>
+										<div class="product_info">
+										
+											<div class="img_wrap">
+												<img src="/mp/resources/images/temp/review_temp2.jpg" alt="">
+											</div>
+											
+											<div class="info_wrap">
+												<span class="tit">부채살 찹스테이크</span><br>
+												<span class="price">20,800원</span>
+												<span class="amount">수량 1개</span>
+											</div>
+											
+										</div>
+									</li>
+									<li>
+										<div class="product_info">
+										
+											<div class="img_wrap">
+												<img src="/mp/resources/images/temp/review_temp2.jpg" alt="">
+											</div>
+											
+											<div class="info_wrap">
+												<span class="tit">부채살 찹스테이크</span><br>
+												<span class="price">20,800원</span>
+												<span class="amount">수량 1개</span>
+											</div>
+											
+										</div>
+									</li>
+									<li>
+										<div class="product_info">
+										
+											<div class="img_wrap">
+												<img src="/mp/resources/images/temp/review_temp2.jpg" alt="">
+											</div>
+											
+											<div class="info_wrap">
+												<span class="tit">부채살 찹스테이크</span><br>
+												<span class="price">20,800원</span>
+												<span class="amount">수량 1개</span>
+											</div>
+											
+										</div>
+									</li>
+									<li>
+										<div class="product_info">
+										
+											<div class="img_wrap">
+												<img src="/mp/resources/images/temp/review_temp2.jpg" alt="">
+											</div>
+											
+											<div class="info_wrap">
+												<span class="tit">부채살 찹스테이크</span><br>
+												<span class="price">20,800원</span>
+												<span class="amount">수량 1개</span>
+											</div>
+											
+										</div>
+									</li>
+									<!-- //Loop -->
+								</ul>								
+							</div>
+							
+							<div class="notice">
+								<p>배송정보 변경은 <strong>2021-10-07 07:00</strong>까지만 가능합니다. (단, 사전예약 상품은 배송일 변경이 불가합니다.)</p>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+				
+<!-- ===== ===== ===== payment_info ===== ===== ===== -->
+				<div class="payment_info">
+				
+					<div class="payment_info_head">
+						<h3>결제정보</h3>
+					</div>
+					
+					<div class="payment_info_content">
+						<div class="pay_how">
+							<dl class="em">
+								<dt>결제수단</dt>
+								<dd>신용카드</dd>
+							</dl>
+						</div>
+						<div class="payment_info_detail">
+							<dl>
+								<dt>총 상품금액</dt>
+								<dd>20,800원</dd>
+							</dl>
+							<dl>
+								<dt>총 배송비</dt>
+								<dd>+3,000원</dd>
+							</dl>
+							<div class="detail_pay">
+								<p>할인금액</p>
+								<dl>
+									<dt>상품할인</dt>
+									<dd>-0원</dd>
+								</dl>
+								<dl>
+									<dt>임직원할인</dt>
+									<dd>-0원</dd>
+								</dl>
+								<dl>
+									<dt>쿠폰할인</dt>
+									<dd>-0원</dd>
+								</dl>
+							</div>
+							<dl class="total">
+								<dt>총 결제금액</dt>
+								<dd>23,800원</dd>
+							</dl>
+						</div>
+					</div>
+					
+				</div>
+				
+<!-- ===== ===== ===== btn_wrap ===== ===== ===== -->
+				<div class="btn_wrap">
+					<button type="button" class="btn white" id="compBtnMenu"><span>쇼핑 계속하기</span></button>
+					<button type="button" class="btn green" id="compBtnOdrDtl"><span>주문상세 조회</span></button>
 				</div>
 				
 			</div>

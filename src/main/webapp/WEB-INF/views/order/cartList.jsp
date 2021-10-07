@@ -41,7 +41,7 @@
 						<span>장바구니</span>
 					</li>
 					<li class="step02">
-						<span>주문결제</span>
+						<span>주문/결제</span>
 					</li>
 					<li class="step03">
 						<span>주문완료</span>
