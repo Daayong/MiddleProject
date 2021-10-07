@@ -71,62 +71,72 @@
 				
 <!-- ===== ===== ===== tip ===== ===== ===== -->
 				<div class="tip">
-					<div class="tip_head">
-						<a href="#tip" class="ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
+					<div class="tip_head on">
+						<a href="#tip" class="tip_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
 							<div class="tit">쿡킷 TIP을 확인해주세요!</div>
 						</a>
 					</div>
 					<div class="slide_area">
 						<div class="slide_wrap">
-							<div class="slide_trak_wrap">
-								<div class="slide_trak">
-									<div class="slide_content">
-										<div class="item">
-											<i class="num">1</i>
-											<strong>은색 보냉백을<br>확인해 주세요!</strong>
-											<p>생선, 새우, 고기 등 냉동제품은 신선도<br>유지를 위해 은색의 보냉백에 담아 배송됩니다.</p>
-											<img src="/mp/resources/images/op/img_tip01.png" alt="">
+							<div class="slide_track_wrap">
+								<div class="slide_track">
+									<c:forEach begin="1" end="2">
+										<div class="slide_content">
+											<div class="item">
+												<i class="num">5</i>
+												<strong>깊이가 있는<br>궁중팬이 좋아요!</strong>
+												<p>찹스테이크 등 오일에 볶는 메뉴는<br>오일이 튀는 걸 조금 방지할 수 있습니다.</p>
+												<img src="/mp/resources/images/op/img_tip05.png" alt="">
+											</div>
 										</div>
-									</div>
-									<div class="slide_content">
-										<div class="item">
-											<i class="num">2</i>
-											<strong>오일, 분말, 소스는<br>뒷면을 확인해주세요!</strong>
-											<p>뒷면에 상세정보가 담겨있습니다.<br>조리전 확인해 주세요.</p>
-											<img src="/mp/resources/images/op/img_tip04.png" alt="">
+										<div class="slide_content">
+											<div class="item">
+												<i class="num">1</i>
+												<strong>은색 보냉백을<br>확인해 주세요!</strong>
+												<p>생선, 새우, 고기 등 냉동제품은 신선도<br>유지를 위해 은색의 보냉백에 담아 배송됩니다.</p>
+												<img src="/mp/resources/images/op/img_tip01.png" alt="">
+											</div>
 										</div>
-									</div>
-									<div class="slide_content">
-										<div class="item">
-											<i class="num">3</i>
-											<strong>주문변경은 배송일 전일 <br>7시전까지만 가능해요</strong>
-											<p>배송일, 배송지 변경은 [My쿡킷 &gt;<br>주문/배송조회]에서 직접 하실 수 있습니다.</p>
-											<img src="/mp/resources/images/op/img_tip02.png" alt="">
+										<div class="slide_content">
+											<div class="item">
+												<i class="num">2</i>
+												<strong>오일, 분말, 소스는<br>뒷면을 확인해주세요!</strong>
+												<p>뒷면에 상세정보가 담겨있습니다.<br>조리전 확인해 주세요.</p>
+												<img src="/mp/resources/images/op/img_tip04.png" alt="">
+											</div>
 										</div>
-									</div>
-									<div class="slide_content">
-										<div class="item">
-											<i class="num">4</i>
-											<strong>배송시간은<br>전일 PM10시~AM7시입니다.</strong>
-											<p>전일 저녁 배송되더라도 아침까지 품질에<br>문제없도록 보냉포장하여 배송되오니 안심하세요.</p>
-											<img src="/mp/resources/images/op/img_tip03.png" alt="">
+										<div class="slide_content">
+											<div class="item">
+												<i class="num">3</i>
+												<strong>주문변경은 배송일 전일 <br>7시전까지만 가능해요</strong>
+												<p>배송일, 배송지 변경은 [My쿡킷 &gt;<br>주문/배송조회]에서 직접 하실 수 있습니다.</p>
+												<img src="/mp/resources/images/op/img_tip02.png" alt="">
+											</div>
 										</div>
-									</div>
-									<div class="slide_content">
-										<div class="item">
-											<i class="num">5</i>
-											<strong>깊이가 있는<br>궁중팬이 좋아요!</strong>
-											<p>찹스테이크 등 오일에 볶는 메뉴는<br>오일이 튀는 걸 조금 방지할 수 있습니다.</p>
-											<img src="/mp/resources/images/op/img_tip05.png" alt="">
+										<div class="slide_content">
+											<div class="item">
+												<i class="num">4</i>
+												<strong>배송시간은<br>전일 PM10시~AM7시입니다.</strong>
+												<p>전일 저녁 배송되더라도 아침까지 품질에<br>문제없도록 보냉포장하여 배송되오니 안심하세요.</p>
+												<img src="/mp/resources/images/op/img_tip03.png" alt="">
+											</div>
 										</div>
-									</div>
+									</c:forEach>
+										<div class="slide_content">
+											<div class="item">
+												<i class="num">5</i>
+												<strong>깊이가 있는<br>궁중팬이 좋아요!</strong>
+												<p>찹스테이크 등 오일에 볶는 메뉴는<br>오일이 튀는 걸 조금 방지할 수 있습니다.</p>
+												<img src="/mp/resources/images/op/img_tip05.png" alt="">
+											</div>
+										</div>
 								</div>
 							</div>
 							
 							<div class="slide_nav_arrow">
 								<div class="arr_area">
-									<button type="button" class="btn_arrow prev"></button>
-									<button type="button" class="btn_arrow next"></button>
+									<button type="button" class="btn_arrow prev" id="prev"></button>
+									<button type="button" class="btn_arrow next" id="next"></button>
 								</div>
 							</div>
 							
@@ -335,6 +345,9 @@
 	</section>
  	<c:import url="../temp/boot_footer.jsp"></c:import>
 </div>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script type="text/javascript" src="/mp/resources/js/orderComplete.js"></script>
 
 </body>
 </html>
