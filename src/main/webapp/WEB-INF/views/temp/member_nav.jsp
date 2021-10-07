@@ -13,7 +13,7 @@
 	#header .header_wrap .l_header .cj_logo{position:relative; letter-spacing:0.5px;  float:left;color:#8f8f8c; font-weight:400; font-size:18px; line-height:90px;}
 	#header .header_wrap .l_header .logo {display:block; position:relative; float:left; margin-right:15px; width:110px; height:30px; background:url(${pageContext.request.contextPath}/resources/images/my/logo_part.png);top:30px; left:0; text-indent:-9999em;}
 	#header .header_wrap .r_header {width:500px;height:60px; margin-top:30px;  position:relative; float:right; }
-	#header .r_header .part_logo { letter-spacing:0.5px;color:#8f8f8c; font-size:16px; line-height:55px; text-align:right;}
+	#header .r_header .part_logo { ;color:#8f8f8c; font-size:16px; line-height:55px; text-align:right;}
 	#header .r_header .part_logo img {margin-left:10px; vertical-align:middle;}
 
 

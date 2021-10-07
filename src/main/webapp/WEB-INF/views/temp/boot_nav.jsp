@@ -10,13 +10,25 @@
 	<!--First nav-->
 		<div id="info">
 			<div class="info_wrap">
-				<ul id="info_ul">			
-					<li class="info_li">
-						<a class="f" href="${pageContext.request.contextPath}/member/join">회원가입</a>
-					</li>
-					<li class="info_li">
-						<a class="f" href="${pageContext.request.contextPath}/member/login">로그인</a>
-					</li>
+				<ul id="info_ul">	
+					  <c:choose>
+				      	<c:when test="${not empty member}">
+				    		<li class="info_li">
+								<a class="f" href="#">${member.member_name}님</a>
+							</li>
+							<li class="info_li">
+								<a class="f" href="${pageContext.request.contextPath}/member/logout">로그아웃</a>
+							</li>
+				    	</c:when>	
+				      	<c:otherwise>
+				      		<li class="info_li">
+								<a class="f" href="${pageContext.request.contextPath}/member/check">회원가입</a>
+							</li>
+							<li class="info_li">
+								<a class="f" href="${pageContext.request.contextPath}/member/login">로그인</a>
+							</li>
+				      	</c:otherwise>
+				      </c:choose>  					
 					<li class="info_li">
 						<a class="f" href="${pageContext.request.contextPath}/notice/fnq">고객행복센터</a>
 					</li>
@@ -51,7 +63,7 @@
 					<a href="#">이벤트</a>
 				</li>
 				<li class="menu_li">
-					<a href="${pageContext.request.contextPath}/member/login">MY쿡킷</a>
+					<a href="${pageContext.request.contextPath}/member/myPage">MY쿡킷</a>
 				</li>
 			</ul>
 	

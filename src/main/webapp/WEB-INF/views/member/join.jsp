@@ -5,7 +5,7 @@
 <head>
 	<link href="${pageContext.request.contextPath}/resources/css/common.css" rel="stylesheet">
 	
-	<title>Home</title>
+	<title>회원가입여부 확인 | CJ ONE</title>
 	
 	<style>		
 		.html,body{height:100%}
@@ -27,13 +27,20 @@
 	<c:import url="../temp/member_nav.jsp"></c:import>	
 	<section id="container">
 	
-	
-	
-	
-	
-		<h1>Contents</h1>
+		<div class="cont_header" >
+			<h1 class="h1_tit">쿡킷+CJ ONE 통합회원 가입</h1>
+			<P class="h_desc">
+				통합 아이디로 CJ ONE 브랜드 혜택도 받고! 포인트도 쌓고!
+			</P>
+		</div>
+		<div class="check_member">
+			
 		
+		</div>
 		
+	
+	
+	
 		
 		
 		

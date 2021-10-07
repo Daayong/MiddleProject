@@ -3,8 +3,11 @@
 
 <html>
 <head>
+
+
 	<link href="${pageContext.request.contextPath}/resources/css/common.css" rel="stylesheet">
 	<link href="${pageContext.request.contextPath}/resources/css/member/login.css" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<title>로그인-집밥을 특별하게,쿡킷</title>
 	<style>
 		.wrapper{
@@ -21,6 +24,7 @@
 		
 	</style>	
 
+	
 	
 </head>
 
@@ -61,8 +65,9 @@
 				<div id="log_mem" class="login_cont" style="display:block; ">
 					<div class="fieldset"> 
 						<form id="memFrm" class="frm" action="login" method="post" name="loginForm">
-							<input type="text" style="margin-bottom:10px;"  name="id" id="id" placeholder="&nbsp; CJ ONE 통합아이디 6~20자">
-							<input type="text" name="pw" id="pw" placeholder="&nbsp; 비밀번호 영문,특수문자,숫자혼합 8~12자">	
+							<input type="hidden" value="${check}" name="check">
+							<input type="text" style="margin-bottom:10px;"  name="member_user_id" id="id" placeholder="&nbsp; CJ ONE 통합아이디 6~20자">
+							<input type="text" name="member_password" id="pw" placeholder="&nbsp; 비밀번호 영문,특수문자,숫자혼합 8~12자">	
 							
 							<div style="height:69px; padding-top:23px;">
 								
@@ -72,13 +77,13 @@
 								</div>
 								
 								<div class="find_wrap">
-									<button type="button" class="find_id find">아이디 찾기</button>
-									<button type="button" class="find_pw find">비밀번호 찾기</button>
+									<a class="find_id find" href="./findId">아이디 찾기</a>
+									<a class="find_pw find" href="./findPw">비밀번호 찾기</a>
 								</div>
 							
 							</div>
 						
-							<button class="log_btn" type="submit" name="login" id="log">로그인</button>
+							<button class="log_btn" type="submit" id="log">로그인</button>
 						</form>
 					
 					<div class="easy_login">
@@ -159,6 +164,18 @@
 
 
 	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/login.js"></script>
+ 		<script type="text/javascript">
+		$(function(){
+			let result = '${msg}';
+			if(result !=''){
+				alert(result);
+			}	
+		});
+ 		
+	</script>
+ 
+ 
+ 
  
 
 </body>

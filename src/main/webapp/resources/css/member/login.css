@@ -134,23 +134,7 @@
 
 		.check_wrap input:checked + label {color:#101010;}
 		.check_wrap input:disabled + label{color:#B0B0B0;cursor:default}
-
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+		
 		.find_wrap{
 			display:inline-block; 
 			position:relative; 
@@ -165,8 +149,7 @@
 			background-color:#ccc; vertical-align:middle;
 		}
 		
-		.find{
-			line-height:28px; 
+		.find_wrap .find{
 			font-size:15px; 
 			color:#101010; 	
 		}

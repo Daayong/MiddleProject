@@ -27,11 +27,13 @@
 	<section id="container">
 	
 	
+	<c:if test="${not empty member}">
+		<h3>Login이 성공했을때 보이는 문장</h3>
+	</c:if>
 	
-	
-	
-		<h1>Contents</h1>
-		
+	<c:if test="${empty member}">
+		<h3>Login을 하기전 보이는 문장</h3>
+	</c:if>
 		
 		
 		

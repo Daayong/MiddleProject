@@ -6,7 +6,7 @@
 	<link href="${pageContext.request.contextPath}/resources/css/common.css" rel="stylesheet">
 	<link href="${pageContext.request.contextPath}/resources/css/member/myPage.css" rel="stylesheet">
 	
-	<title>Home</title>
+	<title>My쿡킷 - 집밥을 특별하게,쿡킷</title>
 	
 	<style>		
 		.wrapper{
@@ -35,7 +35,7 @@
 				<div id="my_order">
 					<h2>MY쿡킷</h2>
 					<ul>
-						<li class="tab_title">나의 주문정보</li>
+						<li class="tab_title" style="margin-bottom:10px;">나의 주문정보</li>
 						<li><a href="#">주문/배송 조회</a></li>
 						<li><a href="#">취소/반품 조회 </a></li>
 						<li><a href="#">선물내역</a></li>
@@ -47,7 +47,7 @@
 				</div>
 				<div id="my_benefit" class="pd">
 					<ul>
-						<li class="tab_title">나의 혜택</li>
+						<li class="tab_title"style="margin-bottom:10px;">나의 혜택</li>
 						<li><a href="#">쿠폰</a></li>
 						<li><a href="#">CJ ONE 포인트</a></li>
 						<li><a href="#">기프트카드</a></li>
@@ -55,7 +55,7 @@
 				</div>
 				<div id="my_activity" class="pd">
 					<ul>
-						<li class="tab_title">나의 활동</li>
+						<li class="tab_title"style="margin-bottom:10px;">나의 활동</li>
 						<li><a href="#">리뷰</a></li>
 						<li><a href="#">나의 맛취향</a></li>
 						<li><a href="#">쇼핑찜</a></li>
@@ -64,7 +64,7 @@
 				</div>
 				<div id="my_info" class="pd">
 					<ul>
-						<li class="tab_title">나의 정보</li>
+						<li class="tab_title"style="margin-bottom:10px;">나의 정보</li>
 						<li><a href="#">개인정보 변경</a></li>
 						<li><a href="#">SNS로그인 관리</a></li>
 						<li><a href="#">회원탈퇴</a></li>
@@ -82,9 +82,13 @@
 		<!-- 메인 컨텐츠(여기서부터 변경되야함)  -->	
 			<div id="main" class="open">
 				<div id="myInfo">
-					<div class="log_name">
-						<%-- db연결 후 작업 ${member.name} --%>
-						로그인님
+					<div class="info_top">
+						<div class="log_name">
+							${member.member_name}님
+						</div>
+						<div class="log_address">
+							<a href="#"><span>${member.member_address}</span></a>
+						</div>
 					</div>
 					<div id="pointWrap">
 						<div class="myPoint">
@@ -92,14 +96,14 @@
 							<span class="pt">CJ ONE 포인트</span>
 							<span class="i_have">
 								<%-- db연결후 작업 ${member.point}P --%>
-								1,585P
+								0P
 							</span>
 							</a>
 						</div>
 						<div class="myCoupon">
 							<a href="#">
 							<span class="pt">보유 쿠폰</span>
-							<span class="i_have">
+							<span class="i_have" style="font-size:24px;">
 								<%-- db연결후 작업 ${member.couponCount}장 --%>
 								0장
 							</span>
@@ -198,6 +202,7 @@
 								</p>
 							</div>
 						</div>
+						<span class="date">2021.10.01~2021.12.31</span>
 						<a href="#" class="btn_link">쿡킷 스탬프 바로가기</a>
 					</div>
 				</div>

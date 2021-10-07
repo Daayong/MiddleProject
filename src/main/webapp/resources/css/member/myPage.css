@@ -54,10 +54,6 @@
 	float:right; 	
 }
 
-#content_wrapper .open{
-	/* display:none;  */
-}
-
 
 #main .rpd{
 	padding-top:56px;
@@ -65,19 +61,70 @@
 
 #myInfo{
 	width:940px; 
-	height:194px; 
+	height:194px;
+	
+
 }
 
-#myInfo .log_name{
+#myInfo .info_top{
 	width:940px; 
 	height:64px; 
-	padding:0 24px; 
 	background:linear-gradient(-90deg, #7AB600, #7AB600 45%, #E1EE06);
+
+}
+
+
+#myInfo .info_top .log_name{
+	padding:0 24px; 
 	font-size:22px;
 	color:#101010;
 	font-weight:700;
 	line-height:64px;
+	float:left; 
 }
+
+#myInfo .info_top .log_address{
+	float:right;  
+}
+
+#myInfo .info_top .log_address > a{
+	line-height:64px; 
+	text-align:right; 
+	padding-right:20px;
+}
+
+#myInfo .info_top .log_address > a > span{
+	margin-left:20px; 
+	color:#101010; 
+	font-size:13px; 
+	line-height:66px; 
+}
+
+
+#myInfo .info_top .log_address > a > span:before{
+	content: '';
+    display: inline-block;
+    top: 50%;
+    left: 0;
+    margin-top: -8px;
+    margin-right:5px; 
+    width: 13px;
+    height: 16px;
+   	background: url(../../images/my/ico_set02.png) no-repeat 0 -33px;
+    background-size: 800px 800px;
+}
+
+
+#myInfo .info_top .log_address > a > span:after{
+	content:'';display:inline-block;width:8px;height:8px;
+	margin:-3px 0 0 3px;border-bottom:1.5px solid #202020;
+	border-right:1.5px solid #202020;-ms-transform:rotate(-45deg);
+	-moz-transform:rotate(-45deg);-webkit-transform:rotate(-45deg);transform:rotate(-45deg);vertical-align:middle;
+}
+
+
+
+
 
 #pointWrap .myPoint{
 	width:563px;
@@ -265,13 +312,13 @@ vertical-align:top; margin:0 7px;
 #info_box .stamp_event_wrap.type_renew2 .left_cont:after{display:inline-block;content:'';margin-left:31px;width:278px;height:160px;vertical-align:top;background:url('../../images/my/img_event_stamp.jpg') 100% 0 no-repeat;}
 #info_box .stamp_event_wrap.type_renew2 .left_cont.re_pose:after{margin-left:9px;}
 #info_box .stamp_event_wrap.type_renew2 .left_cont .inner{display:inline-block;max-width:628px;padding:24px 0 24px 50px;vertical-align:top;}
-#info_box .stamp_event_wrap.type_renew2 .h5_tit{padding-bottom:20px;color:#101010;font-size:38px;font-weight:700;letter-spacing:-1px;}
-#info_box .stamp_event_wrap.type_renew2 .left_cont .inner .ico{display:inline-block;padding:0 13px;margin-bottom:13px;height:28px;line-height:27px;font-size:15px;border-radius:30px;text-align:center;border:1px solid #101010;box-sizing:border-box;color:#101010;font-weight:700;font-size:15px;}
+#info_box .stamp_event_wrap.type_renew2 .h5_tit{padding-bottom:30px;color:#101010;font-size:38px;font-weight:700;letter-spacing:-1px;}
+#info_box .stamp_event_wrap.type_renew2 .left_cont .inner .ico{display:inline-block;padding:0 13px;margin-bottom:18px;height:28px;line-height:27px;font-size:15px;border-radius:30px;text-align:center;border:1px solid #101010;box-sizing:border-box;color:#101010;font-weight:700;font-size:15px;}
 #info_box .stamp_event_wrap.type_renew2 .txt{font-size:17px;color:#101010;line-height:1;font-weight: 500;}
 #info_box .stamp_event_wrap.type_renew2 strong{color:#e01616;}
 #info_box .stamp_event_wrap.type_renew2 .btn_link{position:absolute;top:56px;right:51px;display:block;padding:0 29px;height:62px;line-height:62px;font-size:21px;font-weight:500;box-sizing:border-box;background:#111010;border-radius:30px;color: #bdd61a;}
 #info_box .stamp_event_wrap.type_renew2 .btn_link:after{content:'';display:inline-block;width:12px;height:12px;margin:-3px 0 0 8px;border-bottom:2px solid #bdd61a;border-right:2px solid #bdd61a;-ms-transform:rotate(-45deg);-moz-transform:rotate(-45deg);-webkit-transform:rotate(-45deg);transform:rotate(-45deg);vertical-align:middle}
-
+#info_box .stamp_event_wrap.type_renew2 .date{position: absolute;top: 14px;right: 15px;font-size: 15px;color: #101010;letter-spacing: 0;}
 
 .rpd h4.h4_tit {padding-bottom:16px; color:#101010; font-size:22px; line-height:36px; font-weight:700; border-bottom:2px solid #202020;}
 .rpd h4.h4_tit .btn_link {float:right; line-height:54px;font-size:14px; font-weight:400;color:#606060;}
