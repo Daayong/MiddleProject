@@ -59,18 +59,18 @@
 			
 				<!-- view head -->
 				<div class="head">
-                        <h2 class="tit">[9월 4차] 미리보는 쿡킷 전체 메뉴
-                        	<span class="date">2021-09-30</span></h2>
+                        <h2 class="tit">${list.notice_id} 
+                        	<span class="date">${list.notice_regDate}</span></h2>
                     </div>
 			
 				<!-- view contents -->
 					<div class="conts">
                         <div class="txt">
-                         <p>※ 메뉴는 원물 준비사항에 따라 변동될 수 있습니다.</p><p>※ 신메뉴는 '월요일' 오전10시에 오픈됩니다.<br>&nbsp;</p>
+                         	${list.notice_content}
 
 						
 						<!-- 첨부file 대체 -->
-							<img src="https://www.cjcookit.com/cjkit/design/notice/202109_new_02.jpg"><br><br><br>
+							<%-- <img src="../resources/upload/notice/${ }"><br><br><br> --%>
 
                         </div>
 						<div class="added_file">

@@ -56,4 +56,12 @@ public class NoticeService {
 		 
 	}
 	
+	public NoticeDTO getNoticeView(NoticeDTO noticeDTO) throws Exception{
+		return noticeDAO.getNoticeView(noticeDTO);
+	}
+	
+	public List<NoticeFilesDTO> getFile(NoticeDTO noticeDTO) throws Exception{
+		return noticeDAO.getFile(noticeDTO);
+	}
+	
 }

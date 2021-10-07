@@ -29,6 +29,20 @@ public class NoticeController {
 		return mv;
 	}
 	
+	@GetMapping("noticeView")
+	public ModelAndView getNoticeView(NoticeDTO noticeDTO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		
+		noticeDTO = noticeService.getNoticeView(noticeDTO);
+		List<NoticeFilesDTO> files = noticeService.getFile(noticeDTO);
+		
+		mv.addObject("dto", noticeDTO);
+		
+		return mv;
+		
+		
+	}
+	
 	@GetMapping("noticeUpload")
 	public ModelAndView setInsert() throws Exception{
 		ModelAndView mv = new ModelAndView();

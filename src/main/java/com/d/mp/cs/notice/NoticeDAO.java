@@ -21,10 +21,17 @@ public class NoticeDAO {
 		return sqlSession.insert(NAMESPACE+"setInsert", noticeDTO);
 	}
 	
+	public NoticeDTO getNoticeView(NoticeDTO noticeDTO) throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getNoticeView", noticeDTO);
+	}
+	
 	//file 첨부
 	public int setFile(NoticeFilesDTO noticeFilesDTO) throws Exception{
 		return sqlSession.insert(NAMESPACE+"setFile", noticeFilesDTO);
 	}
 	
+	public List<NoticeFilesDTO> getFile(NoticeDTO noticeDTO) throws Exception{
+		return sqlSession.selectList(NAMESPACE+"getFile", noticeDTO);
+	}
 	
 }

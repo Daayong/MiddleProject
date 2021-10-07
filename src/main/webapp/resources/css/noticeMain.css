@@ -40,10 +40,13 @@ table{
 	text-align:left;
 	}
 	
-.notice_conts .tb_row tr:last-child{
-	border-top: 1px solid #e0e0e0; 
-}	
-
+.tb_row tr:first-child {
+	border-top:none;	
+}
+	
+.tb_row tr {
+    border-top: 1px solid #e6e6e6;
+}
 
 /*notice view page */
 .notice_conts .view {

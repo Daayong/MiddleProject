@@ -1,6 +1,7 @@
 package com.d.mp.cs;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -8,9 +9,9 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/cs/**")
 public class CsController {
 
-	@RequestMapping("index")
-	public String doAdmin() throws Exception{
-		return "cs/index";
+	@GetMapping("userGuide")
+	public String userGuide() throws Exception{
+		return "cs/userGuide";
 	}
 	
 }

@@ -88,7 +88,7 @@
 				<c:forEach items="${noticelist}" var="list">
 					<tr>
 					<td scope="row">${list.notice_id}</td>
-					<td class="tit"><a href="#">${list.notice_subject}</a></td>
+					<td class="tit"><a href="./noticeView?notice_id=${list.notice_id}">${list.notice_subject}</a></td>
 					<td>${list.notice_regDate}</td>
 					</tr>
 				</c:forEach>
