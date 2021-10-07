@@ -67,7 +67,7 @@
 		
 		
 		<!-- button 추가 -->
-		<div align="left" class="mt-3" style="margin-bottom: 20px">
+		<div align="left" class="mt-3" style="margin-bottom: 50px">
 			<button type="submit" class="btn btn-primary">ADD</button>
 		</div>
 		
@@ -80,7 +80,7 @@
 <script type="text/javascript">
 
 	$('#notice_content').summernote({
-		 height: 200
+		 height: 500
 	});
 		
 </script>

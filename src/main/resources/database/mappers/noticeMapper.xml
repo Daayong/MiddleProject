@@ -24,9 +24,7 @@
   
   <!-- detail page view -->
   <select id="getNoticeView" parameterType="NoticeDTO" resultType="NoticeDTO">
-  		select * from notice n join notice_file nf
-using (notice_id)
-where notice_id = #{notice_id}
+  		select * from notice where notice_id = #{notice_id}
   </select>
   
   

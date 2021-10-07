@@ -59,14 +59,14 @@
 			
 				<!-- view head -->
 				<div class="head">
-                        <h2 class="tit">${list.notice_id} 
-                        	<span class="date">${list.notice_regDate}</span></h2>
+                        <h2 class="tit">${dto.notice_subject} 
+                        	<span class="date">${dto.notice_regDate}</span></h2>
                     </div>
 			
 				<!-- view contents -->
 					<div class="conts">
                         <div class="txt">
-                         	${list.notice_content}
+                         	${dto.notice_content}
 
 						
 						<!-- 첨부file 대체 -->
