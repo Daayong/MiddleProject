@@ -35,12 +35,9 @@ public class NoticeController {
 		
 		noticeDTO = noticeService.getNoticeView(noticeDTO);
 		List<NoticeFilesDTO> files = noticeService.getFile(noticeDTO);
-		
 		mv.addObject("dto", noticeDTO);
 		
 		return mv;
-		
-		
 	}
 	
 	@GetMapping("noticeUpload")
@@ -66,6 +63,27 @@ public class NoticeController {
 		return mv;
 	}
 	
+	
+	@GetMapping("noticeDelete")
+	public ModelAndView setDelete(NoticeDTO noticeDTO) throws Exception{
+		
+		int result = noticeService.setDelete(noticeDTO);
+		
+		ModelAndView mv = new ModelAndView();
+		
+		String message = "삭제에 실패했습니다";
+		
+		if(result>0) {
+			message = "삭제되었습니다";
+		}
+		
+		mv.addObject("msg", message);
+		mv.addObject("url", "./noticeMain");
+		
+		mv.setViewName("common/result");
+		
+		return mv;
+	}
 	
 
 }

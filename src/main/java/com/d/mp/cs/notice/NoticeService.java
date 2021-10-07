@@ -60,8 +60,22 @@ public class NoticeService {
 		return noticeDAO.getNoticeView(noticeDTO);
 	}
 	
+	public int setDelete(NoticeDTO noticeDTO) throws Exception{
+		return noticeDAO.setDelete(noticeDTO);
+	}
+	
 	public List<NoticeFilesDTO> getFile(NoticeDTO noticeDTO) throws Exception{
 		return noticeDAO.getFile(noticeDTO);
+	}
+	
+	public int setFileDelete(NoticeFilesDTO noticeFilesDTO) throws Exception{
+		
+		String realPath = servletContext.getRealPath("/resources/upload/notice/");
+		
+		File file = new File(realPath, noticeFilesDTO.getNotice_file_name());
+		fileManager.fileDelete(file);
+		
+		return noticeDAO.setFileDelete(noticeFilesDTO);
 	}
 	
 }

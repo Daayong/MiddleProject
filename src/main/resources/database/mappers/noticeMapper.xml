@@ -24,9 +24,15 @@
   
   <!-- detail page view -->
   <select id="getNoticeView" parameterType="NoticeDTO" resultType="NoticeDTO">
-  		select * from notice where notice_id = #{notice_id}
+  		SELECT * FROM notice WHERE notice_id = #{notice_id}
   </select>
+
+  <!-- delete -->
   
+  <delete id="setDelete" parameterType="NoticeDTO">
+	DELETE notice WHERE notice_id = #{notice_id}  
+  </delete>	
+	
   
   <!-- file -->
   <insert id="setFile" parameterType="NoticeFilesDTO">
@@ -36,4 +42,9 @@
   <select id="getFile" parameterType="NoticeDTO" resultType="NoticeFilesDTO">
   	SELECT * FROM notice_file WHERE notice_id = #{notice_id}
   </select>
+  
+  <delete id="setFileDelete" parameterType="NoticeFilesDTO">
+  	DELETE notice_file WHERE notice_file_id = #{notice_file_id}
+  
+  </delete>
   </mapper>

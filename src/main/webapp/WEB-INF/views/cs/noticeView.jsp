@@ -7,6 +7,8 @@
 
 <html>
 <head>
+
+<script src="http://code.jquery.com/jquery-latest.js"></script>
 	<title>고객행복센터 - 집밥을 특별하게, 쿡킷</title>
 	
 	<style>
@@ -67,22 +69,14 @@
 					<div class="conts">
                         <div class="txt">
                          	${dto.notice_content}
-
-						
-						<!-- 첨부file 대체 -->
-							<%-- <img src="../resources/upload/notice/${ }"><br><br><br> --%>
-
                         </div>
-						<div class="added_file">
-						    <ul>
-						        <!-- 첨부단위 -->
-							    
-						    </ul>
-						</div>
                     </div>
 			
 			</div>			
 			
+			<div>
+			<a href="./noticeDelete?notice_id=${dto.notice_id}" class="btn pop btn_remove"><span>Delete</span></a>
+			</div>
 			<!-- 목록으로 돌아가기 -->
 			
 				<div class="btn_wrap">
@@ -106,7 +100,11 @@
 
  <c:import url="../temp/boot_footer.jsp"></c:import>
 
-
+<script type="text/javascript">
+	$(".btn_remove").on('click', function() {
+		alert('이 글을 삭제하시겠습니까?')
+	})
+</script>
 
 </body>
 </html>

@@ -9,7 +9,10 @@
 <link href="${pageContext.request.contextPath}/resources/css/csMain.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/css/faqList.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/css/paging.css" rel="stylesheet">
+
 <script src="http://code.jquery.com/jquery-latest.js"></script>
+
+
 	<title>Home</title>
 	
 	<style>
