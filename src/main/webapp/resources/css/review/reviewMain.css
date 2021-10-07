@@ -1,6 +1,6 @@
 @charset "UTF-8";
 		
-body{background: url(/mp/resources/images/bg_rv_wrapper.png) repeat-x 0 977px;}
+body{background: url('/mp/resources/images/common/bg_rv_container.png') repeat-x 0 977px;}
 
 .hide {display: inline-block;position:absolute;z-index:-10;width:0 !important;height:0 !important;overflow:hidden !important;font-size:medium;line-height:normal;word-break:break-all}
 
