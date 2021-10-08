@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.d.mp.util.Pager;
+
 @Controller
 @RequestMapping("/cs/**")
 public class NoticeController {
@@ -19,13 +21,15 @@ public class NoticeController {
 	
 	
 	@GetMapping("noticeMain")
-	public ModelAndView getNoticeList() throws Exception{
+	public ModelAndView getNoticeList(Pager pager) throws Exception{
 		ModelAndView mv = new ModelAndView();
+				
+		List<NoticeDTO> ar = noticeService.getNoticeList(pager);
 		
+		mv.addObject("pager", pager);
+		mv.addObject("noticelist", ar);
 		mv.setViewName("cs/noticeMain");
 		
-		List<NoticeDTO> ar = noticeService.getNoticeList();
-		mv.addObject("noticelist", ar);
 		return mv;
 	}
 	

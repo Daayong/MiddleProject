@@ -105,11 +105,9 @@
 						<a class="btn_first" href="#"></a>
 							<a class="btn_prev" href="#"></a>
 							<span class="page_num">
-								<strong>1</strong>
-								<a href="#">2</a>
-								<a href="#">3</a>
-								<a href="#">4</a>
-								<a href="#">5</a>
+								
+								<a href="#"><strong>1</strong></a>
+								
 								
 						</span>
 					<a class="btn_next" href="#"></a>

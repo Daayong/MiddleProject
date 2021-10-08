@@ -7,8 +7,18 @@
   <mapper namespace="com.d.mp.cs.notice.NoticeDAO">
   
   <!-- list -->
-  <select id="getNoticeList" resultType="NoticeDTO">
-  	SELECT * FROM notice ORDER BY notice_id DESC
+  <select id="getNoticeList" parameterType="Pager"  resultType="NoticeDTO">
+  	SELECT * FROM
+  	 (SELECT rownum r, n.* FROM
+  	  (SELECT * FROM notice ORDER BY notice_id DESC)
+  	   n)
+  	   WHERE r BETWEEN #{startRow} AND #{lastRow}
+  </select>
+  
+  <!-- paging -->
+  
+  <select id="getCount" parameterType="Pager" resultType="Long">
+  	SELECT COUNT(notice_id) FROM notice
   </select>
   
   <!-- insert -->

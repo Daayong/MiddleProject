@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.d.mp.util.FileManager;
+import com.d.mp.util.Pager;
 
 
 
@@ -25,8 +26,12 @@ public class NoticeService {
 	@Autowired
 	private FileManager fileManager;
 	
-	public List<NoticeDTO> getNoticeList() throws Exception{
-		return noticeDAO.getNoticeList();
+	public List<NoticeDTO> getNoticeList(Pager pager) throws Exception{
+		//paging 처리
+		Long totalCount = noticeDAO.getCount(pager);
+		pager.makeNum(totalCount);
+		pager.makeRow();
+		return noticeDAO.getNoticeList(pager);
 	}
 	
 	public int setInsert(NoticeDTO noticeDTO, MultipartFile [] files) throws Exception{
