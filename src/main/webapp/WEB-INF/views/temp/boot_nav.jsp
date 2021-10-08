@@ -64,7 +64,7 @@
 						</a>
 					</li>
 					<li class="my_gmenu_find">
-						<a class="sr" href="#">
+						<a class="sr" href="menu_search">
 							<span class="txt">메뉴찾기</span>
 						</a>
 					</li>

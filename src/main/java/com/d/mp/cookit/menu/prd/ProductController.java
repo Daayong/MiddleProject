@@ -20,6 +20,17 @@ public class ProductController {
 	private ProductService productService;
 	
 	
+	@RequestMapping("menu_search")
+	public ModelAndView doSearch(ProductDTO productDTO) throws Exception{
+		List<ProductDTO> prdAr = productService.getPrdList(productDTO);
+		
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("prdDTO", prdAr);
+		mv.setViewName("cookit_menu/menu_search");
+		
+		return mv;
+	}
+	
 	@GetMapping("menu_detail")
 	public ModelAndView getPrdOne(ProductDTO productDTO) throws Exception{
 		
@@ -69,9 +80,23 @@ public class ProductController {
 	}
 	
 	@RequestMapping("manage")
-	public ModelAndView doManage() throws Exception{
+	public ModelAndView doManage(ProductDTO productDTO) throws Exception{
 		
-		List<ProductDTO> prdAr = productService.getPrdList();
+		List<ProductDTO> prdAr = productService.getPrdList(productDTO);
+		
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("prdDTO", prdAr);
+		mv.setViewName("cookit_menu/admin/menu_manage");
+		
+		return mv;
+	}
+	
+	@ResponseBody
+	@GetMapping("menu_delete")
+	public ModelAndView deletePrdOne(ProductDTO productDTO) throws Exception{
+		
+		int result = productService.deletePrdOne(productDTO);
+		List<ProductDTO> prdAr = productService.getPrdList(productDTO);
 		
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("prdDTO", prdAr);
@@ -82,16 +107,7 @@ public class ProductController {
 	
 	// 어드민 관련 부분 끝 ////////////////////////////////////////////
 	@PostMapping("prdUpload")
-	public ModelAndView setInsert(ProductDTO productDTO, MultipartFile [] main_files, MultipartFile [] slider_files) throws Exception{
-
-		for(int i=0;i<main_files.length;i++) {
-			System.out.println(main_files[i].getOriginalFilename());
-		}
-		System.out.println("========================================");
-		
-		for(int i=0;i<slider_files.length;i++) {
-			System.out.println(slider_files[i].getOriginalFilename());
-		}
+	public ModelAndView setInsert(ProductDTO productDTO, List<MultipartFile> main_files, List<MultipartFile> slider_files) throws Exception{
 		
 		int result = productService.setInsert(productDTO, main_files, slider_files);
 		
