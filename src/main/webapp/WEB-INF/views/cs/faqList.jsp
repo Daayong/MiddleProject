@@ -6,14 +6,14 @@
 <head>
 
 <link href="${pageContext.request.contextPath}/resources/css/common.css" rel="stylesheet">
-<link href="${pageContext.request.contextPath}/resources/css/csMain.css" rel="stylesheet">
-<link href="${pageContext.request.contextPath}/resources/css/faqList.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/cs/csMain.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/cs/faqList.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/css/paging.css" rel="stylesheet">
 
 <script src="http://code.jquery.com/jquery-latest.js"></script>
 
 
-	<title>Home</title>
+	<title>고객행복센터 - 집밥을 특별하게, 쿡킷</title>
 	
 	<style>
 		html,body{
@@ -185,7 +185,7 @@
 				<!-- bottom_info -->
 				<div class="bottom_info">
 					<span class="txt">FAQ로 해결되지 않으셨다면, 궁금한 점을 문의해주세요.</span>
-					<a href="#" class="rec_link"><span>1:1 문의 작성</span></a>
+					<a href="${pageContext.request.contextPath}/cs/formCounsel" class="rec_link"><span>1:1 문의 작성</span></a>
 				</div>
 			
 			</div>

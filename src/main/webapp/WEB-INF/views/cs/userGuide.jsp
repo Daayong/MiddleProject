@@ -2,8 +2,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <link href="${pageContext.request.contextPath}/resources/css/common.css" rel="stylesheet">
-<link href="${pageContext.request.contextPath}/resources/css/csMain.css" rel="stylesheet">
-<link href="${pageContext.request.contextPath}/resources/css/userGuide.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/cs/csMain.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/cs/userGuide.css" rel="stylesheet">
 
 <html>
 <head>

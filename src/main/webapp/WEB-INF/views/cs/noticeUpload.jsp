@@ -8,7 +8,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>고객행복센터 - 집밥을 특별하게, 쿡킷</title>
 <c:import url="../temp/boot_head.jsp"></c:import>
 
 	
