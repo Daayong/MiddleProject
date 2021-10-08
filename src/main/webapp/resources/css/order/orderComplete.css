@@ -42,8 +42,8 @@
 .tip {margin-top:100px;margin-bottom:40px; border-top: 2px solid #202020; border-left:1px solid #e0e0e0;border-right:1px solid #e0e0e0;border-bottom:1px solid #e0e0e0; }
 .tip .tip_head { position: relative; }
 .tip .tip_head a {display:block; padding-right:44px;}
-.tip .tip_head a:before {content:''; display:block; position:absolute; top:50%; right:32px; width:12px; height:12px; margin-top:-8px; border:1.5px solid #303030; border-top:none; border-left:none; -ms-transform:rotate(45deg); -webkit-transform:rotate(45deg); -moz-transform:rotate(45deg); transform:rotate(45deg);}
-.tip .tip_head.on a:before {content:''; display:block; position:absolute; top:60%; right:32px; width:12px; height:12px; margin-top:-8px; border:1.5px solid #303030; border-top:none; border-left:none; -ms-transform:rotate(225deg); -webkit-transform:rotate(225deg); -moz-transform:rotate(225deg); transform:rotate(225deg);}
+.tip .tip_head a:before {content:''; display:block; position:absolute; top:50%; right:32px; width:12px; height:12px; margin-top:-8px; border:1.5px solid #303030; border-top:none; border-left:none; -ms-transform:rotate(45deg) translate(0, -50%); -webkit-transform:rotate(45deg) translate(0, -50%); -moz-transform:rotate(45deg) translate(0, -50%); transform:rotate(45deg) translate(0, -50%);}
+.tip .tip_head.on a:before {content:''; display:block; position:absolute; top:50%; right:32px; width:12px; height:12px; margin-top:-8px; border:1.5px solid #303030; border-top:none; border-right:none; -ms-transform:rotate(135deg) translate(0, -50%); -webkit-transform:rotate(135deg) translate(0, -50%); -moz-transform:rotate(135deg) translate(0, -50%); transform:rotate(135deg) translate(0, -50%);}
 .tip .tip_head .tit{font-size:22px;font-weight:700;padding:25px 32px;}
 
 .tip .slide_area { background: #f7f7f7; padding: 40px 94px; overflow: hidden; border-top: 1px solid #e0e0e0; }
@@ -131,6 +131,7 @@
 /* ===== ===== ===== btn_wrap ===== ===== ===== */
 .btn_wrap { margin-top: 56px; text-align: center; }
 .btn {display:inline-block; width: 240px; height:56px;text-align:center;font-weight:700;font-size:18px;line-height:54px;}
-.btn.white {color:#101010;border:1px solid #202020;background-color:#FFFFFF;}
-.btn.green{color:#101010;border:1px solid #BDD61A;background-color:#BDD61A; margin-left: 8px;}
-
+.btn.white{color:#101010;border:1px solid #202020;background-color:#FFFFFF;}
+.btn.white:active{border:1px solid #202020;background-color:#F2F2F2;}
+.btn.green{color:#101010;border:1px solid #BDD61A;background-color:#BDD61A;}
+.btn.green:active{border:1px solid #97AB14;background-color:#97AB14;}

@@ -35,7 +35,7 @@
 		<div class="content">
 		
 			<div class="top">
-				<h2>주문하기</h2>
+				<h2>주문완료</h2>
 				<ol class="step">
 					<li class="step01">
 						<span>장바구니</span>
