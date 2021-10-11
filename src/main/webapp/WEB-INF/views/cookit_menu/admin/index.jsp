@@ -135,7 +135,7 @@
 		
 		$( function() {
 		  $( ".datepicker" ).datepicker({
-			  dateFormat: 'yymmdd' //Input Display Format 변경
+			  dateFormat: 'yy-mm-dd' //Input Display Format 변경
              ,showOtherMonths: true //빈 공간에 현재월의 앞뒤월의 날짜를 표시
              ,showMonthAfterYear:true //년도 먼저 나오고, 뒤에 월 표시
              ,changeYear: true //콤보박스에서 년 선택 가능

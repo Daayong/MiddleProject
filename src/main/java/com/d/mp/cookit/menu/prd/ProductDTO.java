@@ -7,7 +7,8 @@ public class ProductDTO {
 	
 	// 임시로 해놓은 방식 페이저에들어가야함	
 	private String kind;
-	
+	private String date;
+
 	private Long product_id;
 	private String product_name;
 	private String product_sub_name;
@@ -15,10 +16,20 @@ public class ProductDTO {
 	private String product_description;
 	private String product_info;
 	private Long product_price;
-	private Date product_reg_date;
+
 	private String product_start_date;
 	private String product_end_date;
-	private ArrayList<String> product_delivery_date;
+	
+	private String product_regdate;
+	
+	//////////////////////////////////////////
+	public String getProduct_regdate() {
+		return product_regdate;
+	}
+	public void setProduct_regdate(String product_regdate) {
+		this.product_regdate = product_regdate;
+	}
+	//////////////////////////////////////////
 	
 	public Long getProduct_id() {
 		return product_id;
@@ -62,12 +73,6 @@ public class ProductDTO {
 	public void setProduct_price(Long product_price) {
 		this.product_price = product_price;
 	}
-	public Date getProduct_reg_date() {
-		return product_reg_date;
-	}
-	public void setProduct_reg_date(Date product_reg_date) {
-		this.product_reg_date = product_reg_date;
-	}
 	public String getProduct_start_date() {
 		return product_start_date;
 	}
@@ -80,15 +85,6 @@ public class ProductDTO {
 	public void setProduct_end_date(String product_end_date) {
 		this.product_end_date = product_end_date;
 	}
-	
-	//////////////////////// 배송 가능 날짜가 담긴 List ///////////////////////////////
-	public ArrayList<String> getProduct_delivery_date() {
-		return product_delivery_date;
-	}
-	public void setProduct_delivery_date(ArrayList<String> product_delivery_date) {
-		this.product_delivery_date = product_delivery_date;
-	}
-	
 	/////////////////////////////////////////////////////////////
 	
 	public String getKind() {
@@ -99,5 +95,15 @@ public class ProductDTO {
 			this.kind = "";
 		}
 		this.kind = kind;
+	}
+	
+	public String getDate() {
+		if(this.date == "") {
+			this.date = null;
+		}
+		return date;
+	}
+	public void setDate(String date) {
+		this.date = date;
 	}
 }

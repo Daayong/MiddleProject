@@ -8,6 +8,23 @@ $(document).on("click", ".click_menu", function() {
 	
 });
 
+let date = "";
+/* 주문일 */
+$(".date").on("click", function () {
+	date = $(this).val();
+	
+ 	$.ajax({
+ 		url: 'menu_main?date=' + date,
+		type: "get",
+		dataType: "html",
+		success: function(res){
+			let a = $(res).find("#item_wrap").html();
+			$("#item_wrap").html(a);
+			date = $(this).val();
+		}
+	}); 
+});
+
 /* 신메뉴, 인기순, 가격순 등등 정렬하는 부분. */
 $(document).on("click", ".sortc_btn", function(){
 	$(".sortc_check.add").removeClass("add");
@@ -15,7 +32,7 @@ $(document).on("click", ".sortc_btn", function(){
 	let sort_type = $(this).val();
 	
 	$.ajax({
-		url: 'menu_main?kind=' + sort_type,
+		url: 'menu_main?kind=' + sort_type + '&date=' + date,
 		type: "get",
 		dataType: "html",
 		success: function(res){
@@ -24,8 +41,6 @@ $(document).on("click", ".sortc_btn", function(){
 		}
 	});
 });
-
-
 
 
 

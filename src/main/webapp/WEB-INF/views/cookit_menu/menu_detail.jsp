@@ -102,6 +102,9 @@
 						</div>
 						<div class="prd_count">
 							<input type="number" min="0" max="5" name="product_count" id="prd_count" placeholder="수량선택 (최대 5개)">
+							<c:forEach items="${prdDate}" var="date">
+								${date.product_regdate}
+							</c:forEach>
 						</div>
 						<div class="prd_total">
 							<span class="cnt">수량 <span id="cnt_value">0</span>개</span>

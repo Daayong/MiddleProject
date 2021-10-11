@@ -32,42 +32,36 @@ public class ProductService {
 	
 	public int setInsert(ProductDTO productDTO, List<MultipartFile> main_files, List<MultipartFile> slider_files) throws Exception{
 		
-		///////////////// start_date ~ end_date  /////////////////////////
 		
-		String start_date = productDTO.getProduct_start_date();
-		String end_date = productDTO.getProduct_end_date();
+		int result = productDAO.setInsert(productDTO);
 		
-		DateFormat dateFormat = new SimpleDateFormat("yyyyMMdd");
+		///////////////// start end 사이 날짜 구하기 /////////////////////////
 		
-		Date s_date = dateFormat.parse(start_date);
-		Date e_date = dateFormat.parse(end_date);
+		String s_date = productDTO.getProduct_start_date();
+		String e_date = productDTO.getProduct_end_date();
 		
-		Calendar s_cal = Calendar.getInstance();
-		Calendar e_cal = Calendar.getInstance();
+		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 		
-		SimpleDateFormat foramt_cal = new SimpleDateFormat("yyyyMMdd");
+		Date d1 = df.parse(s_date);
+		Date d2 = df.parse(e_date);
 		
-		s_cal.setTime(s_date);
-		e_cal.setTime(e_date);
+		Calendar c1 = Calendar.getInstance();
+		Calendar c2 = Calendar.getInstance();
 		
-		// 사이의 날짜를 담아둘 배열 arraylist 선언
+		c1.setTime(d1);
+		c2.setTime(d2);
 		
-		ArrayList<String> date_array = new ArrayList<String>();
-
-		
-		while(s_cal.compareTo(e_cal) != 1) {
-			System.out.println(foramt_cal.format(s_cal.getTime()));
-			date_array.add(foramt_cal.format(s_cal.getTime()));
+		while(c1.compareTo(c2) != 1) {
+			System.out.println(df.format(c1.getTime()));
 			
-			s_cal.add(Calendar.DATE, 1);
+			productDTO.setProduct_regdate(df.format(c1.getTime()));
+			productDAO.setInsertDate(productDTO);
+			
+			c1.add(Calendar.DATE, 1);
 		}
-		
-		productDTO.setProduct_delivery_date(date_array);
 		
 		
 		///////////////// 파일 처리 /////////////////////////
-		
-		int result = productDAO.setInsert(productDTO);
 		System.out.println(productDTO.getProduct_id());
 		
 		String main_realPath = servletContext.getRealPath("/resources/upload/menu/main/" + productDTO.getProduct_id());
@@ -81,7 +75,7 @@ public class ProductService {
 		if(main_files.size() < 2 && slider_files.size() < 2) {
 			System.out.println("첨부된 파일이 없습니다.");
 		}
-		if(main_files.size() >= 2){
+		if(main_files.size() >= 1){
 			main_file_path = new File(main_realPath);
 			
 			for(MultipartFile multipartFile:main_files) {
@@ -129,6 +123,20 @@ public class ProductService {
 	// 등록된 상품들 가져오기
 	public List<ProductDTO> getPrdList(ProductDTO productDTO) throws Exception{
 		
+		if(productDTO.getDate() != null) {
+			SimpleDateFormat beforeFormat = new SimpleDateFormat("yyyymmdd");
+			
+			SimpleDateFormat afterFromat = new SimpleDateFormat("yyyy-mm-dd");
+			
+			Date tempDate = null;
+			
+			tempDate = beforeFormat.parse(productDTO.getDate());
+			
+			String transDate = afterFromat.format(tempDate);
+			
+			productDTO.setDate(transDate);
+		}
+		
 		return productDAO.getPrdList(productDTO);
 	}
 	
@@ -136,6 +144,12 @@ public class ProductService {
 	public ProductDTO getPrdOne(ProductDTO productDTO) throws Exception{
 		
 		return productDAO.getPrdOne(productDTO);
+	}
+	
+	// 특정 id 상품의 주문가능 일자 가져오기
+	public List<ProductDTO> getDate(ProductDTO productDTO) throws Exception{
+		
+		return productDAO.getDate(productDTO);
 	}
 	
 	// 특정 id의 상품 하나 삭제하기

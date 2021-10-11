@@ -42,6 +42,16 @@
 						<li><a href="#">테마별</a></li>
 					</ul>
 				</div>
+				<div class="date_wrap">
+					<ul>
+						<li class="date date_all"><a href="menu_main">전체</a></li>
+						<li class="date date1" value=""></li>
+						<li class="date date2" value=""></li>
+						<li class="date date3" value=""></li>
+						<li class="date date4" value=""></li>
+						<li class="date date5" value=""></li>
+					</ul>
+				</div>
 			</div>
 			<div class="filter_wrap">
 				<p>안녕하세요! COOKIT의 메뉴들 입니다.</p>
@@ -121,6 +131,37 @@
 <c:import url="../temp/boot_footer.jsp"></c:import>
 
 <script src="../resources/js/menu/menu_js.js"></script>
+<script type="text/javascript">
+	let today = new Date();
+	
+	let week = ["일", "월", "화", "수", "목", "금", "토"];
+	
+/* 	let year = today.getFullYear();
+	let month = today.getMonth() + 1;
+	let day = parseInt(today.getDay()); */
+	let a = parseInt(today.getDay());
+	let b = parseInt(today.getDate());
+	
+	let value = "";
+
+	if(a >= 5 || a == 0){
+		for(var i=1; i<6; i++){
+			today.setDate(b + (2 + 7 - a) % 7);
+			b = b + 1;
+			$(".date" + i).html('<p>' + week[today.getDay()] + '</p><p>' + today.getDate() + '</p>');
+			value = today.getFullYear().toString() + (today.getMonth() + 1).toString() + today.getDate().toString();
+			$(".date" + i).val(value);
+		}
+	}else{
+		for(var i=1; i<6; i++){
+			today.setDate(b + (2 - a) % 7);
+			b = b + 1;
+			$(".date" + i).html('<p>' + week[today.getDay()] + '</p><p>' + today.getDate() + '</p>');
+			value = today.getFullYear().toString() + (today.getMonth() + 1).toString() + today.getDate().toString();
+			$(".date" + i).val(value);
+		}
+	}
+</script>
 
 </body>
 </html>

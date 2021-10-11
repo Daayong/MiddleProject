@@ -19,6 +19,11 @@ public class ProductDAO {
 		return sqlSession.insert(NAMESPACE + "setInsert", productDTO);
 	}
 	
+	//상품 날짜 테이블에 등록하기
+	public int setInsertDate(ProductDTO productDTO) throws Exception{
+		return sqlSession.insert(NAMESPACE + "setInsertDate", productDTO);
+	}
+	
 	//상품 파일 등록하기
 	public int setFile(ProductFilesDTO productFilesDTO) throws Exception{
 		return sqlSession.insert(NAMESPACE + "setFile", productFilesDTO);
@@ -37,6 +42,11 @@ public class ProductDAO {
 	//특정 ID의 상품 하나 가져오기
 	public ProductDTO getPrdOne(ProductDTO productDTO) throws Exception{
 		return sqlSession.selectOne(NAMESPACE + "getPrdOne", productDTO);
+	}
+	
+	//특정 id 상품의 주문가능 일자 가져오기
+	public List<ProductDTO> getDate(ProductDTO productDTO) throws Exception{
+		return sqlSession.selectList(NAMESPACE + "getDate", productDTO);
 	}
 	
 	//특정 ID의 상품 하나 삭제하기

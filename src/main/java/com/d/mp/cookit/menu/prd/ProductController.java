@@ -35,6 +35,7 @@ public class ProductController {
 	public ModelAndView getPrdOne(ProductDTO productDTO) throws Exception{
 		
 		ProductDTO dto = productService.getPrdOne(productDTO);
+		List<ProductDTO> prdDate = productService.getDate(productDTO);
 		List<ProductFilesDTO> prdAr = productService.getFile(productDTO);
 		List<ProductFilesDTO> mainFiles = new ArrayList<ProductFilesDTO>();
 		List<ProductFilesDTO> sliderFiles = new ArrayList<ProductFilesDTO>();
@@ -48,6 +49,7 @@ public class ProductController {
 		}
 		
 		ModelAndView mv = new ModelAndView();
+		mv.addObject("prdDate", prdDate);
 		mv.addObject("mainFiles", mainFiles);
 		mv.addObject("sliderFiles", sliderFiles);
 		mv.addObject("prdDTO", dto);
@@ -60,6 +62,8 @@ public class ProductController {
 	@GetMapping("menu_main")
 	public ModelAndView getPrdList(ProductDTO productDTO) throws Exception{
 		List<ProductDTO> prdAr = productService.getPrdList(productDTO);
+		
+		System.out.println(productDTO.getDate());
 		
 		ModelAndView mv = new ModelAndView();
 		
