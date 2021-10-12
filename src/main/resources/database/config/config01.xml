@@ -10,13 +10,13 @@
 			<typeAlias type="com.d.mp.cs.faq.FaqDTO" alias="FaqDTO"/>
 			<typeAlias type="com.d.mp.cs.notice.NoticeDTO" alias="NoticeDTO"/>
 			<typeAlias type="com.d.mp.cs.notice.NoticeFilesDTO" alias="NoticeFilesDTO"/>
-			<typeAlias type="java.util.List" alias="List"/>
-	  		<typeAlias type="java.lang.Long" alias="Long"/>
-	  		<typeAlias type="java.util.Map" alias="Map"/>
 	  		<typeAlias type="com.d.mp.board.util.boardPager" alias="boardPager"/>
 		
 	
 	
+			<typeAlias type="java.util.List" alias="List"/>
+	  		<typeAlias type="java.lang.Long" alias="Long"/>
+	  		<typeAlias type="java.util.Map" alias="Map"/>
 	
 	
 		</typeAliases>
