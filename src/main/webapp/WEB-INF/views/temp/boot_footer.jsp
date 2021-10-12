@@ -4,7 +4,7 @@
 
 
 
-
+<link href="${pageContext.request.contextPath}/resources/css/common.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/css/import_footer.css" rel="stylesheet">
 
 
