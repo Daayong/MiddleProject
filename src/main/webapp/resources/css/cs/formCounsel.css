@@ -23,11 +23,6 @@
 	color:#606060;
 }
 
-#left_menu dl.my_menu dd .menu_list li a.on {
-    color: #101010;
-    text-decoration: underline;
-}
-
 #left_menu div ul li a:hover{
 	color:#101010;
 	text-decoration:underline; 
