@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.d.mp.cookit.menu.prd.ProductDAO">
+  
+  	<!-- 상품 등록하기 -->
+  	<insert id="setInsert" parameterType="ProductDTO">
+  		<selectKey order="BEFORE" resultType="Long" keyProperty="product_id">
+  			SELECT PRD_SEQ.nextval from dual
+  		</selectKey>
+  		insert into product (product_id, product_name, product_sub_name, product_recipe, product_description, product_info, product_price, product_total_count)
+  		values (#{product_id}, #{product_name}, #{product_sub_name}, #{product_recipe}, #{product_description}, #{product_info}, #{product_price} , #{product_total_count})
+  	</insert>
+	
+	<insert id="setInsertDate" parameterType="ProductDTO">
+		insert into product_date (product_date_id, product_id, product_regdate, product_sell_count)
+		values (PD_SEQ.nextval, #{product_id}, #{product_regdate}, 0)
+	</insert>
+  	<!-- 상품 파일(썸네일, 슬라이더, 정보) 등록하기 -->
+  	<insert id="setFile" parameterType="ProductFilesDTO">
+  		insert into product_file (product_file_id, product_id, product_file_name, product_file_ori_name, product_file_path)
+  		values (PF_SEQ.nextval, #{product_id}, #{product_file_name}, #{product_file_ori_name}, #{product_file_path})
+  	</insert>
+  	
+  	<!-- 상품 파일 가져오기 -->
+  	<select id="getFile" parameterType="ProductDTO" resultType="ProductFilesDTO">
+  		select * from product_file where product_id = #{product_id}
+  	</select>
+  	
+  	<!-- 상품 전체 리스트 가져오기 -->
+  	<select id="getPrdList" parameterType="ProductDTO" resultType="ProductDTO">
+  		<choose>
+  			<when test="date != null">
+  				select * from product p inner JOIN product_date pd on p.product_id = pd.product_id
+  				<if test="date != null">
+		  			where pd.product_regdate = to_date( #{date}, 'YYYY-MM-DD')
+		  		</if>
+		  		order by
+		  			<choose>
+		  				<when test="kind == 'sort_up'">
+		  					p.product_price desc
+		  				</when>
+		  				<when test="kind == 'sort_down'">
+		  					p.product_price asc
+		  				</when>
+		  				<otherwise>
+		  					p.product_id desc
+		  				</otherwise>
+		  			</choose>
+  			</when>
+  			<otherwise>
+  				select * from product
+  				
+  				order by
+	  			<choose>
+	  				<when test="kind == 'sort_up'">
+	  					product_price desc
+	  				</when>
+	  				<when test="kind == 'sort_down'">
+	  					product_price asc
+	  				</when>
+	  				<otherwise>
+	  					product_id desc
+	  				</otherwise>
+	  			</choose>
+  			</otherwise>
+  		</choose>
+  	</select>
+  	
+  	<!-- 특정 id 상품 하나 가져오기 -->
+  	<select id="getPrdOne" parameterType="ProductDTO" resultType="ProductDTO">
+  		select * from product where product_id = #{product_id}
+  	</select>
+  	
+  	<!-- 특정 id 상품의 주문가능 일자 가져오기 -->
+  	<select id="getDate" parameterType="ProductDTO" resultType="ProductDTO">
+  		select product_regdate from product p right join product_date pd on p.product_id = pd.product_id
+		where p.product_id = #{product_id}
+		order by pd.product_regdate asc
+  	</select>
+  	
+  	<!-- 특정 id 상품 하나 삭제하기 -->
+  	<delete id="deletePrdOne" parameterType="ProductDTO">
+  		delete from product where product_id = #{product_id}
+  	</delete>
+  </mapper>

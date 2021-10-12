@@ -46,7 +46,7 @@
 					<a href="#">COOKIT소개</a>
 				</li>
 				<li class="menu_li">
-					<a href="#">COOKIT 메뉴</a>
+					<a href="${pageContext.request.contextPath}/menu/menu_main">COOKIT 메뉴</a>
 				</li>
 				<li class="menu_li">
 					<a href="${pageContext.request.contextPath}/review/reviewMain">리뷰</a>
@@ -68,7 +68,7 @@
 						</a>
 					</li>
 					<li class="my_gmenu_find">
-						<a class="sr" href="#">
+						<a class="sr" href="${pageContext.request.contextPath}/menu/menu_search">
 							<span class="txt">메뉴찾기</span>
 						</a>
 					</li>
