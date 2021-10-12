@@ -54,7 +54,7 @@
 			</div>	
 		</div>
 		<div class="cont_area">
-			<form id="form1" method="post">
+			<form id="form1" method="post" action="join">
 				<div class="table_header">
 					<h3 class="h3_tit">기본정보</h3>
 					<div class="info">
@@ -151,8 +151,6 @@
 								</td>
 							</tr>
 							
-							
-							
 							<tr class="input">
 								<th scope="row" class="mandatory">
 									<label for="member_birth">
@@ -160,10 +158,10 @@
 									</label>									
 								</th>
 								<td>
-									<div class="birthday_select">
-									<div class="select_wrap w120 strack"></div>
-										<span class="select w120 hide">
-											<select id="birth_yy" name="birth_yy">
+							
+								<div id="birthday_select">
+										<div class="select w120">
+											<select class="select_wrap"  id="birth_yy" name="birth_yy">
 											<option>년</option>
 											<option value="2021">2021</option>
 											<option value="2020">2020</option>
@@ -257,56 +255,200 @@
 											<option value="1932">1932</option>
 											<option value="1931">1931</option>
 											</select>
-										</span>
-									
+											<span class="symbol">년</span>
+										</div>
+										<div class="select w70">
+											<select class="select_wrap" id="birth_mm" name="birth_mm">
+											<option>월</option>
+											<option value="01">01</option>
+											<option value="02">02</option>
+											<option value="03">03</option>
+											<option value="04">04</option>
+											<option value="05">05</option>
+											<option value="06">06</option>
+											<option value="07">07</option>
+											<option value="08">08</option>
+											<option value="09">09</option>
+											<option value="10">10</option>
+											<option value="11">11</option>
+											<option value="12">12</option>
+											</select>
+											<span class="symbol">월</span>
+										</div>
+										<div class="select w70">
+											<select class="select_wrap" id="birth_dd" name="birth_dd">
+											<option>일</option>
+											<option value="01">01</option>
+											<option value="02">02</option>
+											<option value="03">03</option>
+											<option value="04">04</option>
+											<option value="05">05</option>
+											<option value="06">06</option>
+											<option value="07">07</option>
+											<option value="08">08</option>
+											<option value="09">09</option>
+											<option value="10">10</option>
+											<option value="11">11</option>
+											<option value="12">12</option>
+											<option value="13">13</option>
+											<option value="14">14</option>
+											<option value="15">15</option>
+											<option value="16">16</option>
+											<option value="17">17</option>
+											<option value="18">18</option>
+											<option value="19">19</option>
+											<option value="20">20</option>
+											<option value="21">21</option>
+											<option value="22">22</option>
+											<option value="23">23</option>
+											<option value="24">24</option>
+											<option value="25">25</option>
+											<option value="26">26</option>
+											<option value="27">27</option>
+											<option value="28">28</option>
+											<option value="29">29</option>
+											<option value="30">30</option>
+											<option value="31">31</option>
+											</select>
+											<span class="symbol">일</span>
+										</div>
 									</div>
 									<p class="msg_desc">
 										설정하신 생일을 기준으로 15일 전 생일쿠폰이 발행됩니다.
 									</p>
 								</td>
-							</tr>
-							
+							</tr> 
 							<tr class="input">
 								<th scope="row" class="mandatory">
-									<label for="input_member_name">
+									<label for="member_phone">
 										<span>휴대전화</span>
 									</label>									
 								</th>
 								<td>
-									<span class="input_txt">
-										<input type="text" id="input_member_name" class="text">
-									</span>
+							
+								<div id="phone_num">
+										<div class="select w120">
+											<select class="select_wrap"  id="phone_f" name="phone_f">
+											<option>010</option>
+											<option value="010">010</option>
+											<option value="011">011</option>
+											<option value="016">016</option>
+											<option value="017">017</option>
+											<option value="018">018</option>
+											<option value="019">019</option>
+											<option value="070">070</option>
+											<option value="0130">0130</option>
+											<option value="0303">0303</option>
+											<option value="0502">0502</option>
+											<option value="0504">0504</option>
+											<option value="0505">0505</option>
+											<option value="0506">0506</option>
+											</select>
+											<span class="symbol">-</span>
+										</div>
+										<div class="select w120">
+											<span class="input_txt">
+												<input type="text" id="member_phone_m" name="member_phone_m" class="text">
+											</span>
+											<span class="symbol">-</span>
+										</div>
+										<div class="select w120">
+											<span class="input_txt">
+												<input type="text" id="member_phone_b" name="member_back_b" class="text">
+											</span>
+										</div>
+									</div>
+									<p class="msg_desc">
+										주문 및 배송, 쿠폰, 이벤트 정보 등을 제공 받으실 수 있습니다.
+									</p>
 								</td>
 							</tr>
-							
 							<tr class="input">
 								<th scope="row" class="mandatory">
-									<label for="input_member_name">
+									<label for="member_email">
 										<span>이메일</span>
 									</label>									
 								</th>
 								<td>
-									<span class="input_txt">
-										<input type="text" id="input_member_name" class="text">
-									</span>
+							
+								<div id="email_ad">
+										<div class="select w180">
+											<span class="input_txt">
+												<input type="text" id="member_email_f" name="member_email_f" class="text">
+											</span>
+											<span class="symbol">@</span>
+										</div>
+										<div class="select w180">
+											<span class="input_txt">
+												<input type="text" id="member_email_b" name="member_email_b" class="text">
+											</span>
+										</div>
+									</div>
+									<p class="msg_desc">
+									이메일 주소 입력 시 사용 가능 특수 문자 : - . _
+									</p>
 								</td>
 							</tr>
 							
-							
-							
 						</tbody>					
 					</table>
-				
 				</div>
 		
-		
+				<div class="table_header">
+					<h3 class="h3_tit">선택정보</h3>
+				</div>
+				<div class="table_col">
+					<table>
+						<colgroup>
+							<col class="title">
+							<col class="body">
+						</colgroup>
+						<tbody>
+							<tr class="input">
+								<th scope="row" class="man">
+									<label for="marketing">
+										<span>CJ ONE 마케팅<br>정보 수신 동의</span>
+									</label>									
+								</th>
+								<td>
+									<div class="input_group" style="height:60px; ">
+										<p class="msg_desc" style="font-size:14px; color:#222222;">
+										포인트/이벤트/문화공연/상품 소식을 전해드립니다. (공지목적의 발송되는 메일은 제외)
+										</p>
+										<div class="marketing_agree">
+										  <input type="checkbox" id="member_marketing_sms" name="member_marketing_sms">
+										  <label for="member_marketing_sms">SMS</label>
+										  <input style="margin-left:20px;" type="checkbox" id="member_marketing_email" name="member_marketing_email">
+										  <label for="member_marketing_email">EMAIL</label>
+										</div>
+									</div>
+								</td>
+							</tr>
+						</tbody>
+						</table>	
+					</div>
 			</form>
+					<div class="btn_sec col2">
+						<button type="button" style="width:160px;" class="btn" id="btn_prev">취소</button>
+						<button type="button" class="btn btn_em" id="btn_join">등록</button>
+					</div>	
+					
+					<div class="final_info">
+						<h3 style="font-size:18px; color:#555; font-weight:400;">이용안내</h3>
+						<p class="s_txt">
+							CJ ONE 회원가입 후에도 각 제휴 브랜드 웹사이트에서 통합 아이디를 사용하여 로그인 하시려면, 각 브랜드 웹사이트의 이용약관에 대한 동의를 거친 후에 이용 가능합니다.
+						</p>
+						<p class="s_txt">
+							개인정보 수집 및 활용 동의 (선택)에 거부한 회원님은 마케팅 정보 수신을 받으실 수 없습니다.			
+						</p>
+					</div>
+					
 		</div>
 	</section>
  	<c:import url="../temp/member_footer.jsp"></c:import>
 </div>
 
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/check.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/join.js"></script>
 
 
 
