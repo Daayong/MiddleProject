@@ -9,8 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.d.mp.util.FileManager;
-import com.d.mp.util.Pager;
+import com.d.mp.board.util.boardFileManager;
+import com.d.mp.board.util.boardPager;
 
 
 
@@ -24,9 +24,9 @@ public class NoticeService {
 	private ServletContext servletContext;
 	
 	@Autowired
-	private FileManager fileManager;
+	private boardFileManager fileManager;
 	
-	public List<NoticeDTO> getNoticeList(Pager pager) throws Exception{
+	public List<NoticeDTO> getNoticeList(boardPager pager) throws Exception{
 		//paging 처리
 		Long totalCount = noticeDAO.getCount(pager);
 		pager.makeNum(totalCount);

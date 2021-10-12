@@ -1,6 +1,6 @@
-package com.d.mp.util;
+package com.d.mp.board.util;
 
-public class Pager {
+public class boardPager {
 	
 	//현재 보는 페이지의 번호
 	private Long pn;

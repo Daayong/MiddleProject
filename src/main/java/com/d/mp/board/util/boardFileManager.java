@@ -1,4 +1,4 @@
-package com.d.mp.util;
+package com.d.mp.board.util;
 
 import java.io.File;
 import java.util.UUID;
@@ -8,7 +8,7 @@ import org.springframework.util.FileCopyUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 @Component
-public class FileManager {
+public class boardFileManager {
 	
 	
 	//file save

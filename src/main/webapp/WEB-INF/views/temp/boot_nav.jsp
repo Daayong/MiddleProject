@@ -10,12 +10,26 @@
 	<div class="gnb_wrap">
 		<div class="gnb_info">
 			<div class="info_wrap">
+
+
 				<ul>			
-					<li><a href="${pageContext.request.contextPath}/member/join">회원가입</a></li>
-					<li><a href="${pageContext.request.contextPath}/member/login">로그인</a></li>
+					<c:choose>
+						<c:when test="${not empty member}">
+				    		<li><a class="f" href="#">${member.member_name}님</a></li>
+							<li><a class="f" href="${pageContext.request.contextPath}/member/logout">로그아웃</a></li>
+				    	</c:when>	
+				      	<c:otherwise>						
+							<li><a href="${pageContext.request.contextPath}/member/check">회원가입</a></li>
+							<li><a href="${pageContext.request.contextPath}/member/login">로그인</a></li>
+				      	</c:otherwise>
+					</c:choose>
+					
 					<li><a href="${pageContext.request.contextPath}/cs/csMain">고객행복센터</a></li>
 					<li><a href="${pageContext.request.contextPath}/">배송지역검색</a></li>
 					<li><a href="${pageContext.request.contextPath}/">기프트카드 등록</a></li>
+
+
+
 				</ul>
 			</div>
 		</div>
@@ -35,13 +49,13 @@
 					<a href="#">COOKIT 메뉴</a>
 				</li>
 				<li class="menu_li">
-					<a href="#">리뷰</a>
+					<a href="${pageContext.request.contextPath}/review/reviewMain">리뷰</a>
 				</li>
 				<li class="menu_li">
 					<a href="${pageContext.request.contextPath}/event/eventMain">이벤트</a>
 				</li>
 				<li class="menu_li">
-					<a href="#">MY쿡킷</a>
+					<a href="${pageContext.request.contextPath}/member/myPage">MY쿡킷</a>
 				</li>
 			</ul>
 	
@@ -49,7 +63,7 @@
 			<div class="my_gmenu">  
 				<ul>
 					<li class="my_gmenu_cart">
-						<a class="sr" href="#">
+						<a class="sr" href="${pageContext.request.contextPath}/order/cartList">
 							<span class="txt">장바구니</span>
 						</a>
 					</li>
