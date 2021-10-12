@@ -13,6 +13,11 @@ public class OrderController {
 		return "order/cartList";		
 	}
 	
+	@RequestMapping("orders")
+	public String orders() {
+		return "order/orders";		
+	}
+	
 	@RequestMapping("orderComplete")
 	public String orderComplete() {
 		return "order/orderComplete";		
