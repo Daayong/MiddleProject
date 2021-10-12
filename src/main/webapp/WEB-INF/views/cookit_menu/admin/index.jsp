@@ -121,6 +121,11 @@
 						<input type="text" class="datepicker" id="endDate" name="product_end_date" autocomplete="off">
 					</div>
 					
+					<div class="input_block">
+						<label for="inputPrdCount">상품 총 수량</label>
+						<input type="text" id="inputPrdCount" name="product_total_count">
+					</div>
+					
 					<button type="submit" class="insert_btn">상품디비추가</button>
 					
 				</form>

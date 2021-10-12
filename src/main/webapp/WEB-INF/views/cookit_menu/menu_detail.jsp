@@ -100,11 +100,24 @@
 								새벽배송
 							</span>
 						</div>
+						<div class="prd_date">
+							<select class="prd_date_select" name="product_date">
+									<option value="">배송받을 날짜를 선택해주세요.</option>
+								<c:forEach items="${prdDate}" var="date">
+								
+									<!-- 날짜 포맷 변경 -->
+									<fmt:parseDate value="${date.product_regdate}" var="parseDateValue" pattern="yyyy-MM-dd"/>
+									<!-- 날짜 포맷 변경 -->
+									
+									<option value="<fmt:formatDate value="${parseDateValue}" pattern="yyyy-MM-dd"/>"><fmt:formatDate value="${parseDateValue}" pattern="MM월 dd일"/></option>
+								</c:forEach>
+							</select>
+						</div>
 						<div class="prd_count">
+							<div class="countbox">
+								
+							</div>
 							<input type="number" min="0" max="5" name="product_count" id="prd_count" placeholder="수량선택 (최대 5개)">
-							<c:forEach items="${prdDate}" var="date">
-								${date.product_regdate}
-							</c:forEach>
 						</div>
 						<div class="prd_total">
 							<span class="cnt">수량 <span id="cnt_value">0</span>개</span>
@@ -292,5 +305,8 @@
 </body>
 
 <script src="../resources/js/menu/menu_js.js"></script>
+<script type="text/javascript">
+
+</script>
 
 </html>

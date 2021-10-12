@@ -133,6 +133,8 @@
 <script src="../resources/js/menu/menu_js.js"></script>
 <script type="text/javascript">
 	let today = new Date();
+	let last_date = new Date(today.getFullYear(), today.getMonth()+1, 0);
+	
 	
 	let week = ["일", "월", "화", "수", "목", "금", "토"];
 	
@@ -140,26 +142,55 @@
 	let month = today.getMonth() + 1;
 	let day = parseInt(today.getDay()); */
 	let a = parseInt(today.getDay());
-	let b = parseInt(today.getDate());
-	
+	let b = parseInt(today.getDate());	
 	let value = "";
 
-	if(a >= 5 || a == 0){
+	/* if(a >= 5 || a == 0){
 		for(var i=1; i<6; i++){
+			
+			if(b > parseInt(last_date.getDate())){
+				b = 1;
+			}
+			
 			today.setDate(b + (2 + 7 - a) % 7);
+			
 			b = b + 1;
+			
 			$(".date" + i).html('<p>' + week[today.getDay()] + '</p><p>' + today.getDate() + '</p>');
 			value = today.getFullYear().toString() + (today.getMonth() + 1).toString() + today.getDate().toString();
 			$(".date" + i).val(value);
 		}
 	}else{
 		for(var i=1; i<6; i++){
+			
+			if(b > parseInt(last_date.getDate())){
+				b = 1;
+			}
+			
 			today.setDate(b + (2 - a) % 7);
+			
 			b = b + 1;
+			
 			$(".date" + i).html('<p>' + week[today.getDay()] + '</p><p>' + today.getDate() + '</p>');
 			value = today.getFullYear().toString() + (today.getMonth() + 1).toString() + today.getDate().toString();
 			$(".date" + i).val(value);
 		}
+	} */
+	
+	for(var i=1; i<6; i++){
+		
+		today.setDate(b + 2);
+		
+		b = b + 1;
+		
+		if(parseInt(today.getDay()) == 0 || parseInt(today.getDay()) == 1){
+			i--;
+			continue;
+		}else{
+			$(".date" + i).html('<p>' + week[today.getDay()] + '</p><p>' + today.getDate() + '</p>');
+			value = today.getFullYear().toString() + (today.getMonth() + 1).toString() + today.getDate().toString();
+			$(".date" + i).val(value);
+		}	
 	}
 </script>
 

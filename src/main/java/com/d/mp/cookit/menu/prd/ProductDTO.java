@@ -1,8 +1,5 @@
 package com.d.mp.cookit.menu.prd;
 
-import java.sql.Date;
-import java.util.ArrayList;
-
 public class ProductDTO {
 	
 	// 임시로 해놓은 방식 페이저에들어가야함	
@@ -16,7 +13,8 @@ public class ProductDTO {
 	private String product_description;
 	private String product_info;
 	private Long product_price;
-
+	private Long product_total_count;
+	
 	private String product_start_date;
 	private String product_end_date;
 	
@@ -84,6 +82,13 @@ public class ProductDTO {
 	}
 	public void setProduct_end_date(String product_end_date) {
 		this.product_end_date = product_end_date;
+	}
+	
+	public Long getProduct_total_count() {
+		return product_total_count;
+	}
+	public void setProduct_total_count(Long product_total_count) {
+		this.product_total_count = product_total_count;
 	}
 	/////////////////////////////////////////////////////////////
 	
