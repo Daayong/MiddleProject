@@ -2,16 +2,15 @@
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <link href="${pageContext.request.contextPath}/resources/css/import_nav.css" rel="stylesheet">
-<link href="${pageContext.request.contextPath}/resources/css/common.css" rel="stylesheet">
 
 <!-- navBar -->
-
 <nav id="header">
 	
 <!-- ===== ===== ===== gnb_wrap ===== ===== ===== -->
 	<div class="gnb_wrap">
 		<div class="gnb_info">
 			<div class="info_wrap">
+
 
 				<ul>			
 					<c:choose>
@@ -28,6 +27,8 @@
 					<li><a href="${pageContext.request.contextPath}/cs/csMain">고객행복센터</a></li>
 					<li><a href="${pageContext.request.contextPath}/">배송지역검색</a></li>
 					<li><a href="${pageContext.request.contextPath}/">기프트카드 등록</a></li>
+
+
 
 				</ul>
 			</div>
