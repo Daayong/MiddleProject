@@ -116,7 +116,7 @@
 						
 						<div class="slide_wrap">
 							<div class="slide_list">
-								<div class="slide_track" style="opacity: 1; width: 25000px; transform: translate3d(-349px, 0px, 0px); transition: transform 1200ms ease 0s;">
+								<div class="slide_track" style="opacity: 1; width: 25000px; transform: translate3d(-348px, 0px, 0px); transition: transform 1200ms ease 0s;">
 								
 								<c:forEach var="i" begin="0" end="4">
 								

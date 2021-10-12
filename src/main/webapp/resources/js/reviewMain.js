@@ -28,13 +28,13 @@ $('.btn_arrow').click(function() {
 	const slide_list = $(this).parents('.slide_list');
 	const slide_track = slide_list.children('.slide_track');
 	let transformVal = slide_track.css('transform').split(',')[4];
-	
+
 /* slideContentsSize : 슬라이드 거리 계산 (slide_contents width, margin-right 합) */
 	let slide_contents = slide_track.children('.slide_contents');
 	let width = parseInt(slide_contents.css('width').split('px')[0]);
 	let margin_right = parseInt(slide_contents.css('margin-right').split('px')[0]);
 	let slideContentsSize = width + margin_right;
-	
+
 //	slide_contents 개수 계산
 	let slideContentsCnt = 5;
 	
