@@ -74,8 +74,8 @@
 			
 			</div>			
 			
-			<div>
-			<a href="./noticeDelete?notice_id=${dto.notice_id}" class="btn pop btn_remove"><span>Delete</span></a>
+			<div >
+			<a href="./noticeDelete?notice_id=${dto.notice_id}" class="delete btn_remove" ><span>삭제</span></a>
 			</div>
 			<!-- 목록으로 돌아가기 -->
 			
@@ -102,7 +102,12 @@
 
 <script type="text/javascript">
 	$(".btn_remove").on('click', function() {
-		alert('이 글을 삭제하시겠습니까?')
+		
+		 if(confirm("이 글을 삭제하시겠습니까?") == true){
+		    }
+		    else{
+		        return false;
+		    }
 	})
 </script>
 

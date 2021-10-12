@@ -14,6 +14,6 @@
 <body>
 	<input type="hidden" id="msg" value="${msg}">
 	
-	${result }
+	${result}
 </body>
 </html>

@@ -104,7 +104,7 @@
     width: 104px;
     height: 104px;
     margin: 0 16px 0 35px;
-    background: url('../images/pd/ico_set3.png') no-repeat;
+    background: url('/mp/resources/images/pd/ico_set3.png') no-repeat;
     background-size: 800px 800px;
 }
 
@@ -250,7 +250,7 @@ i.bullet{
     top: 16px;
     width: 104px;
     height: 96px;
-    background: url(../images/pd/ico_chara.png) -212px -128px no-repeat;
+    background: url('/mp/resources/images/pd/ico_chara.png') -212px -128px no-repeat;
     background-size: 500px 500px;
 }
 
