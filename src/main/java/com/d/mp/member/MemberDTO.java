@@ -8,10 +8,10 @@ public class MemberDTO {
 	private String member_name; 
 	private Long member_phone; 
 	private String member_email; 
-	private Long member_birth; 
-	private String member_address; 
+	private Long member_birth;
+	private int member_marketing_sms; 
+	private int member_marketing_email;
 	private int member_type;
-	
 	
 	
 	public Long getMember_id() {
@@ -56,17 +56,24 @@ public class MemberDTO {
 	public void setMember_birth(Long member_birth) {
 		this.member_birth = member_birth;
 	}
-	public String getMember_address() {
-		return member_address;
+	public int getMember_marketing_sms() {
+		return member_marketing_sms;
 	}
-	public void setMember_address(String member_address) {
-		this.member_address = member_address;
+	public void setMember_marketing_sms(int member_marketing_sms) {
+		this.member_marketing_sms = member_marketing_sms;
+	}
+	public int getMember_marketing_email() {
+		return member_marketing_email;
+	}
+	public void setMember_marketing_email(int member_marketing_email) {
+		this.member_marketing_email = member_marketing_email;
 	}
 	public int getMember_type() {
 		return member_type;
 	}
 	public void setMember_type(int member_type) {
 		this.member_type = member_type;
-	} 
+	}
+	
 	
 }

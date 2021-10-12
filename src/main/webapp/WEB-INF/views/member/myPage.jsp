@@ -87,7 +87,7 @@
 							${member.member_name}님
 						</div>
 						<div class="log_address">
-							<a href="#"><span>${member.member_address}</span></a>
+							<a href="#"><span>주소오오오오오</span></a>
 						</div>
 					</div>
 					<div id="pointWrap">

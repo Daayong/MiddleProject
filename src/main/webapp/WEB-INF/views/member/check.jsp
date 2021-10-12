@@ -204,14 +204,14 @@
 			<!-- 약관 동의  -->
 						<div class="agreement_clause">
 							<div class="check_all">
-								<a href="#" class="btn btn_em" data-control="checkAll" data-handler>전체 동의</a>
+								<a class="btn btn_em" id="all">전체 동의</a>
 							</div>
-					<!--  필수 약관  -->		
+					<!--  필수 약관1  -->		
 							<div class="item_box case">
 								<h3 class="h5_tit">CJ ONE 서비스 이용약관 (필수)</h3>
 								<div class="clause_box" tabindex="0">
 									<div id=polView>
-										<div id="polViewnew">
+										<div class="polViewnew">
 											<p>
 												<strong>제1장 총칙</strong>
 												<br>
@@ -224,6 +224,8 @@
 												의무, 관련 절차 등을 규정하는데 그 목적이 있습니다.
 											</p>
 											<p>
+												<br>
+												<br>
 												<strong>제 2조 (용어의 정의)</strong>
 												<br>
 												<br>
@@ -236,34 +238,166 @@
 									이용자는 CJ ONE 서비스 이용약관 에 대한 동의를 거부할 권리가 있으나,
 									<strong class="em">미 동의 시 회원가입을 하실 수 없습니다.</strong>
 									</p>
-									<a href="#" class="btn btn_sm view_all">전문보기</a>
-									<div class="radio_agreement">
-										<span class="radio_btn case" data-skin="accept" data-checked-text="선택됨" data-unchecked-text="미선택됨">
-											<a href="#">
-												<span class="haze">미동의<span>선택됨</span></span>
-											</a>
-											<span class="hide">
-												<span class="haze">미동의<span>선택불가</span></span>										
-											</span>
+									<a class="btn btn_sm view_all">전문보기</a>
+									<div class="radio_agreement">	
+										<span class="radio_btn">									
 											<input type="radio" class="chk" id="svcuse_agr_typ_cd_0_disagree" name="svcuse_agr_typ_sd_0" checked="checked">
 											<label for="svcuse_agr_typ_cd_0_disagree">
-												<span class="ico"></span>
-												미동의
+												<span class="ico"></span>미동의
 											</label>
 										</span>
-										<span class="radio_btn case" data-skin="accept" data-checked-text="선택됨" data-unchecked-text></span>
+										<span class="radio_btn">
+											<input type="radio" class="chk achk pill" id="svcuse_agr_typ_cd_0_disagree" name="svcuse_agr_typ_sd_0">
+											<label for="svcuse_agr_typ_cd_0_disagree">
+												<span class="ico"></span>동의
+											</label>
+										</span>
+									</div>
+							</div>
+					<!--  필수 약관2  -->		
+							<div class="item_box case">
+								<h3 class="h5_tit">개인정보 수집 및 활용 동의 (필수)</h3>
+								<div class="clause_box" tabindex="0">
+									<div id=polView>
+										<div class="polViewnew">
+											<p>
+												<strong>제1장 총칙</strong>
+												<br>
+												<br>
+												<strong>제1조 (목적)</strong>
+												<br>
+												<br>
+												본 약관은 씨제이올리브네트윅스(주)(이하 "당사"라 함)가 제공하는 CJ
+												ONE(이하 "CJ ONE"이라 함) 서비스 이용과 관련하여 당사와 회원의 제반 권리,
+												의무, 관련 절차 등을 규정하는데 그 목적이 있습니다.
+											</p>
+											<p>
+												<br>
+												<br>
+												<strong>제 2조 (용어의 정의)</strong>
+												<br>
+												<br>
+												본 약관에서 사용하는 주요 용어의 정의는 다음과 같습니다.							
+											</p>
+										</div>
 									</div>
 								</div>
-							
-							
-							
-							<div class="item_box case"></div>
-							<div class="item_box case"></div>
-							<div class="item_box case"></div>
-							<div class="item_box case"></div>
-							<div class="item_box case"></div>
-							<div class="item_box case"></div>
-							<div class="item_box case"></div>
+									<p class="s_txt">
+									이용자는 CJ ONE 서비스 이용약관 에 대한 동의를 거부할 권리가 있으나,
+									<strong class="em">미 동의 시 회원가입을 하실 수 없습니다.</strong>
+									</p>
+									<a class="btn btn_sm view_all">전문보기</a>
+									<div class="radio_agreement">	
+										<span class="radio_btn">									
+											<input type="radio" class="chk" id="svcuse_agr_typ_cd_0_disagree" name="svcuse_agr_typ_sd_1" checked="checked">
+											<label for="svcuse_agr_typ_cd_0_disagree">
+												<span class="ico"></span>미동의
+											</label>
+										</span>
+										<span class="radio_btn">
+											<input type="radio" class="achk chk pill" id="svcuse_agr_typ_cd_0_disagree" name="svcuse_agr_typ_sd_1">
+											<label for="svcuse_agr_typ_cd_0_disagree">
+												<span class="ico"></span>동의
+											</label>
+										</span>
+									</div>
+							</div>
+					<!--  선택 약관3  -->		
+							<div class="item_box case">
+								<h3 class="h5_tit">개인정보 수집 및 활용 동의(선택)</h3>
+								<div class="clause_box" tabindex="0">
+									<div id=polView>
+										<div class="polViewnew">
+											<p>
+												<strong>제1장 총칙</strong>
+												<br>
+												<br>
+												<strong>제1조 (목적)</strong>
+												<br>
+												<br>
+												본 약관은 씨제이올리브네트윅스(주)(이하 "당사"라 함)가 제공하는 CJ
+												ONE(이하 "CJ ONE"이라 함) 서비스 이용과 관련하여 당사와 회원의 제반 권리,
+												의무, 관련 절차 등을 규정하는데 그 목적이 있습니다.
+											</p>
+											<p>
+												<br>
+												<br>
+												<strong>제 2조 (용어의 정의)</strong>
+												<br>
+												<br>
+												본 약관에서 사용하는 주요 용어의 정의는 다음과 같습니다.							
+											</p>
+										</div>
+									</div>
+								</div>
+									<p class="s_txt">
+									이용자는 CJ ONE 서비스 이용약관 에 대한 동의를 거부할 권리가 있으나,
+									<strong class="em">미 동의 시 회원가입을 하실 수 없습니다.</strong>
+									</p>
+									<a class="btn btn_sm view_all">전문보기</a>
+									<div class="radio_agreement">	
+										<span class="radio_btn">									
+											<input type="radio" class="chk any" id="svcuse_agr_typ_cd_0_disagree" name="svcuse_agr_typ_sd_2" checked="checked">
+											<label for="svcuse_agr_typ_cd_0_disagree">
+												<span class="ico"></span>미동의
+											</label>
+										</span>
+										<span class="radio_btn">
+											<input type="radio" class="achk chk any" id="svcuse_agr_typ_cd_0_disagree" name="svcuse_agr_typ_sd_2">
+											<label for="svcuse_agr_typ_cd_0_disagree">
+												<span class="ico"></span>동의
+											</label>
+										</span>
+									</div>
+							</div>
+					<!--  선택 약관4  -->		
+							<div class="item_box case">
+								<h3 class="h5_tit">스탬프 서비스 이용을 위한 개인정보 수집 및 활용 동의(선택)</h3>
+								<div class="clause_box" tabindex="0">
+									<div id=polView>
+										<div class="polViewnew">
+											<p>
+												<strong>제1장 총칙</strong>
+												<br>
+												<br>
+												<strong>제1조 (목적)</strong>
+												<br>
+												<br>
+												본 약관은 씨제이올리브네트윅스(주)(이하 "당사"라 함)가 제공하는 CJ
+												ONE(이하 "CJ ONE"이라 함) 서비스 이용과 관련하여 당사와 회원의 제반 권리,
+												의무, 관련 절차 등을 규정하는데 그 목적이 있습니다.
+											</p>
+											<p>
+												<br>
+												<br>
+												<strong>제 2조 (용어의 정의)</strong>
+												<br>
+												<br>
+												본 약관에서 사용하는 주요 용어의 정의는 다음과 같습니다.							
+											</p>
+										</div>
+									</div>
+								</div>
+									<p class="s_txt">
+									이용자는 CJ ONE 서비스 이용약관 에 대한 동의를 거부할 권리가 있으나,
+									<strong class="em">미 동의 시 회원가입을 하실 수 없습니다.</strong>
+									</p>
+									<a class="btn btn_sm view_all">전문보기</a>
+									<div class="radio_agreement">	
+										<span class="radio_btn">									
+											<input type="radio" class="chk any" id="svcuse_agr_typ_cd_0_disagree" name="svcuse_agr_typ_sd_3" checked="checked">
+											<label for="svcuse_agr_typ_cd_0_disagree">
+												<span class="ico"></span>미동의
+											</label>
+										</span>
+										<span class="radio_btn">
+											<input type="radio" class="achk chk any" id="svcuse_agr_typ_cd_0_disagree" name="svcuse_agr_typ_sd_3">
+											<label for="svcuse_agr_typ_cd_0_disagree">
+												<span class="ico"></span>동의
+											</label>
+										</span>
+									</div>
+							</div>
 						</div>
 					</div>			
 					<div class="btn_sec col2">
@@ -277,6 +411,10 @@
 	</section>
  	<c:import url="../temp/member_footer.jsp"></c:import>
 </div>
+
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/check.js"></script>
+
+
 
 </body>
 </html>

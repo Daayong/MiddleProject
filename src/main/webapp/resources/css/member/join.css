@@ -34,17 +34,11 @@
 
 .member_join.uni .step_join ul li{padding-top:66px;color:#888;}
 .member_join.uni .step_join ul li.on{color:#EE6900;}
-.member_join.uni .memberStatus {background-color:#F8F8F8;text-align:center;color:#222;font-size:20px;padding:30px;margin-top:28px;margin-bottom:-28px;}
 
-.agreement_box{margin:25px 0;}
-.box_member{padding:50px; border-top:1px solid #222; background-color:#f8f8f8;}
-.box_member .h2_tit{margin: 0;color:#222; font-weight: normal; font-size:24px;}
-.box_member p{font-weight:380; font-size:14px; color:#222; letter-spacing:-1px;   }
-.box_member p strong.em {font-weight:380; color:#EE6900;}
 
 .btn{
 	display: inline-block;
-    width:160px; 
+    min-width:48px; 
     height: 40px;
     margin: 0 3px;
     padding: 0 15px;
@@ -63,34 +57,43 @@
 .btn.btn_em.disabled {color:#fff;}
 .btn.btn_em.disabled:hover, .btn.btn_em.disabled:focus {border-color:#333; background-color:#333;}
 
-.agreement_sec .check_all { position:absolute;top:45px; right:50px;}
-
-.allianceBrand_box{margin-top:30px; }
-.allianceBrand_box .in_sec {padding: 20px 22px 40px 2px;background: #fff;}
-.allianceBrand_box .alliance_list{overflow:hidden; }
-.allianceBrand_box .alliance_list li{float:left;padding: 20px 0 0 20px;}
-.allianceBrand_box .alliance_list li a{display:block; width:136px; height:30px; text-align: center;}
-.allianceBrand_box .alliance_list li a img{height:100%;}
-
 .haze {position: absolute; top: -99999px;}
 
-.agreement_sec .agreement_clause {padding-top:10px;}
-.agreement_sec .agreement_clause .item_box {position:relative; margin-top:40px; padding-top:24px;}
-.agreement_sec .agreement_clause .item_box .h5_tit {color:#222; font-weight:normal;font-size:18px; position:absolute; top:0; left:0; margin-top:0;}
-.agreement_sec .agreement_clause .item_box .btn.view_all {position:absolute; top:-5px; right:0; margin:0;}
-.agreement_sec .agreement_clause .item_box .s_txt {margin-top:10px; padding-left:10px; background:url(../../images/checkNjoin/ico_dot.png) no-repeat 0 8px; color:#555; font-size:12px; line-height:1.5;}
-.agreement_sec .agreement_clause .item_box .bul_list {margin-top:10px;}
-.agreement_sec .agreement_clause .item_box .bul_list .dot_arr {font-size:12px;}
-.agreement_sec .agreement_clause .item_box .radio_agreement .case {margin-left:15px;}
-.agreement_sec .agreement_clause .clause_box {height:142px; margin-top:12px; padding:20px; border:1px solid #ddd; background:#fff; overflow:auto;}
-.agreement_clause .radio_agreement {margin-top:10px; text-align:right;}
+.msg_mandatory {padding-left:20px; background:url('../../images/checkNjoin/ico_mandatory.png') no-repeat 0 6px;}
+.h3_tit{font-size:22px; margin:0; color:#222; font-weight:normal;}
 
-.polViewnew strong {margin:0 !important; padding:0 !important; display:inline !important;font-weight:bold !important; color:#555555;}
+.table_header {position:relative; padding-bottom:20px;}
+.table_header .info {position:absolute; bottom:20px; right:0;}
+.table_header .msg_mandatory {background-position:0 6px; font-size:12px;}
 
-.btn.btn_sm{width:82px;height:28px;border:1px solid #ddd;color:#555; font-size:14px; line-height: 28px;}
-.btn.view_all{position: absolute;top: -5px;right: 0;margin: 0;}
+.table_col {border-top:1px solid #222;}
+.table_col th,
+.table_col td {padding:15px 20px; border-bottom:1px solid #ddd;background-color:#fff;}
+.table_col th {padding-left:40px; background-color:#f8f8f8; color:#222; text-align:left; vertical-align: top; }
 
-.radio_agreement input[type='radio'],
-.radio_agreement input[type='radio']:checked{appearance:none; width:0.9rem; height:0.9rem; border-radius:100%;margin-right: 0.1rem;}
-.radio_agreement input[type='radio']{background-color:white; border: 2px solid #ccc;;}
-.radio_agreement input[type='radio']:checked{background-color:#FE642E; }
+
+.table_col .input th  {padding-top:22px;}
+.table_col .input td {padding-top:15px; padding-bottom:15px;}
+
+.table_col .input.msg th {background-image:url('../../images/checkNjoin/ico_mandatory.png'); background-repeat:no-repeat; background-position:20px 29px;}
+.table_col th.mandatory {background-image:url('../../images/checkNjoin/ico_mandatory.png'); background-repeat:no-repeat; background-position:20px 29px;}
+
+.mandatory{width:244px; min-height:68px; font-size:14px; font-weight:normal; }
+
+.input_txt {display:inline-block; height:34px; padding-right:3px; vertical-align:middle; zoom:1; }
+.input_txt input {display:block; width:100%; height:32px; padding:0 15px; border:1px solid #ddd; color:#888; font-size:14px; line-height:32px;}
+
+.input_group{width:844px;}
+
+.input_txt.w250{width:250px; }
+.birthday_select .select.w120{width:300px; }
+
+.btn.btn_search {height:32px; background-color:#333; color:#fff; line-height:32px; font-size:14px; }
+.btn.btn_search.hover, .btn.btn_search.focus {background-color:#000;}
+.btn.btn_search.disabled {color:#fff;}
+.btn.btn_search.disabled.hover, .btn.btn_search.disabled.focus {border-color:#333; background-color:#333;}
+.btn.btn_search span{padding-right: 8px; line-height:32px;background: url('../../images/checkNjoin/ico_btn_arrow.png') no-repeat right 6px;}
+
+.msg_desc{font-size:12px; margin-top:10px;  color:#888; line-height: 1.5; font-weight:380;}
+.msg_info.em{font-size:12px; margin-top:10px; color:#ee6900; line-height:1.5;}
+.msg_info.em.hide{display:none;}
