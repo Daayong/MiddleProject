@@ -211,14 +211,17 @@
 	/* Q 선택시 답변 아래로 */
 	$(".head").click(function() {
 		if($(this).next().css("display")=="none"){
-			$(this).next().slideDown("fast");
-			
+			$(this).next().slideDown("50");
+			$(this).parent().addClass("on");
 		}else{
-			$(this).next().slideUp("fast");
+			$(this).next().slideUp("50");
+			$(this).parent().removeClass("on");
 			
 		}
 		
 	});
+	
+	
 	
 
 	

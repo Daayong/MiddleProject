@@ -260,6 +260,17 @@ div.input_wrap{
 	45deg);;
 }
 
+.list_acco li.on .head a:before {
+	margin-top:-1px; 
+	border:1.5px solid #303030; 
+	border-top:none; 
+	border-left:none; 
+	-ms-transform:rotate(-136deg); 
+	-webkit-transform:rotate(-136deg); 
+	-moz-transform:rotate(-136deg); 
+	transform:rotate(-136deg);
+}
+
 .faq_conts .faq_view li .head .tit {
     position: relative;
     padding: 20px 10px 20px 78px;
