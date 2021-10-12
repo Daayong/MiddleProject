@@ -1,0 +1,99 @@
+@charset "UTF-8";
+
+.cont_header .h1_tit{font-size:48px;line-height:48px; color:#222222; }
+.cont_header {padding-top:45px; text-align:center;}
+.cont_header .h_desc {padding-top:30px; color:#555; font-size:16px; letter-spacing:0.5px; font-weight:400; }
+.cont_header .btn {font-size:14px;}
+.cont_area {padding-top:60px;}
+
+.member_join {margin-top:-10px;}
+.member_join .btn_sec {margin:40px 0; text-align:center;}
+.member_join .step_join {text-align:center;}
+.member_join .step_join ul {display:inline-block; *padding-left:204px;}
+.member_join .step_join ul li {position:relative; float:left; width:115px; margin:0 23px; padding-top:73px; font-size:16px; letter-spacing:-1px;}
+.member_join .step_join ul li.on {color:#ee6900; text-decoration:underline;}
+.member_join .step_join ul li span.haze {display:block; position:absolute; width:62px; height:62px; top:0; left:26px; text-indent:-9999em;}
+.member_join .step_join ul li span.line {position:absolute; width:44px; height:1px; background:#ddd; top:42px; right:-44px;}
+.member_join .step_join ul li.step1 .haze,
+.member_join .step_join ul li.step1_1 .haze,
+.member_join .step_join ul li.step2 .haze,
+.member_join .step_join ul li.step3 .haze,
+.member_join .step_join ul li.step4 .haze {background:url('../../images/checkNjoin/bg_member.png') no-repeat left top;}
+.member_join .step_join ul li.step1 .haze {background-position:0 0;}
+.member_join .step_join ul li.step1_1 .haze {background-position:-100px 0;}
+.member_join .step_join ul li.step2 .haze {background-position:-200px 0;}
+.member_join .step_join ul li.step3 .haze {background-position:-300px 0;}
+.member_join .step_join ul li.step4 .haze {background-position:-400px 0;}
+.member_join .step_join ul li.on.step1 .haze {background-position:0 -70px;}
+.member_join .step_join ul li.on.step1_1 .haze {background-position:-100px -70px;}
+.member_join .step_join ul li.on.step2 .haze {background-position:-200px -70px;}
+.member_join .step_join ul li.on.step3 .haze {background-position:-300px -70px;}
+.member_join .step_join ul li.on.step4 .haze {background-position:-400px -70px;}
+
+.member_join.uni .box_member{padding:50px 50px 60px; margin-top:49px; position:relative; }
+
+.member_join.uni .step_join ul li{padding-top:66px;color:#888;}
+.member_join.uni .step_join ul li.on{color:#EE6900;}
+
+
+.btn{
+	display: inline-block;
+    min-width:48px; 
+    height: 40px;
+    margin: 0 3px;
+    padding: 0 15px;
+    border: 1px solid #333;
+    border-radius: 3px;
+    background-color: #fff;
+    color: #333;
+    text-align: center;
+    line-height: 38px;
+    vertical-align: middle;
+    cursor: pointer;
+    transition: border .5s, background .5s, color .5s;}
+
+.btn.btn_em {width:160px; background-color:#333; color:#fff;}
+.btn.btn_em:hover, .btn.btn_em:focus {background-color:#000;}
+.btn.btn_em.disabled {color:#fff;}
+.btn.btn_em.disabled:hover, .btn.btn_em.disabled:focus {border-color:#333; background-color:#333;}
+
+.haze {position: absolute; top: -99999px;}
+
+.msg_mandatory {padding-left:20px; background:url('../../images/checkNjoin/ico_mandatory.png') no-repeat 0 6px;}
+.h3_tit{font-size:22px; margin:0; color:#222; font-weight:normal;}
+
+.table_header {position:relative; padding-bottom:20px;}
+.table_header .info {position:absolute; bottom:20px; right:0;}
+.table_header .msg_mandatory {background-position:0 6px; font-size:12px;}
+
+.table_col {border-top:1px solid #222;}
+.table_col th,
+.table_col td {padding:15px 20px; border-bottom:1px solid #ddd;background-color:#fff;}
+.table_col th {padding-left:40px; background-color:#f8f8f8; color:#222; text-align:left; vertical-align: top; }
+
+
+.table_col .input th  {padding-top:22px;}
+.table_col .input td {padding-top:15px; padding-bottom:15px;}
+
+.table_col .input.msg th {background-image:url('../../images/checkNjoin/ico_mandatory.png'); background-repeat:no-repeat; background-position:20px 29px;}
+.table_col th.mandatory {background-image:url('../../images/checkNjoin/ico_mandatory.png'); background-repeat:no-repeat; background-position:20px 29px;}
+
+.mandatory{width:244px; min-height:68px; font-size:14px; font-weight:normal; }
+
+.input_txt {display:inline-block; height:34px; padding-right:3px; vertical-align:middle; zoom:1; }
+.input_txt input {display:block; width:100%; height:32px; padding:0 15px; border:1px solid #ddd; color:#888; font-size:14px; line-height:32px;}
+
+.input_group{width:844px;}
+
+.input_txt.w250{width:250px; }
+.birthday_select .select.w120{width:300px; }
+
+.btn.btn_search {height:32px; background-color:#333; color:#fff; line-height:32px; font-size:14px; }
+.btn.btn_search.hover, .btn.btn_search.focus {background-color:#000;}
+.btn.btn_search.disabled {color:#fff;}
+.btn.btn_search.disabled.hover, .btn.btn_search.disabled.focus {border-color:#333; background-color:#333;}
+.btn.btn_search span{padding-right: 8px; line-height:32px;background: url('../../images/checkNjoin/ico_btn_arrow.png') no-repeat right 6px;}
+
+.msg_desc{font-size:12px; margin-top:10px;  color:#888; line-height: 1.5; font-weight:380;}
+.msg_info.em{font-size:12px; margin-top:10px; color:#ee6900; line-height:1.5;}
+.msg_info.em.hide{display:none;}
