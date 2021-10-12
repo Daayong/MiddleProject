@@ -8,6 +8,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	
+	<link href="${pageContext.request.contextPath}/resources/css/common.css" rel="stylesheet">
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 	
 	<!-- summernote light -->

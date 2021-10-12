@@ -26,7 +26,7 @@
 					
 					<li><a href="${pageContext.request.contextPath}/cs/csMain">고객행복센터</a></li>
 					<li><a href="${pageContext.request.contextPath}/">배송지역검색</a></li>
-					<li><a href="${pageContext.request.contextPath}/">기프트카드 등록</a></li>
+					<li><a href="index/">기프트카드 등록</a></li>
 
 
 
