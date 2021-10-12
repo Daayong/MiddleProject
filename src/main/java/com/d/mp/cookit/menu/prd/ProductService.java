@@ -14,7 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.d.mp.util.FileManager;
+import com.d.mp.util.FileManagerProduct;
 
 @Service
 public class ProductService {
@@ -24,7 +24,7 @@ public class ProductService {
 	@Autowired
 	private ServletContext servletContext;
 	@Autowired
-	private FileManager fileManager;
+	private FileManagerProduct fileManager;
 	
 	
 	/* ================================================= 상품등록 ================================================= */

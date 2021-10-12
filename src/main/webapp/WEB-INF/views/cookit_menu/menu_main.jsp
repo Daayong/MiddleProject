@@ -5,6 +5,7 @@
 <html>
 <head>
 	<title>쿡킷 메뉴 메인</title>
+	<link href="${pageContext.request.contextPath}/resources/css/common.css" rel="stylesheet">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<style>
 		html,body{

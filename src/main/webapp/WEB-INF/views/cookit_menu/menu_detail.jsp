@@ -9,6 +9,7 @@
 	<title>쿡킷 상세페이지</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script src="../resources/js/menu/slider_js/lightslider.js"></script>
+	<link href="${pageContext.request.contextPath}/resources/css/common.css" rel="stylesheet">
 	<link href="../resources/css/menu/slider/lightslider.css" type="text/css" rel="stylesheet"/>
 	<link href="../resources/css/menu/menu_detail.css" rel="stylesheet"/>
 	
