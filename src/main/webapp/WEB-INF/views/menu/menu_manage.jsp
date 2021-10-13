@@ -67,7 +67,7 @@
 							  	<td>${prd.product_sub_name}&nbsp;*&nbsp;${prd.product_name}</td>
 							  	<td>${prd.product_price}원</td>
 							  	<td>2021-10-05</td>
-							  	<td>판매중</td>
+							  	<td>${prd.product_state}</td>
 							  	<td>0</td>
 							  	<td>
 							  		<button type="button" class="del_btn">X</button>

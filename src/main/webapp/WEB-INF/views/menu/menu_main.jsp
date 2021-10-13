@@ -55,7 +55,7 @@
 				</div>
 			</div>
 			<div class="filter_wrap">
-				<p>안녕하세요! COOKIT의 메뉴들 입니다.</p>
+				<p><span class="get_month1"></span>월<span class="get_date1"></span>일 ~ <span class="get_month2"></span>월<span class="get_date2"></span>일 배송가능한 메뉴입니다.</p>
 				<p>COOKIT의 주문마감은 오전 7시입니다.</p>
 				<div class="sort_wrap">
 					<div class="sortc_wrap">
@@ -86,35 +86,79 @@
 				<div id="item_wrap">
 					<!-- 나중에 c:foreach 반복문 쓰기 -->
 					<c:forEach items="${prdDTO}" var="prd">
-						<div class="item_box">
-							<div class="click_menu"> <!-- div 버튼 만들기 -->
-								<input type="hidden" value="${prd.product_id}" id="product_id">
-								<div class="item_image">
-									<img alt="test" src="../resources/upload/menu/main/${prd.product_id}/${prd.product_name}.jpg">
+						
+						<c:choose>
+							<c:when test="${prd.product_state eq '품절'}">
+								<div class="item_box">
+									<div class="click_menu_soldout"> <!-- div 버튼 만들기 -->
+										
+										
+										
+										<input type="hidden" value="${prd.product_id}" id="product_id">
+										
+										<div class="item_image">
+											<div class="soldout_txt">품절</div>
+											<img alt="test" src="../resources/upload/menu/main/${prd.product_id}/${prd.product_name}.jpg">
+										</div>
+										<p class="etc_info">${prd.product_recipe}</p>
+										<div class="item_title">
+											*${prd.product_name}
+										</div>
+										<div class="item_price">
+											<fmt:formatNumber value="${prd.product_price}" type="number" maxFractionDigits="3"/>원
+										</div>
+										<div class="item_review">
+											<ul>
+												<li></li>
+												<li>리뷰 4,000</li>
+											</ul>
+										</div>
+									</div>
+									<div class="item_btnbox">
+										<div class="menu_btn zzim_btn">
+											
+										</div>
+										<div class="menu_btn cart_btn">
+											
+										</div>
+									</div>
 								</div>
-								<p class="etc_info">${prd.product_recipe}</p>
-								<div class="item_title">
-									*${prd.product_name}
+							</c:when>
+							<c:otherwise>
+								<div class="item_box">
+									<div class="click_menu"> <!-- div 버튼 만들기 -->
+									
+										<input type="hidden" value="${prd.product_id}" id="product_id">
+										
+										<div class="item_image">
+											<img alt="test" src="../resources/upload/menu/main/${prd.product_id}/${prd.product_name}.jpg">
+										</div>
+										<p class="etc_info">${prd.product_recipe}</p>
+										<div class="item_title">
+											*${prd.product_name}
+										</div>
+										<div class="item_price">
+											<fmt:formatNumber value="${prd.product_price}" type="number" maxFractionDigits="3"/>원
+										</div>
+										<div class="item_review">
+											<ul>
+												<li></li>
+												<li>리뷰 4,000</li>
+											</ul>
+										</div>
+									</div>
+									<div class="item_btnbox">
+										<div class="menu_btn zzim_btn">
+											
+										</div>
+										<div class="menu_btn cart_btn">
+											
+										</div>
+									</div>
 								</div>
-								<div class="item_price">
-									<fmt:formatNumber value="${prd.product_price}" type="number" maxFractionDigits="3"/>원
-								</div>
-								<div class="item_review">
-									<ul>
-										<li></li>
-										<li>리뷰 4,000</li>
-									</ul>
-								</div>
-							</div>
-							<div class="item_btnbox">
-								<div class="menu_btn zzim_btn">
-									<img alt="zzim" src="../resources/images/menu/zzim_btn.png">
-								</div>
-								<div class="menu_btn cart_btn">
-									<img alt="cart" src="../resources/images/menu/cart_btn.png">
-								</div>
-							</div>
-						</div>
+							</c:otherwise>
+						</c:choose>
+						
 						<!-- c:foreach -->
 					</c:forEach>	
 				</div>
@@ -189,9 +233,19 @@
 		}else{
 			$(".date" + i).html('<p>' + week[today.getDay()] + '</p><p>' + today.getDate() + '</p>');
 			value = today.getFullYear().toString() + (today.getMonth() + 1).toString() + today.getDate().toString();
-			$(".date" + i).val(value);
-		}	
+			$(".date" + i).val(value);		
+		}
+		
+		if(i == 1){
+			$(".get_month1").text(today.getMonth()+1);
+			$(".get_date1").text(today.getDate());
+		}
+		if(i == 5){
+			$(".get_month2").text(today.getMonth()+1);
+			$(".get_date2").text(today.getDate());
+		}
 	}
+	
 </script>
 
 </body>

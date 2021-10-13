@@ -156,7 +156,7 @@
 					<div class="description">
 						<div class="description_box1">
 							<div class="leftbox_banner">
-								<img alt="banner" src="../resources/images/menu/menu_detail/leftbox_banner.png">
+								<img alt="banner" src="../resources/images/menu/copyright_top.gif">
 							</div>
 							<div class="leftbox_banner">
 								<img alt="banner" src="../resources/images/menu/menu_detail/leftbox_banner2.jpg">
@@ -283,6 +283,18 @@
 						<div class="right_box1">
 						</div>
 						<div class="right_box2">
+							<!-- name 값 아직 안줌 -->
+							<select class="prd_date_select">
+									<option value="">배송받을 날짜를 선택해주세요.</option>
+								<c:forEach items="${prdDate}" var="date">
+								
+									<!-- 날짜 포맷 변경 -->
+									<fmt:parseDate value="${date.product_regdate}" var="parseDateValue" pattern="yyyy-MM-dd"/>
+									<!-- 날짜 포맷 변경 -->
+									
+									<option value="<fmt:formatDate value="${parseDateValue}" pattern="yyyy-MM-dd"/>"><fmt:formatDate value="${parseDateValue}" pattern="MM월 dd일"/></option>
+								</c:forEach>
+							</select>
 						</div>
 						<div class="right_box3">
 							<div class="prdCnt">

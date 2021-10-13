@@ -10,8 +10,8 @@
   		<selectKey order="BEFORE" resultType="Long" keyProperty="product_id">
   			SELECT PRD_SEQ.nextval from dual
   		</selectKey>
-  		insert into product (product_id, product_name, product_sub_name, product_recipe, product_description, product_info, product_price, product_total_count)
-  		values (#{product_id}, #{product_name}, #{product_sub_name}, #{product_recipe}, #{product_description}, #{product_info}, #{product_price} , #{product_total_count})
+  		insert into product (product_id, product_name, product_sub_name, product_recipe, product_description, product_info, product_price, product_total_count, product_state)
+  		values (#{product_id}, #{product_name}, #{product_sub_name}, #{product_recipe}, #{product_description}, #{product_info}, #{product_price} , #{product_total_count}, '판매중')
   	</insert>
 	
 	<insert id="setInsertDate" parameterType="ProductDTO">
@@ -37,7 +37,7 @@
   				<if test="date != null">
 		  			where pd.product_regdate = to_date( #{date}, 'YYYY-MM-DD')
 		  		</if>
-		  		order by
+		  		order by decode (product_state, '판매중', 1),
 		  			<choose>
 		  				<when test="kind == 'sort_up'">
 		  					p.product_price desc
@@ -52,7 +52,7 @@
   			</when>
   			<otherwise>
   				select * from product
-  				order by
+  				order by decode (product_state, '판매중', 1),
 	  			<choose>
 	  				<when test="kind == 'sort_up'">
 	  					product_price desc
@@ -84,4 +84,16 @@
   	<delete id="deletePrdOne" parameterType="ProductDTO">
   		delete from product where product_id = #{product_id}
   	</delete>
+  	
+  	<!-- 품절 판단하는 쿼리문 -->
+  	<select id="isSoldOut" parameterType="Long" resultType="ProductDTO">
+  		select * from product p where
+  		product_total_count = (select sum(product_sell_count) from product_date pd where
+  		pd.product_id = #{product_id}) and product_id = #{product_id}
+  	</select>
+  	
+  	<!-- 품절 상태 업데이트 -->
+  	<update id="doSoldOut" parameterType="Long">
+  		update product set product_state = '품절' where product_id = #{product_id}
+  	</update>
   </mapper>

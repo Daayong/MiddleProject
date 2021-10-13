@@ -14,6 +14,7 @@ public class ProductDTO {
 	private String product_info;
 	private Long product_price;
 	private Long product_total_count;
+	private String product_state;
 	
 	private String product_start_date;
 	private String product_end_date;
@@ -89,6 +90,14 @@ public class ProductDTO {
 	}
 	public void setProduct_total_count(Long product_total_count) {
 		this.product_total_count = product_total_count;
+	}
+	
+	// 품절 판단
+	public String getProduct_state() {
+		return product_state;
+	}
+	public void setProduct_state(String product_state) {
+		this.product_state = product_state;
 	}
 	/////////////////////////////////////////////////////////////
 	

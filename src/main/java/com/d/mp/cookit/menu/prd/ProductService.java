@@ -156,4 +156,16 @@ public class ProductService {
 		
 		return productDAO.deletePrdOne(productDTO);
 	}
+	
+	// 품절 판단하기
+	public int isSoldOut(Long product_id) throws Exception{
+		
+		return productDAO.isSoldOut(product_id);
+	}
+	
+	// 품절 업데이트
+	public int doSoldOut(Long product_id) throws Exception{
+		
+		return productDAO.doSoldOut(product_id);
+	}
 }

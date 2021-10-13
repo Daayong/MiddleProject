@@ -63,7 +63,19 @@ public class ProductController {
 	public ModelAndView getPrdList(ProductDTO productDTO) throws Exception{
 		List<ProductDTO> prdAr = productService.getPrdList(productDTO);
 		
+		int isSoldOut = 0;
+		
 		System.out.println(productDTO.getDate());
+		for(int i=0; i<prdAr.size(); i++) {
+			
+			isSoldOut = productService.isSoldOut(prdAr.get(i).getProduct_id());
+			System.out.println(isSoldOut);
+			
+			if(isSoldOut == 1) {
+				prdAr.get(i).setProduct_state("품절");
+				productService.doSoldOut(prdAr.get(i).getProduct_id());
+			}
+		}
 		
 		ModelAndView mv = new ModelAndView();
 		

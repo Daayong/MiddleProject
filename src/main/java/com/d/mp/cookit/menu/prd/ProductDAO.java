@@ -53,4 +53,23 @@ public class ProductDAO {
 	public int deletePrdOne(ProductDTO productDTO) throws Exception{
 		return sqlSession.delete(NAMESPACE + "deletePrdOne", productDTO);
 	}
+	
+	//품절 판단
+	public int isSoldOut(Long product_id) throws Exception{
+		
+		int result = 0;
+		
+		ProductDTO dto = sqlSession.selectOne(NAMESPACE + "isSoldOut", product_id);
+		
+		if(dto != null) {
+			result = 1;
+		}
+		
+		return result;
+	}
+	
+	//품절 업데이트
+	public int doSoldOut(Long product_id) throws Exception{
+		return sqlSession.update(NAMESPACE + "doSoldOut", product_id);
+	}
 }

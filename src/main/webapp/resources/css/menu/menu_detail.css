@@ -60,17 +60,19 @@ html,body{
 	top: 50%;
 	left: -50px;
 	transform: translate(0%, -50%);
-	width: 34px;
-	height: 64px;
-	background: url('../../images/common/ico_set.png') no-repeat -1363px 0px;
+	width: 17px;
+	height: 32px;
+	background: url('../../images/common/ico_set.png') no-repeat -681px 0px;
+	background-size: 800px 800px;
 }
 .next_btn{
 	top: 50%;
-	right: -43px;
+	right: -39px;
 	transform: translate(0%, -50%);
-	width: 34px;
-	height: 64px;
-	background: url('../../images/common/ico_set.png') no-repeat -1427px 0px;
+	width: 17px;
+	height: 32px;
+	background: url('../../images/common/ico_set.png') no-repeat -713px 0px;
+	background-size: 800px 800px;
 }
 
 #lightSlider{
@@ -291,6 +293,10 @@ html,body{
 .leftbox_banner{
 	margin-top: 50px;
 }
+.description_box2{
+	width: 100%;
+	margin-left: 22px;
+}
 
 .description_box2 img{
 	width: 100%;
@@ -406,6 +412,19 @@ html,body{
 	width:100%;
 	height:600px;
 }
+
+/* right_box2 의 prd_date select */
+
+.right_box2 .prd_date_select{
+	width: 300px;
+	margin-top: 50px;
+	margin-left: 20px;
+	height: 50px;
+	text-align: right;
+	font-size: 16px;
+	color: black;
+}
+
 .right_box3{
 	width:100%;
 	height:210px;

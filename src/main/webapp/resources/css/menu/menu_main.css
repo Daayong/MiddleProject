@@ -55,7 +55,7 @@
 .date_wrap ul li{
 	display: inline-block;
 	text-align: center;
-	margin-left: 20px;
+	margin-left: 30px;
 	width: 50px;
 	font-weight: 700;
 	cursor: pointer;
@@ -88,6 +88,7 @@
 	font-size: 18px;
 	font-weight: 700;
 	color: black;
+	letter-spacing: 0.7px;
 }
 
 /* 신메누순 가격순 만족도순 등등 정렬방식.... */
@@ -142,6 +143,25 @@
 	column-gap: 36px;
 	row-gap : 60px;
 }
+
+/* 품절된 물품들 */
+.click_menu_soldout .item_image img{
+	filter: grayscale(80%);
+}
+.item_image{
+	position: relative;
+}
+.soldout_txt{
+	position: absolute;
+	z-index: 99;
+	font-size: 50px;
+	font-weight: 700;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	color: white;
+}
+
 .item_box{
 	width: 268px;
 	height: 548px;
@@ -199,9 +219,22 @@
 }
 .menu_btn{
 	margin-right: 15px;
+}
+.zzim_btn{
+	background: url('../../images/common/ico_set.png') no-repeat 0 -190px;
+	background-size: 800px 800px;
 	width: 40px;
 	height: 40px;
+	cursor: pointer;
 }
+.cart_btn{
+	background: url('../../images/common/ico_set.png') no-repeat -45px -190px;
+	background-size: 800px 800px;
+	width: 40px;
+	height: 40px;
+	cursor: pointer;
+}
+
 /* 메뉴안 페이저 부분 */
 .pager_wrap{
 	width: 70%;
