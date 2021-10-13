@@ -21,7 +21,7 @@
 		line-height:40px;
 		vertical-align:top;
 }
-.pagination strong {
+.pagination strong.on {
 	background-color:#202020;
 	color:#fff;
 }

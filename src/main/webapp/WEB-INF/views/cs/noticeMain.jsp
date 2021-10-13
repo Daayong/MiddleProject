@@ -106,7 +106,9 @@
 							<a class="btn_prev" href="#"></a>
 							<span class="page_num">
 								
-								<a href="#"><strong>1</strong></a>
+								<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="n">
+									<a href="./noticeMain?pn=${n}"><strong class="on">${n}</strong></a>							
+								</c:forEach>
 								
 								
 						</span>

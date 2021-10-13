@@ -138,7 +138,7 @@
 .input_order .scroll {overflow-x:visible;}
 .input_order .add_file_wrap {margin-left:-10px;}
 .input_order .add_file_wrap li {width:128px; margin:0 0 0 10px;}
-.input_order .add_file_wrap .add_file {width:128px; height:128px;}
+
 .input_order .add_file_wrap .dim_div {height:128px;}
 .input_order .add_file_wrap .img_wrap img {width:128px; height:128px;}
 .input_order .file_info .bul_list {padding-top:0;}

@@ -295,14 +295,19 @@
 							</div>
 						</dd>
 					</dl>
-					<dl class="one_dep">
+						<dl class="one_dep">
 						<dt>첨부파일</dt>
 						<dd>
 							<div class="scroll">
-								<div class="add_file_wrap" style="width: 138px;">
-									<ul><li>	<div class="add_file_frame">		<input type="file" class="trans_add_file" name="file" accept="images/*" title="파일 추가 선택"><!-- 190624_수정 -->		<span class="add_file"><span class="hide">파일 추가 선택</span></span>	</div></li>
-										
-										
+								<div class="add_file_wrap" >
+									<ul>
+										<li>
+											<div class="add_file_frame">	
+												<input type="file" class="trans_add_file" name="file" accept="image/*" multiple="multiple" title="파일 추가 선택">
+											<span class="add_file" style="width: 128px; height: 128px;"><span class="hide">파일 추가 선택</span></span>	
+											</div>
+										</li>
+						
 									</ul>
 								</div>
 							</div>
@@ -316,6 +321,7 @@
 							</div>
 						</dd>
 					</dl>
+						
 					<dl class="one_dep answer_alr ui_answerWrap">
 						<dt>답변알림<span class="bul_req"><span class="hide">필수 입력</span></span></dt>
 						<dd>
