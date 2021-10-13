@@ -86,7 +86,7 @@
 .input_group{width:844px;}
 
 .input_txt.w250{width:250px; }
-.birthday_select .select.w120{width:300px; }
+
 
 .btn.btn_search {height:32px; background-color:#333; color:#fff; line-height:32px; font-size:14px; }
 .btn.btn_search.hover, .btn.btn_search.focus {background-color:#000;}
@@ -97,3 +97,49 @@
 .msg_desc{font-size:12px; margin-top:10px;  color:#888; line-height: 1.5; font-weight:380;}
 .msg_info.em{font-size:12px; margin-top:10px; color:#ee6900; line-height:1.5;}
 .msg_info.em.hide{display:none;}
+
+#phone_area{display:inline-block; position:relative;}
+#phone_area .pselect{display:inline-block; }
+
+#birthday_select{display:inline-block; position:relative; }
+.select{display:inline-block; vertical-align:middle; color:#555; font-size:14px; line-height:24px; }
+.select .symbol{margin-left:10px; margin-right:15px;}
+.select.w70 .select_wrap {width:70px; height:32px; border: 1px solid #ddd;}
+.select.w120 .select_wrap{width:88px; height:32px; border: 1px solid #ddd;}
+.select.w120 input{width:88px;border: 1px solid #ddd;}
+.select.w120 input{width:180px;border: 1px solid #ddd;}
+
+
+.table_col{margin-bottom:40px; }
+
+.man{width:170px; min-height:68px; font-size:14px; font-weight:normal; }
+
+.marketing_agree{margin-top:10px; }
+.marketing_agree input{border: 1px solid #ddd;}
+.marketing_agree input + label{color:#888888; font-size:15px; }
+
+.marketing_agree input[type="checkbox"],
+.marketing_agree input[type="checkbox"]:checked{appearance:none;margin-right:3px;}
+.marketing_agree input[type="checkbox"]{display: inline-block;
+    width: 16px;
+    height: 16px;
+    background: url(../../images/checkNjoin/bg_form.png) no-repeat;
+    vertical-align: middle;
+    background-position: -16px 0;
+    }
+.marketing_agree input[type="checkbox"]:checked{display: inline-block;
+    width: 16px;
+    height: 16px;
+    background: url(../../images/checkNjoin/bg_form.png) no-repeat;
+    vertical-align: middle;
+    background-position: -16px -16px;
+}
+
+
+.btn_sec{margin-bottom:30px; margin-left:35%;} 
+
+.final_info{height:150px; padding:30px;background-color: #f8f8f8; margin:50px 0 80px 0;}
+
+.s_txt {margin-top:10px; padding-left:10px; letter-spacing:-1.3px; font-weight:390; background:url(../../images/checkNjoin/ico_dot.png) no-repeat 0 8px; color:#555; font-size:14px; line-height:1.5;}
+
+
