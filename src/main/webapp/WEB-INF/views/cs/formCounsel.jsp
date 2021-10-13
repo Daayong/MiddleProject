@@ -12,7 +12,7 @@
 	
 		
 		html, body {
-	    height: 2300px;
+	    height: 3000px;
 	    margin: 0;
 	    padding: 0;
 
@@ -42,7 +42,7 @@
 	<section id="container">
 	
 	<!-- 전체 영역  -->
-	<div class="content" id="my_wrapper">
+	<div class="my_wrap" id="content">
 		<!-- 왼쪽 메뉴탭 -->
 		<div id="left_menu">
 				<div id="my_order">
@@ -89,8 +89,8 @@
 		
 		
 		
-		<!-- 컨텐츠 영역 -->
-		<div id="content_wrapper">
+		<!-- 오른쪽 컨텐츠 영역 -->
+		<div class="right_con">
 		<!-- 메인 컨텐츠(여기까지 변경되야함)  -->
 		
 			<div class="order_view my_activity">
@@ -348,47 +348,20 @@
 										</div>
 										<span class="item_wrap ui_selectbox dis" ui-modules="Selectbox,CustomSelectbox">
 											<label for="fn_selc_val" class="hide">이메일 도메인 선택</label>
-											
 
-
-
-
-
-
-
-
-
-
-<select id="fn_selc_val" class="required" onchange="changeEmailSelect(this)" disabled="">
+									<select id="fn_selc_val" class="required" onchange="changeEmailSelect(this)" disabled="">
+		
+								<option value="0">직접입력</option>
 	
-
+								<option value="naver.com">naver.com</option>
 	
-		
-		
-		
-		<option value="0">직접입력</option>
+								<option value="hanmail.net">hanmail.net</option>
 	
-		
-		
-		
-		<option value="naver.com">naver.com</option>
+						<option value="nate.com">nate.com</option>
 	
-		
-		
-		
-		<option value="hanmail.net">hanmail.net</option>
+						<option value="gmail.com">gmail.com</option>
 	
-		
-		
-		
-		<option value="nate.com">nate.com</option>
-	
-		
-		
-		
-		<option value="gmail.com">gmail.com</option>
-	
-</select>
+								</select>
 											<span class="ico_arr"></span>
 										</span>
 									</div>
@@ -430,7 +403,7 @@
 			
 		
 		
-		<option value="010" selected="">010</option>
+		<option value="010" selected="selected">010</option>
 	
 		
 		
