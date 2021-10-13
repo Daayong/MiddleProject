@@ -67,7 +67,7 @@
 						<form id="memFrm" class="frm" action="login" method="post" name="loginForm">
 							<input type="hidden" value="${check}" name="check">
 							<input type="text" style="margin-bottom:10px;"  name="member_user_id" id="id" placeholder="&nbsp; CJ ONE 통합아이디 6~20자">
-							<input type="text" name="member_password" id="pw" placeholder="&nbsp; 비밀번호 영문,특수문자,숫자혼합 8~12자">	
+							<input type="password" name="member_password" id="pw" placeholder="&nbsp; 비밀번호 영문,특수문자,숫자혼합 8~12자">	
 							
 							<div style="height:69px; padding-top:23px;">
 								
