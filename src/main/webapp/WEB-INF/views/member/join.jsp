@@ -5,6 +5,7 @@
 <head>
 	<link href="${pageContext.request.contextPath}/resources/css/common.css" rel="stylesheet">
 	<link href="${pageContext.request.contextPath}/resources/css/member/join.css" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<title>일반회원 약관동의 | CJ ONE</title>
 	
 	<style>		
@@ -54,7 +55,7 @@
 			</div>	
 		</div>
 		<div class="cont_area">
-			<form id="form1" method="post" action="join">
+			<form id="form1" name="form1" method="post" action="join">
 				<div class="table_header">
 					<h3 class="h3_tit">기본정보</h3>
 					<div class="info">
@@ -78,7 +79,7 @@
 								</th>
 								<td>
 									<span class="input_txt w250">
-										<input type="text" id="member_name" name="member_name" class="text" placeholder="성함을 입력해주세요.">
+										<input type="text" id="member_name" name="member_name" class="text put" placeholder="성함을 입력해주세요.">
 									</span>
 								</td>
 							</tr>
@@ -91,9 +92,9 @@
 								<td>
 									<div class="input_group">
 										<span class="input_txt w250">
-											<input type="text" name="member_user_id" id="member_user_id" maxlength="12" class="text" placeholder="아이디를 입력해주세요.">
+											<input type="text" name="member_user_id" id="member_user_id" maxlength="12" class="text put" placeholder="아이디를 입력해주세요.">
 										</span>
-										<button type="button" class="btn btn_search">중복확인</button>
+										<button type="button" class="btn btn_search" id="idCheck">중복확인</button>
 										<button type="button" class="btn btn_search" style="background-color:#fff; color:000; font-weight:300;">
 											<span>CJ ONE 통합 아이디 안내</span>
 										</button>
@@ -101,12 +102,7 @@
 									<p class="msg_info em hide" id="msg_id01">
 										6~12자리의 영문 소문자 또는 영문 소문자+숫자 아이디를 입력해 주세요.
 									</p>
-									<p class="msg_info em hide" id="msg_id02">
-										사용 가능한 아이디입니다.
-									</p>
-									<p class="msg_info em hide" id="msg_id03">
-										이미 사용중인 아이디입니다. 다른 아이디를 입력해주세요.
-									</p>
+									<p class="msg_info em" id="msg_id02"></p>
 									<p class="msg_desc">
 										CGV, CJ온스타일 등 기존의 CJ ONE 제휴 브랜드 회원님의 경우는 기존에 사용하고 계신
 										아이디가 새롭게 생성하신 <br>통합아이디로 변경됩니다.
@@ -122,7 +118,7 @@
 								</th>
 								<td>
 									<span class="input_txt w250">
-										<input type="text" placeholder="비밀번호를 입력해주세요." maxlength="50" name="member_password" id="member_password" class="text">
+										<input type="password" placeholder="비밀번호를 입력해주세요." maxlength="50" name="member_password" id="member_password" class="put pws text">
 									</span>
 									<p class="msg_info em hide" id="msg_pwd">
 										비밀번호는 영문자,숫자,특수문자 모두 최소 1가지 이상 조합한 8~12자리이어야 합니다.
@@ -142,8 +138,8 @@
 									</label>									
 								</th>
 								<td>
-									<span class="input_txt">
-										<input type="text" id="imember_password_s" name="member_password_s" class="text">
+									<span class="input_txt w250">
+										<input type="password" placeholder="비밀번호를 재입력해주세요."  id="member_password_s" name="member_password_s" class="pws put text">
 									</span>
 									<p class="msg_info em hide" id="msg_pwds">
 										입력하신 비밀번호가 일치하지 않습니다. 다시 확인해 주세요.
@@ -161,7 +157,7 @@
 							
 								<div id="birthday_select">
 										<div class="select w120">
-											<select class="select_wrap"  id="birth_yy" name="birth_yy">
+											<select class="select_wrap"id="birth_yy" name="birth_yy">
 											<option>년</option>
 											<option value="2021">2021</option>
 											<option value="2020">2020</option>
@@ -348,13 +344,13 @@
 										</div>
 										<div class="select w120">
 											<span class="input_txt">
-												<input type="text" id="member_phone_m" name="member_phone_m" class="text">
+												<input type="text" id="member_phone_m" name="member_phone_m" class="text put">
 											</span>
 											<span class="symbol">-</span>
 										</div>
 										<div class="select w120">
 											<span class="input_txt">
-												<input type="text" id="member_phone_b" name="member_back_b" class="text">
+												<input type="text" id="member_phone_b" name="member_phone_b" class="text put">
 											</span>
 										</div>
 									</div>
@@ -374,14 +370,26 @@
 								<div id="email_ad">
 										<div class="select w180">
 											<span class="input_txt">
-												<input type="text" id="member_email_f" name="member_email_f" class="text">
+												<input type="text" id="member_email_f" name="member_email_f" placeholder="이메일 아이디" class="text put">
 											</span>
 											<span class="symbol">@</span>
 										</div>
 										<div class="select w180">
 											<span class="input_txt">
-												<input type="text" id="member_email_b" name="member_email_b" class="text">
+												<input type="text" id="member_email_b2" name="member_email_b2" placeholder="이메일 도메인" class="text put">
 											</span>
+											<select class="select_wrap"  id="member_email_b" name="member_email_b">
+											<option value="">직접입력</option>
+											<option value="nate.com">nate.com</option>
+											<option value="hanmail.net">hanmail.net</option>
+											<option value="naver.com">naver.com</option>
+											<option value="yahoo.co.kr">yahoo.co.kr</option>
+											<option value="paran.com">paran.com</option>
+											<option value="hotmail.com">hotmail.com</option>
+											<option value="gmail.com">gmail.com</option>
+											<option value="dreamwiz.com">dreamwiz.com</option>
+											</select>
+											
 										</div>
 									</div>
 									<p class="msg_desc">
@@ -450,6 +458,36 @@
 
 <script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/join.js"></script>
 
+<!-- 아이디 중복체크 ajax -->
+<script>
+	$(function(){
+		$('#idCheck').click(function(){
+			var member_user_id = $("#member_user_id").val();
+			
+			$.ajax({
+				url:'./idCheck',
+				type:'get',
+				data:{member_user_id:member_user_id},
+				success:function(data){
+					console.log("1=중복 / 0=중복x :" +data);
+					if(data ==1){
+						//1.아이디가 중복될때
+						$("#msg_id01").css("display","none");
+						$("#msg_id02").text("이미 사용중인 아이디입니다. 다른 아이디로 입력해주세요.");
+					}else{
+						$("#msg_id02").text("사용 가능한 아이디 입니다.");
+						
+					}
+				}
+			});
+		});	
+	});
+
+
+
+
+
+</script>
 
 
 </body>

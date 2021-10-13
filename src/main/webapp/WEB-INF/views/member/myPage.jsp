@@ -67,7 +67,7 @@
 						<li class="tab_title"style="margin-bottom:10px;">나의 정보</li>
 						<li><a href="#">개인정보 변경</a></li>
 						<li><a href="#">SNS로그인 관리</a></li>
-						<li><a href="#">회원탈퇴</a></li>
+						<li><a href="${pageContext.request.contextPath}/member/memberDelete">회원탈퇴</a></li>
 					</ul>
 				</div>
 		
@@ -87,7 +87,7 @@
 							${member.member_name}님
 						</div>
 						<div class="log_address">
-							<a href="#"><span>주소오오오오오</span></a>
+							<a href="#"><span>${member_address.member_default_address}</span></a>
 						</div>
 					</div>
 					<div id="pointWrap">
@@ -96,7 +96,7 @@
 							<span class="pt">CJ ONE 포인트</span>
 							<span class="i_have">
 								<%-- db연결후 작업 ${member.point}P --%>
-								0P
+								${member.member_point}P
 							</span>
 							</a>
 						</div>

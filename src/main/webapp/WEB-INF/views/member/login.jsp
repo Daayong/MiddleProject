@@ -52,7 +52,7 @@
 					
 					<li style="display:inline-block; ">
 						<div class="log_Tab_wrap">
-							<button type="button" id="nonlogMember" class="nonlogMem logTab" style="color:#606060;" >비회원 주문조회</button>
+							<button type="button" id="nonlogMember" class="nonlogMem logTab" style="color:#606060; display:none;" >비회원 주문조회</button>
 							<div class="dashed" id="ndd" style="display:none;"></div>
 						</div>
 					</li>
