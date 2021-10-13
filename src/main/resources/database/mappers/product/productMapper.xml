@@ -52,7 +52,6 @@
   			</when>
   			<otherwise>
   				select * from product
-  				
   				order by
 	  			<choose>
 	  				<when test="kind == 'sort_up'">
