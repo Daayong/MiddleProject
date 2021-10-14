@@ -183,7 +183,96 @@
 					</div>
 					<!-- 상품 리뷰 박스 -->
 					<div class="reviews">
-						<h1>상품 리뷰란입니다.</h1>
+						<div class="review_wrap">
+							<div class="review_rating">
+								<div class = "rating_wrap">
+									<span class="rating_star">
+										<span class="star">
+	
+										</span>
+									</span>
+									<span class="num">
+										<strong class="avg">5.0</strong>
+										<span class="bar">/</span>
+										<span class="top">5.0</span>
+									</span>
+								</div>
+								<div class="btn_right">
+									<button type="button" class="btn">리뷰작성</button>
+								</div>
+							</div>
+							<div class="sorting_top">
+								<div class="chk_wrap">
+									<input type="checkbox" id="sorting_photo">
+									<label for="sorting_photo">포토리뷰</label>
+								</div>
+								<div class="list_sort">
+									<div class="rad_wrap">
+										<input type="radio" id="sort_review02" name="sort_review" checked>
+										<label for="sort_review02">
+											<span class="txt">베스트순</span>
+										</label>
+									</div>
+									<div class="rad_wrap">
+										<input type="radio" id="sort_review01" name="sort_review">
+										<label for="sort_review01">
+											<span class="txt">최신순</span>
+										</label>
+									</div>
+								</div>
+							</div>
+							<div class="taste_review_list">
+								<ul class="cookitReviewList">
+									<li>
+										<div class="review_module">
+											<div class="top_wrap">
+												<p class="tit">
+													<a href="#" class="link_id">
+														user_id
+													</a>
+												</p>
+												<time datetime="2021-10-14">2021-10-14</time>
+											</div>
+											<div class="link_wrap">
+												<div class="etc_info">
+													<div class="rating_wrap">
+														<span class="rating_star">
+															<span class="star">
+																<span style="width: 100.0%;"></span>
+															</span>
+														</span>
+													</div>
+													<a href="#" class="link_more">
+														<div class="txt_wrap">
+															<div class="txt_cont">
+																<p class="mt_elps">
+																	따끈하고 얼큰한 국물맛이 일품이네요.<br>
+																	다 조리한 후 건더기와 약간의 국물을 그릇에 담아놓고,
+																	칼국수를 끓여서 동시에 식탁에 올렸어요.
+																	두 set를 구입했는데 성인 4명이 먹고도 많이 남았어요. 칼국수 양은 알맞았고요.<br>
+																	제시된 레시피보다 물과 샤브소스를 조금 덜 넣었어요.
+																</p>
+															</div>
+															<div class="tag_wrap"></div>
+															<div class="tip_box"></div>
+														</div>
+														<div class="img_left_wrap">
+															<div class="thumb_img">
+																<div class="img">
+																	
+																</div>
+															</div>
+															<div class="img_wrap">
+															</div>
+														</div>
+													</a>
+												</div>
+											</div>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
 					</div>
 					<!-- 배송 문의 박스 -->
 					<div class="orderHelp">

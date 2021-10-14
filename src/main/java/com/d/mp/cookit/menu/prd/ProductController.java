@@ -19,7 +19,9 @@ public class ProductController {
 	@Autowired
 	private ProductService productService;
 	
+	// =========================== 사용자 상품 관련 페이지 =========================== //
 	
+	// 메뉴 찾기
 	@RequestMapping("menu_search")
 	public ModelAndView doSearch(ProductDTO productDTO) throws Exception{
 		List<ProductDTO> prdAr = productService.getPrdList(productDTO);
@@ -31,6 +33,8 @@ public class ProductController {
 		return mv;
 	}
 	
+	
+	// 메뉴 상세 페이지
 	@GetMapping("menu_detail")
 	public ModelAndView getPrdOne(ProductDTO productDTO) throws Exception{
 		
@@ -58,6 +62,8 @@ public class ProductController {
 		return mv;
 	}
 	
+	
+	// 메뉴 메인 페이지
 	@ResponseBody
 	@GetMapping("menu_main")
 	public ModelAndView getPrdList(ProductDTO productDTO) throws Exception{
@@ -65,11 +71,9 @@ public class ProductController {
 		
 		int isSoldOut = 0;
 		
-		System.out.println(productDTO.getDate());
 		for(int i=0; i<prdAr.size(); i++) {
 			
 			isSoldOut = productService.isSoldOut(prdAr.get(i).getProduct_id());
-			System.out.println(isSoldOut);
 			
 			if(isSoldOut == 1) {
 				prdAr.get(i).setProduct_state("품절");
@@ -85,12 +89,28 @@ public class ProductController {
 		return mv;
 	}
 	
-	// 어드민 관련 부분 //////////////////////////////////////////////
+	// =========================== 사용자 상품 관련 페이지 끝 =========================== //
+	
+	
+	
+	// =========================== 관리자 상품 추가 및 관리 페이지 =========================== //
 	
 	@RequestMapping("menu_insert")
 	public ModelAndView doAdmin() throws Exception{
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("menu/menu_insert");
+		
+		return mv;
+	}
+	
+	// 상풍 등록 버튼 클릭시 실행
+	@PostMapping("prdUpload")
+	public ModelAndView setInsert(ProductDTO productDTO, List<MultipartFile> main_files, List<MultipartFile> slider_files) throws Exception{
+		
+		productService.setInsert(productDTO, main_files, slider_files);
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("redirect:menu_main");
 		
 		return mv;
 	}
@@ -112,6 +132,7 @@ public class ProductController {
 	public ModelAndView deletePrdOne(ProductDTO productDTO) throws Exception{
 		
 		productService.deletePrdOne(productDTO);
+		productService.setFileDelete(productDTO);
 		List<ProductDTO> prdAr = productService.getPrdList(productDTO);
 		
 		ModelAndView mv = new ModelAndView();
@@ -120,19 +141,7 @@ public class ProductController {
 		
 		return mv;
 	}
-	
-	// 어드민 관련 부분 끝 ////////////////////////////////////////////
-	@PostMapping("prdUpload")
-	public ModelAndView setInsert(ProductDTO productDTO, List<MultipartFile> main_files, List<MultipartFile> slider_files) throws Exception{
-		
-		int result = productService.setInsert(productDTO, main_files, slider_files);
-		
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("menu/menu_result");
-		mv.addObject("result", result);
-		
-		return mv;
-	}
-	
+
+	// =========================== 관리자 상품 추가 및 관리 페이지 끝 =========================== //
 	
 }

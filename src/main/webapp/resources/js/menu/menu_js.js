@@ -12,7 +12,16 @@ let date = "";
 /* 주문일 */
 $(".date").on("click", function () {
 	date = $(this).val();
-	
+	$(this).css({
+		"color" : "white",
+		"background-color" : "#353535",
+		"background-size" : "150px 150px",
+		"border-radius" : "50px"
+	});
+	$(".date").not(this).css({
+		"color" : "black",
+		"background-color" : "white"
+	});
  	$.ajax({
  		url: 'menu_main?date=' + date,
 		type: "get",
@@ -42,7 +51,7 @@ $(document).on("click", ".sortc_btn", function(){
 	});
 });
 
-
+/* 찜 버튼 누르면 장바구니로 이동하기 */
 
 /* ============== menu_detail 페이지 */
 $("#description").click(function() {

@@ -21,6 +21,7 @@
 .cate_wrap{
 	width: 100%;
 	height: 95px;
+	position: relative;
 	border-bottom: 1px solid #e0e0e0;
 }
 .cate{
@@ -45,7 +46,9 @@
 }
 
 .date_wrap{
-	float: right;
+	position: absolute;
+	right: 0;
+	top: 0;
 }
 
 .date_wrap ul{
@@ -55,16 +58,28 @@
 .date_wrap ul li{
 	display: inline-block;
 	text-align: center;
-	margin-left: 30px;
-	width: 50px;
+	margin-left: 5px;
+	width: 80px;
+	height: 80px;
 	font-weight: 700;
+	color: black;
 	cursor: pointer;
+	vertical-align: middle;
 }
 
+.date_wrap ul li p{
+	line-height: 30px;
+}
+.date_wrap ul li p:first-child{
+	margin-top: 6px;
+}
 .date_wrap ul li:first-child{
 	width: 70px;
 	line-height: 70px;
 	font-size: 24px;
+}
+.date_wrap ul li:first-child a{
+	border-bottom: 1px solid black;
 }
 
 .date_wrap ul li p:last-child{
@@ -173,6 +188,10 @@
 .item_image{
 	width: 100%;
 	height: 320px;
+}
+.item_image img{
+	width: 100%;
+	height: 100%;
 }
 .etc_info{ /* 인분 및 조리시간 */
 	padding-top: 8px;

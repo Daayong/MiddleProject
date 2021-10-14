@@ -51,12 +51,20 @@ public class ProductService {
 		c2.setTime(d2);
 		
 		while(c1.compareTo(c2) != 1) {
-			System.out.println(df.format(c1.getTime()));
 			
-			productDTO.setProduct_regdate(df.format(c1.getTime()));
-			productDAO.setInsertDate(productDTO);
+			int se_date = c1.get(Calendar.DAY_OF_WEEK);
 			
-			c1.add(Calendar.DATE, 1);
+			if(se_date == 1 || se_date == 2) {
+				c1.add(Calendar.DATE, 1);
+			}else {
+				System.out.println(df.format(c1.getTime()));
+				
+				productDTO.setProduct_regdate(df.format(c1.getTime()));
+				productDAO.setInsertDate(productDTO);
+				
+				c1.add(Calendar.DATE, 1);
+			}
+
 		}
 		
 		
@@ -69,16 +77,22 @@ public class ProductService {
 		File main_file_path = null;
 		File slider_file_path = null;
 		
+		// 파일 판단 인자
+		String f_kind = "";
 		
 		/* MultiPartFiles 버그성 아무것도 넣지 않아도 input에서 하나가 넘어오는걸로 되가지고 size 1 임 */
+		
+		// 메인의 썸네일 이미지 넣는 파일 디렉토리
 		if(main_files.size() < 2 && slider_files.size() < 2) {
 			System.out.println("첨부된 파일이 없습니다.");
 		}
 		if(main_files.size() >= 1){
 			main_file_path = new File(main_realPath);
 			
+			f_kind = "main";
+			
 			for(MultipartFile multipartFile:main_files) {
-				String fileName = fileManager.fileSave(main_file_path, multipartFile);
+				String fileName = fileManager.fileSave(main_file_path, multipartFile, productDTO.getProduct_name(), f_kind);
 				ProductFilesDTO productFilesDTO = new ProductFilesDTO();
 				productFilesDTO.setProduct_file_name(fileName);
 				productFilesDTO.setProduct_file_ori_name(multipartFile.getOriginalFilename());
@@ -88,11 +102,15 @@ public class ProductService {
 				result = productDAO.setFile(productFilesDTO);
 			}
 		}
+		
+		// 슬라이더 이미지 넣는 파일 디렉토리
 		if(slider_files.size() >= 2){
 			slider_file_path = new File(slider_realPath);
 			
+			f_kind = "slider";
+			
 			for(MultipartFile multipartFile:slider_files) {
-				String fileName = fileManager.fileSave(slider_file_path, multipartFile);
+				String fileName = fileManager.fileSave(slider_file_path, multipartFile, productDTO.getProduct_name(), f_kind);
 				ProductFilesDTO productFilesDTO = new ProductFilesDTO();
 				productFilesDTO.setProduct_file_name(fileName);
 				productFilesDTO.setProduct_file_ori_name(multipartFile.getOriginalFilename());
@@ -102,11 +120,21 @@ public class ProductService {
 				result = productDAO.setFile(productFilesDTO);
 			}
 		}
-		
-		
-		//////////////////////////////////////////////////////////////////////////////////////////////////
-		
+	
 		return result;
+	}
+	
+	// 상품 삭제시 파일도 같이 삭제시키기
+	public void setFileDelete(ProductDTO productDTO) throws Exception{
+		
+		String main_realPath = servletContext.getRealPath("/resources/upload/menu/main/" + productDTO.getProduct_id());
+		String slider_realPath = servletContext.getRealPath("/resources/upload/menu/slider/" + productDTO.getProduct_id());
+		
+		
+		File main_file = new File(main_realPath);
+		File slider_file = new File(slider_realPath);
+		
+		fileManager.fileDelete(main_file, slider_file);
 	}
 	
 	/* ================================================= 상품등록 끝 ================================================= */

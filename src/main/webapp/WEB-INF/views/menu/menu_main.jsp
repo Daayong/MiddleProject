@@ -45,7 +45,7 @@
 				</div>
 				<div class="date_wrap">
 					<ul>
-						<li class="date date_all"><a href="menu_main">전체</a></li>
+						<li class="dates date_all"><a href="menu_main">전체</a></li>
 						<li class="date date1" value=""></li>
 						<li class="date date2" value=""></li>
 						<li class="date date3" value=""></li>
