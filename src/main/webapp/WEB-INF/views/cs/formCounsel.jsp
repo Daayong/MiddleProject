@@ -241,10 +241,7 @@
 						<dt>주문/상품 선택</dt>
 						<dd>
 							<div class="order_list" name="cslPrdList">
-								
-								
-								
-								
+		
 									
 								<!-- 선택된 상품이 없을 때 -->
 								<div class="pro_box no_pro">
@@ -325,9 +322,7 @@
 								</dt>
 								<dd>
 									<div class="input_email">
-										
-											
-										
+								
 										<div class="input_wrap ema_id dis">
 											<input type="text" class="txt" id="email" title="이메일 아이디" name="cusMailAdr" value="">
 										</div>
@@ -338,19 +333,15 @@
 										<span class="item_wrap ui_selectbox dis" ui-modules="Selectbox,CustomSelectbox">
 											<label for="fn_selc_val" class="hide">이메일 도메인 선택</label>
 
-									<select id="fn_selc_val" class="required" onchange="changeEmailSelect(this)" disabled="">
+									<select id="fn_selc_val" class="required">
 		
-								<option value="0">직접입력</option>
+										<option value="0">직접입력</option>
+										<option value="naver.com">naver.com</option>
+										<option value="hanmail.net">hanmail.net</option>
+										<option value="nate.com">nate.com</option>
+										<option value="gmail.com">gmail.com</option>
 	
-								<option value="naver.com">naver.com</option>
-	
-								<option value="hanmail.net">hanmail.net</option>
-	
-						<option value="nate.com">nate.com</option>
-	
-						<option value="gmail.com">gmail.com</option>
-	
-								</select>
+									</select>
 											<span class="ico_arr"></span>
 										</span>
 									</div>
@@ -367,66 +358,27 @@
 								</dt>
 								<dd>
 									<div class="input_mobile_num">
-										
-											
-										
+									
 										<span class="item_wrap ui_selectbox dis" ui-modules="Selectbox,CustomSelectbox">
 											<label for="input_phone01" class="hide">휴대폰 앞자리 선택</label>
-											
-
-
-
-
-
-
-
-
-
-
-<select id="input_phone1" name="cusMblNo1" class="required" title="휴대폰 앞자리를 선택해주세요." disabled="">
-	
-
-	
 		
-		
-			
-		
-		
-		<option value="010" selected="selected">010</option>
-	
-		
-		
-		
-		<option value="011">011</option>
-	
-		
-		
-		
-		<option value="016">016</option>
-	
-		
-		
-		
-		<option value="017">017</option>
-	
-		
-		
-		
-		<option value="018">018</option>
-	
-		
-		
-		
-		<option value="019">019</option>
-	
-</select>
+							<!-- check 안할시 disabled 넣어주기 -->
+							<select id="input_phone1" name="cusMblNo1" class="required" title="휴대폰 앞자리를 선택해주세요." >
+									<option value="010" selected="selected">010</option>
+										<option value="011">011</option>
+										<option value="016">016</option>
+										<option value="017">017</option>
+										<option value="018">018</option>
+										<option value="019">019</option>
+								
+											</select>
 											<span class="ico_arr"></span>
 										</span>
-										<div class="input_wrap dis">
+										<div class="input_wrap dis ">
 											<input type="text" class="txt" id="input_phone02" title="휴대폰 중간 4자리" placeholder="" maxlength="4" readonly="" name="cusMblNo2" value="">
 											<button class="ico"><span class="hide">입력 삭제</span></button>
 										</div>
-										<div class="input_wrap dis">
+										<div class="input_wrap dis ">
 											<input type="text" class="txt" id="input_phone03" title="휴대폰 끝 4자리" placeholder="" maxlength="4" readonly="" name="cusMblNo3" value="">
 											<button class="ico"><span class="hide">입력 삭제</span></button>
 										</div>

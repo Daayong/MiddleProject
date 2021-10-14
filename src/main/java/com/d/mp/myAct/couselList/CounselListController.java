@@ -1,4 +1,4 @@
-package com.d.mp.cs.qna;
+package com.d.mp.myAct.couselList;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -6,22 +6,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping("/cs/**")
-public class QnaController {
+@RequestMapping("/myAct/**")
+public class CounselListController {
 	
-	@GetMapping("formCounsel")
-	public ModelAndView setQnaInsert() throws Exception{
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("cs/formCounsel");
-		return mv;
-	}
-	
-	@GetMapping("formCounselComplete")
+	@GetMapping("coustomerCounselList")
 	public ModelAndView complete() throws Exception{
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("cs/formCounselComplete");
+		mv.setViewName("myAct/customerCounselList");
 		return mv;
 	}
 	
-
 }
