@@ -1,5 +1,8 @@
 package com.d.mp.member;
 
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -9,6 +12,10 @@ public class MemberService {
 
 	@Autowired
 	private MemberDAO memberDAO;
+	@Autowired
+	private HttpSession session;
+	@Autowired
+	private ServletContext servletContext;
 	
 	//로그인
 	public MemberDTO getLogin(MemberDTO memberDTO)throws Exception{

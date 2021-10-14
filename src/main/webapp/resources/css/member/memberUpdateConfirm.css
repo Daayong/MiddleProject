@@ -1,0 +1,30 @@
+@charset "UTF-8";
+
+
+
+#update_top h3{display: block;
+    padding-bottom: 36px;
+    border-bottom: 4px solid #202020;
+    font-size: 36px;
+    line-height: 50px;
+    font-weight: 700;
+    color: #101010;}
+
+.uinfo_box{	width:940px;padding:50px 40px;background-color: #f8f8f8;}
+
+
+.regi_complete .bg {background: url(../../images/my/ico_regi_complete.png) no-repeat -300px 0;display: block;width: 89px;height: 89px;background-position: -100px -200px;margin: 0 auto 35px;}
+.regi_complete .h2_tit{font-size:24px; text-align:center; color:#222;}
+.regi_complete .h_desc{padding-top:14px; font-size:14px; color:#555; text-align:center; }
+
+.uinfo_box .pwd_box{margin-top:35px;}
+
+#pwd{display: block;width:300px;height:50px; margin:0 auto;padding:0 15px;border: 1px solid #ddd;color: #888;font-size: 14px;line-height:50px;}
+#pw_msg{display:block; font-size:13px; margin-top:5px; color:#ee6900; line-height:1.5; left:35%;position:absolute; letter-spacing:0.2px;  }
+
+.btn {display:inline-block;text-align:center;font-weight:700;font-size: 18px;line-height: 54px;}
+.btn.green{ margin-left:20px; color:#101010;border:1px solid #BDD61A;background-color:#BDD61A;}
+.btn.pop {width: 200px;height: 56px;font-size: 16px;line-height: 54px; }
+
+.btn_wrap{margin-top:50px; position:absolute; left:27%;}
+

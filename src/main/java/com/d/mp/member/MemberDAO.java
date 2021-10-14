@@ -4,6 +4,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.d.mp.address.AddressDTO;
+
 @Repository
 public class MemberDAO {
 	
@@ -37,7 +39,9 @@ public class MemberDAO {
 		return sqlSession.selectOne(NAMESPACE+"getDefaultAddress", memberDTO);
 	}
 	
-	
+	public AddressDTO getAddress(MemberDTO memberDTO)throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getAddress", memberDTO);
+	}
 	
 	
 }

@@ -142,9 +142,6 @@ public class MemberController {
 		return "member/memberDelete";
 	}
 	
-	
-	
-	
 	@GetMapping("delete")
 	public ModelAndView setDelete(HttpSession session)throws Exception {
 		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
@@ -154,19 +151,24 @@ public class MemberController {
 		return mv;
 	}
 	
+	@GetMapping("memberUpdateConfirm")
+	public String setUpdate()throws Exception{
+		return "member/memberUpdateConfirm";
+	}
+	
 	
 	
 /*--------------------------------- 회원 탈퇴/수정 종료 --------------------------------------*/	
 	
 /*--------------------------------- 주소 관련 시작 --------------------------------------*/	
 	
-	@GetMapping("myAddress")
+	@GetMapping("myaddress")
 	public ModelAndView myAddress(HttpSession session, MemberDTO memberDTO) throws Exception{
 		ModelAndView mv = new ModelAndView();
 		memberDTO = memberService.getDefaultAddress(memberDTO);
-		session.setAttribute("member", memberDTO);
+		session.setAttribute("member_address", memberDTO);
 		mv.addObject("member_address", memberDTO);
-		mv.setViewName("member/myPage");	
+		mv.setViewName("member/myaddress");	
 		return mv;
 	}
 		

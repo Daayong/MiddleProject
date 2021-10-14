@@ -2,8 +2,10 @@ package com.d.mp.member;
 
 import com.d.mp.address.AddressDTO;
 
-public class MemberDTO extends AddressDTO {
+public class MemberDTO {
 
+	private AddressDTO addressDTO;
+	
 	private Long member_id;
 	private String member_user_id; 
 	private String member_password; 
@@ -16,8 +18,13 @@ public class MemberDTO extends AddressDTO {
 	private int member_type;
 	private int member_point;
 	
-	private String member_default_address;
 	
+	public AddressDTO getAddressDTO() {
+		return addressDTO;
+	}
+	public void setAddressDTO(AddressDTO addressDTO) {
+		this.addressDTO = addressDTO;
+	}
 	private String birth_yy;
 	private String birth_mm;
 	private String birth_dd;
@@ -28,13 +35,7 @@ public class MemberDTO extends AddressDTO {
 	private String member_phone_m;
 	private String member_phone_b;
 	
-	public String getMember_default_address() {
-		return member_default_address;
-	}
-	public void setMember_default_address(String member_default_address) {
-		this.member_default_address = member_default_address;
-	}
-	
+
 	public Long getMember_id() {
 		return member_id;
 	}

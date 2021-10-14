@@ -9,7 +9,7 @@
 <body>
 
 <!--배송지 관리 페이지-->
-
+<h1>${member_address.member_address.member_default_address}</h1>
 
 
 </body>
