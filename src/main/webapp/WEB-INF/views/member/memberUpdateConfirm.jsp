@@ -53,6 +53,7 @@
 								CJ ONE 회원 로그인 시 사용하시는 비밀번호를 입력해주세요.
 							</p>
 						</div>
+					
 						<div class="pwd_box">
 							<span class="input_txt w330">
 								<input type="password" id="pwd" name="member_password" class="text" placeholder="비밀번호를 입력해주세요." maxlength="20">
@@ -79,7 +80,7 @@
 	
 	<script type="text/javascript">
 		const uCancel = document.getElementById('uCancel');
-		const goUpdate=document.getElementById('goUpdate');
+		const goUpdate=document.getElementById('goUP');
 		
 		uCancel.addEventListener('click',function(){
 			location.href="../";
