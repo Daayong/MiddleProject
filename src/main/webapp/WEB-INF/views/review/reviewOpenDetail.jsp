@@ -79,7 +79,6 @@
 							<button type="button" class="btn_arrow prev" id="prev" style="display: block;">
 							</button>
 							
-							<em>1</em>/<strong>2</strong>
 							
 							<button type="button" class="btn_arrow next" id="next" style="display: block;">
 							</button>
@@ -124,7 +123,7 @@
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script type="text/javascript" src="/mp/resources/js/reviewOpenDetail.js"></script>
+<script type="text/javascript" src="/mp/resources/js/review/reviewOpenDetail.js"></script>
 
 </body>
 </html>

@@ -30,5 +30,16 @@
 	  		
 	  		<typeAlias type="java.util.List" alias="List"/>
 	  		<typeAlias type="java.lang.Long" alias="Long"/>
+	  		
+	  		
+	  		
+	  		<typeAlias type="com.d.mp.order.cart.CartDTO" alias="CartDTO"/>
+	  		<typeAlias type="com.d.mp.order.cart.CartListDTO" alias="CartListDTO"/>
+	  		
+	  		
+	  		
+	  		
+	  		
+	  		
 		</typeAliases>
 	</configuration>

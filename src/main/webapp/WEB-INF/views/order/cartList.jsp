@@ -1,5 +1,6 @@
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <html>
 <head>
@@ -55,7 +56,7 @@
 				<div class="prd_select">
 					<div class="chk_wrap">
 						<input type="checkbox" id="all_select" class="all_select">
-						<label for="all_select">총 2/2개</label>
+						<label for="all_select">총 2/${cartListDTOs.size()}개</label>
 					</div>
 					<button type="button" class="btn_sm_white ui_allDelete" data-del-type="c"><span>선택삭제</span></button>
 					<button type="button" class="btn_sm_white ui_allDelete" data-del-type="s"><span>품절/마감 삭제</span></button>
@@ -65,222 +66,102 @@
 				<div class="detail_info">
 					
 					<!-- loop start -->
-					<div class="detail_info_content">
-					
-						<div class="delivery_date">
-							<div class="check_wrap">
-								<input type="checkbox" id="delivery_date0" name="dlvDtChk" data-date-idx="0" disabled="" class="">
-								<label for="delivery_date0">2021-10-08(금) 도착예정</label>
+					<c:set var="tempDate"></c:set>
+					<c:forEach var="cartListDTOsI" items="${cartListDTOs}">
+					<c:if test="${tempDate ne cartListDTOsI.cart_delivery_date}">
+						
+						<div class="detail_info_content">
+						
+							<div class="delivery_date">
+								<div class="check_wrap">
+									<input type="checkbox" id="delivery_date0" name="dlvDtChk" data-date-idx="0" disabled="" class="">
+									<label for="delivery_date0">${cartListDTOsI.cart_delivery_date} 도착예정</label>
+								</div>
+								<!-- <a href="javascript:;" data-dlv-dt="20211008" class="btn_link chgDlvDt">배송일 변경</a> -->
 							</div>
-							<a href="javascript:;" data-dlv-dt="20211008" class="btn_link chgDlvDt">배송일 변경</a>
-						</div>
-						
-						<div class="product_list">
-							<ul>
-								<!-- loop start -->
-								<li>
-									<div class="product_wrap">
-									
-										<div class="check_wrap">
-											<input type="checkbox" id="prd_sel00" name="order" data-free-dlv-yn="false" data-date-idx="0" data-prdtycd="03" data-soldout="EN" data-lmt-sale-use-yn="false" data-cart-seq="106911515" disabled="" class="accessibility-keyboard">
-											<label for="prd_sel00"></label>
-										</div>
-										
-										<div class="img_wrap">
-											<div class="Deadline">
-												<span>마감</span>
+							
+							<div class="product_list">
+								<ul>
+									<!-- loop start -->
+									<c:forEach var="cartListDTOsJ" items="${cartListDTOs}">
+									<c:if test="${cartListDTOsI.cart_delivery_date eq cartListDTOsJ.cart_delivery_date}">
+
+										<li>
+											<div class="product_wrap">
+											
+												<div class="check_wrap">
+													<c:if test="${cartListDTOsJ.cart_state eq 'checked'}">
+														<input type="checkbox" id="${cartListDTOsJ.cart_id}" checked="checked">
+														<label for="${cartListDTOsJ.cart_id}"></label>
+													</c:if>
+													<c:if test="${cartListDTOsJ.cart_state eq 'unChecked'}">
+														<input type="checkbox" id="${cartListDTOsJ.cart_id}">
+														<label for="${cartListDTOsJ.cart_id}"></label>
+													</c:if>
+													<c:if test="${cartListDTOsJ.cart_state eq 'deadLine'}">
+														<input type="checkbox" id="${cartListDTOsJ.cart_id}" disabled="">
+														<label for="${cartListDTOsJ.cart_id}"></label>
+													</c:if>
+												</div>
+												
+												<div class="img_wrap">
+													<!-- 판매종료시 노출 -->
+													<c:if test="${cartListDTOsJ.cart_state eq 'deadLine'}">
+														<div class="Deadline">
+															<span>마감</span>
+														</div>
+													</c:if>
+													<img alt="" src="/mp/resources/upload/menu/main/${cartListDTOsJ.product_id}/${cartListDTOsJ.product_file_ori_name}">
+												</div>
+												
+												<a href="javascript:;" data-prd-cd="40003724" class="product_link">
+													<div class="info_wrap">
+														<!-- 판매종료시 노출 -->
+														<c:if test="${cartListDTOsJ.cart_state eq 'deadLine'}">
+															<span class="sale_end">선택하신 배송일은 마감되었습니다.</span>
+														</c:if>
+														<!-- //플래그 -->
+														<span class="name">${cartListDTOsJ.product_name}</span>
+														<span class="price">
+															<fmt:formatNumber value="${cartListDTOsJ.product_price}" pattern="#,###"/>원
+														</span>
+													</div>
+												</a>
+												
+												<div class="prd_quantity">
+													<div class="box_prd_quantity">
+														<button type="button" class="btn_quantity minus" disabled=""></button>
+														<span class="quantity" data-min-limit="1" data-once-max-limit="100000" data-prd-prc="20800">${cartListDTOsJ.cart_quantity}</span>
+														<button type="button" class="btn_quantity plus" disabled=""></button>
+													</div>
+												</div>
+												
+												<div class="prd_price">
+													20,800원
+												</div>
+												
+												<button type="button" class="prd_del" data-cart-seq="106911515"></button>
+												
 											</div>
-											<img alt="" src="/mp/resources/images/temp/review_temp2.jpg">
-										</div>
-										
-										<a href="javascript:;" data-prd-cd="40003724" class="product_link">
-											<div class="info_wrap">
-												<!-- 판매종료시 노출 -->
-												<span class="sale_end">선택하신 배송일은 마감되었습니다.</span>
-												<!-- //플래그 -->
-												<span class="name">부채살 찹스테이크</span>
-												<span class="price">20,800원</span>
-											</div>
-										</a>
-										
-										<div class="prd_quantity">
-											<div class="box_prd_quantity">
-												<button type="button" class="btn_quantity minus" disabled=""></button>
-												<span class="quantity" data-cart-seq="106911515" data-min-limit="1" data-once-max-limit="100000" data-prd-dc-prc="0" data-prd-prc="20800">1</span>
-												<button type="button" class="btn_quantity plus" disabled=""></button>
-											</div>
-										</div>
-										
-										<div class="prd_price">
-											20,800원
-										</div>
-										
-										<button type="button" class="prd_del" data-cart-seq="106911515"></button>
-										
-									</div>
-								</li>
-								<li>
-									<div class="product_wrap">
-									
-										<div class="check_wrap">
-											<input type="checkbox" id="prd_sel00" name="order" data-free-dlv-yn="false" data-date-idx="0" data-prdtycd="03" data-soldout="EN" data-lmt-sale-use-yn="false" data-cart-seq="106911515" disabled="" class="accessibility-keyboard">
-											<label for="prd_sel00"></label>
-										</div>
-										
-										<div class="img_wrap">
-											<div class="Deadline">
-												<span>마감</span>
-											</div>
-											<img alt="" src="/mp/resources/images/temp/review_temp2.jpg">
-										</div>
-										
-										<a href="javascript:;" data-prd-cd="40003724" class="product_link">
-											<div class="info_wrap">
-												<!-- 판매종료시 노출 -->
-												<span class="sale_end">선택하신 배송일은 마감되었습니다.</span>
-												<!-- //플래그 -->
-												<span class="name">부채살 찹스테이크</span>
-												<span class="price">20,800원</span>
-											</div>
-										</a>
-										
-										<div class="prd_quantity">
-											<div class="box_prd_quantity">
-												<button type="button" class="btn_quantity minus" disabled=""></button>
-												<span class="quantity" data-cart-seq="106911515" data-min-limit="1" data-once-max-limit="100000" data-prd-dc-prc="0" data-prd-prc="20800">1</span>
-												<button type="button" class="btn_quantity plus" disabled=""></button>
-											</div>
-										</div>
-										
-										<div class="prd_price">
-											20,800원
-										</div>
-										
-										<button type="button" class="prd_del" data-cart-seq="106911515"></button>
-										
-									</div>
-								</li>
-								<!-- loop end -->
-							</ul>
-						</div>
-						
-						<div class="prd_total_payment">
-							<span>상품금액<strong>0원</strong></span>
-							<span class="plus"></span>
-							<span class="delivery">배송비<strong>0원</strong></span>
-							<span class="equal"></span>
-							<span class="total">총<strong>0원</strong></span>
-						</div>
-						
-					</div>
-					<div class="detail_info_content">
-					
-						<div class="delivery_date">
-							<div class="check_wrap">
-								<input type="checkbox" id="delivery_date0" name="dlvDtChk" data-date-idx="0" disabled="" class="">
-								<label for="delivery_date0">2021-10-08(금) 도착예정</label>
+										</li>
+									</c:if>
+									</c:forEach>
+									<!-- loop end -->
+								</ul>
 							</div>
-							<a href="javascript:;" data-dlv-dt="20211008" class="btn_link chgDlvDt">배송일 변경</a>
+							
+							<div class="prd_total_payment">
+								<span>상품금액<strong>0원</strong></span>
+								<span class="plus"></span>
+								<span class="delivery">배송비<strong>0원</strong></span>
+								<span class="equal"></span>
+								<span class="total">총<strong>0원</strong></span>
+							</div>						
 						</div>
-						
-						<div class="product_list">
-							<ul>
-								<!-- loop start -->
-								<li>
-									<div class="product_wrap">
-									
-										<div class="check_wrap">
-											<input type="checkbox" id="prd_sel00" name="order" data-free-dlv-yn="false" data-date-idx="0" data-prdtycd="03" data-soldout="EN" data-lmt-sale-use-yn="false" data-cart-seq="106911515" disabled="" class="accessibility-keyboard">
-											<label for="prd_sel00"></label>
-										</div>
-										
-										<div class="img_wrap">
-											<div class="Deadline">
-												<span>마감</span>
-											</div>
-											<img alt="" src="/mp/resources/images/temp/review_temp2.jpg">
-										</div>
-										
-										<a href="javascript:;" data-prd-cd="40003724" class="product_link">
-											<div class="info_wrap">
-												<!-- 판매종료시 노출 -->
-												<span class="sale_end">선택하신 배송일은 마감되었습니다.</span>
-												<!-- //플래그 -->
-												<span class="name">부채살 찹스테이크</span>
-												<span class="price">20,800원</span>
-											</div>
-										</a>
-										
-										<div class="prd_quantity">
-											<div class="box_prd_quantity">
-												<button type="button" class="btn_quantity minus" disabled=""></button>
-												<span class="quantity" data-cart-seq="106911515" data-min-limit="1" data-once-max-limit="100000" data-prd-dc-prc="0" data-prd-prc="20800">1</span>
-												<button type="button" class="btn_quantity plus" disabled=""></button>
-											</div>
-										</div>
-										
-										<div class="prd_price">
-											20,800원
-										</div>
-										
-										<button type="button" class="prd_del" data-cart-seq="106911515"></button>
-										
-									</div>
-								</li>
-								<li>
-									<div class="product_wrap">
-									
-										<div class="check_wrap">
-											<input type="checkbox" id="prd_sel00" name="order" data-free-dlv-yn="false" data-date-idx="0" data-prdtycd="03" data-soldout="EN" data-lmt-sale-use-yn="false" data-cart-seq="106911515" disabled="" class="accessibility-keyboard">
-											<label for="prd_sel00"></label>
-										</div>
-										
-										<div class="img_wrap">
-											<div class="Deadline">
-												<span>마감</span>
-											</div>
-											<img alt="" src="/mp/resources/images/temp/review_temp2.jpg">
-										</div>
-										
-										<a href="javascript:;" data-prd-cd="40003724" class="product_link">
-											<div class="info_wrap">
-												<!-- 판매종료시 노출 -->
-												<span class="sale_end">선택하신 배송일은 마감되었습니다.</span>
-												<!-- //플래그 -->
-												<span class="name">부채살 찹스테이크</span>
-												<span class="price">20,800원</span>
-											</div>
-										</a>
-										
-										<div class="prd_quantity">
-											<div class="box_prd_quantity">
-												<button type="button" class="btn_quantity minus" disabled=""></button>
-												<span class="quantity" data-cart-seq="106911515" data-min-limit="1" data-once-max-limit="100000" data-prd-dc-prc="0" data-prd-prc="20800">1</span>
-												<button type="button" class="btn_quantity plus" disabled=""></button>
-											</div>
-										</div>
-										
-										<div class="prd_price">
-											20,800원
-										</div>
-										
-										<button type="button" class="prd_del" data-cart-seq="106911515"></button>
-										
-									</div>
-								</li>
-								<!-- loop end -->
-							</ul>
-						</div>
-						
-						<div class="prd_total_payment">
-							<span>상품금액<strong>0원</strong></span>
-							<span class="plus"></span>
-							<span class="delivery">배송비<strong>0원</strong></span>
-							<span class="equal"></span>
-							<span class="total">총<strong>0원</strong></span>
-						</div>
-						
-					</div>
+							
+					<c:set var="tempDate">${cartListDTOsI.cart_delivery_date}</c:set>
+					</c:if>
+					</c:forEach>
 					<!-- loop end -->
 					
 					<div class="total_payment">
@@ -341,7 +222,7 @@
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script type="text/javascript" src="/mp/resources/js/cartList.js"></script>
+<script type="text/javascript" src="/mp/resources/js/order/cartList.js"></script>
 
 </body>
 </html>
