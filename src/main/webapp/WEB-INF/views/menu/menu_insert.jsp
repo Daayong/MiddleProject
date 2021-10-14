@@ -127,6 +127,12 @@
 						<input type="text" id="inputPrdCount" name="product_total_count">
 					</div>
 					
+					<div class="input_block">
+						<!-- 처음에만 같은 값으로 지정하고 변경할려면 menu_manage페이지에서 하나씩 변경가능하게 구현하면 좋을듯 -->
+						<label for="inputPerDateCount">상품 날짜별 최대 수량</label>
+						<input type="text" id="inputPerDateCount" name="product_max_count">
+					</div>
+					
 					<button type="submit" class="insert_btn">상품디비추가</button>
 					
 				</form>

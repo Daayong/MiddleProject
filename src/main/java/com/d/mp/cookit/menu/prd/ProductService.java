@@ -52,6 +52,7 @@ public class ProductService {
 		
 		while(c1.compareTo(c2) != 1) {
 			
+			// 구한 날짜가 일요일, 월요일이면 업데이트 하지않음 배송일은 화, 수, 목, 금, 토 새벽배송
 			int se_date = c1.get(Calendar.DAY_OF_WEEK);
 			
 			if(se_date == 1 || se_date == 2) {
@@ -195,5 +196,20 @@ public class ProductService {
 	public int doSoldOut(Long product_id) throws Exception{
 		
 		return productDAO.doSoldOut(product_id);
+	}
+	
+	//product_date 테이블의 날짜별 상품 수량 갯수 가져오기
+	public void perCountDateProduct(ProductDTO productDTO) throws Exception{
+		
+		ProductDTO dto = productDAO.perCountDateProduct(productDTO);
+		Long sell_cnt = dto.getProduct_sell_count();
+		Long max_cnt = dto.getProduct_max_count();
+		
+		String isEqual = "";
+		
+		if(sell_cnt >= max_cnt) {
+			isEqual = "상품 재고 소진";
+		}
+
 	}
 }

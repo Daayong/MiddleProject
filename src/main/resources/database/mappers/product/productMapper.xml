@@ -24,18 +24,20 @@
 	  			#{product_info}, 
 	  			#{product_price} , 
 	  			#{product_total_count}, 
-	  			'판매중'
+	  			'판매가능'
   			)
   	</insert>
 	
 	<insert id="setInsertDate" parameterType="ProductDTO">
 		INSERT INTO product_date 
-			(product_date_id, product_id, product_regdate, product_sell_count)
+			(product_date_id, product_id, product_regdate, product_sell_count, product_max_count, product_date_state)
 		VALUES (
 				PD_SEQ.nextval, 
 				#{product_id}, 
 				#{product_regdate}, 
-				0
+				0,
+				#{product_max_count},
+				'판매가능'
 			)
 	</insert>
   	<!-- 상품 파일(썸네일, 슬라이더, 정보) 등록하기 -->
@@ -162,4 +164,15 @@
   		WHERE 
   			product_id = #{product_id}
   	</update>
+  	
+  	<!-- product_date 테이블의 날짜별 상품 수량 갯수 가져오기 -->
+  	<select id="perCountDateProduct" parameterType="ProductDTO" resultType="ProductDTO">
+  		SELECT 
+  			product_sell_count,
+  			product_max_count
+  		FROM
+  			product_date
+  		WHERE
+  			product_id = #{product_id} AND product_regdate = #{product_regdate}
+  	</select>
   </mapper>
