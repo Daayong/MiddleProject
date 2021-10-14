@@ -1,10 +1,15 @@
 @charset "UTF-8";
 
-#content{	
-	min-height: 900px;
-	padding: 52px 0 140px;
+#my_wrapper{	
+    min-height: 900px;
+    padding: 52px 0 290px;
 }
 
+#my_wrapper:after {
+    content: '';
+    display: block;
+    clear: both;
+}
 
 /* 왼쪽 메뉴바 */
 #left_menu{
@@ -46,14 +51,19 @@
 	padding:5px 0 35px 0; 
 }
 
+#my_wrapper:after {
+    content: '';
+    display: block;
+    clear: both;
+}
 
 /*오른쪽 컨텐츠 영역 */
-
-.my_wrap .right_con {
-    float: right;
-    width: 940px;
-    position: relative;
+#content_wrapper{
+	width:940px; 
+	position:relative; 
+	float:right; 	
 }
+
 
 .order_view {
     width: 100%;
@@ -277,7 +287,7 @@
     border-top: 2px solid #202020;
 }
 
-.my_wrap .input_order {
+.input_order {
     padding-bottom: 26px;
     border-bottom: 1px solid #e0e0e0;
 }
@@ -286,11 +296,11 @@
     margin-top: 24px;
 }
 
-.my_wrap .input_order dl.one_dep.row1 dt, .my_wrap .input_order dl.two_dep.row1 dt {
+.input_order dl.one_dep.row1 dt, .my_wrap .input_order dl.two_dep.row1 dt {
     margin-top: 12px;
 }
 
-.my_wrap .input_order dl.one_dep dt {
+.input_order dl.one_dep dt {
     width: 260px;
     float: left;
     color: #101010;
@@ -307,7 +317,7 @@
     font-weight: 400;
 }
 
-.my_wrap .input_order dl.one_dep dd {
+.input_order dl.one_dep dd {
     width: 680px;
     float: right;
     padding: 0;
@@ -368,7 +378,7 @@
     line-height: 54px;
 }
 
-.my_wrap .input_order dl.one_dep:after {
+.input_order dl.one_dep:after {
     content: '';
     display: block;
     clear: both;
@@ -444,7 +454,7 @@ textarea {
 
 /* 첨부파일 */
 
-.my_wrap .input_order .scroll {
+.input_order .scroll {
     overflow-x: visible;
 }
 
@@ -453,11 +463,11 @@ textarea {
     overflow-x: visible;
 }
 
-.my_wrap .input_order .add_file_wrap {
+.input_order .add_file_wrap {
     margin-left: -10px;
 }
 
-.my_wrap .input_order .add_file_wrap li {
+.input_order .add_file_wrap li {
    	float: left;
     width: 128px;
     margin: 0 0 0 10px;
@@ -479,7 +489,7 @@ textarea {
     opacity: 0;
 }
 
-.my_wrap .input_order .add_file_wrap .add_file {
+.input_order .add_file_wrap .add_file {
     width: 128px;
     height: 128px;
 }
@@ -519,7 +529,7 @@ textarea {
     margin-top: 11px;
 }
 
-.my_wrap .input_order .file_info .file_size {
+.input_order .file_info .file_size {
     top: 0;
 }
 

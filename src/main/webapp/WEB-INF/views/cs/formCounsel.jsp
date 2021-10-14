@@ -6,43 +6,31 @@
 	<link href="${pageContext.request.contextPath}/resources/css/common.css" rel="stylesheet">
 	<link href="${pageContext.request.contextPath}/resources/css/cs/formCounsel.css" rel="stylesheet">
 	
-	<title>1:1 - 문의 집밥을 특별하게, 쿡킷</title>
+	<title>My쿡킷 - 집밥을 특별하게,쿡킷</title>
 	
-	<style>
-	
-		
-		html, body {
-	    height: 3000px;
-	    margin: 0;
-	    padding: 0;
-
-		}
+	<style>	
 		.wrapper{
 			position:relative;
-			width: 100%;
-			height: 100%;	
+			width:100%;
 		}
 		
 		#container{
-			width: 1180px;
+			width:1180px;
 			min-height:100%;
-			margin: -117 auto -290;
+			margin:-117 auto -290;
 			padding: 117 0 290;
 		}
-		
 	</style>
 	
 </head>
 <body>
-
 <div class="wrapper">
-
 	<c:import url="../temp/boot_nav.jsp"></c:import>	
 	
 	<section id="container">
 	
 	<!-- 전체 영역  -->
-	<div class="my_wrap" id="content">
+	<div id="my_wrapper" class="my_wrap">
 		<!-- 왼쪽 메뉴탭 -->
 		<div id="left_menu">
 				<div id="my_order">
@@ -72,7 +60,7 @@
 						<li><a href="#">리뷰</a></li>
 						<li><a href="#">나의 맛취향</a></li>
 						<li><a href="#">쇼핑찜</a></li>
-						<li><a href="#" style="color: #101010; text-decoration: underline;">1:1 문의</a></li>
+						<li><a href="#">1:1 문의</a></li>
 					</ul>
 				</div>
 				<div id="my_info" class="pd">
@@ -89,10 +77,11 @@
 		
 		
 		
-		<!-- 오른쪽 컨텐츠 영역 -->
-		<div class="right_con">
-		<!-- 메인 컨텐츠(여기까지 변경되야함)  -->
+		<!-- 컨텐츠 영역 -->
+		<div id="content_wrapper">
 		
+		<!-- 메인 컨텐츠(여기서부터 변경되야함)  -->	
+			
 			<div class="order_view my_activity">
 				<h3>1:1 문의</h3>
 			<div class="top_sec">
@@ -460,16 +449,13 @@
 			</form>
 		</div>
 		
-		</div>
+		<!-- 메인 컨텐츠(여기까지 변경되야함)  -->
 			
 	</div>	
 
 	</section>
-	
- <c:import url="../temp/boot_footer.jsp"></c:import>
-
+ 	<c:import url="../temp/boot_footer.jsp"></c:import>
 </div>
- 
 
 </body>
 </html>
