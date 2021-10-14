@@ -56,7 +56,7 @@
 				<div class="prd_select">
 					<div class="chk_wrap">
 						<input type="checkbox" id="all_select" class="all_select">
-						<label for="all_select">총 2/${cartListDTOs.size()}개</label>
+						<label for="all_select" data-size="${cartListDTOs.size()}">총 x/${cartListDTOs.size()}개</label>
 					</div>
 					<button type="button" class="btn_sm_white ui_allDelete" data-del-type="c"><span>선택삭제</span></button>
 					<button type="button" class="btn_sm_white ui_allDelete" data-del-type="s"><span>품절/마감 삭제</span></button>
@@ -72,10 +72,10 @@
 						
 						<div class="detail_info_content">
 						
-							<div class="delivery_date">
+							<div class="delivery_date" id="">
 								<div class="check_wrap">
-									<input type="checkbox" id="delivery_date0" name="dlvDtChk" data-date-idx="0" disabled="" class="">
-									<label for="delivery_date0">${cartListDTOsI.cart_delivery_date} 도착예정</label>
+									<input type="checkbox" id="delivery_date${cartListDTOsI.cart_delivery_date}">
+									<label for="delivery_date${cartListDTOsI.cart_delivery_date}">${cartListDTOsI.cart_delivery_date} 도착예정</label>
 								</div>
 								<!-- <a href="javascript:;" data-dlv-dt="20211008" class="btn_link chgDlvDt">배송일 변경</a> -->
 							</div>
@@ -83,7 +83,8 @@
 							<div class="product_list">
 								<ul>
 									<!-- loop start -->
-									<c:forEach var="cartListDTOsJ" items="${cartListDTOs}">
+									<c:set var="prd_total_payment">0</c:set>
+									<c:forEach var="cartListDTOsJ" items="${cartListDTOs}" varStatus="status">
 									<c:if test="${cartListDTOsI.cart_delivery_date eq cartListDTOsJ.cart_delivery_date}">
 
 										<li>
@@ -114,7 +115,7 @@
 													<img alt="" src="/mp/resources/upload/menu/main/${cartListDTOsJ.product_id}/${cartListDTOsJ.product_file_ori_name}">
 												</div>
 												
-												<a href="javascript:;" data-prd-cd="40003724" class="product_link">
+												<a href="javascript:;" class="product_link">
 													<div class="info_wrap">
 														<!-- 판매종료시 노출 -->
 														<c:if test="${cartListDTOsJ.cart_state eq 'deadLine'}">
@@ -122,7 +123,7 @@
 														</c:if>
 														<!-- //플래그 -->
 														<span class="name">${cartListDTOsJ.product_name}</span>
-														<span class="price">
+														<span class="price" data-price="${cartListDTOsJ.product_price}">
 															<fmt:formatNumber value="${cartListDTOsJ.product_price}" pattern="#,###"/>원
 														</span>
 													</div>
@@ -131,13 +132,13 @@
 												<div class="prd_quantity">
 													<div class="box_prd_quantity">
 														<button type="button" class="btn_quantity minus" disabled=""></button>
-														<span class="quantity" data-min-limit="1" data-once-max-limit="100000" data-prd-prc="20800">${cartListDTOsJ.cart_quantity}</span>
+														<span class="quantity" data-quantity="${cartListDTOsJ.cart_quantity}">${cartListDTOsJ.cart_quantity}</span>
 														<button type="button" class="btn_quantity plus" disabled=""></button>
 													</div>
 												</div>
 												
-												<div class="prd_price">
-													20,800원
+												<div class="prd_price" id="prd_price${status.index}" data-prd_price="">
+													0원
 												</div>
 												
 												<button type="button" class="prd_del" data-cart-seq="106911515"></button>
@@ -151,11 +152,11 @@
 							</div>
 							
 							<div class="prd_total_payment">
-								<span>상품금액<strong>0원</strong></span>
+								<span class="prd_total_price" data-prd_total_price="">상품금액<strong>x원</strong></span>
 								<span class="plus"></span>
-								<span class="delivery">배송비<strong>0원</strong></span>
+								<span class="delivery" data-delivery_price="">배송비<strong>x원</strong></span>
 								<span class="equal"></span>
-								<span class="total">총<strong>0원</strong></span>
+								<span class="total" data-prd_total_payment="">총<strong>x원</strong></span>
 							</div>						
 						</div>
 							
@@ -165,13 +166,13 @@
 					<!-- loop end -->
 					
 					<div class="total_payment">
-						<span>총 상품금액<strong>69,400원</strong></span>
+						<span class="total_payment_price" data-total_payment_price="">총 상품금액<strong>x원</strong></span>
 						<span class="minus"></span>
-						<span class="discount">총 할인금액<strong>5,450원</strong></span>
+						<span class="discount">총 할인금액<strong>0원</strong></span>
 						<span class="plus"></span>
-						<span class="delivery">총 배송비<strong>6,000원</strong></span>
+						<span class="delivery" data-delivery="">총 배송비<strong>x원</strong></span>
 						<span class="equal"></span>
-						<span class="total">총 결제예정금액<strong>69,950원</strong></span>
+						<span class="total">총 결제예정금액<strong>x원</strong></span>
 					</div>
 					
 					<div class="btn_wrap">

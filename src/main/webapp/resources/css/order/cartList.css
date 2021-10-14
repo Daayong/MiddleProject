@@ -27,17 +27,20 @@
 .detail .prd_select input {position:absolute; z-index:0; opacity:0; filter:alpha(opacity=0)}
 .detail .prd_select label {cursor:pointer; display:inline-block; padding-right: 8px; font-weight: 700; font-size: 22px; line-height: 32px; color: #101010; }
 .detail .prd_select input + label:before {content:'';zoom:1;display:inline-block;width:25px;height:26px;margin:-3px 6px 0 0;background:url('/mp/resources/images/common/ico_set.png') no-repeat;background-position:-1px -40px; background-size:800px 800px; vertical-align:middle;}
+.detail .prd_select input:checked + label:before {background-position:-29px -40px}
 .detail .prd_select .btn_sm_white { vertical-align: top; display: inline-block; width: 108px; margin-left: 5px; color: #101010; border: 1px solid #ccc; background-color: #fff; height: 32px; padding: 4px 13px 5px; font-weight: 500; font-size: 13px; line-height: 21px;}
 
 /* ===== ===== ===== detail_info ===== ===== ===== */
 .detail_info_content { margin-top: 56px; border: 1px solid #CCC; }
 .delivery_date { position: relative; padding: 20px 30px; border-bottom: 1px solid #ccc; }
 .delivery_date .check_wrap { display: inline-block; }
-.delivery_date input { position: absolute; z-index: 0; opacity: 0; }
+.delivery_date input { cursor: pointer; position: absolute; z-index: 0; opacity: 0; }
+.delivery_date label { cursor: pointer; font-size: 22px; line-height: 32px; color: #101010; font-weight: 700; }
 .delivery_date input + label:before {content:'';zoom:1;display:inline-block;width:25px;height:26px;margin:-3px 8px 0 0;background:url('/mp/resources/images/common/ico_set.png') no-repeat;background-position:-1px -40px; background-size:800px 800px; vertical-align:middle;}
 .delivery_date input:checked + label:before {background-position:-29px -40px}
 .delivery_date input:disabled + label:before{background-position:-56px -40px}
-.delivery_date label { font-size: 22px; line-height: 32px; color: #101010; font-weight: 700; }
+.delivery_date input:disabled { cursor: default; }
+.delivery_date input:disabled + label { cursor: default; }
 .delivery_date > a { display: inline-block; margin: 0 0 2px 5px; font-weight: 500; vertical-align: bottom; font-size: 14px; line-height: 21px; color: #606060;}
 .delivery_date > a:after{content:'';display:inline-block;width:8px;height:8px;margin:-3px 0 0 4px;border-bottom:1.5px solid #606060;border-right:1.5px solid #606060;-ms-transform:rotate(-45deg);-moz-transform:rotate(-45deg);-webkit-transform:rotate(-45deg);transform:rotate(-45deg);vertical-align:middle}
 
