@@ -2,7 +2,7 @@
 
 #my_wrapper{	
     min-height: 900px;
-    padding: 52px 0 290px;
+    padding: 52px 0 140px;
 }
 
 #my_wrapper:after {
@@ -14,9 +14,10 @@
 
 /*오른쪽 컨텐츠 영역 */
 #content_wrapper{
-	width:940px; 
-	position:relative; 
-	float:right; 	
+	width:940px;
+	min-height:900px; 
+	position:relative;
+	float:right; 
 }
 
 

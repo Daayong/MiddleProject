@@ -42,7 +42,9 @@ public class MemberController {
 			
 			if(check.equals("1")) {
 				mv.setViewName("redirect:member/myPage");
-			}else{
+			}else if(check.equals("2")){
+				mv.setViewName("redirect:../cs/formCounsel");
+			}else {
 				mv.setViewName("redirect:../");
 			}
 		
