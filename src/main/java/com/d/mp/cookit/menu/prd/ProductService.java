@@ -148,13 +148,18 @@ public class ProductService {
 		return productDAO.getFile(productDTO);
 	}
 	
+	
 	// 등록된 상품들 가져오기
+	// 공용 날짜포맷
+	SimpleDateFormat beforeFormat = new SimpleDateFormat("yyyymmdd");
+	SimpleDateFormat afterFromat = new SimpleDateFormat("yyyy-mm-dd");
+	SimpleDateFormat beforeFormat2 = new SimpleDateFormat("yyyy-MM-dd");
+	SimpleDateFormat afterFromat2 = new SimpleDateFormat("yyyy-MM-dd");
+	
 	public List<ProductDTO> getPrdList(ProductDTO productDTO) throws Exception{
 		
 		if(productDTO.getDate() != null) {
-			SimpleDateFormat beforeFormat = new SimpleDateFormat("yyyymmdd");
-			
-			SimpleDateFormat afterFromat = new SimpleDateFormat("yyyy-mm-dd");
+		
 			
 			Date tempDate = null;
 			
@@ -198,18 +203,17 @@ public class ProductService {
 		return productDAO.doSoldOut(product_id);
 	}
 	
-	//product_date 테이블의 날짜별 상품 수량 갯수 가져오기
-	public void perCountDateProduct(ProductDTO productDTO) throws Exception{
+	//상품별 재고상태 업데이트
+	public int doDateState(ProductDTO productDTO) throws Exception{
 		
-		ProductDTO dto = productDAO.perCountDateProduct(productDTO);
-		Long sell_cnt = dto.getProduct_sell_count();
-		Long max_cnt = dto.getProduct_max_count();
-		
-		String isEqual = "";
-		
-		if(sell_cnt >= max_cnt) {
-			isEqual = "상품 재고 소진";
-		}
+		Date tempDate = null;
 
+		tempDate = beforeFormat2.parse(productDTO.getProduct_regdate());
+		String transDate = afterFromat2.format(tempDate);
+		
+		System.out.println(transDate);
+		productDTO.setProduct_regdate(transDate);
+		
+		return productDAO.doDateState(productDTO);
 	}
 }

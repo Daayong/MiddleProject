@@ -73,8 +73,8 @@ public class ProductDAO {
 		return sqlSession.update(NAMESPACE + "doSoldOut", product_id);
 	}
 	
-	//product_date 테이블의 날짜별 상품 수량 갯수 가져오기
-	public ProductDTO perCountDateProduct(ProductDTO productDTO) throws Exception{
-		return sqlSession.selectOne(NAMESPACE + "perCountDateProduct", productDTO);
+	//상품별 재고상태 업데이트
+	public int doDateState(ProductDTO productDTO) throws Exception{
+		return sqlSession.update(NAMESPACE + "doDateState", productDTO);
 	}
 }

@@ -40,6 +40,24 @@ public class ProductController {
 		
 		ProductDTO dto = productService.getPrdOne(productDTO);
 		List<ProductDTO> prdDate = productService.getDate(productDTO);
+		
+		// 상품별 재고상태 업데이트
+		for(int i=0; i<prdDate.size(); i++) {
+			
+			Long sell_count = prdDate.get(i).getProduct_sell_count();
+			Long max_count = prdDate.get(i).getProduct_max_count();
+			
+			if(sell_count >= max_count) {
+				
+				prdDate.get(i).setProduct_date_state("상품준비중");
+				productService.doDateState(prdDate.get(i));
+			}else if(max_count > sell_count) {
+				
+				prdDate.get(i).setProduct_date_state("판매가능");
+				productService.doDateState(prdDate.get(i));
+			}
+		}
+		
 		List<ProductFilesDTO> prdAr = productService.getFile(productDTO);
 		List<ProductFilesDTO> mainFiles = new ArrayList<ProductFilesDTO>();
 		List<ProductFilesDTO> sliderFiles = new ArrayList<ProductFilesDTO>();

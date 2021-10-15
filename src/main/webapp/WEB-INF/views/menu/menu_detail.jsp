@@ -109,7 +109,19 @@
 									<fmt:parseDate value="${date.product_regdate}" var="parseDateValue" pattern="yyyy-MM-dd"/>
 									<!-- 날짜 포맷 변경 -->
 									
-									<option value="<fmt:formatDate value="${parseDateValue}" pattern="yyyy-MM-dd"/>"><fmt:formatDate value="${parseDateValue}" pattern="MM월 dd일"/></option>
+									<c:choose>
+										<c:when test="${date.product_date_state eq '판매가능'}">
+											<option value="<fmt:formatDate value="${parseDateValue}" pattern="yyyy-MM-dd"/>">
+												<fmt:formatDate value="${parseDateValue}" pattern="MM월 dd일"/>
+											</option>
+										</c:when>
+										<c:when test="${date.product_date_state eq '상품준비중'}">
+											<option value="<fmt:formatDate value="${parseDateValue}" pattern="yyyy-MM-dd"/>" disabled>
+												<fmt:formatDate value="${parseDateValue}" pattern="MM월 dd일"/>
+												${date.product_date_state}
+											</option>
+										</c:when>
+									</c:choose>
 								</c:forEach>
 							</select>
 						</div>

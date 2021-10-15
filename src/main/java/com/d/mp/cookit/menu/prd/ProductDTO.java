@@ -100,6 +100,7 @@ public class ProductDTO {
 	// 각 상품 날짜별 맥시멈 수량 만약 product_sell_count >= product_max_count 이면 해당 날짜 select 박스 비활성화
 	private Long product_max_count;
 	private Long product_sell_count;
+	private String product_date_state;
 	
 	public Long getProduct_max_count() {
 		return product_max_count;
@@ -112,6 +113,12 @@ public class ProductDTO {
 	}
 	public void setProduct_sell_count(Long product_sell_count) {
 		this.product_sell_count = product_sell_count;
+	}
+	public String getProduct_date_state() {
+		return product_date_state;
+	}
+	public void setProduct_date_state(String product_date_state) {
+		this.product_date_state = product_date_state;
 	}
 
 	/////////////////////////////////////////////////////////////

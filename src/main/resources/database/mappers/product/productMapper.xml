@@ -120,7 +120,11 @@
   	<!-- 특정 id 상품의 주문가능 일자 가져오기 -->
   	<select id="getDate" parameterType="ProductDTO" resultType="ProductDTO">
   		SELECT 
-  			product_regdate 
+  			pd.product_id,
+  			product_regdate,
+  			product_sell_count,
+  			product_max_count,
+  			product_date_state
   		FROM 
   			product p RIGHT JOIN product_date pd 
   		ON 
@@ -165,14 +169,14 @@
   			product_id = #{product_id}
   	</update>
   	
-  	<!-- product_date 테이블의 날짜별 상품 수량 갯수 가져오기 -->
-  	<select id="perCountDateProduct" parameterType="ProductDTO" resultType="ProductDTO">
-  		SELECT 
-  			product_sell_count,
-  			product_max_count
-  		FROM
+  	<!-- 상품별 재고상태 업데이트 -->
+  	<update id="doDateState" parameterType="ProductDTO">
+  		UPDATE
   			product_date
+  		SET
+  			product_date_state = #{product_date_state}
   		WHERE
-  			product_id = #{product_id} AND product_regdate = #{product_regdate}
-  	</select>
+  			product_id = #{product_id} AND product_regdate = TO_DATE(#{product_regdate}, 'YYYY-MM-DD')
+  	</update>
+  	
   </mapper>
