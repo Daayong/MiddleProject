@@ -9,7 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("/myAct/**")
 public class CounselListController {
 	
-	@GetMapping("coustomerCounselList")
+	@GetMapping("customerCounselList")
 	public ModelAndView complete() throws Exception{
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("myAct/customerCounselList");
