@@ -210,8 +210,7 @@ public class ProductService {
 
 		tempDate = beforeFormat2.parse(productDTO.getProduct_regdate());
 		String transDate = afterFromat2.format(tempDate);
-		
-		System.out.println(transDate);
+
 		productDTO.setProduct_regdate(transDate);
 		
 		return productDAO.doDateState(productDTO);

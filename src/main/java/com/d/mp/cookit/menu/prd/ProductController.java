@@ -22,7 +22,8 @@ public class ProductController {
 	// =========================== 사용자 상품 관련 페이지 =========================== //
 	
 	// 메뉴 찾기
-	@RequestMapping("menu_search")
+	@ResponseBody
+	@GetMapping("menu_search")
 	public ModelAndView doSearch(ProductDTO productDTO) throws Exception{
 		List<ProductDTO> prdAr = productService.getPrdList(productDTO);
 		

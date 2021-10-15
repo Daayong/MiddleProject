@@ -75,7 +75,7 @@
 		  			WHERE 
 		  				pd.product_regdate = TO_DATE( #{date}, 'YYYY-MM-DD')
 		  		</if>
-		  		ORDER BY DECODE (product_state, '판매중', 1),
+		  		ORDER BY DECODE (product_state, '판매가능', 1),
 		  			<choose>
 		  				<when test="kind == 'sort_up'">
 		  					p.product_price DESC
@@ -88,11 +88,18 @@
 		  				</otherwise>
 		  			</choose>
   			</when>
+			<when test="product_name != null">
+				SELECT *
+				FROM
+					product
+				WHERE
+					product_name = #{product_name}
+			</when>
   			<otherwise>
   				SELECT * 
   				FROM 
   					product
-  				ORDER BY DECODE (product_state, '판매중', 1),
+  				ORDER BY DECODE (product_state, '판매가능', 1),
 	  			<choose>
 	  				<when test="kind == 'sort_up'">
 	  					product_price DESC

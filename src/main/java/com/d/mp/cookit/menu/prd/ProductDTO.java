@@ -128,12 +128,12 @@ public class ProductDTO {
 	private String date;
 	
 	public String getKind() {
-		return kind;
-	}
-	public void setKind(String kind) {
 		if(this.kind == null) {
 			this.kind = "";
 		}
+		return kind;
+	}
+	public void setKind(String kind) {
 		this.kind = kind;
 	}
 	

@@ -1,4 +1,4 @@
-/* =================== menu_main 페이지 */
+/* =================== menu_main 페이지 ============== */
 
 $(document).on("click", ".click_menu", function() {
 	
@@ -53,7 +53,28 @@ $(document).on("click", ".sortc_btn", function(){
 
 /* 찜 버튼 누르면 장바구니로 이동하기 */
 
-/* ============== menu_detail 페이지 */
+
+/* ============== menu_search 페이지 ============== */
+$(document).on("click", ".btn_srch", function(){
+	
+	let search_name = $("#fn_txt_srch").val();
+	
+	$.ajax({
+		url: 'menu_search?product_name=' + search_name,
+		type: 'get',
+		dataType: 'html',
+		success: function(res){
+			let up = $(res).find("#item_wrap").html();
+			$("#item_wrap").html(up);
+			
+			let down = $(res).find("#item_wrap2").html();
+			$("#item_wrap2").html(down);
+		}
+	});
+});
+
+
+/* ============== menu_detail 페이지 ============== */
 $("#description").click(function() {
 	$(".description").show();
 	$(".productInfo").hide();
