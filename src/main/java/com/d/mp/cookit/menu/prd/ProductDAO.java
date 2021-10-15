@@ -44,6 +44,11 @@ public class ProductDAO {
 		return sqlSession.selectOne(NAMESPACE + "getPrdOne", productDTO);
 	}
 	
+	//특정 id 상품 하나의 배송일별 팔린 갯수 합 가져오기
+	public Long getSoldSum(Long product_id) throws Exception{
+		return sqlSession.selectOne(NAMESPACE + "getSoldSum", product_id);
+	}
+	
 	//특정 id 상품의 주문가능 일자 가져오기
 	public List<ProductDTO> getDate(ProductDTO productDTO) throws Exception{
 		return sqlSession.selectList(NAMESPACE + "getDate", productDTO);

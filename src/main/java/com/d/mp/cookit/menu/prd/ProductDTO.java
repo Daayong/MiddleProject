@@ -120,8 +120,19 @@ public class ProductDTO {
 	public void setProduct_date_state(String product_date_state) {
 		this.product_date_state = product_date_state;
 	}
-
-	/////////////////////////////////////////////////////////////
+	
+	// menu_manage 상품 재고 파악
+	
+	private Long product_stock;
+	
+	public Long getProduct_stock() {
+		return product_stock;
+	}
+	public void setProduct_stock(Long product_stock) {
+		this.product_stock = product_stock;
+	}
+	
+	// ============================================================== //
 
 	// 임시로 해놓은 방식 페이저에들어가야함	
 	private String kind;

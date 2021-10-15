@@ -25,6 +25,17 @@ public class ProductController {
 	@ResponseBody
 	@GetMapping("menu_search")
 	public ModelAndView doSearch(ProductDTO productDTO) throws Exception{
+		
+		
+		// 검색어가 공백이면 전체 목록
+		String forTrim = productDTO.getProduct_name();
+		
+		if(forTrim != null) {
+			forTrim = forTrim.trim();
+			productDTO.setProduct_name(forTrim);
+			System.out.println(forTrim);
+		}
+
 		List<ProductDTO> prdAr = productService.getPrdList(productDTO);
 		
 		ModelAndView mv = new ModelAndView();
@@ -138,6 +149,16 @@ public class ProductController {
 	public ModelAndView doManage(ProductDTO productDTO) throws Exception{
 		
 		List<ProductDTO> prdAr = productService.getPrdList(productDTO);
+		
+		// 남은 수량 구하기
+		for(int i=0; i<prdAr.size(); i++) {
+			Long total = prdAr.get(i).getProduct_total_count();
+			Long count = productService.getSoldSum(prdAr.get(i).getProduct_id());
+			
+			Long stock = total - count;
+			
+			prdAr.get(i).setProduct_stock(stock);
+		}
 		
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("prdDTO", prdAr);

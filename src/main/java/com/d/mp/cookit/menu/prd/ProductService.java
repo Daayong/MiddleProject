@@ -185,6 +185,11 @@ public class ProductService {
 		return productDAO.getDate(productDTO);
 	}
 	
+	//특정 id 상품 하나의 배송일별 팔린 갯수 합 가져오기
+	public Long getSoldSum(Long product_id) throws Exception{
+		return	productDAO.getSoldSum(product_id);
+	}
+	
 	// 특정 id의 상품 하나 삭제하기
 	public int deletePrdOne(ProductDTO productDTO) throws Exception{
 		

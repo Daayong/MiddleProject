@@ -88,13 +88,20 @@
 		  				</otherwise>
 		  			</choose>
   			</when>
+  			
+  			<!-- search -->
 			<when test="product_name != null">
 				SELECT *
 				FROM
 					product
+				<if test="product_name != ''">
 				WHERE
 					product_name = #{product_name}
+				</if>
+				ORDER BY
+					product_id DESC
 			</when>
+			<!-- search -->
   			<otherwise>
   				SELECT * 
   				FROM 
@@ -121,6 +128,16 @@
   		FROM 
   			product 
   		WHERE 
+  			product_id = #{product_id}
+  	</select>
+  	
+  	<!-- 특정 id 상품 하나의 배송일별 팔린 갯수 합 가져오기 -->
+  	<select id="getSoldSum" parameterType="Long" resultType="Long">
+  		SELECT
+  			SUM(product_sell_count)
+  		FROM
+  			product_date
+  		WHERE
   			product_id = #{product_id}
   	</select>
   	
