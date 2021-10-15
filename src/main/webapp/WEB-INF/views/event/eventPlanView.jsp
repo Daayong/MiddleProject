@@ -4,6 +4,7 @@
 <html>
 <head>
 	<link href="${pageContext.request.contextPath}/resources/css/common.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/resources/event/planView.css" rel="stylesheet">
 	
 	<title>Home</title>
 	

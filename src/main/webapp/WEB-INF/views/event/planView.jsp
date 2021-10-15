@@ -2,8 +2,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <link href="${pageContext.request.contextPath}/resources/css/common.css" rel="stylesheet">
-<link href="${pageContext.request.contextPath}/resources/css/cs/csMain.css" rel="stylesheet">
-<link href="${pageContext.request.contextPath}/resources/css/cs/noticeMain.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/event/planView.css" rel="stylesheet">
+
 
 <html>
 <head>
@@ -40,57 +40,36 @@
 
 	<section id="container">
 	
+			<div id="content" class="ev_content">
 	
-		<div id="cs_content">
-		
-			<div class="cs_wrap">
-				<h1 class="cs_title">고객행복센터</h1>
-				
-				<!-- tab -->
-				<div class="tab_wrap">
-					<ul class="tabs">
-						<li><a href="${pageContext.request.contextPath}/cs/faqList"><span id="faq">FAQ</span></a></li>
-						<li class="on"><a href="${pageContext.request.contextPath}/cs/noticeMain"><span id="nt">공지사항</span></a></li>
-						<li><a href=" ${pageContext.request.contextPath}/cs/userGuide"><span id="ug" >새벽배송/이용안내</span></a></li>
-					</ul>			
+		<div class="ev_wrap">
+			<h1 class="title">이벤트</h1>
+	
+			<div class="view">
+				<div class="head">
+					
+					<h2 class="tit">[쿡킷] 가을 요리비책<span class="date">2021-10-15 ~ 2021-10-31</span></h2>
+					<div class="sns_btn_wrap">
+						<a href="#" class="btn share snsShareBtn" role="button"><span>공유</span></a>
+					</div>
 				</div>
 				
-		<!-- notice -->
-		<div class="notice_conts" id="noticeContent">
-			<div class="view">
+				<!-- 컨텐츠 등록 -->
+				<div class="conts">
 			
-				<!-- view head -->
-				<div class="head">
-                        <h2 class="tit">${dto.notice_subject} 
-                        	<span class="date">${dto.notice_regDate}</span></h2>
-                    </div>
-			
-				<!-- view contents -->
-					<div class="conts">
-                        <div class="txt">
-                         	${dto.notice_content}
-                        </div>
-                    </div>
-			
-			</div>			
-			
-			<div >
-			<a href="./noticeDelete?notice_id=${dto.notice_id}" class="delete btn_remove" ><span>삭제</span></a>
-			</div>
-			<!-- 목록으로 돌아가기 -->
-			
-				<div class="btn_wrap">
-                	<a href="${pageContext.request.contextPath}/cs/noticeMain" class="btn pop green" role="button" >
-                	<span>목록</span></a>
-                </div>
-			
-			
-			
-		
-		<!-- //view -->
-				
+     				<div>
+      					<img src="https://www.cjcookit.com/cjkit/design/event/2021/10/1015_fall_pc_01.jpg" >
+	
+				</div>
+
+				</div>
+	        
+	            
+					
 			</div>
 		</div>
+	
+	</div>
 		
 	</div>
 	

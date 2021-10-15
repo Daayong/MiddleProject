@@ -11,4 +11,10 @@ public class EventController {
 	public String eventMain() throws Exception{
 		return "event/eventMain" ;
 	}
+	
+	
+	@RequestMapping("planView")
+	public String planView() throws Exception{
+		return "event/planView";
+	}
 }
