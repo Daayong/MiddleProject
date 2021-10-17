@@ -227,15 +227,15 @@
 	
 	    $(function(){
 	    	$("button").on('click',function(){
-	    			var faq_type = $(this).val();
-	    			console.log(faq_type);//버튼이 클릭 되었을 때 그 버튼의 value를 var kind로 가져와서	
+	    			let faq_type = $(this).val();
+	    			console.log(faq_type);
 	    			$.ajax({
-	    				 url : '/cs/faqTypeList.do', // 이 주소로 
-	    	              type : "post", // 포스트 방식으로 보내는데
+	    				 url : './faqTypeList',
+	    	              type : "post", 
 	    	              cache: false,
 	    	              headers: {"cache-control":"no-cache", "pragma": "no-cache"},
 	    	              data : {
-	    	            	  id : $(this).val(),
+	    	            	  
 	    	            	  "faq_type" : faq_type
 	    	            	  
 	    	              }, 

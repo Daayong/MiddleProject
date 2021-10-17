@@ -98,10 +98,14 @@
 						
 		</div>
 		
-
 					
 					<!-- paging -->
 					<div class="pagination">
+						
+						<!-- 공지 추가 button admin만 가능 -->
+						<c:if test="${not empty member and member.member_user_id eq 'admin'}">
+							<button class="btn_add white" onclick="location.href='./noticeUpload'"><span>공지 추가</span></button>
+						</c:if>
 						<a class="btn_first" href="#"></a>
 							<a class="btn_prev" href="#"></a>
 							<span class="page_num">

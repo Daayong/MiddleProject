@@ -1,6 +1,6 @@
 package com.d.mp.cs.notice;
 
-public class NoticeFilesDTO {
+public class NoticeFileDTO {
 
 	private Long notice_file_id;
 	private Long notice_id;

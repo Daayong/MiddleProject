@@ -38,7 +38,7 @@ public class NoticeController {
 		ModelAndView mv = new ModelAndView();
 		
 		noticeDTO = noticeService.getNoticeView(noticeDTO);
-		List<NoticeFilesDTO> files = noticeService.getFile(noticeDTO);
+		List<NoticeFileDTO> files = noticeService.getFile(noticeDTO);
 		mv.addObject("dto", noticeDTO);
 		
 		return mv;

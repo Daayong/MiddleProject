@@ -17,4 +17,9 @@ public class EventController {
 	public String planView() throws Exception{
 		return "event/planView";
 	}
+	
+	@RequestMapping("eventUpload")
+	public String eventUpload() throws Exception{
+		return "event/eventUpload";
+	}
 }

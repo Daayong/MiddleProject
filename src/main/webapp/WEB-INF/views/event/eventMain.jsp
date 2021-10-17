@@ -84,9 +84,7 @@
 					<a href="javascript:goExtDevUrl('')" class="conts">
 						<div class="prd_flag_wrap">
 							<span class="flag cate">EVENT</span><!-- 개발 요청 사항 : EVENT/기획전 경우 .flag에 cate 클래스 추가  -->
-							
-							
-							
+
 							<span class="date">2021.10.01 ~ 2021.12.31</span>
 						</div>
 						<div class="tit_info">
@@ -95,120 +93,18 @@
 					</a>
 				</div>
 			</div>
-			<!-- //이미지 케이스 -->
 		</li>		
 		
-		<li>
-			<!-- 이미지 케이스 -->
-			<div class="pro_module">
-				<div class="img_wrap">				
-
-
-					<a href="#" class="link_more">
-
-
-						<img src="/mp/resources/images/20210928135756960.jpg" alt="[쿡킷] 선선한 가을 캠핑, 따뜻한 요리" onerror="cj.com.noImg(this,'P')">				
-						<span class="dim"></span>
-					</a>
-				</div>
-				<div class="txt_wrap">
-					<a href="#" class="conts">
-						<div class="prd_flag_wrap">
-							<span class="flag cate">EVENT</span><!-- 개발 요청 사항 : EVENT/기획전 경우 .flag에 cate 클래스 추가  -->
-
-								<span class="flag dday">D-6</span>
-
-
-							<span class="date">2021.10.01 ~ 2021.10.14</span>
-						</div>
-						<div class="tit_info">
-							<span class="tit mt_elps">[쿡킷] COOKIT SALE WEEK</span>
-						</div>
-					</a>
-				</div>
-			</div>
-			<!-- //이미지 케이스 -->
-		</li>		
-
-		<li>
-			<!-- 이미지 케이스 -->
-			<div class="pro_module">
-				<div class="img_wrap">				
-
-		<a href="#" class="link_more">
-			<img src="/mp/resources/images/20201030163116494.jpg" alt="첫구매 1만원 할인 &amp; 무료배송 쿠폰 혜택" onerror="cj.com.noImg(this,'P')">				
-						<span class="dim"></span>
-					</a>
-				</div>
-				<div class="txt_wrap">
-					<a href="javascript:goExtDevUrl('')" class="conts">
-						<div class="prd_flag_wrap">
-							<span class="flag cate">EVENT</span><!-- 개발 요청 사항 : EVENT/기획전 경우 .flag에 cate 클래스 추가  -->
-
-							<span class="date">2020.04.08 ~ 2021.12.31</span>
-						</div>
-						<div class="tit_info">
-							<span class="tit mt_elps">첫구매 1만원 할인 &amp; 무료배송 쿠폰 혜택</span>
-						</div>
-					</a>
-				</div>
-			</div>
-			<!-- //이미지 케이스 -->
-		</li>		
-
-		<li>
-			<!-- 이미지 케이스 -->
-			<div class="pro_module">
-				<div class="img_wrap">				
-
-			<a href="#" class="link_more">
-						<img src="/mp/resources/images/20210928090806903.jpg" alt="[쿡킷] 10월 카드사 기획전" onerror="cj.com.noImg(this,'P')">				
-						<span class="dim"></span>
-					</a>
-				</div>
-				<div class="txt_wrap">
-					<a href="#" class="conts">
-						<div class="prd_flag_wrap">
-							<span class="flag cate">EVENT</span>
-
-							<span class="date">2021.10.01 ~ 2021.10.31</span>
-						</div>
-						<div class="tit_info">
-							<span class="tit mt_elps">[쿡킷] 10월 카드사 기획전</span>
-						</div>
-					</a>
-				</div>
-			</div>
-			<!-- //이미지 케이스 -->
-		</li>		
-
-		<li>
-			<!-- 이미지 케이스 -->
-			<div class="pro_module">
-				<div class="img_wrap">				
-					<a href="#" class="link_more">			
-						<img src="/mp/resources/images/20210217142045591.jpg" alt="[쿡킷]현대카드 M포인트 사용혜택" onerror="cj.com.noImg(this,'P')">				
-						<span class="dim"></span>
-					</a>
-				</div>
-				<div class="txt_wrap">
-					<a href="#" class="conts">
-						<div class="prd_flag_wrap">
-							<span class="flag cate">EVENT</span><!-- 개발 요청 사항 : EVENT/기획전 경우 .flag에 cate 클래스 추가  -->
-
-							<span class="date">2021.02.18 ~ 2021.12.31</span>
-							</div>
-						<div class="tit_info">
-						<span class="tit mt_elps">[쿡킷]현대카드 M포인트 사용혜택</span>
-						</div>
-					</a>
-				</div>		
-				</div>		
-			</li>
+	
 		
 				
 		</ul>
 
+			<!-- event upload admin만 접근 가능 -->
+				<c:if test="${not empty member and member.member_user_id eq 'admin'}">
+					<button style="margin-top: 30px;" class="btn_add white" onclick="location.href='./eventUpload'"><span>이벤트 추가</span></button>
+				</c:if>
+			
 	
 				<!-- paging -->
 				<div id="eventPaging" class="pagination">
@@ -263,41 +159,18 @@
 									<td>2021-09-24</td>
 								</tr> 
 								
-								<tr>
-									<td>5</td>
-									<td class="tit"><a href="#">[당첨자 발표] '7월 프라이빗 캠핑 기획전' 캠핑용품 증정 이벤트</a></td>
-									<td>2021-08-04</td>
-								</tr> 
-
-								<tr>
-									<td>4</td>
-									<td class="tit"><a href="#">[당첨안내] 7월 쿡킷푸드페스타 &lt;기프트카드 리워드&gt; 이벤트 당첨자 안내 </a></td>
-									<td>2021-07-26</td>
-								</tr> 
-
-								<tr>
-									<td>3</td>
-									<td class="tit"><a href="#">[당첨안내] 6월 쿡킷푸드페스타 &lt;기프트카드 리워드&gt; 이벤트 당첨자 안내 </a></td>
-									<td>2021-06-25</td>
-								</tr> 
-
-								<tr>
-									<td>2</td>
-									<td class="tit"><a href="#">[당첨자 발표] '쿡킷x한샘몰' 콜라보레이션 이벤트</a></td>
-									<td>2021-06-03</td>
-								</tr> 
-
-								<tr>
-									<td>1</td>
-									<td class="tit"><a href="#">[경품이벤트] 쿡킷X한강주조 전용잔 SET 당첨자 안내</a></td>
-									<td>2021-05-11</td>
-								</tr> 
 							
 						</tbody>
 					</table>
+			
+					<!-- event upload admin만 접근 가능 -->
+			
 				</div>
 			
 		 	<div id="winnerPaging" class="pagination" style="display: none">
+				<c:if test="${not empty member and member.member_user_id eq 'admin'}">
+					<button class="btn_add white" onclick="location.href='./eventUpload'"><span>이벤트 추가</span></button>
+				</c:if>
 				<span class="page_num">
 					<strong><span class="hide">현재 페이지</span>1</strong>
 				</span>

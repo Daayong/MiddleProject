@@ -36,15 +36,15 @@ public class NoticeDAO {
 	}
 	
 	//file 첨부
-	public int setFile(NoticeFilesDTO noticeFilesDTO) throws Exception{
+	public int setFile(NoticeFileDTO noticeFilesDTO) throws Exception{
 		return sqlSession.insert(NAMESPACE+"setFile", noticeFilesDTO);
 	}
 	
-	public List<NoticeFilesDTO> getFile(NoticeDTO noticeDTO) throws Exception{
+	public List<NoticeFileDTO> getFile(NoticeDTO noticeDTO) throws Exception{
 		return sqlSession.selectList(NAMESPACE+"getFile", noticeDTO);
 	}
 	
-	public int setFileDelete(NoticeFilesDTO noticeFilesDTO) throws Exception{
+	public int setFileDelete(NoticeFileDTO noticeFilesDTO) throws Exception{
 		return sqlSession.delete(NAMESPACE+"setFileDelete", noticeFilesDTO);
 	}
 }

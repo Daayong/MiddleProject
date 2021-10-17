@@ -48,7 +48,7 @@ public class NoticeService {
 			for(MultipartFile multipartFile : files) {
 				String fileName = fileManager.fileSave(multipartFile, file);
 				System.out.println(fileName);
-				NoticeFilesDTO noticeFilesDTO = new NoticeFilesDTO();
+				NoticeFileDTO noticeFilesDTO = new NoticeFileDTO();
 				noticeFilesDTO.setNotice_file_name(fileName);
 				noticeFilesDTO.setNotice_file_ori_name(multipartFile.getOriginalFilename());
 				noticeFilesDTO.setNotice_id(noticeDTO.getNotice_id());
@@ -69,11 +69,11 @@ public class NoticeService {
 		return noticeDAO.setDelete(noticeDTO);
 	}
 	
-	public List<NoticeFilesDTO> getFile(NoticeDTO noticeDTO) throws Exception{
+	public List<NoticeFileDTO> getFile(NoticeDTO noticeDTO) throws Exception{
 		return noticeDAO.getFile(noticeDTO);
 	}
 	
-	public int setFileDelete(NoticeFilesDTO noticeFilesDTO) throws Exception{
+	public int setFileDelete(NoticeFileDTO noticeFilesDTO) throws Exception{
 		
 		String realPath = servletContext.getRealPath("/resources/upload/notice/");
 		
