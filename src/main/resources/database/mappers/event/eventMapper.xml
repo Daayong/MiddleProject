@@ -54,7 +54,7 @@
   	</insert>
   	
   	<!-- 파일 가져오기 -->
-  	<select id="getFile" parameterType="EventFileDTO">
+  	<select id="getFile" parameterType="EventDTO" resultType="EventFileDTO">
   		SELECT *
   		FROM 
   			event_file 
