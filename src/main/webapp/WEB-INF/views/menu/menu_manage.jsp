@@ -76,7 +76,7 @@
                     <h1 class="mb-5"> COOKIT Product ManageMent </h1>
 	                     <table class="product_table">
 						  <tr>
-							<th>상품코드</th><th>상품명</th><th>상품가격</th><th>상태</th><th>남은수량</th><th></th><th></th>
+							<th>상품코드</th><th>상품명</th><th>상품가격</th><th>상태</th><th>전체수량</th><th>남은수량</th><th></th><th></th>
 						  </tr>
 						  <c:forEach items="${prdDTO}" var="prd">
 						  <tr>
@@ -84,6 +84,7 @@
 						  	<td>${prd.product_sub_name}&nbsp;*&nbsp;${prd.product_name}</td>
 						  	<td>${prd.product_price}원</td>
 						  	<td>${prd.product_state}</td>
+						  	<td>${prd.product_total_count}</td>
 						  	<td>${prd.product_stock}</td>
 						  	<td>
 						  		<button type="button" class="more_btn">MORE</button>

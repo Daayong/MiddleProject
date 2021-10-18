@@ -107,9 +107,16 @@
 								
 									<!-- 날짜 포맷 변경 -->
 									<fmt:parseDate value="${date.product_regdate}" var="parseDateValue" pattern="yyyy-MM-dd"/>
+									<fmt:parseDate value="${today}" var="parseToday" pattern="yyyy-MM-dd"/>
 									<!-- 날짜 포맷 변경 -->
 									
 									<c:choose>
+										<c:when test="${parseDateValue < parseToday}">
+											<option value="<fmt:formatDate value="${parseDateValue}" pattern="yyyy-MM-dd"/>" disabled>
+												<fmt:formatDate value="${parseDateValue}" pattern="MM월 dd일"/>
+												주문날짜마감
+											</option>
+										</c:when>
 										<c:when test="${date.product_date_state eq '판매가능'}">
 											<option value="<fmt:formatDate value="${parseDateValue}" pattern="yyyy-MM-dd"/>">
 												<fmt:formatDate value="${parseDateValue}" pattern="MM월 dd일"/>
@@ -126,10 +133,25 @@
 							</select>
 						</div>
 						<div class="prd_count">
-							<div class="countbox">
-								
+							<div class="item_box">
+								<div class="item_top">
+									<span class="date">2021-10-20(수)</span>
+								</div>
+								<div class="item_bottom">
+									<div class="bottom_info">
+										<span class="st_elps">쿵팟퐁커리</span>
+										<div class="prd_quantity">
+											<div class="box_prd_quantity">
+												<button type="button" class="btn_amount minus"></button>
+												<span class="quantity">1</span>
+												<button type="button" class="btn_amount plus"></button>
+											</div>
+										</div>
+										<span class="price">20,000원</span>
+									</div>
+								</div>
+								<button type="button" class="btn_del_order"></button>
 							</div>
-							<input type="number" min="0" max="5" name="product_count" id="prd_count" placeholder="수량선택 (최대 5개)">
 						</div>
 						<div class="prd_total">
 							<span class="cnt">수량 <span id="cnt_value">0</span>개</span>

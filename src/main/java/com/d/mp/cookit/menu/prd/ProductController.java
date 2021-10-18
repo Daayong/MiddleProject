@@ -1,6 +1,9 @@
 package com.d.mp.cookit.menu.prd;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -53,6 +56,18 @@ public class ProductController {
 		ProductDTO dto = productService.getPrdOne(productDTO);
 		List<ProductDTO> prdDate = productService.getDate(productDTO);
 		
+		Date now = new Date();
+		SimpleDateFormat transDate = new SimpleDateFormat("yyyy-MM-dd");
+		
+		// 오늘 날짜의 +2 한 날짜 구하기
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(now);
+		
+		cal.add(Calendar.DATE, 2);
+		
+		String today = transDate.format(cal.getTime());
+		
+		
 		// 상품별 재고상태 업데이트
 		for(int i=0; i<prdDate.size(); i++) {
 			
@@ -83,6 +98,7 @@ public class ProductController {
 		}
 		
 		ModelAndView mv = new ModelAndView();
+		mv.addObject("today", today);
 		mv.addObject("prdDate", prdDate);
 		mv.addObject("mainFiles", mainFiles);
 		mv.addObject("sliderFiles", sliderFiles);
