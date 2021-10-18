@@ -73,26 +73,26 @@
 						<tbody>
 							<tr class="input">
 								<th scope="row" class="mandatory">
-									<label for="input_member_name">
+									<label for="member_name">
 										<span>이름</span>
 									</label>									
 								</th>
 								<td>
 									<span class="input_txt w250">
-										<input type="text" id="member_name" name="member_name" class="text put" placeholder="성함을 입력해주세요.">
+										<input type="text" value="" id="member_name" name="member_name" class="text" placeholder="성함을 입력해주세요.">
 									</span>
 								</td>
 							</tr>
 							<tr class="input">	
 								<th scope="row" class="mandatory">
-									<label for="member_name">
+									<label for="member_user_id">
 										<span>아이디</span>
 									</label>									
 								</th>
 								<td>
 									<div class="input_group">
 										<span class="input_txt w250">
-											<input type="text" name="member_user_id" id="member_user_id" maxlength="12" class="text put" placeholder="아이디를 입력해주세요.">
+											<input type="text" value="" name="member_user_id" id="member_user_id" maxlength="12" class="text" placeholder="아이디를 입력해주세요.">
 										</span>
 										<button type="button" class="btn btn_search" id="idCheck">중복확인</button>
 										<button type="button" class="btn btn_search" style="background-color:#fff; color:000; font-weight:300;">
@@ -118,10 +118,11 @@
 								</th>
 								<td>
 									<span class="input_txt w250">
-										<input type="password" placeholder="비밀번호를 입력해주세요." maxlength="50" name="member_password" id="member_password" class="put pws text">
+										<input type="password" value="" placeholder="비밀번호를 입력해주세요."  maxlength="50" name="member_password" id="member_password" class="text">
 									</span>
 									<p class="msg_info em hide" id="msg_pwd">
-										비밀번호는 영문자,숫자,특수문자 모두 최소 1가지 이상 조합한 8~12자리이어야 합니다.
+										비밀번호는 4자리 이상 입력해야 합니다.
+										<!-- 비밀번호는 영문자,숫자,특수문자 모두 최소 1가지 이상 조합한 8~12자리이어야 합니다. -->
 									</p>
 									<p class="msg_desc">
 										영문자, 숫자, 특수문자 조합하여 8~12자리, 아이디와 4자리이상 동일,
@@ -139,7 +140,7 @@
 								</th>
 								<td>
 									<span class="input_txt w250">
-										<input type="password" placeholder="비밀번호를 재입력해주세요."  id="member_password_s" name="member_password_s" class="pws put text">
+										<input type="password" placeholder="비밀번호를 재입력해주세요." value="" id="member_password_s" name="member_password_s" class="text">
 									</span>
 									<p class="msg_info em hide" id="msg_pwds">
 										입력하신 비밀번호가 일치하지 않습니다. 다시 확인해 주세요.
@@ -158,7 +159,7 @@
 								<div id="birthday_select">
 										<div class="select w120">
 											<select class="select_wrap"id="birth_yy" name="birth_yy">
-											<option>년</option>
+											<option value="0">년</option>
 											<option value="2021">2021</option>
 											<option value="2020">2020</option>
 											<option value="2019">2019</option>
@@ -255,7 +256,7 @@
 										</div>
 										<div class="select w70">
 											<select class="select_wrap" id="birth_mm" name="birth_mm">
-											<option>월</option>
+											<option value="0">월</option>
 											<option value="01">01</option>
 											<option value="02">02</option>
 											<option value="03">03</option>
@@ -273,7 +274,7 @@
 										</div>
 										<div class="select w70">
 											<select class="select_wrap" id="birth_dd" name="birth_dd">
-											<option>일</option>
+											<option value="0">일</option>
 											<option value="01">01</option>
 											<option value="02">02</option>
 											<option value="03">03</option>
@@ -333,24 +334,18 @@
 											<option value="018">018</option>
 											<option value="019">019</option>
 											<option value="070">070</option>
-											<option value="0130">0130</option>
-											<option value="0303">0303</option>
-											<option value="0502">0502</option>
-											<option value="0504">0504</option>
-											<option value="0505">0505</option>
-											<option value="0506">0506</option>
 											</select>
 											<span class="symbol">-</span>
 										</div>
 										<div class="select w120">
 											<span class="input_txt">
-												<input type="text" id="member_phone_m" name="member_phone_m" class="text put">
+												<input type="text" id="member_phone_m" value="" name="member_phone_m" class="text put">
 											</span>
 											<span class="symbol">-</span>
 										</div>
 										<div class="select w120">
 											<span class="input_txt">
-												<input type="text" id="member_phone_b" name="member_phone_b" class="text put">
+												<input type="text" id="member_phone_b" value="" name="member_phone_b" class="text put">
 											</span>
 										</div>
 									</div>
@@ -361,7 +356,7 @@
 							</tr>
 							<tr class="input">
 								<th scope="row" class="mandatory">
-									<label for="member_email">
+									<label for="member_email_f">
 										<span>이메일</span>
 									</label>									
 								</th>
@@ -370,24 +365,24 @@
 								<div id="email_ad">
 										<div class="select w180">
 											<span class="input_txt">
-												<input type="text" id="member_email_f" name="member_email_f" placeholder="이메일 아이디" class="text put">
+												<input type="text" id="member_email_f" value="" name="member_email_f" placeholder="이메일 아이디" class="text put">
 											</span>
 											<span class="symbol">@</span>
 										</div>
 										<div class="select w180">
 											<span class="input_txt">
-												<input type="text" id="member_email_b2" name="member_email_b2" placeholder="이메일 도메인" class="text put">
+												<input type="text" id="member_email_b2" value="" name="member_email_b2" placeholder="이메일 도메인" class="text put">
 											</span>
-											<select class="select_wrap"  id="member_email_b" name="member_email_b">
+											<select class="select_wrap" onchange="chooseDomain();" id="member_email_b" name="member_email_b">
 											<option value="">직접입력</option>
-											<option value="nate.com">nate.com</option>
-											<option value="hanmail.net">hanmail.net</option>
-											<option value="naver.com">naver.com</option>
-											<option value="yahoo.co.kr">yahoo.co.kr</option>
-											<option value="paran.com">paran.com</option>
-											<option value="hotmail.com">hotmail.com</option>
-											<option value="gmail.com">gmail.com</option>
-											<option value="dreamwiz.com">dreamwiz.com</option>
+											<option value="nate.com">nate</option>
+											<option value="hanmail.net">hanmail</option>
+											<option value="naver.com">naver</option>
+											<option value="yahoo.co.kr">yahoo</option>
+											<option value="paran.com">paran</option>
+											<option value="hotmail.com">hotmail</option>
+											<option value="gmail.com">gmail</option>
+											<option value="dreamwiz.com">dreamwiz</option>
 											</select>
 											
 										</div>
@@ -424,9 +419,9 @@
 										포인트/이벤트/문화공연/상품 소식을 전해드립니다. (공지목적의 발송되는 메일은 제외)
 										</p>
 										<div class="marketing_agree">
-										  <input type="checkbox" id="member_marketing_sms" name="member_marketing_sms">
+										  <input type="checkbox" id="member_marketing_sms" value="" class="marketing" name="member_marketing_sms">
 										  <label for="member_marketing_sms">SMS</label>
-										  <input style="margin-left:20px;" type="checkbox" id="member_marketing_email" name="member_marketing_email">
+										  <input style="margin-left:20px;" type="checkbox" id="member_marketing_email" class="marketing" value="" name="member_marketing_email">
 										  <label for="member_marketing_email">EMAIL</label>
 										</div>
 									</div>
@@ -438,7 +433,7 @@
 			</form>
 					<div class="btn_sec col2">
 						<button type="button" style="width:160px;" class="btn" id="btn_prev">취소</button>
-						<button type="button" class="btn btn_em" id="btn_join">등록</button>
+						<button type="button" class="btn btn_em" onclick="checkInput();" id="btn_join">등록</button>
 					</div>	
 					
 					<div class="final_info">
@@ -456,34 +451,196 @@
  	<c:import url="../temp/member_footer.jsp"></c:import>
 </div>
 
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/join.js"></script>
 
 <!-- 아이디 중복체크 ajax -->
 <script>
+	//form submit 할때 아이디 중복검사 여부 확인용 변수
+	let check = true;
+
 	$(function(){
 		$('#idCheck').click(function(){
 			var member_user_id = $("#member_user_id").val();
-			
+					
 			$.ajax({
 				url:'./idCheck',
 				type:'get',
 				data:{member_user_id:member_user_id},
 				success:function(data){
-					console.log("1=중복 / 0=중복x :" +data);
+					console.log("1=중복 / 0=중복x /2=비어있음:" +data);
 					if(data ==1){
 						//1.아이디가 중복될때
 						$("#msg_id01").css("display","none");
 						$("#msg_id02").text("이미 사용중인 아이디입니다. 다른 아이디로 입력해주세요.");
-					}else{
+						check=true;
+					}else if(data==0){						
 						$("#msg_id02").text("사용 가능한 아이디 입니다.");
-						
+						check=false;
+					}else{
+						$("#msg_id02").text("아이디를 입력하세요.");
+						check=true;
 					}
 				}
 			});
 		});	
 	});
+	 
+	 /*취소 버튼*/
+	 const bp=document.getElementById('btn_prev');
+	 /*등록 버튼*/
+	 const ba=document.getElementById('btn_join');
+	 const form1=document.getElementById('form1');
+	 
+	 /*비밀번호 확인*/
+	 const pw1=document.getElementById('member_password');
+	 const pw2=document.getElementById('member_password_s');
+	 const msg_pwds=document.getElementById('msg_pwds');
+	 const msg_pwd=document.getElementById('msg_pwd');
+	 
+	 
+	 /*Input id명 선언*/
+	 const member_name=document.getElementById('member_name');
+	 const member_user_id=document.getElementById('member_user_id');
+	 const member_email=document.getElementById('msg_email');
+	 const member_phone=document.getElementById('msg_phone');
+	 const member_birth=document.getElementById('msg_birth');
+	 const birth_yy=document.getElementById('birth_yy');
+	 const birth_mm=document.getElementById('birth_mm');
+	 const birth_dd=document.getElementById('birth_dd');
+	 const phone_m=document.getElementById('member_phone_m');
+	 const phone_b=document.getElementById('member_phone_b');
+	 const member_email_f=document.getElementById('member_email_f');
+	 const member_email_b=document.getElementById('member_email_b');
+	 const member_email_b2=document.getElementById('member_email_b2');
+	 
+	//---------------------------취소 버튼 클릭시 홈페이지로 이동 
+	bp.addEventListener('click',function(){
+		if(confirm('회원가입을 취소하시겠습니까?')==true){
+			location.href="../";		
+		}else{
+			return false; 
+		}	
+	});
 
+	//이메일 주소 도메인 선택시 자동 완성되기 
+	function chooseDomain(){
+		var idx=member_email_b.options.selectedIndex;
+		var val=member_email_b.options[idx].value;
+		member_email_b2.value=val;
+	};
 
+	function checkInput(){
+		//이름 입력 유효성 검사
+		if( member_name.value.trim()=="") {
+	        	alert("이름을 입력해 주세요.");
+	            member_name.focus();
+	            return false;
+	        }
+	    //아이디 입력 유효성 검사    
+		if( member_user_id.value.trim()=="") {
+	        	alert("아이디를 입력해 주세요.");
+	            member_user_id.focus();
+	            return false;
+	        }
+		//패스워드 4글자 이상 여부 확인        
+	    if(pw1.value.trim().length < 4){
+	       	alert("비밀번호를 입력해 주세요.");
+	       	msg_pwd.classList.remove('hide');
+	        pw1.focus();
+	        return false;
+	   	   }
+		//패스워드 재입력 여부 확인 
+	     if(pw2.value.trim() == ""){
+	     	alert("입력하신 비밀번호가 일치하지 않습니다. 다시 확인해 주세요.");
+	        pw2.focus();
+	         return false;
+	     }
+		//패스워드 재입력 일치 여부 확인
+	     if( pw1.value.trim() != pw2.value.trim() ){
+	    	alert("입력하신 비밀번호가 일치하지 않습니다. 다시 확인해 주세요.");
+	         pw2.focus();
+	         return false;
+	   	 } else{
+	        msg_pwd.classList.add('hide');
+	   	 }
+	    
+	    //생년월일 선택 여부 확인 
+	    
+	    if(birth_yy.value =="0"){
+			alert("생년월일을 선택하세요.");
+	        birth_yy.focus();
+	        return false;
+		}
+	    if(birth_mm.value =="0"){
+			alert("생년월일을 선택하세요.");
+	        birth_mm.focus();
+	        return false;
+		}
+		if(birth_dd.value =="0"){
+			alert("생년월일을 선택하세요.");
+	        birth_dd.focus();
+	        return false;
+		}
+	    
+	    
+		//핸드폰 입력 여부 확인
+		if(phone_m.value.length <3 || phone_m.value.length>4){
+			alert("핸드폰 번호를 확인해주세요.");
+			phone_m.focus();
+			return false;
+		}
+		if(phone_b.value.trim().length != 4){
+			alert("핸드폰 번호를 확인해주세요.")
+			phone_b.focus();
+			return false;
+		}
+		
+		//이메일 주소 유효성 검사	
+		if(member_email_f.value == ""){
+	        alert("이메일 주소를 확인해주세요.");
+	        member_email_f.focus();
+	        return false;
+	    }
+	    if(member_email_b2.value == ""){
+	        alert("이메일 도메인을 선택 하세요.");
+	        member_email_b2.focus();
+	        return false;
+	    }
+	    if(member_email_b.value == "0" && member_email_b2.value.trim() == ""){
+	        alert("이메일 도메인 직접입력시 이메일 도메인을 입력하셔야 합니다.");
+	        member_email_b2.focus();
+	        return false;
+	    }
+	    
+	    if(check){
+	    	alert("아이디 중복 확인을 해주세요.");
+	    	return false;
+	    }
+	    	    
+		if(confirm('소중한 고객님의 정보는 CJ ONE 제휴 브랜드와 함께 변경 적용됩니다. 이대로 입력하시겠습니까?')){
+			if($("#member_marketing_sms").prop("checked")){
+				$("#member_marketing_sms").val(1);
+				console.log($("#member_marketing_sms").val());
+			}else{
+				$("#member_marketing_sms").val(0);
+				console.log($("#member_marketing_sms").val());
+			}
+			
+			if($("#member_marketing_email").prop("checked")){
+				$("#member_marketing_email").val(1);
+				console.log($("#member_marketing_email").val());
+			}else{
+				$("#member_marketing_email").val(0);
+				console.log($("#member_marketing_email").val());
+			}
+			form1.submit();
+		}else{
+			return false;
+		}
+	}
+
+	 
+	 
+	
 
 
 

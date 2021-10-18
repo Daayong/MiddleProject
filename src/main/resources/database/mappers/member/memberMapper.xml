@@ -15,16 +15,28 @@
   		SELECT member_user_id FROM member WHERE member_user_id=#{member_user_id}
   	</select>
   	
+  	<!-- 패스워드 일치 여부 체크 -->
+  	<select id="getPwCheck" parameterType="java.lang.String" resultType="MemberDTO" >
+  		SELECT COUNT(*) FROM member 
+  		WHERE member_user_id=#{member_user_id} AND member_password=#{member_password}
+  	</select>
+  	
   	<!-- 회원 가입 -->
   	<insert id="setJoin" parameterType="MemberDTO">
-  		INSERT INTO member(member_id,member_user_id,member_password,member_name,member_phone,member_email,member_birth,member_marketing_sms,member_marketing_email,member_point)
-		values(member_seq.nextval,#{member_user_id},#{member_password},#{member_name},#{member_phone},#{member_email},#{member_birth},#{member_marketing_sms},#{member_marketing_email},#{member_point})
+  		INSERT INTO member(member_id,member_user_id,member_password,member_name,member_phone,member_email,member_birth,member_marketing_sms,member_marketing_email)
+		values(member_seq.nextval,#{member_user_id},#{member_password},#{member_name},#{member_phone},#{member_email},#{member_birth},#{member_marketing_sms},#{member_marketing_email})
   	</insert>
   	
   	<!-- 회원 탈퇴  -->
   	<delete id="setDelete" parameterType="memberDTO">
   		DELETE FROM MEMBER WHERE member_user_id=#{member_user_id}
   	</delete>
+  	
+  	<!-- 회원 수정  -->
+  	<update id="setUpdate" parameterType="memberDTO">
+  		UPDATE member SET member_password=#{member_password},member_phone=#{member_phone},member_email=#{member_email},member_marketing_sms=#{member_marketing_sms},member_marketing_email=#{member_marketing_email} 
+  		WHERE member_id=#{member_id}
+  	</update>
   	
   	<!-- 기본 배송지  -->
   	<select id="getDefaultAddress" parameterType="MemberDTO" resultType="MemberDTO">

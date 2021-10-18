@@ -77,8 +77,7 @@
 								</div>
 								
 								<div class="find_wrap">
-									<a class="find_id find" href="./findId">아이디 찾기</a>
-									<a class="find_pw find" href="./findPw">비밀번호 찾기</a>
+									<a class="find_id find" href="./findLog">아이디/비밀번호 찾기</a>
 								</div>
 							
 							</div>
@@ -163,7 +162,7 @@
  <c:import url="../temp/boot_footer.jsp"></c:import>
 
 
-	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/login.js"></script>
+	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/member/login.js"></script>
  		<script type="text/javascript">
 		$(function(){
 			let result = '${msg}';

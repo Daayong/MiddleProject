@@ -53,14 +53,15 @@
 								CJ ONE 회원 로그인 시 사용하시는 비밀번호를 입력해주세요.
 							</p>
 						</div>
-					
+						<form id="pwCheckF" method="post">
 						<div class="pwd_box">
 							<span class="input_txt w330">
-								<input type="password" id="pwd" name="member_password" class="text" placeholder="비밀번호를 입력해주세요." maxlength="20">
-								<p id="pw_msg">* 비밀번호가 일치하지 않습니다.</p>
+								<input hidden="hidden" value="${member.member_user_id}" id="member_user_id" name="member_user_id">
+								<input type="password" id="member_password" name="member_password" class="text" placeholder="비밀번호를 입력해주세요." maxlength="20">
+								<p id="pw_msg"></p>
 							</span>
 						</div>
-						
+						</form>
 					</div>
 					<div class="btn_wrap">
 						<button style="border:1px solid #ccc;" type="button" class="btn pop" id="uCancel" name="uCancel">취소</button>
@@ -80,13 +81,35 @@
 	
 	<script type="text/javascript">
 		const uCancel = document.getElementById('uCancel');
-		const goUpdate=document.getElementById('goUP');
+		const goUpdate=document.getElementById('goUpdate');
 		
 		uCancel.addEventListener('click',function(){
 			location.href="../";
 		});
 		
-	
+		//비밀번호 일치 여부 확인 
+		$(function(){
+			$('#goUpdate').click(function(){
+				var member_password = $("#member_password").val();
+				var member_user_id = $("#member_user_id").val();	
+				$.ajax({
+					url:'./pwCheck',
+					type:'post',
+					data:{member_user_id:member_user_id,member_password:member_password},
+					success:function(data){
+						console.log("true=일치 / false=일치x:" +data);
+						if(data){
+							//1.패스워드 일치
+							console.log(data);
+							location.href="./memberUpdate";
+						}else{						
+							$("#pw_msg").text("*비밀번호가 일치하지 않습니다.");
+						}
+					}
+				});
+			});	
+		});
+		
 	
 	</script>
  
