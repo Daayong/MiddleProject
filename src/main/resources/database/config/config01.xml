@@ -26,9 +26,5 @@
 			<typeAlias type="com.d.mp.cookit.menu.prd.ProductDTO" alias="ProductDTO"/>
 	  		<typeAlias type="com.d.mp.cookit.menu.prd.ProductFilesDTO" alias="ProductFilesDTO"/>
 	  		
-	  		
-	  		
-	  		<typeAlias type="java.util.List" alias="List"/>
-	  		<typeAlias type="java.lang.Long" alias="Long"/>
 		</typeAliases>
 	</configuration>

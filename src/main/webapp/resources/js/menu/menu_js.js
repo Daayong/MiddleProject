@@ -128,23 +128,28 @@ $("#orderHelp").click(function() {
 /* 배송일 선택후 수량 선택하는 박스 나오게하기 및 박스 제거 */
 
 // 초기 설정
-$(document).ready(function(){
-	$(".prd_count").css({
-		"display" : "none"
-	});
+$(".prd_count").css({
+	"display" : "none"
 });
+$(".quantity").text("1");
+
 
 // 셀렉트 박스 삭제 버튼
 $(".btn_del_order").click(function(){
 	$(".prd_count").css({
 		"display" : "none"
 	});
+	$("#product_cnt_value").val(1);
+	$(".quantity").text("1");
 });
 // 셀렉트 박스
 $("#prd_select").change(function(){
 	
+	$("#product_cnt_value").val(1);
+	$(".quantity").text("1");
 	// 선택 날짜 값 받아오기 default = ""
 	// ex) "2021-10-18"
+	
 	let select_date= $("#prd_select option:selected").val();
 	
 	// 해당 일수 요일 배열 값
@@ -169,14 +174,22 @@ $("#prd_select").change(function(){
 });
 
 /* detail_menu 수량변경시 나타나는 이벤트들 */
-$("#prd_count").change(function(){
-	let cnt = $(this).val();
-	let perprice = $("#prd_price").val();
-	let total = parseInt(cnt) * parseInt(perprice);
-	$("#cnt_value").text(cnt);
-	$("#total_value").text(total);
+
+$(".minus").on("click", function(){
+	let cnt = parseInt($("#product_cnt_value").val()) - 1;
 	
-	$("#product_total_price").val(total);
+	if(cnt < 1){
+		alert("최소 수량은 1개입니다.");
+		return false;
+	}
+	$("#product_cnt_value").val(cnt);
+	$(".quantity").text(cnt);
+	
+});
+$(".plus").on("click", function(){
+	let cnt = parseInt($("#product_cnt_value").val()) + 1;
+	$("#product_cnt_value").val(cnt);
+	$(".quantity").text(cnt);
 });
 
 /* detail_menu 선택한거 아래밑줄표시 */

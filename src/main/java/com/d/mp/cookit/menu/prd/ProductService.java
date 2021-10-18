@@ -5,6 +5,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.ServletContext;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.d.mp.cookit.menu.prd.util.ProductFileManager;
+import com.d.mp.cookit.menu.prd.util.ProductPager;
 
 @Service
 public class ProductService {
@@ -156,7 +158,9 @@ public class ProductService {
 	SimpleDateFormat beforeFormat2 = new SimpleDateFormat("yyyy-MM-dd");
 	SimpleDateFormat afterFromat2 = new SimpleDateFormat("yyyy-MM-dd");
 	
-	public List<ProductDTO> getPrdList(ProductDTO productDTO) throws Exception{
+	public List<ProductDTO> getPrdList(ProductDTO productDTO, ProductPager pager) throws Exception{
+		
+		HashMap<String, Object> map = new HashMap<String, Object>();
 		
 		if(productDTO.getDate() != null) {
 		
@@ -170,7 +174,16 @@ public class ProductService {
 			productDTO.setDate(transDate);
 		}
 		
-		return productDAO.getPrdList(productDTO);
+		pager.setPerPage(8L);
+		pager.makeRow();
+		
+		Long totalCount = productDAO.getTotalPrdList();
+		pager.makeNum(totalCount);
+		
+		map.put("product", productDTO);
+		map.put("pager", pager);
+		
+		return productDAO.getPrdList(map);
 	}
 	
 	// 특정 id의 상품 하나 가지고 오기

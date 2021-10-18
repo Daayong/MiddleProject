@@ -63,63 +63,87 @@
   	</select>
   	
   	<!-- 상품 전체 리스트 가져오기 -->
-  	<select id="getPrdList" parameterType="ProductDTO" resultType="ProductDTO">
+  	<select id="getPrdList" parameterType="Map" resultType="ProductDTO">
+	 	SELECT *
+		FROM
+		(
+			SELECT
+				ROWNUM R,
+				P.*
+			FROM	
   		<choose>
-  			<when test="date != null">
-  				SELECT * 
-  				FROM 
+  			<when test="product.date != null">
+  			(
+  				SELECT *
+  				FROM
   					product p INNER JOIN product_date pd
   				ON 
   					p.product_id = pd.product_id
-  				<if test="date != null">
+  				<if test="product.date != null">
 		  			WHERE 
-		  				pd.product_regdate = TO_DATE( #{date}, 'YYYY-MM-DD')
+		  				pd.product_regdate = TO_DATE( #{product.date}, 'YYYY-MM-DD')
 		  		</if>
 		  		ORDER BY DECODE (product_state, '판매가능', 1),
 		  			<choose>
-		  				<when test="kind == 'sort_up'">
+		  				<when test="product.kind == 'sort_up'">
 		  					p.product_price DESC
 		  				</when>
-		  				<when test="kind == 'sort_down'">
+		  				<when test="product.kind == 'sort_down'">
 		  					p.product_price ASC
 		  				</when>
 		  				<otherwise>
 		  					p.product_id DESC
 		  				</otherwise>
 		  			</choose>
+		  	) P
   			</when>
   			
   			<!-- search -->
-			<when test="product_name != null">
+			<when test="product.product_name != null">
+			(
 				SELECT *
 				FROM
 					product
-				<if test="product_name != ''">
+				<if test="product.product_name != ''">
 				WHERE
-					product_name = #{product_name}
+					product_name = #{product.product_name}
 				</if>
 				ORDER BY
 					product_id DESC
+			) P
 			</when>
 			<!-- search -->
   			<otherwise>
-  				SELECT * 
-  				FROM 
+  			(
+  				SELECT *
+  				FROM
   					product
   				ORDER BY DECODE (product_state, '판매가능', 1),
 	  			<choose>
-	  				<when test="kind == 'sort_up'">
+	  				<when test="product.kind == 'sort_up'">
 	  					product_price DESC
 	  				</when>
-	  				<when test="kind == 'sort_down'">
+	  				<when test="product.kind == 'sort_down'">
 	  					product_price ASC
 	  				</when>
 	  				<otherwise>
 	  					product_id DESC
 	  				</otherwise>
 	  			</choose>
+	  		) P
   			</otherwise>
   		</choose>
+  		)
+  		WHERE
+  			R between #{pager.startRow} and #{pager.lastRow}
+  	</select>
+  	
+  	<!-- 총 상품리스트 갯수 -->
+  	<select id="getTotalPrdList" resultType="Long">
+  		SELECT
+  			COUNT(product_id)
+  		FROM
+  			product
   	</select>
   	
   	<!-- 특정 id 상품 하나 가져오기 -->

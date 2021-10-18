@@ -1,6 +1,7 @@
 package com.d.mp.cookit.menu.prd;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,9 +36,14 @@ public class ProductDAO {
 	}
 	
 	//상품 전체 리스트 가져오기
-	public List<ProductDTO> getPrdList(ProductDTO productDTO) throws Exception{
-		return sqlSession.selectList(NAMESPACE + "getPrdList", productDTO);
-	}	
+	public List<ProductDTO> getPrdList(Map<String, Object> map) throws Exception{
+		return sqlSession.selectList(NAMESPACE + "getPrdList", map);
+	}
+	
+	//상품 전체 갯수
+	public Long getTotalPrdList() throws Exception{
+		return sqlSession.selectOne(NAMESPACE + "getTotalPrdList");
+	}
 	
 	//특정 ID의 상품 하나 가져오기
 	public ProductDTO getPrdOne(ProductDTO productDTO) throws Exception{

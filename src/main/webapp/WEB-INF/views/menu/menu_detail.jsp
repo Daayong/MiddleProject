@@ -143,7 +143,10 @@
 										<div class="prd_quantity">
 											<div class="box_prd_quantity">
 												<button type="button" class="btn_amount minus"></button>
-												<span class="quantity">1</span>
+												<span class="quantity">
+													
+												</span>
+												<input type="hidden" id="product_cnt_value" name="product_cnt" value="1">
 												<button type="button" class="btn_amount plus"></button>
 											</div>
 										</div>

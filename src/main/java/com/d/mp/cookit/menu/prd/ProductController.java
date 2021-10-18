@@ -15,6 +15,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.d.mp.cookit.menu.prd.util.ProductPager;
+
 @Controller
 @RequestMapping(value = "/menu/**")
 public class ProductController {
@@ -27,7 +29,7 @@ public class ProductController {
 	// 메뉴 찾기
 	@ResponseBody
 	@GetMapping("menu_search")
-	public ModelAndView doSearch(ProductDTO productDTO) throws Exception{
+	public ModelAndView doSearch(ProductDTO productDTO, ProductPager pager) throws Exception{
 		
 		
 		// 검색어가 공백이면 전체 목록
@@ -39,7 +41,7 @@ public class ProductController {
 			System.out.println(forTrim);
 		}
 
-		List<ProductDTO> prdAr = productService.getPrdList(productDTO);
+		List<ProductDTO> prdAr = productService.getPrdList(productDTO, pager);
 		
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("prdDTO", prdAr);
@@ -126,8 +128,8 @@ public class ProductController {
 	// 메뉴 메인 페이지
 	@ResponseBody
 	@GetMapping("menu_main")
-	public ModelAndView getPrdList(ProductDTO productDTO) throws Exception{
-		List<ProductDTO> prdAr = productService.getPrdList(productDTO);
+	public ModelAndView getPrdList(ProductDTO productDTO, ProductPager pager) throws Exception{
+		List<ProductDTO> prdAr = productService.getPrdList(productDTO, pager);
 		
 		int isSoldOut = 0;
 		
@@ -176,9 +178,9 @@ public class ProductController {
 	}
 	
 	@RequestMapping("menu_manage")
-	public ModelAndView doManage(ProductDTO productDTO) throws Exception{
+	public ModelAndView doManage(ProductDTO productDTO, ProductPager pager) throws Exception{
 		
-		List<ProductDTO> prdAr = productService.getPrdList(productDTO);
+		List<ProductDTO> prdAr = productService.getPrdList(productDTO, pager);
 		
 		// 남은 수량 구하기
 		for(int i=0; i<prdAr.size(); i++) {
@@ -199,11 +201,11 @@ public class ProductController {
 	
 	@ResponseBody
 	@GetMapping("menu_delete")
-	public ModelAndView deletePrdOne(ProductDTO productDTO) throws Exception{
+	public ModelAndView deletePrdOne(ProductDTO productDTO, ProductPager pager) throws Exception{
 		
 		productService.deletePrdOne(productDTO);
 		productService.setFileDelete(productDTO);
-		List<ProductDTO> prdAr = productService.getPrdList(productDTO);
+		List<ProductDTO> prdAr = productService.getPrdList(productDTO, pager);
 		
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("prdDTO", prdAr);
