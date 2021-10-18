@@ -56,8 +56,8 @@
 			
 				<select class="form-select" style="width: 10%; font-size:small; line-height:3; margin: 30 0 15" name="faq_type" aria-label="Default select example">
   					<option selected>공지 유형</option>
-  					<option value="ing">진행중</option>
-  					<option value="winner">당첨자 발표</option>
+  					<option value="1">진행중</option>
+  					<option value="0">당첨자 발표</option>
 				</select>
 		
 		

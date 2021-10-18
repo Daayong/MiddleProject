@@ -54,7 +54,7 @@ public class FaqController {
 		
 		String faq_type = request.getParameter("faq_type");
 		
-		faqDTO.setFaq_type(faq_type);
+		 faqDTO.setFaq_type(faq_type);
 		
 		List<FaqDTO> ar = faqService.getTypeList(faqDTO);
 		

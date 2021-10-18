@@ -8,7 +8,7 @@ import org.springframework.util.FileCopyUtils;
 import org.springframework.web.multipart.MultipartFile;
 
 @Component
-public class boardFileManager {
+public class BoardFileManager {
 	
 	
 	//file save

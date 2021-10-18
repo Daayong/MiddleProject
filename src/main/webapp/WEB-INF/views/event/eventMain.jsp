@@ -72,11 +72,9 @@
 		<li>
 			<!-- 이미지 케이스 -->
 			<div class="pro_module">
-				<div class="img_wrap">							
-								
+				<div class="img_wrap">															
 					<a href="#" class="link_more">
-
-						<img src="/mp/resources/images/20210928163004637.jpg" alt="스탬프 찍으면, 쿡킷 인기메뉴가 무료(10월-12월)" onerror="cj.com.noImg(this,'P')">				
+					<img src="/mp/resources/images/20210928163004637.jpg" alt="스탬프 찍으면, 쿡킷 인기메뉴가 무료(10월-12월)" onerror="cj.com.noImg(this,'P')">				
 						<span class="dim"></span>
 					</a>
 				</div>
@@ -123,18 +121,6 @@
 				<!-- 당첨자 발표 페이지 -->
 					
 				<div id="winnerListArea"  class="event_winner" style="display: block;">
-					
-					
-				<!-- 	<div class="chk_wrap">
-						<input type="checkbox" id="sorting_ev" ><label for="sorting_ev">내가 참여한 이벤트</label>
-					</div>
-				
-				참여한 이벤트 checkbox 눌렀을 시
-					<div class="no_data" style="display: none">
-						<span class="ico"></span>
-						<strong>참여한 이벤트가 없습니다.</strong>		
-					</div> -->
-					
 
 				<!-- 당첨자 발표 table -->	
 				<div class="tb_row" style="display: none">
@@ -151,15 +137,16 @@
 								<th scope="row">당첨자 발표일자</th>
 							</tr>
 						</thead>
+						
 						<tbody>
+							<c:forEach items="${winnerList}" var="wlist">
+							<tr>
+								<td>${wlist.event_id}</td>
+								<td class="tit"><a href="#">${wlist.event_subject}</a></td>
+								<td>${wlist.event_regDate}</td>
+							</tr> 		
 							
-								<tr>
-									<td>6</td>
-									<td class="tit"><a href="#">[당첨안내] 21년 추석 사전예약 10만원 이상 구매 고객 이벤트 당첨자 안내 </a></td>
-									<td>2021-09-24</td>
-								</tr> 
-								
-							
+							</c:forEach>
 						</tbody>
 					</table>
 			

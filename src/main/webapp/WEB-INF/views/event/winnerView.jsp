@@ -76,7 +76,7 @@
 			
 			<div>
 			<c:if test="${not empty member and member.member_user_id eq 'admin' }">
-			<a href="./noticeDelete?notice_id=${dto.notice_id}" class="delete btn_remove" ><span>공지 삭제</span></a>
+			<a href="./eventDelete?event_id=${dto.event_id}" class="delete btn_remove" ><span>글 삭제</span></a>
 			</c:if>
 			</div>
 			<!-- 목록으로 돌아가기 -->
@@ -96,7 +96,7 @@
 		
 	</div>
 	
-	
+
 	</section>
 </div>
 

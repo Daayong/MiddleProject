@@ -7,7 +7,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.d.mp.board.util.boardPager;
+import com.d.mp.board.util.BoardPager;
 
 @Repository
 public class FaqDAO {
@@ -29,7 +29,7 @@ public class FaqDAO {
 	}
 	
 	
-	public Long getCount(boardPager pager) throws Exception{
+	public Long getCount(BoardPager pager) throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"getCount", pager);
 	}
 	

@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
-import com.d.mp.board.util.boardPager;
+import com.d.mp.board.util.BoardPager;
 
 @Controller
 @RequestMapping("/cs/**")
@@ -21,7 +21,7 @@ public class NoticeController {
 	
 	
 	@GetMapping("noticeMain")
-	public ModelAndView getNoticeList(boardPager pager) throws Exception{
+	public ModelAndView getNoticeList(BoardPager pager) throws Exception{
 		ModelAndView mv = new ModelAndView();
 				
 		List<NoticeDTO> ar = noticeService.getNoticeList(pager);
