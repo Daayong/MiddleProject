@@ -101,7 +101,7 @@
 							</span>
 						</div>
 						<div class="prd_date">
-							<select class="prd_date_select" name="product_date">
+							<select id="prd_select" class="prd_date_select" name="product_date">
 									<option value="">배송받을 날짜를 선택해주세요.</option>
 								<c:forEach items="${prdDate}" var="date">
 								
@@ -135,11 +135,11 @@
 						<div class="prd_count">
 							<div class="item_box">
 								<div class="item_top">
-									<span class="date">2021-10-20(수)</span>
+									<span class="date"></span>
 								</div>
 								<div class="item_bottom">
 									<div class="bottom_info">
-										<span class="st_elps">쿵팟퐁커리</span>
+										<span class="st_elps">*${prdDTO.product_name}</span>
 										<div class="prd_quantity">
 											<div class="box_prd_quantity">
 												<button type="button" class="btn_amount minus"></button>
@@ -147,7 +147,9 @@
 												<button type="button" class="btn_amount plus"></button>
 											</div>
 										</div>
-										<span class="price">20,000원</span>
+										<span class="price">
+											<fmt:formatNumber value="${prdDTO.product_price}" type="number" maxFractionDigits="3"/>원
+										</span>
 									</div>
 								</div>
 								<button type="button" class="btn_del_order"></button>

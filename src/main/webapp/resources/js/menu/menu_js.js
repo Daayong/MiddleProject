@@ -123,7 +123,50 @@ $("#orderHelp").click(function() {
 	$(".menuLi:last").css("border-bottom","solid 2px black");
 });
 
-/* 이거 너무 김 더 좋은방법으로 바꾸기 */
+/* 위에 이거 너무 김 더 좋은방법으로 바꾸기 */
+
+/* 배송일 선택후 수량 선택하는 박스 나오게하기 및 박스 제거 */
+
+// 초기 설정
+$(document).ready(function(){
+	$(".prd_count").css({
+		"display" : "none"
+	});
+});
+
+// 셀렉트 박스 삭제 버튼
+$(".btn_del_order").click(function(){
+	$(".prd_count").css({
+		"display" : "none"
+	});
+});
+// 셀렉트 박스
+$("#prd_select").change(function(){
+	
+	// 선택 날짜 값 받아오기 default = ""
+	// ex) "2021-10-18"
+	let select_date= $("#prd_select option:selected").val();
+	
+	// 해당 일수 요일 배열 값
+	let weekday = ["일", "월", "화", "수", "목", "금", "토"];
+	
+	if(select_date != ""){
+		const parseYY = select_date.substr(0,4);
+		const parseMM = select_date.substr(5,2);
+		const parseDD = select_date.substr(8,2);
+		
+		// 선택 날짜 값 세팅 후 보내주기
+		let setDate = new Date(parseYY, parseMM-1, parseDD);
+		
+		// prd_count 안 날짜 .date
+		$(".date").text(setDate.getFullYear() + "-" + (setDate.getMonth()+1) + "-" + setDate.getDate() + "(" + weekday[setDate.getDay()] + ")");
+		
+		$(".prd_count").css({
+			"display" : "block"
+		});
+	}
+	
+});
 
 /* detail_menu 수량변경시 나타나는 이벤트들 */
 $("#prd_count").change(function(){
