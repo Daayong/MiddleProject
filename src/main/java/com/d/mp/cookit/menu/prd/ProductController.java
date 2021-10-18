@@ -74,6 +74,11 @@ public class ProductController {
 			Long sell_count = prdDate.get(i).getProduct_sell_count();
 			Long max_count = prdDate.get(i).getProduct_max_count();
 			
+			String getdate = prdDate.get(i).getProduct_regdate();
+			
+			Date today_date = transDate.parse(today);
+			Date reg_date = transDate.parse(getdate);
+			
 			if(sell_count >= max_count) {
 				
 				prdDate.get(i).setProduct_date_state("상품준비중");
@@ -82,6 +87,15 @@ public class ProductController {
 				
 				prdDate.get(i).setProduct_date_state("판매가능");
 				productService.doDateState(prdDate.get(i));
+			}
+			
+			// 주문일 마감 상태 업데이트
+			int compare = today_date.compareTo(reg_date);
+			if(compare > 0) {
+				prdDate.get(i).setProduct_date_state("주문마감");
+				productService.doDateState(prdDate.get(i));
+			}else {
+				
 			}
 		}
 		
