@@ -6,7 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import com.d.mp.board.util.boardPager;
+import com.d.mp.board.util.BoardPager;
 
 @Repository
 public class NoticeDAO {
@@ -15,11 +15,11 @@ public class NoticeDAO {
 	private SqlSession sqlSession;
 	private final String NAMESPACE ="com.d.mp.cs.notice.NoticeDAO.";
 	
-	public List<NoticeDTO> getNoticeList(boardPager pager) throws Exception{
+	public List<NoticeDTO> getNoticeList(BoardPager pager) throws Exception{
 		return sqlSession.selectList(NAMESPACE+"getNoticeList", pager);
 	}
 	
-	public Long getCount(boardPager pager) throws Exception{
+	public Long getCount(BoardPager pager) throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"getCount", pager);
 	}
 	
@@ -36,15 +36,15 @@ public class NoticeDAO {
 	}
 	
 	//file 첨부
-	public int setFile(NoticeFilesDTO noticeFilesDTO) throws Exception{
+	public int setFile(NoticeFileDTO noticeFilesDTO) throws Exception{
 		return sqlSession.insert(NAMESPACE+"setFile", noticeFilesDTO);
 	}
 	
-	public List<NoticeFilesDTO> getFile(NoticeDTO noticeDTO) throws Exception{
+	public List<NoticeFileDTO> getFile(NoticeDTO noticeDTO) throws Exception{
 		return sqlSession.selectList(NAMESPACE+"getFile", noticeDTO);
 	}
 	
-	public int setFileDelete(NoticeFilesDTO noticeFilesDTO) throws Exception{
+	public int setFileDelete(NoticeFileDTO noticeFilesDTO) throws Exception{
 		return sqlSession.delete(NAMESPACE+"setFileDelete", noticeFilesDTO);
 	}
 }

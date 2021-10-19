@@ -49,10 +49,12 @@ public class FaqController {
 	}
 	
 	
-	@RequestMapping(value = "/cs/faqTypeList.do")
+	@PostMapping("faqTypeList")
 		public ModelAndView getTypeList(HttpServletRequest request, HttpServletResponse response, FaqDTO faqDTO) throws Exception{
 		
 		String faq_type = request.getParameter("faq_type");
+		
+		 faqDTO.setFaq_type(faq_type);
 		
 		List<FaqDTO> ar = faqService.getTypeList(faqDTO);
 		

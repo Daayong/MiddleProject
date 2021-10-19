@@ -61,14 +61,14 @@
 			
 				<!-- view head -->
 				<div class="head">
-                        <h2 class="tit">${dto.notice_subject} 
-                        	<span class="date">${dto.notice_regDate}</span></h2>
+                        <h2 class="tit">${dto.event_winner_subject} 
+                        	<span class="date">${dto.event_winner_regDate}</span></h2>
                     </div>
 			
 				<!-- view contents -->
 					<div class="conts">
                         <div class="txt">
-                         	${dto.notice_content}
+                         	${dto.event_winner_content}
                         </div>
                     </div>
 			
@@ -76,13 +76,13 @@
 			
 			<div>
 			<c:if test="${not empty member and member.member_user_id eq 'admin' }">
-			<a href="./noticeDelete?notice_id=${dto.notice_id}" class="delete btn_remove" ><span>공지 삭제</span></a>
+			<a href="./eventDelete?event_id=${dto.event_winner_id}" class="delete btn_remove" ><span>글 삭제</span></a>
 			</c:if>
 			</div>
 			<!-- 목록으로 돌아가기 -->
 			
 				<div class="btn_wrap">
-                	<a href="${pageContext.request.contextPath}/cs/noticeMain" class="btn pop green" role="button" >
+                	<a href="${pageContext.request.contextPath}/event/winnerMain" class="btn pop green" role="button" >
                 	<span>목록</span></a>
                 </div>
 			
@@ -96,7 +96,7 @@
 		
 	</div>
 	
-	
+
 	</section>
 </div>
 

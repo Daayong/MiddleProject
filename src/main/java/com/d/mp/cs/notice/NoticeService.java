@@ -9,8 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.d.mp.board.util.boardFileManager;
-import com.d.mp.board.util.boardPager;
+import com.d.mp.board.util.BoardFileManager;
+import com.d.mp.board.util.BoardPager;
 
 
 
@@ -24,9 +24,9 @@ public class NoticeService {
 	private ServletContext servletContext;
 	
 	@Autowired
-	private boardFileManager fileManager;
+	private BoardFileManager fileManager;
 	
-	public List<NoticeDTO> getNoticeList(boardPager pager) throws Exception{
+	public List<NoticeDTO> getNoticeList(BoardPager pager) throws Exception{
 		//paging 처리
 		Long totalCount = noticeDAO.getCount(pager);
 		pager.makeNum(totalCount);
@@ -48,7 +48,7 @@ public class NoticeService {
 			for(MultipartFile multipartFile : files) {
 				String fileName = fileManager.fileSave(multipartFile, file);
 				System.out.println(fileName);
-				NoticeFilesDTO noticeFilesDTO = new NoticeFilesDTO();
+				NoticeFileDTO noticeFilesDTO = new NoticeFileDTO();
 				noticeFilesDTO.setNotice_file_name(fileName);
 				noticeFilesDTO.setNotice_file_ori_name(multipartFile.getOriginalFilename());
 				noticeFilesDTO.setNotice_id(noticeDTO.getNotice_id());
@@ -69,11 +69,11 @@ public class NoticeService {
 		return noticeDAO.setDelete(noticeDTO);
 	}
 	
-	public List<NoticeFilesDTO> getFile(NoticeDTO noticeDTO) throws Exception{
+	public List<NoticeFileDTO> getFile(NoticeDTO noticeDTO) throws Exception{
 		return noticeDAO.getFile(noticeDTO);
 	}
 	
-	public int setFileDelete(NoticeFilesDTO noticeFilesDTO) throws Exception{
+	public int setFileDelete(NoticeFileDTO noticeFilesDTO) throws Exception{
 		
 		String realPath = servletContext.getRealPath("/resources/upload/notice/");
 		

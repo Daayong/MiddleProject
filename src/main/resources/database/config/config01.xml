@@ -14,28 +14,25 @@
 			
 			<typeAlias type="com.d.mp.cs.faq.FaqDTO" alias="FaqDTO"/>
 			<typeAlias type="com.d.mp.cs.notice.NoticeDTO" alias="NoticeDTO"/>
-			<typeAlias type="com.d.mp.cs.notice.NoticeFilesDTO" alias="NoticeFilesDTO"/>
-	  		<typeAlias type="com.d.mp.board.util.boardPager" alias="boardPager"/>
+			<typeAlias type="com.d.mp.cs.notice.NoticeFileDTO" alias="NoticeFileDTO"/>
 		
+			<typeAlias type="com.d.mp.event.EventDTO" alias="EventDTO"/>
+			<typeAlias type="com.d.mp.event.winner.EventWinnerDTO" alias="EventWinnerDTO"/>
+			<typeAlias type="com.d.mp.event.EventFileDTO" alias="EventFileDTO"/>	
 	
-	
-			<typeAlias type="java.util.List" alias="List"/>
-	  		<typeAlias type="java.lang.Long" alias="Long"/>
-	  		<typeAlias type="java.util.Map" alias="Map"/>
+	  		<typeAlias type="com.d.mp.board.util.BoardPager" alias="BoardPager"/>
 	
 			<typeAlias type="com.d.mp.cookit.menu.prd.ProductDTO" alias="ProductDTO"/>
 	  		<typeAlias type="com.d.mp.cookit.menu.prd.ProductFilesDTO" alias="ProductFilesDTO"/>
-	  		
+
 	  		
 	  		
 	  		<typeAlias type="com.d.mp.order.cart.CartDTO" alias="CartDTO"/>
 	  		<typeAlias type="com.d.mp.order.cart.CartListDTO" alias="CartListDTO"/>
-	  		
-	  		
-	  		
-	  		
-	  		
-	  		
+			  
+			<typeAlias type="java.util.List" alias="List"/>
+	  		<typeAlias type="java.lang.Long" alias="Long"/>
+	  		<typeAlias type="java.util.Map" alias="Map"/>
 
 		</typeAliases>
 	</configuration>

@@ -166,9 +166,14 @@
 								
 				</div>
 			</div>
-				
 				<!-- paging -->
 				<div class="pagination">
+				
+				
+				<c:if test="${not empty member and member.member_user_id eq 'admin'}">
+						<button class="btn_add white" onclick="location.href='./faqUpload'"><span>faq 추가</span></button>
+					</c:if>
+					
 					<a class="btn_first" href="#"></a>
 						<a class="btn_prev" href="#"></a>
 						<span class="page_num">
@@ -224,34 +229,6 @@
 	
 	
 
-	
-	    $(function(){
-	    	$("button").on('click',function(){
-	    			var faq_type = $(this).val();
-	    			console.log(faq_type);//버튼이 클릭 되었을 때 그 버튼의 value를 var kind로 가져와서	
-	    			$.ajax({
-	    				 url : '/cs/faqTypeList.do', // 이 주소로 
-	    	              type : "post", // 포스트 방식으로 보내는데
-	    	              cache: false,
-	    	              headers: {"cache-control":"no-cache", "pragma": "no-cache"},
-	    	              data : {
-	    	            	  id : $(this).val(),
-	    	            	  "faq_type" : faq_type
-	    	            	  
-	    	              }, 
-	    	              success : function(data){ 
-	    	                 console.log(data);
-	    	                
-	    	                 $('.faq_list').html(data); 
-	    	              },
-	    	              error : function(data){
-	    	            	 alert('error');
-	    	               
-	    	              }//error
-	    			})//ajax
-	    		});//click
-	    });//ready
-	
 	
 </script>
 

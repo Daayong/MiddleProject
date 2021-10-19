@@ -316,6 +316,28 @@ table {
     background-position: -29px -40px;
 }
 
+.white{
+	display: block;
+    border: 1px solid #ccc;
+   	margin-bottom: 30px;
+}
+
+
+.btn_add.white {
+    color: #101010;
+    border: 1px solid #202020;
+    background-color: #FFFFFF;
+}
+
+.btn_add {
+    height: 32px;
+    padding: 4px 13px 5px;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 21px;
+}
+
+
 
 /* paging */
 
