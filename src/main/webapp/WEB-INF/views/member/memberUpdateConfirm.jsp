@@ -81,7 +81,6 @@
 	
 	<script type="text/javascript">
 		const uCancel = document.getElementById('uCancel');
-		const goUpdate=document.getElementById('goUpdate');
 		
 		uCancel.addEventListener('click',function(){
 			location.href="../";
@@ -97,8 +96,8 @@
 					type:'post',
 					data:{member_user_id:member_user_id,member_password:member_password},
 					success:function(data){
-						console.log("true=일치 / false=일치x:" +data);
-						if(data){
+						console.log(data);
+						if(data==1){
 							//1.패스워드 일치
 							console.log(data);
 							location.href="./memberUpdate";

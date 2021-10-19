@@ -28,16 +28,8 @@ public class MemberDAO {
 	}
 	
 	//패스워드 일치 여부체크
-	public boolean getPwCheck(String member_user_id,String member_password)throws Exception{ 
-		boolean result=false;
-		Map<String, String> map =new HashMap<String, String>();
-		map.put("member_user_id", member_user_id);
-		map.put("member_password", member_password);
-		int count = sqlSession.selectOne(member_password, map);
-		if(count==1) {
-			result = true; 
-		}
-		return result;
+	public int getPwCheck(MemberDTO memberDTO)throws Exception{ 
+		return sqlSession.selectOne(NAMESPACE+"getPwCheck", memberDTO);
 	}
 		
 	

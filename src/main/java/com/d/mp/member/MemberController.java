@@ -45,9 +45,6 @@ public class MemberController {
 		if(memberDTO !=null) {
 			System.out.println("로그인 성공");
 			session.setAttribute("member", memberDTO);
-			mv.addObject("member", memberDTO);
-			
-			
 			if(check.equals("1")) {
 				mv.setViewName("redirect:member/myPage");
 			}else if(check.equals("2")){
@@ -148,11 +145,15 @@ public class MemberController {
 	//패스워드 체크
 	@PostMapping("pwCheck")
 	@ResponseBody
-		public boolean getPwCheck(@RequestParam("member_user_id") String member_user_id,@RequestParam("member_password") String member_password)throws Exception{
-		MemberDTO memberDTO = new MemberDTO();
-		boolean result=memberService.getPwCheck(memberDTO.getMember_user_id(), memberDTO.getMember_password());
-		return result; 
+	public int getPwCheck(MemberDTO memberDTO,HttpSession session)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		int result = memberService.getPwCheck(memberDTO);
+		return result;
 	}
+	
+	
+	
+	
 	
 	
 	
@@ -193,8 +194,10 @@ public class MemberController {
 	}
 	
 	@GetMapping("memberUpdate")
-	public ModelAndView setUpdate()throws Exception{
+	public ModelAndView setUpdate(HttpSession session)throws Exception{
 		ModelAndView mv = new ModelAndView();
+		MemberDTO sessionDTO =(MemberDTO)session.getAttribute("member");
+		memberService.setUpdateSplit(sessionDTO);
 		mv.setViewName("member/memberUpdate");
 		return mv;
 	}
@@ -203,14 +206,7 @@ public class MemberController {
 	public ModelAndView setUpdate(MemberDTO memberDTO,HttpSession session)throws Exception{
 		//수정 전 데이터 
 		MemberDTO sessionDTO =(MemberDTO)session.getAttribute("member");
-		//수정 후 데이터 
-		memberDTO = memberService.setUpdate(memberDTO);
-		memberDTO.setMember_id(sessionDTO.getMember_id());
-		memberDTO.setMember_user_id(sessionDTO.getMember_user_id());
-		memberDTO.setBirth_yy(sessionDTO.getBirth_yy());
-		memberDTO.setBirth_mm(sessionDTO.getBirth_mm());
-		memberDTO.setBirth_dd(sessionDTO.getBirth_dd());
-		session.setAttribute("member", memberDTO);
+		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("redirect:./myPage");
 		return mv; 

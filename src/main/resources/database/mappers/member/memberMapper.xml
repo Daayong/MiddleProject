@@ -16,7 +16,7 @@
   	</select>
   	
   	<!-- 패스워드 일치 여부 체크 -->
-  	<select id="getPwCheck" parameterType="java.lang.String" resultType="MemberDTO" >
+  	<select id="getPwCheck" parameterType="MemberDTO" resultType="java.lang.Integer" >
   		SELECT COUNT(*) FROM member 
   		WHERE member_user_id=#{member_user_id} AND member_password=#{member_password}
   	</select>

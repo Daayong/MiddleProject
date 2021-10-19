@@ -19,7 +19,6 @@ public boolean preHandle(HttpServletRequest request, HttpServletResponse respons
 		throws Exception {
 	
 	MemberDTO memberDTO =(MemberDTO)request.getSession().getAttribute("member");	
-	boolean result = false;
 	//세션에 id가 null이면 
 	if(memberDTO==null) {
 		//로그인 페이지로 이동

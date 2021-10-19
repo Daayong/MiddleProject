@@ -37,8 +37,8 @@ public class MemberService {
 		return cId;
 	}
 	//패스워드체크 
-		public boolean getPwCheck(String member_user_id,String member_password)throws Exception{
-		return memberDAO.getPwCheck(member_user_id, member_password);
+		public int getPwCheck(MemberDTO memberDTO)throws Exception{
+			return memberDAO.getPwCheck(memberDTO);
 		}
 	
 	//회원가입
@@ -52,8 +52,8 @@ public class MemberService {
 		return memberDAO.setDelete(memberDTO);
 	}
 	
-	//회원수정
-	public MemberDTO setUpdate(MemberDTO memberDTO)throws Exception{
+	//회원수정(휴대전화,생년월일 분리)
+	public MemberDTO setUpdateSplit(MemberDTO memberDTO)throws Exception{
 		String member_birth=memberDTO.getMember_birth();	
 		String[]mB=member_birth.split("-");
 		memberDTO.setBirth_yy(mB[0]);
