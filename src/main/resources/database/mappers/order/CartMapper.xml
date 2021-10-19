@@ -44,5 +44,43 @@
             pf.product_file_path = 'main'
 		ORDER BY cart_delivery_date
 	</select>
+	
+<!-- ===== ===== ===== DELETE ===== ===== ===== -->	
+	<delete id="deleteCartOne" parameterType="CartDTO">
+		DELETE FROM cart WHERE cart_id = #{cart_id}
+	</delete>
+	
+	
+<!-- ===== ===== ===== UPDATE ===== ===== ===== -->	
+	<update id="updateCartQuantity" parameterType="CartDTO">
+		UPDATE cart SET cart_quantity = #{cart_quantity} WHERE cart_id = #{cart_id}
+	</update>
+	
+	<update id="updateCartState" parameterType="CartDTO">
+		UPDATE cart SET cart_state = #{cart_state} WHERE cart_id = #{cart_id}
+	</update>
+	
+	<update id="updateCartStateOne" parameterType="CartDTO">
+		UPDATE cart SET cart_state = #{cart_state}
+		WHERE
+			cart_id = #{cart_id}
+	</update>
+	
+	<update id="updateCartStateAll" parameterType="CartDTO">
+		UPDATE cart SET cart_state = #{cart_state}
+		WHERE
+			member_id = #{member_id} AND
+			(cart_state = 'checked' OR
+			cart_state = 'unChecked')
+	</update>
+	
+	<update id="updateCartStateDate" parameterType="CartDTO">
+		UPDATE cart SET cart_state = #{cart_state}
+		WHERE
+			member_id = #{member_id} AND
+			TO_CHAR(cart_delivery_date, 'YYYY-MM-DD') = #{cart_delivery_date} AND
+			(cart_state = 'checked' OR
+			cart_state = 'unChecked')
+	</update>
 
 </mapper>

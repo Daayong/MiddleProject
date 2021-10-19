@@ -20,4 +20,25 @@ public class CartDAO {
 		return sqlSession.selectList(NAMESPACE + "getCartList", memberDTO);
 	}
 	
+	public void deleteCartOne(CartDTO cartDTO) throws Exception {
+		sqlSession.delete(NAMESPACE + "deleteCartOne", cartDTO);
+	}
+	
+	public void updateCartQuantity(CartDTO cartDTO) throws Exception {
+		sqlSession.update(NAMESPACE + "updateCartQuantity", cartDTO);
+	}
+	
+	public void updateCartStateOne(CartDTO cartDTO) throws Exception {
+		sqlSession.update(NAMESPACE + "updateCartStateOne", cartDTO);
+	}
+	
+	public void updateCartStateAll(CartDTO cartDTO) throws Exception {
+		sqlSession.update(NAMESPACE + "updateCartStateAll", cartDTO);
+	}
+	
+	public void updateCartStateDate(CartDTO cartDTO) throws Exception {
+		sqlSession.update(NAMESPACE + "updateCartStateDate", cartDTO);
+	}
+	
+	
 }

@@ -13,9 +13,28 @@ public class CartService {
 	@Autowired
 	private CartDAO cartDAO;
 	
-	public List<CartListDTO> getCartList(MemberDTO memberDTO) throws Exception {	
-		
+	public List<CartListDTO> getCartList(MemberDTO memberDTO) throws Exception {		
 		return cartDAO.getCartList(memberDTO);
 	}
-
+	
+	public void deleteCartOne(CartDTO cartDTO) throws Exception {
+		cartDAO.deleteCartOne(cartDTO);
+	}
+	
+	public void updateCartQuantity(CartDTO cartDTO) throws Exception {
+		cartDAO.updateCartQuantity(cartDTO);
+	}
+	
+	public void updateCartStateOne(CartDTO cartDTO) throws Exception {
+		cartDAO.updateCartStateOne(cartDTO);
+	}
+	
+	public void updateCartStateAll(CartDTO cartDTO) throws Exception {
+		cartDAO.updateCartStateAll(cartDTO);
+	}
+	
+	public void updateCartStateDate(CartDTO cartDTO) throws Exception {
+		cartDAO.updateCartStateDate(cartDTO);
+	}
+	
 }

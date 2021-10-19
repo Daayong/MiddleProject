@@ -69,8 +69,13 @@ input.txt {display:inline-block;width:100%;height:48px;padding:0 16px;background
 .delivery_location_wrap .location_detail ul li .detail>span  { display: block; margin-top: 4px; }
 .delivery_location_wrap .location_detail ul li .detail span span { margin-left: 8px; color: #101010; }
 
+/* prd_detail_wrap */
 .prd_detail_wrap { margin-top: -1px; padding: 26px 31px 10px; border: 1px solid #CCC; }
 
 .prd_detail_wrap .recieve_date { padding-bottom: 10px; }
 .prd_detail_wrap .recieve_date strong { font-size: 18px; line-height: 27px; color: #101010; font-weight: 500; vertical-align: middle }
 .prd_detail_wrap .recieve_date span { margin-left: 4px; font-size: 13px; line-height: 21px; color: #0379A6; vertical-align: bottom; }
+
+.prd_detail_wrap .prd_list li { width: 100%; padding: 16px 0; }
+.prd_detail_wrap .prd_list .prd_info{position:relative; padding:0 0 0 104px; display:table-cell; height:80px; vertical-align:middle}
+.prd_detail_wrap .prd_list .prd_info .img_wrap { position: absolute; width: 80px;}

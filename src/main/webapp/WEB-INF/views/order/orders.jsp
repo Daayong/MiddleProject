@@ -62,7 +62,7 @@
 						</dt>
 						<dd>
 							<div class="input_wrap">
-								<input type="text" class="txt" id="member_name" name="member_name" maxlength="10" value="member_name">
+								<input type="text" class="txt" id="member_name" name="member_name" maxlength="10" value="${member.member_name}">
 							</div>
 						</dd>
 					</dl>
@@ -122,7 +122,7 @@
 								<a href="javascript:;" class="btn_link" onclick="openDlvdPop(this);">수정/변경</a>
 									<dl>
 										<dt>
-											<strong>memeber_name</strong>
+											<strong>default_address</strong>
 											<span>(기본배송지)</span>
 										</dt>
 										<dd>
@@ -151,6 +151,30 @@
 								<span>배송비 +3,000원</span>
 							</div>
 							<div class="prd_list">
+								<!-- ============================== -->
+								<ul>
+									<li>
+										<div class="prd_info">
+										
+											<div class="img_wrap">
+												<img src="//img.cjcookit.com/images/file/product/232/20211014115419267.jpg"	alt="">
+											</div>
+											
+<!-- 											<div class="info_wrap"> -->
+<!-- 												<span class="tit mt_elps">product_name</span> <span class="price">product_price원</span> -->
+<!-- 											</div> -->
+											
+<!-- 											<div class="prd_quantity"> -->
+<!-- 												<span class="num prd_num">cart_quantity</span> -->
+<!-- 											</div> -->
+											
+<!-- 											<div class="prd_price"> -->
+<!-- 												price * quantity원 -->
+<!-- 											</div> -->
+										</div>
+									</li>
+								</ul>
+								<!-- ============================== -->
 							</div>
 						</div>
 					</div>
