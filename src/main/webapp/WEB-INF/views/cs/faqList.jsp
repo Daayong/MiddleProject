@@ -166,9 +166,14 @@
 								
 				</div>
 			</div>
-				
 				<!-- paging -->
 				<div class="pagination">
+				
+				
+				<c:if test="${not empty member and member.member_user_id eq 'admin'}">
+						<button class="btn_add white" onclick="location.href='./faqUpload'"><span>faq 추가</span></button>
+					</c:if>
+					
 					<a class="btn_first" href="#"></a>
 						<a class="btn_prev" href="#"></a>
 						<span class="page_num">
