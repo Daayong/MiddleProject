@@ -1,13 +1,21 @@
 package com.d.mp.member;
 
+import java.lang.ProcessBuilder.Redirect;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import oracle.jdbc.proxy.annotation.Post;
@@ -37,11 +45,10 @@ public class MemberController {
 		if(memberDTO !=null) {
 			System.out.println("로그인 성공");
 			session.setAttribute("member", memberDTO);
-			mv.addObject("member", memberDTO);
-			
-			
 			if(check.equals("1")) {
 				mv.setViewName("redirect:member/myPage");
+			}else if(check.equals("2")){
+				mv.setViewName("redirect:../cs/formCounsel");
 			}else{
 				mv.setViewName("redirect:../");
 			}
@@ -81,35 +88,144 @@ public class MemberController {
 
 
 	
-/*--------------------------------- 회원가입/아이디 패스워드 찾기 시작--------------------------------------*/
+/*--------------------------------- 약관동의/회원가입/아이디 중복체크 시작--------------------------------------*/
+	//약관동의
 	@GetMapping("check")
-	public String check() {
+	public String check()throws Exception {
 		return "member/check";
 	}
-
+	
+	//회원가입
 	@GetMapping("join")
-	public String join() {
+	public String join()throws Exception {
 		return "member/join";
 	}
-	
-	@GetMapping("findId")
-	public String findId() {
-		return "member/findId";
-	}
-	
-	@GetMapping("findPw")
-	public String findPw() {
-		return "member/findPw";
-	}
-	
+
 	@PostMapping("join")
-	public ModelAndView finishJoin() throws Exception{
+	public ModelAndView join(MemberDTO memberDTO, HttpServletRequest request) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("redirect:member/finishJoin");
+		
+		String birth_yy = request.getParameter("birth_yy");
+		String birth_mm = request.getParameter("birth_mm");
+		String birth_dd = request.getParameter("birth_dd");
+		
+		memberDTO.setMember_birth(birth_yy+"-"+birth_mm+"-"+birth_dd);
+		
+		String phone_f = request.getParameter("phone_f");
+		String member_phone_m = request.getParameter("member_phone_m");
+		String member_phone_b = request.getParameter("member_phone_b");
+		
+		memberDTO.setMember_phone(phone_f+"-"+member_phone_m+"-"+member_phone_b);
+		
+		String member_email_f = request.getParameter("member_email_f");
+		String member_email_b = request.getParameter("member_email_b");
+		
+		memberDTO.setMember_email(member_email_f+"@"+member_email_b);
+		
+		int result = memberService.setJoin(memberDTO);
+		
+		if(result>0) {
+			System.out.println("회원가입 성공");
+		}else {
+			System.out.println("회원가입 실패");
+		}	
+		mv.setViewName("redirect:./login");
 		return mv;
 	}
 	
+	//아이디중복체크
+	@GetMapping("idCheck")
+	@ResponseBody
+	public int getIdCheck(@RequestParam("member_user_id") String member_user_id)throws Exception{
+		int cId=memberService.getIdCheck(member_user_id);
+		System.out.println(cId);
+		return cId;
+	}
 	
-/*--------------------------------- 회원가입/아이디 패스워드 찾기 종료--------------------------------------*/	
+	//패스워드 체크
+	@PostMapping("pwCheck")
+	@ResponseBody
+	public int getPwCheck(MemberDTO memberDTO,HttpSession session)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		int result = memberService.getPwCheck(memberDTO);
+		return result;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+/*--------------------------------- 약관동의/회원가입/아이디 중복체크 종료--------------------------------------*/	
+
+/*--------------------------------- 아이디/패스워드 찾기 시작--------------------------------------*/	
+	
+	@GetMapping("findLog")
+	public String findLog() {
+		return "member/findLog";
+	}
+
+	
+	
+/*--------------------------------- 아이디/패스워드 찾기 종료--------------------------------------*/	
+
+/*--------------------------------- 회원 탈퇴/수정 시작--------------------------------------*/	
+	
+	@GetMapping("memberDelete")
+	public String setDelete()throws Exception{
+		return "member/memberDelete";
+	}
+	
+	@GetMapping("delete")
+	public ModelAndView setDelete(HttpSession session)throws Exception {
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		int result = memberService.setDelete(memberDTO);
+		session.invalidate();
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("redirect:../");
+		return mv;
+	}
+	
+	@GetMapping("memberUpdateConfirm")
+	public String setUpdateConfirm()throws Exception{
+		return "member/memberUpdateConfirm";
+	}
+	
+	@GetMapping("memberUpdate")
+	public ModelAndView setUpdate(HttpSession session)throws Exception{
+		ModelAndView mv = new ModelAndView();
+		MemberDTO sessionDTO =(MemberDTO)session.getAttribute("member");
+		memberService.setUpdateSplit(sessionDTO);
+		mv.setViewName("member/memberUpdate");
+		return mv;
+	}
+	
+	@PostMapping("update")
+	public ModelAndView setUpdate(MemberDTO memberDTO,HttpSession session)throws Exception{
+		//수정 전 데이터 
+		MemberDTO sessionDTO =(MemberDTO)session.getAttribute("member");
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("redirect:./myPage");
+		return mv; 
+	}
+	
+/*--------------------------------- 회원 탈퇴/수정 종료 --------------------------------------*/	
+	
+/*--------------------------------- 주소 관련 시작 --------------------------------------*/	
+	
+	@GetMapping("myaddress")
+	public ModelAndView myAddress(HttpSession session, MemberDTO memberDTO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		memberDTO = memberService.getDefaultAddress(memberDTO);
+		session.setAttribute("member_address", memberDTO);
+		mv.addObject("member_address", memberDTO);
+		mv.setViewName("member/myaddress");	
+		return mv;
+	}
+		
+	
 	
 }

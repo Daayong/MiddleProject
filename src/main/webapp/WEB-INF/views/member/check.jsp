@@ -412,7 +412,7 @@
  	<c:import url="../temp/member_footer.jsp"></c:import>
 </div>
 
-<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/check.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/member/check.js"></script>
 
 
 

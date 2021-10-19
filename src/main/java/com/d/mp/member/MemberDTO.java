@@ -1,19 +1,41 @@
 package com.d.mp.member;
 
+import com.d.mp.address.AddressDTO;
+
 public class MemberDTO {
 
+	private AddressDTO addressDTO;
+	
 	private Long member_id;
 	private String member_user_id; 
 	private String member_password; 
 	private String member_name; 
-	private Long member_phone; 
+	private String member_phone; 
 	private String member_email; 
-	private Long member_birth;
+	private String member_birth;
 	private int member_marketing_sms; 
 	private int member_marketing_email;
 	private int member_type;
+	private int member_point;
 	
 	
+	public AddressDTO getAddressDTO() {
+		return addressDTO;
+	}
+	public void setAddressDTO(AddressDTO addressDTO) {
+		this.addressDTO = addressDTO;
+	}
+	private String birth_yy;
+	private String birth_mm;
+	private String birth_dd;
+	
+	private String member_email_f;
+	private String member_email_b;
+	private String member_phone_f;
+	private String member_phone_m;
+	private String member_phone_b;
+	
+
 	public Long getMember_id() {
 		return member_id;
 	}
@@ -38,10 +60,10 @@ public class MemberDTO {
 	public void setMember_name(String member_name) {
 		this.member_name = member_name;
 	}
-	public Long getMember_phone() {
+	public String getMember_phone() {
 		return member_phone;
 	}
-	public void setMember_phone(Long member_phone) {
+	public void setMember_phone(String member_phone) {
 		this.member_phone = member_phone;
 	}
 	public String getMember_email() {
@@ -50,10 +72,10 @@ public class MemberDTO {
 	public void setMember_email(String member_email) {
 		this.member_email = member_email;
 	}
-	public Long getMember_birth() {
+	public String getMember_birth() {
 		return member_birth;
 	}
-	public void setMember_birth(Long member_birth) {
+	public void setMember_birth(String member_birth) {
 		this.member_birth = member_birth;
 	}
 	public int getMember_marketing_sms() {
@@ -74,6 +96,70 @@ public class MemberDTO {
 	public void setMember_type(int member_type) {
 		this.member_type = member_type;
 	}
+	public int getMember_point() {
+		return member_point;
+	}
+	public void setMember_point(int member_point) {
+		this.member_point = member_point;
+	}
+	public String getBirth_yy() {
+		return birth_yy;
+	}
+	public void setBirth_yy(String birth_yy) {
+		this.birth_yy = birth_yy;
+	}
+	public String getBirth_mm() {
+		return birth_mm;
+	}
+	public void setBirth_mm(String birth_mm) {
+		this.birth_mm = birth_mm;
+	}
+	public String getBirth_dd() {
+		return birth_dd;
+	}
+	public void setBirth_dd(String birth_dd) {
+		this.birth_dd = birth_dd;
+	}
+	public String getMember_email_f() {
+		return member_email_f;
+	}
+	public void setMember_email_f(String member_email_f) {
+		this.member_email_f = member_email_f;
+	}
+	public String getMember_email_b() {
+		return member_email_b;
+	}
+	public void setMember_email_b(String member_email_b) {
+		this.member_email_b = member_email_b;
+	}
+	public String getMember_phone_f() {
+		return member_phone_f;
+	}
+	public void setMember_phone_f(String member_phone_f) {
+		this.member_phone_f = member_phone_f;
+	}
+	public String getMember_phone_m() {
+		return member_phone_m;
+	}
+	public void setMember_phone_m(String member_phone_m) {
+		this.member_phone_m = member_phone_m;
+	}
+	public String getMember_phone_b() {
+		return member_phone_b;
+	}
+	public void setMember_phone_b(String member_phone_b) {
+		this.member_phone_b = member_phone_b;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	
 }

@@ -1,59 +1,23 @@
 @charset "UTF-8";
 
 #my_wrapper{	
-	width:1180px;
-	height:1314px;
-	padding-top:60px; 
+	min-height:900px;
+	padding:52px 0 290px; 
 }
 
-/* 왼쪽 메뉴바 */
-#left_menu{
-	width:190px;
-	height:827px; 
-	position:absolute; ;  
+#my_wrapper:after{
+	content:'';
+	display:block;
+	clear:both;
 }
-
-#left_menu div ul li{
-	padding-top:8px;
-}
-
-#left_menu div ul li a{
-	font-size:14px;  
-	font-weight:500;
-	color:#606060;
-}
-
-#left_menu div ul li a:hover{
-	color:#101010;
-	text-decoration:underline; 
-}
-
-#left_menu div ul .tab_title{
-	font-size:20px; 
-	color:#101010;
-	font-weight:700;
-}
-
-.pd{
-	padding-top:30px; 
-}
-
-#my_order > h2{
-	display:block; 
-	color:#101010; 
-	font-size:40px;
-	line-height:30px; 
-	padding:5px 0 35px 0; 
-}
-
 
 /*오른쪽 컨텐츠 영역 */
 #content_wrapper{
-	width:940px; 
-	position:relative; 
+	width:940px;
+	min-height:900px; 
+	position:relative;
 	float:right; 	
 }
-
 
 #main .rpd{
 	padding-top:56px;

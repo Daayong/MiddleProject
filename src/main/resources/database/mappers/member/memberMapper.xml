@@ -5,14 +5,48 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
   <mapper namespace="com.d.mp.member.MemberDAO">
-  	
+  	<!-- 로그인 -->
   	<select id="getLogin" parameterType="MemberDTO" resultType="MemberDTO" >
   		SELECT * FROM member WHERE member_user_id=#{member_user_id} AND member_password=#{member_password}
   	</select>
   	
+  	<!-- ID 중복체크 -->
+  	<select id="getIdCheck" parameterType="java.lang.String" resultType="MemberDTO" >
+  		SELECT member_user_id FROM member WHERE member_user_id=#{member_user_id}
+  	</select>
   	
+  	<!-- 패스워드 일치 여부 체크 -->
+  	<select id="getPwCheck" parameterType="MemberDTO" resultType="java.lang.Integer" >
+  		SELECT COUNT(*) FROM member 
+  		WHERE member_user_id=#{member_user_id} AND member_password=#{member_password}
+  	</select>
   	
+  	<!-- 회원 가입 -->
+  	<insert id="setJoin" parameterType="MemberDTO">
+  		INSERT INTO member(member_id,member_user_id,member_password,member_name,member_phone,member_email,member_birth,member_marketing_sms,member_marketing_email)
+		values(member_seq.nextval,#{member_user_id},#{member_password},#{member_name},#{member_phone},#{member_email},#{member_birth},#{member_marketing_sms},#{member_marketing_email})
+  	</insert>
   	
+  	<!-- 회원 탈퇴  -->
+  	<delete id="setDelete" parameterType="memberDTO">
+  		DELETE FROM MEMBER WHERE member_user_id=#{member_user_id}
+  	</delete>
+  	
+  	<!-- 회원 수정  -->
+  	<update id="setUpdate" parameterType="memberDTO">
+  		UPDATE member SET member_password=#{member_password},member_phone=#{member_phone},member_email=#{member_email},member_marketing_sms=#{member_marketing_sms},member_marketing_email=#{member_marketing_email} 
+  		WHERE member_id=#{member_id}
+  	</update>
+  	
+  	<!-- 기본 배송지  -->
+  	<select id="getDefaultAddress" parameterType="MemberDTO" resultType="MemberDTO">
+  		SELECT a.address
+		FROM member m
+    	RIGHT JOIN
+    	address a
+    	USING(member_id)
+		WHERE a.default_check=1 AND member_id=#{member_id}
+  	</select>
   
   
   
