@@ -20,7 +20,7 @@
 			<typeAlias type="com.d.mp.event.winner.EventWinnerDTO" alias="EventWinnerDTO"/>
 			<typeAlias type="com.d.mp.event.EventFileDTO" alias="EventFileDTO"/>	
 	
-	  		<typeAlias type="com.d.mp.board.util.BoardPager" alias="BoardPager"/>
+<!-- 	  		<typeAlias type="com.d.mp.board.util.BoardPager" alias="BoardPager"/> -->
 	
 			<typeAlias type="com.d.mp.cookit.menu.prd.ProductDTO" alias="ProductDTO"/>
 	  		<typeAlias type="com.d.mp.cookit.menu.prd.ProductFilesDTO" alias="ProductFilesDTO"/>
