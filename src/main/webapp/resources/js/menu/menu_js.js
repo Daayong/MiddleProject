@@ -1,4 +1,4 @@
-/* =================== menu_main 페이지 */
+/* =================== menu_main 페이지 ============== */
 
 $(document).on("click", ".click_menu", function() {
 	
@@ -12,7 +12,16 @@ let date = "";
 /* 주문일 */
 $(".date").on("click", function () {
 	date = $(this).val();
-	
+	$(this).css({
+		"color" : "white",
+		"background-color" : "#353535",
+		"background-size" : "150px 150px",
+		"border-radius" : "50px"
+	});
+	$(".date").not(this).css({
+		"color" : "black",
+		"background-color" : "white"
+	});
  	$.ajax({
  		url: 'menu_main?date=' + date,
 		type: "get",
@@ -42,9 +51,30 @@ $(document).on("click", ".sortc_btn", function(){
 	});
 });
 
+/* 찜 버튼 누르면 장바구니로 이동하기 */
 
 
-/* ============== menu_detail 페이지 */
+/* ============== menu_search 페이지 ============== */
+$(document).on("click", ".btn_srch", function(){
+	
+	let search_name = $("#fn_txt_srch").val();
+	
+	$.ajax({
+		url: 'menu_search?product_name=' + search_name,
+		type: 'get',
+		dataType: 'html',
+		success: function(res){
+			let up = $(res).find("#item_wrap").html();
+			$("#item_wrap").html(up);
+			
+			let down = $(res).find("#item_wrap2").html();
+			$("#item_wrap2").html(down);
+		}
+	});
+});
+
+
+/* ============== menu_detail 페이지 ============== */
 $("#description").click(function() {
 	$(".description").show();
 	$(".productInfo").hide();
@@ -93,17 +123,145 @@ $("#orderHelp").click(function() {
 	$(".menuLi:last").css("border-bottom","solid 2px black");
 });
 
-/* 이거 너무 김 더 좋은방법으로 바꾸기 */
+/* 위에 이거 너무 김 더 좋은방법으로 바꾸기 */
+
+/* 배송일 선택후 수량 선택하는 박스 나오게하기 및 박스 제거 */
+
+// 초기 설정
+$(".prd_count").css({
+	"display" : "none"
+});
+$(".quantity").text("1");
+
+// 재고 수
+let maxStock = 0;
+
+// 셀렉트 박스
+$("#prd_select").change(function(){
+	
+	// jquery data로 남은재고수 가져오기
+	maxStock = $("#prd_select option:selected").data("stock");
+	
+	let select_date= $("#prd_select option:selected").val();
+	
+	if(select_date == ""){
+		$(".prd_count").css({
+			"display" : "none"
+		});
+		$("#product_total_price").val(0);
+		$("#product_cnt_value").val(0);
+		$("#cnt_value").text("0");
+		$("#total_value").text("0");
+	}else{
+		$("#product_total_price").val($("#prd_price").val());
+		$("#product_cnt_value").val(1);
+		$(".quantity").text("1");
+		$("#cnt_value").text("1");
+		$("#total_value").text($("#prd_price").val());
+	}
+	// 선택 날짜 값 받아오기 default = ""
+	// ex) "2021-10-18"
+	
+	
+	
+	// 해당 일수 요일 배열 값
+	let weekday = ["일", "월", "화", "수", "목", "금", "토"];
+	
+	if(select_date != ""){
+		const parseYY = select_date.substr(0,4);
+		const parseMM = select_date.substr(5,2);
+		const parseDD = select_date.substr(8,2);
+		
+		// 선택 날짜 값 세팅 후 보내주기
+		let setDate = new Date(parseYY, parseMM-1, parseDD);
+		
+		// prd_count 안 날짜 .date
+		$(".date").text(setDate.getFullYear() + "-" + (setDate.getMonth()+1) + "-" + setDate.getDate() + "(" + weekday[setDate.getDay()] + ")");
+		
+		$(".prd_count").css({
+			"display" : "block"
+		});
+	}	
+});
+
+// 셀렉트 박스 삭제 버튼
+$(".btn_del_order").click(function(){
+	$(".prd_count").css({
+		"display" : "none"
+	});
+	
+	// 초기화
+	$("#prd_select option:first").val("");
+	$("#product_total_price").val(0);
+	$("#product_cnt_value").val(0);
+	$(".quantity").text("1");
+	$("#cnt_value").text("0");
+	$("#total_value").text("0");
+	
+	//셀렉트박스 1번선택
+	$("#prd_select option:first").prop("selected", "selected");
+});
 
 /* detail_menu 수량변경시 나타나는 이벤트들 */
-$("#prd_count").change(function(){
-	let cnt = $(this).val();
-	let perprice = $("#prd_price").val();
-	let total = parseInt(cnt) * parseInt(perprice);
-	$("#cnt_value").text(cnt);
-	$("#total_value").text(total);
+
+let oneStockPrice = $("#prd_price").val();
+let totalPrice;
+
+$(".minus").on("click", function(){
+	let cnt = parseInt($("#product_cnt_value").val()) - 1;
 	
-	$("#product_total_price").val(total);
+	if(cnt < 1){
+		alert("최소 수량은 1개입니다.");
+		return false;
+	}
+	
+	$("#product_cnt_value").val(cnt);
+	
+	totalPrice = cnt * oneStockPrice;
+	
+	$(".quantity").text(cnt);
+	$("#cnt_value").text(cnt);
+	$("#total_value").text(totalPrice);
+	
+	// hidden
+	$("#product_total_price").val(totalPrice);
+	$("#product_cnt_value").val(cnt);
+	
+	let a = $("#product_total_price").val();
+	let b = $("#product_cnt_value").val();
+	
+	console.log(a);
+	console.log(b);
+	
+});
+$(".plus").on("click", function(){
+	let cnt = parseInt($("#product_cnt_value").val()) + 1;
+	
+	if(cnt > 10){
+		alert("1인 최대 주문수량은 10개입니다. 대량 주문은 전화문의 바랍니다.");
+		return false;
+	}else if(cnt > maxStock){
+		alert("현 주문일자의 남은 재고 수는 " + maxStock + " 개 입니다. 다른 일자로 주문해주세요.");
+		return false;
+	}
+	
+	$("#product_cnt_value").val(cnt);
+	
+	totalPrice = cnt * oneStockPrice;
+	
+	$(".quantity").text(cnt);
+	$("#cnt_value").text(cnt);
+	$("#total_value").text(totalPrice);
+	
+	// hidden
+	$("#product_total_price").val(totalPrice);
+	$("#product_cnt_value").val(cnt);
+	
+	let a = $("#product_total_price").val();
+	let b = $("#product_cnt_value").val();
+	
+	console.log(a);
+	console.log(b);
 });
 
 /* detail_menu 선택한거 아래밑줄표시 */

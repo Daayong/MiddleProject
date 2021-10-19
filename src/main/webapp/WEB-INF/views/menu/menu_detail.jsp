@@ -65,7 +65,7 @@
 				
 				<!-- 장바구니 및 찜목록 들어갈때 파라미터값 필요! -->
 				<div class="right_con">
-					<form action="cart" method="get">
+					<form action="menu_result" method="get">
 						<div class="title_info">
 							<div class="sub_title">
 								${prdDTO.product_sub_name}
@@ -101,23 +101,65 @@
 							</span>
 						</div>
 						<div class="prd_date">
-							<select class="prd_date_select" name="product_date">
+							<select id="prd_select" class="prd_date_select" name="product_date">
 									<option value="">배송받을 날짜를 선택해주세요.</option>
 								<c:forEach items="${prdDate}" var="date">
-								
+									
 									<!-- 날짜 포맷 변경 -->
 									<fmt:parseDate value="${date.product_regdate}" var="parseDateValue" pattern="yyyy-MM-dd"/>
+									<fmt:parseDate value="${today}" var="parseToday" pattern="yyyy-MM-dd"/>
 									<!-- 날짜 포맷 변경 -->
 									
-									<option value="<fmt:formatDate value="${parseDateValue}" pattern="yyyy-MM-dd"/>"><fmt:formatDate value="${parseDateValue}" pattern="MM월 dd일"/></option>
+									<c:choose>
+										<c:when test="${parseDateValue < parseToday}">
+											<option value="<fmt:formatDate value="${parseDateValue}" pattern="yyyy-MM-dd"/>" disabled>
+												<fmt:formatDate value="${parseDateValue}" pattern="MM월 dd일"/>
+												주문날짜마감
+											</option>
+										</c:when>
+										<c:when test="${date.product_date_state eq '판매가능'}">
+											<option value="<fmt:formatDate value="${parseDateValue}" pattern="yyyy-MM-dd"/>" data-stock="${date.product_max_count - date.product_sell_count}">	
+												<fmt:formatDate value="${parseDateValue}" pattern="MM월 dd일"/>
+												<c:if test="${(date.product_max_count - date.product_sell_count) le 10}">
+													(남은수량: ${date.product_max_count - date.product_sell_count}개)
+												</c:if>
+											</option>
+										</c:when>
+										<c:when test="${date.product_date_state eq '상품준비중'}">
+											<option value="<fmt:formatDate value="${parseDateValue}" pattern="yyyy-MM-dd"/>" disabled>
+												<fmt:formatDate value="${parseDateValue}" pattern="MM월 dd일"/>
+												${date.product_date_state}
+											</option>
+										</c:when>
+									</c:choose>
 								</c:forEach>
 							</select>
 						</div>
 						<div class="prd_count">
-							<div class="countbox">
-								
+							<div class="item_box">
+								<div class="item_top">
+									<span class="date"></span>
+								</div>
+								<div class="item_bottom">
+									<div class="bottom_info">
+										<span class="st_elps">*${prdDTO.product_name}</span>
+										<div class="prd_quantity">
+											<div class="box_prd_quantity">
+												<button type="button" class="btn_amount minus"></button>
+												<span class="quantity">
+													
+												</span>
+												<input type="hidden" id="product_cnt_value" name="product_cnt" value="1">
+												<button type="button" class="btn_amount plus"></button>
+											</div>
+										</div>
+										<span class="price">
+											<fmt:formatNumber value="${prdDTO.product_price}" type="number" maxFractionDigits="3"/>원
+										</span>
+									</div>
+								</div>
+								<button type="button" class="btn_del_order"></button>
 							</div>
-							<input type="number" min="0" max="5" name="product_count" id="prd_count" placeholder="수량선택 (최대 5개)">
 						</div>
 						<div class="prd_total">
 							<span class="cnt">수량 <span id="cnt_value">0</span>개</span>
@@ -129,7 +171,7 @@
 								<div class="zzim_btn"></div>
 							</button>
 							<div class="cart">
-								<button type="button" class="cart_btn">장바구니 담기</button>
+								<button type="submit" class="cart_btn">장바구니 담기</button>
 							</div>
 						</div>
 					</form>
@@ -156,10 +198,7 @@
 					<div class="description">
 						<div class="description_box1">
 							<div class="leftbox_banner">
-								<img alt="banner" src="../resources/images/menu/menu_detail/leftbox_banner.png">
-							</div>
-							<div class="leftbox_banner">
-								<img alt="banner" src="../resources/images/menu/menu_detail/leftbox_banner2.jpg">
+								<img alt="banner" src="../resources/images/menu/copyright_top.gif">
 							</div>
 						</div>
 						<div class="description_box2">
@@ -173,17 +212,164 @@
 						<table class="prdInfo_table">
 							<tr>
 								<td>본상품구성</td>
-								<td>본상품구성 본상품구성</td>
+								<td>다리살(정육)</td>
 							</tr>
 							<tr>
-								<td>식품의유형</td>
-								<td></td>
+								<td>포장단위별 용량(중량),수량,크기</td>
+								<td>500 g</td>
+							</tr>
+							<tr>
+								<td>생산자, 수입품의 경우 수입자를 함께 표기</td>
+								<td>ㆍ제조원 : ㈜마니커 동두천지점 / 경기도 동두천시 승전로 6 ㆍ축산물유통전문판매원 : 씨제이프레시웨이㈜ / 경기도 이천시 마장면 덕평로 811</td>
+							</tr>
+							<tr>
+								<td>제조년월일, 유통기한 또는 품질유지기한</td>
+								<td>닭고기(다리살) 100%(국내산)</td>
+							</tr>
+							<tr>
+								<td>포장단위별 용량(중량),수량,크기</td>
+								<td>유통기한 : 제품 내 별도 표시(본 제품은 제품입고일별 유통기한이 상이하므로, 필요 시 문의주시면 상담원이 확인해드리겠습니다.)</td>
+							</tr>
+							<tr>
+								<td>상품구성</td>
+								<td>다리살(정육)</td>
+							</tr>
+							<tr>
+								<td>보관방법 또는 취급방법</td>
+								<td>-18℃ 이하 냉동보관</td>
+							</tr>
+							<tr>
+								<td>소비자상담 관련 전화번호</td>
+								<td>1668-1920</td>
+							</tr>
+						</table>
+								<table class="prdInfo_table">
+							<tr>
+								<td>본상품구성</td>
+								<td>다리살(정육)</td>
+							</tr>
+							<tr>
+								<td>포장단위별 용량(중량),수량,크기</td>
+								<td>500 g</td>
+							</tr>
+							<tr>
+								<td>생산자, 수입품의 경우 수입자를 함께 표기</td>
+								<td>ㆍ제조원 : ㈜마니커 동두천지점 / 경기도 동두천시 승전로 6 ㆍ축산물유통전문판매원 : 씨제이프레시웨이㈜ / 경기도 이천시 마장면 덕평로 811</td>
+							</tr>
+							<tr>
+								<td>제조년월일, 유통기한 또는 품질유지기한</td>
+								<td>닭고기(다리살) 100%(국내산)</td>
+							</tr>
+							<tr>
+								<td>포장단위별 용량(중량),수량,크기</td>
+								<td>유통기한 : 제품 내 별도 표시(본 제품은 제품입고일별 유통기한이 상이하므로, 필요 시 문의주시면 상담원이 확인해드리겠습니다.)</td>
+							</tr>
+							<tr>
+								<td>상품구성</td>
+								<td>다리살(정육)</td>
+							</tr>
+							<tr>
+								<td>보관방법 또는 취급방법</td>
+								<td>-18℃ 이하 냉동보관</td>
+							</tr>
+							<tr>
+								<td>소비자상담 관련 전화번호</td>
+								<td>1668-1920</td>
 							</tr>
 						</table>
 					</div>
 					<!-- 상품 리뷰 박스 -->
 					<div class="reviews">
-						<h1>상품 리뷰란입니다.</h1>
+						<div class="review_wrap">
+							<div class="review_rating">
+								<div class = "rating_wrap">
+									<span class="rating_star">
+										<span class="star">
+	
+										</span>
+									</span>
+									<span class="num">
+										<strong class="avg">5.0</strong>
+										<span class="bar">/</span>
+										<span class="top">5.0</span>
+									</span>
+								</div>
+								<div class="btn_right">
+									<button type="button" class="btn">리뷰작성</button>
+								</div>
+							</div>
+							<div class="sorting_top">
+								<div class="chk_wrap">
+									<input type="checkbox" id="sorting_photo">
+									<label for="sorting_photo">포토리뷰</label>
+								</div>
+								<div class="list_sort">
+									<div class="rad_wrap">
+										<input type="radio" id="sort_review02" name="sort_review" checked>
+										<label for="sort_review02">
+											<span class="txt">베스트순</span>
+										</label>
+									</div>
+									<div class="rad_wrap">
+										<input type="radio" id="sort_review01" name="sort_review">
+										<label for="sort_review01">
+											<span class="txt">최신순</span>
+										</label>
+									</div>
+								</div>
+							</div>
+							<div class="taste_review_list">
+								<ul class="cookitReviewList">
+									<li>
+										<div class="review_module">
+											<div class="top_wrap">
+												<p class="tit">
+													<a href="#" class="link_id">
+														user_id
+													</a>
+												</p>
+												<time datetime="2021-10-14">2021-10-14</time>
+											</div>
+											<div class="link_wrap">
+												<div class="etc_info">
+													<div class="rating_wrap">
+														<span class="rating_star">
+															<span class="star">
+																<span style="width: 100.0%;"></span>
+															</span>
+														</span>
+													</div>
+													<a href="#" class="link_more">
+														<div class="txt_wrap">
+															<div class="txt_cont">
+																<p class="mt_elps">
+																	따끈하고 얼큰한 국물맛이 일품이네요.<br>
+																	다 조리한 후 건더기와 약간의 국물을 그릇에 담아놓고,
+																	칼국수를 끓여서 동시에 식탁에 올렸어요.
+																	두 set를 구입했는데 성인 4명이 먹고도 많이 남았어요. 칼국수 양은 알맞았고요.<br>
+																	제시된 레시피보다 물과 샤브소스를 조금 덜 넣었어요.
+																</p>
+															</div>
+															<div class="tag_wrap"></div>
+															<div class="tip_box"></div>
+														</div>
+														<div class="img_left_wrap">
+															<div class="thumb_img">
+																<div class="img">
+																	
+																</div>
+															</div>
+															<div class="img_wrap">
+															</div>
+														</div>
+													</a>
+												</div>
+											</div>
+										</div>
+									</li>
+								</ul>
+							</div>
+						</div>
 					</div>
 					<!-- 배송 문의 박스 -->
 					<div class="orderHelp">
@@ -283,6 +469,18 @@
 						<div class="right_box1">
 						</div>
 						<div class="right_box2">
+							<!-- name 값 아직 안줌 -->
+							<select class="prd_date_select">
+									<option value="">배송받을 날짜를 선택해주세요.</option>
+								<c:forEach items="${prdDate}" var="date">
+								
+									<!-- 날짜 포맷 변경 -->
+									<fmt:parseDate value="${date.product_regdate}" var="parseDateValue" pattern="yyyy-MM-dd"/>
+									<!-- 날짜 포맷 변경 -->
+									
+									<option value="<fmt:formatDate value="${parseDateValue}" pattern="yyyy-MM-dd"/>"><fmt:formatDate value="${parseDateValue}" pattern="MM월 dd일"/></option>
+								</c:forEach>
+							</select>
 						</div>
 						<div class="right_box3">
 							<div class="prdCnt">
@@ -305,7 +503,5 @@
 </body>
 
 <script src="../resources/js/menu/menu_js.js"></script>
-<script type="text/javascript">
-</script>
 
 </html>

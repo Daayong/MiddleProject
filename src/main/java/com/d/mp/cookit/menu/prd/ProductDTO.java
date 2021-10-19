@@ -2,10 +2,7 @@ package com.d.mp.cookit.menu.prd;
 
 public class ProductDTO {
 	
-	// 임시로 해놓은 방식 페이저에들어가야함	
-	private String kind;
-	private String date;
-
+	// Product 테이블 값
 	private Long product_id;
 	private String product_name;
 	private String product_sub_name;
@@ -14,20 +11,7 @@ public class ProductDTO {
 	private String product_info;
 	private Long product_price;
 	private Long product_total_count;
-	
-	private String product_start_date;
-	private String product_end_date;
-	
-	private String product_regdate;
-	
-	//////////////////////////////////////////
-	public String getProduct_regdate() {
-		return product_regdate;
-	}
-	public void setProduct_regdate(String product_regdate) {
-		this.product_regdate = product_regdate;
-	}
-	//////////////////////////////////////////
+	private String product_state;
 	
 	public Long getProduct_id() {
 		return product_id;
@@ -71,6 +55,25 @@ public class ProductDTO {
 	public void setProduct_price(Long product_price) {
 		this.product_price = product_price;
 	}
+	public Long getProduct_total_count() {
+		return product_total_count;
+	}
+	public void setProduct_total_count(Long product_total_count) {
+		this.product_total_count = product_total_count;
+	}
+	
+	// 품절 판단
+	public String getProduct_state() {
+		return product_state;
+	}
+	public void setProduct_state(String product_state) {
+		this.product_state = product_state;
+	}
+	
+	// 판매 상품의 배송 날짜를 구하기위해 화, 수, 목, 금, 토 새벽배송
+	private String product_start_date;
+	private String product_end_date;
+	
 	public String getProduct_start_date() {
 		return product_start_date;
 	}
@@ -84,21 +87,64 @@ public class ProductDTO {
 		this.product_end_date = product_end_date;
 	}
 	
-	public Long getProduct_total_count() {
-		return product_total_count;
+	// 위에서구한 상품날짜를 인서트
+	private String product_regdate;
+	
+	public String getProduct_regdate() {
+		return product_regdate;
 	}
-	public void setProduct_total_count(Long product_total_count) {
-		this.product_total_count = product_total_count;
+	public void setProduct_regdate(String product_regdate) {
+		this.product_regdate = product_regdate;
 	}
-	/////////////////////////////////////////////////////////////
+	
+	// 각 상품 날짜별 맥시멈 수량 만약 product_sell_count >= product_max_count 이면 해당 날짜 select 박스 비활성화
+	private Long product_max_count;
+	private Long product_sell_count;
+	private String product_date_state;
+	
+	public Long getProduct_max_count() {
+		return product_max_count;
+	}
+	public void setProduct_max_count(Long product_max_count) {
+		this.product_max_count = product_max_count;
+	}
+	public Long getProduct_sell_count() {
+		return product_sell_count;
+	}
+	public void setProduct_sell_count(Long product_sell_count) {
+		this.product_sell_count = product_sell_count;
+	}
+	public String getProduct_date_state() {
+		return product_date_state;
+	}
+	public void setProduct_date_state(String product_date_state) {
+		this.product_date_state = product_date_state;
+	}
+	
+	// menu_manage 상품 재고 파악
+	
+	private Long product_stock;
+	
+	public Long getProduct_stock() {
+		return product_stock;
+	}
+	public void setProduct_stock(Long product_stock) {
+		this.product_stock = product_stock;
+	}
+	
+	// ============================================================== //
+
+	// 임시로 해놓은 방식 페이저에들어가야함	
+	private String kind;
+	private String date;
 	
 	public String getKind() {
-		return kind;
-	}
-	public void setKind(String kind) {
 		if(this.kind == null) {
 			this.kind = "";
 		}
+		return kind;
+	}
+	public void setKind(String kind) {
 		this.kind = kind;
 	}
 	

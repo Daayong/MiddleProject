@@ -33,16 +33,34 @@
 			margin-top: 100px;
 			width: 100%;
 			text-align: center;
+			border-collapse: collapse;
 		}
 		
-		.product_table tr td{
+		.product_table tr{
 			border-bottom: 1px solid black;
 		}
 		
+		.product_table tr td{
+			padding-top: 10px;
+			padding-bottom: 10px;
+		}
+		
+		/* more: 수정 del: 삭제 */
+		.more_btn{
+			width: 50px;
+			height: 50px;
+			border: 1px solid black;
+		}
 		.del_btn{
 			width: 50px;
 			height: 50px;
 			border: 1px solid black;
+		}
+		
+		
+		/* 추가 정보 수정 */
+		.manage_detail{
+			display: none;
 		}
 	</style>	
 	
@@ -56,23 +74,27 @@
 			<div id="content">
 		 		<div class="container">
                     <h1 class="mb-5"> COOKIT Product ManageMent </h1>
+                    <h2> 로그인중 : admin </h2>
 	                     <table class="product_table">
 						  <tr>
-						  	<th>번호<th>상품코드</th><th>상품명</th><th>상품가격</th><th>등록날짜</th><th>상태</th><th>남은수량</th><th></th>
+							<th>상품코드</th><th>상품명</th><th>상품가격</th><th>상태</th><th>전체수량</th><th>남은수량</th><th></th><th></th>
 						  </tr>
 						  <c:forEach items="${prdDTO}" var="prd">
-									  <tr>
-							  	<td>1</td>
+							  <tr>
 							  	<td>${prd.product_id}</td>
 							  	<td>${prd.product_sub_name}&nbsp;*&nbsp;${prd.product_name}</td>
 							  	<td>${prd.product_price}원</td>
-							  	<td>2021-10-05</td>
-							  	<td>판매중</td>
-							  	<td>0</td>
+							  	<td>${prd.product_state}</td>
+							  	<td>${prd.product_total_count}</td>
+							  	<td>${prd.product_stock}</td>
 							  	<td>
+							  		<button type="button" class="more_btn">MORE</button>
 							  		<button type="button" class="del_btn">X</button>
 							  		<input type="hidden" id="product_id" value="${prd.product_id}">
 							  	</td>
+							  </tr>
+							  <tr class="manage_detail">
+							  	<td>aaaaa</td>
 							  </tr>
 						  </c:forEach>
 				   		</table>
@@ -99,6 +121,13 @@
 						}
 					});	
 				}
+			});
+			
+			$(".more_btn").on("click", function () {
+				
+				$(".manage_detail").css({
+					"display" : "block"
+				});
 			});
 		</script>
 	</body>

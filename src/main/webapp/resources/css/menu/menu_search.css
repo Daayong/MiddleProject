@@ -93,7 +93,7 @@ input.txt:focus{background-color:#fff;border:1px solid #202020;box-shadow:none; 
 .sch_wrap input.txt:-ms-input-placeholder {color:#606060;font-size:20px; font-weight:700;}
 .sch_wrap .input_wrap.on input.txt,
 .sch_wrap input.txt:focus{border:2px solid #202020;}
-.sch_wrap .btn_srch {position:absolute; right:18px; top:50%; width:32px; height:32px; margin-top:-16px; background:url('/cjkit/web/images/pd/ico_set.png') -600px -150px no-repeat; background-size:800px 800px;}
+.sch_wrap .btn_srch {position:absolute; right:18px; top:50%; width:32px; height:32px; margin-top:-16px; background:url('../../images/pd/ico_set.png') -600px -150px no-repeat; background-size:800px 800px;}
 
 
 
@@ -158,6 +158,23 @@ input.txt:focus{background-color:#fff;border:1px solid #202020;box-shadow:none; 
 	column-gap: 36px;
 	row-gap : 60px;
 }
+/* 품절된 물품들 */
+.click_menu_soldout .item_image img{
+	filter: grayscale(80%);
+}
+.item_image{
+	position: relative;
+}
+.soldout_txt{
+	position: absolute;
+	z-index: 99;
+	font-size: 50px;
+	font-weight: 700;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	color: white;
+}
 .item_box{
 	width: 268px;
 	height: 548px;
@@ -218,6 +235,20 @@ input.txt:focus{background-color:#fff;border:1px solid #202020;box-shadow:none; 
 	width: 40px;
 	height: 40px;
 }
+.zzim_btn{
+	background: url('../../images/common/ico_set.png') no-repeat 0 -190px;
+	background-size: 800px 800px;
+	width: 40px;
+	height: 40px;
+	cursor: pointer;
+}
+.cart_btn{
+	background: url('../../images/common/ico_set.png') no-repeat -45px -190px;
+	background-size: 800px 800px;
+	width: 40px;
+	height: 40px;
+	cursor: pointer;
+}
 /* 메뉴안 페이저 부분 */
 .pager_wrap{
 	width: 70%;
@@ -237,4 +268,11 @@ input.txt:focus{background-color:#fff;border:1px solid #202020;box-shadow:none; 
 .pager_item a{
 	font-size: 20px;
 	color: white;
+}
+
+/* ======== 기능 관련 css ========*/
+
+/* 메뉴 클릭 (찜, 장바구니 버튼 제외) */
+.click_menu{
+	cursor: pointer;
 }

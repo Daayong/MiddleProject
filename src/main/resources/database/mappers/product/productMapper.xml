@@ -8,80 +8,232 @@
   	<!-- 상품 등록하기 -->
   	<insert id="setInsert" parameterType="ProductDTO">
   		<selectKey order="BEFORE" resultType="Long" keyProperty="product_id">
-  			SELECT PRD_SEQ.nextval from dual
+  			SELECT 
+  				PRD_SEQ.nextval 
+  			FROM 
+  				dual
   		</selectKey>
-  		insert into product (product_id, product_name, product_sub_name, product_recipe, product_description, product_info, product_price, product_total_count)
-  		values (#{product_id}, #{product_name}, #{product_sub_name}, #{product_recipe}, #{product_description}, #{product_info}, #{product_price} , #{product_total_count})
+  		INSERT INTO product 
+  			(product_id, product_name, product_sub_name, product_recipe, product_description, product_info, product_price, product_total_count, product_state)
+  		VALUES (
+	  			#{product_id}, 
+	  			#{product_name}, 
+	  			#{product_sub_name}, 
+	  			#{product_recipe}, 
+	  			#{product_description}, 
+	  			#{product_info}, 
+	  			#{product_price} , 
+	  			#{product_total_count}, 
+	  			'판매가능'
+  			)
   	</insert>
 	
 	<insert id="setInsertDate" parameterType="ProductDTO">
-		insert into product_date (product_date_id, product_id, product_regdate, product_sell_count)
-		values (PD_SEQ.nextval, #{product_id}, #{product_regdate}, 0)
+		INSERT INTO product_date 
+			(product_date_id, product_id, product_regdate, product_sell_count, product_max_count, product_date_state)
+		VALUES (
+				PD_SEQ.nextval, 
+				#{product_id}, 
+				#{product_regdate}, 
+				0,
+				#{product_max_count},
+				'판매가능'
+			)
 	</insert>
   	<!-- 상품 파일(썸네일, 슬라이더, 정보) 등록하기 -->
   	<insert id="setFile" parameterType="ProductFilesDTO">
-  		insert into product_file (product_file_id, product_id, product_file_name, product_file_ori_name, product_file_path)
-  		values (PF_SEQ.nextval, #{product_id}, #{product_file_name}, #{product_file_ori_name}, #{product_file_path})
+  		INSERT INTO product_file 
+  			(product_file_id, product_id, product_file_name, product_file_ori_name, product_file_path)
+  		VALUES (
+	  			PF_SEQ.nextval, 
+	  			#{product_id}, 
+	  			#{product_file_name}, 
+	  			#{product_file_ori_name}, 
+	  			#{product_file_path}
+  			)
   	</insert>
   	
   	<!-- 상품 파일 가져오기 -->
   	<select id="getFile" parameterType="ProductDTO" resultType="ProductFilesDTO">
-  		select * from product_file where product_id = #{product_id}
+  		SELECT * 
+  		FROM 
+  			product_file
+  		WHERE 
+  			product_id = #{product_id}
   	</select>
   	
   	<!-- 상품 전체 리스트 가져오기 -->
-  	<select id="getPrdList" parameterType="ProductDTO" resultType="ProductDTO">
+  	<select id="getPrdList" parameterType="Map" resultType="ProductDTO">
+	 	SELECT *
+		FROM
+		(
+			SELECT
+				ROWNUM R,
+				P.*
+			FROM	
   		<choose>
-  			<when test="date != null">
-  				select * from product p inner JOIN product_date pd on p.product_id = pd.product_id
-  				<if test="date != null">
-		  			where pd.product_regdate = to_date( #{date}, 'YYYY-MM-DD')
+  			<when test="product.date != null">
+  			(
+  				SELECT *
+  				FROM
+  					product p INNER JOIN product_date pd
+  				ON 
+  					p.product_id = pd.product_id
+  				<if test="product.date != null">
+		  			WHERE 
+		  				pd.product_regdate = TO_DATE( #{product.date}, 'YYYY-MM-DD')
 		  		</if>
-		  		order by
+		  		ORDER BY DECODE (product_state, '판매가능', 1),
 		  			<choose>
-		  				<when test="kind == 'sort_up'">
-		  					p.product_price desc
+		  				<when test="product.kind == 'sort_up'">
+		  					p.product_price DESC
 		  				</when>
-		  				<when test="kind == 'sort_down'">
-		  					p.product_price asc
+		  				<when test="product.kind == 'sort_down'">
+		  					p.product_price ASC
 		  				</when>
 		  				<otherwise>
-		  					p.product_id desc
+		  					p.product_id DESC
 		  				</otherwise>
 		  			</choose>
+		  	) P
   			</when>
+  			
+  			<!-- search -->
+			<when test="product.product_name != null">
+			(
+				SELECT *
+				FROM
+					product
+				<if test="product.product_name != ''">
+				WHERE
+					product_name = #{product.product_name}
+				</if>
+				ORDER BY
+					product_id DESC
+			) P
+			</when>
+			<!-- search -->
   			<otherwise>
-  				select * from product
-  				order by
+  			(
+  				SELECT *
+  				FROM
+  					product
+  				ORDER BY DECODE (product_state, '판매가능', 1),
 	  			<choose>
-	  				<when test="kind == 'sort_up'">
-	  					product_price desc
+	  				<when test="product.kind == 'sort_up'">
+	  					product_price DESC
 	  				</when>
-	  				<when test="kind == 'sort_down'">
-	  					product_price asc
+	  				<when test="product.kind == 'sort_down'">
+	  					product_price ASC
 	  				</when>
 	  				<otherwise>
-	  					product_id desc
+	  					product_id DESC
 	  				</otherwise>
 	  			</choose>
+	  		) P
   			</otherwise>
   		</choose>
+  		)
+  		WHERE
+  			R between #{pager.startRow} and #{pager.lastRow}
+  	</select>
+  	
+  	<!-- 총 상품리스트 갯수 -->
+  	<select id="getTotalPrdList" resultType="Long">
+  		SELECT
+  			COUNT(product_id)
+  		FROM
+  			product
   	</select>
   	
   	<!-- 특정 id 상품 하나 가져오기 -->
   	<select id="getPrdOne" parameterType="ProductDTO" resultType="ProductDTO">
-  		select * from product where product_id = #{product_id}
+  		SELECT * 
+  		FROM 
+  			product 
+  		WHERE 
+  			product_id = #{product_id}
+  	</select>
+  	
+  	<!-- 특정 id 상품 하나의 배송일별 팔린 갯수 합 가져오기 -->
+  	<select id="getSoldSum" parameterType="Long" resultType="Long">
+  		SELECT
+  			SUM(product_sell_count)
+  		FROM
+  			product_date
+  		WHERE
+  			product_id = #{product_id}
   	</select>
   	
   	<!-- 특정 id 상품의 주문가능 일자 가져오기 -->
   	<select id="getDate" parameterType="ProductDTO" resultType="ProductDTO">
-  		select product_regdate from product p right join product_date pd on p.product_id = pd.product_id
-		where p.product_id = #{product_id}
-		order by pd.product_regdate asc
+  		SELECT 
+  			pd.product_id,
+  			product_regdate,
+  			product_sell_count,
+  			product_max_count,
+  			product_date_state
+  		FROM 
+  			product p RIGHT JOIN product_date pd 
+  		ON 
+  			p.product_id = pd.product_id
+		WHERE 
+			p.product_id = #{product_id}
+		ORDER BY 
+			pd.product_regdate ASC
   	</select>
   	
   	<!-- 특정 id 상품 하나 삭제하기 -->
   	<delete id="deletePrdOne" parameterType="ProductDTO">
-  		delete from product where product_id = #{product_id}
+  		DELETE FROM 
+  			product 
+  		WHERE 
+  			product_id = #{product_id}
   	</delete>
+  	
+  	<!-- 품절 판단하는 쿼리문 -->
+  	<select id="isSoldOut" parameterType="Long" resultType="ProductDTO">
+  		SELECT * 
+  		FROM 
+  			product p 
+  		WHERE
+  			product_total_count = 
+  			(
+  				SELECT 
+  					SUM(product_sell_count) 
+  				FROM 
+  					product_date pd 
+  				WHERE 
+  					pd.product_id = #{product_id}) AND product_id = #{product_id}
+  	</select>
+  	
+  	<!-- 품절 상태 업데이트 -->
+  	<update id="doSoldOut" parameterType="Long">
+  		UPDATE 
+  			product 
+  		SET 
+  			product_state = '품절'
+  		WHERE 
+  			product_id = #{product_id}
+  	</update>
+  	<!-- 주문 마감 상태 업데이트 -->
+  	<update id="doDateOut" parameterType="Long">
+  		UPDATE 
+  			product 
+  		SET 
+  			product_state = '주문마감'
+  		WHERE 
+  			product_id = #{product_id}
+  	</update>
+  	
+  	<!-- 상품별 재고상태 업데이트 -->
+  	<update id="doDateState" parameterType="ProductDTO">
+  		UPDATE
+  			product_date
+  		SET
+  			product_date_state = #{product_date_state}
+  		WHERE
+  			product_id = #{product_id} AND product_regdate = TO_DATE(#{product_regdate}, 'YYYY-MM-DD')
+  	</update>
+  	
   </mapper>
