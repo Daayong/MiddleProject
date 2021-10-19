@@ -13,6 +13,7 @@
 		    #{member_id},
 		    #{product_id},
 		    NULL,
+		    #{cart_delivery_date},
 		    #{quantity},
 		    'checked'
 		)
