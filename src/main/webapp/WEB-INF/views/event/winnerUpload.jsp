@@ -40,7 +40,6 @@
 			margin: -117 auto -290;
 			padding: 117 0 290;
 		}
-		
 		.tit {
     		font-size: 28px;
     		line-height: 42px;
@@ -60,34 +59,21 @@
 
 	<section id="container">
 	
-			<form class="w-80" action="./eventUpload" method="POST" enctype="multipart/form-data">
+			<form class="w-80" action="./winnerUpload" method="POST" enctype="multipart/form-data">
 			
-				<h2 class="tit">이벤트 작성</h2>
+			<h2 class="tit">당첨자 발표 작성</h2>
 		
-		
-			<div class="mb-3 mt-3 input_event_ing">
-		  		<label for="event_subject" class="form-label">Subjcet</label>
-		  		<input type="text" class="form-control" name="event_subject" id="event_subject" placeholder="Enter Subject">
+			<div class="mb-3 mt-3 input_event_winner">
+		  		<label for="event_winner_subject" class="form-label">Subjcet</label>
+		  		<input type="text" class="form-control" name="event_winner_subject" id="event_winner_subject" placeholder="Enter Subject">
 			</div>
 			
-			<div class="input_event_ing" style="display: inline-block;">
-				<label for="event_startDate">이벤트 시작일 : </label>
-				<input type="date" class="datepicker" pattern="yyyy-MM-dd" id="event_startDate" name="event_startDate" autocomplete="off">
 			
-				<label style="margin-left: 20px;" for="event_endDate">종료일 : </label>
-				<input type="date" class="datepicker" pattern="yyyy-MM-dd" id="event_endDate" name="event_endDate" autocomplete="off">
-			</div>
-			
-			<div class="mb-3 input_event_ing">
-				<label for="event_content" class="form-label">Contents</label>
-				<textarea class="form-control" id="event_content" name="event_content"  placeholder="Input some text."></textarea>
+			<div class="mb-3 input_event_winner">
+				<label for="event_winner_content" class="form-label">Contents</label>
+				<textarea class="form-control" id="event_winner_content" name="event_winner_content"  placeholder="Input some text."></textarea>
 			</div>
 		
-			<div class="input_event_ing" style="margin-bottom: 40px;">
-				<label for="inputEventThumbnail">event 썸네일</label>
-				<input type="file" id="inputEventThumbnail" name="thumbnail_file">
-			</div>
-			
 		
 		<!-- button 추가 -->
 		<div align="left" class="mt-3" style="margin-bottom: 50px">
@@ -102,10 +88,9 @@
 
 <script type="text/javascript">
 
-	$('#event_content').summernote({
+	$('#event_winner_content').summernote({
 		 height: 500
 	});
-	
 	
 
 		

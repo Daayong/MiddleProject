@@ -11,6 +11,7 @@
   		SELECT * 
   		FROM 
   			event
+  		ORDER BY event_id DESC
   	</select>
   	
   	<!-- 이벤트 글 작성하기 -->

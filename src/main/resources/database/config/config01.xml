@@ -17,6 +17,7 @@
 			<typeAlias type="com.d.mp.cs.notice.NoticeFileDTO" alias="NoticeFileDTO"/>
 		
 			<typeAlias type="com.d.mp.event.EventDTO" alias="EventDTO"/>
+			<typeAlias type="com.d.mp.event.winner.EventWinnerDTO" alias="EventWinnerDTO"/>
 			<typeAlias type="com.d.mp.event.EventFileDTO" alias="EventFileDTO"/>	
 	
 	  		<typeAlias type="com.d.mp.board.util.BoardPager" alias="boardPager"/>

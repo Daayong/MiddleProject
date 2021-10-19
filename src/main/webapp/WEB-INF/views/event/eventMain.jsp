@@ -60,7 +60,7 @@
 								<a style="cursor: pointer;"><span>진행중</span></a>
 							</li>
 							<li class="" id="pres">
-								<a style="cursor: pointer;"><span>당첨자 발표</span></a>
+								<a style="cursor: pointer;" href="./winnerMain"><span>당첨자 발표</span></a>
 							</li>
 						</ul>
 					
@@ -119,54 +119,6 @@
 					<!-- //이벤트 목록 페이지 -->
 					
 					
-				<!-- 당첨자 발표 페이지 -->
-					
-				<div id="winnerListArea"  class="event_winner" style="display: block;">
-
-				<!-- 당첨자 발표 table -->	
-				<div class="tb_row" style="display: none">
-					<table class="">
-						<colgroup>
-							<col width="10%">
-							<col width="*">
-							<col width="15%">
-						</colgroup>
-						<thead>
-							<tr>
-								<th scope="row">번호</th>
-								<th scope="row">제목</th>
-								<th scope="row">당첨자 발표일자</th>
-							</tr>
-						</thead>
-						
-						<tbody>
-							<c:forEach items="${winnerList}" var="wlist">
-							<tr>
-								<td>${wlist.event_id}</td>
-								<td class="tit"><a href="#">${wlist.event_subject}</a></td>
-								<td>${wlist.event_regDate}</td>
-							</tr> 		
-							
-							</c:forEach>
-						</tbody>
-					</table>
-			
-					<!-- event upload admin만 접근 가능 -->
-			
-				</div>
-			
-		 	<div id="winnerPaging" class="pagination" style="display: none">
-				<c:if test="${not empty member and member.member_user_id eq 'admin'}">
-					<button class="btn_add white" onclick="location.href='./eventUpload'"><span>이벤트 추가</span></button>
-				</c:if>
-				<span class="page_num">
-					<strong><span class="hide">현재 페이지</span>1</strong>
-				</span>
-			
-			</div> 
-		<!-- 당첨자 발표 -->
-	</div>
-					
 					
 					
 					<!--//당첨자 발표 -->
@@ -187,27 +139,5 @@
 
 <!-- javaScript -->
 
-<script type="text/javascript">
-	$("#pros").click(function() {
-		$(this).addClass("on");
-		$("#pres").removeClass("on");
-		$(".event_list").css("display","block");
-		$(".tb_row").css("display","none");
-		$("#winnerPaging").css("display", "none");
-	});
 	
-	$("#pres").click(function() {
-		$(this).addClass("on");
-		$("#pros").removeClass("on");
-		$(".tb_row").css("display","block");
-		$("#winnerPaging").css("display", "block");
-		$(".event_list").css("display","none");
-	});
-	
-	
-	
-	
-
-</script>
-
 </html>

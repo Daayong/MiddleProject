@@ -4,68 +4,44 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
-  <mapper namespace="com.d.mp.event.EventDAO">
+  <mapper namespace="com.d.mp.event.winner.EventWinnerDAO">
   
-  	<!-- 진행중인 이벤트 list 불러오기 -->
-  	<select id="getEventList" resultType="EventDTO">
+  	<!-- 당첨자 발표 list 불러오기 -->
+  	<select id="getWinnerList" resultType="EventWinnerDTO">
   		SELECT * 
   		FROM 
-  			event
-  		WHERE 
-  			event_type = 1
+  			event_winner
+  		ORDER BY
+  			event_winner_id DESC
   	</select>
   	
  
-  	<!-- 당첨자 발표 이벤트 list 불러오기 -->
-  	  	<select id="getWinnerList"  resultType="EventDTO">
-  		SELECT * 
-  		FROM 
-  			event
-  		WHERE 
-  			event_type  = 0
-  	</select>
-  	
+  
   	<!-- 이벤트 글 작성하기 -->
-  	<insert id="setEventList" parameterType="EventDTO">
+  	<insert id="setWinnerList" parameterType="EventWinnerDTO">
 	  	<selectKey>
-	  		SELECT event_seq.nextval FROM dual
+	  		SELECT event_winner_seq.nextval FROM dual
 	  	</selectKey>
 	  	INSERT INTO 
-	  		event
+	  		event_winner
 	  	VALUES
-	  		(event_seq.nextval, #{event_subject}, #{event_content}, #{event_type}, sysdate, #{event_startDate}, #{event_endDate})	  	
+	  		(event_winner_seq.nextval, #{event_winner_subject}, #{event_winner_content}, sysdate)	  	
   	</insert>
   	
-  	
-  	<!-- 파일 등록하기 -->
-  	<insert id="setFile" parameterType="EventFileDTO">
-  		INSERT INTO
-  			event_file
-  		VALUES (event_file_seq.nextval, #{event_id}, #{event_file_name}, #{event_file_ori_name})
-  	</insert>
-  	
-  	<!-- 파일 가져오기 -->
-  	<select id="getFile" parameterType="EventDTO" resultType="EventFileDTO">
-  		SELECT *
-  		FROM 
-  			event_file 
-  		WHERE
-  			event_id = #{event_id} 
-  	</select>
   
   <!-- 이벤트 세부사항 보기 -->
-  <select id="getEventView" parameterType="EventDTO" resultType="EventDTO">
+  <select id="getWinnerView" parameterType="EventWinnerDTO" resultType="EventWinnerDTO">
   		SELECT * 
   		FROM
-  			event
+  			event_winner
   		WHERE 
-  			event_id = #{event_id}
+  			event_winner_id = #{event_winner_id}
   </select>
   
   
   <!-- 선택한 글 삭제 -->
   <delete id="setEventDelete" parameterType="EventDTO">
-  	DELETE FROM event WHERE event_id = #{event_id}
+  	DELETE FROM event_winner WHERE event_winner_id = #{event_winner_id}
   </delete>
   
   </mapper>
