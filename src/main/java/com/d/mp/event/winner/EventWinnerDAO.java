@@ -28,8 +28,8 @@ public class EventWinnerDAO {
 	
 	//이벤트 세부사항 보기
 	
-	public List<EventWinnerDTO> getWinnerView(EventWinnerDTO eventWinnerDTO) throws Exception{
-		return sqlSession.selectList(NAMESPACE+"getWinnerView", eventWinnerDTO);
+	public EventWinnerDTO getWinnerView(EventWinnerDTO eventWinnerDTO) throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getWinnerView", eventWinnerDTO);
 	}
 	
 	//글삭제

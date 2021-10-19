@@ -1,6 +1,7 @@
 package com.d.mp.event;
 
 import java.util.List;
+import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,8 +29,8 @@ public class EventDAO {
 	
 	//이벤트 세부사항 보기
 	
-	public List<EventDTO> getEventView(EventDTO eventDTO) throws Exception{
-		return sqlSession.selectList(NAMESPACE+"getEventView", eventDTO);
+	public EventDTO getEventView(EventDTO eventDTO) throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getEventView", eventDTO);
 	}
 	
 	//글삭제

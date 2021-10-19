@@ -88,7 +88,7 @@
 							<c:forEach items="${winnerList}" var="wlist">
 							<tr>
 								<td>${wlist.event_winner_id}</td>
-								<td class="tit"><a href="#">${wlist.event_winner_subject}</a></td>
+								<td class="tit"><a href="./winnerView?event_winner_id=${wlist.event_winner_id}">${wlist.event_winner_subject}</a></td>
 								<td>${wlist.event_winner_regDate}</td>
 							</tr> 		
 							

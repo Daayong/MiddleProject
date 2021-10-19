@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.d.mp.event.winner.EventWinnerDTO;
+
 @Controller
 @RequestMapping("/event/**")
 public class EventController {
@@ -21,10 +23,10 @@ public class EventController {
 	@GetMapping("eventMain")
 	public ModelAndView getEventList() throws Exception{
 		ModelAndView mv = new ModelAndView();
-		
+	
 		List<EventDTO> ar = eventService.getEventList();
 		mv.addObject("eventList", ar);
-		
+
 		mv.setViewName("event/eventMain");
 		
 		return mv;
@@ -32,8 +34,13 @@ public class EventController {
 	
 	
 	@GetMapping("planView")
-	public String planView() throws Exception{
-		return "event/planView";
+	public ModelAndView getEventView(EventDTO eventDTO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		
+		eventDTO = eventService.getEventView(eventDTO);
+		List<EventFileDTO> files = eventService.getFile(eventDTO);
+		mv.addObject("dto", eventDTO);
+		return mv;
 	}
 	
 	@GetMapping("eventUpload")
@@ -56,4 +63,27 @@ public class EventController {
 		mv.setViewName("redirect:./eventMain");
 		return mv;
 	}
+	
+
+	@GetMapping("eventDelete")
+	public ModelAndView setEventDelete(EventDTO eventDTO) throws Exception{
+		
+		int result = eventService.setEventDelete(eventDTO);
+		
+		ModelAndView mv = new ModelAndView();
+		
+		String message = "삭제에 실패했습니다";
+		
+		if(result>0) {
+			message = "삭제되었습니다";
+		}
+		
+		mv.addObject("msg", message);
+		mv.addObject("url", "./eventMain");
+		
+		mv.setViewName("common/result");
+		
+		return mv;
+	}
+	
 }

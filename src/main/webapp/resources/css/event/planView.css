@@ -39,5 +39,15 @@
     font-weight: 400;
 }
 
-
+.delete{
+	
+	width: 80px;
+    display: inline-block;
+    font-weight: 400;
+	background-color: #f91b15;
+	color: #ffffff;
+	margin-top: 56px;
+    text-align: center;
+	
+}
 

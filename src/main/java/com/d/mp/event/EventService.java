@@ -1,6 +1,7 @@
 package com.d.mp.event;
 
 import java.io.File;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.ServletContext;
@@ -52,7 +53,7 @@ public class EventService {
 
 	
 	//선택한 이벤트 페이지 조회
-	public List<EventDTO> getEventView(EventDTO eventDTO) throws Exception{
+	public EventDTO getEventView(EventDTO eventDTO) throws Exception{
 		return eventDAO.getEventView(eventDTO);
 	}
 	

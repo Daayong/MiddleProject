@@ -48,12 +48,12 @@
 			<div class="view">
 				<div class="head">
 					
-					<h2 class="tit">[쿡킷] 가을 요리비책<span class="date">2021-10-15 ~ 2021-10-31</span></h2>
+					<h2 class="tit">${dto.event_subject}<span class="date">2021-10-15 ~ 2021-10-31</span></h2>
 					
 				</div>
 				
 				<!-- 컨텐츠 등록 -->
-				<div class="conts">	</div>
+				<div class="conts">${dto.event_content}</div>
 	        	
 			</div>
 			

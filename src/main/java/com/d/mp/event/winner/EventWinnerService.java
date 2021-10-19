@@ -34,7 +34,7 @@ public class EventWinnerService {
 
 		
 		//선택한 이벤트 페이지 조회
-		public List<EventWinnerDTO> getWinnerView(EventWinnerDTO eventWinnerDTO) throws Exception{
+		public EventWinnerDTO getWinnerView(EventWinnerDTO eventWinnerDTO) throws Exception{
 			return eventWinnerDAO.getWinnerView(eventWinnerDTO);
 		}
 		

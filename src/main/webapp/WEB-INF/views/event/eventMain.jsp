@@ -74,8 +74,10 @@
 			<!-- 이미지 케이스 -->
 			<div class="pro_module">
 				<div class="img_wrap">															
-					<a href="#" class="link_more">
-					<img src="/mp/resources/images/20210928163004637.jpg" alt="스탬프 찍으면, 쿡킷 인기메뉴가 무료(10월-12월)" onerror="cj.com.noImg(this,'P')">				
+					<a href="./planView?event_id=${eList.event_id}" class="link_more">
+				
+					<img src="/mp/resources/images/20210928163004637.jpg" alt="test" onerror="cj.com.noImg(this,'P')">				
+		
 						<span class="dim"></span>
 					</a>
 				</div>

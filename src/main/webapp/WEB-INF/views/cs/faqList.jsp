@@ -225,34 +225,6 @@
 	
 
 	
-	    $(function(){
-	    	$("button").on('click',function(){
-	    			let faq_type = $(this).val();
-	    			console.log(faq_type);
-	    			$.ajax({
-	    				 url : './faqTypeList',
-	    	              type : "post", 
-	    	              cache: false,
-	    	              headers: {"cache-control":"no-cache", "pragma": "no-cache"},
-	    	              data : {
-	    	            	  
-	    	            	  "faq_type" : faq_type
-	    	            	  
-	    	              }, 
-	    	              success : function(data){ 
-	    	                 console.log(data);
-	    	                
-	    	                 $('.faq_list').html(data); 
-	    	              },
-	    	              error : function(data){
-	    	            	 alert('error');
-	    	               
-	    	              }//error
-	    			})//ajax
-	    		});//click
-	    });//ready
-	
-	
 </script>
 
 

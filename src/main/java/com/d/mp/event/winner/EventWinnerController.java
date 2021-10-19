@@ -10,6 +10,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.web.servlet.ModelAndView;
 
+import com.d.mp.cs.notice.NoticeDTO;
+import com.d.mp.event.EventDTO;
+import com.d.mp.event.EventFileDTO;
+
 
 @Controller
 @RequestMapping("/event/**")
@@ -30,10 +34,15 @@ public class EventWinnerController {
 		return mv;
 	}
 	
-	
+
 	@GetMapping("winnerView")
-	public String planView() throws Exception{
-		return "event/winnerView";
+	public ModelAndView getWinnerView(EventWinnerDTO eventWinnerDTO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		
+		eventWinnerDTO = eventWinnerService.getWinnerView(eventWinnerDTO);
+	
+		mv.addObject("dto", eventWinnerDTO);
+		return mv;
 	}
 	
 	@GetMapping("winnerUpload")
@@ -53,4 +62,27 @@ public class EventWinnerController {
 		mv.setViewName("redirect:./eventMain");
 		return mv;
 	}
+	
+
+	@GetMapping("winnerEventDelete")
+	public ModelAndView setEventDelete(EventWinnerDTO eventWinnerDTO) throws Exception{
+		
+		int result = eventWinnerService.setEventDelete(eventWinnerDTO);
+		
+		ModelAndView mv = new ModelAndView();
+		
+		String message = "삭제에 실패했습니다";
+		
+		if(result>0) {
+			message = "삭제되었습니다";
+		}
+		
+		mv.addObject("msg", message);
+		mv.addObject("url", "./winnerMain");
+		
+		mv.setViewName("common/result");
+		
+		return mv;
+	}
+	
 }
