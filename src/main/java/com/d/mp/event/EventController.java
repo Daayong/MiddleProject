@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -22,10 +23,7 @@ public class EventController {
 		ModelAndView mv = new ModelAndView();
 		
 		List<EventDTO> ar = eventService.getEventList();
-		List<EventDTO> ar1 = eventService.getWinnerList();
-		
 		mv.addObject("eventList", ar);
-		mv.addObject("winnerList", ar1);
 		
 		mv.setViewName("event/eventMain");
 		
@@ -38,8 +36,24 @@ public class EventController {
 		return "event/planView";
 	}
 	
-	@RequestMapping("eventUpload")
-	public String eventUpload() throws Exception{
-		return "event/eventUpload";
+	@GetMapping("eventUpload")
+	public ModelAndView setEventList() throws Exception{
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("event/eventUpload");
+		
+		return mv;
+	}
+	
+	@PostMapping("eventUpload")
+	public ModelAndView setEventList(EventDTO eventDTO, MultipartFile [] files) throws Exception{
+		
+		for(MultipartFile multipartFile : files) {
+			System.out.println(multipartFile.getOriginalFilename());
+		}
+		
+		ModelAndView mv = new ModelAndView();
+		int result = eventService.setEventList(eventDTO, files);
+		mv.setViewName("redirect:./eventMain");
+		return mv;
 	}
 }

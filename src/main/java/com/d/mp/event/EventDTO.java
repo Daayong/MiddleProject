@@ -7,8 +7,6 @@ public class EventDTO {
 	private Long event_id;
 	private String event_subject;
 	private String event_content;
-	private Long event_type;
-	private Date event_regDate;
 	private Date event_startDate;
 	private Date event_endDate;
 	
@@ -29,18 +27,6 @@ public class EventDTO {
 	}
 	public void setEvent_content(String event_content) {
 		this.event_content = event_content;
-	}
-	public Long getEvent_type() {
-		return event_type;
-	}
-	public void setEvent_type(Long event_type) {
-		this.event_type = event_type;
-	}
-	public Date getEvent_regDate() {
-		return event_regDate;
-	}
-	public void setEvent_regDate(Date event_regDate) {
-		this.event_regDate = event_regDate;
 	}
 	public Date getEvent_startDate() {
 		return event_startDate;

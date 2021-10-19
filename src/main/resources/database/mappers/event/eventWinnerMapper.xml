@@ -11,6 +11,18 @@
   		SELECT * 
   		FROM 
   			event
+  		WHERE 
+  			event_type = 1
+  	</select>
+  	
+ 
+  	<!-- 당첨자 발표 이벤트 list 불러오기 -->
+  	  	<select id="getWinnerList"  resultType="EventDTO">
+  		SELECT * 
+  		FROM 
+  			event
+  		WHERE 
+  			event_type  = 0
   	</select>
   	
   	<!-- 이벤트 글 작성하기 -->
@@ -21,7 +33,7 @@
 	  	INSERT INTO 
 	  		event
 	  	VALUES
-	  		(event_seq.nextval, #{event_subject}, #{event_content}, #{event_startDate}, #{event_endDate})	  	
+	  		(event_seq.nextval, #{event_subject}, #{event_content}, #{event_type}, sysdate, #{event_startDate}, #{event_endDate})	  	
   	</insert>
   	
   	

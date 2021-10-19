@@ -19,18 +19,11 @@ public class EventDAO {
 		return sqlSession.selectList(NAMESPACE+"getEventList");
 	}
 	
-	public List<EventDTO> getWinnerList() throws Exception{
-		return sqlSession.selectList(NAMESPACE+"getWinnerList");
-	}
 	
 	//이벤트 글 작성
 	
 	public int setEventList(EventDTO eventDTO) throws Exception{
 		return sqlSession.insert(NAMESPACE+"setEventList", eventDTO);
-	}
-
-	public int setWinnerList(EventDTO eventDTO) throws Exception{
-		return sqlSession.insert(NAMESPACE+"setWinnerList", eventDTO);
 	}
 	
 	//이벤트 세부사항 보기

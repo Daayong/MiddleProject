@@ -54,7 +54,7 @@
 	
 			<form class="w-80" action="./eventUpload" method="POST" enctype="multipart/form-data">
 			
-				<select class="form-select" style="width: 10%; font-size:small; line-height:3; margin: 30 0 15" name="faq_type" aria-label="Default select example">
+				<select class="form-select" style="width: 10%; font-size:small; line-height:3; margin: 30 0 15" name="event_type" aria-label="Default select example">
   					<option selected>공지 유형</option>
   					<option value="1">진행중</option>
   					<option value="0">당첨자 발표</option>
@@ -63,20 +63,20 @@
 		
 			<div class="mb-3 mt-3">
 		  		<label for="notice_subject" class="form-label">Subjcet</label>
-		  		<input type="text" class="form-control" name="notice_subject" id="subject" placeholder="Enter Subject">
+		  		<input type="text" class="form-control" name="event_subject" id="event_subject" placeholder="Enter Subject">
 			</div>
 			
 			<div class="input_event_ing" style="display: inline-block;">
-				<label for="startDate">이벤트 시작일 : </label>
-				<input type="date" class="datepicker" id="startDate" name="event_start_date" autocomplete="off">
+				<label for="event_startDate">이벤트 시작일 : </label>
+				<input type="date" class="datepicker" pattern="yyyy-MM-dd" id="event_startDate" name="event_startDate" autocomplete="off">
 			
-				<label style="margin-left: 20px;" for="endDate">종료일 : </label>
-				<input type="date" class="datepicker" id="endDate" name="event_end_date" autocomplete="off">
+				<label style="margin-left: 20px;" for="event_endDate">종료일 : </label>
+				<input type="date" class="datepicker" pattern="yyyy-MM-dd" id="event_endDate" name="event_endDate" autocomplete="off">
 			</div>
 			
 			<div class="mb-3">
-				<label for="notice_content" class="form-label">Contents</label>
-				<textarea class="form-control" id="notice_content" name="notice_content"  placeholder="Input some text."></textarea>
+				<label for="event_content" class="form-label">Contents</label>
+				<textarea class="form-control" id="event_content" name="event_content"  placeholder="Input some text."></textarea>
 			</div>
 		
 			<div class="input_event_ing" style="margin-bottom: 40px;">
@@ -97,7 +97,7 @@
 
 <script type="text/javascript">
 
-	$('#notice_content').summernote({
+	$('#event_content').summernote({
 		 height: 500
 	});
 	
@@ -105,7 +105,7 @@
 	$(document).ready(function() {
 		$('.form-select').change(function() {
 			let result = $('.form-select option:selected').val();
-			if(result == 'winner'){
+			if(result == '0'){
 				$('.input_event_ing').hide();
 			}else{
 				$('.input_event_ing').show();

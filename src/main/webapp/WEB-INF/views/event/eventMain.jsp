@@ -68,7 +68,8 @@
 					
 		<div class="event_list" style="display:block;">
 			<ul id="eventListArea">
-	
+		
+		<c:forEach items="${eventList}" var="eList">
 		<li>
 			<!-- 이미지 케이스 -->
 			<div class="pro_module">
@@ -83,16 +84,16 @@
 						<div class="prd_flag_wrap">
 							<span class="flag cate">EVENT</span><!-- 개발 요청 사항 : EVENT/기획전 경우 .flag에 cate 클래스 추가  -->
 
-							<span class="date">2021.10.01 ~ 2021.12.31</span>
+							<span class="date">${eList.event_startDate} ~ ${eList.event_endDate}</span>
 						</div>
 						<div class="tit_info">
-							<span class="tit mt_elps">스탬프 찍으면, 쿡킷 인기메뉴가 무료(10월-12월)</span>
+							<span class="tit mt_elps">${eList.event_subject}</span>
 						</div>
 					</a>
 				</div>
 			</div>
 		</li>		
-		
+		</c:forEach>
 	
 		
 				
