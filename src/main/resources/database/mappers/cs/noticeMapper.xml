@@ -7,7 +7,7 @@
   <mapper namespace="com.d.mp.cs.notice.NoticeDAO">
   
   <!-- list -->
-  <select id="getNoticeList" parameterType="com.d.mp.board.util.BoardPager"  resultType="NoticeDTO">
+  <select id="getNoticeList" parameterType="BoardPager"  resultType="NoticeDTO">
   	SELECT * FROM
   	 (SELECT rownum r, n.* FROM
   	  (SELECT * FROM notice ORDER BY notice_id DESC)
@@ -17,7 +17,7 @@
   
   <!-- paging -->
   
-  <select id="getCount" parameterType="com.d.mp.board.util.BoardPager" resultType="Long">
+  <select id="getCount" parameterType="BoardPager" resultType="Long">
   	SELECT COUNT(notice_id) FROM notice
   </select>
   

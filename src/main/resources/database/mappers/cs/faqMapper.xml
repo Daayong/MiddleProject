@@ -17,7 +17,7 @@
   
 
   
-  <select id="getCount" parameterType="com.d.mp.board.util.BoardPager" resultType="Long">
+  <select id="getCount" parameterType="BoardPager" resultType="Long">
   	
   SELECT COUNT(faq_id) FROM faq
  		WHERE faq_type
