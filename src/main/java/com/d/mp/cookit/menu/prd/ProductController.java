@@ -161,9 +161,8 @@ public class ProductController {
 			if(isSoldOut == 1) {
 				prdAr.get(i).setProduct_state("품절");
 				productService.doSoldOut(prdAr.get(i).getProduct_id());
-			}
-			
-			if(isEndDate == true) {
+			}			
+			else if(isEndDate == true) {
 				prdAr.get(i).setProduct_state("주문마감");
 				productService.doDateOut(prdAr.get(i).getProduct_id());
 			}
