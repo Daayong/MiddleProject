@@ -220,6 +220,11 @@ public class ProductService {
 		
 		return productDAO.doSoldOut(product_id);
 	}
+	// 주문마감 업데이트
+	public int doDateOut(Long product_id) throws Exception{
+		
+		return productDAO.doDateOut(product_id);
+	}
 	
 	//상품별 재고상태 업데이트
 	public int doDateState(ProductDTO productDTO) throws Exception{

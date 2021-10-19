@@ -131,15 +131,41 @@ public class ProductController {
 	public ModelAndView getPrdList(ProductDTO productDTO, ProductPager pager) throws Exception{
 		List<ProductDTO> prdAr = productService.getPrdList(productDTO, pager);
 		
+		
+		
 		int isSoldOut = 0;
 		
 		for(int i=0; i<prdAr.size(); i++) {
+			
+			// 품절이아닌 주문일자가 지나가버리면.
+			boolean isEndDate = false;
+			String state = "";
+			
+			List<ProductDTO> prdDate = productService.getDate(prdAr.get(i));
+			
+			for(int j=0; j<prdDate.size(); j++) {
+				
+				state = prdDate.get(j).getProduct_date_state();
+				
+				if(state.equals("판매가능")) {
+					System.out.println("판매가능");
+					isEndDate = false;
+					break;
+				}else if(state.equals("주문마감")) {
+					isEndDate = true;
+				}
+			}
 			
 			isSoldOut = productService.isSoldOut(prdAr.get(i).getProduct_id());
 			
 			if(isSoldOut == 1) {
 				prdAr.get(i).setProduct_state("품절");
 				productService.doSoldOut(prdAr.get(i).getProduct_id());
+			}
+			
+			if(isEndDate == true) {
+				prdAr.get(i).setProduct_state("주문마감");
+				productService.doDateOut(prdAr.get(i).getProduct_id());
 			}
 		}
 		
@@ -216,4 +242,14 @@ public class ProductController {
 
 	// =========================== 관리자 상품 추가 및 관리 페이지 끝 =========================== //
 	
+	
+	// 테스트
+	@GetMapping("menu_result")
+	public ModelAndView test01() throws Exception{
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("menu/menu_result");
+		
+		return mv;
+	}
 }

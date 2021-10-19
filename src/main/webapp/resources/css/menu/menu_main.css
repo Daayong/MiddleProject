@@ -169,7 +169,7 @@
 .soldout_txt{
 	position: absolute;
 	z-index: 99;
-	font-size: 50px;
+	font-size: 36px;
 	font-weight: 700;
 	top: 50%;
 	left: 50%;

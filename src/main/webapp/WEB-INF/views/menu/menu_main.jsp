@@ -40,7 +40,6 @@
 				<div class="cate">
 					<ul>
 						<li><a href="#">배송일별</a></li>
-						<li><a href="#">테마별</a></li>
 					</ul>
 				</div>
 				<div class="date_wrap">
@@ -98,6 +97,42 @@
 										
 										<div class="item_image">
 											<div class="soldout_txt">품절</div>
+											<img alt="test" src="../resources/upload/menu/main/${prd.product_id}/${prd.product_name}.jpg">
+										</div>
+										<p class="etc_info">${prd.product_recipe}</p>
+										<div class="item_title">
+											*${prd.product_name}
+										</div>
+										<div class="item_price">
+											<fmt:formatNumber value="${prd.product_price}" type="number" maxFractionDigits="3"/>원
+										</div>
+										<div class="item_review">
+											<ul>
+												<li></li>
+												<li>리뷰 4,000</li>
+											</ul>
+										</div>
+									</div>
+									<div class="item_btnbox">
+										<div class="menu_btn zzim_btn">
+											
+										</div>
+										<div class="menu_btn cart_btn">
+											
+										</div>
+									</div>
+								</div>
+							</c:when>
+								<c:when test="${prd.product_state eq '주문마감'}">
+								<div class="item_box">
+									<div class="click_menu_soldout"> <!-- div 버튼 만들기 -->
+										
+										
+										
+										<input type="hidden" value="${prd.product_id}" id="product_id">
+										
+										<div class="item_image">
+											<div class="soldout_txt">주문마감</div>
 											<img alt="test" src="../resources/upload/menu/main/${prd.product_id}/${prd.product_name}.jpg">
 										</div>
 										<p class="etc_info">${prd.product_recipe}</p>

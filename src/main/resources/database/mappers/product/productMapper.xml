@@ -216,6 +216,15 @@
   		WHERE 
   			product_id = #{product_id}
   	</update>
+  	<!-- 주문 마감 상태 업데이트 -->
+  	<update id="doDateOut" parameterType="Long">
+  		UPDATE 
+  			product 
+  		SET 
+  			product_state = '주문마감'
+  		WHERE 
+  			product_id = #{product_id}
+  	</update>
   	
   	<!-- 상품별 재고상태 업데이트 -->
   	<update id="doDateState" parameterType="ProductDTO">

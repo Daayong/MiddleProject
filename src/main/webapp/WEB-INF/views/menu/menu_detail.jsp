@@ -65,7 +65,7 @@
 				
 				<!-- 장바구니 및 찜목록 들어갈때 파라미터값 필요! -->
 				<div class="right_con">
-					<form action="cart" method="get">
+					<form action="menu_result" method="get">
 						<div class="title_info">
 							<div class="sub_title">
 								${prdDTO.product_sub_name}
@@ -104,7 +104,7 @@
 							<select id="prd_select" class="prd_date_select" name="product_date">
 									<option value="">배송받을 날짜를 선택해주세요.</option>
 								<c:forEach items="${prdDate}" var="date">
-								
+									
 									<!-- 날짜 포맷 변경 -->
 									<fmt:parseDate value="${date.product_regdate}" var="parseDateValue" pattern="yyyy-MM-dd"/>
 									<fmt:parseDate value="${today}" var="parseToday" pattern="yyyy-MM-dd"/>
@@ -118,8 +118,11 @@
 											</option>
 										</c:when>
 										<c:when test="${date.product_date_state eq '판매가능'}">
-											<option value="<fmt:formatDate value="${parseDateValue}" pattern="yyyy-MM-dd"/>">
+											<option value="<fmt:formatDate value="${parseDateValue}" pattern="yyyy-MM-dd"/>" data-stock="${date.product_max_count - date.product_sell_count}">	
 												<fmt:formatDate value="${parseDateValue}" pattern="MM월 dd일"/>
+												<c:if test="${(date.product_max_count - date.product_sell_count) le 10}">
+													(남은수량: ${date.product_max_count - date.product_sell_count}개)
+												</c:if>
 											</option>
 										</c:when>
 										<c:when test="${date.product_date_state eq '상품준비중'}">
@@ -168,7 +171,7 @@
 								<div class="zzim_btn"></div>
 							</button>
 							<div class="cart">
-								<button type="button" class="cart_btn">장바구니 담기</button>
+								<button type="submit" class="cart_btn">장바구니 담기</button>
 							</div>
 						</div>
 					</form>
@@ -197,9 +200,6 @@
 							<div class="leftbox_banner">
 								<img alt="banner" src="../resources/images/menu/copyright_top.gif">
 							</div>
-							<div class="leftbox_banner">
-								<img alt="banner" src="../resources/images/menu/menu_detail/leftbox_banner2.jpg">
-							</div>
 						</div>
 						<div class="description_box2">
 							${prdDTO.product_description}
@@ -212,11 +212,69 @@
 						<table class="prdInfo_table">
 							<tr>
 								<td>본상품구성</td>
-								<td>본상품구성 본상품구성</td>
+								<td>다리살(정육)</td>
 							</tr>
 							<tr>
-								<td>식품의유형</td>
-								<td></td>
+								<td>포장단위별 용량(중량),수량,크기</td>
+								<td>500 g</td>
+							</tr>
+							<tr>
+								<td>생산자, 수입품의 경우 수입자를 함께 표기</td>
+								<td>ㆍ제조원 : ㈜마니커 동두천지점 / 경기도 동두천시 승전로 6 ㆍ축산물유통전문판매원 : 씨제이프레시웨이㈜ / 경기도 이천시 마장면 덕평로 811</td>
+							</tr>
+							<tr>
+								<td>제조년월일, 유통기한 또는 품질유지기한</td>
+								<td>닭고기(다리살) 100%(국내산)</td>
+							</tr>
+							<tr>
+								<td>포장단위별 용량(중량),수량,크기</td>
+								<td>유통기한 : 제품 내 별도 표시(본 제품은 제품입고일별 유통기한이 상이하므로, 필요 시 문의주시면 상담원이 확인해드리겠습니다.)</td>
+							</tr>
+							<tr>
+								<td>상품구성</td>
+								<td>다리살(정육)</td>
+							</tr>
+							<tr>
+								<td>보관방법 또는 취급방법</td>
+								<td>-18℃ 이하 냉동보관</td>
+							</tr>
+							<tr>
+								<td>소비자상담 관련 전화번호</td>
+								<td>1668-1920</td>
+							</tr>
+						</table>
+								<table class="prdInfo_table">
+							<tr>
+								<td>본상품구성</td>
+								<td>다리살(정육)</td>
+							</tr>
+							<tr>
+								<td>포장단위별 용량(중량),수량,크기</td>
+								<td>500 g</td>
+							</tr>
+							<tr>
+								<td>생산자, 수입품의 경우 수입자를 함께 표기</td>
+								<td>ㆍ제조원 : ㈜마니커 동두천지점 / 경기도 동두천시 승전로 6 ㆍ축산물유통전문판매원 : 씨제이프레시웨이㈜ / 경기도 이천시 마장면 덕평로 811</td>
+							</tr>
+							<tr>
+								<td>제조년월일, 유통기한 또는 품질유지기한</td>
+								<td>닭고기(다리살) 100%(국내산)</td>
+							</tr>
+							<tr>
+								<td>포장단위별 용량(중량),수량,크기</td>
+								<td>유통기한 : 제품 내 별도 표시(본 제품은 제품입고일별 유통기한이 상이하므로, 필요 시 문의주시면 상담원이 확인해드리겠습니다.)</td>
+							</tr>
+							<tr>
+								<td>상품구성</td>
+								<td>다리살(정육)</td>
+							</tr>
+							<tr>
+								<td>보관방법 또는 취급방법</td>
+								<td>-18℃ 이하 냉동보관</td>
+							</tr>
+							<tr>
+								<td>소비자상담 관련 전화번호</td>
+								<td>1668-1920</td>
 							</tr>
 						</table>
 					</div>
@@ -445,7 +503,5 @@
 </body>
 
 <script src="../resources/js/menu/menu_js.js"></script>
-<script type="text/javascript">
-</script>
 
 </html>

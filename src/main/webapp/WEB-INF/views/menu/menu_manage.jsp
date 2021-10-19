@@ -74,26 +74,28 @@
 			<div id="content">
 		 		<div class="container">
                     <h1 class="mb-5"> COOKIT Product ManageMent </h1>
+                    <h2> 로그인중 : admin </h2>
 	                     <table class="product_table">
 						  <tr>
 							<th>상품코드</th><th>상품명</th><th>상품가격</th><th>상태</th><th>전체수량</th><th>남은수량</th><th></th><th></th>
 						  </tr>
 						  <c:forEach items="${prdDTO}" var="prd">
-						  <tr>
-						  	<td>${prd.product_id}</td>
-						  	<td>${prd.product_sub_name}&nbsp;*&nbsp;${prd.product_name}</td>
-						  	<td>${prd.product_price}원</td>
-						  	<td>${prd.product_state}</td>
-						  	<td>${prd.product_total_count}</td>
-						  	<td>${prd.product_stock}</td>
-						  	<td>
-						  		<button type="button" class="more_btn">MORE</button>
-						  		<button type="button" class="del_btn">X</button>
-						  		<input type="hidden" id="product_id" value="${prd.product_id}">
-						  	</td>
-						  </tr>
-						  <tr class="manage_detail">
-						  </tr>
+							  <tr>
+							  	<td>${prd.product_id}</td>
+							  	<td>${prd.product_sub_name}&nbsp;*&nbsp;${prd.product_name}</td>
+							  	<td>${prd.product_price}원</td>
+							  	<td>${prd.product_state}</td>
+							  	<td>${prd.product_total_count}</td>
+							  	<td>${prd.product_stock}</td>
+							  	<td>
+							  		<button type="button" class="more_btn">MORE</button>
+							  		<button type="button" class="del_btn">X</button>
+							  		<input type="hidden" id="product_id" value="${prd.product_id}">
+							  	</td>
+							  </tr>
+							  <tr class="manage_detail">
+							  	<td>aaaaa</td>
+							  </tr>
 						  </c:forEach>
 				   		</table>
                 </div>
@@ -119,6 +121,13 @@
 						}
 					});	
 				}
+			});
+			
+			$(".more_btn").on("click", function () {
+				
+				$(".manage_detail").css({
+					"display" : "block"
+				});
 			});
 		</script>
 	</body>

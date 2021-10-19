@@ -133,24 +133,36 @@ $(".prd_count").css({
 });
 $(".quantity").text("1");
 
+// 재고 수
+let maxStock = 0;
 
-// 셀렉트 박스 삭제 버튼
-$(".btn_del_order").click(function(){
-	$(".prd_count").css({
-		"display" : "none"
-	});
-	$("#product_cnt_value").val(1);
-	$(".quantity").text("1");
-});
 // 셀렉트 박스
 $("#prd_select").change(function(){
 	
-	$("#product_cnt_value").val(1);
-	$(".quantity").text("1");
+	// jquery data로 남은재고수 가져오기
+	maxStock = $("#prd_select option:selected").data("stock");
+	
+	let select_date= $("#prd_select option:selected").val();
+	
+	if(select_date == ""){
+		$(".prd_count").css({
+			"display" : "none"
+		});
+		$("#product_total_price").val(0);
+		$("#product_cnt_value").val(0);
+		$("#cnt_value").text("0");
+		$("#total_value").text("0");
+	}else{
+		$("#product_total_price").val($("#prd_price").val());
+		$("#product_cnt_value").val(1);
+		$(".quantity").text("1");
+		$("#cnt_value").text("1");
+		$("#total_value").text($("#prd_price").val());
+	}
 	// 선택 날짜 값 받아오기 default = ""
 	// ex) "2021-10-18"
 	
-	let select_date= $("#prd_select option:selected").val();
+	
 	
 	// 해당 일수 요일 배열 값
 	let weekday = ["일", "월", "화", "수", "목", "금", "토"];
@@ -169,11 +181,31 @@ $("#prd_select").change(function(){
 		$(".prd_count").css({
 			"display" : "block"
 		});
-	}
+	}	
+});
+
+// 셀렉트 박스 삭제 버튼
+$(".btn_del_order").click(function(){
+	$(".prd_count").css({
+		"display" : "none"
+	});
 	
+	// 초기화
+	$("#prd_select option:first").val("");
+	$("#product_total_price").val(0);
+	$("#product_cnt_value").val(0);
+	$(".quantity").text("1");
+	$("#cnt_value").text("0");
+	$("#total_value").text("0");
+	
+	//셀렉트박스 1번선택
+	$("#prd_select option:first").prop("selected", "selected");
 });
 
 /* detail_menu 수량변경시 나타나는 이벤트들 */
+
+let oneStockPrice = $("#prd_price").val();
+let totalPrice;
 
 $(".minus").on("click", function(){
 	let cnt = parseInt($("#product_cnt_value").val()) - 1;
@@ -182,14 +214,54 @@ $(".minus").on("click", function(){
 		alert("최소 수량은 1개입니다.");
 		return false;
 	}
+	
 	$("#product_cnt_value").val(cnt);
+	
+	totalPrice = cnt * oneStockPrice;
+	
 	$(".quantity").text(cnt);
+	$("#cnt_value").text(cnt);
+	$("#total_value").text(totalPrice);
+	
+	// hidden
+	$("#product_total_price").val(totalPrice);
+	$("#product_cnt_value").val(cnt);
+	
+	let a = $("#product_total_price").val();
+	let b = $("#product_cnt_value").val();
+	
+	console.log(a);
+	console.log(b);
 	
 });
 $(".plus").on("click", function(){
 	let cnt = parseInt($("#product_cnt_value").val()) + 1;
+	
+	if(cnt > 10){
+		alert("1인 최대 주문수량은 10개입니다. 대량 주문은 전화문의 바랍니다.");
+		return false;
+	}else if(cnt > maxStock){
+		alert("현 주문일자의 남은 재고 수는 " + maxStock + " 개 입니다. 다른 일자로 주문해주세요.");
+		return false;
+	}
+	
 	$("#product_cnt_value").val(cnt);
+	
+	totalPrice = cnt * oneStockPrice;
+	
 	$(".quantity").text(cnt);
+	$("#cnt_value").text(cnt);
+	$("#total_value").text(totalPrice);
+	
+	// hidden
+	$("#product_total_price").val(totalPrice);
+	$("#product_cnt_value").val(cnt);
+	
+	let a = $("#product_total_price").val();
+	let b = $("#product_cnt_value").val();
+	
+	console.log(a);
+	console.log(b);
 });
 
 /* detail_menu 선택한거 아래밑줄표시 */
