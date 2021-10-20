@@ -16,6 +16,10 @@ public class CartDAO {
 	
 	private final String NAMESPACE = "com.d.mp.order.cart.CartDAO.";
 	
+	public int insertCart(CartDTO cartDTO) throws Exception{
+		return sqlSession.insert(NAMESPACE + "insertCart", cartDTO);
+	}
+	
 	public List<CartListDTO> getCartList(MemberDTO memberDTO) throws Exception {		
 		return sqlSession.selectList(NAMESPACE + "getCartList", memberDTO);
 	}

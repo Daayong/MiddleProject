@@ -10,6 +10,11 @@
 	
 	<link href="${pageContext.request.contextPath}/resources/css/common.css" rel="stylesheet">
 	<link href="${pageContext.request.contextPath}/resources/css/main.css" rel="stylesheet">
+	<link
+	  rel="stylesheet"
+	  href="https://unpkg.com/swiper@7/swiper-bundle.min.css"
+	/>
+	<script src="https://unpkg.com/swiper@7/swiper-bundle.min.js"></script>
 	
 	<style>		
 		.wrapper{
@@ -90,9 +95,9 @@
                                      <div class="txt_wrap">		                                                
                                          <a href="https://www.cjcookit.com/pc/event/planView?plnId=103239&wid1=bnr_bn1" target="_self" class="conts">
                                              
-                                             	<div class="prd_flag_wrap">		
-								<span class="flag">이벤트 오픈</span>
-						</div>										
+                               	<div class="prd_flag_wrap">		
+									<span class="flag">이벤트 오픈</span>
+								</div>										
 
                                              <div class="tit_info">
                                                  <span class="sub_tit st_elps">쿡킷이 준비한 선물과<br>가을 캠핑 떠나세요!</span>
@@ -442,6 +447,7 @@
 
 	<script type="text/javascript" src="${pageContext.request.contextPath}/resources/js/menu/main.js">
 	</script>
+
 </body>
 
 </html> 

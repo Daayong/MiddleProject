@@ -13,6 +13,10 @@ public class CartService {
 	@Autowired
 	private CartDAO cartDAO;
 	
+	public int insertCart(CartDTO cartDTO) throws Exception{
+		return cartDAO.insertCart(cartDTO);
+	}
+	
 	public List<CartListDTO> getCartList(MemberDTO memberDTO) throws Exception {		
 		return cartDAO.getCartList(memberDTO);
 	}

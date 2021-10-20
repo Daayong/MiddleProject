@@ -6,6 +6,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,6 +18,9 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.d.mp.cookit.menu.prd.util.ProductPager;
+import com.d.mp.member.MemberDTO;
+import com.d.mp.order.cart.CartDTO;
+import com.d.mp.order.cart.CartService;
 
 @Controller
 @RequestMapping(value = "/menu/**")
@@ -23,6 +28,9 @@ public class ProductController {
 	
 	@Autowired
 	private ProductService productService;
+	
+	@Autowired
+	private CartService cartService;
 	
 	// =========================== 사용자 상품 관련 페이지 =========================== //
 	
@@ -242,12 +250,17 @@ public class ProductController {
 	// =========================== 관리자 상품 추가 및 관리 페이지 끝 =========================== //
 	
 	
-	// 테스트
-	@GetMapping("menu_result")
-	public ModelAndView test01() throws Exception{
+	// 테스트 장바구니 추가
+	@ResponseBody
+	@GetMapping("cart_insert")
+	public ModelAndView test01(CartDTO cartDTO, HttpSession session) throws Exception{
+		
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		cartDTO.setMember_id(memberDTO.getMember_id());
+		cartService.insertCart(cartDTO);
 		
 		ModelAndView mv = new ModelAndView();
-		mv.setViewName("menu/menu_result");
+		mv.setViewName("menu/menu_detail");
 		
 		return mv;
 	}
