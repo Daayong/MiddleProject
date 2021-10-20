@@ -82,48 +82,48 @@
 							
 							<ul>
 											
-							<li class="tab_item on"  id="all" >
-							 <button type="button" value="전체"><span>전체</span></button>
+							<li class="tab_item "  id="all" >
+							 <button class="" type="button" value="전체"><span>전체</span></button>
 							</li>
 						
 							<li class="tab_item" id="ship" >
-								 <button type="button" value="배송"><span>배송</span></button>
+								 <button class="" type="button" value="배송"><span>배송</span></button>
 							</li>
 						
 							<li class="tab_item" id="pay" >
-								<button type="button" value="결제/영수증"><span>결제/영수증</span></button> 
+								<button class="" type="button" value="결제/영수증"><span>결제/영수증</span></button> 
 								 
 							</li>
 							<li class="tab_item "  id="order" >
-								 <button type="button" value="주문"><span>주문</span></button> 
+								 <button class="" type="button" value="주문"><span>주문</span></button> 
 								 
 							</li>
 						
 							<li class="tab_item " id="cancel" >
-								<button type="button" value="취소/반품"><span>취소/반품</span></button> 
+								<button class="" type="button" value="취소/반품"><span>취소/반품</span></button> 
 								 
 							</li>
 						
 							
-							<li class="tab_item" id="rv" >
-								<button type="button" value="리뷰/포인트"><span>리뷰/포인트</span></button> 
+							<li class="tab_item" id="rv">
+								<button class="" type="button" value="리뷰/포인트"><span>리뷰/포인트</span></button> 
 							 
 							</li>
 							
 					
-							<li class="tab_item" id="gift"  >
-								<button type="button" value="선물하기"><span>선물하기</span></button> 
+							<li class="tab_item" id="gift">
+								<button class="" type="button" value="선물하기"><span>선물하기</span></button> 
 								 
 							</li>
 					
 							
 							<li class="tab_item " id="mem">
-								 <button type="button" value="회원"><span>회원</span></button> 
+								 <button class="" type="button" value="회원"><span>회원</span></button> 
 								 
 							</li>
 							
 							<li class="tab_item "  id="etc" >
-								<button type="button" value="기타"><span>기타</span></button> 
+								<button class="" type="button" value="기타"><span>기타</span></button> 
 								 
 							</li>	
 					</ul>
@@ -207,22 +207,11 @@
 
 <script type="text/javascript">
 	
-$("#all").click(function() {
-	$(this).addClass("on");
-	$(".tab_item").not(this).removeClass("on");
-});
 
 
-$("#ship").click(function() {
-	$(this).addClass("on");
-	$(".tab_item").not(this).removeClass("on");
-});
 
-$("#pay").click(function() {
-	$(this).addClass("on");
-	$(".tab_item").not(this).removeClass("on");
-});
-	
+
+
 	
 	
 	/* Q 선택시 답변 아래로 */
@@ -254,17 +243,27 @@ $("#pay").click(function() {
 	    	              headers: {"cache-control":"no-cache", "pragma": "no-cache"},
 	    	              data : {"faq_type" : faq_type}, 
 	    	              success : function(data){ 
-	    	             
-	    	               $('body').html(data); 
+	    	           
+	    	               $('body').html(data);
+	    	               
 	    	              },
 	    	              error : function(data){
 	    	            	 alert('error');
 	    	               
 	    	              }//error
 	    			})//ajax
+					
+
+					$(this).addClass("on");
+					$("button").not(this).removeClass("on");
+					    			
 	    		});//click
 	    		
-	    		
+	    	$(".tab_item").click(function() {
+				$(this).addClass("on");
+				$(".tab_item").not(this).removeClass("on");
+			});
+	
 	    });//ready
 	
 
