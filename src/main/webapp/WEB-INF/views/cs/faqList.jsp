@@ -154,7 +154,14 @@
 	            </div>
 	            <div class="desc ui_accord_content" id="answer" style="display: none" >
 	                <strong>A</strong>
-	             	<p class="cont">${dto.faq_content}</p>
+	             	<p class="cont">
+	             	
+	            	 	<c:if test="${not empty member and member.member_user_id eq 'admin' }">
+							<a href="./faqDelete?faq_id=${dto.faq_id}" class="btn de wh" ><span>삭제</span></a>
+						</c:if>
+	             	${dto.faq_content}
+	             	</p>
+	             
 	            </div>
            		</li>
            		
@@ -207,12 +214,6 @@
 
 <script type="text/javascript">
 	
-
-
-
-
-
-	
 	
 	/* Q 선택시 답변 아래로 */
 	$(".head").click(function() {
@@ -227,8 +228,6 @@
 		
 	});
 	
-	
-			
 			
 	 $(function(){
 		 
@@ -254,17 +253,16 @@
 	    			})//ajax
 					
 
-					$(this).addClass("on");
-					$("button").not(this).removeClass("on");
 					    			
 	    		});//click
+	    		
+	    });//ready
+	
 	    		
 	    	$(".tab_item").click(function() {
 				$(this).addClass("on");
 				$(".tab_item").not(this).removeClass("on");
 			});
-	
-	    });//ready
 	
 
 	

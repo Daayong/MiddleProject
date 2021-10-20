@@ -28,5 +28,9 @@ public class FaqService {
 		return faqDAO.getTypeList(m,faqDTO);
 	}
 	
+	public int setDelete(FaqDTO faqDTO) throws Exception{
+		return faqDAO.setDelete(faqDTO);
+	}
+	
 	
 }

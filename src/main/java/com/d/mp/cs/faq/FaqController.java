@@ -71,5 +71,26 @@ public class FaqController {
 		return mv;
 	}
 	
+	@GetMapping("/faqDelete")
+	public ModelAndView setDelete(FaqDTO faqDTO) throws Exception{
+		
+		ModelAndView mv = new ModelAndView();
+		
+		int result = faqService.setDelete(faqDTO);
+		
+		String message = "삭제에 실패했습니다";
+		
+		if(result>0) {
+			message = "삭제되었습니다";
+		}
+		
+		mv.addObject("msg", message);
+		mv.addObject("url", "./csMain");
+		
+		mv.setViewName("common/result");
+		
+		return mv;
+		
+	}
 	
 }	

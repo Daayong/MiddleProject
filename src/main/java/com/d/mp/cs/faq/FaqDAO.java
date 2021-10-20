@@ -50,5 +50,9 @@ public class FaqDAO {
 		return ar;
 	}
 	
+	public int setDelete(FaqDTO faqDTO) throws Exception{
+		return sqlSession.delete(NAMESPACE+"setDelete", faqDTO);
+	}
+	
 	
 }

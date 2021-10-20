@@ -349,6 +349,24 @@ div.input_wrap{
 
 
 
+.btn.de {
+ 
+    float: right;
+    width: 72px;
+    margin-right: 10px;
+    color: #101010;
+    border: 1px solid #202020;
+   text-align: center;
+   
+}
+
+.btn.de.wh, .btn.de.wh:focus {
+    border: 1px solid #ccc;
+}
+
+
+
+
 .hide {
 	display:inline-block;
 	position:absolute;
