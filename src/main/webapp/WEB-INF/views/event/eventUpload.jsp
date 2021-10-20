@@ -84,8 +84,8 @@
 			</div>
 		
 			<div class="input_event_ing" style="margin-bottom: 40px;">
-				<label for="inputEventThumbnail">event 썸네일</label>
-				<input type="file" id="inputEventThumbnail" name="thumbnail_file">
+				<label for="files">event 썸네일</label>
+				<input type="file" id="files" name="files">
 			</div>
 			
 		

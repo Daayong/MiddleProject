@@ -7,11 +7,10 @@
   <mapper namespace="com.d.mp.event.EventDAO">
   
   	<!-- 진행중인 이벤트 list 불러오기 -->
+  	
+ 
   	<select id="getEventList"  resultType="EventDTO">
-  		SELECT * 
-  		FROM 
-  			event
-  		ORDER BY event_id DESC
+  		 	SELECT * FROM event
   	</select>
   	
   	<!-- 이벤트 글 작성하기 -->

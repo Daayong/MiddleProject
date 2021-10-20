@@ -76,8 +76,8 @@
 				<div class="img_wrap">															
 					<a href="./planView?event_id=${eList.event_id}" class="link_more">
 				
-					<img src="/mp/resources/images/20210928163004637.jpg" alt="test" onerror="cj.com.noImg(this,'P')">				
-		
+					<img src="/mp/resources/images/20210928163004637.jpg" alt="test" onerror="">				
+	
 						<span class="dim"></span>
 					</a>
 				</div>

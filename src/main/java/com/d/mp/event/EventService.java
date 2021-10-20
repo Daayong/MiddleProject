@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.d.mp.board.util.BoardFileManager;
+import com.d.mp.board.util.BoardPager;
 
 @Service
 public class EventService {
@@ -24,6 +25,8 @@ public class EventService {
 	
 	//이벤트 글 목록 불러오기
 	public List<EventDTO> getEventList() throws Exception{
+		
+		
 		return eventDAO.getEventList();	
 	}
 	
@@ -40,9 +43,9 @@ public class EventService {
 			String fileName = fileManager.fileSave(multipartFile, file);
 			
 			EventFileDTO eventFileDTO = new EventFileDTO();
-			eventFileDTO.setEvent_file_id(eventDTO.getEvent_id());
 			eventFileDTO.setEvent_file_name(fileName);
 			eventFileDTO.setEvent_file_ori_name(multipartFile.getOriginalFilename());
+			eventFileDTO.setEvent_file_id(eventDTO.getEvent_id());
 
 			result = eventDAO.setFile(eventFileDTO);
 		}

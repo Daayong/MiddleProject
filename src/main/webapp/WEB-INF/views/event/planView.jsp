@@ -45,6 +45,13 @@
 		<div class="ev_wrap">
 			<h1 class="title">이벤트</h1>
 	
+		<div class="tab_wrap">
+            <ul class="tabs">
+                <li class="on"><a href="/mp/event/eventMain"><span>진행중<em class="hide">선택됨</em></span></a></li>
+                <li><a href="/mp/event/winnerMain"><span>당첨자 발표</span></a></li>
+            </ul>
+        </div>
+	
 			<div class="view">
 				<div class="head">
 					
