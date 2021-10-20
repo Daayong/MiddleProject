@@ -87,7 +87,6 @@
 							</li>
 						
 							<li class="tab_item" id="ship" >
-								<!-- <a class="tab_link" ><span>배송</span></a> -->
 								 <button type="button" value="배송"><span>배송</span></button>
 							</li>
 						
@@ -207,11 +206,24 @@
 <c:import url="../temp/boot_footer.jsp"></c:import>
 
 <script type="text/javascript">
-	$(".tab_item").click(function() {
-		$(this).addClass("on");
-		$(".tab_item").not(this).removeClass("on");
-	});
+	
+$("#all").click(function() {
+	$(this).addClass("on");
+	$(".tab_item").not(this).removeClass("on");
+});
 
+
+$("#ship").click(function() {
+	$(this).addClass("on");
+	$(".tab_item").not(this).removeClass("on");
+});
+
+$("#pay").click(function() {
+	$(this).addClass("on");
+	$(".tab_item").not(this).removeClass("on");
+});
+	
+	
 	
 	/* Q 선택시 답변 아래로 */
 	$(".head").click(function() {
@@ -227,6 +239,33 @@
 	});
 	
 	
+			
+			
+	 $(function(){
+		 
+		 
+	    	$("button").on('click',function(){
+	    			let faq_type = $(this).val();  //버튼이 클릭 되었을 때 그 버튼의 value를 let faq_type로 가져와서	
+	    			
+	    			$.ajax({
+	    				 url : './faqTypeList',  
+	    	              type : "post", 
+	    	              cache: false,
+	    	              headers: {"cache-control":"no-cache", "pragma": "no-cache"},
+	    	              data : {"faq_type" : faq_type}, 
+	    	              success : function(data){ 
+	    	             
+	    	               $('body').html(data); 
+	    	              },
+	    	              error : function(data){
+	    	            	 alert('error');
+	    	               
+	    	              }//error
+	    			})//ajax
+	    		});//click
+	    		
+	    		
+	    });//ready
 	
 
 	

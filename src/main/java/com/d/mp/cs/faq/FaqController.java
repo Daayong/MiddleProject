@@ -1,8 +1,9 @@
 package com.d.mp.cs.faq;
 
 
+import java.util.HashMap;
 import java.util.List;
-
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -49,20 +50,26 @@ public class FaqController {
 	}
 	
 	
-	@PostMapping("faqTypeList")
-		public ModelAndView getTypeList(HttpServletRequest request, HttpServletResponse response, FaqDTO faqDTO) throws Exception{
-		
+
+	@RequestMapping(value = "/faqTypeList")
+	public ModelAndView getTypeList(FaqDTO faqDTO, HttpServletRequest request, HttpServletResponse response ) throws Exception{
 		String faq_type = request.getParameter("faq_type");
 		
-		 faqDTO.setFaq_type(faq_type);
+		faqDTO.setFaq_type(faq_type);
 		
-		List<FaqDTO> ar = faqService.getTypeList(faqDTO);
+		Map<String, Object> m = new HashMap<String, Object>();
+		
+		m.put("faq_type", "%" + faq_type + "%");
+		
+		List<FaqDTO> ar = faqService.getTypeList(m, faqDTO);
 		
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("faq_type", faq_type);
 		mv.addObject("faqlist", ar);
 		mv.setViewName("cs/faqList");
+		
 		return mv;
 	}
-
+	
+	
 }	

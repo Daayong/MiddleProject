@@ -105,10 +105,8 @@ div.input_wrap{
 	
 /* 유형 선택시 박스 변화 */
 
-.f_type .cate_wrap .tab_item.on button{
+.f_type .cate_wrap .tab_item.on button {	
 	position:absolute;
-	top:0;
-	left:0;
 	border:3px solid #303030;
 	color:#101010;
 	font-weight:700;
@@ -117,7 +115,6 @@ div.input_wrap{
 	z-index:1;
 	}
 
-	
 .f_type .cate_wrap .tab_item button {
 	display:block;
 	width:100%;

@@ -55,7 +55,7 @@
 			<form class="w-100" action="./faqUpload" method="POST" enctype="multipart/form-data">
 		
 				<select class="form-select" style="width: 8%; line-height:2.5; margin: 30 0 15" name="faq_type" aria-label="Default select example">
-  					<option selected>문의 유형</option>
+  					<option selected disabled="disabled">문의 유형</option>
   					<option value="배송">배송</option>
   					<option value="결제/영수증">결제/영수증</option>
   					<option value="주문">주문</option>
