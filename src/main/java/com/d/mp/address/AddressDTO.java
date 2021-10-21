@@ -6,9 +6,16 @@ public class AddressDTO {
 	private Long member_id;
 	private String address;
 	private String recipient_name;
+	private String recipient_phone;
 	private int default_check;
 	
 	
+	public String getRecipient_phone() {
+		return recipient_phone;
+	}
+	public void setRecipient_phone(String recipient_phone) {
+		this.recipient_phone = recipient_phone;
+	}
 	public Long getAddress_id() {
 		return address_id;
 	}

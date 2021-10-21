@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.d.mp.address.AddressDTO;
+
 import oracle.jdbc.proxy.annotation.Post;
 
 @Controller
@@ -40,6 +42,7 @@ public class MemberController {
 	@PostMapping("login")
 	public ModelAndView login(MemberDTO memberDTO,HttpSession session, String check)throws Exception{
 		ModelAndView mv = new ModelAndView();
+		
 		memberDTO = memberService.getLogin(memberDTO);
 		
 		if(memberDTO !=null) {
@@ -66,8 +69,12 @@ public class MemberController {
 	@GetMapping("myPage")
 	public ModelAndView myPage(HttpSession session) throws Exception{
 		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		AddressDTO addressDTO = memberService.getDefaultAddress(memberDTO);
+		String id=addressDTO.getAddress();
+		System.out.println(id);
 		ModelAndView mv = new ModelAndView();
 		if(memberDTO!=null) {
+			mv.addObject("address", addressDTO);
 			mv.setViewName("member/myPage");
 		}else {
 			mv.setViewName("redirect:./login?check=1");
@@ -103,13 +110,9 @@ public class MemberController {
 
 	@PostMapping("join")
 	public ModelAndView join(MemberDTO memberDTO, HttpServletRequest request) throws Exception{
+
 		ModelAndView mv = new ModelAndView();
-		
-		String birth_yy = request.getParameter("birth_yy");
-		String birth_mm = request.getParameter("birth_mm");
-		String birth_dd = request.getParameter("birth_dd");
-		
-		memberDTO.setMember_birth(birth_yy+"-"+birth_mm+"-"+birth_dd);
+		memberDTO.setMember_birth(memberDTO.getBirth_yy()+"-"+memberDTO.getBirth_mm()+"-"+memberDTO.getBirth_dd());
 		
 		String phone_f = request.getParameter("phone_f");
 		String member_phone_m = request.getParameter("member_phone_m");
@@ -146,15 +149,9 @@ public class MemberController {
 	@PostMapping("pwCheck")
 	@ResponseBody
 	public int getPwCheck(MemberDTO memberDTO,HttpSession session)throws Exception{
-		ModelAndView mv = new ModelAndView();
 		int result = memberService.getPwCheck(memberDTO);
 		return result;
 	}
-	
-	
-	
-	
-	
 	
 	
 	
@@ -166,7 +163,120 @@ public class MemberController {
 	public String findLog() {
 		return "member/findLog";
 	}
+	
+	@PostMapping("findId")
+	@ResponseBody
+	public String getFindId(MemberDTO memberDTO ,HttpServletRequest request)throws Exception { 
+		ModelAndView mv = new ModelAndView();
+		String member_birth=request.getParameter("member_birth");
+		String member_phone=request.getParameter("member_phone");
+	
+			//핸드폰 번호
+			String mp1=member_phone.substring(0, 3);
+			//핸드폰번호가 7글자 일때
+			String mp2_m=member_phone.substring(3,6);
+			String mp2_b=member_phone.substring(6);
+			//핸드폰번호가 8글자 일때 
+			String mp3_m=member_phone.substring(3,7);	
+			String mp3_b=member_phone.substring(7);
+			
+			if(member_phone.length()==7) {
+				member_phone=mp1+"-"+mp2_m+"-"+mp2_b;
+			}else {
+				member_phone=mp1+"-"+mp3_m+"-"+mp3_b;
+			}
+			
+			System.out.println(member_phone);	
+	
+	
+			//생년월일
+			String mby=member_birth.substring(0,4);
+			String mbm=member_birth.substring(4,6);
+			String mbd=member_birth.substring(6);
+			
+			member_birth=mby+"-"+mbm+"-"+mbd;
+			System.out.println(member_birth);
 
+
+		
+		memberDTO.setMember_birth(member_birth);
+		memberDTO.setMember_phone(member_phone);
+		
+		memberDTO=memberService.getFindId(memberDTO);
+		String message="1";
+		if(memberDTO !=null) {
+			System.out.println("일치하는 정보 있음");
+			message=memberDTO.getMember_user_id();
+			message=message.substring(0,message.length()-2);
+			message=message+"**";
+		}else {
+			System.out.println("일치하는 정보 없음");
+		}
+		return message; 
+	}
+
+	@PostMapping("quickPass")
+	@ResponseBody
+	public String quickPass(MemberDTO memberDTO)throws Exception{
+		System.out.println("hi");
+		//1.INPUT에 입력받은 정보에 맞는 member가 있는지 확인하기 
+		//2.있으면 임시비밀번호 발급해서 
+		//3.해당되는 member 비밀번호에 발급된 임시비밀번호 update해주기 
+		//4.발급된 임시비밀번호 값 콘솔창에 띄워주기 
+		String result = memberService.getFindPass(memberDTO);
+		
+		
+		
+		return result;
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	/*
+	 * @GetMapping("quickPass") public MemberDTO getFindPass(MemberDTO memberDTO ,
+	 * HttpServletRequest request)throws Exception{ String
+	 * member_birth=request.getParameter("member_birth"); String
+	 * member_phone=request.getParameter("member_phone"); //핸드폰 번호 String
+	 * mp1=member_phone.substring(0, 3); //핸드폰번호가 7글자 일때 String
+	 * mp2_m=member_phone.substring(3,6); String mp2_b=member_phone.substring(6);
+	 * //핸드폰번호가 8글자 일때 String mp3_m=member_phone.substring(3,7); String
+	 * mp3_b=member_phone.substring(7);
+	 * 
+	 * if(member_phone.length()==7) { member_phone=mp1+"-"+mp2_m+"-"+mp2_b; }else {
+	 * member_phone=mp1+"-"+mp3_m+"-"+mp3_b; }
+	 * 
+	 * System.out.println(member_phone);
+	 * 
+	 * //생년월일 String mby=member_birth.substring(0,4); String
+	 * mbm=member_birth.substring(4,6); String mbd=member_birth.substring(6);
+	 * 
+	 * member_birth=mby+"-"+mbm+"-"+mbd; System.out.println(member_birth);
+	 * 
+	 * memberDTO.setMember_birth(member_birth);
+	 * memberDTO.setMember_phone(member_phone);
+	 * 
+	 * return memberDTO; }
+	 * 
+	 * @PostMapping("quickPass")
+	 * 
+	 * @ResponseBody public String setQuickPass(MemberDTO memberDTO)throws
+	 * Exception{ System.out.println(memberDTO.getMember_user_id());
+	 * System.out.println(memberDTO.getMember_phone());
+	 * System.out.println(memberDTO.getMember_birth());
+	 * memberDTO=memberService.getFindPass(memberDTO);
+	 * 
+	 * String message="1"; if(memberDTO != null) { System.out.println("일치하는 정보 있음");
+	 * message=memberService.getRamdomPassword(6);
+	 * memberDTO.setMember_password(message); memberService.setQuickPass(memberDTO);
+	 * }else { System.out.println("일치하는 정보 없음"); } return message; }
+	 */
+	
 	
 	
 /*--------------------------------- 아이디/패스워드 찾기 종료--------------------------------------*/	
@@ -203,29 +313,46 @@ public class MemberController {
 	}
 	
 	@PostMapping("update")
-	public ModelAndView setUpdate(MemberDTO memberDTO,HttpSession session)throws Exception{
-		//수정 전 데이터 
+	public ModelAndView setUpdate(MemberDTO memberDTO,HttpServletRequest request,HttpSession session)throws Exception{
+		ModelAndView mv = new ModelAndView();
 		MemberDTO sessionDTO =(MemberDTO)session.getAttribute("member");
 		
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("redirect:./myPage");
+		String birth_yy = request.getParameter("birth_yy");
+		String birth_mm = request.getParameter("birth_mm");
+		String birth_dd = request.getParameter("birth_dd");
+		
+		memberDTO.setMember_birth(birth_yy+"-"+birth_mm+"-"+birth_dd);
+		
+		String phone_f = request.getParameter("member_phone_f");
+		String member_phone_m = request.getParameter("member_phone_m");
+		String member_phone_b = request.getParameter("member_phone_b");
+		
+		memberDTO.setMember_phone(phone_f+"-"+member_phone_m+"-"+member_phone_b);
+		
+		String member_email_f = request.getParameter("member_email_f");
+		String member_email_b = request.getParameter("member_email_b");
+		
+		memberDTO.setMember_email(member_email_f+"@"+member_email_b);
+		int result=memberService.setUpdate(memberDTO);
+		session.setAttribute("member", memberDTO);
+		mv.setViewName("redirect:../");
 		return mv; 
 	}
+	
+
+	
 	
 /*--------------------------------- 회원 탈퇴/수정 종료 --------------------------------------*/	
 	
 /*--------------------------------- 주소 관련 시작 --------------------------------------*/	
 	
-	@GetMapping("myaddress")
-	public ModelAndView myAddress(HttpSession session, MemberDTO memberDTO) throws Exception{
-		ModelAndView mv = new ModelAndView();
-		memberDTO = memberService.getDefaultAddress(memberDTO);
-		session.setAttribute("member_address", memberDTO);
-		mv.addObject("member_address", memberDTO);
-		mv.setViewName("member/myaddress");	
-		return mv;
-	}
-		
+/*
+ * @GetMapping("myaddress") public ModelAndView myAddress(HttpSession session,
+ * MemberDTO memberDTO) throws Exception{ ModelAndView mv = new ModelAndView();
+ * memberDTO = (MemberDTO)session.getAttribute("member"); memberDTO =
+ * memberService.getDefaultAddress(memberDTO); mv.addObject("address",
+ * default_address); return mv; }
+ */
 	
 	
 }

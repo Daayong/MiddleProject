@@ -31,7 +31,19 @@ public class MemberDAO {
 	public int getPwCheck(MemberDTO memberDTO)throws Exception{ 
 		return sqlSession.selectOne(NAMESPACE+"getPwCheck", memberDTO);
 	}
-		
+	
+	//아이디 찾기 
+	public MemberDTO getFindId(MemberDTO memberDTO)throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getFindId", memberDTO);
+	}
+	//임시비밀번호 발급 전 회원 정보 체크 
+	public MemberDTO getFindPass(MemberDTO memberDTO)throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getFindPass", memberDTO);
+	}
+	//임시 비밀번호 발급 
+	public int setQuickPass(MemberDTO memberDTO)throws Exception{
+		return sqlSession.update(NAMESPACE+"setQuickPass", memberDTO);
+	}
 	
 	//회원가입 
 	public int setJoin(MemberDTO memberDTO)throws Exception{	
@@ -49,16 +61,15 @@ public class MemberDAO {
 		return sqlSession.update(NAMESPACE+"setUpdate", memberDTO);
 	}
 	
-	
-	
 	//기본배송지조회
-	public MemberDTO getDefaultAddress(MemberDTO memberDTO)throws Exception{
+	public AddressDTO getDefaultAddress(MemberDTO memberDTO)throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"getDefaultAddress", memberDTO);
 	}
 	
-	public AddressDTO getAddress(MemberDTO memberDTO)throws Exception{
-		return sqlSession.selectOne(NAMESPACE+"getAddress", memberDTO);
-	}
-	
+	//배송지 리스트 조회 
+	/*
+	 * public MemberDTO getAddress(MemberDTO memberDTO)throws Exception{
+	 * return.sqlSession.selectList(NAMESPACE+"getAddress", memberDTO); }
+	 */
 	
 }

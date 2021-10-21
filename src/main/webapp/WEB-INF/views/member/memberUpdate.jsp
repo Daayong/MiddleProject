@@ -57,7 +57,7 @@
 								</th>
 								<td>
 									<span class="input_txt w250">
-										 <input readonly="readonly" id="member_name" name="member_name" class="text put nobox" placeholder="${member.member_name}">
+										 <input readonly="readonly" value="${member.member_name}" id="member_name" name="member_name" class="text put nobox" placeholder="${member.member_name}">
 								
 									</span>
 								</td>
@@ -118,27 +118,14 @@
 										<span>생년월일</span>
 									</label>									
 								</th>
-								<td>
-							
-								<div id="birthday_select">
-										<div class="select w70">
-											<span class="input_txt">
-											<input readonly="readonly" id="birth_yy" name="birth_yy" class="text put nobox" value="${member.birth_yy}">
-											</span>			
-											<span class="symbol">년</span>
-										</div>
-										<div class="select w70">
-											<input readonly="readonly" id="birth_mm" name="birth_mm" class="text put nobox" value="${member.birth_mm}">
-											<span class="symbol">월</span>
-										</div>
-										<div class="select w70">
-											<input readonly="readonly" id="birth_dd" name="birth_dd" class="text put nobox" value="${member.birth_dd}">
-											<span class="symbol">일</span>
-										</div>
+								<td>							
+									<div id="birthday_select">
+										<input type="hidden" value="${member.birth_yy}" name="birth_yy">
+										<input type="hidden" value="${member.birth_mm}" name="birth_mm">
+										<input type="hidden" value="${member.birth_dd}" name="birth_dd">
+										<p>${member.birth_yy} 년 &nbsp; ${member.birth_mm} 월 &nbsp; ${member.birth_dd} 일</p>
 									</div>
-									<p class="msg_desc">
-										설정하신 생일을 기준으로 15일 전 생일쿠폰이 발행됩니다.
-									</p>
+
 								</td>
 							</tr> 
 							<tr class="input">
@@ -151,31 +138,30 @@
 							
 								<div id="phone_num">
 										<div class="select w120">
-											<select class="select_wrap" value="${member.member_phone_f}" id="phone_f" name="member_phone_f">
-											<option>010</option>
-											<option value="010">010</option>
-											<option value="011">011</option>
-											<option value="016">016</option>
-											<option value="017">017</option>
-											<option value="018">018</option>
-											<option value="019">019</option>
-											<option value="070">070</option>
-											<option value="0130">0130</option>
-											<option value="0303">0303</option>
-											<option value="0502">0502</option>
-											<option value="0504">0504</option>
-											<option value="0505">0505</option>
-											<option value="0506">0506</option>
+											<select class="select_wrap"  id="member_phone_f" name="member_phone_f">
+											<option class="se" value="010">010</option>
+											<option class="se" value="011">011</option>
+											<option class="se" value="016">016</option>
+											<option class="se" value="017">017</option>
+											<option class="se" value="018">018</option>
+											<option class="se" value="019">019</option>
+											<option class="se" value="070">070</option>
+											<option class="se" value="0130">0130</option>
+											<option class="se" value="0303">0303</option>
+											<option class="se" value="0502">0502</option>
+											<option class="se" value="0504">0504</option>
+											<option class="se" value="0505">0505</option>
+											<option class="se" value="0506">0506</option>
 											</select>
 											<span class="symbol">-</span>
 										</div>
-										<div class="select w120">
+										<div class="select w100">
 											<span class="input_txt">
 												<input type="text" id="member_phone_m" name="member_phone_m" class="text put" value="${member.member_phone_m}" placeholder="${member.member_phone_m}">
 											</span>
 											<span class="symbol">-</span>
 										</div>
-										<div class="select w120">
+										<div class="select w100">
 											<span class="input_txt">
 												<input type="text" id="member_phone_b" name="member_phone_b" class="text put" value="${member.member_phone_b}" placeholder="${member.member_phone_b}">
 											</span>
@@ -200,9 +186,10 @@
 										</div>
 										<div class="select w180">
 											<span class="input_txt">
-												<input type="text" id="member_email_b2" name="member_email_b2" placeholder="이메일 도메인" class="text put" value="${member.member_email_b}" placeholder="${member.member_email_b}">
+												<input type="text" id="member_email_b2" name="member_email_b2"  class="text put" placeholder="${member.member_email_b}" value="${member.member_email_b}">
 											</span>
-											<select class="select_wrap"  id="member_email_b" name="member_email_b">
+											<select class="select_wrap" onchange="chooseDomain();" value="" id="member_email_b" name="member_email_b" >
+																			
 											<option value="">직접입력</option>
 											<option value="nate.com">nate.com</option>
 											<option value="hanmail.net">hanmail.net</option>
@@ -281,7 +268,7 @@
 		</div>
 			<div class="btn_wrap">
 				<button style="border:1px solid #ccc;" type="button" class="btn pop" id="uCancel" name="uCancel">취소</button>
-				<button type="button" class="btn pop black"  id="goUpdate" name="goUpdate">수정</button>
+				<button type="button" class="btn pop black"  onclick="checkInput();" id="goUpdate" name="goUpdate">수정</button>
 			</div>
 		</div>
 		<!-- 메인 컨텐츠(여기까지 변경되야함)  -->
@@ -294,18 +281,132 @@
 	
 	<script type="text/javascript">
 		const uCancel = document.getElementById('uCancel');
-		const goUpdate=document.getElementById('goUpdate');
-		
 		uCancel.addEventListener('click',function(){
 			location.href="../";
 		});
 		
-		goUpdate.addEventListener('click',function(){
-			alert("회원정보가 성공적으로 수정되었습니다.");
-			location.href="./login";
+		 const form1=document.getElementById('form1');
+		 
+		 /*비밀번호 확인*/
+		 const pw1=document.getElementById('member_password');
+		 const pw2=document.getElementById('member_password_s');
+		 const msg_pwds=document.getElementById('msg_pwds');
+		 const msg_pwd=document.getElementById('msg_pwd');
+		 
+		 
+		 /*Input id명 선언*/
+		 const member_name=document.getElementById('member_name');
+		 const member_user_id=document.getElementById('member_user_id');
+		 const member_phone=document.getElementById('member_phone_f');
+		 const phone_m=document.getElementById('member_phone_m');
+		 const phone_b=document.getElementById('member_phone_b');
+		 const member_email_f=document.getElementById('member_email_f');
+		 const member_email_b=document.getElementById('member_email_b');
+		 const member_email_b2=document.getElementById('member_email_b2');
+		 
+		
+		 //selected
+		 const member_phone_f = '${member.member_phone_f}';
+		 $('.se').each(function() {
+			
+			 const value= $(this).val();
+			 if(value==member_phone_f){
+				 $(this).prop("selected", true);
+			 }
+			 
 		});
+		 
+		 
+		 
+		 //이메일 주소 도메인 선택시 자동 완성되기 
+			function chooseDomain(){
+				var idx=member_email_b.options.selectedIndex;
+				var val=member_email_b.options[idx].value;
+				member_email_b2.value=val;
+				member_email_b2.attr("placeholder",val);
+			};
+		 
 		
-		
+		 $(member_phone).each(function(){
+		   if($(this).val()=="${member.member_phone_f}"){
+		     $(this).attr("selected","selected"); // attr적용안될경우 prop으로 
+		   }
+		 });
+		 
+			
+			
+		function checkInput(){
+			//패스워드 4글자 이상 여부 확인        
+		    if(pw1.value.trim().length < 4){
+		       	alert("비밀번호를 입력해 주세요.");
+		       	msg_pwd.classList.remove('hide');
+		        pw1.focus();
+		        return false;
+		   	   }
+			//패스워드 재입력 여부 확인 
+		     if(pw2.value.trim() == ""){
+		     	alert("입력하신 비밀번호가 일치하지 않습니다. 다시 확인해 주세요.");
+		        pw2.focus();
+		         return false;
+		     }
+			//패스워드 재입력 일치 여부 확인
+		     if( pw1.value.trim() != pw2.value.trim() ){
+		    	alert("입력하신 비밀번호가 일치하지 않습니다. 다시 확인해 주세요.");
+		         pw2.focus();
+		         return false;
+		   	 } else{
+		        msg_pwd.classList.add('hide');
+		   	 }
+		    //핸드폰 입력 여부 확인
+			if(phone_m.value.length <3 || phone_m.value.length>4){
+				alert("핸드폰 번호를 확인해주세요.");
+				phone_m.focus();
+				return false;
+			}
+			if(phone_b.value.trim().length != 4){
+				alert("핸드폰 번호를 확인해주세요.")
+				phone_b.focus();
+				return false;
+			}
+			
+			//이메일 주소 유효성 검사	
+			if(member_email_f.value == ""){
+		        alert("이메일 주소를 확인해주세요.");
+		        member_email_f.focus();
+		        return false;
+		    }
+		    if(member_email_b2.value == ""){
+		        alert("이메일 도메인을 선택 하세요.");
+		        member_email_b2.focus();
+		        return false;
+		    }
+		    if(member_email_b2.value.trim() == ""){
+		        alert("이메일 도메인 직접입력시 이메일 도메인을 입력하셔야 합니다.");
+		        member_email_b2.focus();
+		        return false;
+		    }
+		    	    
+			if(confirm('소중한 고객님의 정보는 CJ ONE 제휴 브랜드와 함께 변경 적용됩니다. 이대로 입력하시겠습니까?')){
+				if($("#member_marketing_sms").prop("checked")){
+					$("#member_marketing_sms").val(1);
+					console.log($("#member_marketing_sms").val());
+				}else{
+					$("#member_marketing_sms").val(0);
+					console.log($("#member_marketing_sms").val());
+				}
+				
+				if($("#member_marketing_email").prop("checked")){
+					$("#member_marketing_email").val(1);
+					console.log($("#member_marketing_email").val());
+				}else{
+					$("#member_marketing_email").val(0);
+					console.log($("#member_marketing_email").val());
+				}
+				form1.submit();
+			}else{
+				return false;
+			}
+		}
 	</script>
  
 	

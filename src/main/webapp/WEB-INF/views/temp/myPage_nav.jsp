@@ -63,7 +63,7 @@
 						<li><a href="#">취소/반품 조회 </a></li>
 						<li><a href="#">선물내역</a></li>
 						<li><a href="#">세금계산서 신청</a></li>
-						<li><a href="#">배송지 관리</a></li>
+						<li><a href="${pageContext.request.contextPath}/member/myaddress">배송지 관리</a></li>
 						<li><a href="#">환불계좌 관리</a></li>
 						<li><a href="#">신메뉴/재입고 알림</a></li>
 					</ul>
