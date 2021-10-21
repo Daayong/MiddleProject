@@ -84,8 +84,8 @@
 			</div>
 		
 			<div class="input_event_ing" style="margin-bottom: 40px;">
-				<label for="files">event 썸네일</label>
-				<input type="file" id="files" name="files">
+				<label for="inputMainFile">event 썸네일</label>
+				<input type="file" id="inputMainFile" name="files" multiple="multiple">
 			</div>
 			
 		

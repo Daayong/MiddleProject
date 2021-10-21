@@ -12,17 +12,9 @@ public class EventDTO {
 	private Date event_endDate;
 	
 	private EventFileDTO eventFileDTO;
-	private List<EventFileDTO> files;
 	
 	
 	
-	
-	public List<EventFileDTO> getFiles() {
-		return files;
-	}
-	public void setFiles(List<EventFileDTO> files) {
-		this.files = files;
-	}
 	public EventFileDTO getEventFileDTO() {
 		return eventFileDTO;
 	}

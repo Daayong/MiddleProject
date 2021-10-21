@@ -9,7 +9,10 @@
   
   <!-- list 불러오기 -->
   <select id="getList" resultType="FaqDTO">
-  	select *  from faq 
+  	SELECT *
+  	FROM 
+  		faq
+  	ORDER BY faq_id DESC
 	
 	
 

@@ -26,11 +26,8 @@ public class EventController {
 	@GetMapping("eventMain")
 	public ModelAndView getEventList() throws Exception{
 		ModelAndView mv = new ModelAndView();
-		List<EventDTO> ar = eventService.getEventList();
-
+		List<EventDTO> ar = eventService.getEventList();	
 		mv.addObject("eventList", ar);
-
-
 		mv.setViewName("event/eventMain");
 		
 		return mv;
@@ -55,11 +52,9 @@ public class EventController {
 	}
 	
 	@PostMapping("eventUpload")
-	public ModelAndView setEventList(EventDTO eventDTO, MultipartFile [] files) throws Exception{
+	public ModelAndView setEventList(EventDTO eventDTO, MultipartFile files) throws Exception{
 		
-		for(MultipartFile multipartFile : files) {
-			System.out.println(multipartFile.getOriginalFilename());
-		}
+		
 		
 		ModelAndView mv = new ModelAndView();
 		int result = eventService.setEventList(eventDTO, files);

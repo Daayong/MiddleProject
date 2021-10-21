@@ -2,7 +2,7 @@
 
 #content {
 	width:1180px;
-	height:1150px;
+	min-height: 900px;
 	padding: 52px 0 140px;
 	
 } 
@@ -12,6 +12,12 @@
 	width:100%;
 	height: 56px; 
 }
+
+.event_wrap {
+    margin-bottom: 100px;
+}
+
+
 
 .event_wrap .title h1{
 	color: #101010;
