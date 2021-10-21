@@ -62,19 +62,21 @@
 				<div class="faq_conts">
 				
 					<!-- search area -->
+					
+	
 					<div class="f_search">
 						<h2 class="tit">FAQ 검색</h2>
 						<div class="box_search">
 						<div class="sch_wrap">
 							<div class="input_wrap">
-									<input type="text" class="txt" id="fn_txt_srch" placeholder="검색어를 입력해주세요" name="keyWord"  ><!-- value 사용자 입력 값 나중에 추가 -->
+									<input type="text" class="txt" id="fn_txt_srch" placeholder="검색어를 입력해주세요" name="key"  ><!-- value 사용자 입력 값 나중에 추가 -->
 									<button class="ico del"><span class="hide">입력 삭제</span></button>
-									<button type="button" class="btn btn_srch" onclick="javascript:goSearch()"><span class="hide">검색</span></button>
+									<button type="button" class="btn btn_srch"><span class="hide">검색</span></button>
 								</div>
 							</div>
 						</div>		
 					</div>		
-							
+					
 				<!-- faq type -->
 					<div class="f_type">
 						<h2 class="tit">문의유형</h2>
@@ -138,7 +140,7 @@
               
 				<div class="list_acco ui_accordion" data-accord-group="faq_list">
 				
-				<ul class="faqListArea">
+				<ul class="faqListArea" id="item_wrap">
 				
 			<c:forEach items="${faqlist}" var="dto">
 				
@@ -180,18 +182,12 @@
 						<button class="btn_add white" onclick="location.href='./faqUpload'"><span>faq 추가</span></button>
 					</c:if>
 					
-					<a class="btn_first" href="#"></a>
-						<a class="btn_prev" href="#"></a>
 						<span class="page_num">
-							<strong>1</strong>
-							<a href="#">2</a>
-							<a href="#">3</a>
-							<a href="#">4</a>
-							<a href="#">5</a>
-							
+					
+							<a href="#"><strong class="on">1</strong></a>
+			
 						</span>
-						<a class="btn_next" href="#"></a>
-						<a class="btn_last" href="#"></a>
+						
 				</div>
 				<!-- bottom_info -->
 				<div class="bottom_info">
@@ -242,7 +238,7 @@
 	    	              headers: {"cache-control":"no-cache", "pragma": "no-cache"},
 	    	              data : {"faq_type" : faq_type}, 
 	    	              success : function(data){ 
-	    	           
+	    	           		
 	    	               $('body').html(data);
 	    	               
 	    	              },
@@ -252,19 +248,19 @@
 	    	              }//error
 	    			})//ajax
 					
+	    			$(".tab_item").click(function() {
+	    				$(this).addClass("on");
+	    				$(".tab_item").not(this).removeClass("on");
+	    			});
 
 					    			
 	    		});//click
 	    		
 	    });//ready
-	
-	    		
-	    	$(".tab_item").click(function() {
-				$(this).addClass("on");
-				$(".tab_item").not(this).removeClass("on");
-			});
-	
 
+	
+	    
+	    
 	
 </script>
 

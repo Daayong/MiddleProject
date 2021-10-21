@@ -13,7 +13,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.d.mp.board.util.BoardPager;
+import com.d.mp.event.EventDTO;
+import com.d.mp.event.EventFileDTO;
 
 @Controller
 @RequestMapping("/cs/**")
@@ -24,9 +29,14 @@ public class FaqController {
 	
 	@GetMapping( value =  {"faqList", "csMain"})
 	public ModelAndView getList() throws Exception{
+		
+
+		
+		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("cs/faqList");
 		List<FaqDTO> ar = faqService.getList();
+
 		mv.addObject("faqlist", ar);
 		return mv;
 	}
@@ -53,6 +63,8 @@ public class FaqController {
 
 	@RequestMapping(value = "/faqTypeList")
 	public ModelAndView getTypeList(FaqDTO faqDTO, HttpServletRequest request, HttpServletResponse response ) throws Exception{
+		
+	
 		String faq_type = request.getParameter("faq_type");
 		
 		faqDTO.setFaq_type(faq_type);
@@ -60,12 +72,14 @@ public class FaqController {
 		Map<String, Object> m = new HashMap<String, Object>();
 		
 		m.put("faq_type", "%" + faq_type + "%");
+	
 		
 		List<FaqDTO> ar = faqService.getTypeList(m, faqDTO);
 		
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("faq_type", faq_type);
 		mv.addObject("faqlist", ar);
+	
 		mv.setViewName("cs/faqList");
 		
 		return mv;
@@ -92,5 +106,9 @@ public class FaqController {
 		return mv;
 		
 	}
+	
+	
+	
+	
 	
 }	

@@ -27,15 +27,15 @@ public class FaqDAO {
 		return sqlSession.selectList(NAMESPACE+"getList");
 	}
 	
+	public Long getCount(BoardPager pager) throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getCount", pager);
+	}
+	
 	//글 추가
 	public int setInsert(FaqDTO faqDTO) throws Exception{
 		return sqlSession.insert(NAMESPACE+"setInsert", faqDTO);
 	}
 	
-	
-	public Long getCount(BoardPager pager) throws Exception{
-		return sqlSession.selectOne(NAMESPACE+"getCount", pager);
-	}
 	
 	public List<FaqDTO> getTypeList(Map<String, Object> m, FaqDTO faqDTO) throws Exception{
 		Object obj = m.get("faq_type");

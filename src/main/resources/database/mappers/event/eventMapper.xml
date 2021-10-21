@@ -10,7 +10,7 @@
   	
  
   	<select id="getEventList"  resultType="EventDTO">
-  		 	SELECT * FROM event
+  		 	SELECT * FROM event e inner join event_file ef using(event_id)
   	</select>
   	
   	<!-- 이벤트 글 작성하기 -->

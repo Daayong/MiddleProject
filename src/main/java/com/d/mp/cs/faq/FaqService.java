@@ -6,6 +6,8 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.d.mp.board.util.BoardPager;
+
 
 @Service
 public class FaqService {
@@ -16,6 +18,8 @@ public class FaqService {
 	
 	//list 
 	public List<FaqDTO> getList() throws Exception{
+	
+		
 		return faqDAO.getList();
 	}
 	
