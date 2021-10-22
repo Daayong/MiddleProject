@@ -405,10 +405,22 @@ $("#inquiry_cate4").on("click", function() {
 
 $("#inquiry_cate5").on("click", function() {
 	$("#point").show();
-
  	$("#pay").hide();
 	$("#cancel").hide(); 
-	$(".input_top_sec").html('<h4>쿡킷메뉴/상품</h4>');
+	$("#point").hide();
+	$(".input_top_sec").html('<h4>회원/포인트</h4>');
+	$(".orderSelectArea").hide();
+});
+
+$("#inquiry_cate6").on("click", function() {
+	$(".cate_sum_cont").not($(this)).hide();
+	$(".input_top_sec").html('<h4>이벤트</h4>');
+	$(".orderSelectArea").hide();
+});
+
+$("#inquiry_cate7").on("click", function() {
+	$(".cate_sum_cont").not($(this)).hide();
+	$(".input_top_sec").html('<h4>영수증/증빙</h4>');
 	$(".orderSelectArea").hide();
 });
 
