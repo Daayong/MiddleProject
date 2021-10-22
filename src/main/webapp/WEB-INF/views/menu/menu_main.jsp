@@ -84,9 +84,19 @@
 			<div id="menus_wrap">
 				<div id="item_wrap">
 					<!-- 나중에 c:foreach 반복문 쓰기 -->
-					<c:forEach items="${prdDTO}" var="prd">
-						
-						<c:choose>
+					
+					<c:if test="${empty prdDTO}">
+						<div class="no_item">
+							<div class="no_itemIcon"></div>
+							<div class="no_itemTxt">
+								등록된 메뉴가 없습니다.
+							</div>
+						</div>
+					</c:if>
+					
+					<c:forEach items="${prdDTO}" var="prd">	
+																									
+						<c:choose>		
 							<c:when test="${prd.product_state eq '품절'}">
 								<div class="item_box">
 									<div class="click_menu_soldout"> <!-- div 버튼 만들기 -->

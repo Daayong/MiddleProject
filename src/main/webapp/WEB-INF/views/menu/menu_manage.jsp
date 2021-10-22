@@ -31,6 +31,7 @@
 		
 		.product_table{
 			margin-top: 100px;
+			margin-bottom: 100px;
 			width: 100%;
 			text-align: center;
 			border-collapse: collapse;
@@ -61,6 +62,7 @@
 		/* 추가 정보 수정 */
 		.manage_detail{
 			display: none;
+			margin-bottom: 200px;
 		}
 	</style>	
 	
@@ -93,9 +95,6 @@
 							  		<input type="hidden" id="product_id" value="${prd.product_id}">
 							  	</td>
 							  </tr>
-							  <tr class="manage_detail">
-							  	<td>aaaaa</td>
-							  </tr>
 						  </c:forEach>
 				   		</table>
                 </div>
@@ -122,13 +121,7 @@
 					});	
 				}
 			});
-			
-			$(".more_btn").on("click", function () {
-				
-				$(".manage_detail").css({
-					"display" : "block"
-				});
-			});
+
 		</script>
 	</body>
 </html>

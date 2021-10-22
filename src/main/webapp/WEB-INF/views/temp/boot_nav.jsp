@@ -3,6 +3,10 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <link href="${pageContext.request.contextPath}/resources/css/import_nav.css" rel="stylesheet">
 
+
+<!-- Session -->
+<input type="hidden"  id="session"  value="${member}">
+
 <!-- navBar -->
 <nav id="header">
 	

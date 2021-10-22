@@ -25,6 +25,14 @@
 <c:import url="../temp/boot_nav.jsp"></c:import>
 
 <div class="wrapper">		
+	
+	<!-- top 50 left 50 % 클릭시 이미지 깜빡하기 -->
+	<div class="cartin_img">
+		<span class="cartin_txt">
+			
+		</span>
+	</div>
+	
 <!-- 여기에 페이지 작업 -->
 	<div class="content_wrapper">
 			<div class="top_info">
@@ -74,6 +82,7 @@
 							<div class="title">
 								${prdDTO.product_name}
 								<input type="hidden" value="${prdDTO.product_name}" name="product_name">
+								<input type="hidden"  value="${prdDTO.product_id}" name="product_id">
 							</div>
 							<p class="prd_origin">원산지 : 상품참조</p>
 						</div>
@@ -171,7 +180,7 @@
 								<div class="zzim_btn"></div>
 							</button>
 							<div class="cart">
-								<button type="submit" class="cart_btn">장바구니 담기</button>
+								<button type="button" class="cart_btn">장바구니 담기</button>
 							</div>
 						</div>
 					</form>

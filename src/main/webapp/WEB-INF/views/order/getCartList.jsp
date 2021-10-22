@@ -70,7 +70,7 @@
 															<span>마감</span>
 														</div>
 													</c:if>
-													<img alt="" src="/mp/resources/upload/menu/main/${cartListDTOsJ.product_id}/${cartListDTOsJ.product_file_ori_name}">
+													<img alt="" src="/mp/resources/upload/menu/main/${cartListDTOsJ.product_id}/${cartListDTOsJ.product_file_name}">
 												</div>
 												
 												<a href="javascript:;" class="product_link">

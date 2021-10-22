@@ -10,7 +10,7 @@ public class CartListDTO {
 	private	String	cart_state              ;
 	private	String	product_name            ;
 	private	Long	product_price           ;
-	private	String	product_file_ori_name	;
+	private	String	product_file_name	;
 	
 	public Long getCart_id() {
 		return cart_id;
@@ -54,14 +54,11 @@ public class CartListDTO {
 	public void setProduct_price(Long product_price) {
 		this.product_price = product_price;
 	}
-	public String getProduct_file_ori_name() {
-		return product_file_ori_name;
+	public String getProduct_file_name() {
+		return product_file_name;
 	}
-	public void setProduct_file_ori_name(String product_file_ori_name) {
-		this.product_file_ori_name = product_file_ori_name;
+	public void setProduct_file_name(String product_file_name) {
+		this.product_file_name = product_file_name;
 	}
-	
-
-	
 	
 }

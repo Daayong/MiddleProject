@@ -24,7 +24,7 @@
 	<context:component-scan base-package="com.d.mp" />
 	
 	<!-- myPage Interceptors  -->
-	<beans:bean id="loginInterceptor" class="com.d.mp.member.util.LoginInterceptor" />
+	<beans:bean id="loginInterceptor" class="com.d.mp.member.util.LoginInterceptor"></beans:bean>
 	<interceptors>
 		<interceptor>
 			<mapping path="/member/memberDelete" />
@@ -33,7 +33,19 @@
 			<beans:ref bean="loginInterceptor"/>
 		</interceptor>
 	</interceptors> 
-	</beans:beans>
+
+	
+	<!-- menu Interceptors -->
+	<beans:bean id="productInterceptor" class="com.d.mp.cookit.menu.prd.util.ProductInterceptor"></beans:bean>
+	<interceptors>
+		<interceptor>
+			<mapping path="/menu/menu_insert"/>
+			<mapping path="/menu/menu_manage"/>
+			<beans:ref bean="productInterceptor"/>
+		</interceptor>
+	</interceptors>
+	
+</beans:beans>
 
 	
 	

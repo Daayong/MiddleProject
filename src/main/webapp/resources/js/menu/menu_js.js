@@ -1,3 +1,4 @@
+
 /* =================== menu_main 페이지 ============== */
 
 $(document).on("click", ".click_menu", function() {
@@ -125,6 +126,54 @@ $("#orderHelp").click(function() {
 
 /* 위에 이거 너무 김 더 좋은방법으로 바꾸기 */
 
+
+/* 찜 버튼 로그인 여부 확인 */
+const session = $("#session").val();
+
+
+/* sleep 함수 */
+function sleep(ms){
+	return new Promise(resolve=>setTimeout(resolve,ms));
+}
+
+/* 장바구니에 추가하기 */
+
+$(".cart_btn").click(function(){
+	
+	if(session == ""){
+		alert("로그인 후 이용가능합니다.");
+		return false;
+	}else if($("input[name=product_cnt]").val() == 0){
+		
+		alert("주문 일자와 수량을 선택해주세요.")
+		return false;
+	}
+	
+	let product_id = $("input[name=product_id]").val();
+	let cart_delivery_date = $("#prd_select option:selected").val();
+	
+	let month = cart_delivery_date.substr(5,2);
+	let date = cart_delivery_date.substr(8,2);
+	
+	let cart_quantity = $("input[name=product_cnt]").val();
+	
+	$.ajax({
+		url : "cart_insert?product_id=" + product_id + "&cart_delivery_date=" + cart_delivery_date + "&cart_quantity=" + cart_quantity,
+		type : "get",
+		success : async function(){
+			$(".cartin_txt").text("배송일 " + month + "/" + date);
+			$(".cartin_img").css({
+				"visibility" : "visible"
+			});
+			await sleep(1000);
+			$(".cartin_img").css({
+				"visibility" : "hidden"
+			});
+		}
+	});
+});
+
+
 /* 배송일 선택후 수량 선택하는 박스 나오게하기 및 박스 제거 */
 
 // 초기 설정
@@ -132,6 +181,8 @@ $(".prd_count").css({
 	"display" : "none"
 });
 $(".quantity").text("1");
+$("#product_total_price").val(0);
+$("#product_cnt_value").val(0);
 
 // 재고 수
 let maxStock = 0;
@@ -235,6 +286,7 @@ $(".minus").on("click", function(){
 	
 });
 $(".plus").on("click", function(){
+	
 	let cnt = parseInt($("#product_cnt_value").val()) + 1;
 	
 	if(cnt > 10){
@@ -310,7 +362,7 @@ $(document).ready(function() {
         speed: 400, //ms'
         auto: false,
         loop: false,
-        slideEndAnimation: true,
+        slideEndAnimation: false,
         pause: 2000,
  
         keyPress: false,
@@ -332,9 +384,9 @@ $(document).ready(function() {
         thumbMargin: 5,
         currentPagerPosition: 'middle',
  
-        enableTouch:true,
-        enableDrag:true,
-        freeMove:true,
+        enableTouch:false,
+        enableDrag:false,
+        freeMove:false,
         swipeThreshold: 40,
  
         responsive : [],
@@ -384,9 +436,9 @@ $(document).ready(function() {
         thumbMargin: 5,
         currentPagerPosition: 'middle',
  
-        enableTouch:true,
-        enableDrag:true,
-        freeMove:true,
+        enableTouch:false,
+        enableDrag:false,
+        freeMove:false,
         swipeThreshold: 40,
  
         responsive : [],
