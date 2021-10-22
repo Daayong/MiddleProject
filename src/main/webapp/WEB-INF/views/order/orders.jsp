@@ -168,7 +168,7 @@
 										<div class="prd_info">
 										
 											<div class="img_wrap">
-												<img src="/mp/resources/upload/menu/main/${cartListDTOsJ.product_id}/${cartListDTOsJ.product_file_ori_name}" alt="">
+												<img src="/mp/resources/upload/menu/main/${cartListDTOsJ.product_id}/${cartListDTOsJ.product_file_name}" alt="">
 											</div>
 											
 											<div class="info_wrap">
