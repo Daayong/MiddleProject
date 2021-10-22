@@ -230,15 +230,17 @@
 		 
 	    	$("button").on('click',function(){
 	    			let faq_type = $(this).val();  //버튼이 클릭 되었을 때 그 버튼의 value를 let faq_type로 가져와서	
-	    			
+	    	
 	    			$.ajax({
 	    				 url : './faqTypeList',  
 	    	              type : "post", 
 	    	              cache: false,
 	    	              headers: {"cache-control":"no-cache", "pragma": "no-cache"},
-	    	              data : {"faq_type" : faq_type}, 
+	    	              data : {"faq_type" : faq_type
+	    	              }, 
 	    	              success : function(data){ 
 	    	           		
+	    	            	  
 	    	               $('body').html(data);
 	    	               
 	    	              },
