@@ -1,6 +1,7 @@
 package com.d.mp.member;
 
 import java.lang.ProcessBuilder.Redirect;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,6 +20,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.d.mp.address.AddressDTO;
+import com.d.mp.cs.notice.NoticeService;
 
 import oracle.jdbc.proxy.annotation.Post;
 
@@ -70,10 +72,13 @@ public class MemberController {
 	public ModelAndView myPage(HttpSession session) throws Exception{
 		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
 		AddressDTO addressDTO = memberService.getDefaultAddress(memberDTO);
-		String id=addressDTO.getAddress();
-		System.out.println(id);
+		String id ="";	
 		ModelAndView mv = new ModelAndView();
 		if(memberDTO!=null) {
+			if(addressDTO !=null) {
+				id=addressDTO.getAddress();
+			}
+			System.out.println(id);	
 			mv.addObject("address", addressDTO);
 			mv.setViewName("member/myPage");
 		}else {
@@ -168,40 +173,7 @@ public class MemberController {
 	@ResponseBody
 	public String getFindId(MemberDTO memberDTO ,HttpServletRequest request)throws Exception { 
 		ModelAndView mv = new ModelAndView();
-		String member_birth=request.getParameter("member_birth");
-		String member_phone=request.getParameter("member_phone");
-	
-			//핸드폰 번호
-			String mp1=member_phone.substring(0, 3);
-			//핸드폰번호가 7글자 일때
-			String mp2_m=member_phone.substring(3,6);
-			String mp2_b=member_phone.substring(6);
-			//핸드폰번호가 8글자 일때 
-			String mp3_m=member_phone.substring(3,7);	
-			String mp3_b=member_phone.substring(7);
-			
-			if(member_phone.length()==7) {
-				member_phone=mp1+"-"+mp2_m+"-"+mp2_b;
-			}else {
-				member_phone=mp1+"-"+mp3_m+"-"+mp3_b;
-			}
-			
-			System.out.println(member_phone);	
-	
-	
-			//생년월일
-			String mby=member_birth.substring(0,4);
-			String mbm=member_birth.substring(4,6);
-			String mbd=member_birth.substring(6);
-			
-			member_birth=mby+"-"+mbm+"-"+mbd;
-			System.out.println(member_birth);
-
-
-		
-		memberDTO.setMember_birth(member_birth);
-		memberDTO.setMember_phone(member_phone);
-		
+		memberDTO=memberService.charSet(memberDTO);
 		memberDTO=memberService.getFindId(memberDTO);
 		String message="1";
 		if(memberDTO !=null) {
@@ -224,59 +196,8 @@ public class MemberController {
 		//3.해당되는 member 비밀번호에 발급된 임시비밀번호 update해주기 
 		//4.발급된 임시비밀번호 값 콘솔창에 띄워주기 
 		String result = memberService.getFindPass(memberDTO);
-		
-		
-		
 		return result;
-		
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	/*
-	 * @GetMapping("quickPass") public MemberDTO getFindPass(MemberDTO memberDTO ,
-	 * HttpServletRequest request)throws Exception{ String
-	 * member_birth=request.getParameter("member_birth"); String
-	 * member_phone=request.getParameter("member_phone"); //핸드폰 번호 String
-	 * mp1=member_phone.substring(0, 3); //핸드폰번호가 7글자 일때 String
-	 * mp2_m=member_phone.substring(3,6); String mp2_b=member_phone.substring(6);
-	 * //핸드폰번호가 8글자 일때 String mp3_m=member_phone.substring(3,7); String
-	 * mp3_b=member_phone.substring(7);
-	 * 
-	 * if(member_phone.length()==7) { member_phone=mp1+"-"+mp2_m+"-"+mp2_b; }else {
-	 * member_phone=mp1+"-"+mp3_m+"-"+mp3_b; }
-	 * 
-	 * System.out.println(member_phone);
-	 * 
-	 * //생년월일 String mby=member_birth.substring(0,4); String
-	 * mbm=member_birth.substring(4,6); String mbd=member_birth.substring(6);
-	 * 
-	 * member_birth=mby+"-"+mbm+"-"+mbd; System.out.println(member_birth);
-	 * 
-	 * memberDTO.setMember_birth(member_birth);
-	 * memberDTO.setMember_phone(member_phone);
-	 * 
-	 * return memberDTO; }
-	 * 
-	 * @PostMapping("quickPass")
-	 * 
-	 * @ResponseBody public String setQuickPass(MemberDTO memberDTO)throws
-	 * Exception{ System.out.println(memberDTO.getMember_user_id());
-	 * System.out.println(memberDTO.getMember_phone());
-	 * System.out.println(memberDTO.getMember_birth());
-	 * memberDTO=memberService.getFindPass(memberDTO);
-	 * 
-	 * String message="1"; if(memberDTO != null) { System.out.println("일치하는 정보 있음");
-	 * message=memberService.getRamdomPassword(6);
-	 * memberDTO.setMember_password(message); memberService.setQuickPass(memberDTO);
-	 * }else { System.out.println("일치하는 정보 없음"); } return message; }
-	 */
-	
 	
 	
 /*--------------------------------- 아이디/패스워드 찾기 종료--------------------------------------*/	
@@ -333,26 +254,32 @@ public class MemberController {
 		String member_email_b = request.getParameter("member_email_b");
 		
 		memberDTO.setMember_email(member_email_f+"@"+member_email_b);
-		int result=memberService.setUpdate(memberDTO);
+		memberService.setUpdate(memberDTO);
 		session.setAttribute("member", memberDTO);
 		mv.setViewName("redirect:../");
 		return mv; 
 	}
-	
-
 	
 	
 /*--------------------------------- 회원 탈퇴/수정 종료 --------------------------------------*/	
 	
 /*--------------------------------- 주소 관련 시작 --------------------------------------*/	
 	
-/*
- * @GetMapping("myaddress") public ModelAndView myAddress(HttpSession session,
- * MemberDTO memberDTO) throws Exception{ ModelAndView mv = new ModelAndView();
- * memberDTO = (MemberDTO)session.getAttribute("member"); memberDTO =
- * memberService.getDefaultAddress(memberDTO); mv.addObject("address",
- * default_address); return mv; }
- */
+@GetMapping("myaddress")
+  public ModelAndView getAddressList(MemberDTO memberDTO,HttpSession session) throws Exception{ 
+	  ModelAndView mv = new ModelAndView();
+	  MemberDTO sessionDTO = (MemberDTO)session.getAttribute("member");
+	  List<AddressDTO> ar = memberService.getAddressList(sessionDTO);
+	  mv.addObject("list",ar);
+	  mv.setViewName("member/myaddress");
+	  return mv;
+  }
+ 
+  
+  
+  
+  
+  
 	
 	
 }

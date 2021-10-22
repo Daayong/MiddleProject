@@ -2,6 +2,7 @@ package com.d.mp.member;
 
 import java.security.SecureRandom;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
@@ -50,11 +51,43 @@ public class MemberService {
 	public MemberDTO getFindId(MemberDTO memberDTO)throws Exception{
 		return memberDAO.getFindId(memberDTO);
 	}	
+	
+	//생년월일,핸드폰번호 문자 정렬해주기(중간에 "-" 넣어주기) 
+	public MemberDTO charSet(MemberDTO memberDTO)throws Exception {
+			String member_phone=memberDTO.getMember_phone();
+			String member_birth=memberDTO.getMember_birth();
+		//핸드폰 번호
+			String mp1=member_phone.substring(0, 3);
+			//핸드폰번호가 7글자 일때
+			String mp2_m=member_phone.substring(3,6);
+			String mp2_b=member_phone.substring(6);
+			//핸드폰번호가 8글자 일때 
+			String mp3_m=member_phone.substring(3,7);	
+			String mp3_b=member_phone.substring(7);
+			
+			if(member_phone.length()==7) {
+				member_phone=mp1+"-"+mp2_m+"-"+mp2_b;
+			}else {
+				member_phone=mp1+"-"+mp3_m+"-"+mp3_b;
+			}
+			
+			System.out.println(member_phone);	
+			//생년월일
+			String mby=member_birth.substring(0,4);
+			String mbm=member_birth.substring(4,6);
+			String mbd=member_birth.substring(6);
+			
+			member_birth=mby+"-"+mbm+"-"+mbd;
+			System.out.println(member_birth);
+		memberDTO.setMember_birth(member_birth);
+		memberDTO.setMember_phone(member_phone);
 		
+		return memberDTO;
+	}
+	
 	//임시 비밀번호 발급 전 회원 정보 체크 
 	public String getFindPass(MemberDTO memberDTO)throws Exception{
-		//1. 생년월일에 "-" 넣어주기
-		//2. 전화번호에 "-" 넣어주기
+		memberDTO=charSet(memberDTO);
 		memberDTO = memberDAO.getFindPass(memberDTO);
 		String result = "1";
 		
@@ -135,7 +168,10 @@ public class MemberService {
 		return memberDAO.getDefaultAddress(memberDTO);
 	}
 	
-	
+	//배송지 리스트 조회 
+	public List<AddressDTO> getAddressList(MemberDTO memberDTO)throws Exception{
+		return memberDAO.getAddressList(memberDTO);
+	}
 	
 	
 	

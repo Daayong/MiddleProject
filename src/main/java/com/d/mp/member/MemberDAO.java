@@ -1,6 +1,7 @@
 package com.d.mp.member;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.apache.ibatis.session.SqlSession;
@@ -67,9 +68,13 @@ public class MemberDAO {
 	}
 	
 	//배송지 리스트 조회 
-	/*
-	 * public MemberDTO getAddress(MemberDTO memberDTO)throws Exception{
-	 * return.sqlSession.selectList(NAMESPACE+"getAddress", memberDTO); }
-	 */
+	public List<AddressDTO> getAddressList(MemberDTO memberDTO)throws Exception{
+		return sqlSession.selectList(NAMESPACE+"getAddressList", memberDTO);	
+	}
+	
+	
+	
+	
+	
 	
 }

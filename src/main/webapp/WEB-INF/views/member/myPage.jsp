@@ -45,7 +45,18 @@
 							${member.member_name}님
 						</div>
 						<div class="log_address">
-							<a href="${pageContext.request.contextPath}/member/myaddress"><span>${address.address}</span></a>
+							<a href="${pageContext.request.contextPath}/member/myaddress">
+								<span id="dAddress">
+									<c:choose>
+									    <c:when test="${address.address eq null}">
+									        배송지 설정하러 가기
+									    </c:when>
+									    <c:otherwise>
+									        ${address.address}
+									    </c:otherwise>
+									</c:choose>
+								</span>
+							</a>
 						</div>
 					</div>
 					<div id="pointWrap">

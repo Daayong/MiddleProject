@@ -146,12 +146,6 @@
 											<option class="se" value="018">018</option>
 											<option class="se" value="019">019</option>
 											<option class="se" value="070">070</option>
-											<option class="se" value="0130">0130</option>
-											<option class="se" value="0303">0303</option>
-											<option class="se" value="0502">0502</option>
-											<option class="se" value="0504">0504</option>
-											<option class="se" value="0505">0505</option>
-											<option class="se" value="0506">0506</option>
 											</select>
 											<span class="symbol">-</span>
 										</div>
@@ -188,17 +182,17 @@
 											<span class="input_txt">
 												<input type="text" id="member_email_b2" name="member_email_b2"  class="text put" placeholder="${member.member_email_b}" value="${member.member_email_b}">
 											</span>
-											<select class="select_wrap" onchange="chooseDomain();" value="" id="member_email_b" name="member_email_b" >
-																			
-											<option value="">직접입력</option>
-											<option value="nate.com">nate.com</option>
-											<option value="hanmail.net">hanmail.net</option>
-											<option value="naver.com">naver.com</option>
-											<option value="yahoo.co.kr">yahoo.co.kr</option>
-											<option value="paran.com">paran.com</option>
-											<option value="hotmail.com">hotmail.com</option>
-											<option value="gmail.com">gmail.com</option>
-											<option value="dreamwiz.com">dreamwiz.com</option>
+											 <!-- onchange="chooseDomain();" -->
+											<select class="select_wrap" id="member_email_b" name="member_email_b" >						
+											<option class="ee" value="">직접입력</option>
+											<option class="ee" value="nate.com">nate.com</option>
+											<option class="ee" value="hanmail.net">hanmail.net</option>
+											<option class="ee" value="naver.com">naver.com</option>
+											<option class="ee" value="yahoo.co.kr">yahoo.co.kr</option>
+											<option class="ee" value="paran.com">paran.com</option>
+											<option class="ee" value="hotmail.com">hotmail.com</option>
+											<option class="ee" value="gmail.com">gmail.com</option>
+											<option class="ee" value="dreamwiz.com">dreamwiz.com</option>
 											</select>
 											
 										</div>
@@ -305,35 +299,50 @@
 		 const member_email_b2=document.getElementById('member_email_b2');
 		 
 		
-		 //selected
+		 //수정페이지 폼에 들어와있을때 원래 입력되어있는 데이터로 selected 되어있기 phone 
 		 const member_phone_f = '${member.member_phone_f}';
 		 $('.se').each(function() {
-			
 			 const value= $(this).val();
 			 if(value==member_phone_f){
 				 $(this).prop("selected", true);
 			 }
-			 
 		});
+		 //수정페이지 폼에 들어와있을때 원래 입력되어있는 데이터로 selected 되어있기 email
+		 const member_email_f = '${member.member_email_f}';
+		 $('.ee').each(function() {
+			 const value= $(this).val();
+			 if(value==member_email_f){
+				 $(this).prop("selected", true);
+			 }
+		}); 
 		 
-		 
-		 
-		 //이메일 주소 도메인 선택시 자동 완성되기 
+		
+		/*  
+		 //수정페이지 폼에 들어와있을때 원래 입력되어있는 데이터로 selected 되어있기 
+		 const member_email_b = '${member.member_email_b}';
+		 $('.se').each(function() {
+			 const value= $(this).val();
+			 if(value==member_email_b){
+				 $(this).prop("selected", true);
+			 }
+		}); */
+		  
+		/*  //이메일 주소 도메인 선택시 자동 완성되기 
 			function chooseDomain(){
 				var idx=member_email_b.options.selectedIndex;
 				var val=member_email_b.options[idx].value;
 				member_email_b2.value=val;
 				member_email_b2.attr("placeholder",val);
 			};
-		 
-		
+		  */
+		/* 
 		 $(member_phone).each(function(){
 		   if($(this).val()=="${member.member_phone_f}"){
 		     $(this).attr("selected","selected"); // attr적용안될경우 prop으로 
 		   }
 		 });
 		 
-			
+			 */
 			
 		function checkInput(){
 			//패스워드 4글자 이상 여부 확인        
