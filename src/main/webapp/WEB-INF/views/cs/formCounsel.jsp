@@ -9,6 +9,7 @@
 	<title>My쿡킷 - 집밥을 특별하게,쿡킷</title>
 	
 	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+	 <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 	<style>	
 		.wrapper{
 			position:relative;
@@ -232,7 +233,7 @@
 						<dd>
 							<input id="input-text-0" type="hidden" name="cslTtl" value="">
 							<div class="textarea">
-								<textarea id="question_cont" cols="80" rows="5" title="문의내용 작성란" placeholder="문의 내용을 입력해주세요" class="ui_inputLimit" maxlength="1000" name="cusCslTxt" data-count-target="#result" data-auto-resize="true"></textarea>
+								<textarea id="question_cont" spellcheck="false" style="outline: none;" cols="80" rows="5" title="문의내용 작성란" placeholder="문의 내용을 입력해주세요" class="ui_inputLimit" maxlength="1000" name="qna_content"></textarea>
 								<div id="result" class="result_txt"><span class="ui_inputLimitCount">0</span>/1000자</div>
 							</div>
 							<div class="btm_noti">
@@ -373,6 +374,8 @@
 
 <script type="text/javascript">
 
+
+/* tab 선택시 해당 문의 내용, form 형식 변화  */
 $("#inquiry_cate1").on("click", function() {
 	$("#ship").show();
 	$("#pay").hide();
@@ -407,7 +410,7 @@ $("#inquiry_cate5").on("click", function() {
 	$("#point").show();
  	$("#pay").hide();
 	$("#cancel").hide(); 
-	$("#point").hide();
+	$("#ship").hide();
 	$(".input_top_sec").html('<h4>회원/포인트</h4>');
 	$(".orderSelectArea").hide();
 });
@@ -419,10 +422,37 @@ $("#inquiry_cate6").on("click", function() {
 });
 
 $("#inquiry_cate7").on("click", function() {
-	$(".cate_sum_cont").not($(this)).hide();
+	$("#bill").show();
+ 	$("#pay").hide();
+	$("#cancel").hide(); 
+	$("#ship").hide();
+	$("#point").hide();
 	$(".input_top_sec").html('<h4>영수증/증빙</h4>');
 	$(".orderSelectArea").hide();
 });
+$("#inquiry_cate8").on("click", function() {
+	$(".cate_sum_cont").not($(this)).hide();
+	$(".input_top_sec").html('<h4>사이트이용</h4>');
+	$(".orderSelectArea").hide();
+});
+$("#inquiry_cate9").on("click", function() {
+	$(".cate_sum_cont").not($(this)).hide();
+	$(".input_top_sec").html('<h4>기타</h4>');
+	$(".orderSelectArea").hide();
+});
+
+/* 글자수 카운트, 제한 */
+
+$(document).ready(function() {
+
+        $('#question_cont').on('keyup', function() {
+            $('#result').html($(this).val().length+ '/ 1000자');
+            if($(this).val().length > 1000) {
+                $(this).val($(this).val().substring(0, 1000));
+                $('#result').html("1,000 / 1000자");
+            }
+        });
+    });
 
 </script>
 
