@@ -29,10 +29,12 @@
 	  		
 	  		<typeAlias type="com.d.mp.order.cart.CartDTO" alias="CartDTO"/>
 	  		<typeAlias type="com.d.mp.order.cart.CartListDTO" alias="CartListDTO"/>
+	  		<typeAlias type="com.d.mp.order.payment.PaymentDTO" alias="PaymentDTO"/>
 			  
 			<typeAlias type="java.util.List" alias="List"/>
 	  		<typeAlias type="java.lang.Long" alias="Long"/>
 	  		<typeAlias type="java.util.Map" alias="Map"/>
+	  		<typeAlias type="java.util.HashMap" alias="HashMap"/>
 
 		</typeAliases>
 	</configuration>

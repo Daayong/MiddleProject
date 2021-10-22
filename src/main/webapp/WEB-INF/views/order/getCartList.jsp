@@ -17,7 +17,7 @@
 <!-- ===== ===== ===== detail_info ===== ===== ===== -->
 				<div class="detail_info">
 									
-					<!-- loop start -->
+					<!-- loop I start -->
 					<c:set var="tempDate"></c:set>
 					<c:forEach var="cartListDTOsI" items="${cartListDTOs}" varStatus="i">
 					<c:if test="${tempDate ne cartListDTOsI.cart_delivery_date}">
@@ -26,7 +26,14 @@
 						
 							<div class="delivery_date">
 								<div class="check_wrap">
-									<input type="checkbox" id="delivery_date ${i.index}" data-delivery_date="${cartListDTOsI.cart_delivery_date}">
+									<c:choose>
+										<c:when test="${cartListDTOsI.cart_state eq 'deadLine'}">
+											<input type="checkbox" id="delivery_date ${i.index}" data-delivery_date="${cartListDTOsI.cart_delivery_date}" disabled="">
+										</c:when>
+										<c:otherwise>
+											<input type="checkbox" id="delivery_date ${i.index}" data-delivery_date="${cartListDTOsI.cart_delivery_date}">
+										</c:otherwise>
+									</c:choose>
 									<label for="delivery_date ${i.index}">${cartListDTOsI.cart_delivery_date} 도착예정</label>
 								</div>
 								<!-- <a href="javascript:;" data-dlv-dt="20211008" class="btn_link chgDlvDt">배송일 변경</a> -->
@@ -34,8 +41,7 @@
 							
 							<div class="product_list">
 								<ul>
-									<!-- loop start -->
-									<c:set var="prd_total_payment">0</c:set>
+									<!-- loop J start -->
 									<c:forEach var="cartListDTOsJ" items="${cartListDTOs}" varStatus="status">
 									<c:if test="${cartListDTOsI.cart_delivery_date eq cartListDTOsJ.cart_delivery_date}">
 
@@ -43,18 +49,18 @@
 											<div class="product_wrap" data-cart_id="${cartListDTOsJ.cart_id}">
 											
 												<div class="check_wrap">
-													<c:if test="${cartListDTOsJ.cart_state eq 'checked'}">
-														<input type="checkbox" id="product_list ${cartListDTOsJ.cart_id}" checked="checked">
-														<label for="product_list ${cartListDTOsJ.cart_id}"></label>
-													</c:if>
-													<c:if test="${cartListDTOsJ.cart_state eq 'unChecked'}">
-														<input type="checkbox" id="product_list ${cartListDTOsJ.cart_id}">
-														<label for="product_list ${cartListDTOsJ.cart_id}"></label>
-													</c:if>
-													<c:if test="${cartListDTOsJ.cart_state eq 'deadLine'}">
-														<input type="checkbox" id="product_list ${cartListDTOsJ.cart_id}" disabled="">
-														<label for="product_list ${cartListDTOsJ.cart_id}"></label>
-													</c:if>
+													<c:choose>
+														<c:when test="${cartListDTOsJ.cart_state eq 'checked'}">
+															<input type="checkbox" id="product_list ${cartListDTOsJ.cart_id}" checked="checked">
+														</c:when>
+														<c:when test="${cartListDTOsJ.cart_state eq 'unChecked'}">
+															<input type="checkbox" id="product_list ${cartListDTOsJ.cart_id}">
+														</c:when>
+														<c:when test="${cartListDTOsJ.cart_state eq 'deadLine'}">
+															<input type="checkbox" id="product_list ${cartListDTOsJ.cart_id}" disabled="">
+														</c:when>
+													</c:choose>
+													<label for="product_list ${cartListDTOsJ.cart_id}"></label>
 												</div>
 												
 												<div class="img_wrap">
@@ -83,21 +89,18 @@
 												
 												<div class="prd_quantity">
 													<div class="box_prd_quantity">
-														<c:if test="${cartListDTOsJ.cart_state eq 'checked'}">
-															<button type="button" class="btn_quantity minus"></button>
-															<span class="quantity" data-quantity="${cartListDTOsJ.cart_quantity}">${cartListDTOsJ.cart_quantity}</span>
-															<button type="button" class="btn_quantity plus"></button>
-														</c:if>
-														<c:if test="${cartListDTOsJ.cart_state eq 'unChecked'}">
-															<button type="button" class="btn_quantity minus"></button>
-															<span class="quantity" data-quantity="${cartListDTOsJ.cart_quantity}">${cartListDTOsJ.cart_quantity}</span>
-															<button type="button" class="btn_quantity plus"></button>
-														</c:if>
-														<c:if test="${cartListDTOsJ.cart_state eq 'deadLine'}">
-															<button type="button" class="btn_quantity minus" disabled=""></button>
-															<span class="quantity" data-quantity="${cartListDTOsJ.cart_quantity}">${cartListDTOsJ.cart_quantity}</span>
-															<button type="button" class="btn_quantity plus" disabled=""></button>
-														</c:if>
+														<c:choose>
+															<c:when test="${cartListDTOsJ.cart_state eq 'deadLine'}">
+																<button type="button" class="btn_quantity minus" disabled=""></button>
+																<span class="quantity" data-quantity="${cartListDTOsJ.cart_quantity}">${cartListDTOsJ.cart_quantity}</span>
+																<button type="button" class="btn_quantity plus" disabled=""></button>
+															</c:when>
+															<c:otherwise>
+																<button type="button" class="btn_quantity minus"></button>
+																<span class="quantity" data-quantity="${cartListDTOsJ.cart_quantity}">${cartListDTOsJ.cart_quantity}</span>
+																<button type="button" class="btn_quantity plus"></button>
+															</c:otherwise>
+														</c:choose>
 													</div>
 												</div>
 												
@@ -111,32 +114,32 @@
 										</li>
 									</c:if>
 									</c:forEach>
-									<!-- loop end -->
+									<!-- loop J end -->
 								</ul>
 							</div>
 							
-							<div class="prd_total_payment">
+							<div class="total_date_price_wrap">
 								<span class="prd_total_price" data-prd_total_price="">상품금액<strong>x원</strong></span>
 								<span class="plus"></span>
-								<span class="delivery" data-delivery_price="">배송비<strong>x원</strong></span>
+								<span class="delivery_price" data-delivery_price="">배송비<strong>x원</strong></span>
 								<span class="equal"></span>
-								<span class="total" data-prd_total_payment="">총<strong>x원</strong></span>
+								<span class="total_date_price" data-total_date_price="">총<strong>x원</strong></span>
 							</div>						
 						</div>
 							
 					<c:set var="tempDate">${cartListDTOsI.cart_delivery_date}</c:set>
 					</c:if>
 					</c:forEach>
-					<!-- loop end -->
+					<!-- loop I end -->
 					
-					<div class="total_payment">
-						<span class="total_payment_price" data-total_payment_price="">총 상품금액<strong>x원</strong></span>
+					<div class="total_payment_price_wrap">
+						<span class="total_product_price" data-total_product_price="">총 상품금액<strong>x원</strong></span>
 						<span class="minus"></span>
 						<span class="discount">총 할인금액<strong>0원</strong></span>
 						<span class="plus"></span>
-						<span class="delivery" data-delivery="">총 배송비<strong>x원</strong></span>
+						<span class="total_delivery_price" data-total_delivery_price="">총 배송비<strong>x원</strong></span>
 						<span class="equal"></span>
-						<span class="total">총 결제예정금액<strong>x원</strong></span>
+						<span class="total_payment_price">총 결제예정금액<strong>x원</strong></span>
 					</div>
 					
 					<div class="btn_wrap">

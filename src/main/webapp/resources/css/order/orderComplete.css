@@ -88,7 +88,7 @@
 .recieve_date span { margin-left: 4px; font-size: 13px; line-height: 21px; color: #0379A6; vertical-align: bottom; }
 .recieve_date span.recieve_txt { color: #0379A6; }
 
-.product_list ul { padding-bottom: 6px; border-bottom: 1px solid #CCCCCC; }
+.product_list ul { padding-bottom: 6px; /* border-bottom: 1px solid #CCCCCC; */ }
 .product_list li { width: 100%; padding: 16px 0 16px 0; border-top: 1px solid #E0E0E0; }
 .product_list li:first-child { border: none; }
 .product_list .product_info { display: table-cell; height: 80px; vertical-align: middle; position: relative; padding: 0 0 0 104px; }

@@ -25,8 +25,8 @@ function countProduct() {
 }
 
 function priceSetting() {
-	let total_payment_price = 0;
-	let delivery = 0;
+	let total_product_price = 0;
+	let delivery_price = 0;
 	$('.detail_info_content').each(function(){
 		
 		let prd_total_price = 0;
@@ -46,30 +46,32 @@ function priceSetting() {
 	//	상품금액 x원
 		$(this).find('.prd_total_price').data('prd_total_price', prd_total_price);
 		$(this).find('.prd_total_price').html("상품금액<strong>"+prd_total_price.toLocaleString()+"원</strong>");
-		total_payment_price += prd_total_price;
+		total_product_price += prd_total_price;
 		
 	//	배송비 x원
 		if (prd_total_price < 40000 && prd_total_price > 0){	
-			$(this).find('.delivery').data('delivery_price', 3000);
-			$(this).find('.delivery').html("배송비<strong>"+(3000).toLocaleString()+"원</strong>");	
-			delivery += 3000;
+			$(this).find('.delivery_price').data('delivery_price', 3000);
+			$(this).find('.delivery_price').html("배송비<strong>"+(3000).toLocaleString()+"원</strong>");	
+			delivery_price += 3000;
 		} else {			
-			$(this).find('.delivery').data('delivery_price', 0);
-			$(this).find('.delivery').html("배송비<strong>"+(0).toLocaleString()+"원</strong>");	
+			$(this).find('.delivery_price').data('delivery_price', 0);
+			$(this).find('.delivery_price').html("배송비<strong>"+(0).toLocaleString()+"원</strong>");	
 		}
 		
 	//	총 x원
-		let prd_total_payment = 
+		let total_date_price = 
 			$(this).find('.prd_total_price').data('prd_total_price') +
-			$(this).find('.delivery').data('delivery_price');
-		$(this).find('.total').data('prd_total_payment', prd_total_payment);
-		$(this).find('.total').html("총<strong>"+prd_total_payment.toLocaleString()+"원</strong>");
+			$(this).find('.delivery_price').data('delivery_price');
+		$(this).find('.total_date_price').data('total_date_price', total_date_price);
+		$(this).find('.total_date_price').html("총<strong>"+total_date_price.toLocaleString()+"원</strong>");
 	});
-	$('.total_payment').find('.total_payment_price').data('total_payment_price', total_payment_price);
-	$('.total_payment').find('.total_payment_price').html("총 상품금액<strong>"+total_payment_price.toLocaleString()+"원</strong>");
-	$('.total_payment').find('.delivery').data('delivery', delivery);
-	$('.total_payment').find('.delivery').html("총 배송비<strong>"+delivery.toLocaleString()+"원</strong>");
-	$('.total_payment').find('.total').html("총 결제예정금액<strong>"+(total_payment_price+delivery).toLocaleString()+"원</strong>");
+	$('.total_payment_price_wrap').find('.total_product_price').data('total_product_price', total_product_price);
+	$('.total_payment_price_wrap').find('.total_product_price').html("총 상품금액<strong>"+total_product_price.toLocaleString()+"원</strong>");
+	$('.total_payment_price_wrap').find('.total_delivery_price').data('total_delivery_price', delivery_price);
+	$('.total_payment_price_wrap').find('.total_delivery_price').html("총 배송비<strong>"+delivery_price.toLocaleString()+"원</strong>");
+	let total_payment_price = total_product_price + delivery_price;
+	$('.total_payment_price_wrap').find('.total_payment_price').data('total_payment_price', total_payment_price);
+	$('.total_payment_price_wrap').find('.total_payment_price').html("총 결제예정금액<strong>"+total_payment_price.toLocaleString()+"원</strong>");
 }
 
 function isAllChecked(){
@@ -105,6 +107,7 @@ function disabledSetting(){
 	});
 }
 
+// ===== ===== ===== 전체 체크박스 ===== ===== ===== 
 $('.getCartList').on('click', '#all_select', function(){
 	
 	let boolean;
@@ -139,6 +142,7 @@ $('.getCartList').on('click', '#all_select', function(){
 	
 });
 
+// ===== ===== ===== 요일 체크박스 ===== ===== ===== 
 $('.delivery_date').find('input').click(function(){
 	
 	let boolean;
@@ -176,6 +180,7 @@ $('.delivery_date').find('input').click(function(){
 	});
 })
 
+// ===== ===== ===== 상품 체크박스 ===== ===== ===== 
 $('.product_list').find('input').click(function(){
 	
 	let cart_id = $(this).parents('.product_wrap').data('cart_id');
@@ -283,4 +288,38 @@ $('.prd_select').find('button').click(function(){
 			}
 		});		
 	}
+});
+
+// ===== ===== ===== 선택 주문하기 버튼 ===== ===== ===== 
+$('.orderChoiceBtn').click(function(){
+	if ($('.total_payment_price').data('total_payment_price') > 0){
+		location.href = './orders'		
+	} else {
+		alert("선택하신 상품이 없습니다.");
+	}
+});
+
+// ===== ===== ===== 전체 주문하기 버튼 ===== ===== ===== 
+$('.orderBtn').click(function(){
+	
+	$.ajax({
+		async : false,
+		type : 'GET',
+		url : './updateCartStateAll',
+		data : {
+			cart_state : "checked"
+		},
+		success : function(){	
+			$('input').prop('checked', true);			
+			getCartList();
+			isAllChecked();
+			priceSetting();
+			countProduct();
+			location.href = './orders'
+		},
+		error : function(xhr, status, error){
+			console.log("error");				
+		}			
+	});	
+	
 });

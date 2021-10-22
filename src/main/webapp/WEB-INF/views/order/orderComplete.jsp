@@ -1,5 +1,6 @@
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 
 <html>
 <head>
@@ -57,7 +58,7 @@
 					<strong>주문이 완료되었습니다.</strong>
 					<ul>
 						<li>배송지 <span>1개</span></li>
-						<li>주문번호 <span>20211006597213</span></li>
+						<li>주문번호 <span>${paymentDTO.payment_id}</span></li>
 					</ul>
 					<span class="etc">자세한 주문내역은 <strong>MY쿡킷 &gt; 나의 주문정보 &gt; 주문/배송 조회</strong>에서 확인하실 수 있습니다.</span>                   	
 					<div class="stamp_info">
@@ -65,7 +66,7 @@
 							<dt>스탬프 완성하고,  최대 쿡킷 신메뉴를 <strong>무료</strong>로 받으세요!</dt>
 							<dd>배송 완료 후, 스탬프와 혜택이 지급됩니다.</dd>
 						</dl>
-						<a href="/pc/event/eventView?evntId=602452 " class="btn_link">My 스탬프 가기</a>
+						<a href="javascript:;" class="btn_link">My 스탬프 가기</a>
 					</div>
 				</div>
 				
@@ -181,6 +182,7 @@
 								</dl>
 							</div>
 						</div>
+						<!-- //Loop I START -->
 						<div class="product_detail">
 						
 							<div class="recieve_date">
@@ -191,7 +193,7 @@
 							
 							<div class="product_list">
 								<ul>
-									<!-- Loop -->
+									<!-- Loop  J START -->
 									<li>
 										<div class="product_info">
 										
@@ -221,61 +223,16 @@
 											</div>
 											
 										</div>
-									</li>
-									<li>
-										<div class="product_info">
-										
-											<div class="img_wrap">
-												<img src="/mp/resources/images/temp/review_temp2.jpg" alt="">
-											</div>
-											
-											<div class="info_wrap">
-												<span class="tit">부채살 찹스테이크</span><br>
-												<span class="price">20,800원</span>
-												<span class="amount">수량 1개</span>
-											</div>
-											
-										</div>
-									</li>
-									<li>
-										<div class="product_info">
-										
-											<div class="img_wrap">
-												<img src="/mp/resources/images/temp/review_temp2.jpg" alt="">
-											</div>
-											
-											<div class="info_wrap">
-												<span class="tit">부채살 찹스테이크</span><br>
-												<span class="price">20,800원</span>
-												<span class="amount">수량 1개</span>
-											</div>
-											
-										</div>
-									</li>
-									<li>
-										<div class="product_info">
-										
-											<div class="img_wrap">
-												<img src="/mp/resources/images/temp/review_temp2.jpg" alt="">
-											</div>
-											
-											<div class="info_wrap">
-												<span class="tit">부채살 찹스테이크</span><br>
-												<span class="price">20,800원</span>
-												<span class="amount">수량 1개</span>
-											</div>
-											
-										</div>
-									</li>
-									<!-- //Loop -->
+									<!-- //Loop J END -->
 								</ul>								
 							</div>
 							
-							<div class="notice">
+							<!-- <div class="notice">
 								<p>배송정보 변경은 <strong>2021-10-07 07:00</strong>까지만 가능합니다. (단, 사전예약 상품은 배송일 변경이 불가합니다.)</p>
-							</div>
+							</div> -->
 							
 						</div>
+						<!-- //Loop I END -->						
 					</div>
 				</div>
 				
@@ -296,30 +253,34 @@
 						<div class="payment_info_detail">
 							<dl>
 								<dt>총 상품금액</dt>
-								<dd>20,800원</dd>
+								<dd><fmt:formatNumber value="${paymentDTO.payment_total_product_price}" pattern="#,###"/>원</dd>
 							</dl>
 							<dl>
 								<dt>총 배송비</dt>
-								<dd>+3,000원</dd>
+								<dd>+<fmt:formatNumber value="${paymentDTO.payment_total_delivery_price}" pattern="#,###"/>원</dd>
 							</dl>
 							<div class="detail_pay">
-								<p>할인금액</p>
+								<p>포인트 및 기타결제</p>
 								<dl>
-									<dt>상품할인</dt>
+									<dt>CJ ONE 포인트</dt>
+									<dd>-<fmt:formatNumber value="${paymentDTO.payment_use_point}" pattern="#,###"/>원</dd>
+								</dl>
+								<dl>
+									<dt>쿳킷 기프트카드</dt>
 									<dd>-0원</dd>
 								</dl>
 								<dl>
-									<dt>임직원할인</dt>
+									<dt>CJ더마켓 기프트카드</dt>
 									<dd>-0원</dd>
 								</dl>
 								<dl>
-									<dt>쿠폰할인</dt>
+									<dt>CJ 기프트카드</dt>
 									<dd>-0원</dd>
 								</dl>
 							</div>
 							<dl class="total">
 								<dt>총 결제금액</dt>
-								<dd>23,800원</dd>
+								<dd><fmt:formatNumber value="${paymentDTO.payment_total_payment_price}" pattern="#,###"/>원</dd>
 							</dl>
 						</div>
 					</div>

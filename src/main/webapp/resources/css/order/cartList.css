@@ -88,18 +88,18 @@
 .prd_del:after {content:''; position: absolute; left:4px; top:4px; width:16px; height:16px; background:url('/mp/resources/images/common/ico_set.png') -324px 0 no-repeat; background-size:800px 800px;}
 
 /* 장바구니 - 상품당 총결제예정금액 */
-.prd_total_payment { margin-top: 10px; padding: 20px 0; text-align: center; background-color: #F7F7F7; }
-.prd_total_payment span { display: inline-block; font-size: 18px; line-height: 27px;font-weight: 500; color: #101010; vertical-align: middle }
-.prd_total_payment .minus { position: relative; width: 48px; height: 27px; }
-.prd_total_payment .minus:before { content: ''; position: absolute; left: 50%; top: 50%; width: 16px; height: 16px; margin: -8px 0 0 -6px; background: url('/mp/resources/images/op/ico_set.png') -226px -34px	no-repeat; background-size: 800px 800px; }
-.prd_total_payment .plus { position: relative; width: 48px; height: 27px; }
-.prd_total_payment .plus:before { content: ''; position: absolute; left: 50%; top: 50%; width: 16px; height: 16px; margin: -8px 0 0 -8px; background: url('/mp/resources/images/op/ico_set.png') -256px -34px 	no-repeat; background-size: 800px 800px; }
-.prd_total_payment .equal { position: relative; width: 48px; height: 27px; }
-.prd_total_payment .equal:before { content: ''; position: absolute; left: 50%; top: 50%; width: 16px; height: 14px; margin: -8px 0 0 -8px; background: url('/mp/resources/images/op/ico_set.png') -286px -34px 	no-repeat; background-size: 800px 800px; }
-.prd_total_payment strong { display: inline-block; margin-left: 6px; font-size: 18px; height: 27px; color: #101010; font-weight: 700; }
+.total_date_price_wrap { margin-top: 10px; padding: 20px 0; text-align: center; background-color: #F7F7F7; }
+.total_date_price_wrap span { display: inline-block; font-size: 18px; line-height: 27px;font-weight: 500; color: #101010; vertical-align: middle }
+.total_date_price_wrap .minus { position: relative; width: 48px; height: 27px; }
+.total_date_price_wrap .minus:before { content: ''; position: absolute; left: 50%; top: 50%; width: 16px; height: 16px; margin: -8px 0 0 -6px; background: url('/mp/resources/images/op/ico_set.png') -226px -34px	no-repeat; background-size: 800px 800px; }
+.total_date_price_wrap .plus { position: relative; width: 48px; height: 27px; }
+.total_date_price_wrap .plus:before { content: ''; position: absolute; left: 50%; top: 50%; width: 16px; height: 16px; margin: -8px 0 0 -8px; background: url('/mp/resources/images/op/ico_set.png') -256px -34px 	no-repeat; background-size: 800px 800px; }
+.total_date_price_wrap .equal { position: relative; width: 48px; height: 27px; }
+.total_date_price_wrap .equal:before { content: ''; position: absolute; left: 50%; top: 50%; width: 16px; height: 14px; margin: -8px 0 0 -8px; background: url('/mp/resources/images/op/ico_set.png') -286px -34px 	no-repeat; background-size: 800px 800px; }
+.total_date_price_wrap strong { display: inline-block; margin-left: 6px; font-size: 18px; height: 27px; color: #101010; font-weight: 700; }
 
 /* 장바구니 - 결제예정금액 */
-.total_payment {
+.total_payment_price_wrap {
 	margin-top: 56px;
 	padding: 33px 0 34px;
 	border-top: 2px solid #202020;
@@ -107,7 +107,7 @@
 	text-align: center;
 }
 
-.total_payment span {
+.total_payment_price_wrap span {
 	display: inline-block;
 	width: 236px;
 	font-size: 16px;
@@ -117,13 +117,13 @@
 	vertical-align: middle
 }
 
-.total_payment .minus {
+.total_payment_price_wrap .minus {
 	position: relative;
 	width: 48px;
 	height: 80px;
 }
 
-.total_payment .minus:before {
+.total_payment_price_wrap .minus:before {
 	content: '';
 	position: absolute;
 	left: 50%;
@@ -135,13 +135,13 @@
 	background-size: 800px 800px;
 }
 
-.total_payment .plus {
+.total_payment_price_wrap .plus {
 	position: relative;
 	width: 48px;
 	height: 80px;
 }
 
-.total_payment .plus:before {
+.total_payment_price_wrap .plus:before {
 	content: '';
 	position: absolute;
 	left: 50%;
@@ -153,13 +153,13 @@
 	background-size: 800px 800px;
 }
 
-.total_payment .equal {
+.total_payment_price_wrap .equal {
 	position: relative;
 	width: 48px;
 	height: 80px;
 }
 
-.total_payment .equal:before {
+.total_payment_price_wrap .equal:before {
 	content: '';
 	position: absolute;
 	left: 50%;
@@ -172,7 +172,7 @@
 	background-size: 800px 800px;
 }
 
-.total_payment strong {
+.total_payment_price_wrap strong {
 	display: block;
 	margin-top: 7px;
 	font-size: 32px;
@@ -181,11 +181,11 @@
 	color: #101010;
 }
 
-.total_payment span.total {
+.total_payment_price_wrap span.total_payment_price {
 	width: 266px;
 }
 
-.total_payment .total strong {
+.total_payment_price_wrap .total_payment_price strong {
 	margin-top: 4px;
 	font-size: 36px;
 	line-height: 50px;

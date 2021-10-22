@@ -14,7 +14,7 @@
 		    #{product_id},
 		    NULL,
 		    #{cart_delivery_date},
-		    #{quantity},
+		    #{cart_quantity},
 		    'checked'
 		)
 	</insert>
@@ -44,6 +44,33 @@
             c.cart_state = 'deadLine') AND
             pf.product_file_path = 'main'
 		ORDER BY cart_delivery_date
+	</select>
+	
+	<select id="getCartListChecked" resultType="CartListDTO" parameterType="MemberDTO">
+		SELECT
+			cart_id,
+            p.product_id AS product_id,
+			TO_CHAR(cart_delivery_date, 'YYYY-MM-DD(DY)') AS cart_delivery_date,
+			cart_quantity,
+			cart_state,
+			product_name,
+			product_price,
+            product_file_ori_name
+		FROM
+			cart c
+			JOIN product p
+			ON c.product_id = p.product_id
+            JOIN product_file pf
+            ON p.product_id = pf.product_id
+		WHERE
+            c.member_id = #{member_id} AND
+            c.cart_state = 'checked' AND
+            pf.product_file_path = 'main'
+		ORDER BY cart_delivery_date
+	</select>
+	
+	<select id="getCartListPaymentId" resultType="CartDTO" parameterType="PaymentDTO">
+		SELECT * FROM cart WHERE payment_id = #{payment_id}
 	</select>
 	
 <!-- ===== ===== ===== DELETE ===== ===== ===== -->	
@@ -76,12 +103,33 @@
 	</update>
 	
 	<update id="updateCartStateDate" parameterType="CartDTO">
-		UPDATE cart SET cart_state = #{cart_state}
+		UPDATE cart
+		SET
+			cart_state = #{cart_state}
 		WHERE
 			member_id = #{member_id} AND
 			TO_CHAR(cart_delivery_date, 'YYYY-MM-DD') = #{cart_delivery_date} AND
 			(cart_state = 'checked' OR
 			cart_state = 'unChecked')
+	</update>
+	
+	<update id="updateCartStateDeadLine" parameterType="MemberDTO">
+		UPDATE cart
+		SET
+			cart_state = 'deadLine'
+		WHERE
+			member_id = #{member_id} AND
+			TO_CHAR(cart_delivery_date, 'YYYYMMDD') <![CDATA[<]]> TO_CHAR(SYSDATE + 2, 'YYYYMMDD')
+	</update>
+	
+	<update id="updateCartStatePayment" parameterType="HashMap">
+		UPDATE cart
+        SET
+            payment_id = #{payment_id},
+            cart_state = 'payment'
+        WHERE
+            member_id = #{member_id} AND
+            cart_state = 'checked'
 	</update>
 
 </mapper>

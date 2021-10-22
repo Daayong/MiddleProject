@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.d.mp.order.payment.PaymentDAO">
+	
+<!-- ===== ===== ===== 결제 아이디 시퀀스 초기화용 ===== ===== ===== -->
+	<update id="paymentIdSeqReset">
+		DECLARE
+			max_payment_id VARCHAR2(8);
+		BEGIN            
+			SELECT MAX(SUBSTR(payment_id, 1, 8))
+			INTO max_payment_id
+			FROM payment;
+                
+			IF
+				TO_CHAR(SYSDATE, 'YYYYMMDD') != max_payment_id
+			THEN
+				EXECUTE IMMEDIATE 'DROP SEQUENCE payment_id_seq';
+				EXECUTE IMMEDIATE 'CREATE SEQUENCE payment_id_seq';
+			END IF;
+		END;
+	</update>
+
+<!-- ===== ===== ===== INSERT ===== ===== ===== -->
+	<insert id="insertPayment" parameterType="PaymentDTO">
+		<selectKey order="BEFORE" resultType="Long" keyProperty="payment_id">
+			SELECT
+				CONCAT(
+					TO_CHAR(SYSDATE, 'YYYYMMDD'),
+				CONCAT(
+					LPAD(payment_id_seq.NEXTVAL, 4, '0'),
+					#{member_id}
+				))
+			FROM DUAL
+		</selectKey>
+		INSERT INTO payment VALUES (
+			#{payment_id},
+			#{payment_total_product_price},
+			#{payment_total_delivery_price},
+			#{payment_use_point},
+			#{payment_total_payment_price}
+		)
+	</insert>
+
+<!-- ===== ===== ===== SELECT ===== ===== ===== -->
+	<select id="selectPaymentOne" resultType="PaymentDTO" parameterType="PaymentDTO">
+		SELECT * FROM payment WHERE payment_id = #{payment_id}
+	</select>
+
+</mapper>

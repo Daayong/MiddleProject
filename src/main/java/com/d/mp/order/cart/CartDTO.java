@@ -2,14 +2,17 @@ package com.d.mp.order.cart;
 
 import java.sql.Date;
 
+import com.d.mp.order.payment.PaymentDTO;
+
 public class CartDTO {
 	private Long	cart_id                  ;
 	private Long	member_id                ;
 	private Long	product_id               ;
-	private Long	order_id                 ;
+	private Long	payment_id				 ;
 	private Date	cart_delivery_date       ;  
 	private Long	cart_quantity            ;
 	private String	cart_state               ;
+	
 	public Long getCart_id() {
 		return cart_id;
 	}
@@ -28,11 +31,11 @@ public class CartDTO {
 	public void setProduct_id(Long product_id) {
 		this.product_id = product_id;
 	}
-	public Long getOrder_id() {
-		return order_id;
+	public Long getPayment_id() {
+		return payment_id;
 	}
-	public void setOrder_id(Long order_id) {
-		this.order_id = order_id;
+	public void setPayment_id(Long payment_id) {
+		this.payment_id = payment_id;
 	}
 	public Date getCart_delivery_date() {
 		return cart_delivery_date;

@@ -25,7 +25,6 @@
 	
 	<!-- myPage Interceptors  -->
 	<beans:bean id="loginInterceptor" class="com.d.mp.member.util.LoginInterceptor" />
-	<beans:bean id="SessionChkInterceptor" class="com.d.mp.member.util.SessionChkInterceptor" />
 	<interceptors>
 		<interceptor>
 			<mapping path="/member/memberDelete" />
@@ -33,10 +32,6 @@
 			<mapping path="/member/memberUpdate" />
 			<beans:ref bean="loginInterceptor"/>
 		</interceptor>
-		<interceptor>
-			<mapping path="./registerForm" />
-			<beans:ref bean="SessionChkInterceptor"/>
-		</interceptor>	
 	</interceptors> 
 	</beans:beans>
 
