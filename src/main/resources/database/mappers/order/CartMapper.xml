@@ -55,7 +55,7 @@
 			cart_state,
 			product_name,
 			product_price,
-            product_file_ori_name
+            product_file_name
 		FROM
 			cart c
 			JOIN product p
