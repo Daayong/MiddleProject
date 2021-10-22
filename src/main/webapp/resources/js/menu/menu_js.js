@@ -187,6 +187,7 @@ $("#product_cnt_value").val(0);
 // 재고 수
 let maxStock = 0;
 
+//
 // 셀렉트 박스
 $("#prd_select").change(function(){
 	
