@@ -5,9 +5,17 @@
   
   <mapper namespace="com.d.mp.cs.faq.FaqDAO">
   
+  
+  
   <!-- list 불러오기 -->
   <select id="getList" resultType="FaqDTO">
-  	SELECT * FROM faq ORDER BY faq_id DESC
+  	SELECT *
+  	FROM 
+  		faq
+  	ORDER BY faq_id DESC
+	
+	
+
   </select>
   
   <!-- faq 글 추가 -->
@@ -16,17 +24,10 @@
   </insert>
   
 
+
+  <select id="getTypeList" parameterType="Map" resultType="FaqDTO">
   
-  <select id="getCount" parameterType="BoardPager" resultType="Long">
-  	
-  SELECT COUNT(faq_id) FROM faq
- 		WHERE faq_type
- 		LIKE '%' || #{faq_type} || '%'
-  </select>
-  
-  <select id="getTypeList" parameterType="FaqDTO" resultType="FaqDTO">
-  
-  	SELECT * FROM faq WHERE faq_type LIKE '%' || #{faq_type} || '%' 
+  	SELECT * FROM faq WHERE faq_type LIKE #{faq_type} 
   
   </select>
   

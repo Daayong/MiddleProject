@@ -2,17 +2,18 @@ package com.d.mp.cs.faq;
 
 public class FaqDTO {
 	
-	private Long id;
+	private Long faq_id;
 	private String faq_type;
 	private String faq_subject;
 	private String faq_content;
 	
 	
-	public Long getId() {
-		return id;
+
+	public Long getFaq_id() {
+		return faq_id;
 	}
-	public void setId(Long id) {
-		this.id = id;
+	public void setFaq_id(Long faq_id) {
+		this.faq_id = faq_id;
 	}
 	public String getFaq_type() {
 		return faq_type;

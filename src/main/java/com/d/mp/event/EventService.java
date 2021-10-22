@@ -5,12 +5,14 @@ import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.d.mp.board.util.BoardFileManager;
+import com.d.mp.board.util.BoardPager;
 
 @Service
 public class EventService {
@@ -24,25 +26,32 @@ public class EventService {
 	
 	//이벤트 글 목록 불러오기
 	public List<EventDTO> getEventList() throws Exception{
+
 		return eventDAO.getEventList();	
 	}
 	
 	
 	//이벤트 글 작성
-	public int setEventList(EventDTO eventDTO, MultipartFile [] files) throws Exception{
-		String realPath = servletContext.getRealPath("/resources/upload/event/");
+	public int setEventList(EventDTO eventDTO, MultipartFile files) throws Exception{
+		int result = eventDAO.setEventList(eventDTO);
+
+		if(files != null) {
+		String realPath = this.servletContext.getRealPath("/resources/upload/event/" + eventDTO.getEvent_id());
+		
+		System.out.println(realPath);
 		
 		File file = new File(realPath);
 		
-		int result = eventDAO.setEventList(eventDTO);
 		
-		for(MultipartFile multipartFile : files) {
-			String fileName = fileManager.fileSave(multipartFile, file);
+		EventFileDTO eventFileDTO = new EventFileDTO();
+				
+		
+			String fileName = fileManager.fileSave(files, file);
 			
-			EventFileDTO eventFileDTO = new EventFileDTO();
-			eventFileDTO.setEvent_file_id(eventDTO.getEvent_id());
+			
 			eventFileDTO.setEvent_file_name(fileName);
-			eventFileDTO.setEvent_file_ori_name(multipartFile.getOriginalFilename());
+			eventFileDTO.setEvent_file_ori_name(files.getOriginalFilename());
+			eventFileDTO.setEvent_id(eventDTO.getEvent_id());
 
 			result = eventDAO.setFile(eventFileDTO);
 		}
@@ -63,7 +72,7 @@ public class EventService {
 	}
 	
 	//등록된 파일 불러오기
-	public List<EventFileDTO> getFile(EventDTO eventDTO) throws Exception{
+	public EventFileDTO getFile(EventDTO eventDTO) throws Exception{
 		return eventDAO.getFile(eventDTO);
 	}
 	

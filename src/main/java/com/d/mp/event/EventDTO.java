@@ -1,6 +1,7 @@
 package com.d.mp.event;
 
 import java.sql.Date;
+import java.util.List;
 
 public class EventDTO {
 
@@ -10,6 +11,16 @@ public class EventDTO {
 	private Date event_startDate;
 	private Date event_endDate;
 	
+	private EventFileDTO eventFileDTO;
+	
+	
+	
+	public EventFileDTO getEventFileDTO() {
+		return eventFileDTO;
+	}
+	public void setEventFileDTO(EventFileDTO eventFileDTO) {
+		this.eventFileDTO = eventFileDTO;
+	}
 	public Long getEvent_id() {
 		return event_id;
 	}

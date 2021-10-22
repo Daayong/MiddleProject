@@ -47,8 +47,8 @@ public class EventDAO {
 	
 	//파일 가져오기
 	
-	public List<EventFileDTO> getFile(EventDTO eventDTO) throws Exception{
-		return sqlSession.selectList(NAMESPACE+"getFile", eventDTO);
+	public EventFileDTO getFile(EventDTO eventDTO) throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getFile", eventDTO);
 	}
 	
 }

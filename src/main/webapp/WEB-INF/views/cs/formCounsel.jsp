@@ -8,6 +8,7 @@
 	
 	<title>My쿡킷 - 집밥을 특별하게,쿡킷</title>
 	
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 	<style>	
 		.wrapper{
 			position:relative;
@@ -60,68 +61,67 @@
 				
 				<div class="cate_wrap">
 					<h4>문의유형<span class="bul_req"><span class="hide">필수 입력</span></span></h4>
-					<span class="hide">이하 내역 기간별 선택 항목은 라디오 버튼이며, 방향키로써 각각 항목 이동 가능합니다.</span> <!-- 190624_수정 -->
 					<ul class="rad_tab_wrap">
 				
 							<li>
 								<span class="rad_wrap">
-									<input type="radio" name="cslCtgrId" id="inquiry_cate1" value="0401" data-csl-ttl="배송" checked="" class="accessibility-keyboard">
+									<input type="radio" name="cslCtgrId" id="inquiry_cate1" value="ship" data-csl-ttl="배송" checked="" class="accessibility-keyboard">
 										<label for="inquiry_cate1"><span>배송</span></label>
 								</span>
 							</li>
 		
 							<li>
 								<span class="rad_wrap">
-									<input type="radio" name="cslCtgrId" id="inquiry_cate2" value="0402" data-csl-ttl="주문/결제" class="accessibility-keyboard">
+									<input type="radio" name="cslCtgrId" id="inquiry_cate2" value="pay" data-csl-ttl="주문/결제" class="accessibility-keyboard">
 										<label for="inquiry_cate2"><span>주문/결제</span></label>
 								</span>
 							</li>
 						
 							<li>
 								<span class="rad_wrap">
-									<input type="radio" name="cslCtgrId" id="inquiry_cate3" value="0403" data-csl-ttl="취소/반품" class="accessibility-keyboard">
+									<input type="radio" name="cslCtgrId" id="inquiry_cate3" value="cancel" data-csl-ttl="취소/반품" class="accessibility-keyboard">
 										<label for="inquiry_cate3"><span>취소/반품</span></label>
 								</span>
 							</li>
 							
 							<li>
 								<span class="rad_wrap">
-									<input type="radio" name="cslCtgrId" id="inquiry_cate4" value="0404" data-csl-ttl="쿡킷메뉴/상품" class="accessibility-keyboard">
+									<input type="radio" name="cslCtgrId" id="inquiry_cate4" value="menu" data-csl-ttl="쿡킷메뉴/상품" class="accessibility-keyboard">
 										<label for="inquiry_cate4"><span>쿡킷메뉴/상품</span></label>
 								</span>
 							</li>
 						
 							<li>
 								<span class="rad_wrap">
-									<input type="radio" name="cslCtgrId" id="inquiry_cate5" value="0405" data-csl-ttl="회원/포인트" class="accessibility-keyboard">
+									<input type="radio" name="cslCtgrId" id="inquiry_cate5" value="point" data-csl-ttl="회원/포인트" class="accessibility-keyboard">
 										<label for="inquiry_cate5"><span>회원/포인트</span></label>
 								</span>
 							</li>
 						
 							<li>
 								<span class="rad_wrap">
-									<input type="radio" name="cslCtgrId" id="inquiry_cate6" value="0406" data-csl-ttl="이벤트" class="accessibility-keyboard">
+									<input type="radio" name="cslCtgrId" id="inquiry_cate6" value="event" data-csl-ttl="이벤트" class="accessibility-keyboard">
 										<label for="inquiry_cate6"><span>이벤트</span></label>
 								</span>
 							</li>
 						
 							<li>
 								<span class="rad_wrap">
-									<input type="radio" name="cslCtgrId" id="inquiry_cate7" value="0407" data-csl-ttl="영수증/증빙" class="accessibility-keyboard">
+									<input type="radio" name="cslCtgrId" id="inquiry_cate7" value="receipt" data-csl-ttl="영수증/증빙" class="accessibility-keyboard">
 										<label for="inquiry_cate7"><span>영수증/증빙</span></label>
 								</span>
 							</li>
 				
 							<li>
 								<span class="rad_wrap">
-									<input type="radio" name="cslCtgrId" id="inquiry_cate8" value="0408" data-csl-ttl="사이트이용" class="accessibility-keyboard">
+									<input type="radio" name="cslCtgrId" id="inquiry_cate8" value="site" data-csl-ttl="사이트이용" class="accessibility-keyboard">
 										<label for="inquiry_cate8"><span>사이트이용</span></label>
 								</span>
 							</li>
 					
 							<li>
 								<span class="rad_wrap">
-									<input type="radio" name="cslCtgrId" id="inquiry_cate9" value="0409" data-csl-ttl="기타" class="accessibility-keyboard">
+									<input type="radio" name="cslCtgrId" id="inquiry_cate9" value="etc" data-csl-ttl="기타" class="accessibility-keyboard">
 										<label for="inquiry_cate9"><span>기타</span></label>
 								</span>
 							</li>
@@ -129,7 +129,7 @@
 					</ul>
 	
 					<!-- script 요청사항 : 체크박스 클릭 시 해당 아이디 영역 노출 / 없으면 비노출 -->
-					<div class="cate_sum_cont ui_cateSumCont1" style="display:block;">
+					<div class="cate_sum_cont ui_cateSumCont1" id="ship" style="display:block;">
 						<div class="noti_box">
 							<p class="tit">문의 전 확인해주세요.</p>
 							<ul class="bul_list">
@@ -141,7 +141,7 @@
 							</ul>
 						</div>
 					</div>
-					<div class="cate_sum_cont ui_cateSumCont2">
+					<div class="cate_sum_cont ui_cateSumCont2" id="pay">
 						<div class="noti_box">
 							<p class="tit">문의 전 확인해주세요.</p>
 							<ul class="bul_list">
@@ -154,7 +154,7 @@
 							</ul>
 						</div>
 					</div>
-					<div class="cate_sum_cont ui_cateSumCont3">
+					<div class="cate_sum_cont ui_cateSumCont3" id="cancel">
 						<div class="noti_box">
 							<p class="tit">문의 전 확인해주세요.</p>
 							<ul class="bul_list">
@@ -166,7 +166,7 @@
 							</ul>
 						</div>
 					</div>
-					<div class="cate_sum_cont ui_cateSumCont5">
+					<div class="cate_sum_cont ui_cateSumCont5" id="point">
 						<div class="noti_box">
 							<p class="tit">문의 전 확인해주세요.</p>
 							<ul class="bul_list">
@@ -178,7 +178,7 @@
 							</ul>
 						</div>
 					</div>
-					<div class="cate_sum_cont ui_cateSumCont7">
+					<div class="cate_sum_cont ui_cateSumCont7" id="reciept">
 						<div class="noti_box">
 							<p class="tit">문의 전 확인해주세요.</p>
 							<ul class="bul_list">
@@ -193,9 +193,11 @@
 					<!-- //script 요청사항 : 체크박스 클릭 시 해당 아이디 영역 노출 / 없으면 비노출 -->
 				</div>
 	
-				<div class="top_sec input_top_sec">
+				<div class="top_sec input_top_sec" >
 					<h4>배송</h4><!-- 스크립트 요청 사항 : .rad_wrap 클릭 시 해당 카테명 뽑아주세요. -->
 				</div>
+			
+				
 				<div class="input_order pro_inquiry">
 					<dl class="one_dep row1 orderSelectArea">
 						<dt>주문/상품 선택</dt>
@@ -368,6 +370,61 @@
 	</section>
  	<c:import url="../temp/boot_footer.jsp"></c:import>
 </div>
+
+<script type="text/javascript">
+
+$("#inquiry_cate1").on("click", function() {
+	$("#ship").show();
+	$("#pay").hide();
+	$("#cancel").hide();
+	$("#point").hide();
+	$(".input_top_sec").html('<h4>배송</h4>');
+});
+
+$("#inquiry_cate2").on("click", function() {
+	$("#pay").show();
+	$("#ship").hide();
+	$("#cancel").hide();
+	$("#point").hide();
+	$(".input_top_sec").html('<h4>주문/결제</h4>');
+});
+
+$("#inquiry_cate3").on("click", function() {
+	$("#cancel").show();
+	$("#ship").hide();
+	$("#pay").hide();
+	$("#point").hide();
+	$(".input_top_sec").html('<h4>취소/반품</h4>');
+});
+
+$("#inquiry_cate4").on("click", function() {
+	$(".cate_sum_cont").not($(this)).hide();
+	$(".input_top_sec").html('<h4>쿡킷메뉴/상품</h4>');
+	$(".orderSelectArea").hide();
+});
+
+$("#inquiry_cate5").on("click", function() {
+	$("#point").show();
+ 	$("#pay").hide();
+	$("#cancel").hide(); 
+	$("#point").hide();
+	$(".input_top_sec").html('<h4>회원/포인트</h4>');
+	$(".orderSelectArea").hide();
+});
+
+$("#inquiry_cate6").on("click", function() {
+	$(".cate_sum_cont").not($(this)).hide();
+	$(".input_top_sec").html('<h4>이벤트</h4>');
+	$(".orderSelectArea").hide();
+});
+
+$("#inquiry_cate7").on("click", function() {
+	$(".cate_sum_cont").not($(this)).hide();
+	$(".input_top_sec").html('<h4>영수증/증빙</h4>');
+	$(".orderSelectArea").hide();
+});
+
+</script>
 
 </body>
 </html>

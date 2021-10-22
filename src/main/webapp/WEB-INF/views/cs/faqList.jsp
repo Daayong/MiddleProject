@@ -62,19 +62,21 @@
 				<div class="faq_conts">
 				
 					<!-- search area -->
+					
+	
 					<div class="f_search">
 						<h2 class="tit">FAQ 검색</h2>
 						<div class="box_search">
 						<div class="sch_wrap">
 							<div class="input_wrap">
-									<input type="text" class="txt" id="fn_txt_srch" placeholder="검색어를 입력해주세요" name="keyWord"  ><!-- value 사용자 입력 값 나중에 추가 -->
+									<input type="text" class="txt" id="fn_txt_srch" placeholder="검색어를 입력해주세요" name="key"  ><!-- value 사용자 입력 값 나중에 추가 -->
 									<button class="ico del"><span class="hide">입력 삭제</span></button>
-									<button type="button" class="btn btn_srch" onclick="javascript:goSearch()"><span class="hide">검색</span></button>
+									<button type="button" class="btn btn_srch"><span class="hide">검색</span></button>
 								</div>
 							</div>
 						</div>		
 					</div>		
-							
+					
 				<!-- faq type -->
 					<div class="f_type">
 						<h2 class="tit">문의유형</h2>
@@ -82,49 +84,48 @@
 							
 							<ul>
 											
-							<li class="tab_item on"  id="all" >
-							 <button type="button" value="전체"><span>전체</span></button>
+							<li class="tab_item "  id="all" >
+							 <button class="" type="button" value="전체"><span>전체</span></button>
 							</li>
 						
 							<li class="tab_item" id="ship" >
-								<!-- <a class="tab_link" ><span>배송</span></a> -->
-								 <button type="button" value="배송"><span>배송</span></button>
+								 <button class="" type="button" value="배송"><span>배송</span></button>
 							</li>
 						
 							<li class="tab_item" id="pay" >
-								<button type="button" value="결제/영수증"><span>결제/영수증</span></button> 
+								<button class="" type="button" value="결제/영수증"><span>결제/영수증</span></button> 
 								 
 							</li>
 							<li class="tab_item "  id="order" >
-								 <button type="button" value="주문"><span>주문</span></button> 
+								 <button class="" type="button" value="주문"><span>주문</span></button> 
 								 
 							</li>
 						
 							<li class="tab_item " id="cancel" >
-								<button type="button" value="취소/반품"><span>취소/반품</span></button> 
+								<button class="" type="button" value="취소/반품"><span>취소/반품</span></button> 
 								 
 							</li>
 						
 							
-							<li class="tab_item" id="rv" >
-								<button type="button" value="리뷰/포인트"><span>리뷰/포인트</span></button> 
+							<li class="tab_item" id="rv">
+								<button class="" type="button" value="리뷰/포인트"><span>리뷰/포인트</span></button> 
 							 
 							</li>
 							
 					
-							<li class="tab_item" id="gift"  >
-								<button type="button" value="선물하기"><span>선물하기</span></button> 
+							<li class="tab_item" id="gift">
+								<button class="" type="button" value="선물하기"><span>선물하기</span></button> 
 								 
 							</li>
 					
 							
 							<li class="tab_item " id="mem">
-								 <button type="button" value="회원"><span>회원</span></button> 
+								 <button class="" type="button" value="회원"><span>회원</span></button> 
 								 
 							</li>
 							
 							<li class="tab_item "  id="etc" >
-								<button type="button" value="기타"><span>기타</span></button> 
+								<button class="" type="button" value="기타"><span>기타</span></button> 
 								 
 							</li>	
 					</ul>
@@ -139,7 +140,7 @@
               
 				<div class="list_acco ui_accordion" data-accord-group="faq_list">
 				
-				<ul class="faqListArea">
+				<ul class="faqListArea" id="item_wrap">
 				
 			<c:forEach items="${faqlist}" var="dto">
 				
@@ -155,7 +156,14 @@
 	            </div>
 	            <div class="desc ui_accord_content" id="answer" style="display: none" >
 	                <strong>A</strong>
-	             	<p class="cont">${dto.faq_content}</p>
+	             	<p class="cont">
+	             	
+	            	 	<c:if test="${not empty member and member.member_user_id eq 'admin' }">
+							<a href="./faqDelete?faq_id=${dto.faq_id}" class="btn de wh" ><span>삭제</span></a>
+						</c:if>
+	             	${dto.faq_content}
+	             	</p>
+	             
 	            </div>
            		</li>
            		
@@ -174,18 +182,12 @@
 						<button class="btn_add white" onclick="location.href='./faqUpload'"><span>faq 추가</span></button>
 					</c:if>
 					
-					<a class="btn_first" href="#"></a>
-						<a class="btn_prev" href="#"></a>
 						<span class="page_num">
-							<strong>1</strong>
-							<a href="#">2</a>
-							<a href="#">3</a>
-							<a href="#">4</a>
-							<a href="#">5</a>
-							
+					
+							<a href="#"><strong class="on">1</strong></a>
+			
 						</span>
-						<a class="btn_next" href="#"></a>
-						<a class="btn_last" href="#"></a>
+						
 				</div>
 				<!-- bottom_info -->
 				<div class="bottom_info">
@@ -207,11 +209,7 @@
 <c:import url="../temp/boot_footer.jsp"></c:import>
 
 <script type="text/javascript">
-	$(".tab_item").click(function() {
-		$(this).addClass("on");
-		$(".tab_item").not(this).removeClass("on");
-	});
-
+	
 	
 	/* Q 선택시 답변 아래로 */
 	$(".head").click(function() {
@@ -226,9 +224,45 @@
 		
 	});
 	
-	
-	
+			
+	 $(function(){
+		 
+		 
+	    	$("button").on('click',function(){
+	    			let faq_type = $(this).val();  //버튼이 클릭 되었을 때 그 버튼의 value를 let faq_type로 가져와서	
+	    	
+	    			$.ajax({
+	    				 url : './faqTypeList',  
+	    	              type : "post", 
+	    	              cache: false,
+	    	              headers: {"cache-control":"no-cache", "pragma": "no-cache"},
+	    	              data : {"faq_type" : faq_type
+	    	              }, 
+	    	              success : function(data){ 
+	    	           		
+	    	            	  
+	    	               $('body').html(data);
+	    	               
+	    	              },
+	    	              error : function(data){
+	    	            	 alert('error');
+	    	               
+	    	              }//error
+	    			})//ajax
+					
+	    			$(".tab_item").click(function() {
+	    				$(this).addClass("on");
+	    				$(".tab_item").not(this).removeClass("on");
+	    			});
 
+					    			
+	    		});//click
+	    		
+	    });//ready
+
+	
+	    
+	    
 	
 </script>
 

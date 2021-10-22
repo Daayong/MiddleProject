@@ -105,19 +105,18 @@ div.input_wrap{
 	
 /* 유형 선택시 박스 변화 */
 
-.f_type .cate_wrap .tab_item.on button{
+.f_type .cate_wrap .tab_item.on button{	
 	position:absolute;
-	top:0;
-	left:0;
-	border:3px solid #303030;
+ 	border:3px solid #303030;
 	color:#101010;
 	font-weight:700;
 	line-height:50px;
 	box-shadow:0 2px 2px 0 rgba(0, 0, 0, .12);
-	z-index:1;
+	z-index:1; 
 	}
-
 	
+
+
 .f_type .cate_wrap .tab_item button {
 	display:block;
 	width:100%;
@@ -345,6 +344,24 @@ div.input_wrap{
     font-weight: 500;
     font-size: 13px;
     line-height: 21px;
+}
+
+
+
+
+.btn.de {
+ 
+    float: right;
+    width: 72px;
+    margin-right: 10px;
+    color: #101010;
+    border: 1px solid #202020;
+   text-align: center;
+   
+}
+
+.btn.de.wh, .btn.de.wh:focus {
+    border: 1px solid #ccc;
 }
 
 

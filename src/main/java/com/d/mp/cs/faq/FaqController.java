@@ -1,8 +1,9 @@
 package com.d.mp.cs.faq;
 
 
+import java.util.HashMap;
 import java.util.List;
-
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -12,7 +13,12 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.d.mp.board.util.BoardPager;
+import com.d.mp.event.EventDTO;
+import com.d.mp.event.EventFileDTO;
 
 @Controller
 @RequestMapping("/cs/**")
@@ -23,9 +29,14 @@ public class FaqController {
 	
 	@GetMapping( value =  {"faqList", "csMain"})
 	public ModelAndView getList() throws Exception{
+		
+
+		
+		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("cs/faqList");
 		List<FaqDTO> ar = faqService.getList();
+
 		mv.addObject("faqlist", ar);
 		return mv;
 	}
@@ -49,20 +60,55 @@ public class FaqController {
 	}
 	
 	
-	@PostMapping("faqTypeList")
-		public ModelAndView getTypeList(HttpServletRequest request, HttpServletResponse response, FaqDTO faqDTO) throws Exception{
+
+	@RequestMapping(value = "/faqTypeList")
+	public ModelAndView getTypeList(FaqDTO faqDTO, HttpServletRequest request, HttpServletResponse response ) throws Exception{
 		
+	
 		String faq_type = request.getParameter("faq_type");
 		
-		 faqDTO.setFaq_type(faq_type);
+		faqDTO.setFaq_type(faq_type);
 		
-		List<FaqDTO> ar = faqService.getTypeList(faqDTO);
+		Map<String, Object> m = new HashMap<String, Object>();
+		
+		m.put("faq_type", "%" + faq_type + "%");
+	
+		
+		List<FaqDTO> ar = faqService.getTypeList(m, faqDTO);
 		
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("faq_type", faq_type);
 		mv.addObject("faqlist", ar);
+	
 		mv.setViewName("cs/faqList");
+		
 		return mv;
 	}
-
+	
+	@GetMapping("/faqDelete")
+	public ModelAndView setDelete(FaqDTO faqDTO) throws Exception{
+		
+		ModelAndView mv = new ModelAndView();
+		
+		int result = faqService.setDelete(faqDTO);
+		
+		String message = "삭제에 실패했습니다";
+		
+		if(result>0) {
+			message = "삭제되었습니다";
+		}
+		
+		mv.addObject("msg", message);
+		mv.addObject("url", "./csMain");
+		
+		mv.setViewName("common/result");
+		
+		return mv;
+		
+	}
+	
+	
+	
+	
+	
 }	

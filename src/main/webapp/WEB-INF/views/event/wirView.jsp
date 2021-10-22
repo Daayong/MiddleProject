@@ -2,14 +2,14 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <link href="${pageContext.request.contextPath}/resources/css/common.css" rel="stylesheet">
-<link href="${pageContext.request.contextPath}/resources/css/event/planView.css" rel="stylesheet">
-
+<link href="${pageContext.request.contextPath}/resources/css/cs/csMain.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/css/cs/noticeMain.css" rel="stylesheet">
 
 <html>
 <head>
 
 <script src="http://code.jquery.com/jquery-latest.js"></script>
-	<title>이벤트 - 집밥을 특별하게, 쿡킷</title>
+	<title>고객행복센터 - 집밥을 특별하게, 쿡킷</title>
 	
 	<style>
 		html,body{
@@ -40,19 +40,26 @@
 
 	<section id="container">
 	
-			<div id="content" class="ev_content">
 	
-		<div class="ev_wrap">
-			<h1 class="title">이벤트</h1>
-			
-			<div class="tab_wrap">
-            <ul class="tabs">
-                <li><a href="/mp/event/eventMain"><span>진행중</span></a></li>
-                <li class="on"><a href="/mp/event/winnerMain"><span>당첨자 발표<em class="hide">선택됨</em></span></a></li>
-            </ul>
-        </div>
-			
+		<div id="cs_content">
+		
+			<div class="cs_wrap">
+				<h1 class="cs_title">고객행복센터</h1>
+				
+				<!-- tab -->
+				<div class="tab_wrap">
+					<ul class="tabs">
+						<li><a href="${pageContext.request.contextPath}/cs/faqList"><span id="faq">FAQ</span></a></li>
+						<li class="on"><a href="${pageContext.request.contextPath}/cs/noticeMain"><span id="nt">공지사항</span></a></li>
+						<li><a href=" ${pageContext.request.contextPath}/cs/userGuide"><span id="ug" >새벽배송/이용안내</span></a></li>
+					</ul>			
+				</div>
+				
+		<!-- notice -->
+		<div class="notice_conts" id="noticeContent">
 			<div class="view">
+			
+				<!-- view head -->
 				<div class="head">
                         <h2 class="tit">${dto.event_winner_subject} 
                         	<span class="date">${dto.event_winner_regDate}</span></h2>
@@ -64,13 +71,15 @@
                          	${dto.event_winner_content}
                         </div>
                     </div>
-	        	
-			</div>
 			
+			</div>			
+			
+			<div>
 			<c:if test="${not empty member and member.member_user_id eq 'admin' }">
 			<a href="./eventDelete?event_id=${dto.event_winner_id}" class="delete btn_remove" ><span>글 삭제</span></a>
 			</c:if>
 			</div>
+			<!-- 목록으로 돌아가기 -->
 			
 				<div class="btn_wrap">
                 	<a href="${pageContext.request.contextPath}/event/winnerMain" class="btn pop green" role="button" >
@@ -78,13 +87,18 @@
                 </div>
 			
 			
+			
+		
+		<!-- //view -->
+				
+			</div>
 		</div>
-	
-	</section>	
+		
 	</div>
 	
-	
-	
+
+	</section>
+</div>
 
  <c:import url="../temp/boot_footer.jsp"></c:import>
 

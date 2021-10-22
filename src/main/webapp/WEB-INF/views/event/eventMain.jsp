@@ -75,16 +75,16 @@
 			<div class="pro_module">
 				<div class="img_wrap">															
 					<a href="./planView?event_id=${eList.event_id}" class="link_more">
-				
-					<img src="/mp/resources/images/20210928163004637.jpg" alt="test" onerror="cj.com.noImg(this,'P')">				
-		
+			
+						<img src="/mp/resources/images/1008_3time_pc_o_01.jpg"" alt="test">	
+	
 						<span class="dim"></span>
 					</a>
 				</div>
 				<div class="txt_wrap">
-					<a href="javascript:goExtDevUrl('')" class="conts">
+					<a  class="conts">
 						<div class="prd_flag_wrap">
-							<span class="flag cate">EVENT</span><!-- 개발 요청 사항 : EVENT/기획전 경우 .flag에 cate 클래스 추가  -->
+							<span class="flag cate">EVENT</span>
 
 							<span class="date">${eList.event_startDate} ~ ${eList.event_endDate}</span>
 						</div>
@@ -97,8 +97,6 @@
 		</li>		
 		</c:forEach>
 	
-		
-				
 		</ul>
 
 			<!-- event upload admin만 접근 가능 -->
@@ -121,8 +119,6 @@
 					<!-- //이벤트 목록 페이지 -->
 					
 					
-					
-					
 					<!--//당첨자 발표 -->
 				</div>
 			</div>			
@@ -139,7 +135,6 @@
 </body>
 
 
-<!-- javaScript -->
 
 	
 </html>

@@ -106,8 +106,7 @@
 						<c:if test="${not empty member and member.member_user_id eq 'admin'}">
 							<button class="btn_add white" onclick="location.href='./noticeUpload'"><span>공지 추가</span></button>
 						</c:if>
-						<a class="btn_first" href="#"></a>
-							<a class="btn_prev" href="#"></a>
+						
 							<span class="page_num">
 								
 								<c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="n">
@@ -116,8 +115,7 @@
 								
 								
 						</span>
-					<a class="btn_next" href="#"></a>
-					<a class="btn_last" href="#"></a>
+					
 				</div>
 						
 				
