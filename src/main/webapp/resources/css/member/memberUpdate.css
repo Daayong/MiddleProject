@@ -55,12 +55,12 @@ input.nobox{border:none;  pointer-events: none;}
 #birthday_select{display:inline-block; position:relative; }
 .select{display:inline-block; vertical-align:middle; color:#555; font-size:14px; line-height:24px; }
 .select .symbol{margin-left:10px; margin-right:15px;}
+.select.w30 input{width:60px; height:32px;}
 .select.w70 .select_wrap {width:70px; height:32px; border: 1px solid #ddd;}
 .select.w120 .select_wrap{width:88px; height:32px; border: 1px solid #ddd;}
 .select.w180 .select_wrap{width:150px; height:32px; border: 1px solid #ddd;}
-.select.w120 input{width:88px;border: 1px solid #ddd;}
 .select.w120 input{width:180px;border: 1px solid #ddd;}
-
+.select.w100 input{width:100px;border: 1px solid #ddd;}
 
 .table_col{margin-bottom:40px; }
 

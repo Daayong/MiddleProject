@@ -339,13 +339,13 @@
 										</div>
 										<div class="select w120">
 											<span class="input_txt">
-												<input type="text" id="member_phone_m" value="" name="member_phone_m" class="text put">
+												<input type="text" onkeypress="javascript:checkInputNum();" id="member_phone_m" value="" name="member_phone_m" class="text put">
 											</span>
 											<span class="symbol">-</span>
 										</div>
 										<div class="select w120">
 											<span class="input_txt">
-												<input type="text" id="member_phone_b" value="" name="member_phone_b" class="text put">
+												<input type="text" id="member_phone_b" onkeypress="javascript:checkInputNum();" value="" name="member_phone_b" class="text put">
 											</span>
 										</div>
 									</div>
@@ -365,7 +365,7 @@
 								<div id="email_ad">
 										<div class="select w180">
 											<span class="input_txt">
-												<input type="text" id="member_email_f" value="" name="member_email_f" placeholder="이메일 아이디" class="text put">
+												<input type="text" id="member_email_f" val="" name="member_email_f" placeholder="이메일 아이디" class="text put">
 											</span>
 											<span class="symbol">@</span>
 										</div>
@@ -527,7 +527,15 @@
 		var val=member_email_b.options[idx].value;
 		member_email_b2.value=val;
 	};
-
+	//숫자만 입력할수 있게 하는 함수 
+	function checkInputNum(){
+		if((event.keyCode<48)||(event.keyCode>57)){
+			event.returnValue=false;
+		}
+	}
+	
+	
+	//회원가입 유효성검사 
 	function checkInput(){
 		//이름 입력 유효성 검사
 		if( member_name.value.trim()=="") {

@@ -1,6 +1,7 @@
 package com.d.mp.member;
 
 import java.lang.ProcessBuilder.Redirect;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,6 +18,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.d.mp.address.AddressDTO;
+import com.d.mp.cs.notice.NoticeService;
 
 import oracle.jdbc.proxy.annotation.Post;
 
@@ -40,6 +44,7 @@ public class MemberController {
 	@PostMapping("login")
 	public ModelAndView login(MemberDTO memberDTO,HttpSession session, String check)throws Exception{
 		ModelAndView mv = new ModelAndView();
+		
 		memberDTO = memberService.getLogin(memberDTO);
 		
 		if(memberDTO !=null) {
@@ -66,8 +71,15 @@ public class MemberController {
 	@GetMapping("myPage")
 	public ModelAndView myPage(HttpSession session) throws Exception{
 		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		AddressDTO addressDTO = memberService.getDefaultAddress(memberDTO);
+		String id ="";	
 		ModelAndView mv = new ModelAndView();
 		if(memberDTO!=null) {
+			if(addressDTO !=null) {
+				id=addressDTO.getAddress();
+			}
+			System.out.println(id);	
+			mv.addObject("address", addressDTO);
 			mv.setViewName("member/myPage");
 		}else {
 			mv.setViewName("redirect:./login?check=1");
@@ -103,13 +115,9 @@ public class MemberController {
 
 	@PostMapping("join")
 	public ModelAndView join(MemberDTO memberDTO, HttpServletRequest request) throws Exception{
+
 		ModelAndView mv = new ModelAndView();
-		
-		String birth_yy = request.getParameter("birth_yy");
-		String birth_mm = request.getParameter("birth_mm");
-		String birth_dd = request.getParameter("birth_dd");
-		
-		memberDTO.setMember_birth(birth_yy+"-"+birth_mm+"-"+birth_dd);
+		memberDTO.setMember_birth(memberDTO.getBirth_yy()+"-"+memberDTO.getBirth_mm()+"-"+memberDTO.getBirth_dd());
 		
 		String phone_f = request.getParameter("phone_f");
 		String member_phone_m = request.getParameter("member_phone_m");
@@ -146,15 +154,9 @@ public class MemberController {
 	@PostMapping("pwCheck")
 	@ResponseBody
 	public int getPwCheck(MemberDTO memberDTO,HttpSession session)throws Exception{
-		ModelAndView mv = new ModelAndView();
 		int result = memberService.getPwCheck(memberDTO);
 		return result;
 	}
-	
-	
-	
-	
-	
 	
 	
 	
@@ -166,7 +168,36 @@ public class MemberController {
 	public String findLog() {
 		return "member/findLog";
 	}
+	
+	@PostMapping("findId")
+	@ResponseBody
+	public String getFindId(MemberDTO memberDTO ,HttpServletRequest request)throws Exception { 
+		ModelAndView mv = new ModelAndView();
+		memberDTO=memberService.charSet(memberDTO);
+		memberDTO=memberService.getFindId(memberDTO);
+		String message="1";
+		if(memberDTO !=null) {
+			System.out.println("일치하는 정보 있음");
+			message=memberDTO.getMember_user_id();
+			message=message.substring(0,message.length()-2);
+			message=message+"**";
+		}else {
+			System.out.println("일치하는 정보 없음");
+		}
+		return message; 
+	}
 
+	@PostMapping("quickPass")
+	@ResponseBody
+	public String quickPass(MemberDTO memberDTO)throws Exception{
+		System.out.println("hi");
+		//1.INPUT에 입력받은 정보에 맞는 member가 있는지 확인하기 
+		//2.있으면 임시비밀번호 발급해서 
+		//3.해당되는 member 비밀번호에 발급된 임시비밀번호 update해주기 
+		//4.발급된 임시비밀번호 값 콘솔창에 띄워주기 
+		String result = memberService.getFindPass(memberDTO);
+		return result;
+	}
 	
 	
 /*--------------------------------- 아이디/패스워드 찾기 종료--------------------------------------*/	
@@ -203,29 +234,52 @@ public class MemberController {
 	}
 	
 	@PostMapping("update")
-	public ModelAndView setUpdate(MemberDTO memberDTO,HttpSession session)throws Exception{
-		//수정 전 데이터 
+	public ModelAndView setUpdate(MemberDTO memberDTO,HttpServletRequest request,HttpSession session)throws Exception{
+		ModelAndView mv = new ModelAndView();
 		MemberDTO sessionDTO =(MemberDTO)session.getAttribute("member");
 		
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("redirect:./myPage");
+		String birth_yy = request.getParameter("birth_yy");
+		String birth_mm = request.getParameter("birth_mm");
+		String birth_dd = request.getParameter("birth_dd");
+		
+		memberDTO.setMember_birth(birth_yy+"-"+birth_mm+"-"+birth_dd);
+		
+		String phone_f = request.getParameter("member_phone_f");
+		String member_phone_m = request.getParameter("member_phone_m");
+		String member_phone_b = request.getParameter("member_phone_b");
+		
+		memberDTO.setMember_phone(phone_f+"-"+member_phone_m+"-"+member_phone_b);
+		
+		String member_email_f = request.getParameter("member_email_f");
+		String member_email_b = request.getParameter("member_email_b");
+		
+		memberDTO.setMember_email(member_email_f+"@"+member_email_b);
+		memberService.setUpdate(memberDTO);
+		session.setAttribute("member", memberDTO);
+		mv.setViewName("redirect:../");
 		return mv; 
 	}
+	
 	
 /*--------------------------------- 회원 탈퇴/수정 종료 --------------------------------------*/	
 	
 /*--------------------------------- 주소 관련 시작 --------------------------------------*/	
 	
-	@GetMapping("myaddress")
-	public ModelAndView myAddress(HttpSession session, MemberDTO memberDTO) throws Exception{
-		ModelAndView mv = new ModelAndView();
-		memberDTO = memberService.getDefaultAddress(memberDTO);
-		session.setAttribute("member_address", memberDTO);
-		mv.addObject("member_address", memberDTO);
-		mv.setViewName("member/myaddress");	
-		return mv;
-	}
-		
+@GetMapping("myaddress")
+  public ModelAndView getAddressList(MemberDTO memberDTO,HttpSession session) throws Exception{ 
+	  ModelAndView mv = new ModelAndView();
+	  MemberDTO sessionDTO = (MemberDTO)session.getAttribute("member");
+	  List<AddressDTO> ar = memberService.getAddressList(sessionDTO);
+	  mv.addObject("list",ar);
+	  mv.setViewName("member/myaddress");
+	  return mv;
+  }
+ 
+  
+  
+  
+  
+  
 	
 	
 }

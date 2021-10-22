@@ -7,10 +7,9 @@
 		<typeAliases>
 
 			<typeAlias type="com.d.mp.member.MemberDTO" alias="MemberDTO"/>
-	
-	
-
-	
+			<typeAlias type="com.d.mp.address.AddressDTO" alias="AddressDTO"/>
+			<typeAlias type="java.lang.Integer" alias="Integer"/>
+			
 			
 			<typeAlias type="com.d.mp.cs.faq.FaqDTO" alias="FaqDTO"/>
 			<typeAlias type="com.d.mp.cs.notice.NoticeDTO" alias="NoticeDTO"/>

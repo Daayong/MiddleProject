@@ -1,6 +1,6 @@
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
 <html>
 <head>
 	<link href="${pageContext.request.contextPath}/resources/css/common.css" rel="stylesheet">
@@ -45,7 +45,18 @@
 							${member.member_name}님
 						</div>
 						<div class="log_address">
-							<a href="${pageContext.request.contextPath}/member/myaddress"><span>${member_address.member_default_address}</span></a>
+							<a href="${pageContext.request.contextPath}/member/myaddress">
+								<span id="dAddress">
+									<c:choose>
+									    <c:when test="${address.address eq null}">
+									        배송지 설정하러 가기
+									    </c:when>
+									    <c:otherwise>
+									        ${address.address}
+									    </c:otherwise>
+									</c:choose>
+								</span>
+							</a>
 						</div>
 					</div>
 					<div id="pointWrap">
@@ -54,7 +65,7 @@
 							<span class="pt">CJ ONE 포인트</span>
 							<span class="i_have">
 								<%-- db연결후 작업 ${member.point}P --%>
-								${member.member_point}P
+								<fmt:formatNumber value="${member.member_point}" pattern="#,###"/>P
 							</span>
 							</a>
 						</div>
