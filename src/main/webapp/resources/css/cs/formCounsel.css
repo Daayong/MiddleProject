@@ -756,6 +756,233 @@ btn.green {
 }
 
 
+/* modal */
+
+.lay_wrap {
+/*     display: none;
+    position: absolute;
+    top: 20px;
+    left: 50%; */
+    padding: 0 0 24px;
+    background-color: #fff;
+    z-index: 9000;
+}
+
+
+.lay_wrap > header.line {
+    border-bottom: 2px solid #202020;
+}
+.lay_wrap > header {
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 20px 0 20px;
+    margin: 0 24px;
+}
+
+.lay_wrap > header.line {
+    border-bottom: 2px solid #202020;
+}
+    
+.lay_wrap > header {
+    position: static;
+    width: auto;
+    height: auto;
+    padding: 20px 0 20px;    
+ 	margin: 0 24px;
+}
+
+.lay_wrap > header h1 {
+    font-size: 20px;
+    line-height: 30px;
+    color: #101010;
+    font-weight: 700;
+}
+
+.lay_wrap .lay_conts.lay_scroll {
+    position: relative;
+    max-height: 626px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    margin-bottom: -24px;
+    padding-left: 24px;
+}
+
+.lay_wrap .lay_conts.lay_scroll > div {
+    width: 432px;
+    padding-bottom: 24px;
+}
+
+.lay_conts .order_delivery .order_tit {
+    padding-top: 24px;
+    color: #101010;
+    font-size: 17px;
+    line-height: 23px;
+    font-weight: 700;
+}
+
+.lay_conts .order_delivery .order_prd {
+    margin-top: 16px;
+    border: 1px solid #ccc;
+}
+
+.lay_conts .order_delivery .order_prd .top {
+    padding: 16px 20px;
+    background-color: #f2f2f2;
+}
+
+.rad_wrap {
+    display: inline-block;
+}
+
+
+.rad_wrap input {
+    position: absolute;
+    z-index: 0;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+
+.lay_conts .order_delivery .order_prd .top .tit .order_num {
+    display: inline-block;
+    font-size: 17px;
+    line-height: 23px;
+    color: #101010;
+    font-weight: 500;
+    vertical-align: middle;
+}
+
+.rad_wrap input + label {
+    display: inline-block;
+    margin-left: 32px;
+    color: #101010;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 23px;
+    cursor: pointer;
+    text-indent: -32px;
+}
+
+.lay_wrap input + label:before {
+    content: '';
+    zoom: 1;
+    display: inline-block;
+    width: 25px;
+    height: 26px;
+    margin: -3px 6px 0 0;
+    background: url(/mp/resources/images/common/ico_set.png) no-repeat;
+    background-position: -164px -40px;
+    background-size: 800px 800px;
+    vertical-align: middle;
+}
+
+.lay_conts .order_delivery .order_prd .prd_list_n .rad_wrap input + label:before {
+    margin: 29px 6px 0 0;
+}
+
+.lay_conts .order_delivery .order_prd .prd_list_n {
+    padding: 0 20px;
+}
+
+.lay_conts .order_delivery .order_prd .prd_list_n li:last-child {
+    margin-bottom: 4px;
+}
+
+.lay_conts .order_delivery .order_prd .prd_list_n li:first-child {
+    margin-top: 4px;
+    border: 0;
+}
+
+
+.lay_conts .order_delivery .order_prd .prd_list_n li {
+    padding: 12px 0;
+    border-top: 1px solid #e0e0e0;
+}
+
+.lay_conts .order_delivery .order_prd .prd_list_n .rad_wrap {
+    vertical-align: middle;
+}
+
+.lay_conts .order_delivery .order_prd .prd_list_n .rad_wrap input + label {
+    display: table;
+    font-size: 0;
+}
+
+
+.lay_conts .order_delivery .order_prd .prd_list_n .rad_wrap .img {
+    display: table-cell;
+    overflow: hidden;
+    vertical-align: top;
+    text-indent: 0;
+}
+
+.lay_conts .order_delivery .order_prd .prd_list_n .rad_wrap .img img {
+    display: block;
+    width: 77px;
+    height: 77px;
+}
+
+img {
+    vertical-align: middle;
+}
+
+.lay_conts .order_delivery .order_prd .prd_list_n .rad_wrap .txt {
+    display: table-cell;
+    width: 282px;
+    vertical-align: middle;
+    text-indent: 0;
+}
+
+
+.lay_conts .order_delivery .order_prd .prd_list_n .rad_wrap .txt span {
+    display: block;
+    padding-left: 16px;
+    color: #101010;
+    font-size: 17px;
+    line-height: 24px;
+    font-weight: 500;
+}
+
+.mt_elps {
+    width: 100%;
+    overflow: hidden;
+    max-height: 48px;
+    text-overflow: ellipsis;
+    word-break: break-all;
+    line-height: 24px;
+    -moz-line-clamp: 2;
+    -ms-line-clamp: 2;
+    -webkit-line-clamp: 2;
+}
+
+
+.lay_wrap .close {
+    position: absolute;
+    top: 20px;
+    right: 19px;
+}
+
+.lay_wrap .close button {
+    display: block;
+    width: 32px;
+    height: 32px;
+    background: url(/mp/resources/images/common/ico_set.png) -488px 0 no-repeat;
+}
+
+.lay_wrap .close button:after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 24px;
+    height: 24px;
+    margin: -12px 0 0 -12px;   
+    background: url(/mp/resources/images/common/ico_set.png) -750px 0 no-repeat;
+    background-size: 800px 800px;
+}
+
+
 .hide {
     display: inline-block;
     position: absolute;

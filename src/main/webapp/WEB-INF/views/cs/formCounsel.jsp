@@ -219,7 +219,7 @@
 								<input type="hidden" name="csPrdCd" value="">
 								</div>
 								<!-- //선택된 상품이 있을 때 -->
-								<button type="button" class="btn sub green" onclick="javascipt:openProdListModal(1);"><span>조회</span></button>
+								<button type="button" class="btn sub green" onclick="javascipt:openProdListModal();"><span>조회</span></button>
 							</div>
 						</dd>
 					</dl>
@@ -361,6 +361,68 @@
 
 	</section>
  	<c:import url="../temp/boot_footer.jsp"></c:import>
+ 	
+ 	<!-- modal -->
+ 	
+ <div class="ui_modal_wrap" style="display:none; position: fixed; inset: 0px; overflow: auto; z-index: 9000;">
+ <div class="ui_modal_dim" style="position: fixed; inset: 0px; background: rgb(0, 0, 0); opacity: 0.6; z-index: 8000;"></div>
+ <article id="prodListModal" class="lay_wrap ui_modal_container" style="width: 480px; margin-left: -240px; display: block; position: absolute; outline: none; background-clip: padding-box; left: 50%; top: 50%; margin-top: -165px;" ui-modules="Modal,CheckboxRadioFocus" role="dialog" aria-hidden="false" aria-describedby="modal_9_content" aria-labelledby="modal_9_title" tabindex="0">
+	<header class="line">
+		<h1 id="modal_9_title" style="user-select: none; cursor: move;"><span>주문/상품 선택</span></h1>
+	</header>
+	<section class="lay_conts lay_scroll" id="modal_9_content">
+		<div class="order_delivery">
+			
+				
+					<p class="order_tit">김채현님께서 최근 1개월간 주문하신 내역입니다.</p>
+					<div class="delivery_location no_top">
+						<!-- loop -->
+						
+							
+							
+							<div class="order_prd">
+								<div class="top">
+									<div class="tit">
+										<div class="rad_wrap">
+											<input type="radio" id="oreder_prd20211014656456" name="order" value="20211014656456" data-odr-nm="닭한마리와 칼국수" onchange="javascript:closeProdListModal(this);" class="accessibility-keyboard">
+											<label for="oreder_prd20211014656456" class="order_num">주문번호<span class="ff_avr">20211014656456</span></label>
+										</div>
+									</div>
+								</div>
+								<div class="prd_list_n">
+									<ul>
+										
+											
+											
+											<li>
+												<div class="rad_wrap">
+													<input type="radio" id="oreder_prd211014_40035243" name="prod" value="40035243" data-prd-nm="닭한마리와 칼국수" onchange="javascript:closeProdListModal(this);" class="accessibility-keyboard">
+													<label for="oreder_prd211014_40035243">
+														<div class="img">
+															<img src="//img.cjcookit.com/images/file/product/768/20200605150334686.jpg" alt="닭한마리와 칼국수" onerror="cj.com.noImg(this)">
+														</div>
+														<div class="txt"><span class="mt_elps">닭한마리와 칼국수</span></div>
+													</label>
+												</div>
+											</li>
+										
+									</ul>
+								</div>
+							</div>
+						
+						<!-- //loop -->
+					</div>
+				
+				
+			
+		</div>
+	</section>
+	<div class="close">
+		<button type="button" class="ui_modal_close"><span class="hide">닫기</span></button>
+	</div>
+</article><a href="#" class="vr-focus-area"></a></div>
+ 
+ 
 </div>
 
 <script type="text/javascript">
@@ -373,6 +435,7 @@ $("#inquiry_cate1").on("click", function() {
 	$("#cancel").hide();
 	$("#point").hide();
 	$(".input_top_sec").html('<h4>배송</h4>');
+	$(".orderSelectArea").show();
 });
 
 $("#inquiry_cate2").on("click", function() {
@@ -381,6 +444,7 @@ $("#inquiry_cate2").on("click", function() {
 	$("#cancel").hide();
 	$("#point").hide();
 	$(".input_top_sec").html('<h4>주문/결제</h4>');
+	$(".orderSelectArea").show();
 });
 
 $("#inquiry_cate3").on("click", function() {
@@ -389,6 +453,7 @@ $("#inquiry_cate3").on("click", function() {
 	$("#pay").hide();
 	$("#point").hide();
 	$(".input_top_sec").html('<h4>취소/반품</h4>');
+	$(".orderSelectArea").show();
 });
 
 $("#inquiry_cate4").on("click", function() {
@@ -403,7 +468,7 @@ $("#inquiry_cate5").on("click", function() {
 	$("#cancel").hide(); 
 	$("#ship").hide();
 	$(".input_top_sec").html('<h4>회원/포인트</h4>');
-	$(".orderSelectArea").hide();
+	$(".orderSelectArea").show();
 });
 
 $("#inquiry_cate6").on("click", function() {
@@ -419,7 +484,7 @@ $("#inquiry_cate7").on("click", function() {
 	$("#ship").hide();
 	$("#point").hide();
 	$(".input_top_sec").html('<h4>영수증/증빙</h4>');
-	$(".orderSelectArea").hide();
+	$(".orderSelectArea").show();
 });
 $("#inquiry_cate8").on("click", function() {
 	$(".cate_sum_cont").not($(this)).hide();
@@ -431,6 +496,19 @@ $("#inquiry_cate9").on("click", function() {
 	$(".input_top_sec").html('<h4>기타</h4>');
 	$(".orderSelectArea").hide();
 });
+
+
+/* modal 창 */
+
+
+function openProdListModal() {
+	$(".ui_modal_wrap").css({"display" : "block"});
+}
+
+$(".ui_modal_close").on("click", function() {
+	$(".ui_modal_wrap").css({"display" : "none"});
+})
+
 
 /* 글자수 카운트, 제한 */
 $(document).ready(function() {
