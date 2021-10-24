@@ -8,6 +8,8 @@
 	
 	<title>My쿡킷 - 집밥을 특별하게,쿡킷</title>
 	
+	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+	
 	<style>	
 		.wrapper{
 			position:relative;
@@ -59,46 +61,7 @@
 				<div class="qna_list_wrap">
 				<div class="list_acco ui_accordion" data-accord-group="info" data-single-open="true" ui-modules="Accordion">
 					<ul id="myInqDataArea">
-	<!-- loop -->
-	<li class="on">
-		<div class="head btn_close">
-			<a class="link_cnt ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
-			<input type="hidden" name="cusCslSeq" value="486192">
-				<div class="tit">
-					<span class="ans_state ing"><span class="hide">답변 상태 : </span>답변대기</span><!-- 개발 요청 사항 : 답변대기 시 .ans_state에 ing 클래스 추가 / 답변완료 시 .ans_state에 end 클래스 추가 -->
 	
-					<span class="subject"><span class="hide">질문내용</span>쿠폰이 여러장 있을때에도 한개밖에 적용 못하나요?</span>
-					<span class="date"><span class="hide">문의일자</span>2021-10-14</span>
-				</div>
-				<span class="hide ui_accord_text">내용 닫기</span>
-			</a>
-			<div class="etc_info">
-				<a href="javascript:alert('TODO 해당 주문번호 상세화면으로 이동')" class="btn_more hiddenEmpty" style="display: none;">
-					<span class="prd_txt num" id="prdOrdNo"><span class="hide">연관주문번호</span><span class="cusOdrNo"></span></span>
-				</a>
-				<span class="prd_txt name hiddenEmpty" style="display: none;"><span class="hide">연관주문상품</span><span class="cusPrdNm"></span></span>
-				<!-- //개발 요청 사항 : 문의글 작성 시 연관주문번호, 연관주문상품 둘다 선택한 경우 노출 -->
-				<!-- 190704_추가 -->
-				<!-- 첨부파일 있을때 노출 -->
-				<div class="add_sec" style="display : none;">
-					<div class="added_file">
-					</div>
-				</div>
-				<!-- //첨부파일 있을때 노출 -->
-				<!-- //190704_추가 -->
-				
-				<button class="btn sm white" onclick="deleteCustomerCounsel('486192')"><span>삭제</span></button>
-			</div>
-		</div>
-
-			<div class="desc ui_accord_content txtDataArea" id="qna_answer486192" style="display: block;">
-
-
-
-</div>
-
-	</li>
-	<!-- //loop -->
 
 	<!-- loop -->
 	<li>
@@ -106,58 +69,53 @@
 			<a class="link_cnt ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
 			<input type="hidden" name="cusCslSeq" value="486099">
 				<div class="tit">
-		
-							<span class="ans_state end"><span class="hide">답변 상태 : </span>답변완료</span><!-- 개발 요청 사항 : 답변대기 시 .ans_state에 ing 클래스 추가 / 답변완료 시 .ans_state에 end 클래스 추가 -->
+						<span class="ans_state end"><span class="hide">답변 상태 : </span>답변완료</span><!-- 개발 요청 사항 : 답변대기 시 .ans_state에 ing 클래스 추가 / 답변완료 시 .ans_state에 end 클래스 추가 -->
 						
-					
 					<span class="subject"><span class="hide">질문내용</span>새벽배송이 가능한 지역은 무조건 새벽배송으로만 배송되나요??</span>
 					<span class="date"><span class="hide">문의일자</span>2021-10-14</span>
 				</div>
 				<span class="hide ui_accord_text">내용 열기</span>
 			</a>
 			<div class="etc_info">
-				<!-- 개발 요청 사항 : 문의글 작성 시 연관주문번호, 연관주문상품 둘다 선택한 경우 노출 -->
-				<a href="javascript:alert('TODO 해당 주문번호 상세화면으로 이동')" class="btn_more hiddenEmpty">
-					<span class="prd_txt num" id="prdOrdNo"><span class="hide">연관주문번호</span><span class="cusOdrNo"></span></span>
-				</a>
+			
 				<span class="prd_txt name hiddenEmpty"><span class="hide">연관주문상품</span><span class="cusPrdNm"></span></span>
-				<!-- //개발 요청 사항 : 문의글 작성 시 연관주문번호, 연관주문상품 둘다 선택한 경우 노출 -->
-				<!-- 190704_추가 -->
-				<!-- 첨부파일 있을때 노출 -->
+				
 				<div class="add_sec" style="display : none;">
 					<div class="added_file">
 					</div>
 				</div>
-				<!-- //첨부파일 있을때 노출 -->
-				<!-- //190704_추가 -->
-				
 				<button class="btn sm white" onclick="deleteCustomerCounsel('486099')"><span>삭제</span></button>
 			</div>
 		</div>
 
-			<div class="desc ui_accord_content txtDataArea" id="qna_answer486099">
-			</div>
-
-	</li>
-	<!-- //loop -->
-
-
-</ul>
+				<div class="desc ui_accord_content txtDataArea" id="qna_answer486099">
+				
+					<div class="desc_cont">
+					<div class="cont">
+					<span class="hide">답변내용</span>
+					안녕하세요, 소중한 고객님<br>CJ쿡킷입니다.<br><br>저희 쿡킷 제품은 일반 배송은 진행되지 않고<br>새벽배송으로만 진행되고 있어 이 점 양해말씀드립니다.<br><br>감사합니다.<br>CJ 쿡킷 드림. 
+					</div>
+					<span class="date"><span class="hide">답변일자</span>2021-10-14</span>
+					</div>
 				</div>
 
-				<div class="pagination" id="paging">
+				</li>
+					<!-- //loop -->
 
 
-	<span class="page_num">
-		<strong><span class="hide">현재 페이지</span>1</strong>
-	</span>
+					</ul>
+				</div>
 
-
-</div>
-
+					<div class="pagination" id="paging">
+						<span class="page_num">
+							<strong><span class="hide">현재 페이지</span>1</strong>
+						</span>
+					
+					</div>
+					
 				<div class="qna_bottom_info">
 					<span class="txt">답변이 부족하거나 추가 문의사항이 있으시면 등록해주세요.</span>
-					<a href="/pc/cs/formCounsel" class="rec_link"><span>추가 1:1 문의 작성</span></a>
+					<a href="../cs/formCounsel" class="rec_link"><span>추가 1:1 문의 작성</span></a>
 				</div>
 			</div>
 			
@@ -167,7 +125,7 @@
 		</div>
 		
 		<!-- 메인 컨텐츠(여기까지 변경되야함)  -->
-			
+		</div>	
 	</div>	
 
 	</section>
@@ -178,10 +136,10 @@
 
 $(".head").click(function() {
 	if($(this).next().css("display")=="none"){
-		$(this).next().slideDown("50");
+		$(this).next().slideDown("200");
 		$(this).parent().addClass("on");
 	}else{
-		$(this).next().slideUp("50");
+		$(this).next().slideUp("200");
 		$(this).parent().removeClass("on");
 	}
 });

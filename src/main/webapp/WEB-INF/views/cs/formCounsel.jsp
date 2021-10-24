@@ -9,7 +9,7 @@
 	<title>My쿡킷 - 집밥을 특별하게,쿡킷</title>
 	
 	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-	 <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 	<style>	
 		.wrapper{
 			position:relative;
@@ -286,10 +286,10 @@
 										</div>
 										<span class="at">@</span>
 										<div class="input_wrap dis">
-											<input type="text" class="txt emailCheck" disabled="disabled"  title="이메일 도메인 직접입력" name="qna_email_domain1" id="qna_email_domain1" onkeyup="this.value=this.value.replace(/[^a-zA-Z-_0-9]/g,'');">
+											<input type="text" class="txt emailCheck" disabled="disabled"  title="이메일 도메인 직접입력" name="qna_email_domain" id="qna_email_domain1" onkeyup="this.value=this.value.replace(/[^a-zA-Z-_0-9_.]/g,'');">
 										</div>
 										<span class="item_wrap ui_selectbox dis" >
-										<select id="qna_email_domain2" disabled="disabled" class="required emailCheck" name="qna_email_domain2"  title="이메일 도메인 주소 선택" onclick="setEmailDomain();">
+										<select id="qna_email_domain2" disabled="disabled" class="required emailCheck" name="qna_email_domain"  title="이메일 도메인 주소 선택" onchange="setEmailDomain(this);">
 											<option value="1">직접입력</option>
 											<option value="naver.com">naver.com</option>
 											<option value="hanmail.net">hanmail.net</option>
@@ -466,8 +466,20 @@ $(document).ready(function() {
 		}
 	});
 	
+	/* email 도메인 선택 */
 	
-	
+	function setEmailDomain(ele) {
+		var $ele = $(ele);
+		if($ele.val() == "1"){
+			$("#qna_email_domain1").attr('readonly', false);
+			$("#qna_email_domain1").val('');		
+		}else{
+			$("#qna_email_domain1").attr('readonly', true);
+			$("#qna_email_domain1").val($ele.val());			
+		}
+	}
+
+
 
 /* 폼 제출시 유효성 검사 */
 function checkForm() {
