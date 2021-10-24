@@ -191,11 +191,10 @@
 							</ul>
 						</div>
 					</div>
-					<!-- //script 요청사항 : 체크박스 클릭 시 해당 아이디 영역 노출 / 없으면 비노출 -->
 				</div>
 	
 				<div class="top_sec input_top_sec" >
-					<h4>배송</h4><!-- 스크립트 요청 사항 : .rad_wrap 클릭 시 해당 카테명 뽑아주세요. -->
+					<h4>배송</h4><!--.rad_wrap 클릭 시 해당 카테명 뽑아주세요. -->
 				</div>
 			
 				
@@ -214,10 +213,6 @@
 	
 								<!-- 선택된 상품이 있을 때 -->
 								<div class="pro_box pro_info" style="display: none;">
-									
-								</div>
-								
-								<div class="pro_box pro_info" style="display: none;">
 									<span class="txt">
 										<span class="hide">상품명</span>
 									</span>
@@ -233,7 +228,7 @@
 						<dd>
 							<input id="input-text-0" type="hidden" name="cslTtl" value="">
 							<div class="textarea">
-								<textarea id="question_cont" spellcheck="false" style="outline: none;" cols="80" rows="5" title="문의내용 작성란" placeholder="문의 내용을 입력해주세요" class="ui_inputLimit" maxlength="1000" name="qna_content"></textarea>
+								<textarea id="question_cont" spellcheck="false" style="outline: none;" cols="80" rows="5" title="문의내용 작성란" placeholder="문의 내용을 입력해주세요"  class="ui_inputLimit" maxlength="1000" name="qna_content"></textarea>
 								<div id="result" class="result_txt"><span class="ui_inputLimitCount">0</span>/1000자</div>
 							</div>
 							<div class="btm_noti">
@@ -248,7 +243,7 @@
 						<dt>첨부파일</dt>
 						<dd>
 							<div class="scroll">
-								<div class="add_file_wrap" >
+								<div class="add_file_wrap" style="width: 276px;" >
 									<ul>
 										<li>
 											<div class="add_file_frame">	
@@ -274,42 +269,39 @@
 					<dl class="one_dep answer_alr ui_answerWrap">
 						<dt>답변알림<span class="bul_req"><span class="hide">필수 입력</span></span></dt>
 						<dd>
+						
 							<dl class="two_dep">
+							
 								<dt>
 									<div class="chk_wrap">
-										<input type="checkbox" id="email" name="anwer" class="accessibility-keyboard">
-										<label for="email">E-mail 수신
-											
+										<input type="checkbox" id="email" name="checkme" class="accessibility-keyboard"  >
+										<label for="email">E-mail 수신	
 										</label>
 									</div>
 								</dt>
 								<dd>
 									<div class="input_email">
-								
 										<div class="input_wrap ema_id dis">
-											<input type="text" class="txt" id="email" title="이메일 아이디" name="cusMailAdr" value="">
+											<input type="text" class="txt emailCheck" disabled="disabled" id="qna_email_id" title="이메일 아이디" name="qna_email_id" value="" onkeyup="this.value=this.value.replace(/[^a-zA-Z-_0-9]/g,'');">
 										</div>
 										<span class="at">@</span>
 										<div class="input_wrap dis">
-											<input type="text" class="txt" title="이메일 도메인 직접입력" name="cusMailAdr2">
+											<input type="text" class="txt emailCheck" disabled="disabled"  title="이메일 도메인 직접입력" name="qna_email_domain1" id="qna_email_domain1" onkeyup="this.value=this.value.replace(/[^a-zA-Z-_0-9]/g,'');">
 										</div>
-										<span class="item_wrap ui_selectbox dis" ui-modules="Selectbox,CustomSelectbox">
-											<label for="fn_selc_val" class="hide">이메일 도메인 선택</label>
-
-									<select id="fn_selc_val" class="required">
-		
-										<option value="0">직접입력</option>
-										<option value="naver.com">naver.com</option>
-										<option value="hanmail.net">hanmail.net</option>
-										<option value="nate.com">nate.com</option>
-										<option value="gmail.com">gmail.com</option>
+										<span class="item_wrap ui_selectbox dis" >
+										<select id="qna_email_domain2" disabled="disabled" class="required emailCheck" name="qna_email_domain2"  title="이메일 도메인 주소 선택" onclick="setEmailDomain();">
+											<option value="1">직접입력</option>
+											<option value="naver.com">naver.com</option>
+											<option value="hanmail.net">hanmail.net</option>
+											<option value="nate.com">nate.com</option>
+											<option value="gmail.com">gmail.com</option>
 	
 									</select>
 											<span class="ico_arr"></span>
 										</span>
 									</div>
 								</dd>
-							</dl>
+									</dl>
 							<dl class="two_dep">
 								<dt>
 									<div class="chk_wrap">
@@ -321,12 +313,11 @@
 								</dt>
 								<dd>
 									<div class="input_mobile_num">
-									
 										<span class="item_wrap ui_selectbox dis" ui-modules="Selectbox,CustomSelectbox">
 											<label for="input_phone01" class="hide">휴대폰 앞자리 선택</label>
 		
 							<!-- check 안할시 disabled 넣어주기 -->
-							<select id="input_phone1" name="cusMblNo1" class="required" title="휴대폰 앞자리를 선택해주세요." >
+							<select id="input_phone1" name="cusMblNo1" disabled="disabled" class="required phoneCheck" title="휴대폰 앞자리를 선택해주세요." >
 									<option value="010" selected="selected">010</option>
 										<option value="011">011</option>
 										<option value="016">016</option>
@@ -338,11 +329,11 @@
 											<span class="ico_arr"></span>
 										</span>
 										<div class="input_wrap dis ">
-											<input type="text" class="txt" id="input_phone02" title="휴대폰 중간 4자리" placeholder="" maxlength="4" readonly="" name="cusMblNo2" value="">
+											<input type="text" class="txt phoneCheck" id="input_phone02" title="휴대폰 중간 4자리" disabled="disabled" maxlength="4" name="cusMblNo2" value="" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
 											<button class="ico"><span class="hide">입력 삭제</span></button>
 										</div>
 										<div class="input_wrap dis ">
-											<input type="text" class="txt" id="input_phone03" title="휴대폰 끝 4자리" placeholder="" maxlength="4" readonly="" name="cusMblNo3" value="">
+											<input type="text" class="txt phoneCheck" id="input_phone03" title="휴대폰 끝 4자리" disabled="disabled" maxlength="4" name="cusMblNo3" value="" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
 											<button class="ico"><span class="hide">입력 삭제</span></button>
 										</div>
 									</div>
@@ -359,7 +350,7 @@
 	
 				<div class="btn_wrap">
 					<button class="btn white" onclick="cancel()"><span>취소</span></button>
-					<button class="btn green" onclick="location.href = './formCounselComplete'"><span>확인</span></button>
+					<button class="btn green" onclick="checkForm();"><span>확인</span></button>
 				</div>
 			</form>
 		</div>
@@ -442,7 +433,6 @@ $("#inquiry_cate9").on("click", function() {
 });
 
 /* 글자수 카운트, 제한 */
-
 $(document).ready(function() {
 
         $('#question_cont').on('keyup', function() {
@@ -453,6 +443,80 @@ $(document).ready(function() {
             }
         });
     });
+    
+
+/* 답변 알림 체크 */
+
+	
+	$('#email').on('click',function () {
+		if ($("#email").prop('checked')) {
+			$(".emailCheck").prop("disabled", false);	
+		  } else {
+				$(".emailCheck").prop("disabled", true);	
+				
+		}
+	});
+	
+	$('#sms').on('click',function () {
+		if ($("#sms").prop('checked')) {
+			$(".phoneCheck").prop("disabled", false);	
+		  } else {
+				$(".phoneCheck").prop("disabled", true);	
+				
+		}
+	});
+	
+	
+	
+
+/* 폼 제출시 유효성 검사 */
+function checkForm() {
+	
+	/* 내용 검사 */
+	if($("#question_cont").val() == ""){
+		alert('내용을 입력해주세요');
+		$("#question_cont").focus();
+		return false;
+	}
+	
+	/* email or sms 중 하나가 선택되어야함 */
+	if($("#email").prop("checked") || $("#sms").prop("checked")){
+		
+		
+		/* email이 체크되었을때 유효검사 */
+		if($("#email").prop("checked")){ 
+			if($("#qna_email_id").val() == ""){
+				alert('이메일을 확인해주세요');
+				$("#qna_email_id").focus();
+				return false;
+			}else if($("#qna_email_domain1").val() == "" ){
+				alert('이메일이 형식에 맞지않습니다.다시 입력해주세요.');
+				$("#qna_email_domain1").focus();
+				return false;
+			}
+		
+		/* sms가 체크되었을때 */
+		}else if($("#sms").prop("checked")|| $("#input_phone02").val().length !=4){
+			if($("#input_phone02").val() == ""){
+				$("#input_phone02").focus();
+				alert('연락처를 확인해주세요');
+				return false;
+			}else if($("#input_phone03").val() == "" || $("#input_phone03").val().length !=4){
+				$("#input_phone03").focus();
+				alert('연락처를 확인해주세요.');
+				return false;
+			}
+		}
+		
+		
+	alert("작성완료");
+		
+	}else{
+		alert('Email, SMS 중 최소 1개는 선택하셔야 합니다.');
+	}
+	
+}
+	
 
 </script>
 

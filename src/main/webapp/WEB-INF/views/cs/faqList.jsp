@@ -146,7 +146,7 @@
 				
 		  		<li class="faq_list">
 	            	<div class="head" style="cursor: pointer;">
-	               		<a  class="accord_toggle"  >
+	               		<a class="accord_toggle"  >
 	                    	<div class="tit">
 	                        	<strong id="q" >Q</strong>${dto.faq_subject}
 	                        <span class="cate"><span class="hide">해당 질문 분류</span>${dto.faq_type}</span>
@@ -219,9 +219,7 @@
 		}else{
 			$(this).next().slideUp("50");
 			$(this).parent().removeClass("on");
-			
 		}
-		
 	});
 	
 			

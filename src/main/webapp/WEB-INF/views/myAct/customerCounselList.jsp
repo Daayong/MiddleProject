@@ -62,24 +62,17 @@
 	<!-- loop -->
 	<li class="on">
 		<div class="head btn_close">
-			<a href="#qna_answer486192" onclick="loadCustomerCounselTxt(this)" class="link_cnt ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
+			<a class="link_cnt ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
 			<input type="hidden" name="cusCslSeq" value="486192">
 				<div class="tit">
-					
-						
-							<span class="ans_state ing"><span class="hide">답변 상태 : </span>답변대기</span><!-- 개발 요청 사항 : 답변대기 시 .ans_state에 ing 클래스 추가 / 답변완료 시 .ans_state에 end 클래스 추가 -->
-						
-						
-						
-						
-					
+					<span class="ans_state ing"><span class="hide">답변 상태 : </span>답변대기</span><!-- 개발 요청 사항 : 답변대기 시 .ans_state에 ing 클래스 추가 / 답변완료 시 .ans_state에 end 클래스 추가 -->
+	
 					<span class="subject"><span class="hide">질문내용</span>쿠폰이 여러장 있을때에도 한개밖에 적용 못하나요?</span>
 					<span class="date"><span class="hide">문의일자</span>2021-10-14</span>
 				</div>
 				<span class="hide ui_accord_text">내용 닫기</span>
 			</a>
 			<div class="etc_info">
-				<!-- 개발 요청 사항 : 문의글 작성 시 연관주문번호, 연관주문상품 둘다 선택한 경우 노출 -->
 				<a href="javascript:alert('TODO 해당 주문번호 상세화면으로 이동')" class="btn_more hiddenEmpty" style="display: none;">
 					<span class="prd_txt num" id="prdOrdNo"><span class="hide">연관주문번호</span><span class="cusOdrNo"></span></span>
 				</a>
@@ -102,10 +95,6 @@
 
 
 
-
-
-
-
 </div>
 
 	</li>
@@ -114,15 +103,11 @@
 	<!-- loop -->
 	<li>
 		<div class="head">
-			<a href="#qna_answer486099" onclick="loadCustomerCounselTxt(this)" class="link_cnt ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
+			<a class="link_cnt ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
 			<input type="hidden" name="cusCslSeq" value="486099">
 				<div class="tit">
-					
-						
-						
-						
+		
 							<span class="ans_state end"><span class="hide">답변 상태 : </span>답변완료</span><!-- 개발 요청 사항 : 답변대기 시 .ans_state에 ing 클래스 추가 / 답변완료 시 .ans_state에 end 클래스 추가 -->
-						
 						
 					
 					<span class="subject"><span class="hide">질문내용</span>새벽배송이 가능한 지역은 무조건 새벽배송으로만 배송되나요??</span>
@@ -188,6 +173,20 @@
 	</section>
  	<c:import url="../temp/boot_footer.jsp"></c:import>
 </div>
+
+<script type="text/javascript">
+
+$(".head").click(function() {
+	if($(this).next().css("display")=="none"){
+		$(this).next().slideDown("50");
+		$(this).parent().addClass("on");
+	}else{
+		$(this).next().slideUp("50");
+		$(this).parent().removeClass("on");
+	}
+});
+
+</script>
 
 </body>
 </html>
