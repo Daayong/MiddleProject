@@ -64,5 +64,30 @@
   	<select id="getAddressList" parameterType="MemberDTO" resultType="AddressDTO">
   		SELECT * FROM address WHERE member_id=#{member_id} ORDER BY default_check
   	</select>
+  	
+  	<!-- 배송지 삭제  -->
+  	<delete id="setAddressDelete" parameterType="AddressDTO">
+  		DELETE FROM address WHERE address_id=#{address_id}
+  	</delete>
+  	
+  	<!-- 배송지 추가  -->
+  	<insert id="setAddAddress" parameterType="AddressDTO">
+  		INSERT INTO address(address_id,member_id,address,recipient_name,default_check,recipient_phone)
+		values(ADDRESS_SEQ.nextval,#{member_id},#{address},#{recipient_name},#{default_check},#{recipient_phone})
+  	</insert>
+  	
+  	<!-- 배송지 수정  -->
+  <!-- 	<update id="setAddressUpdate" parameterType="AddressDTO">
+  		UPDATE address SET recipient_name=#{recipient_name},address=#{address},recipient_phone=#{recipient_phone}
+  		WHERE address_id=#{address_id}
+  	</update>
+  	 -->
+  	<!-- 기본 배송지 수정  -->
+  <!-- 	<update id="setAddressDefaultUpdate" parameterType="AddressDTO">
+  		UPDATE address SET default_check=#{default_check}
+  		WHERE address_id=#{address_id}
+  	</update>
+   -->	
+  	
   
   </mapper>

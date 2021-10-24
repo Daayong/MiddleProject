@@ -72,9 +72,27 @@ public class MemberDAO {
 		return sqlSession.selectList(NAMESPACE+"getAddressList", memberDTO);	
 	}
 	
+	//배송지 삭제 
+	public int setAddressDelete(AddressDTO addressDTO)throws Exception{
+		return sqlSession.delete(NAMESPACE+"setAddressDelete", addressDTO);
+	}
+	
+	//배송지 추가 
+	public int setAddAddress(AddressDTO addressDTO)throws Exception{
+		return sqlSession.insert(NAMESPACE+"setAddAddress", addressDTO);
+	}
 	
 	
 	
+	//배송지 수정 
+	//public int setAddressUpdate(AddressDTO addressDTO)throws Exception{
+	//	return sqlSession.update(NAMESPACE+"setAddressUpdate", addressDTO);
+	//}
+		
+	//기본 배송지 수정 
+	//public int setAddressDefaultUpdate(AddressDTO addressDTO)throws Exception{
+	//	return sqlSession.update(NAMESPACE+"setAddressDefaultUpdate", addressDTO);
+	//}
 	
 	
 }

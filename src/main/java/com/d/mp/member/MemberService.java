@@ -103,6 +103,7 @@ public class MemberService {
 	public int setQuickPass(MemberDTO memberDTO)throws Exception{
 		return memberDAO.setQuickPass(memberDTO);
 	}
+	
 	//임시 비밀번호 생성함
 	public String getRamdomPassword(int size) { 
 		char[] charSet = new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', 
@@ -124,8 +125,6 @@ public class MemberService {
 			return sb.toString();
 	}
 	
-
-
 	//회원가입
 	public int setJoin(MemberDTO memberDTO)throws Exception{
 		return memberDAO.setJoin(memberDTO);
@@ -172,6 +171,28 @@ public class MemberService {
 	public List<AddressDTO> getAddressList(MemberDTO memberDTO)throws Exception{
 		return memberDAO.getAddressList(memberDTO);
 	}
+	
+	//배송지 삭제 
+	public int setAddressDelete(AddressDTO addressDTO)throws Exception{
+		return memberDAO.setAddressDelete(addressDTO);
+	}
+
+	//배송지 추가
+	public int setAddAddress(AddressDTO addressDTO)throws Exception{
+		return memberDAO.setAddAddress(addressDTO);
+	}
+	
+	
+	//배송지 수정 
+	//public int setAddressUpdate(AddressDTO addressDTO)throws Exception{
+	//	return memberDAO.setAddressUpdate(addressDTO);				
+	//}
+	
+	//기본배송지 수정 
+	//public int setAddressDefaultUpdate(AddressDTO addressDTO)throws Exception{
+		//return memberDAO.setAddressDefaultUpdate(addressDTO);
+	//}
+	
 	
 	
 	

@@ -6,6 +6,7 @@
 	<link href="${pageContext.request.contextPath}/resources/css/common.css" rel="stylesheet">
 	<link href="${pageContext.request.contextPath}/resources/css/member/myPage.css" rel="stylesheet">
 	<link href="${pageContext.request.contextPath}/resources/css/member/memberDelete.css" rel="stylesheet">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	
 	<title>배송지관리 - 집밥을 특별하게,쿡킷</title>
 	
@@ -34,6 +35,9 @@
 		.box_content{margin-top:20px;}
 		ul.address_list > li{font-size:15px; }
 		li.address{margin-bottom:7px; }
+		.noAd{margin-top:90px; }
+		.noAd .ico{display: block; width: 80px;height: 80px;margin: 0 auto 24px;background: url(../resources/images/common/ico_set.png) 0 -100px no-repeat; background-size: 800px 800px;}
+		.noAd strong{display: block;font-size: 20px;line-height: 30px;color: #101010;font-weight: 700; text-align:center; margin-bottom:30px;  }
 	</style>
 	
 </head>
@@ -55,40 +59,52 @@
 		<div id="main">
 				<div id="delete_top">
 					<h3>배송지 관리</h3>
-					<div class="top_comment type02">
-						<strong>
-							배송지를 관리하세요
-						</strong>				
-					</div>
-					<input type="hidden" name="${member_id}">
-					<c:forEach items="${list}" var="ar">
-						<div class="dinfo_box">
-							<div class="box_header">
-								<strong class="title">${ar.recipient_name}</strong>
-								<span class="default">
-								   <c:if test="${ar.default_check eq 1}">
-										(기본배송지)
-								   </c:if>
-								</span>
-								<c:if test="${ar.default_check ne 1}">
-									<button type="button"  class="delete_btn adBtn" >삭제</button>
-								</c:if>
-								<button type="button" class="update_btn adBtn" >수정</button>
-								<c:if test="${ar.default_check ne 1}">
-									<button type="button" class="default_btn adBtn" >기본 배송지 설정</button>
-								</c:if>
-							</div>
-							<div class="box_content">
-								<ul class="address_list">
-									<li class="address">${ar.address}</li>
-									<li class="recipient_phone">${ar.recipient_phone}</li>
-								</ul>
+					
+					<c:choose>
+						<c:when test="${empty list}">
+							<input type="hidden" name="${member.member_id}">
+							<div class="noAd">
+								<span class="ico"></span>
+								<strong>등록하신 배송지가 없습니다.</strong>
 							</div>				
-						</div>	
-					</c:forEach>
-										
+						</c:when>	
+						<c:otherwise>
+							<div class="top_comment type02">
+								<strong>
+									배송지를 관리하세요${ar.member_id}
+								</strong>	
+								<input type="hidden" class="member_id" name="member_id" value="${ar.member_id}">			
+							</div>
+							<c:forEach items="${list}" var="ar">
+								<div class="dinfo_box">
+									<div class="box_header">
+										<strong class="title">${ar.recipient_name}</strong>
+										<span class="default">
+										   <c:if test="${ar.default_check eq 1}">
+												(기본배송지)
+										   </c:if>
+										   <input type="hidden" style="display:none;" class="address_id" name="address_id" value="${ar.address_id}">
+										</span>
+										<c:if test="${ar.default_check ne 1}">
+											<button type="button" name="addressDelete" class="delete_btn adBtn" >삭제</button>
+										</c:if>
+										<button type="button" class="update_btn adBtn" >수정</button>
+										<c:if test="${ar.default_check ne 1}">
+											<button type="button" class="default_btn adBtn" >기본 배송지 설정</button>
+										</c:if>
+									</div>
+									<div class="box_content">
+										<ul class="address_list">
+											<li class="address">${ar.address}</li>
+											<li class="recipient_phone">${ar.recipient_phone}</li>
+										</ul>
+									</div>				
+								</div>	
+							</c:forEach>
+						</c:otherwise>
+					</c:choose>		
 					<div class="btn_wrap">
-					<button type="button" class="btn pop green" id="InsertAddress" name="InsertAddress">신규배송지 추가</button>
+					<button type="button" class="btn pop green" onclick="javascript:addAddress()" id="InsertAddress" name="InsertAddress">신규배송지 추가</button>
 					</div>
 				</div>
 			</div>
@@ -103,9 +119,49 @@
 </div>
 	
 	<script type="text/javascript">
+		//배송지 추가 팝업 띄우기 
+		function addAddress(){
+			var url = "../member/addAddress";
+			//이 코드 의미 무엇..? 
+			var name = "popup test";
+			var option = "width = 480, height =400, top = 200, left = 480, location = no, scrollbars = yes"
+			window.open(url, name, option);
+		};
 	
-	
-	
+		//배송지 삭제 
+		$(function(){
+			$('.delete_btn').click(function(){
+				var address_id = $(".address_id").val();
+				if(confirm("해당 배송지를 삭제 하시겠습니까?")==true){
+					$.ajax({
+						url:'./addressDelete',
+						type:'get',
+						data:{address_id:address_id},
+						success:function(data){
+							console.log(data);
+							if(data =='1'){
+								alert("배송지가 삭제되었습니다.");
+								location.href="./myaddress"
+							}else{
+								alert("배송지 삭제에 실패했습니다.");
+							}
+						}
+					});
+					
+				}else{
+					return false;
+				}
+				
+			});	
+		});
+		
+		
+		
+		
+		
+		
+		
+		
 	</script>
  
 	
