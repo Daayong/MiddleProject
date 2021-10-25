@@ -2,7 +2,7 @@
 
 #my_wrapper{	
 	min-height:900px;
-	padding:52px 0 290px; 
+	padding:52px 0 140px; 
 }
 
 #my_wrapper:after{
@@ -14,8 +14,7 @@
 /*오른쪽 컨텐츠 영역 */
 #content_wrapper{
 	width:940px;
-	min-height:900px; 
-	position:relative;
+	height:100%;
 	float:right; 	
 }
 
@@ -296,7 +295,7 @@ vertical-align:top; margin:0 7px;
 .rpd .no_data_txt strong {color:#101010; font-weight:700; font-size:18px; line-height:27px}
 .rpd.no_data_box + .rpd {padding-top:80px;}
 
-
+.box{height:200px; margin-bottom:30px;  }
 
 
 

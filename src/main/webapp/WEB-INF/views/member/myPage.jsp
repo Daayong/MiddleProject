@@ -177,7 +177,7 @@
 				</div>
 				
 <!-- 최근 구매한 메뉴 -->				
-				<div id="recentBuy" class="rpd">
+				<div id="recentBuy" class="rpd box">
 				<!-- 개발 요청 사항 : 메뉴 내역이 없을 경우 .no_data_box 클래스 추가 -->
 					<h4 class="h4_tit">
 						최근 구매한 메뉴
@@ -188,7 +188,7 @@
 					</div>
 				</div>
 <!-- 나의 쇼핑찜 -->				
-				<div id="shopPick" class="rpd">
+				<div id="shopPick" class="rpd box">
 					<h4 class="h4_tit">
 						쇼핑찜
 						<a href="#" class="btn_link">더보기</a>

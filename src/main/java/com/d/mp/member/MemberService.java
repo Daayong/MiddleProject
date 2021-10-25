@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
@@ -52,7 +53,7 @@ public class MemberService {
 		return memberDAO.getFindId(memberDTO);
 	}	
 	
-	//생년월일,핸드폰번호 문자 정렬해주기(중간에 "-" 넣어주기) 
+	//생년월일 휴대폰번호 문자 정렬해주기(중간에 "-" 넣어주기) 
 	public MemberDTO charSet(MemberDTO memberDTO)throws Exception {
 			String member_phone=memberDTO.getMember_phone();
 			String member_birth=memberDTO.getMember_birth();
@@ -84,6 +85,29 @@ public class MemberService {
 		
 		return memberDTO;
 	}
+	
+	//수취인 핸드폰 번호 받아서 문자 정렬 해주기("-"추가) 
+	public AddressDTO rCharSet(AddressDTO addressDTO, HttpServletRequest request)throws Exception {
+	//핸드폰 번호
+		String mp1=request.getParameter("member_phone_f");
+		String mp2=request.getParameter("member_phone_m");
+		String mp3=request.getParameter("member_phone_b");
+		
+		addressDTO.setRecipient_phone(mp1+"-"+mp2+"-"+mp3);
+		
+		System.out.println(addressDTO.getRecipient_phone());	
+	
+		return addressDTO;
+	}
+	
+	//수취인 핸드폰 번호 받아서 문자 정렬 해주기("-"삭제) 
+		public String[] rCharGet(AddressDTO addressDTO)throws Exception {
+			System.out.println(addressDTO.getRecipient_phone());	
+			String[] rp=addressDTO.getRecipient_phone().split("-");
+			return rp;
+		}
+	
+	
 	
 	//임시 비밀번호 발급 전 회원 정보 체크 
 	public String getFindPass(MemberDTO memberDTO)throws Exception{
@@ -189,10 +213,14 @@ public class MemberService {
 	//}
 	
 	//기본배송지 수정 
-	//public int setAddressDefaultUpdate(AddressDTO addressDTO)throws Exception{
-		//return memberDAO.setAddressDefaultUpdate(addressDTO);
-	//}
+	public int setAddressDefaultUpdate(AddressDTO addressDTO)throws Exception{
+		return memberDAO.setAddressDefaultUpdate(addressDTO);
+	}
 	
+	//기본배송지 해제 
+	public int allSetzero(AddressDTO addressDTO)throws Exception{
+		return memberDAO.allSetzero(addressDTO);
+	}
 	
 	
 	

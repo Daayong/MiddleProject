@@ -62,7 +62,7 @@
 					
 					<c:choose>
 						<c:when test="${empty list}">
-							<input type="hidden" name="${member.member_id}">
+							<%-- <input type="hidden" name="${member.member_id}"> --%>
 							<div class="noAd">
 								<span class="ico"></span>
 								<strong>등록하신 배송지가 없습니다.</strong>
@@ -71,26 +71,25 @@
 						<c:otherwise>
 							<div class="top_comment type02">
 								<strong>
-									배송지를 관리하세요${ar.member_id}
+									배송지를 관리하세요
 								</strong>	
-								<input type="hidden" class="member_id" name="member_id" value="${ar.member_id}">			
+								<input type="hidden" class="member_id" name="member_id" >			
 							</div>
 							<c:forEach items="${list}" var="ar">
-								<div class="dinfo_box">
-									<div class="box_header">
+								<div class="dinfo_box" >
+									<div class="box_header" data-address_id="${ar.address_id}" data-member_id="${ar.member_id}"  >
 										<strong class="title">${ar.recipient_name}</strong>
 										<span class="default">
 										   <c:if test="${ar.default_check eq 1}">
 												(기본배송지)
 										   </c:if>
-										   <input type="hidden" style="display:none;" class="address_id" name="address_id" value="${ar.address_id}">
 										</span>
 										<c:if test="${ar.default_check ne 1}">
 											<button type="button" name="addressDelete" class="delete_btn adBtn" >삭제</button>
 										</c:if>
 										<button type="button" class="update_btn adBtn" >수정</button>
 										<c:if test="${ar.default_check ne 1}">
-											<button type="button" class="default_btn adBtn" >기본 배송지 설정</button>
+											<button type="button" class="default_btn adBtn"  >기본 배송지 설정</button>
 										</c:if>
 									</div>
 									<div class="box_content">
@@ -122,7 +121,6 @@
 		//배송지 추가 팝업 띄우기 
 		function addAddress(){
 			var url = "../member/addAddress";
-			//이 코드 의미 무엇..? 
 			var name = "popup test";
 			var option = "width = 480, height =400, top = 200, left = 480, location = no, scrollbars = yes"
 			window.open(url, name, option);
@@ -131,7 +129,7 @@
 		//배송지 삭제 
 		$(function(){
 			$('.delete_btn').click(function(){
-				var address_id = $(".address_id").val();
+				 var address_id = $(this).parents(".box_header").data('address_id');
 				if(confirm("해당 배송지를 삭제 하시겠습니까?")==true){
 					$.ajax({
 						url:'./addressDelete',
@@ -150,10 +148,42 @@
 					
 				}else{
 					return false;
-				}
+				} 
 				
 			});	
 		});
+		
+		
+		//기본배송지 수정 
+		$(function(){
+			$('.default_btn').click(function(){
+				 var address_id = $(this).parent(".box_header").data('address_id');
+				 var default_check = $(this).data('default_check');
+				 var member_id=$(this).parent(".box_header").data('member_id');
+				 console.log(member_id);
+				$.ajax({
+					url:'./defaultChange',
+					type:'get',
+					data:{address_id:address_id,default_check:default_check,member_id:member_id},
+					success:function(data){
+						console.log(data);
+						if(data>0){
+							alert("기본 배송지가 변경되었습니다.");
+							location.href="./myaddress"
+						}
+					}
+				});
+			
+				
+			});	
+		});
+		
+		
+		
+		
+		
+		
+		
 		
 		
 		

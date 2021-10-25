@@ -26,7 +26,7 @@
 <body>
 
 	<div class="addWrap">
-		<form id="addressForm" name="addressForm" method="post">
+		<form id="addressForm" name="addressForm" method="post" target="myaddress">
 				<h3 class="h3">배송지 추가</h3>
 				<div class="table_col">
 					<input type="hidden" name="member_id" value="${member.member_id}">
@@ -154,23 +154,21 @@
 			}
 			
 			if(confirm('배송지를 추가하시겠습니까?')==true){
-			 	$.ajax({
-			 		type:"POST";
-			 		url:"/member/myaddress",
-			 		data:form,
-			 		success:function(data){
-			 			if(data>0){	
-			 				window.close();	
-			 			}
-			 		}
-			 	});
-			
+				addressForm.submit();
+				window.close();
+			 
 			}else{
 				return false;
 			}
 		
 		}
 		
+		
+		
+		
+		
+		
+
 	</script>
  
 

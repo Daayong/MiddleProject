@@ -9,8 +9,7 @@
 	/* 왼쪽 메뉴바 */
 #left_menu{
 	width:190px;
-	min-height:900px;  
-	position:absolute;  
+	display: inline-block; 
 }
 
 #left_menu div ul li{
