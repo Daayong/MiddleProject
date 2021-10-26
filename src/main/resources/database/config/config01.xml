@@ -14,6 +14,9 @@
 			<typeAlias type="com.d.mp.cs.faq.FaqDTO" alias="FaqDTO"/>
 			<typeAlias type="com.d.mp.cs.notice.NoticeDTO" alias="NoticeDTO"/>
 			<typeAlias type="com.d.mp.cs.notice.NoticeFileDTO" alias="NoticeFileDTO"/>
+			<typeAlias type="com.d.mp.cs.qna.QnaDTO" alias="QnaDTO"/>
+			<typeAlias type="com.d.mp.cs.qna.QnaDTO" alias="QnaFileDTO"/>
+		
 		
 			<typeAlias type="com.d.mp.event.EventDTO" alias="EventDTO"/>
 			<typeAlias type="com.d.mp.event.winner.EventWinnerDTO" alias="EventWinnerDTO"/>

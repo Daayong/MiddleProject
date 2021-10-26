@@ -57,7 +57,7 @@
 			</div>
 			
 			<!-- 문의작성 폼 -->
-			<form name="counselForm" onsubmit="return false;">
+			<form action="./formCounsel" method="POST" enctype="multipart/form-data" >
 				<input type="hidden" name="mode" value="create">
 				
 				<div class="cate_wrap">
@@ -66,63 +66,63 @@
 				
 							<li>
 								<span class="rad_wrap">
-									<input type="radio" name="cslCtgrId" id="inquiry_cate1" value="ship" data-csl-ttl="배송" checked="" class="accessibility-keyboard">
+									<input type="radio" name="qna_type" id="inquiry_cate1" value="배송" data-csl-ttl="배송" checked="" class="accessibility-keyboard">
 										<label for="inquiry_cate1"><span>배송</span></label>
 								</span>
 							</li>
 		
 							<li>
 								<span class="rad_wrap">
-									<input type="radio" name="cslCtgrId" id="inquiry_cate2" value="pay" data-csl-ttl="주문/결제" class="accessibility-keyboard">
+									<input type="radio" name="qna_type" id="inquiry_cate2" value="주문/결제" data-csl-ttl="주문/결제" class="accessibility-keyboard">
 										<label for="inquiry_cate2"><span>주문/결제</span></label>
 								</span>
 							</li>
 						
 							<li>
 								<span class="rad_wrap">
-									<input type="radio" name="cslCtgrId" id="inquiry_cate3" value="cancel" data-csl-ttl="취소/반품" class="accessibility-keyboard">
+									<input type="radio" name="qna_type" id="inquiry_cate3" value="취소/반품" data-csl-ttl="취소/반품" class="accessibility-keyboard">
 										<label for="inquiry_cate3"><span>취소/반품</span></label>
 								</span>
 							</li>
 							
 							<li>
 								<span class="rad_wrap">
-									<input type="radio" name="cslCtgrId" id="inquiry_cate4" value="menu" data-csl-ttl="쿡킷메뉴/상품" class="accessibility-keyboard">
+									<input type="radio" name="qna_type" id="inquiry_cate4" value="쿡킷메뉴/상품" data-csl-ttl="쿡킷메뉴/상품" class="accessibility-keyboard">
 										<label for="inquiry_cate4"><span>쿡킷메뉴/상품</span></label>
 								</span>
 							</li>
 						
 							<li>
 								<span class="rad_wrap">
-									<input type="radio" name="cslCtgrId" id="inquiry_cate5" value="point" data-csl-ttl="회원/포인트" class="accessibility-keyboard">
+									<input type="radio" name="qna_type" id="inquiry_cate5" value="회원/포인트" data-csl-ttl="회원/포인트" class="accessibility-keyboard">
 										<label for="inquiry_cate5"><span>회원/포인트</span></label>
 								</span>
 							</li>
 						
 							<li>
 								<span class="rad_wrap">
-									<input type="radio" name="cslCtgrId" id="inquiry_cate6" value="event" data-csl-ttl="이벤트" class="accessibility-keyboard">
+									<input type="radio" name="qna_type" id="inquiry_cate6" value="이벤트" data-csl-ttl="이벤트" class="accessibility-keyboard">
 										<label for="inquiry_cate6"><span>이벤트</span></label>
 								</span>
 							</li>
 						
 							<li>
 								<span class="rad_wrap">
-									<input type="radio" name="cslCtgrId" id="inquiry_cate7" value="receipt" data-csl-ttl="영수증/증빙" class="accessibility-keyboard">
+									<input type="radio" name="qna_type" id="inquiry_cate7" value="영수증/증빙" data-csl-ttl="영수증/증빙" class="accessibility-keyboard">
 										<label for="inquiry_cate7"><span>영수증/증빙</span></label>
 								</span>
 							</li>
 				
 							<li>
 								<span class="rad_wrap">
-									<input type="radio" name="cslCtgrId" id="inquiry_cate8" value="site" data-csl-ttl="사이트이용" class="accessibility-keyboard">
+									<input type="radio" name="qna_type" id="inquiry_cate8" value="사이트이용" data-csl-ttl="사이트이용" class="accessibility-keyboard">
 										<label for="inquiry_cate8"><span>사이트이용</span></label>
 								</span>
 							</li>
 					
 							<li>
 								<span class="rad_wrap">
-									<input type="radio" name="cslCtgrId" id="inquiry_cate9" value="etc" data-csl-ttl="기타" class="accessibility-keyboard">
+									<input type="radio" name="qna_type" id="inquiry_cate9" value="기타" data-csl-ttl="기타" class="accessibility-keyboard">
 										<label for="inquiry_cate9"><span>기타</span></label>
 								</span>
 							</li>
@@ -206,17 +206,16 @@
 		
 									
 								<!-- 선택된 상품이 없을 때 -->
-								<div class="pro_box no_pro">
-									<span class="txt">문의할 주문번호 또는 상품을 선택해주세요.</span>
+								<div class="pro_box no_pro" style="display: none;">
+									<span class="txt" >문의할 주문번호 또는 상품을 선택해주세요.</span>
 								</div>
 								<!-- //선택된 상품이 없을 때 -->
 	
 								<!-- 선택된 상품이 있을 때 -->
-								<div class="pro_box pro_info" style="display: none;">
-									<span class="txt">
-										<span class="hide">상품명</span>
-									</span>
-								<input type="hidden" name="csPrdCd" value="">
+								<div class="pro_box pro_info" style="display: blocks;">
+									<span class="txt">		
+									<span class="hide">주문번호</span>20211025712679/<span class="hide">상품명</span>*투움바 스테이크 파스타 외 1건	</span>
+								<input type="hidden" name="payment_id" value="">
 								</div>
 								<!-- //선택된 상품이 있을 때 -->
 								<button type="button" class="btn sub green" onclick="javascipt:openProdListModal();"><span>조회</span></button>
@@ -226,9 +225,8 @@
 					<dl class="one_dep">
 						<dt>문의내용<span class="bul_req"><span class="hide">필수 입력</span></span></dt>
 						<dd>
-							<input id="input-text-0" type="hidden" name="cslTtl" value="">
 							<div class="textarea">
-								<textarea id="question_cont" spellcheck="false" style="outline: none;" cols="80" rows="5" title="문의내용 작성란" placeholder="문의 내용을 입력해주세요"  class="ui_inputLimit" maxlength="1000" name="qna_content"></textarea>
+								<textarea id="qna_content" name="qna_content" spellcheck="false" style="outline: none;" cols="80" rows="5" title="qna_content" placeholder="문의 내용을 입력해주세요"  class="ui_inputLimit" maxlength="1000"></textarea>
 								<div id="result" class="result_txt"><span class="ui_inputLimitCount">0</span>/1000자</div>
 							</div>
 							<div class="btm_noti">
@@ -251,7 +249,14 @@
 											<span class="add_file" style="width: 128px; height: 128px;"><span class="hide">파일 추가 선택</span></span>	
 											</div>
 										</li>
-						
+										<li key="ad229365-ba72-40f5-8c5d-a8af2302473b_20211026083254">
+											<div class="img" style="position:relative;">
+												<div class="dim_div"><span class="num">1</span></div>	
+												<div class="img_wrap">	<img src="/pc/comm/previewImg.json?tempFile=/2021102608/ad229365-ba72-40f5-8c5d-a8af2302473b_20211026083254&amp;filename=갈릭버터쉬림프.jpg" alt="">
+												<button type="button" class="btn_delete"><span class="hide">파일 삭제</span></button>
+													</div>
+													</div>
+													</li>
 									</ul>
 								</div>
 							</div>
@@ -286,10 +291,10 @@
 										</div>
 										<span class="at">@</span>
 										<div class="input_wrap dis">
-											<input type="text" class="txt emailCheck" disabled="disabled"  title="이메일 도메인 직접입력" name="qna_email_domain" id="qna_email_domain1" onkeyup="this.value=this.value.replace(/[^a-zA-Z-_0-9_.]/g,'');">
+											<input type="text" class="txt emailCheck" disabled="disabled"  title="이메일 도메인 직접입력" name="qna_email_domain1" id="qna_email_domain1" onkeyup="this.value=this.value.replace(/[^a-zA-Z-_0-9_.]/g,'');">
 										</div>
 										<span class="item_wrap ui_selectbox dis" >
-										<select id="qna_email_domain2" disabled="disabled" class="required emailCheck" name="qna_email_domain"  title="이메일 도메인 주소 선택" onchange="setEmailDomain(this);">
+										<select id="qna_email_domain2" disabled="disabled" class="required emailCheck" name="qna_email_domain2"  title="이메일 도메인 주소 선택" onchange="setEmailDomain(this);">
 											<option value="1">직접입력</option>
 											<option value="naver.com">naver.com</option>
 											<option value="hanmail.net">hanmail.net</option>
@@ -317,7 +322,7 @@
 											<label for="input_phone01" class="hide">휴대폰 앞자리 선택</label>
 		
 							<!-- check 안할시 disabled 넣어주기 -->
-							<select id="input_phone1" name="cusMblNo1" disabled="disabled" class="required phoneCheck" title="휴대폰 앞자리를 선택해주세요." >
+							<select id="input_phone1" name="qna_phone_f" disabled="disabled" class="required phoneCheck" title="휴대폰 앞자리를 선택해주세요." >
 									<option value="010" selected="selected">010</option>
 										<option value="011">011</option>
 										<option value="016">016</option>
@@ -329,11 +334,11 @@
 											<span class="ico_arr"></span>
 										</span>
 										<div class="input_wrap dis ">
-											<input type="text" class="txt phoneCheck" id="input_phone02" title="휴대폰 중간 4자리" disabled="disabled" maxlength="4" name="cusMblNo2" value="" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+											<input type="text" class="txt phoneCheck" id="input_phone02" title="휴대폰 중간 4자리" disabled="disabled" maxlength="4" name="qna_phone_m" value="" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
 											<button class="ico"><span class="hide">입력 삭제</span></button>
 										</div>
 										<div class="input_wrap dis ">
-											<input type="text" class="txt phoneCheck" id="input_phone03" title="휴대폰 끝 4자리" disabled="disabled" maxlength="4" name="cusMblNo3" value="" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
+											<input type="text" class="txt phoneCheck" id="input_phone03" title="휴대폰 끝 4자리" disabled="disabled" maxlength="4" name="qna_phone_b" value="" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
 											<button class="ico"><span class="hide">입력 삭제</span></button>
 										</div>
 									</div>
@@ -349,51 +354,48 @@
 				</div>
 	
 				<div class="btn_wrap">
-					<button class="btn white" onclick="cancel()"><span>취소</span></button>
-					<button class="btn green" onclick="checkForm();"><span>확인</span></button>
+					<button type="button" class="btn white" onclick="location.href ='../myAct/customerCounselList'" ><span>취소</span></button>
+					<button type="submit" id="submit_check" class="btn green"><span>확인</span></button>
 				</div>
 			</form>
+			
+			<!--// 문의작성 폼 -->
 		</div>
 		
-		<!-- 메인 컨텐츠(여기까지 변경되야함)  -->
+		<!-- 메인 컨텐츠  -->
 			
 	</div>	
 
 	</section>
  	<c:import url="../temp/boot_footer.jsp"></c:import>
  	
- 	<!-- modal -->
- 	
- <div class="ui_modal_wrap" style="display:none; position: fixed; inset: 0px; overflow: auto; z-index: 9000;">
- <div class="ui_modal_dim" style="position: fixed; inset: 0px; background: rgb(0, 0, 0); opacity: 0.6; z-index: 8000;"></div>
- <article id="prodListModal" class="lay_wrap ui_modal_container" style="width: 480px; margin-left: -240px; display: block; position: absolute; outline: none; background-clip: padding-box; left: 50%; top: 50%; margin-top: -165px;" ui-modules="Modal,CheckboxRadioFocus" role="dialog" aria-hidden="false" aria-describedby="modal_9_content" aria-labelledby="modal_9_title" tabindex="0">
-	<header class="line">
-		<h1 id="modal_9_title" style="user-select: none; cursor: move;"><span>주문/상품 선택</span></h1>
-	</header>
-	<section class="lay_conts lay_scroll" id="modal_9_content">
-		<div class="order_delivery">
-			
-				
-					<p class="order_tit">김채현님께서 최근 1개월간 주문하신 내역입니다.</p>
-					<div class="delivery_location no_top">
-						<!-- loop -->
-						
-							
-							
-							<div class="order_prd">
-								<div class="top">
-									<div class="tit">
-										<div class="rad_wrap">
-											<input type="radio" id="oreder_prd20211014656456" name="order" value="20211014656456" data-odr-nm="닭한마리와 칼국수" onchange="javascript:closeProdListModal(this);" class="accessibility-keyboard">
-											<label for="oreder_prd20211014656456" class="order_num">주문번호<span class="ff_avr">20211014656456</span></label>
+ 	<!-- modal 창 띄우기-->
+	 	
+	 <div class="ui_modal_wrap" style="display:none; position: fixed; inset: 0px; overflow: auto; z-index: 9000;">
+	 
+	 <div class="ui_modal_dim" style="position: fixed; inset: 0px; background: rgb(0, 0, 0); opacity: 0.6; z-index: 8000;"></div>
+	 
+	 <article id="prodListModal" class="lay_wrap ui_modal_container" style="width: 480px; margin-left: -240px; display: block; position: absolute; outline: none; background-clip: padding-box; left: 50%; top: 50%; margin-top: -165px;" ui-modules="Modal,CheckboxRadioFocus" role="dialog" aria-hidden="false" aria-describedby="modal_9_content" aria-labelledby="modal_9_title" tabindex="0">
+		<header class="line">
+			<h1 id="modal_9_title" style="user-select: none; cursor: move;"><span>주문/상품 선택</span></h1>
+		</header>
+		<section class="lay_conts lay_scroll" id="modal_9_content">
+			<div class="order_delivery">
+						<p class="order_tit">김채현님께서 최근 1개월간 주문하신 내역입니다.</p>
+						<div class="delivery_location no_top">
+							<!-- loop -->
+								
+								<div class="order_prd">
+									<div class="top">
+										<div class="tit">
+											<div class="rad_wrap">
+												<input type="radio" id="oreder_prd20211014656456" name="order" value="20211014656456" data-odr-nm="닭한마리와 칼국수" onchange="javascript:closeProdListModal(this);" class="accessibility-keyboard">
+												<label for="oreder_prd20211014656456" class="order_num">주문번호<span class="ff_avr">20211014656456</span></label>
+											</div>
 										</div>
 									</div>
-								</div>
-								<div class="prd_list_n">
-									<ul>
-										
-											
-											
+									<div class="prd_list_n">
+										<ul>
 											<li>
 												<div class="rad_wrap">
 													<input type="radio" id="oreder_prd211014_40035243" name="prod" value="40035243" data-prd-nm="닭한마리와 칼국수" onchange="javascript:closeProdListModal(this);" class="accessibility-keyboard">
@@ -405,24 +407,18 @@
 													</label>
 												</div>
 											</li>
-										
 									</ul>
 								</div>
 							</div>
-						
-						<!-- //loop -->
+						</div>
+							</div>
+					</section>
+					<div class="close">
+						<button type="button" class="ui_modal_close"><span class="hide">닫기</span></button>
 					</div>
-				
-				
-			
-		</div>
-	</section>
-	<div class="close">
-		<button type="button" class="ui_modal_close"><span class="hide">닫기</span></button>
-	</div>
-</article><a href="#" class="vr-focus-area"></a></div>
- 
- 
+				</article><a href="#" class="vr-focus-area"></a></div>
+				 
+				<!-- //modal 창 --> 
 </div>
 
 <script type="text/javascript">
@@ -513,7 +509,7 @@ $(".ui_modal_close").on("click", function() {
 /* 글자수 카운트, 제한 */
 $(document).ready(function() {
 
-        $('#question_cont').on('keyup', function() {
+        $('#qna_content').on('keyup', function() {
             $('#result').html($(this).val().length+ '/ 1000자');
             if($(this).val().length > 1000) {
                 $(this).val($(this).val().substring(0, 1000));
@@ -557,55 +553,58 @@ $(document).ready(function() {
 		}
 	}
 
+	
+	/* 취소버튼 */
 
 
 /* 폼 제출시 유효성 검사 */
-function checkForm() {
-	
-	/* 내용 검사 */
-	if($("#question_cont").val() == ""){
-		alert('내용을 입력해주세요');
-		$("#question_cont").focus();
-		return false;
-	}
-	
-	/* email or sms 중 하나가 선택되어야함 */
-	if($("#email").prop("checked") || $("#sms").prop("checked")){
-		
-		
-		/* email이 체크되었을때 유효검사 */
-		if($("#email").prop("checked")){ 
-			if($("#qna_email_id").val() == ""){
-				alert('이메일을 확인해주세요');
-				$("#qna_email_id").focus();
-				return false;
-			}else if($("#qna_email_domain1").val() == "" ){
-				alert('이메일이 형식에 맞지않습니다.다시 입력해주세요.');
-				$("#qna_email_domain1").focus();
-				return false;
-			}
-		
-		/* sms가 체크되었을때 */
-		}else if($("#sms").prop("checked")|| $("#input_phone02").val().length !=4){
-			if($("#input_phone02").val() == ""){
-				$("#input_phone02").focus();
-				alert('연락처를 확인해주세요');
-				return false;
-			}else if($("#input_phone03").val() == "" || $("#input_phone03").val().length !=4){
-				$("#input_phone03").focus();
-				alert('연락처를 확인해주세요.');
-				return false;
-			}
+ $("#submit_check").on("click", function() {
+		/* 내용 검사 */
+		if($("#qna_content").val() == ""){
+			alert('내용을 입력해주세요');
+			$("#qna_content").focus();
+			return false;
 		}
 		
+		/* email or sms 중 하나가 선택되어야함 */
+		if($("#email").prop("checked") || $("#sms").prop("checked")){
+
+			/* email이 체크되었을때 유효검사 */
+			if($("#email").prop("checked")){ 
+				if($("#qna_email_id").val() == ""){
+					alert('이메일을 확인해주세요');
+					$("#qna_email_id").focus();
+					return false;
+				}else if($("#qna_email_domain1").val() == "" ){
+					alert('이메일이 형식에 맞지않습니다.다시 입력해주세요.');
+					$("#qna_email_domain1").focus();
+					return false;
+				}
+			
+			/* sms가 체크되었을때 */
+			}else if($("#sms").prop("checked")){
+				if($("#input_phone02").val() == ""  || $("#input_phone02").val().length !=4){
+					$("#input_phone02").focus();
+					alert('연락처를 확인해주세요');
+					return false;
+				}else if($("#input_phone03").val() == "" || $("#input_phone03").val().length !=4){
+					$("#input_phone03").focus();
+					alert('연락처를 확인해주세요.');
+					return false;
+				}
+			}
+			
+			
+		alert("정상적으로 작성되었습니다.");
+			
+		}else{
+			alert('Email, SMS 중 최소 1개는 선택하셔야 합니다.');
+		}
 		
-	alert("작성완료");
-		
-	}else{
-		alert('Email, SMS 중 최소 1개는 선택하셔야 합니다.');
-	}
+});
+
 	
-}
+	
 	
 
 </script>

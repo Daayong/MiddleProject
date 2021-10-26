@@ -9,8 +9,7 @@
 	/* 왼쪽 메뉴바 */
 #left_menu{
 	width:190px;
-	min-height:900px;  
-	position:absolute;  
+	display: inline-block;  
 }
 
 #left_menu div ul li{
@@ -82,7 +81,7 @@
 						<li><a href="#">리뷰</a></li>
 						<li><a href="#">나의 맛취향</a></li>
 						<li><a href="#">쇼핑찜</a></li>
-						<li><a href="#">1:1 문의</a></li>
+						<li><a href="${pageContext.request.contextPath}/cs/formCounsel">1:1 문의</a></li>
 					</ul>
 				</div>
 				<div id="my_info" class="pd">
