@@ -13,6 +13,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.d.mp.board.util.BoardFileManager;
 import com.d.mp.board.util.BoardPager;
+import com.d.mp.cookit.menu.prd.ProductFilesDTO;
 
 @Service
 public class EventService {
@@ -26,38 +27,52 @@ public class EventService {
 	
 	//이벤트 글 목록 불러오기
 	public List<EventDTO> getEventList(EventDTO eventDTO) throws Exception{
-
-		return eventDAO.getEventList(eventDTO);	
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("event", eventDTO);
+		
+		return eventDAO.getEventList(map);	
 	}
 	
 	
 	//이벤트 글 작성
-	public int setEventList(EventDTO eventDTO, MultipartFile files) throws Exception{
+	public int setEventList(EventDTO eventDTO, List<MultipartFile> main_files) throws Exception{
 		int result = eventDAO.setEventList(eventDTO);
 
-		if(files != null) {
-		String realPath = this.servletContext.getRealPath("/resources/upload/event/");
+		System.out.println(eventDTO.getEvent_id());
 		
-		System.out.println(realPath);
-		
-		File file = new File(realPath);
-		
-		
-		EventFileDTO eventFileDTO = new EventFileDTO();
-				
-		
-			String fileName = fileManager.fileSave(files, file);
-			
-			
-			eventFileDTO.setEvent_file_name(fileName);
-			eventFileDTO.setEvent_file_ori_name(files.getOriginalFilename());
-			eventFileDTO.setEvent_id(eventDTO.getEvent_id());
 
-			System.out.println(eventFileDTO.getEvent_file_name());
-			System.out.println(eventFileDTO.getEvent_file_ori_name());
+		String main_realPath = servletContext.getRealPath("/resources/upload/event/main/" + eventDTO.getEvent_id());
+		
+	
+		File main_file_path = null;
+		
+		
+		// 파일 판단 인자
+		String f_kind = "";
+		
+		/* MultiPartFiles 버그성 아무것도 넣지 않아도 input에서 하나가 넘어오는걸로 되가지고 size 1 임 */
+		
+		// 메인의 썸네일 이미지 넣는 파일 디렉토리
+		
+		if(main_files.size() >= 1){
+			main_file_path = new File(main_realPath);
 			
-			result = eventDAO.setFile(eventFileDTO);
+			f_kind = "main";
+			
+			for(MultipartFile multipartFile:main_files) {
+				String fileName = fileManager.fileSave(main_file_path, multipartFile, eventDTO.getEvent_subject(), f_kind);
+				EventFileDTO eventFileDTO = new EventFileDTO();
+				eventFileDTO.setEvent_file_name(fileName);
+				eventFileDTO.setEvent_file_ori_name(multipartFile.getOriginalFilename());
+				eventFileDTO.setEvent_id(eventDTO.getEvent_id());
+				eventFileDTO.setEvent_file_path("main");
+				
+				result = eventDAO.setFile(eventFileDTO);
+			}
 		}
+		
+	
+		
 		
 		return result;
 	}

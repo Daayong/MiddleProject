@@ -9,13 +9,9 @@
   	<!-- 진행중인 이벤트 list 불러오기 -->
   	
  
-  	<select id="getEventList"  parameterType="EventDTO" resultType="EventDTO">
+  	<select id="getEventList"  parameterType="Map" resultType="EventDTO">
   		 	SELECT * FROM 
-  		 		event e 
-  		 	INNER JOIN 
-  		 	 	event_file ef
-  		 	USING
-  		 		(event_id)
+  		 		event
   		 	ORDER BY event_id DESC
   	</select>
   	
@@ -35,7 +31,7 @@
   	<insert id="setFile" parameterType="EventFileDTO">
   		INSERT INTO
   			event_file
-  		VALUES (event_file_seq.nextval, #{event_id}, #{event_file_name}, #{event_file_ori_name})
+  		VALUES (event_file_seq.nextval, #{event_id}, #{event_file_name}, #{event_file_ori_name}, #{event_file_path})
   	</insert>
   	
   	<!-- 파일 가져오기 -->

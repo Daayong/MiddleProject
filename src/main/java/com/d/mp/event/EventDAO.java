@@ -16,8 +16,8 @@ public class EventDAO {
 	
 	
 	//이벤트 list 불러오기
-	public List<EventDTO> getEventList(EventDTO eventDTO) throws Exception{
-		return sqlSession.selectList(NAMESPACE+"getEventList", eventDTO);
+	public List<EventDTO> getEventList(Map<String, Object> map) throws Exception{
+		return sqlSession.selectList(NAMESPACE+"getEventList", map);
 	}
 	
 	

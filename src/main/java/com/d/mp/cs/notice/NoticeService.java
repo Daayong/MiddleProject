@@ -46,7 +46,7 @@ public class NoticeService {
 			int result = noticeDAO.setInsert(noticeDTO);
 				
 			for(MultipartFile multipartFile : files) {
-				String fileName = fileManager.fileSave(multipartFile, file);
+				String fileName = fileManager.fileSave( file, multipartFile, realPath, realPath);
 				System.out.println(fileName);
 				NoticeFileDTO noticeFilesDTO = new NoticeFileDTO();
 				noticeFilesDTO.setNotice_file_name(fileName);

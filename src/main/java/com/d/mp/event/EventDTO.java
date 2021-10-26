@@ -11,16 +11,6 @@ public class EventDTO {
 	private Date event_startDate;
 	private Date event_endDate;
 
-	private List<EventFileDTO> file;
-	
-	
-	
-	public List<EventFileDTO> getFile() {
-		return file;
-	}
-	public void setFile(List<EventFileDTO> file) {
-		this.file = file;
-	}
 	public Long getEvent_id() {
 		return event_id;
 	}
