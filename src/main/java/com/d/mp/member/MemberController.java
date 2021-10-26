@@ -315,6 +315,9 @@ public class MemberController {
 		//2. DB에 저장되어 있는 전화번호 분리해서 JSP로 보내주기 
 		ModelAndView mv = new ModelAndView();
 		MemberDTO sessionDTO = (MemberDTO)session.getAttribute("member");
+		
+		System.out.println(sessionDTO.getMember_id());
+		
 		addressDTO=sessionDTO.getAddressDTO();
 		String i=addressDTO.getRecipient_phone();
 		System.out.println(i);
