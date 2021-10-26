@@ -1,5 +1,7 @@
 package com.d.mp.member;
 
+import java.util.List;
+
 import com.d.mp.address.AddressDTO;
 
 public class MemberDTO {
@@ -17,6 +19,8 @@ public class MemberDTO {
 	private int member_marketing_email;
 	private int member_type;
 	private int member_point;
+	
+	
 	
 	
 	public AddressDTO getAddressDTO() {

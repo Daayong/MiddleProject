@@ -266,6 +266,7 @@ public class MemberController {
 	//배송지추가 버튼 눌렀을 때 경로 매핑 
 	@GetMapping("addAddress")
 	public String addAddress() throws Exception {
+		System.out.println("addAddresssssssssss");
 		return "member/addAddress";
 	}
 	
@@ -282,9 +283,10 @@ public class MemberController {
 	}
 	
 	//배송지 추가 
-	@PostMapping("addAddress")
-	public String setAddAddress(AddressDTO addressDTO,HttpServletRequest request,MemberDTO memberDTO)throws Exception{
-		
+	@PostMapping("addAddress2")
+	@ResponseBody
+	public int setAddAddress(AddressDTO addressDTO,HttpServletRequest request,MemberDTO memberDTO)throws Exception{
+		System.out.println("hello1");
 		String pf=request.getParameter("member_phone_f");
 		String pm=request.getParameter("member_phone_m");
 		String pb=request.getParameter("member_phone_b");
@@ -304,7 +306,7 @@ public class MemberController {
 		int result = memberService.setAddAddress(addressDTO);
 		System.out.println(result);
 		
-		return "redirect:./myaddress";
+		return result;
 		
 	}
 	
@@ -325,6 +327,7 @@ public class MemberController {
 		//2. DB에 저장되어 있는 전화번호 분리해서 JSP로 보내주기 
 		ModelAndView mv = new ModelAndView();
 		MemberDTO sessionDTO = (MemberDTO)session.getAttribute("member");
+		
 		addressDTO=sessionDTO.getAddressDTO();
 		String i=addressDTO.getRecipient_phone();
 		System.out.println(i);
@@ -335,36 +338,7 @@ public class MemberController {
 		mv.setViewName("member/adUpdate");
 		return mv;
 	}
-	
-	
-	/*
-	 * @GetMapping("memberUpdate") public ModelAndView setUpdate(HttpSession
-	 * session) throws Exception { ModelAndView mv = new ModelAndView(); MemberDTO
-	 * sessionDTO = (MemberDTO) session.getAttribute("member");
-	 * memberService.setUpdateSplit(sessionDTO);
-	 * mv.setViewName("member/memberUpdate"); return mv; }
-	 * 
-	 * @PostMapping("update") public ModelAndView setUpdate(MemberDTO
-	 * memberDTO,HttpSession session)throws Exception { ModelAndView mv = new
-	 * ModelAndView(); MemberDTO sessionDTO = (MemberDTO)
-	 * session.getAttribute("member"); memberDTO=memberService.charSet(memberDTO);
-	 * memberDTO.setMember_email(memberDTO.getMember_email_f() + "@" +
-	 * memberDTO.getMember_email_b()); memberService.setUpdate(memberDTO);
-	 * session.setAttribute("member", memberDTO); mv.setViewName("redirect:../");
-	 * return mv; }
-	 */
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	
 	//배송지 수정 
 	@PostMapping("addressUpdate")

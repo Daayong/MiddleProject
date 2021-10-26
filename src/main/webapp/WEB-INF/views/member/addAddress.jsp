@@ -26,10 +26,10 @@
 <body>
 
 	<div class="addWrap">
-		<form id="addressForm" name="addressForm" method="post" target="myaddress">
+		<form id="addressForm" name="addressForm" method="post">
 				<h3 class="h3">배송지 추가</h3>
 				<div class="table_col">
-					<input type="hidden" name="member_id" value="${member.member_id}">
+					<input type="hidden" id="member_id" name="member_id" value="${member.member_id}">
 					<table>
 						<colgroup>
 							<col class="title">
@@ -105,7 +105,7 @@
 	
 		<div class="btn_wrap">
 			<button type="button" class="btn" id="cancel" name="cancel">취소</button>
-			<button type="button" class="btn green"  onclick="checkInput();" id="setaddAddress" name="setaddAddress">추가</button>
+			<input type="button" class="btn green"  id="setaddAddress" name="setaddAddress" value="추가">
 		</div>
 	</div>
 
@@ -127,7 +127,10 @@
 		 const phone_m=document.getElementById('member_phone_m');
 		 const phone_b=document.getElementById('member_phone_b');
 		 const address=document.getElementById('address');
+		 const member_id=document.getElementById('member_id');
 	 
+		 
+		 $("#setaddAddress").click(checkInput);
 		function checkInput(){
 			//받는분 입력 여부 확인 
 			if(recipient_name.value.trim().length <1){
@@ -154,8 +157,10 @@
 			}
 			
 			if(confirm('배송지를 추가하시겠습니까?')==true){
-				addressForm.submit();
-				window.close();
+				//addressForm.submit();
+				add();
+				
+				
 			 
 			}else{
 				return false;
@@ -164,7 +169,41 @@
 		}
 		
 		
-		
+	 function add(){
+		 const recipient_name=document.getElementById('recipient_name');
+		 const phone_m=document.getElementById('member_phone_m');
+		 const phone_b=document.getElementById('member_phone_b');
+		 const address=document.getElementById('address');
+		 const member_id=document.getElementById('member_id');
+		 let f = '010';
+			$('.se').each(function(){
+				 if($(this).prop('selected')){
+					 f = $(this).val();
+				 }
+			})
+				console.log(f);
+			$.ajax({
+				method:'POST',
+				url: './addAddress2',
+				data :{
+					member_phone_m: phone_m,
+					member_phone_b: phone_b,
+					member_phone_f: f,
+					address:address,
+					member_id:member_id					
+				},
+				success:function(result){
+					console.log(result);
+					if(result>0){
+						//opener.location.reload();
+						window.close();
+					}else {
+						//실패 했을 경우 처리코드 작성
+					}
+				}
+			});
+
+	 }
 		
 		
 		
