@@ -53,6 +53,9 @@ public class EventService {
 			eventFileDTO.setEvent_file_ori_name(files.getOriginalFilename());
 			eventFileDTO.setEvent_id(eventDTO.getEvent_id());
 
+			System.out.println(eventFileDTO.getEvent_file_name());
+			System.out.println(eventFileDTO.getEvent_file_ori_name());
+			
 			result = eventDAO.setFile(eventFileDTO);
 		}
 		

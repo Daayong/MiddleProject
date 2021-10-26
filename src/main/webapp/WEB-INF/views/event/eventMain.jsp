@@ -79,7 +79,7 @@
 					<a href="./planView?event_id=${eList.event_id}" class="link_more">
 			
 				
-					<img src="../resources/upload/event/${event_id.file.event_file_name}" alt="test">	
+					<img src="../resources/upload/event/${file.event_file_name}.jpg" alt="test">	
 				
 						<span class="dim"></span>
 					</a>
