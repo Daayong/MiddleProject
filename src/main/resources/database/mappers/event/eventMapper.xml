@@ -31,7 +31,7 @@
   	<insert id="setFile" parameterType="EventFileDTO">
   		INSERT INTO
   			event_file
-  		VALUES (event_file_seq.nextval, #{event_id}, #{event_file_name}, #{event_file_ori_name}, #{event_file_path})
+  		VALUES (event_file_seq.nextval, #{event_id}, #{event_file_name}, #{event_file_ori_name})
   	</insert>
   	
   	<!-- 파일 가져오기 -->

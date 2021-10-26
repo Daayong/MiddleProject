@@ -6,17 +6,7 @@ public class EventFileDTO {
 	private Long event_id;
 	private String event_file_name;
 	private String event_file_ori_name;
-	private String event_file_path;
-	
-	
-	
-	
-	public String getEvent_file_path() {
-		return event_file_path;
-	}
-	public void setEvent_file_path(String event_file_path) {
-		this.event_file_path = event_file_path;
-	}
+
 	public Long getEvent_file_id() {
 		return event_file_id;
 	}

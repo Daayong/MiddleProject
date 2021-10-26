@@ -65,7 +65,7 @@ public class EventService {
 				eventFileDTO.setEvent_file_name(fileName);
 				eventFileDTO.setEvent_file_ori_name(multipartFile.getOriginalFilename());
 				eventFileDTO.setEvent_id(eventDTO.getEvent_id());
-				eventFileDTO.setEvent_file_path("main");
+			
 				
 				result = eventDAO.setFile(eventFileDTO);
 			}
