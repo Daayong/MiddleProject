@@ -260,14 +260,14 @@
 .menu_btn{
 	margin-right: 15px;
 }
-.zzim_btn{
+.main_zzim_btn{
 	background: url('../../images/common/ico_set.png') no-repeat 0 -190px;
 	background-size: 800px 800px;
 	width: 40px;
 	height: 40px;
 	cursor: pointer;
 }
-.cart_btn{
+.main_cart_btn{
 	background: url('../../images/common/ico_set.png') no-repeat -45px -190px;
 	background-size: 800px 800px;
 	width: 40px;

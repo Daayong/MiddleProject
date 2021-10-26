@@ -158,10 +158,10 @@
 										</div>
 									</div>
 									<div class="item_btnbox">
-										<div class="menu_btn zzim_btn">
+										<div class="menu_btn main_zzim_btn">
 											
 										</div>
-										<div class="menu_btn cart_btn">
+										<div class="menu_btn main_cart_btn">
 											
 										</div>
 									</div>
@@ -187,6 +187,7 @@
 
 <script src="../resources/js/menu/menu_js.js"></script>
 <script type="text/javascript">
+
 	let today = new Date();
 	let last_date = new Date(today.getFullYear(), today.getMonth()+1, 0);
 	let p_ld = parseInt(last_date.getDate());
@@ -263,6 +264,26 @@
 			$(".get_date2").text(today.getDate());
 		}
 	}
+	
+	/* 장바구니로 버튼 */
+	$(".main_cart_btn").on("click", function (){
+		
+		let product_id = $(this).parent().prevAll(".click_menu").children("#product_id").val();
+		
+		$.ajax({
+			url: 'getDateOne?product_id=' + product_id,
+			type: 'get',
+			success: function (result) {
+							
+			},
+			error:function(request,status,error){
+				
+		        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+		        
+		    }
+		});
+		
+	});
 	
 </script>
 

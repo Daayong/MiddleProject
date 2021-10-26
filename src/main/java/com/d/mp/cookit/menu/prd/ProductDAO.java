@@ -63,6 +63,11 @@ public class ProductDAO {
 		return sqlSession.selectOne(NAMESPACE + "getSoldSum", product_id);
 	}
 	
+	//특정 id 상품의 주문가능 일자중 첫번째 값 가져오기
+	public ProductDTO getDateOne(ProductDTO productDTO) throws Exception{
+		return sqlSession.selectOne(NAMESPACE + "getDateOne", productDTO);
+	}
+	
 	//특정 id 상품의 주문가능 일자 가져오기
 	public List<ProductDTO> getDate(ProductDTO productDTO) throws Exception{
 		return sqlSession.selectList(NAMESPACE + "getDate", productDTO);

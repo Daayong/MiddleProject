@@ -160,9 +160,8 @@ public class ProductController {
 	public ModelAndView getPrdList(ProductDTO productDTO, ProductPager pager) throws Exception{
 		List<ProductDTO> prdAr = productService.getPrdList(productDTO, pager);
 		
-		
-		
 		int isSoldOut = 0;
+		List<ProductDTO> prdDate = null;
 		
 		for(int i=0; i<prdAr.size(); i++) {
 			
@@ -170,7 +169,7 @@ public class ProductController {
 			boolean isEndDate = false;
 			String state = "";
 			
-			List<ProductDTO> prdDate = productService.getDate(prdAr.get(i));
+			prdDate = productService.getDate(prdAr.get(i));
 			
 			for(int j=0; j<prdDate.size(); j++) {
 				

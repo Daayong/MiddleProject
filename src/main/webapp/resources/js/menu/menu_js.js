@@ -52,8 +52,6 @@ $(document).on("click", ".sortc_btn", function(){
 	});
 });
 
-/* 찜 버튼 누르면 장바구니로 이동하기 */
-
 
 /* ============== menu_search 페이지 ============== */
 $(document).on("click", ".btn_srch", function(){
