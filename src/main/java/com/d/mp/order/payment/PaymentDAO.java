@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.d.mp.member.MemberDTO;
 import com.d.mp.order.cart.CartDTO;
 
 @Repository
@@ -23,6 +24,10 @@ public class PaymentDAO {
 	
 	public PaymentDTO selectPaymentOne(PaymentDTO paymentDTO) throws Exception {
 		return sqlSession.selectOne(NAMESPACE + "selectPaymentOne", paymentDTO);
+	}
+	
+	public List<PaymentListDTO> getPaymentList(MemberDTO memberDTO) throws Exception {
+		return sqlSession.selectList(NAMESPACE + "getPaymentList", memberDTO);
 	}
 	
 }

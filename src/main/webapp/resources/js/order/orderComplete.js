@@ -1,6 +1,21 @@
 /**
  * 
  */ 
+ 
+$().ready(function(){
+	$('.product_detail').each(function(){
+		let date_order_quantity = 0;
+		let date_product_price = 0;
+		$(this).find('.info_wrap').each(function(){
+			date_order_quantity += $(this).find('.quantity').data('quantity');
+			date_product_price += $(this).find('.price').data('price');
+		});
+		if (date_product_price < 40000) {
+			$(this).find('.delivery_price').html("배송비 3,000원");
+		}
+		$(this).find('.order_product').html("주문상품 총 "+date_order_quantity+"개");			
+	});
+});
 
 // ===== ===== ===== tip ===== ===== =====
 
@@ -123,7 +138,7 @@ function dragRePosition() {
 // ===== ===== ===== /slide_track ===== ===== =====
 
 $('#compBtnMenu').click(function(){ //'COOKTI 메뉴' 로 이동
-	$(location).attr('href', '/mp/review/reviewMain');
+	$(location).attr('href', '/mp/menu/menu_main');
 });
 
 $('#compBtnOdrDtl').click(function(){ //주문번호 조회하여 '주문/배송조회' or '취소/반품조회' 로 이동

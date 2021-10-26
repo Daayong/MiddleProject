@@ -1,0 +1,33 @@
+@charset "UTF-8";
+
+.content {min-height:900px; padding:52px 0 140px; }
+.content:after { content: ''; display: block; clear: both; }
+
+.rigth_content { width: 940px; float: right;}
+
+.rigth_content h3{display:block;padding-bottom:36px;border-bottom:4px solid #202020;font-size:36px;line-height:50px;font-weight:700;color:#101010;}
+
+.payment_id_info {padding:16px 0; border:1px solid #CCCCCC; border-top:0;}
+.payment_id_info:after{content:'';display:block;clear:both;}
+.payment_id_info dl{float:left; width:468px; padding:0 19px;}
+.payment_id_info dt{float:left;width:100%; padding-top:6px; color:#101010; font-weight:500; font-size:16px; line-height:24px; text-align:center}
+.payment_id_info dd{float:left;width:100%;padding-top:1px;color:#101010;font-weight:700;font-size:24px;line-height:34px;text-align:center;}
+
+.delibery_info { margin-top: 64px; }
+.delibery_info >h4{ font-size:22px;line-height:32px;color:#101010;font-weight:700;padding-bottom:16px;margin-bottom:-25px;border-bottom:2px solid #202020; }
+
+.location_detail { border: 1px solid #ccc; margin-top: 24px; }
+.location_detail >h4{display:table-cell; font-size:18px;line-height:27px;color:#101010;font-weight:500;padding:25px 12px 26px 31px;width:187px;background-color:#F7F7F7;}
+.location_detail .d_sec{position:relative;display:table-cell;width:751px;padding:25px 24px 26px 24px;vertical-align:top;}
+.location_detail .d_sec dt { font-size: 18px; font-weight: 500; line-height: 27px; color: #101010; }
+.location_detail .d_sec ul { margin-top: 12px;}
+.location_detail .d_sec li { margin-top: 4px; font-size: 14px; font-weight: 400; line-height: 22px; color: #606060; }
+
+.product_detail {margin-top:-1px; padding:0 31px 10px; border:1px solid #ccc;}
+.product_detail .top_wrap {padding: 25px 0 8px;}
+.product_detail .top_wrap .cart_state {font-weight:500;font-size:18px;line-height:27px;}
+.product_detail .top_wrap .cart_state.payment{ color: #008A00; }
+.product_detail .top_wrap .cart_state.deliver{ color: #0379A6; }
+.product_detail .top_wrap .cart_state.deliveryComplete{ color:#606060; }
+
+.product_detail .top_wrap .cart_delivery_date {margin-left:8px;color:#101010;font-weight:500;font-size:18px;line-height:27px;}

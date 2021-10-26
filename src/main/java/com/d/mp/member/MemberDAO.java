@@ -72,7 +72,10 @@ public class MemberDAO {
 		return sqlSession.selectList(NAMESPACE+"getAddressList", memberDTO);	
 	}
 	
-	
+	//결제 완료 후 포인트 증감
+	public void setUpdatePoint(MemberDTO memberDTO) throws Exception{
+		sqlSession.update(NAMESPACE+"setUpdatePoint", memberDTO);
+	}
 	
 	
 	

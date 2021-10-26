@@ -9,8 +9,7 @@
 	/* 왼쪽 메뉴바 */
 #left_menu{
 	width:190px;
-	min-height:900px;  
-	position:absolute;  
+	display: inline-block;
 }
 
 #left_menu div ul li{
@@ -59,7 +58,7 @@
 					<h2>MY쿡킷</h2>
 					<ul>
 						<li class="tab_title" style="margin-bottom:10px;">나의 주문정보</li>
-						<li><a href="#">주문/배송 조회</a></li>
+						<li><a href="${pageContext.request.contextPath}/member/myOrderList">주문/배송 조회</a></li>
 						<li><a href="#">취소/반품 조회 </a></li>
 						<li><a href="#">선물내역</a></li>
 						<li><a href="#">세금계산서 신청</a></li>

@@ -2,6 +2,7 @@ package com.d.mp.member;
 
 import java.security.SecureRandom;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.ServletContext;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.d.mp.address.AddressDTO;
+import com.d.mp.order.payment.PaymentDTO;
 
 @Service
 public class MemberService {
@@ -173,7 +175,10 @@ public class MemberService {
 		return memberDAO.getAddressList(memberDTO);
 	}
 	
-	
+	//결제 완료 후 포인트 증감
+	public void setUpdatePoint(MemberDTO memberDTO) throws Exception{
+		memberDAO.setUpdatePoint(memberDTO);
+	}
 	
 	
 	

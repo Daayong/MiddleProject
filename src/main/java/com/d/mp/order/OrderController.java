@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.d.mp.member.MemberDTO;
+import com.d.mp.member.MemberService;
 import com.d.mp.order.cart.CartDTO;
 import com.d.mp.order.cart.CartService;
 import com.d.mp.order.payment.PaymentDTO;
@@ -25,6 +26,9 @@ public class OrderController {
 	
 	@Autowired
 	private PaymentService paymentService;
+	
+	@Autowired
+	private MemberService memberService;
 	
 	@RequestMapping("cartList")
 	public String cartList(Model model, HttpSession session) throws Exception {	
@@ -49,12 +53,17 @@ public class OrderController {
 	
 	@RequestMapping("insertPayment")
 	@ResponseBody
-	public Long insertPayment(Model model, HttpSession session, PaymentDTO paymentDTO) throws Exception {
+	public Long insertPayment(Model model, HttpSession session, PaymentDTO paymentDTO, int save_point) throws Exception {
 		MemberDTO memberDTO = (MemberDTO) session.getAttribute("member");
-		paymentDTO.setMember_id(memberDTO.getMember_id());
 		
-		paymentService.insertPayment(paymentDTO);
+		paymentDTO.setMember_id(memberDTO.getMember_id());		
+		paymentService.insertPayment(paymentDTO);		
 		cartService.updateCartStatePayment(paymentDTO, memberDTO);
+		
+		int member_point = memberDTO.getMember_point(); 
+		member_point = (int) (member_point - paymentDTO.getPayment_use_point() + save_point);
+		memberDTO.setMember_point(member_point);
+		memberService.setUpdatePoint(memberDTO);
 		
 		return paymentDTO.getPayment_id();
 	}
@@ -62,7 +71,7 @@ public class OrderController {
 	@RequestMapping("orderComplete")
 	public String orderComplete(Model model, PaymentDTO paymentDTO) throws Exception {
 		model.addAttribute("paymentDTO", paymentService.selectPaymentOne(paymentDTO));
-		model.addAttribute("cartDTO", cartService.getCartListPaymentId(paymentDTO));
+		model.addAttribute("cartListDTOs", cartService.getCartListPaymentId(paymentDTO));
 		return "order/orderComplete";
 	}
 	

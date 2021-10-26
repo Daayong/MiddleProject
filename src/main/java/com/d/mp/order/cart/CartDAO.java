@@ -61,5 +61,9 @@ public class CartDAO {
 	public void updateCartStatePayment(HashMap<String, Long> hashMap) {
 		sqlSession.update(NAMESPACE + "updateCartStatePayment", hashMap);
 	}	
+
+	public void updateCartStateBeforePayment(HashMap<String, String> hashMap) {
+		sqlSession.update(NAMESPACE + "updateCartStateBeforePayment", hashMap);
+	}	
 	
 }

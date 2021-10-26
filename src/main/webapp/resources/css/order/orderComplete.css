@@ -85,19 +85,19 @@
 .product_detail { margin-top: -1px; padding: 26px 31px 25px; border: 1px solid #CCC; }
 .recieve_date { padding-bottom: 12px; }
 .recieve_date strong { font-size: 18px; line-height: 27px; color: #101010; font-weight: 500; vertical-align: middle }
-.recieve_date span { margin-left: 4px; font-size: 13px; line-height: 21px; color: #0379A6; vertical-align: bottom; }
+.recieve_date span { margin-left: 8px; font-size: 13px; line-height: 21px; color: #606060; vertical-align: bottom; }
 .recieve_date span.recieve_txt { color: #0379A6; }
 
 .product_list ul { padding-bottom: 6px; /* border-bottom: 1px solid #CCCCCC; */ }
 .product_list li { width: 100%; padding: 16px 0 16px 0; border-top: 1px solid #E0E0E0; }
 .product_list li:first-child { border: none; }
 .product_list .product_info { display: table-cell; height: 80px; vertical-align: middle; position: relative; padding: 0 0 0 104px; }
-.product_info .img_wrap{position:absolute; left:0; width:80px; text-align:center}
-.product_info .img_wrap img{width:100%}
+.product_info .img_wrap{position:absolute; left:0; width:80px; height:80px; overflow: hidden;}
+.product_info .img_wrap img{position:absolute; top: 50%; transform: translateY(-50%); width:100%}
 .product_info .info_wrap { display: table-cell; height: 80px; vertical-align: middle; }
 .product_info .info_wrap .tit { font-size: 16px; line-height: 24px; color: #101010; font-weight: 500; }
 .product_info .info_wrap .price { display: inline-block; margin-top: 8px; font-size: 18px; line-height: 27px; color: #101010; font-weight: 700; }
-.product_info .info_wrap .amount { margin-left: 4px; color: #606060; font-size: 13px; line-height: 21px; }
+.product_info .info_wrap .quantity { margin-left: 4px; color: #606060; font-size: 13px; line-height: 21px; }
 
 .notice { margin-top: 27px; }
 .notice p { color: #606060; font-size: 14px; line-height: 22px; }

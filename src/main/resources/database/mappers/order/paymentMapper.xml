@@ -29,9 +29,9 @@
 		<selectKey order="BEFORE" resultType="Long" keyProperty="payment_id">
 			SELECT
 				CONCAT(
-					TO_CHAR(SYSDATE, 'YYYYMMDD'),
+					TO_CHAR(SYSDATE, 'YYYYMMDDHH24MI'),
 				CONCAT(
-					LPAD(payment_id_seq.NEXTVAL, 4, '0'),
+					payment_id_seq.NEXTVAL,
 					#{member_id}
 				))
 			FROM DUAL
@@ -48,6 +48,33 @@
 <!-- ===== ===== ===== SELECT ===== ===== ===== -->
 	<select id="selectPaymentOne" resultType="PaymentDTO" parameterType="PaymentDTO">
 		SELECT * FROM payment WHERE payment_id = #{payment_id}
+	</select>
+	
+	<select id="getPaymentList" resultType="PaymentListDTO" parameterType="MemberDTO">
+		SELECT
+            payment_id,
+            payment_total_product_price,
+            payment_total_delivery_price,
+            payment_use_point,
+            payment_total_payment_price,
+            TO_CHAR(TO_DATE(SUBSTR(payment_id, 1, 12), 'YYYYMMDDHH24MI'), 'YYYY-MM-DD(DY) HH24:MI') AS payment_date,
+            TO_CHAR(cart_delivery_date, 'YYYY-MM-DD(DY)') AS cart_delivery_date,
+            cart_state,
+            cart_quantity,
+            product_id,
+            product_name,
+            product_price,
+            product_file_name
+        FROM
+            payment pay
+            JOIN cart c USING (payment_id)
+            JOIN product p USING (product_id)
+            JOIN product_file pf USING (product_id)
+        WHERE
+            member_id = #{member_id} AND
+            product_file_path = 'main'
+        ORDER BY
+            payment_id, c.cart_delivery_date
 	</select>
 
 </mapper>

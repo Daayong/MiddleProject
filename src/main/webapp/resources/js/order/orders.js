@@ -120,16 +120,18 @@ $('#orderBtn').click(function(){
 	let total_delivery_price = Number($('.total_delivery_price').data('total_delivery_price'));
 	let use_point = Number($('.use_point').data('use_point'));
 	let total_payment_price = Number($('.total_payment_price').data('total_payment_price'));
+	let save_point = Number(Math.round((total_product_price - use_point) * 0.02));
 	
 	$.ajax({
 		async : false,
 		type : 'GET',
 		url : './insertPayment',
 		data : {
-			payment_total_product_price     : total_product_price ,
-			payment_total_delivery_price    : total_delivery_price,
-			payment_use_point               : use_point           ,
-			payment_total_payment_price     : total_payment_price ,
+			payment_total_product_price     : total_product_price 	,
+			payment_total_delivery_price    : total_delivery_price	,
+			payment_use_point               : use_point           	,
+			payment_total_payment_price     : total_payment_price	,
+			save_point						: save_point			,
 		},
 		success : function(result){
 			result

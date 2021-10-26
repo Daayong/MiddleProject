@@ -64,5 +64,10 @@
   	<select id="getAddressList" parameterType="MemberDTO" resultType="AddressDTO">
   		SELECT * FROM address WHERE member_id=#{member_id} ORDER BY default_check
   	</select>
+  	
+  	<!-- 결제 완료 후 포인트 증감 -->
+  	<update id="setUpdatePoint" parameterType="MemberDTO">
+  		UPDATE member SET member_point = #{member_point} WHERE member_id = #{member_id}
+  	</update>
   
   </mapper>

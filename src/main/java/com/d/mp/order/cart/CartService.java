@@ -61,5 +61,19 @@ public class CartService {
 		hashMap.put("member_id", memberDTO.getMember_id());
 		cartDAO.updateCartStatePayment(hashMap);
 	}
+
+	public void updateCartStateBeforePayment(MemberDTO memberDTO) throws Exception {
+		HashMap<String, String> hashMap = new HashMap<String, String>();
+		hashMap.put("member_id", Long.toString(memberDTO.getMember_id()));
+		hashMap.put("hash_state", "deliver");
+		hashMap.put("hash_date", "1");
+		cartDAO.updateCartStateBeforePayment(hashMap);
+		
+		hashMap = new HashMap<String, String>();
+		hashMap.put("member_id", Long.toString(memberDTO.getMember_id()));
+		hashMap.put("hash_state", "deliveryComplete");
+		hashMap.put("hash_date", "0");
+		cartDAO.updateCartStateBeforePayment(hashMap);		
+	}
 	
 }

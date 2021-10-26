@@ -69,8 +69,24 @@
 		ORDER BY cart_delivery_date
 	</select>
 	
-	<select id="getCartListPaymentId" resultType="CartDTO" parameterType="PaymentDTO">
-		SELECT * FROM cart WHERE payment_id = #{payment_id}
+	<select id="getCartListPaymentId" resultType="CartListDTO" parameterType="PaymentDTO">	
+		SELECT
+			TO_CHAR(cart_delivery_date, 'YYYY-MM-DD(DY)') AS cart_delivery_date,
+			cart_quantity,
+            p.product_id AS product_id,
+			product_name,
+			product_price,
+            product_file_name
+		FROM
+			cart c
+			JOIN product p
+			ON c.product_id = p.product_id
+            JOIN product_file pf
+            ON p.product_id = pf.product_id
+		WHERE
+            payment_id = #{payment_id} AND
+            pf.product_file_path = 'main'
+		ORDER BY cart_delivery_date
 	</select>
 	
 <!-- ===== ===== ===== DELETE ===== ===== ===== -->	
@@ -119,6 +135,7 @@
 			cart_state = 'deadLine'
 		WHERE
 			member_id = #{member_id} AND
+			(cart_state = 'checked' OR cart_state = 'unChecked') AND
 			TO_CHAR(cart_delivery_date, 'YYYYMMDD') <![CDATA[<]]> TO_CHAR(SYSDATE + 2, 'YYYYMMDD')
 	</update>
 	
@@ -130,6 +147,18 @@
         WHERE
             member_id = #{member_id} AND
             cart_state = 'checked'
+	</update>
+	
+	<update id="updateCartStateBeforePayment" parameterType="HashMap">
+		UPDATE cart
+		SET
+			cart_state = #{hash_state}
+		WHERE
+			member_id = #{member_id} AND
+			cart_state != 'checked' AND
+			cart_state != 'unChecked' AND
+			cart_state != 'deadLine' AND
+			TO_CHAR(cart_delivery_date, 'YYYYMMDD') <![CDATA[<=]]> TO_CHAR(SYSDATE + #{hash_date}, 'YYYYMMDD')
 	</update>
 
 </mapper>

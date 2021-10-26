@@ -182,56 +182,53 @@
 								</dl>
 							</div>
 						</div>
-						<!-- //Loop I START -->
-						<div class="product_detail">
-						
-							<div class="recieve_date">
-								<strong>2021-10-08(금) 도착예정</strong>
-								<span>주문상품 총 1개</span>
-								<span class="recieve_txt">배송비 3,000원</span>
+						<!-- Loop I START -->
+						<c:set var="tempDate"></c:set>
+						<c:forEach var="cartListDTOsI" items="${cartListDTOs}">
+						<c:if test="${tempDate ne cartListDTOsI.cart_delivery_date}">
+							<div class="product_detail">
+							
+								<div class="recieve_date">
+									<strong>${cartListDTOsI.cart_delivery_date} 도착예정</strong>
+									<span class="order_product">주문상품 총 x개</span>
+									<span class="recieve_txt delivery_price">배송비 0원</span>
+								</div>
+								
+								<div class="product_list">
+									<ul>
+										<!-- Loop  J START -->
+										<c:forEach var="cartListDTOsJ" items="${cartListDTOs}">
+										<c:if test="${cartListDTOsI.cart_delivery_date eq cartListDTOsJ.cart_delivery_date}">
+											<li>
+												<div class="product_info">
+												
+													<div class="img_wrap">
+														<img src="/mp/resources/upload/menu/main/${cartListDTOsJ.product_id}/${cartListDTOsJ.product_file_name}" alt="">
+													</div>
+													
+													<div class="info_wrap">
+														<span class="tit">${cartListDTOsJ.product_name}</span><br>
+														<span class="price" data-price="${cartListDTOsJ.product_price * cartListDTOsJ.cart_quantity}"><fmt:formatNumber value="${cartListDTOsJ.product_price * cartListDTOsJ.cart_quantity}" pattern="#,###"/>원</span>
+														<span class="quantity" data-quantity="${cartListDTOsJ.cart_quantity}">수량 ${cartListDTOsJ.cart_quantity}개</span>
+													</div>
+													
+												</div>
+											</li>
+										</c:if>
+										</c:forEach>
+										<!-- //Loop J END -->
+									</ul>								
+								</div>
+								
+								<!-- <div class="notice">
+									<p>배송정보 변경은 <strong>2021-10-07 07:00</strong>까지만 가능합니다. (단, 사전예약 상품은 배송일 변경이 불가합니다.)</p>
+								</div> -->
+								
 							</div>
 							
-							<div class="product_list">
-								<ul>
-									<!-- Loop  J START -->
-									<li>
-										<div class="product_info">
-										
-											<div class="img_wrap">
-												<img src="/mp/resources/images/temp/review_temp2.jpg" alt="">
-											</div>
-											
-											<div class="info_wrap">
-												<span class="tit">부채살 찹스테이크</span><br>
-												<span class="price">20,800원</span>
-												<span class="amount">수량 1개</span>
-											</div>
-											
-										</div>
-									</li>
-									<li>
-										<div class="product_info">
-										
-											<div class="img_wrap">
-												<img src="/mp/resources/images/temp/review_temp2.jpg" alt="">
-											</div>
-											
-											<div class="info_wrap">
-												<span class="tit">부채살 찹스테이크</span><br>
-												<span class="price">20,800원</span>
-												<span class="amount">수량 1개</span>
-											</div>
-											
-										</div>
-									<!-- //Loop J END -->
-								</ul>								
-							</div>
-							
-							<!-- <div class="notice">
-								<p>배송정보 변경은 <strong>2021-10-07 07:00</strong>까지만 가능합니다. (단, 사전예약 상품은 배송일 변경이 불가합니다.)</p>
-							</div> -->
-							
-						</div>
+						<c:set var="tempDate">${cartListDTOsI.cart_delivery_date}</c:set>
+						</c:if>
+						</c:forEach>
 						<!-- //Loop I END -->						
 					</div>
 				</div>

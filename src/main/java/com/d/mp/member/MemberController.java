@@ -21,6 +21,9 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.d.mp.address.AddressDTO;
 import com.d.mp.cs.notice.NoticeService;
+import com.d.mp.order.cart.CartService;
+import com.d.mp.order.payment.PaymentDTO;
+import com.d.mp.order.payment.PaymentService;
 
 import oracle.jdbc.proxy.annotation.Post;
 
@@ -30,6 +33,12 @@ public class MemberController {
 
 	@Autowired
 	private MemberService memberService; 
+	
+	@Autowired
+	private PaymentService paymentService;
+	
+	@Autowired
+	private CartService cartService;
 	
 	
 /*---------------------------------- 로그인/로그아웃 시작---------------------------------------------- */	
@@ -274,9 +283,22 @@ public class MemberController {
 	  mv.setViewName("member/myaddress");
 	  return mv;
   }
- 
-  
-  
+
+/*--------------------------------- 주문/배송 조회 시작 --------------------------------------*/	
+	@GetMapping("myOrderList")
+ 	public String myOrderList(Model model, HttpSession session) throws Exception{
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		cartService.updateCartStateBeforePayment(memberDTO);
+		model.addAttribute("paymentListDTOs", paymentService.getPaymentList(memberDTO));
+		
+		return "member/myOrderList";		
+	}
+
+/*--------------------------------- 주문상세 시작 --------------------------------------*/	
+	@GetMapping("myOrder")
+ 	public String myOrder(Model model, PaymentDTO paymentDTO) throws Exception{
+		return "member/myOrder";
+	}
   
   
   
