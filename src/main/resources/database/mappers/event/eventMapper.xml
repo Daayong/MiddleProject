@@ -9,7 +9,7 @@
   	<!-- 진행중인 이벤트 list 불러오기 -->
   	
  
-  	<select id="getEventList"  resultType="EventDTO">
+  	<select id="getEventList"  parameterType="EventDTO" resultType="EventDTO">
   		 	SELECT * FROM 
   		 		event e 
   		 	INNER JOIN 

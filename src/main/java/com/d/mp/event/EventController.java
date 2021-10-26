@@ -2,6 +2,8 @@ package com.d.mp.event;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,9 +26,10 @@ public class EventController {
 	//event type별 event list 불러오기
 	@ResponseBody
 	@GetMapping("eventMain")
-	public ModelAndView getEventList() throws Exception{
+	public ModelAndView getEventList(EventDTO eventDTO, HttpSession session) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		List<EventDTO> ar = eventService.getEventList();	
+
+		List<EventDTO> ar = eventService.getEventList(eventDTO);	
 		mv.addObject("eventList", ar);
 		mv.setViewName("event/eventMain");
 		

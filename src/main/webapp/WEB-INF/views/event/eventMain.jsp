@@ -72,12 +72,15 @@
 		<c:forEach items="${eventList}" var="eList">
 		<li>
 			<!-- 이미지 케이스 -->
+			<input type="hidden" value="${eList.event_id}" id="event_id">
+			<input type="hidden" value="${eList.file}" id="file">
 			<div class="pro_module">
 				<div class="img_wrap">															
 					<a href="./planView?event_id=${eList.event_id}" class="link_more">
 			
-						<img src="/mp/resources/images/1008_3time_pc_o_01.jpg"" alt="test">	
-	
+				
+					<img src="../resources/upload/event/${event_id.file.event_file_name}" alt="test">	
+				
 						<span class="dim"></span>
 					</a>
 				</div>

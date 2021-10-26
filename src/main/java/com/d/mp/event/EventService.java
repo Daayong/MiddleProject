@@ -25,9 +25,9 @@ public class EventService {
 	private BoardFileManager fileManager;
 	
 	//이벤트 글 목록 불러오기
-	public List<EventDTO> getEventList() throws Exception{
+	public List<EventDTO> getEventList(EventDTO eventDTO) throws Exception{
 
-		return eventDAO.getEventList();	
+		return eventDAO.getEventList(eventDTO);	
 	}
 	
 	
@@ -36,7 +36,7 @@ public class EventService {
 		int result = eventDAO.setEventList(eventDTO);
 
 		if(files != null) {
-		String realPath = this.servletContext.getRealPath("/resources/upload/event/" + eventDTO.getEvent_id());
+		String realPath = this.servletContext.getRealPath("/resources/upload/event/");
 		
 		System.out.println(realPath);
 		
@@ -72,7 +72,7 @@ public class EventService {
 	}
 	
 	//등록된 파일 불러오기
-	public EventFileDTO getFile(EventDTO eventDTO) throws Exception{
+	public List<EventFileDTO> getFile(EventDTO eventDTO) throws Exception{
 		return eventDAO.getFile(eventDTO);
 	}
 	

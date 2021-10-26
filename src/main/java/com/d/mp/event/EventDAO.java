@@ -16,8 +16,8 @@ public class EventDAO {
 	
 	
 	//이벤트 list 불러오기
-	public List<EventDTO> getEventList() throws Exception{
-		return sqlSession.selectList(NAMESPACE+"getEventList");
+	public List<EventDTO> getEventList(EventDTO eventDTO) throws Exception{
+		return sqlSession.selectList(NAMESPACE+"getEventList", eventDTO);
 	}
 	
 	
@@ -47,7 +47,7 @@ public class EventDAO {
 	
 	//파일 가져오기
 	
-	public EventFileDTO getFile(EventDTO eventDTO) throws Exception{
+	public List<EventFileDTO> getFile(EventDTO eventDTO) throws Exception{
 		return sqlSession.selectOne(NAMESPACE+"getFile", eventDTO);
 	}
 	
