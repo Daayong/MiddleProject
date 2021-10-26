@@ -43,17 +43,17 @@ public class MemberController {
 	
 /*---------------------------------- 로그인/로그아웃 시작---------------------------------------------- */	
 	@GetMapping("login")
-	public ModelAndView login(String check) throws Exception {
+	public ModelAndView login(String check, String returnUrl) throws Exception {
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("member/login");
 		mv.addObject("check", check);
+		mv.addObject("returnUrl",returnUrl);
 		return mv;
 	}
-	
+
 	@PostMapping("login")
-	public ModelAndView login(MemberDTO memberDTO,HttpSession session, String check)throws Exception{
+	public ModelAndView login(MemberDTO memberDTO, HttpSession session, String check,String returnUrl)throws Exception{
 		ModelAndView mv = new ModelAndView();
-		
 		memberDTO = memberService.getLogin(memberDTO);
 		
 		if(memberDTO !=null) {
@@ -61,29 +61,26 @@ public class MemberController {
 			session.setAttribute("member", memberDTO);
 			if(check.equals("1")) {
 				mv.setViewName("redirect:member/myPage");
-			}else if(check.equals("2")){
-				mv.setViewName("redirect:../cs/formCounsel");
+			}else if(!returnUrl.equals("")){
+				mv.setViewName("redirect:"+returnUrl);
 			}else {
 				mv.setViewName("redirect:../");
 			}
-		
-		}else {
+		}else{
 			System.out.println("로그인 실패");
-			String message="일치하는 정보가 없습니다";
+			String message = "일치하는 정보가 없습니다";
 			mv.addObject("msg", message);
-		}
-		return mv;
+		}return mv;
 	}
 
-	
-	//myCookit	
+	// myCookit
 	@GetMapping("myPage")
 	public ModelAndView myPage(HttpSession session) throws Exception{
 		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
-		AddressDTO addressDTO = memberService.getDefaultAddress(memberDTO);
 		String id ="";	
 		ModelAndView mv = new ModelAndView();
 		if(memberDTO!=null) {
+			AddressDTO addressDTO = memberService.getDefaultAddress(memberDTO);
 			if(addressDTO !=null) {
 				id=addressDTO.getAddress();
 			}
@@ -95,194 +92,288 @@ public class MemberController {
 		}		
 			return mv;
 	}
-		
+
 	@GetMapping("logout")
-	public ModelAndView logout(HttpSession session)throws Exception{
+	public ModelAndView logout(HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView();
-		//세션 시간 0으로 만들어주기
-		session.invalidate(); 
+		// 세션 시간 0으로 만들어주기
+		session.invalidate();
 		mv.setViewName("redirect:../");
-		return mv; 
+		return mv;
 	}
-	
-/*---------------------------------- 로그인/로그아웃 종료---------------------------------------------- */
 
+	/*---------------------------------- 로그인/로그아웃 종료---------------------------------------------- */
 
-	
-/*--------------------------------- 약관동의/회원가입/아이디 중복체크 시작--------------------------------------*/
-	//약관동의
+	/*--------------------------------- 약관동의/회원가입/아이디 중복체크 시작--------------------------------------*/
+	// 약관동의
 	@GetMapping("check")
-	public String check()throws Exception {
+	public String check() throws Exception {
 		return "member/check";
 	}
-	
-	//회원가입
+
+	// 회원가입
 	@GetMapping("join")
-	public String join()throws Exception {
+	public String join() throws Exception {
 		return "member/join";
 	}
 
 	@PostMapping("join")
-	public ModelAndView join(MemberDTO memberDTO, HttpServletRequest request) throws Exception{
+	public ModelAndView join(MemberDTO memberDTO, HttpServletRequest request) throws Exception {
 
 		ModelAndView mv = new ModelAndView();
-		memberDTO.setMember_birth(memberDTO.getBirth_yy()+"-"+memberDTO.getBirth_mm()+"-"+memberDTO.getBirth_dd());
-		
+		memberDTO.setMember_birth(
+				memberDTO.getBirth_yy() + "-" + memberDTO.getBirth_mm() + "-" + memberDTO.getBirth_dd());
+
 		String phone_f = request.getParameter("phone_f");
 		String member_phone_m = request.getParameter("member_phone_m");
 		String member_phone_b = request.getParameter("member_phone_b");
-		
-		memberDTO.setMember_phone(phone_f+"-"+member_phone_m+"-"+member_phone_b);
-		
+
+		memberDTO.setMember_phone(phone_f + "-" + member_phone_m + "-" + member_phone_b);
+
 		String member_email_f = request.getParameter("member_email_f");
 		String member_email_b = request.getParameter("member_email_b");
-		
-		memberDTO.setMember_email(member_email_f+"@"+member_email_b);
-		
+
+		memberDTO.setMember_email(member_email_f + "@" + member_email_b);
+
 		int result = memberService.setJoin(memberDTO);
-		
-		if(result>0) {
+
+		if (result > 0) {
 			System.out.println("회원가입 성공");
-		}else {
+		} else {
 			System.out.println("회원가입 실패");
-		}	
+		}
 		mv.setViewName("redirect:./login");
 		return mv;
 	}
-	
-	//아이디중복체크
+
+	// 아이디중복체크
 	@GetMapping("idCheck")
 	@ResponseBody
-	public int getIdCheck(@RequestParam("member_user_id") String member_user_id)throws Exception{
-		int cId=memberService.getIdCheck(member_user_id);
+	public int getIdCheck(@RequestParam("member_user_id") String member_user_id) throws Exception {
+		int cId = memberService.getIdCheck(member_user_id);
 		System.out.println(cId);
 		return cId;
 	}
-	
-	//패스워드 체크
+
+	// 패스워드 체크
 	@PostMapping("pwCheck")
 	@ResponseBody
-	public int getPwCheck(MemberDTO memberDTO,HttpSession session)throws Exception{
+	public int getPwCheck(MemberDTO memberDTO, HttpSession session) throws Exception {
 		int result = memberService.getPwCheck(memberDTO);
 		return result;
 	}
-	
-	
-	
-/*--------------------------------- 약관동의/회원가입/아이디 중복체크 종료--------------------------------------*/	
 
-/*--------------------------------- 아이디/패스워드 찾기 시작--------------------------------------*/	
-	
+	/*--------------------------------- 약관동의/회원가입/아이디 중복체크 종료--------------------------------------*/
+
+	/*--------------------------------- 아이디/패스워드 찾기 시작--------------------------------------*/
+
 	@GetMapping("findLog")
 	public String findLog() {
 		return "member/findLog";
 	}
-	
+
 	@PostMapping("findId")
 	@ResponseBody
-	public String getFindId(MemberDTO memberDTO ,HttpServletRequest request)throws Exception { 
+	public String getFindId(MemberDTO memberDTO, HttpServletRequest request) throws Exception {
 		ModelAndView mv = new ModelAndView();
-		memberDTO=memberService.charSet(memberDTO);
-		memberDTO=memberService.getFindId(memberDTO);
-		String message="1";
-		if(memberDTO !=null) {
+		memberDTO = memberService.charSet(memberDTO);
+		memberDTO = memberService.getFindId(memberDTO);
+		String message = "1";
+		if (memberDTO != null) {
 			System.out.println("일치하는 정보 있음");
-			message=memberDTO.getMember_user_id();
-			message=message.substring(0,message.length()-2);
-			message=message+"**";
-		}else {
+			message = memberDTO.getMember_user_id();
+			message = message.substring(0, message.length() - 2);
+			message = message + "**";
+		} else {
 			System.out.println("일치하는 정보 없음");
 		}
-		return message; 
+		return message;
 	}
 
 	@PostMapping("quickPass")
 	@ResponseBody
-	public String quickPass(MemberDTO memberDTO)throws Exception{
+	public String quickPass(MemberDTO memberDTO) throws Exception {
 		System.out.println("hi");
-		//1.INPUT에 입력받은 정보에 맞는 member가 있는지 확인하기 
-		//2.있으면 임시비밀번호 발급해서 
-		//3.해당되는 member 비밀번호에 발급된 임시비밀번호 update해주기 
-		//4.발급된 임시비밀번호 값 콘솔창에 띄워주기 
+		// 1.INPUT에 입력받은 정보에 맞는 member가 있는지 확인하기
+		// 2.있으면 임시비밀번호 발급해서
+		// 3.해당되는 member 비밀번호에 발급된 임시비밀번호 update해주기
+		// 4.발급된 임시비밀번호 값 콘솔창에 띄워주기
 		String result = memberService.getFindPass(memberDTO);
 		return result;
 	}
-	
-	
-/*--------------------------------- 아이디/패스워드 찾기 종료--------------------------------------*/	
 
-/*--------------------------------- 회원 탈퇴/수정 시작--------------------------------------*/	
-	
+	/*--------------------------------- 아이디/패스워드 찾기 종료--------------------------------------*/
+
+	/*--------------------------------- 회원 탈퇴/수정 시작--------------------------------------*/
+
 	@GetMapping("memberDelete")
-	public String setDelete()throws Exception{
+	public String setDelete() throws Exception {
 		return "member/memberDelete";
 	}
-	
+
 	@GetMapping("delete")
-	public ModelAndView setDelete(HttpSession session)throws Exception {
-		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+	public ModelAndView setDelete(HttpSession session) throws Exception {
+		MemberDTO memberDTO = (MemberDTO) session.getAttribute("member");
 		int result = memberService.setDelete(memberDTO);
 		session.invalidate();
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("redirect:../");
 		return mv;
 	}
-	
+
 	@GetMapping("memberUpdateConfirm")
-	public String setUpdateConfirm()throws Exception{
+	public String setUpdateConfirm() throws Exception {
 		return "member/memberUpdateConfirm";
 	}
-	
+
 	@GetMapping("memberUpdate")
-	public ModelAndView setUpdate(HttpSession session)throws Exception{
+	public ModelAndView setUpdate(HttpSession session) throws Exception {
 		ModelAndView mv = new ModelAndView();
-		MemberDTO sessionDTO =(MemberDTO)session.getAttribute("member");
+		MemberDTO sessionDTO = (MemberDTO) session.getAttribute("member");
 		memberService.setUpdateSplit(sessionDTO);
 		mv.setViewName("member/memberUpdate");
 		return mv;
 	}
-	
+
 	@PostMapping("update")
-	public ModelAndView setUpdate(MemberDTO memberDTO,HttpServletRequest request,HttpSession session)throws Exception{
+	public ModelAndView setUpdate(MemberDTO memberDTO,HttpSession session)throws Exception {
 		ModelAndView mv = new ModelAndView();
-		MemberDTO sessionDTO =(MemberDTO)session.getAttribute("member");
-		
-		String birth_yy = request.getParameter("birth_yy");
-		String birth_mm = request.getParameter("birth_mm");
-		String birth_dd = request.getParameter("birth_dd");
-		
-		memberDTO.setMember_birth(birth_yy+"-"+birth_mm+"-"+birth_dd);
-		
-		String phone_f = request.getParameter("member_phone_f");
-		String member_phone_m = request.getParameter("member_phone_m");
-		String member_phone_b = request.getParameter("member_phone_b");
-		
-		memberDTO.setMember_phone(phone_f+"-"+member_phone_m+"-"+member_phone_b);
-		
-		String member_email_f = request.getParameter("member_email_f");
-		String member_email_b = request.getParameter("member_email_b");
-		
-		memberDTO.setMember_email(member_email_f+"@"+member_email_b);
+		MemberDTO sessionDTO = (MemberDTO) session.getAttribute("member");
+		memberDTO=memberService.charSet(memberDTO);
+		memberDTO.setMember_email(memberDTO.getMember_email_f() + "@" + memberDTO.getMember_email_b());
 		memberService.setUpdate(memberDTO);
 		session.setAttribute("member", memberDTO);
 		mv.setViewName("redirect:../");
-		return mv; 
+		return mv;
+	}
+
+	/*--------------------------------- 회원 탈퇴/수정 종료 --------------------------------------*/
+
+	/*--------------------------------- 주소 관련 시작 --------------------------------------*/
+
+	//배송지 리스트 불러오기 
+	@GetMapping("myaddress")
+	public ModelAndView getAddressList(MemberDTO memberDTO, HttpSession session) throws Exception {
+		ModelAndView mv = new ModelAndView();
+		MemberDTO sessionDTO = (MemberDTO) session.getAttribute("member");
+		sessionDTO.getMember_id();
+		List<AddressDTO> ar = memberService.getAddressList(sessionDTO);
+		mv.addObject("list", ar);
+		mv.setViewName("member/myaddress");
+		return mv;
+	}
+	
+	//배송지추가 버튼 눌렀을 때 경로 매핑 
+	@GetMapping("addAddress")
+	public String addAddress() throws Exception {
+		return "member/addAddress";
+	}
+	
+	//배송지 삭제 
+	@GetMapping("addressDelete")
+	@ResponseBody
+	public String setAddressDelete(AddressDTO addressDTO)throws Exception{
+		int result=memberService.setAddressDelete(addressDTO);
+		String message="0";
+		if(result>0) {
+			message="1";
+		}
+		return message;
+	}
+	
+	//배송지 추가 
+	@PostMapping("addAddress")
+	public String setAddAddress(AddressDTO addressDTO,HttpServletRequest request,MemberDTO memberDTO)throws Exception{
+		
+		String pf=request.getParameter("member_phone_f");
+		String pm=request.getParameter("member_phone_m");
+		String pb=request.getParameter("member_phone_b");
+		
+		addressDTO.setRecipient_phone(pf + "-" + pm + "-" + pb);
+		
+		System.out.println("hello2");
+
+		if(memberService.getAddressList(memberDTO)==null) {
+			addressDTO.setDefault_check(1);
+			System.out.println("hello");
+		}else {
+			addressDTO.setDefault_check(0);
+		}
+		
+		System.out.println("hello3");
+		int result = memberService.setAddAddress(addressDTO);
+		System.out.println(result);
+		
+		return "redirect:./myaddress";
+		
+	}
+	
+	//기본배송지 수정 
+	@GetMapping("defaultChange")
+	@ResponseBody
+	public int setAddressDefaultUpdate(AddressDTO addressDTO,HttpSession session)throws Exception{
+		MemberDTO sessionDTO = (MemberDTO) session.getAttribute("member");
+		addressDTO.setMember_id(sessionDTO.getMember_id());
+		memberService.allSetzero(addressDTO);
+		return memberService.setAddressDefaultUpdate(addressDTO);
+	}
+	
+	//배송지수정 버튼 눌렀을 때 경로 매핑 
+	@GetMapping("adUpdate")
+	public ModelAndView adUpdate(AddressDTO addressDTO,HttpSession session) throws Exception {
+		//1. 원래 있던 addressDTO의 정보를 가져와서 뿌려줘야됨 
+		//2. DB에 저장되어 있는 전화번호 분리해서 JSP로 보내주기 
+		ModelAndView mv = new ModelAndView();
+		MemberDTO sessionDTO = (MemberDTO)session.getAttribute("member");
+		addressDTO=sessionDTO.getAddressDTO();
+		String i=addressDTO.getRecipient_phone();
+		System.out.println(i);
+		String[] phone=memberService.splitRePhone(addressDTO);
+		mv.addObject("member_phone_f", phone[0]);
+		mv.addObject("member_phone_m", phone[1]);
+		mv.addObject("member_phone_b", phone[2]);
+		mv.setViewName("member/adUpdate");
+		return mv;
 	}
 	
 	
-/*--------------------------------- 회원 탈퇴/수정 종료 --------------------------------------*/	
+	/*
+	 * @GetMapping("memberUpdate") public ModelAndView setUpdate(HttpSession
+	 * session) throws Exception { ModelAndView mv = new ModelAndView(); MemberDTO
+	 * sessionDTO = (MemberDTO) session.getAttribute("member");
+	 * memberService.setUpdateSplit(sessionDTO);
+	 * mv.setViewName("member/memberUpdate"); return mv; }
+	 * 
+	 * @PostMapping("update") public ModelAndView setUpdate(MemberDTO
+	 * memberDTO,HttpSession session)throws Exception { ModelAndView mv = new
+	 * ModelAndView(); MemberDTO sessionDTO = (MemberDTO)
+	 * session.getAttribute("member"); memberDTO=memberService.charSet(memberDTO);
+	 * memberDTO.setMember_email(memberDTO.getMember_email_f() + "@" +
+	 * memberDTO.getMember_email_b()); memberService.setUpdate(memberDTO);
+	 * session.setAttribute("member", memberDTO); mv.setViewName("redirect:../");
+	 * return mv; }
+	 */
 	
-/*--------------------------------- 주소 관련 시작 --------------------------------------*/	
 	
-@GetMapping("myaddress")
-  public ModelAndView getAddressList(MemberDTO memberDTO,HttpSession session) throws Exception{ 
-	  ModelAndView mv = new ModelAndView();
-	  MemberDTO sessionDTO = (MemberDTO)session.getAttribute("member");
-	  List<AddressDTO> ar = memberService.getAddressList(sessionDTO);
-	  mv.addObject("list",ar);
-	  mv.setViewName("member/myaddress");
-	  return mv;
-  }
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	//배송지 수정 
+	@PostMapping("addressUpdate")
+	public String setAddressUpdate(AddressDTO addressDTO,HttpSession session)throws Exception{
+		MemberDTO sessionDTO = (MemberDTO) session.getAttribute("member");
+		memberService.setAddressUpdate(addressDTO);
+		return "redirect:./myaddress";
+	}
+
 
 /*--------------------------------- 주문/배송 조회 시작 --------------------------------------*/	
 	@GetMapping("myOrderList")
@@ -299,9 +390,7 @@ public class MemberController {
  	public String myOrder(Model model, PaymentDTO paymentDTO) throws Exception{
 		return "member/myOrder";
 	}
-  
-  
-  
+
 	
 	
 }

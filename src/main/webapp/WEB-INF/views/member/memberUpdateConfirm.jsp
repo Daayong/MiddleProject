@@ -57,7 +57,7 @@
 						<div class="pwd_box">
 							<span class="input_txt w330">
 								<input hidden="hidden" value="${member.member_user_id}" id="member_user_id" name="member_user_id">
-								<input type="password" id="member_password" name="member_password" class="text" placeholder="비밀번호를 입력해주세요." maxlength="20">
+								<input onkeyup="enterKey();" type="password" id="member_password" name="member_password" class="text" placeholder="비밀번호를 입력해주세요." maxlength="20">
 								<p id="pw_msg"></p>
 							</span>
 						</div>
@@ -109,7 +109,11 @@
 			});	
 		});
 		
-	
+		function enterKey(){
+			if(window.event.keyCode == 13){
+				$('#goUpdate').click();
+			}
+		}
 	</script>
  
 	

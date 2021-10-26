@@ -43,6 +43,7 @@
 			<form id="form1" name="form1" method="post" action="update">
 				<h3 class="h3">기본정보</h3>
 				<div class="table_col">
+					<input type="hidden" name="member_id" value="${member.member_id}">
 					<table>
 						<colgroup>
 							<col class="title">
@@ -180,11 +181,10 @@
 										</div>
 										<div class="select w180">
 											<span class="input_txt">
-												<input type="text" id="member_email_b2" name="member_email_b2"  class="text put" placeholder="${member.member_email_b}" value="${member.member_email_b}">
+												<input type="text" id="member_email_b2"  name="member_email_b"  class="text put" placeholder="${member.member_email_b}" >
 											</span>
-											 <!-- onchange="chooseDomain();" -->
-											<select class="select_wrap" id="member_email_b" name="member_email_b" >						
-											<option class="ee" value="">직접입력</option>
+											<select class="select_wrap"  id="member_email_b" onchange="javascript:changeSelect(this);" >						
+											<option class="ee" value="1">직접입력</option>
 											<option class="ee" value="nate.com">nate.com</option>
 											<option class="ee" value="hanmail.net">hanmail.net</option>
 											<option class="ee" value="naver.com">naver.com</option>
@@ -194,7 +194,6 @@
 											<option class="ee" value="gmail.com">gmail.com</option>
 											<option class="ee" value="dreamwiz.com">dreamwiz.com</option>
 											</select>
-											
 										</div>
 									</div>
 									<p class="msg_desc">
@@ -291,13 +290,10 @@
 		 /*Input id명 선언*/
 		 const member_name=document.getElementById('member_name');
 		 const member_user_id=document.getElementById('member_user_id');
-		 const member_phone=document.getElementById('member_phone_f');
 		 const phone_m=document.getElementById('member_phone_m');
 		 const phone_b=document.getElementById('member_phone_b');
 		 const member_email_f=document.getElementById('member_email_f');
-		 const member_email_b=document.getElementById('member_email_b');
-		 const member_email_b2=document.getElementById('member_email_b2');
-		 
+		
 		
 		 //수정페이지 폼에 들어와있을때 원래 입력되어있는 데이터로 selected 되어있기 phone 
 		 const member_phone_f = '${member.member_phone_f}';
@@ -308,42 +304,22 @@
 			 }
 		});
 		 //수정페이지 폼에 들어와있을때 원래 입력되어있는 데이터로 selected 되어있기 email
-		 const member_email_f = '${member.member_email_f}';
-		 $('.ee').each(function() {
-			 const value= $(this).val();
-			 if(value==member_email_f){
-				 $(this).prop("selected", true);
-			 }
-		}); 
-		 
-		
-		/*  
-		 //수정페이지 폼에 들어와있을때 원래 입력되어있는 데이터로 selected 되어있기 
 		 const member_email_b = '${member.member_email_b}';
-		 $('.se').each(function() {
+		 $('.ee').each(function() {
 			 const value= $(this).val();
 			 if(value==member_email_b){
 				 $(this).prop("selected", true);
 			 }
-		}); */
-		  
-		/*  //이메일 주소 도메인 선택시 자동 완성되기 
-			function chooseDomain(){
-				var idx=member_email_b.options.selectedIndex;
-				var val=member_email_b.options[idx].value;
-				member_email_b2.value=val;
-				member_email_b2.attr("placeholder",val);
-			};
-		  */
-		/* 
-		 $(member_phone).each(function(){
-		   if($(this).val()=="${member.member_phone_f}"){
-		     $(this).attr("selected","selected"); // attr적용안될경우 prop으로 
-		   }
-		 });
+		}); 
+	
+		function changeSelect(obj){
+			if(obj.value == '1'){
+				$("#member_email_b2").removeAttr('placeholder');
+			}else{
+				$("#member_email_b2").val(obj.value);	
+			}
+		} 
 		 
-			 */
-			
 		function checkInput(){
 			//패스워드 4글자 이상 여부 확인        
 		    if(pw1.value.trim().length < 4){
@@ -384,14 +360,10 @@
 		        member_email_f.focus();
 		        return false;
 		    }
-		    if(member_email_b2.value == ""){
-		        alert("이메일 도메인을 선택 하세요.");
-		        member_email_b2.focus();
-		        return false;
-		    }
-		    if(member_email_b2.value.trim() == ""){
+		    
+		    if($("#member_email_b2").val().trim() == ""){
 		        alert("이메일 도메인 직접입력시 이메일 도메인을 입력하셔야 합니다.");
-		        member_email_b2.focus();
+		        $("#member_email_b2").focus();
 		        return false;
 		    }
 		    	    

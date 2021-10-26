@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.session.SqlSession;
@@ -54,7 +55,7 @@ public class MemberService {
 		return memberDAO.getFindId(memberDTO);
 	}	
 	
-	//생년월일,핸드폰번호 문자 정렬해주기(중간에 "-" 넣어주기) 
+	//생년월일 휴대폰번호 문자 정렬해주기(중간에 "-" 넣어주기) 
 	public MemberDTO charSet(MemberDTO memberDTO)throws Exception {
 			String member_phone=memberDTO.getMember_phone();
 			String member_birth=memberDTO.getMember_birth();
@@ -87,6 +88,29 @@ public class MemberService {
 		return memberDTO;
 	}
 	
+	//수취인 핸드폰 번호 받아서 문자 정렬 해주기("-"추가) 
+	public AddressDTO rCharSet(AddressDTO addressDTO, HttpServletRequest request)throws Exception {
+	//핸드폰 번호
+		String mp1=request.getParameter("member_phone_f");
+		String mp2=request.getParameter("member_phone_m");
+		String mp3=request.getParameter("member_phone_b");
+		
+		addressDTO.setRecipient_phone(mp1+"-"+mp2+"-"+mp3);
+		
+		System.out.println(addressDTO.getRecipient_phone());	
+	
+		return addressDTO;
+	}
+	
+	//수취인 핸드폰 번호 받아서 문자 정렬 해주기("-"삭제) 
+		public String[] rCharGet(AddressDTO addressDTO)throws Exception {
+			System.out.println(addressDTO.getRecipient_phone());	
+			String[] rp=addressDTO.getRecipient_phone().split("-");
+			return rp;
+		}
+	
+	
+	
 	//임시 비밀번호 발급 전 회원 정보 체크 
 	public String getFindPass(MemberDTO memberDTO)throws Exception{
 		memberDTO=charSet(memberDTO);
@@ -105,6 +129,7 @@ public class MemberService {
 	public int setQuickPass(MemberDTO memberDTO)throws Exception{
 		return memberDAO.setQuickPass(memberDTO);
 	}
+	
 	//임시 비밀번호 생성함
 	public String getRamdomPassword(int size) { 
 		char[] charSet = new char[] { '0', '1', '2', '3', '4', '5', '6', '7', '8', 
@@ -126,8 +151,6 @@ public class MemberService {
 			return sb.toString();
 	}
 	
-
-
 	//회원가입
 	public int setJoin(MemberDTO memberDTO)throws Exception{
 		return memberDAO.setJoin(memberDTO);
@@ -178,6 +201,45 @@ public class MemberService {
 	//결제 완료 후 포인트 증감
 	public void setUpdatePoint(MemberDTO memberDTO) throws Exception{
 		memberDAO.setUpdatePoint(memberDTO);
+	}
+
+	//배송지 삭제 
+	public int setAddressDelete(AddressDTO addressDTO)throws Exception{
+		return memberDAO.setAddressDelete(addressDTO);
+	}
+
+	//배송지 추가
+	public int setAddAddress(AddressDTO addressDTO)throws Exception{
+		return memberDAO.setAddAddress(addressDTO);
+	}
+	
+	
+	//수취인 전화번호 분리
+	public String[] splitRePhone(AddressDTO addressDTO)throws Exception{
+		String recipient_phone=addressDTO.getRecipient_phone();
+		String[]pNum=recipient_phone.split("-");
+		/*
+		 * String member_phone_f=pNum[0]; String member_phone_m=pNum[1]; String
+		 * member_phone_b=pNum[2];
+		 */
+		return pNum;
+	}
+	
+	
+	//배송지 수정 
+	public int setAddressUpdate(AddressDTO addressDTO)throws Exception{
+		
+		return memberDAO.setAddressUpdate(addressDTO);				
+	}
+	
+	//기본배송지 수정 
+	public int setAddressDefaultUpdate(AddressDTO addressDTO)throws Exception{
+		return memberDAO.setAddressDefaultUpdate(addressDTO);
+	}
+	
+	//기본배송지 해제 
+	public int allSetzero(AddressDTO addressDTO)throws Exception{
+		return memberDAO.allSetzero(addressDTO);
 	}
 	
 	

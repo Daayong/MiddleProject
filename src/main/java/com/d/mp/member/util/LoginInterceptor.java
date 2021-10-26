@@ -19,16 +19,23 @@ public boolean preHandle(HttpServletRequest request, HttpServletResponse respons
 		throws Exception {
 	
 	MemberDTO memberDTO =(MemberDTO)request.getSession().getAttribute("member");	
+	
+	StringBuffer returnUrl=request.getRequestURL();
+	
+	System.out.println(returnUrl);
+	
 	//세션에 id가 null이면 
 	if(memberDTO==null) {
 		//로그인 페이지로 이동
-		response.sendRedirect(request.getContextPath()+"/member/login");
+		response.sendRedirect(request.getContextPath()+"/member/login?returnUrl="+returnUrl);
+	
 		//컨트롤러를 실행하지 않는다.(요청페이지로 이동하지 않는다)
 		return false;
 	}else {
 		//컨트롤러 실행(요청페이지로 이동)
 		return true; 
 	}
+
 }
 	
 @Override

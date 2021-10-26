@@ -33,4 +33,4 @@
 .btn.green{color:#101010;border:1px solid #BDD61A;background-color:#BDD61A;}
 .btn.pop { width: 200px;height: 56px;font-size: 16px;line-height: 54px;}
 
-.btn_wrap{margin-top:50px; position:absolute;left:38%; }
+.btn_wrap{text-align:center; margin-top:50px; }
