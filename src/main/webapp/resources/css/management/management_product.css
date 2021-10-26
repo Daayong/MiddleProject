@@ -1,0 +1,117 @@
+@charset "UTF-8";
+
+/* Cookit Product ManageMent */
+.title_txt{
+	color: black;
+	font-size: 32px;
+	font-weight: 700;
+}
+.login_state{
+	margin-top: 10px;
+	color: red;
+}
+
+/* Container */
+.container{
+	display: flex;
+	position: relative;
+	margin: 50px auto 50px auto;
+	width: 100%;
+}
+
+/* Side Nav */
+.side_nav{
+	width: 200px;
+	min-height: 800px;
+	border-right: 1px solid gray;
+	border-left: 1px solid gray;
+}
+.side_nav ul li{
+	text-align: left;
+	padding: 20px 10px 20px 10px;
+}
+.side_nav ul li a{
+	color: black;
+	text-decoration: none;
+	font-size: 24px;
+	line-height: 24px;
+}
+
+/* inner_contents */
+.inner_contents{
+	width: 1200px;
+	margin-left: 50px;
+	min-height: 800px;
+}
+
+/* == == product_insert == == */
+/* inputForm */
+label, input {
+  display:inline-block;
+
+}
+#inputForm{
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+}
+.input_block{
+	border: 1px solid gray;
+	padding: 10px;
+}
+.input_block label{
+	width: 200px;
+	color: black;
+	font-weight: 700;
+}
+
+.summernote{
+	grid-column-start : 1;
+	grid-column-end : 3;
+}
+.inputPrdDescription{
+	grid-column-start : 1;
+	grid-column-end : 3;
+}
+
+#inputPrdDescription{
+	width: 100%;
+	height: 500px;
+}
+
+.insert_btn{
+	margin: 20px auto 0 auto;
+	width: 200px;
+	height: 70px;
+	border: 1px solid black;
+	grid-column-start : 1;
+	grid-column-end : 3;
+}
+
+/* == == product_manage == == */
+.product_table{
+	margin-top: 50px;
+	width: 100%;
+	text-align: center;
+	border-collapse: collapse;
+}
+
+.product_table tr{
+	border-bottom: 1px solid black;
+}
+
+.product_table tr td{
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+/* more: 수정 del: 삭제 */
+.more_btn{
+	width: 50px;
+	height: 50px;
+	border: 1px solid black;
+}
+.del_btn{
+	width: 50px;
+	height: 50px;
+	border: 1px solid black;
+}

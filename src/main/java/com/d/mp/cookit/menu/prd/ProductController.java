@@ -20,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.d.mp.cookit.menu.prd.util.ProductPager;
 import com.d.mp.member.MemberDTO;
 import com.d.mp.order.cart.CartDTO;
+import com.d.mp.order.cart.CartListDTO;
 import com.d.mp.order.cart.CartService;
 
 @Controller
@@ -48,11 +49,31 @@ public class ProductController {
 			productDTO.setProduct_name(forTrim);
 			System.out.println(forTrim);
 		}
-
+		
+		pager.setPerPage(10L);
+		
 		List<ProductDTO> prdAr = productService.getPrdList(productDTO, pager);
 		
+		// 판매 및 판매종료 구분 리스트
+		List<ProductDTO> prdAr_sale = new ArrayList<ProductDTO>();
+		List<ProductDTO> prdAr_end_sale = new ArrayList<ProductDTO>();
+		
+		for(int i=0; i<prdAr.size(); i++) {
+			
+			String prd_state = prdAr.get(i).getProduct_state();
+			
+			if(prd_state.equals("판매가능")) {
+				prdAr_sale.add(prdAr.get(i));
+			}else {
+				prdAr_end_sale.add(prdAr.get(i));
+			}
+			
+		}
+		
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("prdDTO", prdAr);
+		mv.addObject("prd_sale", prdAr_sale);
+		mv.addObject("prd_end_sale", prdAr_end_sale);
+		mv.addObject("pager", pager);
 		mv.setViewName("menu/menu_search");
 		
 		return mv;
@@ -171,7 +192,7 @@ public class ProductController {
 				productService.doSoldOut(prdAr.get(i).getProduct_id());
 			}			
 			else if(isEndDate == true) {
-				prdAr.get(i).setProduct_state("주문마감");
+				prdAr.get(i).setProduct_state("품절");
 				productService.doDateOut(prdAr.get(i).getProduct_id());
 			}
 		}
@@ -188,76 +209,51 @@ public class ProductController {
 	
 	
 	
-	// =========================== 관리자 상품 추가 및 관리 페이지 =========================== //
-	
-	@RequestMapping("menu_insert")
-	public ModelAndView doAdmin() throws Exception{
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("menu/menu_insert");
-		
-		return mv;
-	}
-	
-	// 상풍 등록 버튼 클릭시 실행
-	@PostMapping("prdUpload")
-	public ModelAndView setInsert(ProductDTO productDTO, List<MultipartFile> main_files, List<MultipartFile> slider_files) throws Exception{
-		
-		productService.setInsert(productDTO, main_files, slider_files);
-		
-		ModelAndView mv = new ModelAndView();
-		mv.setViewName("redirect:menu_main");
-		
-		return mv;
-	}
-	
-	@RequestMapping("menu_manage")
-	public ModelAndView doManage(ProductDTO productDTO, ProductPager pager) throws Exception{
-		
-		List<ProductDTO> prdAr = productService.getPrdList(productDTO, pager);
-		
-		// 남은 수량 구하기
-		for(int i=0; i<prdAr.size(); i++) {
-			Long total = prdAr.get(i).getProduct_total_count();
-			Long count = productService.getSoldSum(prdAr.get(i).getProduct_id());
-			
-			Long stock = total - count;
-			
-			prdAr.get(i).setProduct_stock(stock);
-		}
-		
-		ModelAndView mv = new ModelAndView();
-		mv.addObject("prdDTO", prdAr);
-		mv.setViewName("menu/menu_manage");
-		
-		return mv;
-	}
-	
-	@ResponseBody
-	@GetMapping("menu_delete")
-	public ModelAndView deletePrdOne(ProductDTO productDTO, ProductPager pager) throws Exception{
-		
-		productService.deletePrdOne(productDTO);
-		productService.setFileDelete(productDTO);
-		List<ProductDTO> prdAr = productService.getPrdList(productDTO, pager);
-		
-		ModelAndView mv = new ModelAndView();
-		mv.addObject("prdDTO", prdAr);
-		mv.setViewName("menu/menu_manage");
-		
-		return mv;
-	}
-
-	// =========================== 관리자 상품 추가 및 관리 페이지 끝 =========================== //
-	
-	
-	// 테스트 장바구니 추가
+	// 장바구니 추가
 	@ResponseBody
 	@GetMapping("cart_insert")
 	public ModelAndView test01(CartDTO cartDTO, HttpSession session) throws Exception{
 		
 		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		List<CartListDTO> cartDTOs = cartService.getCartList(memberDTO);
+		
 		cartDTO.setMember_id(memberDTO.getMember_id());
-		cartService.insertCart(cartDTO);
+		
+		SimpleDateFormat transDate = new SimpleDateFormat("yyyy-MM-dd(E)");
+		
+		Long c_id = cartDTO.getProduct_id();
+		Date c_date = cartDTO.getCart_delivery_date();
+		
+		String ct_date = transDate.format(c_date);
+		
+		boolean check = true;
+		
+		for(int i=0; i<cartDTOs.size(); i++) {
+			
+			Long p_id = cartDTOs.get(i).getProduct_id();
+			Long p_quantity = cartDTOs.get(i).getCart_quantity();
+			String p_date = cartDTOs.get(i).getCart_delivery_date();
+			
+			if(c_id.equals(p_id) && p_date.equals(ct_date)) {
+				
+				cartDTO.setCart_id(cartDTOs.get(i).getCart_id());
+				cartDTO.setCart_quantity(p_quantity + cartDTO.getCart_quantity());
+				
+				cartService.updateCartQuantity(cartDTO);
+				
+				check = false;
+				
+				break;
+			}
+			
+		}
+		
+		if(check) {
+			
+			cartService.insertCart(cartDTO);
+			
+		}
+
 		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("menu/menu_detail");

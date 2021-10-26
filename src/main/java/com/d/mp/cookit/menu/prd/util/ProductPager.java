@@ -19,15 +19,18 @@ public class ProductPager {
 	public void makeNum(Long totalCount) {
 		//1. totalCount 구하기
 		
+		//System.out.println(totalCount);
+		
 		//2. totalPage 구하기
 		totalPage = totalCount/this.getPerPage();
 		if(totalCount%this.getPerPage() != 0) {
 			totalPage += 1;
 		}
 		
-		System.out.println(totalPage);
 		//3. totalBlock 구하기
 		Long totalBlock = totalPage/this.getPerBlock();
+		
+		
 		if(totalPage%this.getPerBlock() != 0) {
 			totalBlock += 1;
 		}
@@ -43,12 +46,12 @@ public class ProductPager {
 		}
 		
 		//5. curBlock으로 시작번호와 마지막번호 구하기
-		System.out.println("1 :" + curBlock);
-		System.out.println("2 :" + totalBlock);
+		//System.out.println("1 :" + curBlock);
+		//System.out.println("2 :" + totalBlock);
 		
 		this.startNum = (curBlock-1)*this.getPerBlock()+1;
 		this.lastNum = curBlock*this.getPerBlock();
-
+		
 		//6. curBlock이 마지막 block 일때 lastNum 변경
 		if(curBlock == totalBlock) {
 			this.lastNum = totalPage;

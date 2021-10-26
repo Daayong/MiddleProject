@@ -15,6 +15,14 @@ public class ProductDAO {
 	private final String NAMESPACE="com.d.mp.cookit.menu.prd.ProductDAO.";
 	
 	
+	// ==  == index 페이지 상품 == == //
+	public List<ProductDTO> getPrdListMain() throws Exception{
+		return sqlSession.selectList(NAMESPACE + "getPrdListMain");
+	}
+	
+	
+	// ==  == menu_main 페이지 상품 == == //
+	
 	//상품 등록하기
 	public int setInsert(ProductDTO productDTO) throws Exception{
 		return sqlSession.insert(NAMESPACE + "setInsert", productDTO);

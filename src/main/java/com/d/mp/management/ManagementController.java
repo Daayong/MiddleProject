@@ -1,0 +1,109 @@
+package com.d.mp.management;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.d.mp.cookit.menu.prd.ProductDTO;
+import com.d.mp.cookit.menu.prd.ProductService;
+import com.d.mp.cookit.menu.prd.util.ProductPager;
+
+@Controller
+@RequestMapping("/management/**")
+public class ManagementController {
+	
+	@Autowired
+	private ProductService productService;
+	
+	
+	// 상품 업데이트
+	@ResponseBody
+	@GetMapping("product_update")
+	public ModelAndView doUpdate(ProductDTO productDTO) throws Exception{
+		
+		ProductDTO dto = productService.getPrdOne(productDTO);
+		dto.setProduct_stock(productDTO.getProduct_stock());
+		
+		List<ProductDTO> dateAr = productService.getDate(productDTO);
+		
+		ModelAndView mv = new ModelAndView();
+		
+		mv.addObject("prdInfo", dto);
+		mv.addObject("dateInfo", dateAr);
+		mv.setViewName("management/product_update");
+		
+		return mv;
+	}
+	
+	// 상품 관리 페이지 링크
+	@RequestMapping("product_insert")
+	public ModelAndView doManage(ProductDTO productDTO, ProductPager pager) throws Exception{
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("management/product_insert");
+		
+		return mv;
+	}
+	
+	@RequestMapping("product_manage")
+	public ModelAndView goManage(ProductDTO productDTO, ProductPager pager) throws Exception{
+		
+		List<ProductDTO> prdAr = productService.getPrdList(productDTO, pager);
+		
+		// 남은 수량 구하기
+		for(int i=0; i<prdAr.size(); i++) {
+			Long total = prdAr.get(i).getProduct_total_count();
+			Long count = productService.getSoldSum(prdAr.get(i).getProduct_id());
+			
+			Long stock = total - count;
+			
+			prdAr.get(i).setProduct_stock(stock);
+		}
+		
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("prdDTO", prdAr);
+		mv.setViewName("management/product_manage");
+		
+		return mv;
+		
+	}
+	
+	// 상품 관리
+	
+	// 상풍 등록 버튼 클릭시 실행
+	@PostMapping("prdUpload")
+	public ModelAndView setInsert(ProductDTO productDTO, List<MultipartFile> main_files, List<MultipartFile> slider_files) throws Exception{
+		
+		productService.setInsert(productDTO, main_files, slider_files);
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("redirect:/menu/menu_main");
+		
+		return mv;
+	}
+	
+	
+	// 상품 삭제
+	@ResponseBody
+	@GetMapping("product_delete")
+	public ModelAndView deletePrdOne(ProductDTO productDTO, ProductPager pager) throws Exception{
+		
+		productService.deletePrdOne(productDTO);
+		productService.setFileDelete(productDTO);
+		List<ProductDTO> prdAr = productService.getPrdList(productDTO, pager);
+		
+		ModelAndView mv = new ModelAndView();
+		mv.addObject("prdDTO", prdAr);
+		mv.setViewName("management/product_manage");
+		
+		return mv;
+	}
+	
+}

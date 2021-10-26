@@ -133,42 +133,7 @@
 									</div>
 								</div>
 							</c:when>
-								<c:when test="${prd.product_state eq '주문마감'}">
-								<div class="item_box">
-									<div class="click_menu_soldout"> <!-- div 버튼 만들기 -->
-										
-										
-										
-										<input type="hidden" value="${prd.product_id}" id="product_id">
-										
-										<div class="item_image">
-											<div class="soldout_txt">주문마감</div>
-											<img alt="test" src="../resources/upload/menu/main/${prd.product_id}/${prd.product_name}.jpg">
-										</div>
-										<p class="etc_info">${prd.product_recipe}</p>
-										<div class="item_title">
-											*${prd.product_name}
-										</div>
-										<div class="item_price">
-											<fmt:formatNumber value="${prd.product_price}" type="number" maxFractionDigits="3"/>원
-										</div>
-										<div class="item_review">
-											<ul>
-												<li></li>
-												<li>리뷰 4,000</li>
-											</ul>
-										</div>
-									</div>
-									<div class="item_btnbox">
-										<div class="menu_btn zzim_btn">
-											
-										</div>
-										<div class="menu_btn cart_btn">
-											
-										</div>
-									</div>
-								</div>
-							</c:when>
+								
 							<c:otherwise>
 								<div class="item_box">
 									<div class="click_menu"> <!-- div 버튼 만들기 -->
@@ -224,13 +189,14 @@
 <script type="text/javascript">
 	let today = new Date();
 	let last_date = new Date(today.getFullYear(), today.getMonth()+1, 0);
+	let p_ld = parseInt(last_date.getDate());
 	
 	
 	let week = ["일", "월", "화", "수", "목", "금", "토"];
 	
-/* 	let year = today.getFullYear();
+	let year = today.getFullYear();
 	let month = today.getMonth() + 1;
-	let day = parseInt(today.getDay()); */
+	let day = parseInt(today.getDay());
 	let a = parseInt(today.getDay());
 	let b = parseInt(today.getDate());	
 	let value = "";
@@ -270,16 +236,21 @@
 	
 	for(var i=1; i<6; i++){
 		
+		if(b >= p_ld){
+			b = b - p_ld;
+			i--;
+			continue;
+		}
+		
 		today.setDate(b + 2);
-		
 		b = b + 1;
-		
+
 		if(parseInt(today.getDay()) == 0 || parseInt(today.getDay()) == 1){
 			i--;
 			continue;
 		}else{
 			$(".date" + i).html('<p>' + week[today.getDay()] + '</p><p>' + today.getDate() + '</p>');
-			value = today.getFullYear().toString() + (today.getMonth() + 1).toString() + today.getDate().toString();
+			value = today.getFullYear().toString() + (today.getMonth()+1).toString() + today.getDate().toString();
 			$(".date" + i).val(value);		
 		}
 		
