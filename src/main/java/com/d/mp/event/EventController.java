@@ -54,8 +54,6 @@ public class EventController {
 	@PostMapping("eventUpload")
 	public ModelAndView setEventList(EventDTO eventDTO, MultipartFile files) throws Exception{
 		
-		
-		
 		ModelAndView mv = new ModelAndView();
 		int result = eventService.setEventList(eventDTO, files);
 		mv.setViewName("redirect:./eventMain");

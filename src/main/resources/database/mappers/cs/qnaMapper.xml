@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="com.d.mp.cs.qna.QnaDAO">
+  
+  
+  
+  <!-- 문의작성하기 -->
+  <insert id="setFormcounselUpload" parameterType="QnaDTO">
+  	<selectKey order="BEFORE" resultType="Long" keyProperty="qna_id">
+  		SELECT qna_seq.nextval FROM dual
+  	</selectKey>
+  	INSERT INTO qna(qna_id, member_id, qna_content, qna_type, qna_email, qna_phone, qna_date, payment_id)
+  			 
+  	VALUES
+  		(#{qna_id}, #{member_id}, #{qna_content}, #{qna_type}, #{qna_email}, #{qna_phone}, sysdate, 2021102600011 )
+  
+  </insert>
+  
+  <!-- 내가작성한 문의내역 보기  -->
+  
+  <select id="getMyCounselList" parameterType="QnaDTO" resultType="QnaDTO">
+  		SELECT
+  
+  </select>
+  
+  
+  
+  </mapper>
