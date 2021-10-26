@@ -599,6 +599,7 @@ $(document).ready(function() {
 			
 		}else{
 			alert('Email, SMS 중 최소 1개는 선택하셔야 합니다.');
+			return false;			
 		}
 		
 });
