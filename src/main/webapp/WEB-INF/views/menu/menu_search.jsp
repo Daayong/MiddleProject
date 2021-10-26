@@ -64,46 +64,74 @@
 			                </div>
 			                <!-- Menu Grid -->
 							<div id="menus_wrap">
+								
+								<c:if test="${empty prd_sale}">
+									<div class="no_item">
+										<div class="no_itemIcon"></div>
+										<div class="no_itemTxt">
+											등록된 메뉴가 없습니다.
+										</div>
+									</div>
+								</c:if>
+								
 								<div id="item_wrap">
 									<!-- 나중에 c:foreach 반복문 쓰기 -->
-									<c:forEach items="${prdDTO}" var="prd">
-										<c:if test="${prd.product_state eq '판매가능'}">
-											<div class="item_box">
-												<div class="click_menu"> <!-- div 버튼 만들기 -->
-													<input type="hidden" value="${prd.product_id}" id="product_id">
-													<div class="item_image">
-														<img alt="test" src="../resources/upload/menu/main/${prd.product_id}/${prd.product_name}.jpg">
-													</div>
-													<p class="etc_info">${prd.product_recipe}</p>
-													<div class="item_title">
-														*${prd.product_name}
-													</div>
-													<div class="item_price">
-														<fmt:formatNumber value="${prd.product_price}" type="number" maxFractionDigits="3"/>원
-													</div>
-													<div class="item_review">
-														<ul>
-															<li></li>
-															<li>리뷰 4,000</li>
-														</ul>
-													</div>
+									
+									
+									<c:forEach items="${prd_sale}" var="prd_s">
+										<div class="item_box">
+											<div class="click_menu"> <!-- div 버튼 만들기 -->
+												<input type="hidden" value="${prd_s.product_id}" id="product_id">
+												<div class="item_image">
+													<img alt="test" src="../resources/upload/menu/main/${prd_s.product_id}/${prd_s.product_name}.jpg">
 												</div>
-												<div class="item_btnbox">
-													<div class="menu_btn zzim_btn">
-													
-													</div>
-													<div class="menu_btn cart_btn">
-	
-													</div>
+												<p class="etc_info">${prd_s.product_recipe}</p>
+												<div class="item_title">
+													*${prd_s.product_name}
+												</div>
+												<div class="item_price">
+													<fmt:formatNumber value="${prd_s.product_price}" type="number" maxFractionDigits="3"/>원
+												</div>
+												<div class="item_review">
+													<ul>
+														<li></li>
+														<li>리뷰 4,000</li>
+													</ul>
 												</div>
 											</div>
-										</c:if>
+											<div class="item_btnbox">
+												<div class="menu_btn zzim_btn">
+												
+												</div>
+												<div class="menu_btn cart_btn">
+
+												</div>
+											</div>
+										</div>
 										<!-- c:foreach -->
 									</c:forEach>	
 								</div>
 								<div class="pager_wrap">
 									<ul class="pager">
-										<li class="pager_item"><a href="#">1</a></li>
+									
+										<li class="pager_item" data-type-page="sale">
+									      <a class="page-link" href="./menu_search?pn=${pager.startNum - 1}" aria-label="Previous">
+									        <span aria-hidden="true">&lt;</span>
+									      </a>
+									    </li>
+									    
+									    <c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="n">
+									    	<li class="pager_item" data-type-page="sale">
+									    		<a class="page-link" href="./menu_search?pn=${n}">${n}</a>
+									    	</li>
+									    </c:forEach>
+									    
+									   	<li class="pager_item">
+									      <a class="page-link" href="./menu_search?pn=${pager.lastNum + 1}" aria-label="Next">
+									        <span aria-hidden="true">&gt;</span>
+									      </a>
+									    </li>
+									    
 									</ul>
 								</div>
 							</div>	
@@ -113,27 +141,38 @@
 			                <!-- 리스트 -->
 			                <div class="olki_list"> 
 			                    <div id="menus_wrap">
+			                    
+			                    	<c:if test="${empty prd_end_sale}">
+										<div class="no_item">
+											<div class="no_itemIcon"></div>
+											<div class="no_itemTxt">
+												등록된 메뉴가 없습니다.
+											</div>
+										</div>
+									</c:if>
+									
 									<div id="item_wrap2">
 										<!-- 나중에 c:foreach 반복문 쓰기 -->
-										<c:forEach items="${prdDTO}" var="prd">
-										<c:if test="${prd.product_state eq '품절'}">
+										
+										
+										<c:forEach items="${prd_end_sale}" var="prd_es">
 											<div class="item_box">
 												<div class="click_menu_soldout"> <!-- div 버튼 만들기 -->
-													<input type="hidden" value="${prd.product_id}" id="product_id">
+													<input type="hidden" value="${prd_es.product_id}" id="product_id">
 													
 													<div class="item_image">
 														<div class="soldout_txt">품절</div>
-														<img alt="test" src="../resources/upload/menu/main/${prd.product_id}/${prd.product_name}.jpg">
+														<img alt="test" src="../resources/upload/menu/main/${prd_es.product_id}/${prd_es.product_name}.jpg">
 													</div>
 													
-													<p class="etc_info">${prd.product_recipe}</p>
+													<p class="etc_info">${prd_es.product_recipe}</p>
 													
 													<div class="item_title">
-														*${prd.product_name}
+														*${prd_es.product_name}
 													</div>
 													
 													<div class="item_price">
-														<fmt:formatNumber value="${prd.product_price}" type="number" maxFractionDigits="3"/>원
+														<fmt:formatNumber value="${prd_es.product_price}" type="number" maxFractionDigits="3"/>원
 													</div>
 													
 													<div class="item_review">
@@ -155,13 +194,30 @@
 												</div>
 												
 											</div>
-										</c:if>
 								<!-- c:foreach -->
 								</c:forEach>	
 									</div>
 								<div class="pager_wrap">
 									<ul class="pager">
-										<li class="pager_item"><a href="#">1</a></li>
+									
+										<li class="pager_item" data-type-page="sale">
+									      <a class="page-link" href="./menu_search?pn=${pager.startNum - 1}" aria-label="Previous">
+									        <span aria-hidden="true">&lt;</span>
+									      </a>
+									    </li>
+									    
+									    <c:forEach begin="${pager.startNum}" end="${pager.lastNum}" var="n">
+									    	<li class="pager_item" data-type-page="sale">
+									    		<a class="page-link" href="./menu_search?pn=${n}">${n}</a>
+									    	</li>
+									    </c:forEach>
+									    
+									   	<li class="pager_item">
+									      <a class="page-link" href="./menu_search?pn=${pager.lastNum + 1}" aria-label="Next">
+									        <span aria-hidden="true">&gt;</span>
+									      </a>
+									    </li>
+									    
 									</ul>
 								</div>
 							</div>	

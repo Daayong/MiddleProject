@@ -40,7 +40,7 @@
 	<interceptors>
 		<interceptor>
 			<mapping path="/menu/menu_insert"/>
-			<mapping path="/menu/menu_manage"/>
+			<mapping path="/management/cookit_management"/>
 			<beans:ref bean="productInterceptor"/>
 		</interceptor>
 	</interceptors>

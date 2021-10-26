@@ -14,27 +14,51 @@
 	<div class="gnb_wrap">
 		<div class="gnb_info">
 			<div class="info_wrap">
+			
+				<!-- admin 관련 페이지 작업 -->
+				<c:choose>
 
-
-				<ul>			
-					<c:choose>
-						<c:when test="${not empty member}">
-				    		<li><a class="f" href="#">${member.member_name}님</a></li>
-							<li><a class="f" href="${pageContext.request.contextPath}/member/logout">로그아웃</a></li>
-				    	</c:when>	
-				      	<c:otherwise>						
-							<li><a href="${pageContext.request.contextPath}/member/check">회원가입</a></li>
-							<li><a href="${pageContext.request.contextPath}/member/login">로그인</a></li>
-				      	</c:otherwise>
-					</c:choose>
-					
-					<li><a href="${pageContext.request.contextPath}/cs/csMain">고객행복센터</a></li>
-					<li><a href="${pageContext.request.contextPath}/">배송지역검색</a></li>
-					<li><a href="${pageContext.request.contextPath}/">기프트카드 등록</a></li>
-
-
-
-				</ul>
+					<c:when test="${member.member_type eq 1}">
+						<ul>			
+							<c:choose>
+								<c:when test="${not empty member}">
+						    		<li><a class="f" href="#">${member.member_name}님</a></li>
+									<li><a class="f" href="${pageContext.request.contextPath}/member/logout">로그아웃</a></li>
+						    	</c:when>	
+						      	<c:otherwise>						
+									<li><a href="${pageContext.request.contextPath}/member/check">회원가입</a></li>
+									<li><a href="${pageContext.request.contextPath}/member/login">로그인</a></li>
+						      	</c:otherwise>
+							</c:choose>
+							
+							<li><a href="${pageContext.request.contextPath}/cs/csMain">회원관리</a></li>
+							<li><a href="${pageContext.request.contextPath}/management/product_insert">상품관리</a></li>
+							<li><a href="${pageContext.request.contextPath}/">게시물관리</a></li>
+		
+						</ul>
+					</c:when>
+					<c:otherwise>
+						<ul>			
+							<c:choose>
+								<c:when test="${not empty member}">
+						    		<li><a class="f" href="#">${member.member_name}님</a></li>
+									<li><a class="f" href="${pageContext.request.contextPath}/member/logout">로그아웃</a></li>
+						    	</c:when>	
+						      	<c:otherwise>						
+									<li><a href="${pageContext.request.contextPath}/member/check">회원가입</a></li>
+									<li><a href="${pageContext.request.contextPath}/member/login">로그인</a></li>
+						      	</c:otherwise>
+							</c:choose>
+							
+							<li><a href="${pageContext.request.contextPath}/cs/csMain">고객행복센터</a></li>
+							<li><a href="${pageContext.request.contextPath}/">배송지역검색</a></li>
+							<li><a href="${pageContext.request.contextPath}/">기프트카드 등록</a></li>
+		
+		
+		
+						</ul>
+					</c:otherwise>
+				</c:choose>
 			</div>
 		</div>
 		

@@ -3,13 +3,16 @@
 
 <html>
 <head>
-	<title>Home</title>
+	<title>관리자 페이지</title>
 	
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-	<link href="${pageContext.request.contextPath}/resources/css/common.css" rel="stylesheet">
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 	
-  	
+	<link href="${pageContext.request.contextPath}/resources/css/common.css" rel="stylesheet">
+	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/management/management_product.css">
+    
+    
 	<style>
 		html,body{
 			height:100%;
@@ -25,44 +28,8 @@
 			}
 			
 		#content{
-			width: 1180px;
+			width: 1440px;
 			margin: 0 auto;
-		}
-		
-		.product_table{
-			margin-top: 100px;
-			margin-bottom: 100px;
-			width: 100%;
-			text-align: center;
-			border-collapse: collapse;
-		}
-		
-		.product_table tr{
-			border-bottom: 1px solid black;
-		}
-		
-		.product_table tr td{
-			padding-top: 10px;
-			padding-bottom: 10px;
-		}
-		
-		/* more: 수정 del: 삭제 */
-		.more_btn{
-			width: 50px;
-			height: 50px;
-			border: 1px solid black;
-		}
-		.del_btn{
-			width: 50px;
-			height: 50px;
-			border: 1px solid black;
-		}
-		
-		
-		/* 추가 정보 수정 */
-		.manage_detail{
-			display: none;
-			margin-bottom: 200px;
 		}
 	</style>	
 	
@@ -73,11 +40,21 @@
 		<div class="wrapper">		
 		<!-- 여기에 페이지 작업 -->
 			
-			<div id="content">
-		 		<div class="container">
-                    <h1 class="mb-5"> COOKIT Product ManageMent </h1>
-                    <h2> 로그인중 : admin </h2>
-	                     <table class="product_table">
+		
+		
+		<section id="content">
+		
+			<h1 class="title_txt"> Cookit Product ManageMent </h1>
+			<h3 class="login_state">Login on : ${member.member_user_id}</h3>
+			
+			<div class="container">
+				
+				<!-- 상품관리 왼쪽 네비바 -->
+				<c:import url="./product_nav.jsp"></c:import>
+				
+				<div class="inner_contents">		
+   
+	                <table class="product_table">
 						  <tr>
 							<th>상품코드</th><th>상품명</th><th>상품가격</th><th>상태</th><th>전체수량</th><th>남은수량</th><th></th><th></th>
 						  </tr>
@@ -88,7 +65,7 @@
 							  	<td>${prd.product_price}원</td>
 							  	<td>${prd.product_state}</td>
 							  	<td>${prd.product_total_count}</td>
-							  	<td>${prd.product_stock}</td>
+							  	<td class="stock">${prd.product_stock}</td>
 							  	<td>
 							  		<button type="button" class="more_btn">MORE</button>
 							  		<button type="button" class="del_btn">X</button>
@@ -96,14 +73,18 @@
 							  	</td>
 							  </tr>
 						  </c:forEach>
-				   		</table>
-                </div>
+		   			</table>
+		   			
+	   			</div>
 			</div>
 			
+		</section>
+
 		<!-- 여기까지 -->
 		<div class="push"></div>
 		</div>
 		<c:import url="../temp/boot_footer.jsp"></c:import>
+		
 		<script type="text/javascript">
 			$(document).on("click", ".del_btn", function() {
 				let product_id = $(this).next("#product_id").val();
@@ -111,7 +92,7 @@
 				
 				if(answer){
 					$.ajax({
-						url: 'menu_delete?product_id=' + product_id,
+						url: 'product_delete?product_id=' + product_id,
 						type: 'get',
 						dataType: 'html',
 						success: function(result){
@@ -121,7 +102,32 @@
 					});	
 				}
 			});
-
+			
+			$(".more_btn").on("click", function () {
+				let product_id = $(this).nextAll("#product_id").val();
+				let product_stock = parseInt($(this).parent().prevAll(".stock").text());
+				
+				$.ajax({
+					url: 'product_update',
+					type: 'get',
+					data: {
+						'product_id' : product_id,
+						'product_stock' : product_stock
+					},
+					dataType: 'html',
+					success: function (result) {
+						$(".inner_contents").html(result);
+						
+					},
+					error:function(request,status,error){
+						
+				        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+				        
+				    }
+				});
+			});
+			
 		</script>
+		
 	</body>
 </html>

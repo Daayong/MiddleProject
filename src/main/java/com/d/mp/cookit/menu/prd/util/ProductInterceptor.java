@@ -23,7 +23,7 @@ public class ProductInterceptor extends HandlerInterceptorAdapter{
 		
 		if(member_type != 1) {
 			
-			response.sendRedirect(request.getContextPath() + "/menu/menu_main");
+			response.sendRedirect(request.getContextPath() + "/");
 			return false;
 			
 		}else {

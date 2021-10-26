@@ -149,10 +149,19 @@ input.txt:focus{background-color:#fff;border:1px solid #202020;box-shadow:none; 
 /* 메뉴 보이는 부분 */
 #menus_wrap{
 	width: 100%;
+	position: relative;
 	margin-top: 30px;
 }
 
 #item_wrap{
+	min-height: 400px;
+	display: inline-grid;
+	grid-template-columns: repeat(4, 1fr);
+	column-gap: 36px;
+	row-gap : 60px;
+}
+#item_wrap2{
+	min-height: 400px;
 	display: inline-grid;
 	grid-template-columns: repeat(4, 1fr);
 	column-gap: 36px;
@@ -251,23 +260,44 @@ input.txt:focus{background-color:#fff;border:1px solid #202020;box-shadow:none; 
 }
 /* 메뉴안 페이저 부분 */
 .pager_wrap{
-	width: 70%;
-	height: 80px;
-	margin: 130px auto 130px auto;
+	margin: 80px auto 80px auto;
+	text-align: center;
 }
 .pager{
+	margin: 0 auto;
+}
+.pager_item{
+	display: inline-block;
+	text-align: center;
+	line-height: 50px;
 	width: 50px;
 	height: 50px;
 	margin: 0 auto;
 	background-color: #4C4C4C;
 }
-.pager_item{
-	text-align: center;
-	line-height: 50px;
-}
 .pager_item a{
 	font-size: 20px;
 	color: white;
+}
+
+/* 등록된 물품이 없을때 */
+.no_item{
+	position: absolute;
+	top: 100px;
+	left: 50%;
+	transform: translate(-50%, 0%);
+	font-size: 24px;
+	color: black;
+}
+.no_itemIcon{
+	margin: 0 auto;
+	background: url('../../images/common/ico_set.png') no-repeat 0px -100px;
+	background-size: 800px 800px;
+	width: 80px;
+	height: 80px;
+}
+.no_itemTxt{
+	margin-top: 30px;
 }
 
 /* ======== 기능 관련 css ========*/

@@ -27,6 +27,10 @@ public class ProductService {
 	@Autowired
 	private ProductFileManager fileManager;
 	
+	/* ================================================= index 페이지 상품 ================================================= */
+	public List<ProductDTO> getPrdListMain() throws Exception{
+		return productDAO.getPrdListMain();
+	}
 	
 	/* ================================================= 상품등록 ================================================= */
 	
@@ -150,7 +154,6 @@ public class ProductService {
 		return productDAO.getFile(productDTO);
 	}
 	
-	
 	// 등록된 상품들 가져오기
 	// 공용 날짜포맷
 	SimpleDateFormat beforeFormat = new SimpleDateFormat("yyyymmdd");
@@ -174,12 +177,10 @@ public class ProductService {
 			productDTO.setDate(transDate);
 		}
 		
-		pager.setPerPage(8L);
-		pager.makeRow();
-		
 		Long totalCount = productDAO.getTotalPrdList();
 		pager.makeNum(totalCount);
-		
+		pager.makeRow();
+			
 		map.put("product", productDTO);
 		map.put("pager", pager);
 		
