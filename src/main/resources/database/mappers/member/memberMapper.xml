@@ -77,11 +77,11 @@
   	</insert>
   	
   	<!-- 배송지 수정  -->
-  <!-- 	<update id="setAddressUpdate" parameterType="AddressDTO">
+  	<update id="setAddressUpdate" parameterType="AddressDTO">
   		UPDATE address SET recipient_name=#{recipient_name},address=#{address},recipient_phone=#{recipient_phone}
   		WHERE address_id=#{address_id}
   	</update>
-  	 -->
+  	
   	 
   	<!-- 기본 배송지 수정  -->
   	<update id="setAddressDefaultUpdate" parameterType="AddressDTO">

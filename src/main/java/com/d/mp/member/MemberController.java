@@ -306,7 +306,62 @@ public class MemberController {
 		addressDTO.setMember_id(sessionDTO.getMember_id());
 		memberService.allSetzero(addressDTO);
 		return memberService.setAddressDefaultUpdate(addressDTO);
+	}
 	
+	//배송지수정 버튼 눌렀을 때 경로 매핑 
+	@GetMapping("adUpdate")
+	public ModelAndView adUpdate(AddressDTO addressDTO,HttpSession session) throws Exception {
+		//1. 원래 있던 addressDTO의 정보를 가져와서 뿌려줘야됨 
+		//2. DB에 저장되어 있는 전화번호 분리해서 JSP로 보내주기 
+		ModelAndView mv = new ModelAndView();
+		MemberDTO sessionDTO = (MemberDTO)session.getAttribute("member");
+		addressDTO=sessionDTO.getAddressDTO();
+		String i=addressDTO.getRecipient_phone();
+		System.out.println(i);
+		String[] phone=memberService.splitRePhone(addressDTO);
+		mv.addObject("member_phone_f", phone[0]);
+		mv.addObject("member_phone_m", phone[1]);
+		mv.addObject("member_phone_b", phone[2]);
+		mv.setViewName("member/adUpdate");
+		return mv;
+	}
+	
+	
+	/*
+	 * @GetMapping("memberUpdate") public ModelAndView setUpdate(HttpSession
+	 * session) throws Exception { ModelAndView mv = new ModelAndView(); MemberDTO
+	 * sessionDTO = (MemberDTO) session.getAttribute("member");
+	 * memberService.setUpdateSplit(sessionDTO);
+	 * mv.setViewName("member/memberUpdate"); return mv; }
+	 * 
+	 * @PostMapping("update") public ModelAndView setUpdate(MemberDTO
+	 * memberDTO,HttpSession session)throws Exception { ModelAndView mv = new
+	 * ModelAndView(); MemberDTO sessionDTO = (MemberDTO)
+	 * session.getAttribute("member"); memberDTO=memberService.charSet(memberDTO);
+	 * memberDTO.setMember_email(memberDTO.getMember_email_f() + "@" +
+	 * memberDTO.getMember_email_b()); memberService.setUpdate(memberDTO);
+	 * session.setAttribute("member", memberDTO); mv.setViewName("redirect:../");
+	 * return mv; }
+	 */
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	//배송지 수정 
+	@PostMapping("addressUpdate")
+	public String setAddressUpdate(AddressDTO addressDTO,HttpSession session)throws Exception{
+		MemberDTO sessionDTO = (MemberDTO) session.getAttribute("member");
+		memberService.setAddressUpdate(addressDTO);
+		return "redirect:./myaddress";
 	}
 	
 	

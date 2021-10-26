@@ -83,9 +83,9 @@ public class MemberDAO {
 	}
 	
 	//배송지 수정 
-	//public int setAddressUpdate(AddressDTO addressDTO)throws Exception{
-	//	return sqlSession.update(NAMESPACE+"setAddressUpdate", addressDTO);
-	//}
+	public int setAddressUpdate(AddressDTO addressDTO)throws Exception{
+		return sqlSession.update(NAMESPACE+"setAddressUpdate", addressDTO);
+	}
 		
 	//기본 배송지 수정 
 	public int setAddressDefaultUpdate(AddressDTO addressDTO)throws Exception{

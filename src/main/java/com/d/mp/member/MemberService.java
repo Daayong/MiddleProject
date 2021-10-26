@@ -207,10 +207,23 @@ public class MemberService {
 	}
 	
 	
+	//수취인 전화번호 분리
+	public String[] splitRePhone(AddressDTO addressDTO)throws Exception{
+		String recipient_phone=addressDTO.getRecipient_phone();
+		String[]pNum=recipient_phone.split("-");
+		/*
+		 * String member_phone_f=pNum[0]; String member_phone_m=pNum[1]; String
+		 * member_phone_b=pNum[2];
+		 */
+		return pNum;
+	}
+	
+	
 	//배송지 수정 
-	//public int setAddressUpdate(AddressDTO addressDTO)throws Exception{
-	//	return memberDAO.setAddressUpdate(addressDTO);				
-	//}
+	public int setAddressUpdate(AddressDTO addressDTO)throws Exception{
+		
+		return memberDAO.setAddressUpdate(addressDTO);				
+	}
 	
 	//기본배송지 수정 
 	public int setAddressDefaultUpdate(AddressDTO addressDTO)throws Exception{

@@ -87,7 +87,7 @@
 										<c:if test="${ar.default_check ne 1}">
 											<button type="button" name="addressDelete" class="delete_btn adBtn" >삭제</button>
 										</c:if>
-										<button type="button" class="update_btn adBtn" >수정</button>
+										<button type="button" class="update_btn adBtn" onclick="javascript:adUpdate()" >수정</button>
 										<c:if test="${ar.default_check ne 1}">
 											<button type="button" class="default_btn adBtn"  >기본 배송지 설정</button>
 										</c:if>
@@ -125,6 +125,14 @@
 			var option = "width = 480, height =400, top = 200, left = 480, location = no, scrollbars = yes"
 			window.open(url, name, option);
 		};
+		
+		function adUpdate(){
+			var url = "../member/adUpdate";
+			var name = "update";
+			var option = "width = 480, height =400, top = 200, left = 480, location = no, scrollbars = yes"
+			window.open(url, name, option);
+		};
+		
 	
 		//배송지 삭제 
 		$(function(){
@@ -177,20 +185,6 @@
 				
 			});	
 		});
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 		
 	</script>
  
