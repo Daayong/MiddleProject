@@ -24,10 +24,13 @@ public class QnaDAO {
 	public List<QnaDTO> getMyCounselList(MemberDTO memberDTO) throws Exception{
 		return sqlSession.selectList(NAMESPACE+"getMyCounselList", memberDTO);
 	}
-
 	
 	public int setDeleteMyCounsel(QnaDTO qnaDTO) throws Exception{
 		return sqlSession.delete(NAMESPACE+"setDeleteMyCounsel", qnaDTO);
+	}
+	
+	public List<QnaDTO> getMemberCounselList() throws Exception{
+		return sqlSession.selectList(NAMESPACE+"getMemberCounselList");
 	}
 
 	

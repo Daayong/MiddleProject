@@ -7,7 +7,7 @@
   <mapper namespace="com.d.mp.cs.qna.QnaDAO">
   
   
-  
+  <!-- 개인회원 -->
   <!-- 문의작성하기 -->
   <insert id="setFormcounselUpload" parameterType="QnaDTO">
   	<selectKey order="BEFORE" resultType="Long" keyProperty="qna_id">
@@ -16,7 +16,7 @@
   	INSERT INTO qna(qna_id, member_id, qna_content, qna_type, qna_email, qna_phone, qna_date, payment_id)
   			 
   	VALUES
-  		(#{qna_id}, #{member_id}, #{qna_content}, #{qna_type}, #{qna_email}, #{qna_phone}, sysdate, #{payment_id} )
+  		(#{qna_id}, #{member_id}, #{qna_content}, #{qna_type}, #{qna_email}, #{qna_phone}, sysdate, #{payment_id, jdbcType=INTEGER} )
   
   </insert>
   
@@ -32,7 +32,7 @@
 			qna_id DESC
 	</select>
 
-	<!-- 문의내역 삭제  -->
+	<!-- 내가 작성한 문의내역 삭제  -->
 	<delete id="setDeleteMyCounsel" parameterType="QnaDTO">
 	
 		DELETE 
@@ -41,7 +41,18 @@
 			qna_id = #{qna_id}
 	
 	</delete>
-  
+	<!--//회원  -->
+	
+	<!-- 관리자 -->
+  	<!-- 회원 1:1 문의 내역 모두 보기 -->
+  	<select id="getMemberCounselList" resultType="QnaDTO">
+  		SELECT 
+  			*
+  		FROM	
+  			qna
+  		ORDER BY	
+  			qna_id DESC
+  	</select>
   
   
   </mapper>

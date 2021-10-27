@@ -26,5 +26,9 @@ public class QnaService {
 	public int setDeleteMyCounsel(QnaDTO qnaDTO) throws Exception{
 		return qnaDAO.setDeleteMyCounsel(qnaDTO);
 	}
+	
+	public List<QnaDTO> getMemberCounselList() throws Exception{
+		return qnaDAO.getMemberCounselList();
+	}
 
 }

@@ -25,7 +25,7 @@ public class CounselListController {
 	private QnaService qnaService;
 	
 	@RequestMapping("customerCounselList")
-	public ModelAndView complete() throws Exception{
+	public ModelAndView cusomerCounseList() throws Exception{
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("myAct/customerCounselList");
 		return mv;
@@ -56,5 +56,6 @@ public class CounselListController {
 		return message;
 		
 	}
+	
 	
 }
