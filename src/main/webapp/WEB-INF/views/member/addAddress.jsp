@@ -21,7 +21,14 @@
 	.btn{width:211px; height:50px; border:1px solid #202020;margin-left:2px; margin-top:30px; color:#101010; }
 	.green{background-color:#BDD61A; border:1px solid #BDD61A; margin-left:7px; }
 	</style>
-
+	<script type="text/javascript">
+		let result = '${param.result}';
+		result=result.trim();
+		if(result=='1'){
+			opener.location.reload();
+			self.close();
+		}
+	</script>
 </head>
 <body>
 
@@ -105,7 +112,7 @@
 	
 		<div class="btn_wrap">
 			<button type="button" class="btn" id="cancel" name="cancel">취소</button>
-			<input type="button" class="btn green"  id="setaddAddress" name="setaddAddress" value="추가">
+			<input type="button" class="btn green" onclick="checkInput();"  id="setaddAddress" name="setaddAddress" value="추가">
 		</div>
 	</div>
 
@@ -130,7 +137,7 @@
 		 const member_id=document.getElementById('member_id');
 	 
 		 
-		 $("#setaddAddress").click(checkInput);
+		 $("#setaddAddress").click(add);
 		function checkInput(){
 			//받는분 입력 여부 확인 
 			if(recipient_name.value.trim().length <1){
@@ -157,8 +164,8 @@
 			}
 			
 			if(confirm('배송지를 추가하시겠습니까?')==true){
-				//addressForm.submit();
-				add();
+				addressForm.submit();
+				
 				
 				
 			 
@@ -170,11 +177,11 @@
 		
 		
 	 function add(){
-		 const recipient_name=document.getElementById('recipient_name');
-		 const phone_m=document.getElementById('member_phone_m');
-		 const phone_b=document.getElementById('member_phone_b');
-		 const address=document.getElementById('address');
-		 const member_id=document.getElementById('member_id');
+		 const recipient_name2=document.getElementById('recipient_name');
+		 const phone_m2=document.getElementById('member_phone_m');
+		 const phone_b2=document.getElementById('member_phone_b');
+		 const address2=document.getElementById('address');
+		 const member_id2=document.getElementById('member_id');
 		 let f = '010';
 			$('.se').each(function(){
 				 if($(this).prop('selected')){
@@ -186,11 +193,12 @@
 				method:'POST',
 				url: './addAddress2',
 				data :{
-					member_phone_m: phone_m,
-					member_phone_b: phone_b,
+					recipient_name:recipient_name2,
+					member_phone_m: phone_m2,
+					member_phone_b: phone_b2,
 					member_phone_f: f,
-					address:address,
-					member_id:member_id					
+					address:address2,
+					member_id:member_id2					
 				},
 				success:function(result){
 					console.log(result);
@@ -200,8 +208,11 @@
 					}else {
 						//실패 했을 경우 처리코드 작성
 					}
+				},
+				error:function(){
+					alert('error');
 				}
-			});
+			}); 
 
 	 }
 		

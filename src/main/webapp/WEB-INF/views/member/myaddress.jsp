@@ -77,7 +77,7 @@
 							</div>
 							<c:forEach items="${list}" var="ar">
 								<div class="dinfo_box" >
-									<div class="box_header" data-address_id="${ar.address_id}" data-member_id="${ar.member_id}" data-recipient_name="${ar.recipient_name}" data-default_check="${ar.default_check}" >
+									<div class="box_header" data-address_id="${ar.address_id}" data-member_id="${ar.member_id}" data-default_check="${ar.default_check}" >
 										<strong class="title">${ar.recipient_name}</strong>
 										<span class="default">
 										   <c:if test="${ar.default_check eq 1}">
@@ -87,12 +87,12 @@
 										<c:if test="${ar.default_check ne 1}">
 											<button type="button" name="addressDelete" class="delete_btn adBtn" >삭제</button>
 										</c:if>
-										<button type="submit" class="update_btn adBtn" onclick="javascript:adUpdate()" >수정</button>
+										<button type="button" class="update_btn adBtn" onclick="javascript:adUpdate('${ar.address_id}')" >수정</button>
 										<c:if test="${ar.default_check ne 1}">
 											<button type="button" class="default_btn adBtn"  >기본 배송지 설정</button>
 										</c:if>
 									</div>
-									<div class="box_content" data-address="${ar.address}" data-recipient_phone="${ar.recipient_phone}">
+									<div class="box_content">
 										<ul class="address_list">
 											<li class="address">${ar.address}</li>
 											<li class="recipient_phone">${ar.recipient_phone}</li>
@@ -126,22 +126,14 @@
 			window.open(url, name, option);
 		};
 		
-		function adUpdate(){
-			var member_id=$(this).parent(".box_header").data('member_id');
-			var address_id=$(this).parent(".box_header").data('address_id');
-			var recipient_name=$(this).parent(".box_header").data('recipient_name');
-			var address=$(this).parent(".box_header").children(".box_content").data('address');
-			var recipient_phone=$(this).parent(".box_header").children(".box_content").data('recipient_phone');
-			var default_check=$(this).parent(".box_header").children(".box_content").data('default_check');
-			
-			var url = "../member/adUpdate?address_id="+address_id+"&&member_id="+member_id
-			+"&&recipient_name="+recipient_name+"&&address="+address+"&&recipient_phone="+recipient_phone+"&&default_check="+default_check;
+		//배송지 수정 
+		function adUpdate(address_id){
+			var url = "../member/adUpdate?address_id="+address_id;
 			var name = "update";
 			var option = "width = 480, height =400, top = 200, left = 480, location = no, scrollbars = yes";
 			window.open(url, name, option);
 		};
 		
-	
 		//배송지 삭제 
 		$(function(){
 			$('.delete_btn').click(function(){

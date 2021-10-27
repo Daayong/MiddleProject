@@ -283,9 +283,8 @@ public class MemberController {
 	}
 	
 	//배송지 추가 
-	@PostMapping("addAddress2")
-	@ResponseBody
-	public int setAddAddress(AddressDTO addressDTO,HttpServletRequest request,MemberDTO memberDTO)throws Exception{
+	@PostMapping("addAddress")
+	public String setAddAddress(AddressDTO addressDTO,HttpServletRequest request,MemberDTO memberDTO)throws Exception{
 		System.out.println("hello1");
 		String pf=request.getParameter("member_phone_f");
 		String pm=request.getParameter("member_phone_m");
@@ -305,8 +304,7 @@ public class MemberController {
 		System.out.println("hello3");
 		int result = memberService.setAddAddress(addressDTO);
 		System.out.println(result);
-		
-		return result;
+		return "redirect:./addAddress?result="+result;
 		
 	}
 	
@@ -320,21 +318,18 @@ public class MemberController {
 		return memberService.setAddressDefaultUpdate(addressDTO);
 	}
 	
-	//배송지수정 버튼 눌렀을 때 경로 매핑 
+	//배송지수정 버튼 눌렀을 때 (배송지 1개 조회)
 	@GetMapping("adUpdate")
-	public ModelAndView adUpdate(AddressDTO addressDTO,HttpSession session) throws Exception {
-		//1. 원래 있던 addressDTO의 정보를 가져와서 뿌려줘야됨 
-		//2. DB에 저장되어 있는 전화번호 분리해서 JSP로 보내주기 
+	public ModelAndView adUpdate(AddressDTO addressDTO) throws Exception {
 		ModelAndView mv = new ModelAndView();
-		MemberDTO sessionDTO = (MemberDTO)session.getAttribute("member");
-		
-		addressDTO=sessionDTO.getAddressDTO();
+		addressDTO=memberService.getAddressOne(addressDTO);
 		String i=addressDTO.getRecipient_phone();
 		System.out.println(i);
 		String[] phone=memberService.splitRePhone(addressDTO);
 		mv.addObject("member_phone_f", phone[0]);
 		mv.addObject("member_phone_m", phone[1]);
 		mv.addObject("member_phone_b", phone[2]);
+		mv.addObject("address", addressDTO);
 		mv.setViewName("member/adUpdate");
 		return mv;
 	}
@@ -342,10 +337,13 @@ public class MemberController {
 	
 	//배송지 수정 
 	@PostMapping("addressUpdate")
-	public String setAddressUpdate(AddressDTO addressDTO,HttpSession session)throws Exception{
-		MemberDTO sessionDTO = (MemberDTO) session.getAttribute("member");
-		memberService.setAddressUpdate(addressDTO);
-		return "redirect:./myaddress";
+	@ResponseBody
+	public int setAddressUpdate(AddressDTO addressDTO,HttpServletRequest request)throws Exception{
+		String pf=request.getParameter("member_phone_f");
+		String pm=request.getParameter("member_phone_m");
+		String pb=request.getParameter("member_phone_b");
+		addressDTO.setRecipient_phone(pf + "-" + pm + "-" + pb);
+		return memberService.setAddressUpdate(addressDTO);
 	}
 
 

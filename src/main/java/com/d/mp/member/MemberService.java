@@ -198,6 +198,19 @@ public class MemberService {
 		return memberDAO.getAddressList(memberDTO);
 	}
 	
+	//배송지 1개 조회
+	public AddressDTO getAddressOne(AddressDTO addressDTO)throws Exception{
+		return memberDAO.getAddressOne(addressDTO);
+	}
+	
+	//수취인 전화번호 분리
+	public String[] splitRePhone(AddressDTO addressDTO)throws Exception{
+		String recipient_phone=addressDTO.getRecipient_phone();
+		String[]pNum=recipient_phone.split("-");
+		return pNum;
+	}
+	
+	
 	//결제 완료 후 포인트 증감
 	public void setUpdatePoint(MemberDTO memberDTO) throws Exception{
 		memberDAO.setUpdatePoint(memberDTO);
@@ -214,21 +227,8 @@ public class MemberService {
 	}
 	
 	
-	//수취인 전화번호 분리
-	public String[] splitRePhone(AddressDTO addressDTO)throws Exception{
-		String recipient_phone=addressDTO.getRecipient_phone();
-		String[]pNum=recipient_phone.split("-");
-		/*
-		 * String member_phone_f=pNum[0]; String member_phone_m=pNum[1]; String
-		 * member_phone_b=pNum[2];
-		 */
-		return pNum;
-	}
-	
-	
 	//배송지 수정 
 	public int setAddressUpdate(AddressDTO addressDTO)throws Exception{
-		
 		return memberDAO.setAddressUpdate(addressDTO);				
 	}
 	
