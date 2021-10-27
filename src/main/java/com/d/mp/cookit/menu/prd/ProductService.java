@@ -7,6 +7,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletContext;
 
@@ -191,6 +192,18 @@ public class ProductService {
 	public ProductDTO getPrdOne(ProductDTO productDTO) throws Exception{
 		
 		return productDAO.getPrdOne(productDTO);
+	}
+	
+	// 특정 id 상품 찜목록 추가
+	public int setZzim(Map<String, Object> map) throws Exception{
+		
+		return productDAO.setZzim(map);
+	}
+	
+	//특정 멤버가 찜한 상품목록 불러오기
+	public List<ProductDTO> getZzim(ZzimDTO zzimDTO) throws Exception{
+		
+		return productDAO.getZzim(zzimDTO);
 	}
 	
 	// 특정 id 상품의 주문가능 일자중 첫번째 값 가져오기

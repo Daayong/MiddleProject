@@ -33,6 +33,12 @@
 		</span>
 	</div>
 	
+	<div class="zzimin_img">
+		<span class="zzimin_txt">
+			
+		</span>
+	</div>
+	
 <!-- 여기에 페이지 작업 -->
 	<div class="content_wrapper">
 			<div class="top_info">

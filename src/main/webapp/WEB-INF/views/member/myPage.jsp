@@ -156,7 +156,10 @@
 							</li>
 	
 						</ul>
-						
+											
+					</div>
+				
+				</div>
 				
 				<div id="info_box" class="rpd">
 					<div class="stamp_event_wrap type_renew2">
@@ -193,21 +196,38 @@
 						쇼핑찜
 						<a href="#" class="btn_link">더보기</a>
 					</h4>
-					<div class="no_data_txt">
-						<strong>찜목록에 담긴 메뉴가 없습니다.</strong>
-					</div>	
+					
+					<c:if test="${empty zzim}">
+						<div class="no_data_txt">
+							<strong>찜목록에 담긴 메뉴가 없습니다.</strong>
+						</div>	
+					</c:if>
+					<!-- 수빈 찜목록 추가 -->
+					<div class="zzim_wrap">
+
+						<c:forEach items="${zzim}" var="zzim" begin="0" end="3">
+							<div class="zzim_item">
+								<div class="zzim_imgwrap">
+									<img src="../resources/upload/menu/main/${zzim.product_id}/${zzim.product_name}.jpg">
+								</div>
+								<div class="zzim_infowrap">
+									<span class="zzim_tit">
+										${zzim.product_name}
+									</span>
+									<span class="zzim_price">
+										<fmt:formatNumber value="${zzim.product_price}" type="number" maxFractionDigits="3"/>원
+									</span>
+								</div>
+							</div>
+						</c:forEach>
+						
+					</div>
+					
 				</div>
-				
-				
-			</div>
-
-
-	
-		</div>
 		<!-- 메인 컨텐츠(여기까지 변경되야함)  -->
 			
-	</div>	
-		</div>
+		</div>	
+	</div>
 	</div>	
 	</section>
  	<c:import url="../temp/boot_footer.jsp"></c:import>

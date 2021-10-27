@@ -4,6 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
@@ -273,4 +274,34 @@ public class ProductController {
 		return t_date;
 	}
 	
+	
+	// 메인 페이지 찜목록 추가
+	@ResponseBody
+	@GetMapping("setZzim")
+	public int setZzim(ProductDTO productDTO, HttpSession session){
+		
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		Long member_id = memberDTO.getMember_id();
+		Long product_id = productDTO.getProduct_id();
+		
+		String zzim_code = Long.toString(member_id) + Long.toString(product_id);
+		
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		
+		map.put("member_id", member_id);
+		map.put("product_id", product_id);
+		map.put("zzim_code", zzim_code);
+		
+		
+		int result = 0;
+		
+		try {
+			result = productService.setZzim(map);
+		} catch (Exception e) {
+			
+			result = 0;
+		}
+		
+		return result;
+	}
 }

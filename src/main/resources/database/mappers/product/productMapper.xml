@@ -176,6 +176,30 @@
   			product_id = #{product_id}
   	</select>
   	
+  	<!-- 특정 id 상품 찜목록 추가 -->
+  	<insert id="setZzim" parameterType="Map">
+  		INSERT INTO zzim
+  			(zzim_id, zzim_code, member_id, product_id)
+  		VALUES
+  			(
+  				zzim_id_seq.nextval,
+  				#{zzim_code},
+  				#{member_id},
+  				#{product_id}
+  			)			
+  	</insert>
+  	
+  	<!-- 특정 멤버가 찜한 상품목록 불러오기 -->
+  	<select id="getZzim" parameterType="ZzimDTO" resultType="ProductDTO">
+  		SELECT *
+  		FROM
+  			zzim z RIGHT JOIN product p
+  		ON
+  			z.product_id = p.product_id
+  		WHERE
+  			z.member_id = #{member_id}
+  	</select>
+  	
   	<!-- 특정 id 상품의 주문가능한 일자의 첫번째 일자 가져오기 -->
   	<select id="getDateOne" parameterType="ProductDTO" resultType="ProductDTO">
   		SELECT
