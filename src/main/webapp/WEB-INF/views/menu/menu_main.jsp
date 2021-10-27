@@ -13,6 +13,7 @@
 			margin:0; 
 		}
 		.wrapper{
+			position: relative;
 			min-height:100%;
 			margin-top:85px;
 			margin-bottom:-290px;
@@ -29,7 +30,14 @@
 
 <div class="wrapper">		
 <!-- 여기에 페이지 작업 -->
-
+	
+	<!-- top 50 left 50 % 클릭시 이미지 깜빡하기 -->
+	<div class="cartin_img">
+		<span class="cartin_txt">
+			
+		</span>
+	</div>
+	
 	<!-- Width: 1180px, 한칸: width: 268px height: 548px-->
 		<div class="content_wrapper">
 
@@ -266,21 +274,59 @@
 	}
 	
 	/* 장바구니로 버튼 */
-	$(".main_cart_btn").on("click", function (){
+	$(document).on("click", ".main_cart_btn", async function (){
+		
+		if(session == ""){
+			alert("로그인 후 이용가능합니다.");
+			return false;
+		}
 		
 		let product_id = $(this).parent().prevAll(".click_menu").children("#product_id").val();
 		
+		$(this).css({
+			"background-position" : "-45px -235px",
+		});
+	
 		$.ajax({
 			url: 'getDateOne?product_id=' + product_id,
 			type: 'get',
 			success: function (result) {
-							
+				
+				// result = 주문가능한 첫일자
+				
+				let month = result.substr(5,2);
+				let date = result.substr(8,2);
+				
+				$.ajax({
+					url: "cart_insert?product_id=" + product_id + "&cart_delivery_date=" + result + "&cart_quantity=" + 1,
+					success : async function(){
+						$(".cartin_txt").text("배송일 " + month + "/" + date);
+						$(".cartin_img").css({
+							"visibility" : "visible"
+						});
+						await sleep(1000);
+						$(".cartin_img").css({
+							"visibility" : "hidden"
+						});
+					},
+					error:function(request,status,error){
+						
+				        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+				        
+				    }
+				});
 			},
 			error:function(request,status,error){
 				
 		        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
 		        
 		    }
+		});
+		
+		await sleep(1000);
+		
+		$(this).css({
+			"background-position" : "-45px -190px",
 		});
 		
 	});

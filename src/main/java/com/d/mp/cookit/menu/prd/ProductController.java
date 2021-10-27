@@ -11,10 +11,8 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.d.mp.cookit.menu.prd.util.ProductPager;
@@ -203,11 +201,7 @@ public class ProductController {
 		
 		return mv;
 	}
-	
-	// =========================== 사용자 상품 관련 페이지 끝 =========================== //
-	
-	
-	
+
 	// 장바구니 추가
 	@ResponseBody
 	@GetMapping("cart_insert")
@@ -259,4 +253,24 @@ public class ProductController {
 		
 		return mv;
 	}
+	
+	// 메인 페이지 장바구니 추가
+	
+	@ResponseBody
+	@GetMapping("getDateOne")
+	public String getDateOne(ProductDTO productDTO) throws Exception{
+		
+		ProductDTO dto = productService.getDateOne(productDTO);
+		
+		SimpleDateFormat transDate = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		
+		Date first_date = transDate.parse(dto.getProduct_regdate());
+		
+		SimpleDateFormat transCal = new SimpleDateFormat("yyyy-MM-dd");
+		
+		String t_date = transCal.format(first_date);
+		
+		return t_date;
+	}
+	
 }
