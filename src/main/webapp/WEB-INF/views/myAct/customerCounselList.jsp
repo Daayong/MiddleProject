@@ -6,9 +6,11 @@
 	<link href="${pageContext.request.contextPath}/resources/css/common.css" rel="stylesheet">
 	<link href="${pageContext.request.contextPath}/resources/css/myAct/customerCounselList.css" rel="stylesheet">
 	
+	
 	<title>My쿡킷 - 집밥을 특별하게,쿡킷</title>
 	
 	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	
 	<style>	
 		.wrapper{
@@ -168,8 +170,8 @@ $(function() {
 				data: {qna_id : qna_id},
 				success: function(data) {
 					if(data == '1'){
-					location.href="./customerCounselList"
 					
+					location.reload();
 					}else{
 						alert("1:1 문의내역 삭제에 실패했습니다.");
 					}

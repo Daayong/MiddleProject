@@ -90,7 +90,7 @@
 					<div class="added_file">
 					</div>
 				</div>
-				<button type="button" class="btn sm white delete" name="MycounselDelete"><span>삭제</span></button>
+				<button type="button" class="btn sm white delete"  name="MycounselDelete"><span>답변</span></button>
 			</div>
 		</div>
 
