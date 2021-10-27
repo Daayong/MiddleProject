@@ -10,7 +10,7 @@
 	<title>My쿡킷 - 집밥을 특별하게,쿡킷</title>
 	
 	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<style>	
 		.wrapper{
 			position:relative;
@@ -62,7 +62,7 @@
 	
 	<c:forEach var="counselList" items="${counselList}">
 	<li>
-		<div class="head" >
+		<div class="head" data-qna_id = ${counselList.qna_id }>
 			<a class="link_cnt ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
 			<input type="hidden" name="cusCslSeq" value="486099">
 				<div class="tit">
@@ -78,6 +78,7 @@
 					<span class="subject" style="width: 200px;"><span class="hide">문의유형</span>문의유형 : ${counselList.qna_type}  </span>
 					<span class="subject" style="width: 200px;"><span class="hide">주문번호</span>주문 번호 : ${counselList.payment_id} </span>				
 					<span class="date" style="top: 14px;" ><span class="hide">문의일자</span>문의 일자 : <br>${counselList.qna_date}</span>
+					<span class="add_comments" onclick="javascript:addComment('${counselList.qna_id}')" ><span>답변 작성</span></span>
 				</div>
 				<span class="hide ui_accord_text">내용 열기</span>
 			</a>
@@ -90,7 +91,7 @@
 					<div class="added_file">
 					</div>
 				</div>
-				<button type="button" class="btn sm white delete"  name="MycounselDelete"><span>답변</span></button>
+				
 			</div>
 		</div>
 
@@ -149,6 +150,14 @@ $(".head").click(function() {
 		$(this).parent().removeClass("on");
 	}
 });
+
+function addComment(qna_id) {
+	var url = "../management/member_addComments?qna_id="+qna_id;
+	var name = "update";
+	var option = "width = 600, height = 600, top =200, left = 480, location = no, scrollbars = yes ";
+	window.open(url, name, option);
+}
+
 
 $(function() {
 	$('.delete').click(function() {

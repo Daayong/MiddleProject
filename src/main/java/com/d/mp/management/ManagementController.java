@@ -6,6 +6,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -123,5 +124,22 @@ public class ManagementController {
 		mv.setViewName("management/member_CounselList");
 		
 		return mv;
+	}
+	
+	@GetMapping("member_addComments")
+	public ModelAndView memberAddComments(QnaDTO qnaDTO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		qnaDTO  = qnaService.getOneCounselList(qnaDTO);
+		mv.addObject("counselList", qnaDTO);
+		mv.setViewName("management/member_addComments");
+		return mv;
+	}
+	
+	
+	@PostMapping("member_addComments")
+	@ResponseBody
+	public int setCounselComment(QnaDTO qnaDTO) throws Exception{
+		
+		return qnaService.setCounselComment(qnaDTO);
 	}
 }

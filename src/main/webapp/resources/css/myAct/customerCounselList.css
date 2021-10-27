@@ -303,6 +303,25 @@
     line-height: 21px;
 }
 
+.add_comments {
+    border: 1px solid #ccc;
+}
+
+.add_comments {
+    color: #101010;
+    border: 1px solid #202020;
+    background-color: #FFFFFF;
+}
+
+.add_comments {
+    height: 32px;
+    padding: 4px 13px 5px;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 21px;
+    margin-left: 130;
+}
+
 .qna_list_wrap .list_acco .head .etc_info:after {
     content: '';
     display: block;

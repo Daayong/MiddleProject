@@ -53,6 +53,27 @@
   		ORDER BY	
   			qna_id DESC
   	</select>
+  	
+  	<!-- 회원 한명의 문의내역 보기 -->
+  	<select id="getOneCounselList" parameterType="QnaDTO" resultType="QnaDTO">
+  		SELECT 
+  			*
+  		FROM 
+  			qna
+  		WHERE 
+  			qna_id = #{qna_id}
+  	</select>
+  	
+  	<!-- 회원 1:1 문의 답변 작성 -->
+  	<update id="setCounselComment" parameterType="QnaDTO">
+  		UPDATE
+  			qna
+  		SET
+  			qna_answer = #{qna_answer}, 
+  			qna_answer_date = sysdate
+  		WHERE 
+  			qna_id = #{qna_id}
+  	</update>
   
   
   </mapper>

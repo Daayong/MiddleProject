@@ -30,5 +30,13 @@ public class QnaService {
 	public List<QnaDTO> getMemberCounselList() throws Exception{
 		return qnaDAO.getMemberCounselList();
 	}
+	
+	public int setCounselComment(QnaDTO qnaDTO) throws Exception{
+		return qnaDAO.setCounselComment(qnaDTO);
+	}
+	
+	public QnaDTO getOneCounselList(QnaDTO qnaDTO) throws Exception{
+		return qnaDAO.getOneCounselList(qnaDTO);
+	}
 
 }
