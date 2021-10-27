@@ -292,15 +292,32 @@
 			type: 'get',
 			success: function (result) {
 				
+				
+				// 만약 위에 날짜가 선택된 상태이면...
+				date = String(date);
+				
+				// 20221231 => 2022-12-31
+				let tmp_y = date.substr(0,4);
+				let tmp_m = date.substr(4,2);
+				let tmp_d = date.substr(6);
+
+				let tmp_date = tmp_y + "-" + tmp_m + "-" + tmp_d;
+				
+				if(date != ""){
+					result = tmp_date;
+				}
+
 				// result = 주문가능한 첫일자
 				
 				let month = result.substr(5,2);
-				let date = result.substr(8,2);
+				let s_date = result.substr(8,2); // menu_js에 선언된 date 하고 겹쳐서 이름 s_date
+				
+				
 				
 				$.ajax({
 					url: "cart_insert?product_id=" + product_id + "&cart_delivery_date=" + result + "&cart_quantity=" + 1,
 					success : async function(){
-						$(".cartin_txt").text("배송일 " + month + "/" + date);
+						$(".cartin_txt").text("배송일 " + month + "/" + s_date);
 						$(".cartin_img").css({
 							"visibility" : "visible"
 						});
