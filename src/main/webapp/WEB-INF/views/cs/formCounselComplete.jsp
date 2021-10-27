@@ -45,7 +45,7 @@
 			<div class="top_sec">
 				<div class="tab_menu">
 					<ul>
-						<li class="on"><a nohref="">1:1 문의 작성</a></li>
+						<li class="on"><a href="${pageContext.request.contextPath}/cs/formCounsel">1:1 문의 작성</a></li>
 						 <!-- 선택된 메뉴에 on클래스 추가 -->
 						<li><a href="${pageContext.request.contextPath}/myAct/customerCounselList">1:1 문의 내역</a></li>
 					</ul>

@@ -206,16 +206,15 @@
 		
 									
 								<!-- 선택된 상품이 없을 때 -->
-								<div class="pro_box no_pro" style="display: none;">
-									<span class="txt" >문의할 주문번호 또는 상품을 선택해주세요.</span>
+								<div class="pro_box no_pro"  style="display: block;">
+									<span class="txt">문의할 주문번호 또는 상품을 선택해주세요.</span>
 								</div>
 								<!-- //선택된 상품이 없을 때 -->
 	
 								<!-- 선택된 상품이 있을 때 -->
-								<div class="pro_box pro_info" style="display: blocks;">
-									<span class="txt">		
-									<span class="hide">주문번호</span>20211025712679/<span class="hide">상품명</span>*투움바 스테이크 파스타 외 1건	</span>
-								<input type="hidden" name="payment_id" value="">
+								<div class="pro_box pro_info"  style="display: none;">
+									<span class="txt">20211025712679/<span class="hide">상품명</span>*투움바 스테이크 파스타 외 1건	</span>
+									<button type="button" class="btn_cancle"><span class="hide">선택취소</span></button>
 								</div>
 								<!-- //선택된 상품이 있을 때 -->
 								<button type="button" class="btn sub green" onclick="javascipt:openProdListModal();"><span>조회</span></button>
@@ -375,41 +374,60 @@
 	 
 	 <div class="ui_modal_dim" style="position: fixed; inset: 0px; background: rgb(0, 0, 0); opacity: 0.6; z-index: 8000;"></div>
 	 
-	 <article id="prodListModal" class="lay_wrap ui_modal_container" style="width: 480px; margin-left: -240px; display: block; position: absolute; outline: none; background-clip: padding-box; left: 50%; top: 50%; margin-top: -165px;" ui-modules="Modal,CheckboxRadioFocus" role="dialog" aria-hidden="false" aria-describedby="modal_9_content" aria-labelledby="modal_9_title" tabindex="0">
+	 <article id="prodListModal" class="lay_wrap ui_modal_container" style="width: 480px; margin-left: -240px; display: block; position: absolute; outline: none; background-clip: padding-box; left: 50%; top: 32%; margin-top: -165px;"  role="dialog" aria-hidden="false" aria-describedby="modal_9_content" aria-labelledby="modal_9_title" tabindex="0">
 		<header class="line">
 			<h1 id="modal_9_title" style="user-select: none; cursor: move;"><span>주문/상품 선택</span></h1>
 		</header>
 		<section class="lay_conts lay_scroll" id="modal_9_content">
 			<div class="order_delivery">
-						<p class="order_tit">김채현님께서 최근 1개월간 주문하신 내역입니다.</p>
+						<p class="order_tit">${member.member_name}님께서 최근 1개월간 주문하신 내역입니다.</p>
 						<div class="delivery_location no_top">
-							<!-- loop -->
+						
+						
+				<!-- loop -->
 								
+					<c:set var="tempPaymentID"></c:set>
+							<c:forEach var="paymentList" items="${paymentListDTOs}">
+							<c:if test="${tempPaymentID ne paymentList.payment_id }">
 								<div class="order_prd">
 									<div class="top">
 										<div class="tit">
 											<div class="rad_wrap">
-												<input type="radio" id="oreder_prd20211014656456" name="order" value="20211014656456" data-odr-nm="닭한마리와 칼국수" onchange="javascript:closeProdListModal(this);" class="accessibility-keyboard">
-												<label for="oreder_prd20211014656456" class="order_num">주문번호<span class="ff_avr">20211014656456</span></label>
+												<input type="checkbox" id="oreder_payment_id" name="order" value="${paymentList.payment_id}" data-odr-nm="${paymentList.payment_id}" onchange="javascript:closeProdListModal();" class="accessibility-keyboard">
+												<label for="oreder_payment_id" class="order_num">주문번호<span class="ff_avr">${paymentList.payment_id}</span></label>
 											</div>
 										</div>
 									</div>
+									
 									<div class="prd_list_n">
 										<ul>
+										
+										<c:forEach var="paymentListA" items="${paymentListDTOs}">
+										<c:if test="${paymentList.payment_id eq paymentListA.payment_id}">
 											<li>
 												<div class="rad_wrap">
-													<input type="radio" id="oreder_prd211014_40035243" name="prod" value="40035243" data-prd-nm="닭한마리와 칼국수" onchange="javascript:closeProdListModal(this);" class="accessibility-keyboard">
-													<label for="oreder_prd211014_40035243">
+													<input type="checkbox" id="oreder_payment_id1" name="prod" value="${paymentListA.payment_id}" data-prd-nm="${paymentListA.product_name}" onchange="javascript:closeProdListModal();" class="accessibility-keyboard">
+													<label for="oreder_payment_id1">
 														<div class="img">
-															<img src="//img.cjcookit.com/images/file/product/768/20200605150334686.jpg" alt="닭한마리와 칼국수" onerror="cj.com.noImg(this)">
+															<img src="/mp/resources/upload/menu/main/${paymentListA.product_id}/${paymentListA.product_name}.jpg" alt="닭한마리와 칼국수" onerror="cj.com.noImg(this)">
 														</div>
-														<div class="txt"><span class="mt_elps">닭한마리와 칼국수</span></div>
+														<div class="txt" id="product_name"><span class="mt_elps">${paymentListA.product_name}</span>
+														</div>
 													</label>
 												</div>
 											</li>
+											</c:if>
+											</c:forEach>
+
 									</ul>
 								</div>
+							
 							</div>
+							<c:set var="tempPaymentID">${paymentList.payment_id}</c:set>
+							</c:if>
+							</c:forEach>
+			
+					<!-- //loof -->
 						</div>
 							</div>
 					</section>
@@ -505,6 +523,28 @@ $(".ui_modal_close").on("click", function() {
 	$(".ui_modal_wrap").css({"display" : "none"});
 })
 
+$("#oreder_payment_id").on("click", function() {
+	let payment_id = $('#oreder_payment_id').val();
+	let product_name = $('#product_name').text();
+	
+	alert(payment_id+product_name);
+});
+
+$("#oreder_payment_id1").on("click", function() {
+	let payment_id = $('#oreder_payment_id').val();
+	let product_name = $('#product_name').text();
+	
+	alert(payment_id+product_name);
+});
+
+
+function closeProdListModal(){
+	$(".ui_modal_wrap").hide();
+	$(".no_pro").hide();
+	$(".pro_info").show();
+}
+
+
 
 /* 글자수 카운트, 제한 */
 $(document).ready(function() {
@@ -520,7 +560,6 @@ $(document).ready(function() {
     
 
 /* 답변 알림 체크 */
-
 	
 	$('#email').on('click',function () {
 		if ($("#email").prop('checked')) {
@@ -553,8 +592,6 @@ $(document).ready(function() {
 		}
 	}
 
-	
-	/* 취소버튼 */
 
 
 /* 폼 제출시 유효성 검사 */

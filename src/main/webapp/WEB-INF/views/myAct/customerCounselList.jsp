@@ -60,23 +60,33 @@
 			
 				<div class="qna_list_wrap">
 				<div class="list_acco ui_accordion" data-accord-group="info" data-single-open="true" ui-modules="Accordion">
+				
+				
 					<ul id="myInqDataArea">
 	
 
 	<!-- loop -->
+	<c:forEach var="qnaList" items="${qnaList}">
 	<li>
-		<div class="head">
+		<div class="head" >
 			<a class="link_cnt ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
 			<input type="hidden" name="cusCslSeq" value="486099">
 				<div class="tit">
-						<span class="ans_state end"><span class="hide">답변 상태 : </span>답변완료</span><!-- 개발 요청 사항 : 답변대기 시 .ans_state에 ing 클래스 추가 / 답변완료 시 .ans_state에 end 클래스 추가 -->
-						
-					<span class="subject"><span class="hide">질문내용</span>새벽배송이 가능한 지역은 무조건 새벽배송으로만 배송되나요??</span>
-					<span class="date"><span class="hide">문의일자</span>2021-10-14</span>
+				<c:choose>
+					<c:when test="${empty qnaList.qna_answer}">
+						<span class="ans_state ing"><span class="hide">답변 상태 : </span>답변대기</span>
+					</c:when>
+					<c:otherwise>
+						<span class="ans_state end"><span class="hide">답변 상태 : </span>답변완료</span>
+					</c:otherwise>
+				</c:choose>		
+					<span class="subject"><span class="hide">질문내용</span>${qnaList.qna_content}</span>
+					<span class="date"><span class="hide">문의일자</span>${qnaList.qna_date }</span>
 				</div>
 				<span class="hide ui_accord_text">내용 열기</span>
 			</a>
-			<div class="etc_info">
+			
+			<div class="etc_info" data-qna_id = "${qnaList.qna_id }">
 			
 				<span class="prd_txt name hiddenEmpty"><span class="hide">연관주문상품</span><span class="cusPrdNm"></span></span>
 				
@@ -84,7 +94,7 @@
 					<div class="added_file">
 					</div>
 				</div>
-				<button class="btn sm white" onclick="deleteCustomerCounsel('486099')"><span>삭제</span></button>
+				<button type="button" class="btn sm white delete" name="MycounselDelete"><span>삭제</span></button>
 			</div>
 		</div>
 
@@ -93,15 +103,17 @@
 					<div class="desc_cont">
 					<div class="cont">
 					<span class="hide">답변내용</span>
-					안녕하세요, 소중한 고객님<br>CJ쿡킷입니다.<br><br>저희 쿡킷 제품은 일반 배송은 진행되지 않고<br>새벽배송으로만 진행되고 있어 이 점 양해말씀드립니다.<br><br>감사합니다.<br>CJ 쿡킷 드림. 
+					${qnaList.qna_answer}
 					</div>
-					<span class="date"><span class="hide">답변일자</span>2021-10-14</span>
+					<span class="date"><span class="hide">답변일자</span>${qnaList.qna_answer_date }</span>
 					</div>
 				</div>
 
 				</li>
+				
 					<!-- //loop -->
 
+				</c:forEach>
 
 					</ul>
 				</div>
@@ -134,6 +146,7 @@
 
 <script type="text/javascript">
 
+/* 답변창 accord */
 $(".head").click(function() {
 	if($(this).next().css("display")=="none"){
 		$(this).next().slideDown("200");
@@ -143,6 +156,36 @@ $(".head").click(function() {
 		$(this).parent().removeClass("on");
 	}
 });
+
+$(function() {
+	$('.delete').click(function() {
+		var qna_id = $(this).parents(".etc_info").data('qna_id');
+		
+		if(confirm("1:1 문의내역을 삭제하시겠습니까?") == true){
+			$.ajax({
+				url:'./MycounselDelete',
+				type: 'get',
+				data: {qna_id : qna_id},
+				success: function(data) {
+					if(data == '1'){
+						alert("성공적으로 삭제되었습니다.");
+						location.reload();
+					}else{
+						alert("1:1 문의내역 삭제에 실패했습니다.");
+					}
+				}
+				
+				
+			});
+		}else{
+			return false;
+		}
+		
+		
+	});
+});
+
+
 
 </script>
 

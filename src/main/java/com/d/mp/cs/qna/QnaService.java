@@ -1,6 +1,7 @@
 package com.d.mp.cs.qna;
 
 import java.util.HashMap;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,5 +19,12 @@ public class QnaService {
 		return qnaDAO.setFormcounselUpload(qnaDTO);
 	}
 	
+	public List<QnaDTO> getMyCounselList(MemberDTO memberDTO) throws Exception{
+		return qnaDAO.getMyCounselList(memberDTO);
+	}
+	
+	public int setDeleteMyCounsel(QnaDTO qnaDTO) throws Exception{
+		return qnaDAO.setDeleteMyCounsel(qnaDTO);
+	}
 
 }

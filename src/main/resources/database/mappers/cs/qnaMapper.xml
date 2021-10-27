@@ -16,16 +16,31 @@
   	INSERT INTO qna(qna_id, member_id, qna_content, qna_type, qna_email, qna_phone, qna_date, payment_id)
   			 
   	VALUES
-  		(#{qna_id}, #{member_id}, #{qna_content}, #{qna_type}, #{qna_email}, #{qna_phone}, sysdate, 2021102600011 )
+  		(#{qna_id}, #{member_id}, #{qna_content}, #{qna_type}, #{qna_email}, #{qna_phone}, sysdate, #{payment_id} )
   
   </insert>
   
   <!-- 내가작성한 문의내역 보기  -->
-  
-  <select id="getMyCounselList" parameterType="QnaDTO" resultType="QnaDTO">
-  		SELECT
-  
-  </select>
+	<select id="getMyCounselList" parameterType="MemberDTO" resultType="QnaDTO">
+		SELECT
+			*
+		FROM
+			qna
+		WHERE
+			member_id = #{member_id}
+		ORDER BY
+			qna_id DESC
+	</select>
+
+	<!-- 문의내역 삭제  -->
+	<delete id="setDeleteMyCounsel" parameterType="QnaDTO">
+	
+		DELETE 
+			qna
+		WHERE
+			qna_id = #{qna_id}
+	
+	</delete>
   
   
   
