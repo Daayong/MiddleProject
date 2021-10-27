@@ -70,7 +70,7 @@
   			qna
   		SET
   			qna_answer = #{qna_answer},
-  			qna_answer_date = #{qna_answer_date}
+  			qna_answer_date = sysdate
   		WHERE 
   			qna_id = #{qna_id}
   	</update>

@@ -33,8 +33,8 @@ public class QnaDAO {
 		return sqlSession.selectList(NAMESPACE+"getMemberCounselList");
 	}
 
-	public void setCounselComment(QnaDTO qnaDTO) throws Exception{
-		sqlSession.update(NAMESPACE+"setCounselComment", qnaDTO);
+	public int setCounselComment(QnaDTO qnaDTO) throws Exception{
+		return sqlSession.update(NAMESPACE+"setCounselComment", qnaDTO);
 	}
 	
 	public QnaDTO getOneCounselList(QnaDTO qnaDTO) throws Exception{

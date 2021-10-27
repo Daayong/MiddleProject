@@ -138,14 +138,10 @@ public class ManagementController {
 	
 	
 
-	@RequestMapping(value = "/member_addComments", method = RequestMethod.POST)
-	public String setCounselComment(QnaDTO qnaDTO) throws Exception{
+	@PostMapping("member_addComments")
+	@ResponseBody
+	public int setCounselComment(QnaDTO qnaDTO) throws Exception{
 		
-		qnaService.setCounselComment(qnaDTO);
-		
-		
-		return "redirect:./member_CounselList";
-		
-		
+		return qnaService.setCounselComment(qnaDTO);
 	}
 }

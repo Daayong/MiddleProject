@@ -89,8 +89,8 @@
 			</a>
 			
 			<div class="etc_info" data-qna_id = "${qnaList.qna_id }">
-			
-				<span class="prd_txt name hiddenEmpty"><span class="hide">연관주문상품</span><span class="cusPrdNm"></span></span>
+					<span class="prd_txt num" id="prdOrdNo" ><span class="cusOdrNo">${qnaList.payment_id}</span></span>
+				<a href="../member/myOrderList"><span class="prd_txt name hiddenEmpty"><span class="hide">연관주문상품</span><span class="cusPrdNm"></span></span></a>
 				
 				<div class="add_sec" style="display : none;">
 					<div class="added_file">
