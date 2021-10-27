@@ -5,7 +5,7 @@
 <head>
 <meta charset="UTF-8">
 <link href="${pageContext.request.contextPath}/resources/css/common.css" rel="stylesheet">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
 <title>배송지 관리 | 집밥을 특별하게,쿡킷</title>
 
 	<style>
@@ -19,7 +19,7 @@
 <body>
 
 	<div class="addWrap">
-		<form id="commentsFrom" name="commentsForm" method="post" >
+		<form action="./member_addComments?qna_id=${counselList.qna_id}" name="member_addComments" enctype="multipart/form-data" method="post" >
 			
 			
 			<div class="tit">
@@ -33,98 +33,30 @@
 				
 				<input type="hidden" name="member_id" id="member_id" value="${counselList.member_id}">
 		<div class="textarea">
-			<input type="text" id="qna_answer" name="qna_answer" title="qna_answer" placeholder="답변을 입력해주세요"  class="ui_inputLimit" maxlength="1000"></input>
+		
+		
+			<input type="text" value="${counselList.qna_answer}" id="qna_answer" name="qna_answer" title="qna_answer" placeholder="답변을 입력해주세요"  class="ui_inputLimit" maxlength="1000"></input>
 			
 		</div>
 				
 				
-		</form>
 	
 		<div class="btn_wrap" align="center">
 			<button type="button" class="btn" id="cancel" name="cancel">취소</button>
-			<button type="button" class="btn green" onclick="checkInput('${counselList.qna_id}');" id="setComments" name="setComments">추가</button>
+			<button type="submit" class="btn green" >추가</button>
 		</div>
+		</form>
 	</div>
 
 
 
 	<script type="text/javascript">
-		const cancel = document.getElementById('cancel');
-		cancel.addEventListener('click',function(){
-			if(confirm("답변 작성을 취소하시겠습니까?")==true){
-				window.close();	
-			}
-			return false; 
-		});
-		
-		const commentsForm = document.getElementById('commentsForm');
-		
-		
-		
-		   function checkInput(qna_id){
-		      
-		         if(confirm('답변을 작성하시겠습니까?')==true){   
-		             
-		             
-		             var member_id=member_id.val();
-		             
-		            $.ajax({
-		               url:'./member_addComments',
-		               type:'post',
-		               data:{
-		                  
-		                  member_id:member_id,   
-		                  qna_id:qna_id
-		               },
-		               success:function(data){
-		                  console.log(data);
-		                  if(data >0){
-		                     alert("답변이 작성되었습니다.");
-		                     opener.location.reload();
-		                     window.close();
-		                     
-		                  }else{
-		                     alert("답변 작성에 실패했습니다.");
-		                  }
-		               }
-		            });
-		         
-		            
-		          
-		         }else{
-		            return false;
-		         }
-		      
-		      }
-		      
-		
-		
-		
-		
-		
-		
+	
+
 		
 
 	</script>
  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

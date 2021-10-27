@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -136,10 +137,15 @@ public class ManagementController {
 	}
 	
 	
-	@PostMapping("member_addComments")
-	@ResponseBody
-	public int setCounselComment(QnaDTO qnaDTO) throws Exception{
+
+	@RequestMapping(value = "/member_addComments", method = RequestMethod.POST)
+	public String setCounselComment(QnaDTO qnaDTO) throws Exception{
 		
-		return qnaService.setCounselComment(qnaDTO);
+		qnaService.setCounselComment(qnaDTO);
+		
+		
+		return "redirect:./member_CounselList";
+		
+		
 	}
 }

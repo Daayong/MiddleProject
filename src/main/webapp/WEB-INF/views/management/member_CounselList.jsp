@@ -78,7 +78,7 @@
 					<span class="subject" style="width: 200px;"><span class="hide">문의유형</span>문의유형 : ${counselList.qna_type}  </span>
 					<span class="subject" style="width: 200px;"><span class="hide">주문번호</span>주문 번호 : ${counselList.payment_id} </span>				
 					<span class="date" style="top: 14px;" ><span class="hide">문의일자</span>문의 일자 : <br>${counselList.qna_date}</span>
-					<span class="add_comments" onclick="javascript:addComment('${counselList.qna_id}')" ><span>답변 작성</span></span>
+					<span class="add_comments" onclick="location.href='./member_addComments?qna_id=${counselList.qna_id}'" ><span>답변 작성</span></span>
 				</div>
 				<span class="hide ui_accord_text">내용 열기</span>
 			</a>
@@ -151,12 +151,7 @@ $(".head").click(function() {
 	}
 });
 
-function addComment(qna_id) {
-	var url = "../management/member_addComments?qna_id="+qna_id;
-	var name = "update";
-	var option = "width = 600, height = 600, top =200, left = 480, location = no, scrollbars = yes ";
-	window.open(url, name, option);
-}
+
 
 
 $(function() {
