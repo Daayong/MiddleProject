@@ -88,7 +88,7 @@
 			
 			<div class="etc_info" data-qna_id = "${qnaList.qna_id }">
 				
-					<span style="cursor: pointer;" onclick="location.href = '../member/myOrderList'" class="prd_txt num" id="prdOrdNo" ><span class="cusOdrNo">${qnaList.payment_id}</span>
+					<span style="cursor: pointer;" onclick="location.href = '../member/myOrder?payment_id=${qnaList.payment_id}'" class="prd_txt num" id="prdOrdNo" ><span class="cusOdrNo">${qnaList.payment_id}</span>
 					
 					
 					<span class="cusPrdNm"> &nbsp; ${qnaList.qna_product_name}</span>
