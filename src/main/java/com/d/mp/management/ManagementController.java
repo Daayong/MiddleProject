@@ -101,7 +101,7 @@ public class ManagementController {
 		
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("prdDTO", prdAr);
-		mv.setViewName("management/product_manage");
+		mv.setViewName("redirect: management/product_manage");
 		
 		return mv;
 	}

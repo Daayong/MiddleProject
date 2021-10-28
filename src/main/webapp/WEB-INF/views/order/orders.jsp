@@ -177,7 +177,13 @@
 											</div>
 											
 											<div class="quantity_wrap">
-												<span class="cart_quantity">수량${cartListDTOsJ.cart_quantity}개</span>
+												<!-- 수빈 수정 -->
+												<!-- 날짜 포맷 변경 -->
+												<fmt:parseDate value="${cartListDTOsI.cart_delivery_date}" var="parseDateValue" pattern="yyyy-MM-dd"/>
+												<!-- 날짜 포맷 변경 -->
+												<span class="cart_quantity" data-cart_quantity="${cartListDTOsJ.cart_quantity}">수량${cartListDTOsJ.cart_quantity}개</span>
+												<input type="hidden" class="product_regdate" value="<fmt:formatDate value="${parseDateValue}" pattern="yyyy-MM-dd"/>">
+												<input type="hidden" class="product_id" value="${cartListDTOsJ.product_id}">
 											</div>
 											
 											<div class="price_wrap" data-price_wrap="${cartListDTOsJ.product_price * cartListDTOsJ.cart_quantity}">

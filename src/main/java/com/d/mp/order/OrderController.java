@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.d.mp.cookit.menu.prd.ProductDTO;
+import com.d.mp.cookit.menu.prd.ProductService;
 import com.d.mp.member.MemberDTO;
 import com.d.mp.member.MemberService;
 import com.d.mp.order.cart.CartDTO;
@@ -29,6 +31,9 @@ public class OrderController {
 	
 	@Autowired
 	private MemberService memberService;
+	
+	@Autowired
+	private ProductService productService;
 	
 	@RequestMapping("cartList")
 	public String cartList(Model model, HttpSession session) throws Exception {	
@@ -53,7 +58,11 @@ public class OrderController {
 	
 	@RequestMapping("insertPayment")
 	@ResponseBody
-	public Long insertPayment(Model model, HttpSession session, PaymentDTO paymentDTO, int save_point) throws Exception {
+	public Long insertPayment(Model model, HttpSession session, PaymentDTO paymentDTO, int save_point, ProductDTO productDTO) throws Exception {
+		
+		// 수빈 추가
+		productService.insertPayment(productDTO);
+		
 		MemberDTO memberDTO = (MemberDTO) session.getAttribute("member");
 		
 		paymentDTO.setMember_id(memberDTO.getMember_id());		

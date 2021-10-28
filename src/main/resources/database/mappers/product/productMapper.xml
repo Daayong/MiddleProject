@@ -176,6 +176,17 @@
   			product_id = #{product_id}
   	</select>
   	
+  	<!-- 구매 후 상품의 수량 변경 -->
+  	<update id="insertPayment" parameterType="ProductDTO">
+  		UPDATE
+  			product_date
+  		SET
+  			product_sell_count = product_sell_count + #{product_sell_count}
+  		WHERE
+  			product_regdate = #{product_regdate} AND
+  			product_id = #{product_id}
+  	</update>
+  	
   	<!-- 특정 id 상품 찜목록 추가 -->
   	<insert id="setZzim" parameterType="Map">
   		INSERT INTO zzim

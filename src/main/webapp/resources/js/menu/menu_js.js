@@ -163,7 +163,7 @@ $(".zzim").click(function (){
 				});
 			}
 			else{
-				alert("해당 상품은 이미 장바구니에 있습니다.");
+				alert("해당 상품은 이미 찜목록에 있습니다!");
 			}
 		},
 		error:function(request,status,error){

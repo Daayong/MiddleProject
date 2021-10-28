@@ -63,6 +63,11 @@ public class ProductDAO {
 		return sqlSession.selectOne(NAMESPACE + "getSoldSum", product_id);
 	}
 	
+	//구매 후 상품의 수량 변경
+	public int insertPayment(ProductDTO productDTO) throws Exception{
+		return sqlSession.update(NAMESPACE + "insertPayment", productDTO);
+	}
+	
 	//특정 id 상품 찜목록 추가
 	public int setZzim(Map<String, Object> map) throws Exception{
 		return sqlSession.insert(NAMESPACE + "setZzim", map);

@@ -276,6 +276,7 @@
 							<li class="item">
 								<div class="item_module">
 									<div class="img_wrap">
+										<img src="./resources/upload/menu/main/${m_dto.product_id}/${m_dto.product_name}.jpg">
 									</div>
 									<div class="txt_wrap">
 										<div class="tit_info">
@@ -318,14 +319,8 @@
 				
 				<div class="main_product_list">
 					<ul>
-						<c:forEach begin="0" end="2">
-							<li class="item">
-								<div class="item_module">
-									<div class="img_wrap"></div>
-									<div class="txt_wrap"></div>
-									<div class="act_btn_wrap"></div>
-								</div>
-							</li>
+						<c:forEach begin="0" end="0">
+
 						</c:forEach>
 					</ul>
 				</div>

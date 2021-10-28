@@ -99,14 +99,14 @@
 													</ul>
 												</div>
 											</div>
-											<div class="item_btnbox">
+									<!-- 		<div class="item_btnbox">
 												<div class="menu_btn zzim_btn">
 												
 												</div>
 												<div class="menu_btn cart_btn">
 
 												</div>
-											</div>
+											</div> -->
 										</div>
 										<!-- c:foreach -->
 									</c:forEach>	
@@ -184,14 +184,14 @@
 													
 												</div>
 												
-												<div class="item_btnbox">
+										<!-- 		<div class="item_btnbox">
 													<div class="menu_btn zzim_btn">
 													
 													</div>
 													<div class="menu_btn cart_btn">
 					
 													</div>
-												</div>
+												</div> -->
 												
 											</div>
 								<!-- c:foreach -->

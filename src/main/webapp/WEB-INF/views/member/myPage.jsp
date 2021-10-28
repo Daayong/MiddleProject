@@ -206,19 +206,21 @@
 					<div class="zzim_wrap">
 
 						<c:forEach items="${zzim}" var="zzim" begin="0" end="3">
-							<div class="zzim_item">
-								<div class="zzim_imgwrap">
-									<img src="../resources/upload/menu/main/${zzim.product_id}/${zzim.product_name}.jpg">
+							<a href="../menu/menu_detail?product_id=${zzim.product_id}">
+								<div class="zzim_item">
+									<div class="zzim_imgwrap">
+										<img src="../resources/upload/menu/main/${zzim.product_id}/${zzim.product_name}.jpg">
+									</div>
+									<div class="zzim_infowrap">
+										<span class="zzim_tit">
+											${zzim.product_name}
+										</span>
+										<span class="zzim_price">
+											<fmt:formatNumber value="${zzim.product_price}" type="number" maxFractionDigits="3"/>원
+										</span>
+									</div>
 								</div>
-								<div class="zzim_infowrap">
-									<span class="zzim_tit">
-										${zzim.product_name}
-									</span>
-									<span class="zzim_price">
-										<fmt:formatNumber value="${zzim.product_price}" type="number" maxFractionDigits="3"/>원
-									</span>
-								</div>
-							</div>
+							</a>
 						</c:forEach>
 						
 					</div>

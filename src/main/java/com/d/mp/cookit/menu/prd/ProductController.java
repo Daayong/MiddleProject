@@ -97,35 +97,46 @@ public class ProductController {
 		
 		String today = transDate.format(cal.getTime());
 		
+		// 품절이아닌 주문일자가 지나가버리면.
+		boolean isEndDate = false;
+		String state = "";
 		
-		// 상품별 재고상태 업데이트
-		for(int i=0; i<prdDate.size(); i++) {
+		for(ProductDTO prdDate_each : prdDate) {
+
+			Long sell_count = prdDate_each.getProduct_sell_count();
+			Long max_count = prdDate_each.getProduct_max_count();
 			
-			Long sell_count = prdDate.get(i).getProduct_sell_count();
-			Long max_count = prdDate.get(i).getProduct_max_count();
-			
-			String getdate = prdDate.get(i).getProduct_regdate();
+			String getdate = prdDate_each.getProduct_regdate();
 			
 			Date today_date = transDate.parse(today);
 			Date reg_date = transDate.parse(getdate);
 			
-			if(sell_count >= max_count) {
+			int compare_count = sell_count.compareTo(max_count);
+			
+			if(compare_count == 1 || compare_count == 0) {
 				
-				prdDate.get(i).setProduct_date_state("상품준비중");
-				productService.doDateState(prdDate.get(i));
-			}else if(max_count > sell_count) {
-				
-				prdDate.get(i).setProduct_date_state("판매가능");
-				productService.doDateState(prdDate.get(i));
+				prdDate_each.setProduct_date_state("상품준비중");
+				productService.doDateState(prdDate_each);
+			}else if(compare_count == -1) {
+
+				prdDate_each.setProduct_date_state("판매가능");
+				productService.doDateState(prdDate_each);
 			}
 			
 			// 주문일 마감 상태 업데이트
 			int compare = today_date.compareTo(reg_date);
 			if(compare > 0) {
-				prdDate.get(i).setProduct_date_state("주문마감");
-				productService.doDateState(prdDate.get(i));
-			}else {
-				
+				prdDate_each.setProduct_date_state("주문마감");
+				productService.doDateState(prdDate_each);
+			}
+			
+			state = prdDate_each.getProduct_date_state();
+			
+			if(state.equals("판매가능")) {
+				isEndDate = false;
+				break;
+			}else if(state.equals("주문마감")) {
+				isEndDate = true;
 			}
 		}
 		
@@ -157,25 +168,65 @@ public class ProductController {
 	@ResponseBody
 	@GetMapping("menu_main")
 	public ModelAndView getPrdList(ProductDTO productDTO, ProductPager pager) throws Exception{
+		
 		List<ProductDTO> prdAr = productService.getPrdList(productDTO, pager);
 		
 		int isSoldOut = 0;
 		List<ProductDTO> prdDate = null;
 		
-		for(int i=0; i<prdAr.size(); i++) {
+		// detail => main
+		Date now = new Date();
+		SimpleDateFormat transDate = new SimpleDateFormat("yyyy-MM-dd");
+		
+		// 오늘 날짜의 +2 한 날짜 구하기
+		Calendar cal = Calendar.getInstance();
+		cal.setTime(now);
+		
+		cal.add(Calendar.DATE, 2);
+		
+		String today = transDate.format(cal.getTime());
+		
+		
+		for(ProductDTO prdAr_each : prdAr) {
 			
 			// 품절이아닌 주문일자가 지나가버리면.
 			boolean isEndDate = false;
 			String state = "";
 			
-			prdDate = productService.getDate(prdAr.get(i));
+			prdDate = productService.getDate(prdAr_each);
 			
-			for(int j=0; j<prdDate.size(); j++) {
+			for(ProductDTO prdDate_each : prdDate) {
 				
-				state = prdDate.get(j).getProduct_date_state();
+				Long sell_count = prdDate_each.getProduct_sell_count();
+				Long max_count = prdDate_each.getProduct_max_count();
+				
+				String getdate = prdDate_each.getProduct_regdate();
+				
+				Date today_date = transDate.parse(today);
+				Date reg_date = transDate.parse(getdate);
+				
+				int compare_count = sell_count.compareTo(max_count);
+				
+				if(compare_count == 1 || compare_count == 0) {
+					
+					prdDate_each.setProduct_date_state("상품준비중");
+					productService.doDateState(prdDate_each);
+				}else if(compare_count == -1) {
+
+					prdDate_each.setProduct_date_state("판매가능");
+					productService.doDateState(prdDate_each);
+				}
+				
+				// 주문일 마감 상태 업데이트
+				int compare = today_date.compareTo(reg_date);
+				if(compare > 0) {
+					prdDate_each.setProduct_date_state("주문마감");
+					productService.doDateState(prdDate_each);
+				}
+				
+				state = prdDate_each.getProduct_date_state();
 				
 				if(state.equals("판매가능")) {
-					System.out.println("판매가능");
 					isEndDate = false;
 					break;
 				}else if(state.equals("주문마감")) {
@@ -183,15 +234,15 @@ public class ProductController {
 				}
 			}
 			
-			isSoldOut = productService.isSoldOut(prdAr.get(i).getProduct_id());
+			isSoldOut = productService.isSoldOut(prdAr_each.getProduct_id());
 			
 			if(isSoldOut == 1) {
-				prdAr.get(i).setProduct_state("품절");
-				productService.doSoldOut(prdAr.get(i).getProduct_id());
+				prdAr_each.setProduct_state("품절");
+				productService.doSoldOut(prdAr_each.getProduct_id());
 			}			
 			else if(isEndDate == true) {
-				prdAr.get(i).setProduct_state("품절");
-				productService.doDateOut(prdAr.get(i).getProduct_id());
+				prdAr_each.setProduct_state("품절");
+				productService.doDateOut(prdAr_each.getProduct_id());
 			}
 		}
 		

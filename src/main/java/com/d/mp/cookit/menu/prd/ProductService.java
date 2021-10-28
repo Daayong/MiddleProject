@@ -220,7 +220,12 @@ public class ProductService {
 	
 	//특정 id 상품 하나의 배송일별 팔린 갯수 합 가져오기
 	public Long getSoldSum(Long product_id) throws Exception{
-		return	productDAO.getSoldSum(product_id);
+		return productDAO.getSoldSum(product_id);
+	}
+	
+	//구매 후 상품의 수량 변경
+	public int insertPayment(ProductDTO productDTO) throws Exception{
+		return productDAO.insertPayment(productDTO);
 	}
 	
 	// 특정 id의 상품 하나 삭제하기
