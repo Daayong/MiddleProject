@@ -2,11 +2,15 @@ package com.d.mp.management;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
@@ -14,6 +18,9 @@ import org.springframework.web.servlet.ModelAndView;
 import com.d.mp.cookit.menu.prd.ProductDTO;
 import com.d.mp.cookit.menu.prd.ProductService;
 import com.d.mp.cookit.menu.prd.util.ProductPager;
+import com.d.mp.cs.qna.QnaDTO;
+import com.d.mp.cs.qna.QnaService;
+import com.d.mp.member.MemberDTO;
 
 @Controller
 @RequestMapping("/management/**")
@@ -22,6 +29,8 @@ public class ManagementController {
 	@Autowired
 	private ProductService productService;
 	
+	@Autowired
+	private QnaService qnaService;
 	
 	// 상품 업데이트
 	@ResponseBody
@@ -106,4 +115,33 @@ public class ManagementController {
 		return mv;
 	}
 	
+	@RequestMapping("member_CounselList")
+	public ModelAndView getMemberCounselList(HttpSession session) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		mv.addObject("member", memberDTO);
+		List<QnaDTO> ar = qnaService.getMemberCounselList();
+		mv.addObject("counselList", ar);
+		mv.setViewName("management/member_CounselList");
+		
+		return mv;
+	}
+	
+	@GetMapping("member_addComments")
+	public ModelAndView memberAddComments(QnaDTO qnaDTO) throws Exception{
+		ModelAndView mv = new ModelAndView();
+		qnaDTO  = qnaService.getOneCounselList(qnaDTO);
+		mv.addObject("counselList", qnaDTO);
+		mv.setViewName("management/member_addComments");
+		return mv;
+	}
+	
+	
+
+	@PostMapping("member_addComments")
+	@ResponseBody
+	public int setCounselComment(QnaDTO qnaDTO) throws Exception{
+		
+		return qnaService.setCounselComment(qnaDTO);
+	}
 }

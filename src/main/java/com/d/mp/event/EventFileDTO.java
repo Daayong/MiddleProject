@@ -6,7 +6,7 @@ public class EventFileDTO {
 	private Long event_id;
 	private String event_file_name;
 	private String event_file_ori_name;
-	
+
 	public Long getEvent_file_id() {
 		return event_file_id;
 	}

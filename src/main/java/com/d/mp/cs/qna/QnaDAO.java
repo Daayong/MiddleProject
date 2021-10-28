@@ -1,10 +1,13 @@
 package com.d.mp.cs.qna;
 
-import java.util.HashMap;
+
+import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import com.d.mp.member.MemberDTO;
 
 @Repository
 public class QnaDAO {
@@ -18,5 +21,24 @@ public class QnaDAO {
 	}
 	
 	
+	public List<QnaDTO> getMyCounselList(MemberDTO memberDTO) throws Exception{
+		return sqlSession.selectList(NAMESPACE+"getMyCounselList", memberDTO);
+	}
+	
+	public int setDeleteMyCounsel(QnaDTO qnaDTO) throws Exception{
+		return sqlSession.delete(NAMESPACE+"setDeleteMyCounsel", qnaDTO);
+	}
+	
+	public List<QnaDTO> getMemberCounselList() throws Exception{
+		return sqlSession.selectList(NAMESPACE+"getMemberCounselList");
+	}
+
+	public int setCounselComment(QnaDTO qnaDTO) throws Exception{
+		return sqlSession.update(NAMESPACE+"setCounselComment", qnaDTO);
+	}
+	
+	public QnaDTO getOneCounselList(QnaDTO qnaDTO) throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getOneCounselList", qnaDTO);
+	}
 	
 }

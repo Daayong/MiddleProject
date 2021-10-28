@@ -13,24 +13,37 @@ public class BoardFileManager {
 	
 	//file save
 	//파일 저장
-	public String fileSave(MultipartFile multipartFile, File file) throws Exception {
+	public String fileSave(File event_file,MultipartFile multipartFile, String event_subject, String f_kind) throws Exception {
 		
-		if(!file.exists()) {
-			file.mkdirs();
+		if(!event_file.exists()) {
+			event_file.mkdirs();
 		}
 		
 		
 		//파일명 생성
-		String fileName = UUID.randomUUID().toString();
-		fileName = fileName+"_"+multipartFile.getOriginalFilename();
 		
-		file = new File(file, fileName);
+		String ori_name = multipartFile.getOriginalFilename();
+		String file_exp = ori_name.substring(ori_name.lastIndexOf("."));
 		
-		//저장
-		//1. FileCopyUtils 
-		//FileCopyUtils.copy(multipartFile.getBytes(), file );
+		String fileName = "";
+		
+		if(f_kind.equals("main")) {
+			
+			fileName = event_subject + file_exp;
+			
+		}else {
+			
+			fileName = multipartFile.getOriginalFilename();
+			
+		}
+		
+		
+		event_file = new File(event_file, fileName);
+		
+		FileCopyUtils.copy(multipartFile.getBytes(), event_file);
+		
 		//2. MultipartFile
-		multipartFile.transferTo(file);
+		//multipartFile.transferTo(menu_file);
 		
 		return fileName;
 	}

@@ -7,26 +7,81 @@
   <mapper namespace="com.d.mp.cs.qna.QnaDAO">
   
   
-  
+  <!-- 개인회원 -->
   <!-- 문의작성하기 -->
   <insert id="setFormcounselUpload" parameterType="QnaDTO">
   	<selectKey order="BEFORE" resultType="Long" keyProperty="qna_id">
   		SELECT qna_seq.nextval FROM dual
   	</selectKey>
-  	INSERT INTO qna(qna_id, member_id, qna_content, qna_type, qna_email, qna_phone, qna_date, payment_id)
+  	INSERT INTO qna(qna_id, member_id, qna_content, qna_type, qna_email, qna_phone, qna_date, payment_id, qna_product_name)
   			 
   	VALUES
-  		(#{qna_id}, #{member_id}, #{qna_content}, #{qna_type}, #{qna_email}, #{qna_phone}, sysdate, 2021102600011 )
+  		(#{qna_id}, #{member_id}, #{qna_content}, #{qna_type}, #{qna_email}, #{qna_phone}, sysdate, #{payment_id, jdbcType=INTEGER}, #{qna_product_name, jdbcType=VARCHAR})
   
   </insert>
   
   <!-- 내가작성한 문의내역 보기  -->
+	<select id="getMyCounselList" parameterType="MemberDTO" resultType="QnaDTO">
+		SELECT
+			*
+		FROM
+			qna
+		WHERE
+			member_id = #{member_id}
+		ORDER BY
+			qna_id DESC
+	</select>
+
+	<!-- 내가 작성한 문의내역 삭제  -->
+	<delete id="setDeleteMyCounsel" parameterType="QnaDTO">
+	
+		DELETE 
+			qna
+		WHERE
+			qna_id = #{qna_id}
+	
+	</delete>
+	<!--//회원  -->
+	
+	<!-- 관리자 -->
+  	<!-- 회원 1:1 문의 내역 모두 보기 -->
+  	<select id="getMemberCounselList" resultType="QnaDTO">
+  		SELECT 
+  			*
+  		FROM	
+  			qna
+  		ORDER BY	
+  			qna_id DESC
+  	</select>
+  	
+  	<!-- 회원 한명의 문의내역 보기 -->
+  	<select id="getOneCounselList" parameterType="QnaDTO" resultType="QnaDTO">
+  		SELECT 
+  			*
+  		FROM 
+  			qna
+  		WHERE 
+  			qna_id = #{qna_id}
+  	</select>
+  	
+  	<!-- 회원 1:1 문의 답변 작성 -->
+  	<update id="setCounselComment" parameterType="QnaDTO">
+  		UPDATE
+  			qna
+  		SET
+  			qna_answer = #{qna_answer},
+  			qna_answer_date = sysdate
+  		WHERE 
+  			qna_id = #{qna_id}
+  	</update>
   
-  <select id="getMyCounselList" parameterType="QnaDTO" resultType="QnaDTO">
-  		SELECT
+  <!-- 파일 -->
+  <insert id="setFile" parameterType="QnaFileDTO">
+  		INSERT INTO
+  			qna_file
+  		VALUES(qna_file_seq.nextval, #{qna_id}, #{qna_file_name}, #{qna_file_ori_name}) 
   
-  </select>
-  
+  </insert>
   
   
   </mapper>

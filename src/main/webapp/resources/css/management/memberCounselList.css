@@ -109,46 +109,9 @@
     padding-right: 44px;
 }
 
-.qna_list_wrap .list_acco li.on .head a:before {
-    top: 33px;
-}
 
 
 
-
-.list_acco li .head a:before {
-    content: '';
-    display: block;
-    position: absolute;
-    top: 50%;
-    right: 16px;
-    width: 12px;
-    height: 12px;
-    margin-top: -8px;
-    border: 1.5px solid #303030;
-    border-top: none;
-    border-left: none;
-    -ms-transform: rotate(45deg);
-    -webkit-transform: rotate(
-45deg);
-    -moz-transform: rotate(45deg);
-    transform: rotate(
-45deg);
-}
-
-
-.list_acco li.on .head a:before {
-    margin-top: -1px;
-    border: 1.5px solid #303030;
-    border-top: none;
-    border-left: none;
-    -ms-transform: rotate(-136deg);
-    -webkit-transform: rotate(
--136deg);
-    -moz-transform: rotate(-136deg);
-    transform: rotate(
--136deg);
-}
 
 .qna_list_wrap .list_acco li .head a .tit, .qna_list_wrap .list_acco li .head .tit {
     padding: 21px 0 21px 10px;

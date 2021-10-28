@@ -68,16 +68,18 @@
 					
 		<div class="event_list" style="display:block;">
 			<ul id="eventListArea">
+		<c:forEach items="${eventDTO}" var="event">
 		
-		<c:forEach items="${eventList}" var="eList">
 		<li>
 			<!-- 이미지 케이스 -->
 			<div class="pro_module">
 				<div class="img_wrap">															
-					<a href="./planView?event_id=${eList.event_id}" class="link_more">
+					<a href="./planView?event_id=${event.event_id}" class="link_more">
 			
-						<img src="/mp/resources/images/1008_3time_pc_o_01.jpg"" alt="test">	
-	
+			<input type="hidden" value="${event.event_id}" id="event_id">
+				
+					<img style="width: 380px; height: 232px;" src="../resources/upload/event/main/${event.event_id}/${event.event_subject}.jpg" alt="test">	
+				
 						<span class="dim"></span>
 					</a>
 				</div>
@@ -86,17 +88,17 @@
 						<div class="prd_flag_wrap">
 							<span class="flag cate">EVENT</span>
 
-							<span class="date">${eList.event_startDate} ~ ${eList.event_endDate}</span>
+							<span class="date">${event.event_startDate} ~ ${event.event_endDate}</span>
 						</div>
 						<div class="tit_info">
-							<span class="tit mt_elps">${eList.event_subject}</span>
+							<span class="tit mt_elps">[쿡킷] ${event.event_subject}</span>
 						</div>
 					</a>
 				</div>
 			</div>
 		</li>		
-		</c:forEach>
 	
+		</c:forEach>
 		</ul>
 
 			<!-- event upload admin만 접근 가능 -->

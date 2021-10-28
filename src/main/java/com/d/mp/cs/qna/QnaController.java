@@ -1,18 +1,26 @@
 package com.d.mp.cs.qna;
 
 
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.d.mp.member.MemberDTO;
+import com.d.mp.order.cart.CartDTO;
+import com.d.mp.order.cart.CartService;
 import com.d.mp.order.payment.PaymentDTO;
+import com.d.mp.order.payment.PaymentListDTO;
+import com.d.mp.order.payment.PaymentService;
 
 
 
@@ -23,13 +31,10 @@ public class QnaController {
 	@Autowired
 	private QnaService qnaService;
 	
+	@Autowired
+	private PaymentService paymentService;
 	
-	@GetMapping("formCounsel")
-	public ModelAndView setFormcounselUpload() throws Exception{
-		ModelAndView mv = new ModelAndView();
-			mv.setViewName("cs/formCounsel");
-			return mv;
-	}
+	
 	
 	@PostMapping("formCounsel")
 	public ModelAndView setFormcounselUpload(QnaDTO qnaDTO, HttpServletRequest request, HttpSession session) throws Exception{
@@ -64,6 +69,14 @@ public class QnaController {
 	}
 	
 	
+	@GetMapping("formCounsel")
+	public String getOrderInformList( Model model, HttpSession session) throws Exception {
+		
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		model.addAttribute("paymentListDTOs", paymentService.getPaymentList(memberDTO));
+		return "cs/formCounsel";
+
+	}
 	
 
 }

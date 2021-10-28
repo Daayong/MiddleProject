@@ -2,6 +2,8 @@ package com.d.mp.event;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -24,10 +26,11 @@ public class EventController {
 	//event type별 event list 불러오기
 	@ResponseBody
 	@GetMapping("eventMain")
-	public ModelAndView getEventList() throws Exception{
+	public ModelAndView getEventList(EventDTO eventDTO) throws Exception{
 		ModelAndView mv = new ModelAndView();
-		List<EventDTO> ar = eventService.getEventList();	
-		mv.addObject("eventList", ar);
+
+		List<EventDTO> ar = eventService.getEventList(eventDTO);	
+		mv.addObject("eventDTO", ar);
 		mv.setViewName("event/eventMain");
 		
 		return mv;
@@ -52,10 +55,10 @@ public class EventController {
 	}
 	
 	@PostMapping("eventUpload")
-	public ModelAndView setEventList(EventDTO eventDTO, MultipartFile files) throws Exception{
+	public ModelAndView setEventList(EventDTO eventDTO, List<MultipartFile> main_files) throws Exception{
 		
 		ModelAndView mv = new ModelAndView();
-		int result = eventService.setEventList(eventDTO, files);
+		int result = eventService.setEventList(eventDTO, main_files);
 		mv.setViewName("redirect:./eventMain");
 		return mv;
 	}

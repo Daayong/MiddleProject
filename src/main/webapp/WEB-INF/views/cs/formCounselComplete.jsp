@@ -45,7 +45,7 @@
 			<div class="top_sec">
 				<div class="tab_menu">
 					<ul>
-						<li class="on"><a nohref="">1:1 문의 작성</a></li>
+						<li class="on"><a href="${pageContext.request.contextPath}/cs/formCounsel">1:1 문의 작성</a></li>
 						 <!-- 선택된 메뉴에 on클래스 추가 -->
 						<li><a href="${pageContext.request.contextPath}/myAct/customerCounselList">1:1 문의 내역</a></li>
 					</ul>
@@ -58,7 +58,7 @@
 					<strong>1:1문의 접수가 완료되었습니다.</strong>
 					<p class="txt">고객님의 문의사항을 빠른 시간 안에 처리하도록 노력하겠습니다. <br>고객행복센터는 일요일/공휴일 운영을 하지 않습니다.</p>
 					<div class="btn_wrap">
-						<a href="javascript:goCounselList();" class="rec_link"><span>1:1 문의 내역 조회</span></a>
+						<a href="${pageContext.request.contextPath}/myAct/customerCounselList" class="rec_link"><span>1:1 문의 내역 조회</span></a>
 					</div>
 				</div>
 		</div>

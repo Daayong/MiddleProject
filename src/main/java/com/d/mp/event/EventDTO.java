@@ -10,17 +10,7 @@ public class EventDTO {
 	private String event_content;
 	private Date event_startDate;
 	private Date event_endDate;
-	
-	private EventFileDTO eventFileDTO;
-	
-	
-	
-	public EventFileDTO getEventFileDTO() {
-		return eventFileDTO;
-	}
-	public void setEventFileDTO(EventFileDTO eventFileDTO) {
-		this.eventFileDTO = eventFileDTO;
-	}
+
 	public Long getEvent_id() {
 		return event_id;
 	}
