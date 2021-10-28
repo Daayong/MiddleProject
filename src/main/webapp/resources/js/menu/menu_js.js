@@ -52,8 +52,6 @@ $(document).on("click", ".sortc_btn", function(){
 	});
 });
 
-/* 찜 버튼 누르면 장바구니로 이동하기 */
-
 
 /* ============== menu_search 페이지 ============== */
 $(document).on("click", ".btn_srch", function(){
@@ -135,6 +133,47 @@ const session = $("#session").val();
 function sleep(ms){
 	return new Promise(resolve=>setTimeout(resolve,ms));
 }
+
+/* 찜 추가하기 */
+$(".zzim").click(function (){
+		
+	if(session == ""){
+		alert("로그인 후 이용가능합니다.");
+		return false;
+	}
+	
+	let product_id = $("input[name=product_id]").val();
+	//let product_name = $(this).parent().prevAll(".click_menu").children("#product_name").val();
+	
+	$.ajax({
+		url : 'setZzim?product_id=' + product_id,
+		type : "get",
+		success : async function(result){
+			
+			if(result==1){
+				$(".zzimin_txt").text("찜하기 완료!");
+				$(".zzimin_img").css({
+					"visibility" : "visible"
+				});
+				
+				await sleep(1000);
+				
+				$(".zzimin_img").css({
+					"visibility" : "hidden"
+				});
+			}
+			else{
+				alert("해당 상품은 이미 찜목록에 있습니다!");
+			}
+		},
+		error:function(request,status,error){
+			
+	        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+	        
+	    }		
+	});
+	
+});
 
 /* 장바구니에 추가하기 */
 

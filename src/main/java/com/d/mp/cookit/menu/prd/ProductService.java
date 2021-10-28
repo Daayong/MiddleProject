@@ -7,6 +7,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.ServletContext;
 
@@ -193,6 +194,24 @@ public class ProductService {
 		return productDAO.getPrdOne(productDTO);
 	}
 	
+	// 특정 id 상품 찜목록 추가
+	public int setZzim(Map<String, Object> map) throws Exception{
+		
+		return productDAO.setZzim(map);
+	}
+	
+	//특정 멤버가 찜한 상품목록 불러오기
+	public List<ProductDTO> getZzim(ZzimDTO zzimDTO) throws Exception{
+		
+		return productDAO.getZzim(zzimDTO);
+	}
+	
+	// 특정 id 상품의 주문가능 일자중 첫번째 값 가져오기
+	public ProductDTO getDateOne(ProductDTO productDTO) throws Exception{
+		
+		return productDAO.getDateOne(productDTO);
+	}
+	
 	// 특정 id 상품의 주문가능 일자 가져오기
 	public List<ProductDTO> getDate(ProductDTO productDTO) throws Exception{
 		
@@ -201,7 +220,12 @@ public class ProductService {
 	
 	//특정 id 상품 하나의 배송일별 팔린 갯수 합 가져오기
 	public Long getSoldSum(Long product_id) throws Exception{
-		return	productDAO.getSoldSum(product_id);
+		return productDAO.getSoldSum(product_id);
+	}
+	
+	//구매 후 상품의 수량 변경
+	public int insertPayment(ProductDTO productDTO) throws Exception{
+		return productDAO.insertPayment(productDTO);
 	}
 	
 	// 특정 id의 상품 하나 삭제하기

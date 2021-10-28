@@ -20,6 +20,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.d.mp.address.AddressDTO;
+import com.d.mp.cookit.menu.prd.ProductDTO;
+import com.d.mp.cookit.menu.prd.ProductService;
+import com.d.mp.cookit.menu.prd.ZzimDTO;
 import com.d.mp.cs.notice.NoticeService;
 import com.d.mp.order.cart.CartService;
 import com.d.mp.order.payment.PaymentDTO;
@@ -39,6 +42,9 @@ public class MemberController {
 	
 	@Autowired
 	private CartService cartService;
+	
+	@Autowired
+	private ProductService productService;
 	
 	
 /*---------------------------------- 로그인/로그아웃 시작---------------------------------------------- */	
@@ -80,6 +86,17 @@ public class MemberController {
 		String id ="";	
 		ModelAndView mv = new ModelAndView();
 		if(memberDTO!=null) {
+			
+			// 수빈 찜목록 추가
+			ZzimDTO zzimDTO = new ZzimDTO();
+			zzimDTO.setMember_id(memberDTO.getMember_id());
+			
+			List<ProductDTO> prdAr = productService.getZzim(zzimDTO);
+			
+			mv.addObject("zzim", prdAr);
+			// 수빈 찜목록 추가
+			
+			
 			AddressDTO addressDTO = memberService.getDefaultAddress(memberDTO);
 			if(addressDTO !=null) {
 				id=addressDTO.getAddress();

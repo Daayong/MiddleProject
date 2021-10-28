@@ -63,6 +63,26 @@ public class ProductDAO {
 		return sqlSession.selectOne(NAMESPACE + "getSoldSum", product_id);
 	}
 	
+	//구매 후 상품의 수량 변경
+	public int insertPayment(ProductDTO productDTO) throws Exception{
+		return sqlSession.update(NAMESPACE + "insertPayment", productDTO);
+	}
+	
+	//특정 id 상품 찜목록 추가
+	public int setZzim(Map<String, Object> map) throws Exception{
+		return sqlSession.insert(NAMESPACE + "setZzim", map);
+	}
+	
+	//특정 멤버가 찜한 상품목록 불러오기
+	public List<ProductDTO> getZzim(ZzimDTO zzimDTO) throws Exception{
+		return sqlSession.selectList(NAMESPACE + "getZzim", zzimDTO);
+	}
+	
+	//특정 id 상품의 주문가능 일자중 첫번째 값 가져오기
+	public ProductDTO getDateOne(ProductDTO productDTO) throws Exception{
+		return sqlSession.selectOne(NAMESPACE + "getDateOne", productDTO);
+	}
+	
 	//특정 id 상품의 주문가능 일자 가져오기
 	public List<ProductDTO> getDate(ProductDTO productDTO) throws Exception{
 		return sqlSession.selectList(NAMESPACE + "getDate", productDTO);

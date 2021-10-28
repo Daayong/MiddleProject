@@ -13,6 +13,7 @@
 			margin:0; 
 		}
 		.wrapper{
+			position: relative;
 			min-height:100%;
 			margin-top:85px;
 			margin-bottom:-290px;
@@ -29,7 +30,20 @@
 
 <div class="wrapper">		
 <!-- 여기에 페이지 작업 -->
-
+	
+	<!-- top 50 left 50 % 클릭시 이미지 깜빡하기 -->
+	<div class="cartin_img">
+		<span class="cartin_txt">
+			
+		</span>
+	</div>
+	
+	<div class="zzimin_img">
+		<span class="zzimin_txt">
+			
+		</span>
+	</div>
+	
 	<!-- Width: 1180px, 한칸: width: 268px height: 548px-->
 		<div class="content_wrapper">
 
@@ -139,6 +153,7 @@
 									<div class="click_menu"> <!-- div 버튼 만들기 -->
 									
 										<input type="hidden" value="${prd.product_id}" id="product_id">
+										<input type="hidden" value="${prd.product_name}" id="product_name">
 										
 										<div class="item_image">
 											<img alt="test" src="../resources/upload/menu/main/${prd.product_id}/${prd.product_name}.jpg">
@@ -158,10 +173,10 @@
 										</div>
 									</div>
 									<div class="item_btnbox">
-										<div class="menu_btn zzim_btn">
+										<div class="menu_btn main_zzim_btn">
 											
 										</div>
-										<div class="menu_btn cart_btn">
+										<div class="menu_btn main_cart_btn">
 											
 										</div>
 									</div>
@@ -187,6 +202,9 @@
 
 <script src="../resources/js/menu/menu_js.js"></script>
 <script type="text/javascript">
+	
+	// 화, 수, 목, 금, 토 새벽배송만 가능한 날짜 구하는 스크립트
+	
 	let today = new Date();
 	let last_date = new Date(today.getFullYear(), today.getMonth()+1, 0);
 	let p_ld = parseInt(last_date.getDate());
@@ -264,6 +282,131 @@
 		}
 	}
 	
+	/* 장바구니로 버튼 */
+	$(document).on("click", ".main_cart_btn", async function (){
+		
+		if(session == ""){
+			alert("로그인 후 이용가능합니다.");
+			return false;
+		}
+		
+		let product_id = $(this).parent().prevAll(".click_menu").children("#product_id").val();
+		
+		$(this).css({
+			"background-position" : "-45px -235px",
+		});
+	
+		$.ajax({
+			url: 'getDateOne?product_id=' + product_id,
+			type: 'get',
+			success: function (result) {
+				
+				
+				// 만약 위에 날짜가 선택된 상태이면...
+				date = String(date);
+				
+				// 20221231 => 2022-12-31
+				let tmp_y = date.substr(0,4);
+				let tmp_m = date.substr(4,2);
+				let tmp_d = date.substr(6);
+
+				let tmp_date = tmp_y + "-" + tmp_m + "-" + tmp_d;
+				
+				if(date != ""){
+					result = tmp_date;
+				}
+
+				// result = 주문가능한 첫일자
+				
+				let month = result.substr(5,2);
+				let s_date = result.substr(8,2); // menu_js에 선언된 date 하고 겹쳐서 이름 s_date
+				
+				
+				
+				$.ajax({
+					url: "cart_insert?product_id=" + product_id + "&cart_delivery_date=" + result + "&cart_quantity=" + 1,
+					success : async function(){
+						$(".cartin_txt").text("배송일 " + month + "/" + s_date);
+						$(".cartin_img").css({
+							"visibility" : "visible"
+						});
+						await sleep(1000);
+						$(".cartin_img").css({
+							"visibility" : "hidden"
+						});
+					},
+					error:function(request,status,error){
+						
+				        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+				        
+				    }
+				});
+			},
+			error:function(request,status,error){
+				
+		        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+		        
+		    }
+		});
+		
+		await sleep(1000);
+		
+		$(this).css({
+			"background-position" : "-45px -190px",
+		});
+		
+	});
+	
+	
+	// 찜 버튼
+	$(document).on("click", ".main_zzim_btn", async function (){
+		
+		if(session == ""){
+			alert("로그인 후 이용가능합니다.");
+			return false;
+		}
+		
+		let product_id = $(this).parent().prevAll(".click_menu").children("#product_id").val();
+		//let product_name = $(this).parent().prevAll(".click_menu").children("#product_name").val();
+		
+		$(this).css({
+			"background-position" : "0px -235px",
+		});
+		
+		$.ajax({
+			url: 'setZzim?product_id=' + product_id,
+			type: 'get',
+			success : async function(result){
+				
+				if(result==1){
+					$(".zzimin_txt").text("찜하기 완료!");
+					$(".zzimin_img").css({
+						"visibility" : "visible"
+					});
+					await sleep(1000);
+					$(".zzimin_img").css({
+						"visibility" : "hidden"
+					});
+				}
+				else{
+					alert("해당 상품은 이미 찜목록에 있습니다!");
+				}
+				
+			},
+			error:function(request,status,error){
+				
+		        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+		        
+		    }		
+		});
+		
+		await sleep(1000);
+		
+		$(this).css({
+			"background-position" : "0px -190px",
+		});
+		
+	});
 </script>
 
 </body>

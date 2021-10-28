@@ -123,6 +123,10 @@ $('#orderBtn').click(function(){
 	let total_payment_price = Number($('.total_payment_price').data('total_payment_price'));
 	let save_point = Number(Math.round((total_product_price - use_point) * 0.02));
 	
+	let product_sell_count = Number($('.cart_quantity').data('cart_quantity'));
+	let product_id = Number($('.product_id').val());
+	let product_regdate = $('.product_regdate').val();
+	
 	$.ajax({
 		async : false,
 		type : 'GET',
@@ -134,6 +138,9 @@ $('#orderBtn').click(function(){
 			payment_use_point               : use_point           	,
 			payment_total_payment_price     : total_payment_price	,
 			save_point						: save_point			,
+			product_id : product_id,
+			product_regdate : product_regdate,
+			product_sell_count : product_sell_count
 		},
 		success : function(result){
 			result
