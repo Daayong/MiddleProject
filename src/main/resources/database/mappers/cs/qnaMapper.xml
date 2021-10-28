@@ -43,25 +43,54 @@
 	</delete>
 	<!--//회원  -->
 	
+	
+	<resultMap type="QnaDTO" id="getSelectResult">
+		<id column="qna_id" property="qna_id"/>
+		<result column="member_id" property="member_id"/>
+		<result column="payment_id" property="payment_id"/>
+		<result column="qna_product_name" property="qna_product_name"/>
+		<result column="qna_content" property="qna_content"/>
+		<result column="qna_type" property="qna_type"/>
+		<result column="qna_email" property="qna_email"/>
+		<result column="qna_date" property="qna_date"/>
+		<result column="qna_answer" property="qna_answer"/>
+		<result column="qna_answer_date" property="qna_answer_date"/>
+		<result column="qna_phone" property="qna_phone"/>
+		
+		<collection property="file" javaType="List" ofType="QnaFileDTO">
+			<id column="qna_file_id" property="qna_file_id"/>
+			<result column="qna_id" property="qna_id"/>
+			<result column="qna_file_name" property="qna_file_name"/>
+			<result column="qna_file_ori_name" property="qna_file_ori_name"/>
+		</collection>
+	</resultMap>
+	
+
+	
 	<!-- 관리자 -->
   	<!-- 회원 1:1 문의 내역 모두 보기 -->
-  	<select id="getMemberCounselList" resultType="QnaDTO">
+  	<select id="getMemberCounselList" resultMap="getSelectResult">
   		SELECT 
   			*
   		FROM	
   			qna
+  			LEFT JOIN qna_file USING (qna_id)
   		ORDER BY	
   			qna_id DESC
   	</select>
   	
+  	
+  	
   	<!-- 회원 한명의 문의내역 보기 -->
-  	<select id="getOneCounselList" parameterType="QnaDTO" resultType="QnaDTO">
+  	<select id="getOneCounselList" parameterType="QnaDTO" resultMap="getSelectResult">
   		SELECT 
   			*
   		FROM 
   			qna
+  			LEFT JOIN qna_file USING (qna_id)
   		WHERE 
   			qna_id = #{qna_id}
+  		ORDER BY qna_id DESC
   	</select>
   	
   	<!-- 회원 1:1 문의 답변 작성 -->
@@ -83,5 +112,14 @@
   
   </insert>
   
+  <select id="getFiels" parameterType="QnaDTO" resultType="QnaFileDTO">
+  	SELECT 
+  		*
+  	FROM 
+  		qna_file
+  	WHERE 
+  		qna_file_id = #{qna_file_id} 
+  	
+  </select>
   
   </mapper>

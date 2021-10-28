@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.d.mp.member.MemberDTO;
@@ -37,8 +38,8 @@ public class QnaController {
 	
 	
 	@PostMapping("formCounsel")
-	public ModelAndView setFormcounselUpload(QnaDTO qnaDTO, HttpServletRequest request, HttpSession session) throws Exception{
-		ModelAndView mv = new ModelAndView();
+	public String setFormcounselUpload(QnaDTO qnaDTO, HttpServletRequest request, HttpSession session, MultipartFile[] multipartFile) throws Exception{
+
 
 		MemberDTO memberDTO = (MemberDTO) session.getAttribute("member");
 		
@@ -56,16 +57,10 @@ public class QnaController {
 		
 		qnaDTO.setMember_id(memberDTO.getMember_id());
 		
-		int result = qnaService.setFormcounselUpload(qnaDTO);
+		qnaService.setFormcounselUpload(qnaDTO, multipartFile);
 		
-		if(result>0) {
-			System.out.println("글 작성 성공");
-		}else {
-			System.out.println("글 작성 실패");
-		}
 		
-		mv.setViewName("cs/formCounselComplete");
-		return mv;
+		return "cs/formCounselComplete"; 
 	}
 	
 	

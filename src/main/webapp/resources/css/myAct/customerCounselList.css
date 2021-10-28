@@ -81,6 +81,18 @@
     background-color: #fff;
 }
 
+.qna_list_wrap .list_acco .head .etc_info .add_sec {
+    position: absolute;
+    top: 8px;
+    right: 88px;
+}
+
+.qna_list_wrap .list_acco .head .etc_info .added_file {
+    position: relative;
+    padding-left: 24px;
+}
+
+
 .qna_list_wrap .list_acco > ul {
     border-top: 0;
 }

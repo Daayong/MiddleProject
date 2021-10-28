@@ -89,12 +89,8 @@
 			<div class="etc_info" data-qna_id = "${qnaList.qna_id }">
 				
 					<span style="cursor: pointer;" onclick="location.href = '../member/myOrder?payment_id=${qnaList.payment_id}'" class="prd_txt num" id="prdOrdNo" ><span class="cusOdrNo">${qnaList.payment_id}</span>
+					<span class="cusPrdNm"> &nbsp; ${qnaList.qna_product_name}</span></span>
 					
-					
-					<span class="cusPrdNm"> &nbsp; ${qnaList.qna_product_name}</span>
-					
-					</span>
-				
 				<button type="button" class="btn sm white delete" name="MycounselDelete"><span>삭제</span></button>
 			</div>
 		</div>
@@ -103,6 +99,7 @@
 				
 					<div class="desc_cont">
 					<div class="cont">
+					
 					<span class="hide">답변내용</span>
 					${qnaList.qna_answer}
 					</div>

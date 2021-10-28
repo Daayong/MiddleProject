@@ -17,6 +17,14 @@ public class QnaDTO {
 	private Date qna_answer_date;
 	private String qna_phone;
 	
+	private List<QnaFileDTO> file;
+	
+	public List<QnaFileDTO> getFile() {
+		return file;
+	}
+	public void setFile(List<QnaFileDTO> file) {
+		this.file = file;
+	}
 	public Long getQna_id() {
 		return qna_id;
 	}

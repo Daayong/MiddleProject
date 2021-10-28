@@ -363,6 +363,7 @@
 			
 	</div>	
 
+</div>
 	</section>
  	<c:import url="../temp/boot_footer.jsp"></c:import>
  	

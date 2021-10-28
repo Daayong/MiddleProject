@@ -98,6 +98,7 @@
 				
 				<div class="add_sec" style="display : none;">
 					<div class="added_file">
+					
 					</div>
 				</div>
 				
