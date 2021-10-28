@@ -194,8 +194,8 @@ public class MemberService {
 	}
 	
 	//배송지 리스트 조회 
-	public List<AddressDTO> getAddressList(MemberDTO memberDTO)throws Exception{
-		return memberDAO.getAddressList(memberDTO);
+	public List<AddressDTO> getAddressList(AddressDTO addressDTO)throws Exception{
+		return memberDAO.getAddressList(addressDTO);
 	}
 	
 	//배송지 1개 조회

@@ -62,7 +62,6 @@
 					
 					<c:choose>
 						<c:when test="${empty list}">
-							<%-- <input type="hidden" name="${member.member_id}"> --%>
 							<div class="noAd">
 								<span class="ico"></span>
 								<strong>등록하신 배송지가 없습니다.</strong>
@@ -73,7 +72,7 @@
 								<strong>
 									배송지를 관리하세요
 								</strong>	
-								<input type="hidden" class="member_id" name="member_id" >			
+								<input type="hidden" class="member_id" name="member_id"  >			
 							</div>
 							<c:forEach items="${list}" var="ar">
 								<div class="dinfo_box" >
@@ -103,7 +102,7 @@
 						</c:otherwise>
 					</c:choose>		
 					<div class="btn_wrap">
-					<button type="button" class="btn pop green" onclick="javascript:addAddress()" id="InsertAddress" name="InsertAddress">신규배송지 추가</button>
+					<button type="button" class="btn pop green"  id="InsertAddress" name="InsertAddress">신규배송지 추가</button>
 					</div>
 				</div>
 			</div>
@@ -125,6 +124,29 @@
 			var option = "width = 480, height =400, top = 200, left = 480, location = no, scrollbars = yes";
 			window.open(url, name, option);
 		};
+		
+		//배송지 추가 개수제한 
+		$("#InsertAddress").click(function(){
+			 var member_id =${member.member_id};
+				$.ajax({
+					url:'./checkInsert',
+					type:'get',
+					data:{member_id:member_id},
+					success:function(data){
+						console.log(data);
+						if(data){
+							addAddress();
+						}else{
+							alert("배송지는 4개까지 설정 가능합니다.");
+						}
+					}
+				});
+			
+		});
+		
+		
+		
+		
 		
 		//배송지 수정 
 		function adUpdate(address_id){

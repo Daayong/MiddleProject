@@ -121,53 +121,54 @@
 			return false; 
 		});
 		
-		 const addressForm=document.getElementById('addressForm');
+		 const addressForm=document.getElementById('#addressForm');
+		
 		 
-		 /*Input id명 선언*/
-		 const recipient_name=document.getElementById('recipient_name');
-		 const phone_m=document.getElementById('member_phone_m');
-		 const phone_b=document.getElementById('member_phone_b');
-		 const address=document.getElementById('address');
-	 
+		//수정페이지 폼에 들어와있을때 원래 입력되어있는 데이터로 selected 되어있기 phone 
+		 const member_phone_f = '${member_phone_f}';
+		 $('.se').each(function() {
+			 const value= $(this).val();
+			 if(value==member_phone_f){
+				 $(this).prop("selected", true);
+			 }
+		});
+		 
+		 
+		 
+		 
 		function checkInput(address_id){
 			//받는분 입력 여부 확인 
-			/* if(recipient_name.value.length <1){
+			 if($("#recipient_name").val().trim().length <1){
 				alert("받는분의 성함을 입력해주세요");
-				recipient_name.focus();
+				$("#recipient_name").focus();
 				return false; 
-			} */
+			} 
 		    //핸드폰 입력 여부 확인
-			/* if(phone_m.value.length <3 || phone_m.value.length>4){
+			 if($("#member_phone_m").val().length <3 || $("#member_phone_m").val().length>4){
 				alert("핸드폰 번호를 확인해주세요.");
-				phone_m.focus();
+				$("#member_phone_m").focus();
 				return false;
 			}
-			if(phone_b.val().trim().length != 4){
+			if($("#member_phone_b").val().trim().length != 4){
 				alert("핸드폰 번호를 확인해주세요.")
-				phone_b.focus();
+				$("#member_phone_b").focus();
 				return false;
 			}
 			//주소 입력 여부 확인 
-			if(address.val().trim().length <5){
+			if($("#address").val().trim().length <5){
 				alert("주소를 확인해주세요.");
-				address.focus();
+				$("#address").focus();
 				return false;
-			} */
+			} 
 			
 			if(confirm('배송지를 수정하시겠습니까?')==true){	
-				 var recipient_name=recipient_name.val();
-				 var phone_m=phone_m.val();
-				 var phone_b=phone_b.val();
-				 var address=address.val();
-				 var member_id=member_id.val();
-				 
-				 let f = '010';
-					$('.se').each(function(){
-						 if($(this).prop('selected')){
-							 f = $(this).val();
-						 }
-					})
-				
+				 var recipient_name=$("#recipient_name").val();
+				 var phone_m=$("#member_phone_m").val();
+				 var phone_b=$("#member_phone_b").val();
+				 var address=$("#address").val();
+				 var member_id=$("#member_id").val();
+				 var member_phone_f=$("#member_phone_f").val();
+
 				$.ajax({
 					url:'./addressUpdate',
 					type:'post',
@@ -175,7 +176,7 @@
 						recipient_name:recipient_name,
 						member_phone_m: phone_m,
 						member_phone_b: phone_b,
-						member_phone_f: f,
+						member_phone_f: member_phone_f,
 						address:address,
 						member_id:member_id,	
 						address_id:address_id
