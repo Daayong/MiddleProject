@@ -134,4 +134,5 @@
 .btn.white{color:#101010;border:1px solid #202020;background-color:#FFFFFF;}
 .btn.white:active{border:1px solid #202020;background-color:#F2F2F2;}
 .btn.green{color:#101010;border:1px solid #BDD61A;background-color:#BDD61A;}
+.btn.green{margin-left: 5px;}
 .btn.green:active{border:1px solid #97AB14;background-color:#97AB14;}

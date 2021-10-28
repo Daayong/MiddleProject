@@ -70,17 +70,38 @@
 						</div>
 						
 						<div class="slide_track">
-							<c:forEach begin="0" end="9" var="i">
-							<div class="slide_content">
-								<div class="img_wrap">
-									<img alt="" src="/mp/resources/images/temp/review_temp${i % 5}.jpg">
-								</div>
-								<div class="info">
-									<span class="product_name">product_name</span>
-									<span class="product_price">product_price (xx,xxx원)</span>
-								</div>
-							</div>	
-							</c:forEach>						
+						
+							<c:forEach items="${products}" var="products" begin="0" end="4" varStatus="index">
+							<c:if test="${index.index eq 4}">
+								<a href="../menu/menu_detail?product_id=${products.product_id}">
+									<div class="slide_content">
+										<div class="img_wrap">
+											<img alt="" src="/mp/resources/upload/menu/main/${products.product_id}/${products.product_file_name}">
+										</div>
+										<div class="info">
+											<span class="product_name">${products.product_name}</span>
+											<span class="product_price"><fmt:formatNumber value="${products.product_price}" pattern="#,###"></fmt:formatNumber>원</span>
+										</div>
+									</div>	
+								</a>
+							</c:if>	
+							</c:forEach>
+							
+							<c:forEach begin="0" end="1">
+							<c:forEach items="${products}" var="products" begin="0" end="4">
+								<a href="../menu/menu_detail?product_id=${products.product_id}">
+									<div class="slide_content">
+										<div class="img_wrap">
+											<img alt="" src="/mp/resources/upload/menu/main/${products.product_id}/${products.product_file_name}">
+										</div>
+										<div class="info">
+											<span class="product_name">${products.product_name}</span>
+											<span class="product_price"><fmt:formatNumber value="${products.product_price}" pattern="#,###"></fmt:formatNumber>원</span>
+										</div>
+									</div>	
+								</a>
+							</c:forEach>
+							</c:forEach>
 						</div>
 				</div>
 				

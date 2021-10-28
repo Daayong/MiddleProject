@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.d.mp.order.cart.CartDTO;
+import com.d.mp.order.cart.CartService;
 import com.d.mp.order.payment.PaymentDTO;
 import com.d.mp.order.payment.PaymentService;
 
@@ -25,6 +26,9 @@ public class ReviewController {
 	
 	@Autowired
 	private PaymentService paymentService;
+	
+	@Autowired
+	private CartService cartService;
 	
 	@GetMapping("reviewMain")
 	public String reviewMain(Model model) throws Exception {
@@ -48,8 +52,10 @@ public class ReviewController {
 	}
 	
 	@PostMapping("reviewInsert")
-	public String reviewInsertTest(ReviewDTO reviewDTO, MultipartFile[] multipartFile) throws Exception {
+	public String reviewInsertTest(CartDTO cartDTO, ReviewDTO reviewDTO, MultipartFile[] multipartFile) throws Exception {
+		System.out.println(cartDTO.getCart_id());
 		reviewService.insertReview(reviewDTO, multipartFile);
+		cartService.updateCartStateDone(cartDTO);
 		return "redirect:../member/myOrderList";
 	}
 

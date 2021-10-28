@@ -35,6 +35,7 @@
 
 	<resultMap type="ReviewDTO" id="ReviewListDTO">
 		<id column="review_id" property="review_id"/>
+		<result column="product_id" property="product_id"/>
 		<result column="product_name" property="product_name"/>
 		<result column="member_user_id" property="member_user_id"/>
 		<result column="review_tag" property="review_tag"/>

@@ -84,7 +84,7 @@
             c.member_id = #{member_id} AND
             product_file_path = 'main'
         ORDER BY
-            payment_id, c.cart_delivery_date
+            payment_id DESC, c.cart_delivery_date, cart_id
 	</select>
 	
 <!-- ===== 주문상세 ===== -->
@@ -117,7 +117,7 @@
             payment_id = #{payment_id} AND
             product_file_path = 'main'
         ORDER BY
-            payment_id, c.cart_delivery_date
+        	payment_id DESC, c.cart_delivery_date, cart_id
 	</select>
 	
 <!-- ===== 리뷰작성 ===== -->

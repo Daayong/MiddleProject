@@ -106,6 +106,18 @@
 		where member_id=#{member_id} and cart_state='payment'
 		group by payment_id	
 	</select>
+	
+	<select id="getProductList" resultType="CartListDTO">
+		SELECT *
+	    FROM
+	        product JOIN product_file
+	        USING (product_id)
+	    WHERE
+	        product_state = '판매가능' AND
+	        product_file_path = 'main'
+	    ORDER BY
+	        product_id DESC
+	</select>
 
 <!-- ===== ===== ===== DELETE ===== ===== ===== -->	
 	<delete id="deleteCartOne" parameterType="CartDTO">
@@ -176,7 +188,16 @@
 			cart_state != 'checked' AND
 			cart_state != 'unChecked' AND
 			cart_state != 'deadLine' AND
+			cart_state != 'done' AND
 			TO_CHAR(cart_delivery_date, 'YYYYMMDD') <![CDATA[<=]]> TO_CHAR(SYSDATE + #{hash_date}, 'YYYYMMDD')
+	</update>
+	
+	<update id="updateCartStateDone" parameterType="CartDTO">
+		UPDATE 	cart
+		SET
+			cart_state = 'done'
+		WHERE 
+			cart_id = #{cart_id}
 	</update>
 
 </mapper>

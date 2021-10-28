@@ -25,6 +25,17 @@
 	$('.total_payment_price').html(total_payment_price.toLocaleString() + "원");
 	$('.total_payment_price').data('total_payment_price', total_payment_price);
 });
+
+$('.rec_link').click(function(){
+	let url = "../member/addAddress";
+	let name = "addAddress";
+	let width = 475;
+	let height = 495;
+	let top = (window.innerHeight - height) / 2 + screenY;
+    let left = (window.innerWidth - width) / 2 + screenX;    
+	let option = "width = "+width+", height = "+height+", top = "+top+", left = "+left+", location = no, scrollbars = yes";
+	window.open(url, name, option);	
+});
  
 //===== ===== ===== 포인트 사용 ===== ===== =====
 $('#check0').click(function(){

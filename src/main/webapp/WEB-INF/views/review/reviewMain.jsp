@@ -44,11 +44,8 @@
 						<div class="slide_list">
 							<div class="slide_track" style="opacity: 1; width: 25000px; transform: translate3d(-568px, 0px, 0px); transition: transform 1200ms ease 0s;">
 							
-							<!-- best_review Loop START -->
-							<c:forEach begin="0" end="1">
-							<c:forEach items="${bestReviewDTOs}" var="bestReviewDTOs">
-							
-							
+							<c:forEach items="${bestReviewDTOs}" var="bestReviewDTOs" varStatus="index">
+							<c:if test="${index.last}">
 								<div class="slide_contents">
 									<div class="item">
 										<a href="javascript:;" class="openDetail" data-review_id="${bestReviewDTOs.review_id}">
@@ -85,7 +82,49 @@
 											</div>
 										</a>
 									</div>
-								</div>							
+								</div>
+							</c:if>
+							</c:forEach>
+							<!-- best_review Loop START -->
+							<c:forEach begin="0" end="1">
+							<c:forEach items="${bestReviewDTOs}" var="bestReviewDTOs">
+								<div class="slide_contents">
+									<div class="item">
+										<a href="javascript:;" class="openDetail" data-review_id="${bestReviewDTOs.review_id}">
+											<div class="img_wrap">
+												<div class="best_flag">
+													<span class="flag_txt">Best</span>
+											 	</div>
+											 	<img alt="select product_name from product" src="../resources/upload/review/${bestReviewDTOs.file[0].review_file_name}">
+											</div>
+											
+											<div class="txt_wrap">
+											
+												<span class="tit">${bestReviewDTOs.product_name}
+												</span>
+												<div class="etc_info">
+																		
+													<div class="rating_star">
+														<span class="star"> <!-- background image 커스텀 영역 -->
+															<span style="width:${bestReviewDTOs.review_star}%;"> <!-- background image 활성화 영역 (20%에 한개씩 점수가 채워 집니다.) -->
+															</span>
+														</span>
+													</div>
+													
+													<div class="user_id">
+														${bestReviewDTOs.member_user_id}
+													</div>
+													
+												</div>
+												
+												<div class="txt">
+													${bestReviewDTOs.review_txt}
+												</div>
+												
+											</div>
+										</a>
+									</div>
+								</div>
 							</c:forEach>
 							</c:forEach>
 							<!-- best_review Loop END -->
@@ -202,7 +241,7 @@
 					
 					<ul class="review_area">
 						<!-- taste_review Loop START -->
-						<c:forEach items="${reviewDTOs}" var="reviewDTOs">
+						<c:forEach items="${reviewDTOs}" var="reviewDTOs" begin="0" end="9">
 						<li>
 							<c:choose>
 								<c:when test="${empty reviewDTOs.file}">

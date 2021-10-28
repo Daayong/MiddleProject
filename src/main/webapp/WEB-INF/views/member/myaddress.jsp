@@ -121,7 +121,11 @@
 		function addAddress(){
 			var url = "../member/addAddress";
 			var name = "popup test";
-			var option = "width = 480, height =400, top = 200, left = 480, location = no, scrollbars = yes";
+			var width = 475;
+			var height = 495;
+			var top = (window.innerHeight - height) / 2 + screenY;
+			var left = (window.innerWidth - width) / 2 + screenX;    
+			var option = "width = "+width+", height = "+height+", top = "+top+", left = "+left+", location = no, scrollbars = yes";
 			window.open(url, name, option);
 		};
 		
@@ -152,7 +156,11 @@
 		function adUpdate(address_id){
 			var url = "../member/adUpdate?address_id="+address_id;
 			var name = "update";
-			var option = "width = 480, height =400, top = 200, left = 480, location = no, scrollbars = yes";
+			var width = 475;
+			var height = 495;
+			var top = (window.innerHeight - height) / 2 + screenY;
+			var left = (window.innerWidth - width) / 2 + screenX;    
+			var option = "width = "+width+", height = "+height+", top = "+top+", left = "+left+", location = no, scrollbars = yes";
 			window.open(url, name, option);
 		};
 		

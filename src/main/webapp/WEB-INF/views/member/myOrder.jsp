@@ -92,18 +92,19 @@
 											<c:choose>
 												<c:when test="${paymentListDTOsI.cart_state eq 'payment'}">결제완료</c:when>
 												<c:when test="${paymentListDTOsI.cart_state eq 'deliver'}">배송중</c:when>
-												<c:when
-													test="${paymentListDTOsI.cart_state eq 'deliveryComplete'}">배송완료</c:when>
+				        						<c:otherwise>배송완료</c:otherwise>
 											</c:choose>
 										</span> <span class="cart_delivery_date">${paymentListDTOsI.cart_delivery_date}
 											<c:choose>
-												<c:when
-													test="${paymentListDTOsI.cart_state eq 'deliveryComplete'}"> 
-				       				도착
-				       				</c:when>
+												<c:when	test="${paymentListDTOsI.cart_state eq 'deliveryComplete'}">
+												도착
+				       							</c:when>
+												<c:when	test="${paymentListDTOsI.cart_state eq 'done'}">
+												도착
+				       							</c:when>
 												<c:otherwise>
-				       				도착예정
-				       				</c:otherwise>
+				       							도착예정
+				       							</c:otherwise>
 											</c:choose>
 										</span>
 									</div>

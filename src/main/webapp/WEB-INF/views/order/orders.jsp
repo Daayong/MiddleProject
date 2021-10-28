@@ -116,35 +116,45 @@
 					</div>
 					<div class="info_content">
 						<div class="delivery_location_wrap">
-							<div class="delivery_location" data-address_id="${addressDTO.address_id}">
-								<h4>배송지</h4>
-							</div>
-							<div class="location_detail">
-								<a href="javascript:;" class="btn_link" onclick="openDlvdPop(this);">수정/변경</a>
-									<dl>
-										<dt>
-											<strong>${addressDTO.recipient_name}</strong>
-											<span>(기본배송지)</span>
-										</dt>
-										<dd>
-											<ul>
-												<li> 	
-													<span>${addressDTO.address}</span>
-												</li>
-												<li>
-													<span>${addressDTO.recipient_phone}</span>
-												</li>
-												<!-- <li class="method">
-													<em>새벽배송</em>
-													<div class="detail">
-														<span>공동현관 비밀번호 있음 <span>#1234#</span></span>
-														<span>배송완료 메시지 <span>오전7시</span></span>
-													</div> 
-												</li> -->
-											</ul>
-										</dd>
-									</dl>
-							</div>
+						<c:choose>
+							<c:when test="${not empty addressDTO.address}">
+								<div class="delivery_location" data-address_id="${addressDTO.address_id}">
+									<h4>배송지</h4>
+								</div>
+								<div class="location_detail">
+									<a href="javascript:;" class="btn_link" onclick="openDlvdPop(this);">수정/변경</a>
+										<dl>
+											<dt>
+												<strong>${addressDTO.recipient_name}</strong>
+												<span>(기본배송지)</span>
+											</dt>
+											<dd>
+												<ul>
+													<li> 	
+														<span>${addressDTO.address}</span>
+													</li>
+													<li>
+														<span>${addressDTO.recipient_phone}</span>
+													</li>
+													<!-- <li class="method">
+														<em>새벽배송</em>
+														<div class="detail">
+															<span>공동현관 비밀번호 있음 <span>#1234#</span></span>
+															<span>배송완료 메시지 <span>오전7시</span></span>
+														</div> 
+													</li> -->
+												</ul>
+											</dd>
+										</dl>
+								</div>
+							</c:when>
+							<c:otherwise>
+								<div class="add_location_wrap">
+	                                <p>상품을 받으실 배송지를 등록해주세요.</p>
+	                                <a href="javascript:;" class="rec_link"><span>배송지 등록</span></a>
+                            	</div>
+							</c:otherwise>
+						</c:choose>
 						</div>
 						
 						<!-- ===== ===== ===== loop I start ===== ===== ===== -->

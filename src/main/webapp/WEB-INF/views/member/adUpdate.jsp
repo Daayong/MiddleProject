@@ -9,17 +9,18 @@
 <title>배송지 관리 | 집밥을 특별하게,쿡킷</title>
 
 	<style>
-	.addWrap{width:480px; margin-left:20px;  }
-	.h3{width:432px; padding: 20px 0;border-bottom: 2px solid #202020;color: #101010;font-weight: 700; font-size: 20px; line-height: 30px;}
+	.addWrap{ width:430px; margin:0 20px;  }
+	.h3{width:100%; padding: 20px 0;border-bottom: 2px solid #202020;color: #101010;font-weight: 700; font-size: 20px; line-height: 30px;}
 	em{color:green;}
 	th span{position: relative;color: #101010;font-size: 14px;line-height: 22px;font-weight: 400; text-align:left; display:block; font-size:14px; }
 	th{display:block;margin-top:20px;  }
 	td{display:block; margin-top:10px; }
-	input.text{width:432px; height:50px; padding:2px 10px; border: 1px solid #ccc  }
+	input.text{width:100%; height:50px; padding:2px 10px; border: 1px solid #ccc  }
 	.select{display:inline-block; }
-	.box{ width:136px; height:50px; padding:2px 10px; border: 1px solid #ccc  }
-	.btn{width:211px; height:50px; border:1px solid #202020;margin-left:2px; margin-top:30px; color:#101010; }
-	.green{background-color:#BDD61A; border:1px solid #BDD61A; margin-left:7px; }
+	.box{ width:135px; height:50px; padding:2px 10px; border: 1px solid #ccc  }
+	.btn_wrap{ width:100%; padding-top: 30px;}
+	.btn{width:210px; height:50px; border:1px solid #202020; color:#101010; float: left; }
+	.green{background-color:#BDD61A; border:1px solid #BDD61A; float: right; }
 	</style>
 
 </head>

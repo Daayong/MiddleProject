@@ -55,13 +55,18 @@
 				<div class="slide_wrap">
 					<div class="slide_track" style="opacity: 1; width: 780px; transform: translate3d(-780px, 0px, 0px);">
 						
-						<c:forEach begin="0" end="1">
+						<div class="img_wrap">
+							<img src="../resources/upload/review/${bestReviewDTOs.file[(fn:length(bestReviewDTOs.file))-1].review_file_name}" onerror="">
+						</div>
 						<c:forEach items="${bestReviewDTOs.file}" var="file">
 							<div class="img_wrap">
 								<img src="../resources/upload/review/${file.review_file_name}" onerror="">
 							</div>
 						</c:forEach>
-						</c:forEach>
+						<div class="img_wrap">
+							<img src="../resources/upload/review/${bestReviewDTOs.file[0].review_file_name}" onerror="">
+						</div>
+						
 					</div>
 					
 					<div class="slide_nav_count">

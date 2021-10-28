@@ -50,6 +50,10 @@ public class CartDAO {
 		return sqlSession.selectList(NAMESPACE+"getOrderCount", memberDTO);
 	}
 	
+	public List<CartListDTO> getProductList() throws Exception {
+		return sqlSession.selectList(NAMESPACE + "getProductList");
+	}
+	
 	public void deleteCartOne(CartDTO cartDTO) throws Exception {
 		sqlSession.delete(NAMESPACE + "deleteCartOne", cartDTO);
 	}
@@ -80,6 +84,10 @@ public class CartDAO {
 
 	public void updateCartStateBeforePayment(HashMap<String, String> hashMap) {
 		sqlSession.update(NAMESPACE + "updateCartStateBeforePayment", hashMap);
+	}	
+
+	public void updateCartStateDone(CartDTO cartDTO) {
+		sqlSession.update(NAMESPACE + "updateCartStateDone", cartDTO);
 	}	
 	
 }

@@ -16,9 +16,13 @@ function openDetail(){
 
 $('.openDetail').click(function(){
 	let review_id = $(this).data('review_id');
-	var url = "../review/reviewOpenDetail?review_id=" + review_id;
-	var name = "popup test";
-	var option = "width = 845, height = 820, top = 0, left = 0, location = no, scrollbars = yes"
+	let url = "../review/reviewOpenDetail?review_id=" + review_id;
+	let name = "openDetail";	
+	let width = 845;
+	let height = 820;
+	let top = (window.innerHeight - height) / 2 + screenY;
+    let left = (window.innerWidth - width) / 2 + screenX;    
+	let option = "width = "+width+", height = "+height+", top = "+top+", left = "+left+", location = no, scrollbars = yes";	
 	window.open(url, name, option);
 });
 

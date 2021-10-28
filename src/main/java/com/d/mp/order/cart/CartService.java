@@ -46,6 +46,10 @@ public class CartService {
 		return cartDAO.getOrderCount(memberDTO);
 	}
 	
+	public List<CartListDTO> getProductList() throws Exception{
+		return cartDAO.getProductList();
+	}
+	
 	public void deleteCartOne(CartDTO cartDTO) throws Exception {
 		cartDAO.deleteCartOne(cartDTO);
 	}
@@ -89,6 +93,10 @@ public class CartService {
 		hashMap.put("hash_state", "deliveryComplete");
 		hashMap.put("hash_date", "0");
 		cartDAO.updateCartStateBeforePayment(hashMap);		
+	}
+
+	public void updateCartStateDone(CartDTO cartDTO) throws Exception {
+		cartDAO.updateCartStateDone(cartDTO);
 	}
 	
 }

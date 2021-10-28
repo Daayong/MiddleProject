@@ -49,13 +49,13 @@ input.txt {display:inline-block;width:100%;height:48px;padding:0 16px;background
 /* ===== ===== ===== 배송정보 delivery_info ===== ===== ===== */
 .delivery_info { margin-top: 56px; }
 
-.delivery_location_wrap { display: flex; margin-top: -1px; border: 1px solid #ccc; table-layout: fixed; }
+.delivery_location_wrap { margin-top: -1px; border: 1px solid #ccc; table-layout: fixed; }
 .delivery_location_wrap:after { content: ''; display: block; clear: both; }
 
-.delivery_location_wrap .delivery_location{ display: inline-block; position: relative; width: 187px; padding: 25px 12px 26px 31px; background-color: #F7F7F7; vertical-align: top; }
+.delivery_location_wrap .delivery_location{ height:140px; display: inline-block; position: relative; width: 187px; padding: 25px 12px 26px 31px; background-color: #F7F7F7; vertical-align: top; }
 .delivery_location_wrap .delivery_location h4 { font-size: 18px; line-height: 27px; color: #101010; font-weight: 500; }
 
-.delivery_location_wrap .location_detail { position:relative; width: 591px;padding: 25px 24px 26px 24px;vertical-align: top;}
+.delivery_location_wrap .location_detail { float:right; position:relative; width: 591px;padding: 25px 24px 26px 24px;vertical-align: top;}
 .delivery_location_wrap .location_detail .btn_link {position:absolute;right:31px;top:25px;}
 .delivery_location_wrap .location_detail .btn_link{display:inline-block;font-weight:400;font-size:14px;line-height:21px;color:#606060;}
 .delivery_location_wrap .location_detail .btn_link:after{content:'';display:inline-block;width:8px;height:8px;margin:-3px 0 0 4px;border-bottom:1.5px solid #606060;border-right:1.5px solid #606060;-ms-transform:rotate(-45deg);-moz-transform:rotate(-45deg);-webkit-transform:rotate(-45deg);transform:rotate(-45deg);vertical-align:middle}
@@ -70,6 +70,12 @@ input.txt {display:inline-block;width:100%;height:48px;padding:0 16px;background
 .delivery_location_wrap .location_detail ul li.method { margin-top: 18px; }
 .delivery_location_wrap .location_detail ul li .detail>span  { display: block; margin-top: 4px; }
 .delivery_location_wrap .location_detail ul li .detail span span { margin-left: 8px; color: #101010; }
+
+.add_location_wrap { padding-top:31px; height: 146px; text-align: center;}
+.add_location_wrap p { font-size: 14px; line-height: 22px; clear: #606060; }
+.add_location_wrap a { margin-top: 16px; font-size: 14px; font-weight: 500; line-height: 22px; color: #101010; display:inline-block;min-width:142px;padding:11px 20px 11px;border:1px solid #ccc;text-align:center;}
+.add_location_wrap a > span:after{content:'';display:inline-block;width:8px;height:8px;margin:-3px 0 0 8px;border-bottom:1.5px solid #202020;border-right:1.5px solid #202020;-ms-transform:rotate(-45deg);-moz-transform:rotate(-45deg);-webkit-transform:rotate(-45deg);transform:rotate(-45deg);vertical-align:middle}
+
 
 /* prd_detail_wrap */
 .prd_detail_wrap { margin-top: -1px; padding: 26px 31px 10px; border: 1px solid #CCC; }

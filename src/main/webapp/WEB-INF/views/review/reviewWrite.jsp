@@ -43,7 +43,7 @@
 				
 					<input type="text" name="product_id" value="${paymentListDTO.product_id}" hidden="">
 					<input type="text" name="member_id" value="${member.member_id}" hidden="">
-					<input type="text" name="cart_id" value="${paymentListDTO.payment_id}" hidden="">
+					<input type="text" name="cart_id" value="${paymentListDTO.cart_id}" hidden="">
 				
 					<h3>리뷰</h3>
 					<div class="favorite_salty_wrap">

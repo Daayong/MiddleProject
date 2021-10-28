@@ -315,7 +315,11 @@ $('.orderBtn').click(function(){
 			isAllChecked();
 			priceSetting();
 			countProduct();
-			location.href = './orders'
+			if ($('.total_payment_price').data('total_payment_price') > 0){
+				location.href = './orders'		
+			} else {
+				alert("선택하신 상품이 없습니다.");
+			}
 		},
 		error : function(xhr, status, error){
 			console.log("error");				

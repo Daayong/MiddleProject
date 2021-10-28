@@ -44,6 +44,8 @@ public class OrderController {
 	public String cartList(Model model, HttpSession session) throws Exception {	
 		MemberDTO memberDTO = (MemberDTO) session.getAttribute("member");
 		cartService.updateCartStateDeadLine(memberDTO);
+		
+		model.addAttribute("products", cartService.getProductList());
 		return "order/cartList";
 	}
 	
