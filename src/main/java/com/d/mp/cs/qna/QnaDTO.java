@@ -1,6 +1,7 @@
 package com.d.mp.cs.qna;
 
 import java.sql.Date;
+import java.util.List;
 
 public class QnaDTO {
 	
@@ -15,7 +16,6 @@ public class QnaDTO {
 	private String qna_answer;
 	private Date qna_answer_date;
 	private String qna_phone;
-	
 	
 	public Long getQna_id() {
 		return qna_id;

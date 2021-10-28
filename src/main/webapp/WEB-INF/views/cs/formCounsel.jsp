@@ -252,14 +252,7 @@
 											<span class="add_file" style="width: 128px; height: 128px;"><span class="hide">파일 추가 선택</span></span>	
 											</div>
 										</li>
-										<li key="ad229365-ba72-40f5-8c5d-a8af2302473b_20211026083254">
-											<div class="img" style="position:relative;">
-												<div class="dim_div"><span class="num">1</span></div>	
-												<div class="img_wrap">	<img src="/pc/comm/previewImg.json?tempFile=/2021102608/ad229365-ba72-40f5-8c5d-a8af2302473b_20211026083254&amp;filename=갈릭버터쉬림프.jpg" alt="">
-												<button type="button" class="btn_delete"><span class="hide">파일 삭제</span></button>
-													</div>
-													</div>
-													</li>
+										
 									</ul>
 								</div>
 							</div>
