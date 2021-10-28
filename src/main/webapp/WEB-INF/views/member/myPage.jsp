@@ -84,8 +84,26 @@
 				<div id="alarm_wrap">
 						<div class="alarm_state off">			
 						<ul>	
-							<li><a href="#">신메뉴 출시 알림</a> SMS <span class="state">OFF</span></li>
-							<li><a href="#">마케팅 수신 동의</a> SMS <span class="state">OFF</span>Email<span class="state">OFF</span></li>
+							<li><a href="#">신메뉴 출시 알림</a> SMS <span class="state" style="background-color:#606060;">OFF</span></li>
+							<li>
+								<a href="#">마케팅 수신 동의</a>  
+										<c:choose>
+											<c:when test="${member.member_marketing_sms eq 0}">
+												<em style="color:#606060">SMS</em><span class="state" style="background-color:#606060;">OFF</span>	
+											</c:when>
+											<c:otherwise>
+												<em style="color:#008A00;">SMS</em><span class="state" style="background-color:#008A00;">ON</span>	
+											</c:otherwise>
+										</c:choose>
+										<c:choose>
+											<c:when test="${member.member_marketing_email eq 0}">
+												<em style="color:#606060;">Email</em><span class="state" style="background-color:#606060;">OFF</span>	
+											</c:when>
+											<c:otherwise>
+												<em style="color:#008A00;">Email</em><span class="state" style="background-color:#008A00;">ON</span>	
+											</c:otherwise>
+										</c:choose>
+							</li>
 						</ul>
 						</div>
 				</div>
@@ -99,68 +117,123 @@
 							<span>(최근 1개월 기준)</span>
 						</div>
 						<div id="rt_os">
-							<a href="#">더보기</a>
+							<a href="/mp/member/myOrderList">더보기</a>
 						</div>
 					</div>
 					<div id="order_state">
 						<ul>
-							<li class="item">
-								<span class="circle">
-									<i class="ico ico02"></i>
+							<c:choose>
+								<c:when test="${!empty paymentState}">
+									<li class="item">
+									<a href="/mp/member/myOrderList">
+									<span class="circle" style="background-color:#BDD61A;">
 									<span class="num">
-										0
-										<span class="hide">개</span>
+										${getOrderCount}
 									</span>
-								</span>
-								<span class="tit">주문/결제</span>
-							</li>
-							<li class="item">
-								<span class="circle">
-									<i class="ico ico03"></i>
-									<span class="num">
-										0
-										<span class="hide">개</span>
 									</span>
-								</span>
-								<span class="tit">재료준비</span>
-							</li>
-							<li class="item">
-								<span class="circle">
-									<i class="ico ico04"></i>
-									<span class="num">
-										0
-										<span class="hide">개</span>
-									</span>
-								</span>
-								<span class="tit">배송준비</span>
-							</li>
-							<li class="item">
-								<span class="circle">
-									<i class="ico ico05"></i>
-									<span class="num">
-										0
-										<span class="hide">개</span>
-									</span>
-								</span>
-								<span class="tit">배송중</span>
-							</li>
-							<li class="item">
-								<span class="circle">
-									<i class="ico ico06"></i>
-									<span class="num">
-										0
-										<span class="hide">개</span>
-									</span>
-								</span>
-								<span class="tit">배송완료</span>
-							</li>
-	
-						</ul>
-											
-					</div>
+									</a>
+									<span class="tit">주문/결제</span>
+									</li>
+								</c:when>
+								<c:otherwise>
+									<li class="item">
+										<span class="circle">
+											<i class="ico ico02"></i>
+										</span>
+										<span class="tit">주문/결제</span>
+									</li>
+								</c:otherwise>
+							</c:choose>
+							
 				
+							<c:choose>
+								<c:when test="${!empty etcState}">
+									<li class="item">
+									<span class="circle" style="background-color:#BDD61A;">
+									<span class="num">
+										${getOrderCount}
+									</span>
+									</span>
+									<span class="tit">재료준비</span>
+									</li>
+								</c:when>
+								<c:otherwise>
+									<li class="item">
+										<span class="circle">
+											<i class="ico ico03"></i>
+										</span>
+										<span class="tit">재료준비</span>
+									</li>
+								</c:otherwise>
+							</c:choose>
+							
+							<c:choose>
+								<c:when test="${!empty etcState}">
+									<li class="item">
+									<span class="circle" style="background-color:#BDD61A;">
+									<span class="num">
+										${getOrderCount}
+									</span>
+									</span>
+									<span class="tit">배송준비</span>
+									</li>
+								</c:when>
+								<c:otherwise>
+									<li class="item">
+										<span class="circle">
+											<i class="ico ico04"></i>
+										</span>
+										<span class="tit">배송준비</span>
+									</li>
+								</c:otherwise>
+							</c:choose>
+							
+							<c:choose>
+								<c:when test="${!empty etcState}">
+									<li class="item">
+									<span class="circle" style="background-color:#BDD61A;">
+									<span class="num">
+										${getOrderCount}
+									</span>
+									</span>
+									<span class="tit">배송중</span>
+									</li>
+								</c:when>
+								<c:otherwise>
+									<li class="item">
+										<span class="circle">
+											<i class="ico ico05"></i>
+										</span>
+										<span class="tit">배송중</span>
+									</li>
+								</c:otherwise>
+							</c:choose>
+							
+							<c:choose>
+								<c:when test="${!empty etcState}">
+									<li class="item">
+									<span class="circle" style="background-color:#BDD61A;">
+									<span class="num">
+										${getOrderCount}
+									</span>
+									</span>
+									<span class="tit">배송완료</span>
+									</li>
+								</c:when>
+								<c:otherwise>
+									<li class="item">
+										<span class="circle">
+											<i class="ico ico03"></i>
+										</span>
+										<span class="tit">배송완료</span>
+									</li>
+								</c:otherwise>
+							</c:choose>
+						</ul>											
+					</div>				
 				</div>
 				
+
 				<div id="info_box" class="rpd">
 					<div class="stamp_event_wrap type_renew2">
 						<div class=" left_cont re_pose">
@@ -186,8 +259,27 @@
 						최근 구매한 메뉴
 						<a href="#" class="btn_link">더보기</a>
 					</h4>
-					<div class="no_data_txt">
+					<!-- <div class="no_data_txt">
 						<strong>최근 구매한 메뉴가 없습니다.</strong>
+					</div> -->
+					<div class="prd_list col ">
+						<ul>
+							 <c:forEach var="paymentListDTOsK" items="${paymentListDTOs}"> 
+								<li>
+									<div class="prd_mod">
+										<a href="/mp/menu/menu_detail?product_id=${paymentListDTOsK.product_id}">
+											<div class="img_wrap">
+												<img src="/mp/resources/upload/menu/main/${paymentListDTOsK.product_id}/${paymentListDTOsK.product_file_name}" > 
+											</div>
+											<div class="info_wrap">
+												<span class="tit mt_elps">${paymentListDTOsK.product_name}</span>
+												<span class="price"><fmt:formatNumber value="${paymentListDTOsK.product_price * paymentListDTOsK.cart_quantity}" pattern="#,###"/>원</span>
+											</div>
+										</a>
+									</div>
+								</li>
+							 </c:forEach> 
+						</ul>
 					</div>
 				</div>
 <!-- 나의 쇼핑찜 -->				

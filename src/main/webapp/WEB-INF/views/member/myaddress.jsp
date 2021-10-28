@@ -62,7 +62,6 @@
 					
 					<c:choose>
 						<c:when test="${empty list}">
-							<%-- <input type="hidden" name="${member.member_id}"> --%>
 							<div class="noAd">
 								<span class="ico"></span>
 								<strong>등록하신 배송지가 없습니다.</strong>
@@ -73,11 +72,11 @@
 								<strong>
 									배송지를 관리하세요
 								</strong>	
-								<input type="hidden" class="member_id" name="member_id" >			
+								<input type="hidden" class="member_id" name="member_id"  >			
 							</div>
 							<c:forEach items="${list}" var="ar">
 								<div class="dinfo_box" >
-									<div class="box_header" data-address_id="${ar.address_id}" data-member_id="${ar.member_id}"  >
+									<div class="box_header" data-address_id="${ar.address_id}" data-member_id="${ar.member_id}" data-default_check="${ar.default_check}" >
 										<strong class="title">${ar.recipient_name}</strong>
 										<span class="default">
 										   <c:if test="${ar.default_check eq 1}">
@@ -87,7 +86,7 @@
 										<c:if test="${ar.default_check ne 1}">
 											<button type="button" name="addressDelete" class="delete_btn adBtn" >삭제</button>
 										</c:if>
-										<button type="button" class="update_btn adBtn" onclick="javascript:adUpdate()" >수정</button>
+										<button type="button" class="update_btn adBtn" onclick="javascript:adUpdate('${ar.address_id}')" >수정</button>
 										<c:if test="${ar.default_check ne 1}">
 											<button type="button" class="default_btn adBtn"  >기본 배송지 설정</button>
 										</c:if>
@@ -103,7 +102,7 @@
 						</c:otherwise>
 					</c:choose>		
 					<div class="btn_wrap">
-					<button type="button" class="btn pop green" onclick="javascript:addAddress()" id="InsertAddress" name="InsertAddress">신규배송지 추가</button>
+					<button type="button" class="btn pop green"  id="InsertAddress" name="InsertAddress">신규배송지 추가</button>
 					</div>
 				</div>
 			</div>
@@ -122,22 +121,45 @@
 		function addAddress(){
 			var url = "../member/addAddress";
 			var name = "popup test";
-			var option = "width = 480, height =400, top = 200, left = 480, location = no, scrollbars = yes"
+			var option = "width = 480, height =400, top = 200, left = 480, location = no, scrollbars = yes";
 			window.open(url, name, option);
 		};
 		
-		function adUpdate(){
-			var url = "../member/adUpdate";
+		//배송지 추가 개수제한 
+		$("#InsertAddress").click(function(){
+			 var member_id =${member.member_id};
+				$.ajax({
+					url:'./checkInsert',
+					type:'get',
+					data:{member_id:member_id},
+					success:function(data){
+						console.log(data);
+						if(data){
+							addAddress();
+						}else{
+							alert("배송지는 4개까지 설정 가능합니다.");
+						}
+					}
+				});
+			
+		});
+		
+		
+		
+		
+		
+		//배송지 수정 
+		function adUpdate(address_id){
+			var url = "../member/adUpdate?address_id="+address_id;
 			var name = "update";
-			var option = "width = 480, height =400, top = 200, left = 480, location = no, scrollbars = yes"
+			var option = "width = 480, height =400, top = 200, left = 480, location = no, scrollbars = yes";
 			window.open(url, name, option);
 		};
 		
-	
 		//배송지 삭제 
 		$(function(){
 			$('.delete_btn').click(function(){
-				 var address_id = $(this).parents(".box_header").data('address_id');
+				 var address_id = $(this).parent(".box_header").data('address_id');
 				if(confirm("해당 배송지를 삭제 하시겠습니까?")==true){
 					$.ajax({
 						url:'./addressDelete',

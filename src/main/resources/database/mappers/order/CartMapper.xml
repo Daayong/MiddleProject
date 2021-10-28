@@ -89,6 +89,24 @@
 		ORDER BY cart_delivery_date
 	</select>
 	
+	<!-- 주문 정보 유무 및 상태 조회(결제완료상태) -->
+	<select id="getPayFinish" resultType="CartDTO" parameterType="MemberDTO">
+		SELECT * FROM cart WHERE member_id=#{member_id} AND cart_state='payment'
+	</select>
+	
+	<!-- 주문 정보 유무 및 상태 조회(기타완료상태) -->
+	<select id="getState" resultType="CartDTO" parameterType="MemberDTO">
+		SELECT * FROM cart WHERE member_id=#{member_id} AND cart_state=''
+	</select>
+
+	<!-- payment_id 별 분리 후 개수 select  -->
+	<select id="getOrderCount" resultType="CartDTO" parameterType="MemberDTO">
+		select COUNT(*)
+		from cart 
+		where member_id=#{member_id} and cart_state='payment'
+		group by payment_id	
+	</select>
+
 <!-- ===== ===== ===== DELETE ===== ===== ===== -->	
 	<delete id="deleteCartOne" parameterType="CartDTO">
 		DELETE FROM cart WHERE cart_id = #{cart_id}

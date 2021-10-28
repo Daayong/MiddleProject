@@ -1,10 +1,12 @@
 package com.d.mp.member;
 
+import java.util.List;
+
 import com.d.mp.address.AddressDTO;
 
 public class MemberDTO {
 
-	private AddressDTO addressDTO;
+	//private AddressDTO addressDTO;
 	
 	private Long member_id;
 	private String member_user_id; 
@@ -19,12 +21,7 @@ public class MemberDTO {
 	private int member_point;
 	
 	
-	public AddressDTO getAddressDTO() {
-		return addressDTO;
-	}
-	public void setAddressDTO(AddressDTO addressDTO) {
-		this.addressDTO = addressDTO;
-	}
+
 	private String birth_yy;
 	private String birth_mm;
 	private String birth_dd;

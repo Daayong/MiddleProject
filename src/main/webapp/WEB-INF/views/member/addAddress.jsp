@@ -26,10 +26,11 @@
 <body>
 
 	<div class="addWrap">
-		<form id="addressForm" name="addressForm" method="post" target="myaddress">
+		<form id="addressForm" name="addressForm" method="post" >
 				<h3 class="h3">배송지 추가</h3>
 				<div class="table_col">
-					<input type="hidden" name="member_id" value="${member.member_id}">
+					<input type="hidden" name="member_id" id="member_id" value="${member.member_id}">
+					<input type="hidden" name="default_check" id="default_check">
 					<table>
 						<colgroup>
 							<col class="title">
@@ -72,16 +73,16 @@
 										</div>
 										<div class="select">
 											<span class="input_txt">
-												<input type="text" id="member_phone_m" name="member_phone_m" class="phone box" value="${member.member_phone_m}" placeholder="${member.member_phone_m}">
+												<input type="text" id="member_phone_m" name="member_phone_m" class="phone box" >
 											</span>
 											<span class="symbol">-</span>
 										</div>
 										<div class="select">
 											<span class="input_txt">
-												<input type="text" id="member_phone_b" name="member_phone_b" class="phone box" value="${member.member_phone_b}" placeholder="${member.member_phone_b}">
+												<input type="text" id="member_phone_b" name="member_phone_b" class="phone box" >
 											</span>
 										</div>
-									</div>
+									</div> 
 								</td>
 							</tr>						
 			
@@ -93,7 +94,7 @@
 								</th>
 								<td>
 									<span class="input_txt w250">
-										<input type="text" name="address" id="address" class="text" placeholder="주소를 입력하세요">
+										<input type="text" name="address" id="address" class="text" placeholder="주소를 입력하세요.">
 									</span>
 								</td>
 							</tr>
@@ -120,42 +121,72 @@
 			return false; 
 		});
 		
-		 const addressForm=document.getElementById('addressForm');
+		 const addressForm=document.getElementById('#addressForm');
 		 
-		 /*Input id명 선언*/
-		 const recipient_name=document.getElementById('recipient_name');
-		 const phone_m=document.getElementById('member_phone_m');
-		 const phone_b=document.getElementById('member_phone_b');
-		 const address=document.getElementById('address');
-	 
 		function checkInput(){
 			//받는분 입력 여부 확인 
-			if(recipient_name.value.trim().length <1){
+			 if($("#recipient_name").val().trim().length <1){
 				alert("받는분의 성함을 입력해주세요");
-				recipient_name.focus();
+				$("#recipient_name").focus();
 				return false; 
-			}
+			} 
 		    //핸드폰 입력 여부 확인
-			if(phone_m.value.length <3 || phone_m.value.length>4){
+			 if($("#member_phone_m").val().length <3 || $("#member_phone_m").val().length>4){
 				alert("핸드폰 번호를 확인해주세요.");
-				phone_m.focus();
+				$("#member_phone_m").focus();
 				return false;
 			}
-			if(phone_b.value.trim().length != 4){
+			if($("#member_phone_b").val().trim().length != 4){
 				alert("핸드폰 번호를 확인해주세요.")
-				phone_b.focus();
+				$("#member_phone_b").focus();
 				return false;
 			}
 			//주소 입력 여부 확인 
-			if(address.value.trim().length <5){
+			if($("#address").val().trim().length <5){
 				alert("주소를 확인해주세요.");
-				address.focus();
+				$("#address").focus();
 				return false;
-			}
+			} 
 			
-			if(confirm('배송지를 추가하시겠습니까?')==true){
-				addressForm.submit();
-				window.close();
+			if(confirm('배송지를 추가하시겠습니까?')==true){	
+				 var recipient_name=$("#recipient_name").val();
+				 var phone_m=$("#member_phone_m").val();
+				 var phone_b=$("#member_phone_b").val();
+				 var address=$("#address").val();
+				 var member_id=$("#member_id").val();
+				 
+				 let f = '010';
+					$('.se').each(function(){
+						 if($(this).prop('selected')){
+							 f = $(this).val();
+						 }
+					})
+				
+				$.ajax({
+					url:'./addAddress',
+					type:'post',
+					data:{
+						recipient_name:recipient_name,
+						member_phone_m: phone_m,
+						member_phone_b: phone_b,
+						member_phone_f: f,
+						address:address,
+						member_id:member_id,	
+					},
+					success:function(data){
+						console.log(data);
+						if(data >0){
+							alert("배송지가 추가되었습니다.");
+							opener.location.reload();
+							window.close();
+							
+						}else{
+							alert("배송지 추가에 실패했습니다.");
+						}
+					}
+				});
+			
+				
 			 
 			}else{
 				return false;

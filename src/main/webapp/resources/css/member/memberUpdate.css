@@ -4,7 +4,7 @@
 .btn.black{ margin-left:20px; color:#fff;border:1px solid #BDD61A;background-color:black;}
 .btn.pop {width: 200px;height: 56px;font-size: 16px;line-height: 54px; }
 
-.btn_wrap{ position:absolute; left:27%;}
+.btn_wrap{ text-align:center; margin-top:50px; }
 
 h3{display: block;padding-bottom: 36px;font-size:25px;line-height:50px;font-weight: 700;color: #101010;}
 

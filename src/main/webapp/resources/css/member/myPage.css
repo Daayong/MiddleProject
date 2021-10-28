@@ -183,13 +183,13 @@ line-height:17px; font-weight:500; border-radius:9px;
 vertical-align:top; margin:0 7px; 
 }
 
-#alarm_wrap .alarm_state.on ul li .state{
-	background-color:#008A00;
+#alarm_wrap div ul li .state{
+display:inline-block; height:18px; 
+padding:0 9px; color:#fff; font-size:10px; 
+line-height:17px; font-weight:500; border-radius:9px; 
+vertical-align:top; margin:0 7px; 
 }
 
-#alarm_wrap .alarm_state.off ul li .state{
-	background-color:#606060;
-}
 
 #myOrder{
 	width:940px; 
@@ -261,11 +261,12 @@ vertical-align:top; margin:0 7px;
 #order_state .item .circle i.ico.ico04 {background-position:-240px -78px;}
 #order_state .item .circle i.ico.ico05 {background-position:-320px -80px;}
 #order_state .item .circle i.ico.ico06 {background-position:-401px -74px;}
-#order_state .item .circle .num {display:none; color:#101010; font-size:32px; line-height:76px; font-weight:bold;}
+#order_state .item .circle .num {color:#101010; font-size:32px; line-height:76px; font-weight:bold;}
 #order_state .item .tit {display:block; padding-top:12px; color:#808080; font-size:15px; line-height:23px; font-weight:500;}
 #order_state .item.ing .circle {background-color:#BDD61A;}
 #order_state .item.ing .circle i.ico {display:none;}
 #order_state .item.ing .circle .num {display:block;}
+#order_state .item .circle .num.hide {display:none;}
 #order_state .item.ing .tit {color:#101010;}
 
 
@@ -343,4 +344,20 @@ vertical-align:top; margin:0 7px;
 	font-weight: 700;
 }
 
+
+.prd_list.col {padding-top:24px;}
+.prd_list ul {font-size:0;}
+
+.prd_list.col li{display:inline-block;width:200px;border:none; margin-left:47px;white-space:initial;vertical-align:top;}
+.prd_list.col li:first-child{margin-left:0;}
+.prd_list.col li:nth-child(4){width:200px; float:right; margin-left:46px;  }
+.prd_list.col li a{display:inline-block;width:100%;}
+
+.prd_list.col .prd_mod .img_wrap{position:relative;display:block;height:200px;text-align: center;overflow:hidden;  }
+.prd_list.col .prd_mod .img_wrap img{width:100%; margin-top:-10%; }
+.prd_list.col .prd_mod .info_wrap{margin-top:16px; padding:4px 0; font-size:16px; line-height:24px;}
+.prd_list.col .prd_mod .info_wrap span{display:inline-block; vertical-align:middle;}
+.prd_list.col .prd_mod .info_wrap span:first-child{margin-top:0;}
+.prd_list.col .prd_mod .info_wrap .tit{display:block;margin-top:8px;font-size:17px;line-height:24px;color:#101010;font-weight:500;}
+.prd_list.col .prd_mod .info_wrap .price{margin-top:8px;font-size:18px;line-height:27px;color:#101010;font-weight:700;}
 

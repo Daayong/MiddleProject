@@ -1,8 +1,8 @@
 package com.d.mp.member;
 
-import java.util.HashMap;
+
 import java.util.List;
-import java.util.Map;
+
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,8 +68,13 @@ public class MemberDAO {
 	}
 	
 	//배송지 리스트 조회 
-	public List<AddressDTO> getAddressList(MemberDTO memberDTO)throws Exception{
-		return sqlSession.selectList(NAMESPACE+"getAddressList", memberDTO);	
+	public List<AddressDTO> getAddressList(AddressDTO addressDTO)throws Exception{
+		return sqlSession.selectList(NAMESPACE+"getAddressList", addressDTO);	
+	}
+	
+	//배송지 1개 조회 
+	public AddressDTO getAddressOne(AddressDTO addressDTO)throws Exception{
+		return sqlSession.selectOne(NAMESPACE+"getAddressOne", addressDTO);
 	}
 	
 	//결제 완료 후 포인트 증감

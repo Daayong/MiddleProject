@@ -181,7 +181,7 @@
 										</div>
 										<div class="select w180">
 											<span class="input_txt">
-												<input type="text" id="member_email_b2"  name="member_email_b"  class="text put" placeholder="${member.member_email_b}" >
+												<input type="text" id="member_email_b2"  name="member_email_b" value="${member.member_email_b}" class="text put" placeholder="${member.member_email_b}" >
 											</span>
 											<select class="select_wrap"  id="member_email_b" onchange="javascript:changeSelect(this);" >						
 											<option class="ee" value="1">직접입력</option>
