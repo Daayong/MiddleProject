@@ -15,12 +15,8 @@ public class NoticeDAO {
 	private SqlSession sqlSession;
 	private final String NAMESPACE ="com.d.mp.cs.notice.NoticeDAO.";
 	
-	public List<NoticeDTO> getNoticeList(BoardPager pager) throws Exception{
-		return sqlSession.selectList(NAMESPACE+"getNoticeList", pager);
-	}
-	
-	public Long getCount(BoardPager pager) throws Exception{
-		return sqlSession.selectOne(NAMESPACE+"getCount", pager);
+	public List<NoticeDTO> getNoticeList() throws Exception{
+		return sqlSession.selectList(NAMESPACE+"getNoticeList");
 	}
 	
 	public int setInsert(NoticeDTO noticeDTO) throws Exception{
@@ -35,16 +31,4 @@ public class NoticeDAO {
 		return sqlSession.delete(NAMESPACE+"setDelete", noticeDTO);
 	}
 	
-	//file 첨부
-	public int setFile(NoticeFileDTO noticeFilesDTO) throws Exception{
-		return sqlSession.insert(NAMESPACE+"setFile", noticeFilesDTO);
-	}
-	
-	public List<NoticeFileDTO> getFile(NoticeDTO noticeDTO) throws Exception{
-		return sqlSession.selectList(NAMESPACE+"getFile", noticeDTO);
-	}
-	
-	public int setFileDelete(NoticeFileDTO noticeFilesDTO) throws Exception{
-		return sqlSession.delete(NAMESPACE+"setFileDelete", noticeFilesDTO);
-	}
 }

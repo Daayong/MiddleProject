@@ -8,19 +8,15 @@
   
   <!-- list -->
   <select id="getNoticeList" parameterType="BoardPager"  resultType="NoticeDTO">
-  	SELECT * FROM
-  	 (SELECT rownum r, n.* FROM
-  	  (SELECT * FROM notice ORDER BY notice_id DESC)
-  	   n)
-  	   WHERE r BETWEEN #{startRow} AND #{lastRow}
+  	SELECT 
+  		* 
+  	FROM 	
+  		notice
+  	 ORDER BY notice_id DESC
+  	   
   </select>
   
-  <!-- paging -->
-  
-  <select id="getCount" parameterType="BoardPager" resultType="Long">
-  	SELECT COUNT(notice_id) FROM notice
-  </select>
-  
+
   <!-- insert -->
   
   <insert id="setInsert" parameterType="NoticeDTO">
@@ -44,17 +40,4 @@
   </delete>	
 	
   
-  <!-- file -->
-  <insert id="setFile" parameterType="NoticeFileDTO">
-  	INSERT INTO notice_file VALUES(notice_file_seq.nextval, #{notice_id}, #{notice_file_name}, #{notice_file_ori_name})
-  </insert>
-  
-  <select id="getFile" parameterType="NoticeDTO" resultType="NoticeFileDTO">
-  	SELECT * FROM notice_file WHERE notice_id = #{notice_id}
-  </select>
-  
-  <delete id="setFileDelete" parameterType="NoticeFileDTO">
-  	DELETE notice_file WHERE notice_file_id = #{notice_file_id}
-  
-  </delete>
   </mapper>
