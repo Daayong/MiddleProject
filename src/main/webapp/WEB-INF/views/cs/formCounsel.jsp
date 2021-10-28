@@ -9,7 +9,7 @@
 	<title>My쿡킷 - 집밥을 특별하게,쿡킷</title>
 	
 	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-	<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<style>	
 		.wrapper{
 			position:relative;
@@ -240,32 +240,6 @@
 							</div>
 						</dd>
 					</dl>
-						<dl class="one_dep">
-						<dt>첨부파일</dt>
-						<dd>
-							<div class="scroll">
-								<div class="add_file_wrap" style="width: 276px;" >
-									<ul>
-										<li>
-											<div class="add_file_frame">	
-												<input type="file" class="trans_add_file" name="file" accept="image/*" multiple="multiple" title="파일 추가 선택">
-											<span class="add_file" style="width: 128px; height: 128px;"><span class="hide">파일 추가 선택</span></span>	
-											</div>
-										</li>
-										
-									</ul>
-								</div>
-							</div>
-							<div class="file_info">
-								<ul class="bul_list">
-									<li class="bul_dot">
-										<i class="bullet"></i> 최대 5장 등록 (PNG, JPEG, JPG, GIF 포맷)
-									</li>
-								</ul>
-								<span class="file_size"><span class="now">0</span>/30MB</span>
-							</div>
-						</dd>
-					</dl>
 						
 					<dl class="one_dep answer_alr ui_answerWrap">
 						<dt>답변알림<span class="bul_req"><span class="hide">필수 입력</span></span></dt>
@@ -348,6 +322,33 @@
 						</dd>
 					</dl>
 				</div>
+	
+				<div class="input_taste_form file " style="border-bottom: 1px solid #e0e0e0; padding-bottom: 30px;">
+							<div class="left" style="margin-top: 22px; color: #101010; font-size: 17px; line-height: 24px; font-weight: 700; ">
+								첨부파일
+							
+							<div class="right" style="margin-left: 260px; ">
+								
+								<div class="add_file_wrap">
+									
+									<div class="multipartFile_wrap" style="">
+										<input type="file" id="add_file1" class="add_file" name="multipartFile" data-num="1">
+										<label for="add_file1" style="margin-top: -22px;"></label>
+									</div>
+									
+									<ul>
+										<!-- #add_file change 이벤트 추가 li 영역 -->
+									</ul>
+								</div>
+								
+								<div class="file_info">
+									<div class="dot"></div>
+									<span> 최대 5장 등록 (PNG, JPEG, JPG, GIF 포맷)</span>
+								</div>
+							</div>
+						</div>
+						</div>
+				
 	
 				<div class="btn_wrap">
 					<button type="button" class="btn white" onclick="location.href ='../myAct/customerCounselList'" ><span>취소</span></button>
@@ -508,6 +509,97 @@ $("#inquiry_cate9").on("click", function() {
 	$(".input_top_sec").html('<h4>기타</h4>');
 	$(".orderSelectArea").hide();
 });
+
+
+
+$('.multipartFile_wrap').on('change', '.add_file', function(){
+	const multipartFile_wrap = $(this).parent();
+	const ul = multipartFile_wrap.siblings('ul');
+
+	const label = $(this).siblings('label');
+	label.addClass('hidden')
+	
+	if (ul.find('li').length < 4){
+		addInput(multipartFile_wrap, $(this).data('num'));		
+	}
+	addLi(ul);
+	
+	setNum(multipartFile_wrap, ul);
+	
+	let lastLi = ul.find('li').last();
+	readURL(this, lastLi.find('img'));	
+	
+});
+
+function addInput(multipartFile_wrap, finalNum){
+	finalNum++
+	let Html
+		="<input type='file' id='add_file"+finalNum+"' class='add_file' name='multipartFile' data-num='"+finalNum+"'>"
+		+"<label for='add_file"+finalNum+"'></label>"
+	multipartFile_wrap.append(Html);
+}
+
+function addLi(ul){
+	let Html
+		="<li>"
+		+"<div class='dim_div'><span class='num'></span></div>"
+		+"<img src=''>"
+		+"<button type='button' class='btn_delete'></button>"
+		+"</li>";	
+	ul.append(Html);
+}
+
+function setNum(multipartFile_wrap, ul){
+	let cnt = 1;
+	multipartFile_wrap.find('.add_file').each(function(){
+		$(this).data('num', cnt);
+		$(this).attr('id', 'add_file' + cnt);
+		$(this).next().attr('for', 'add_file' + cnt);
+		cnt++;
+		console.log($(this).data('num'));
+	});
+	console.log("==============");
+	cnt = 1;
+	ul.find('.num').each(function(){
+		$(this).html(cnt++);
+	});
+}
+
+function readURL(input, img_tag) {
+	if (input.files && input.files[0]) {
+		
+		var reader = new FileReader();			
+		reader.onload = function(e) {
+			img_tag.attr('src', e.target.result);
+		}
+		
+		reader.readAsDataURL(input.files[0]);
+	}		
+}		
+
+$('.add_file_wrap').on('click', '.btn_delete', function(){
+	const ul = $(this).parents('ul');
+	const li = $(this).parent('li');
+	const multipartFile_wrap = ul.siblings('.multipartFile_wrap');
+	
+	let delNum = li.find('.num').html();
+	multipartFile_wrap.find('input').each(function(){
+		if($(this).data('num') == delNum){
+			$(this).next().remove();
+			$(this).remove();
+			return;
+		}
+	})
+	li.remove();		
+	setNum(multipartFile_wrap, ul);
+	
+	let lastNum = Number(multipartFile_wrap.children('input').last().data('num'));
+	if(ul.find('li').length == 4){
+		addInput(multipartFile_wrap, lastNum);			
+	}
+});
+
+
 
 
 /* modal 창 */
