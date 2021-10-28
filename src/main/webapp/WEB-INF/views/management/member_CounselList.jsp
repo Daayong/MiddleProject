@@ -76,7 +76,16 @@
 					</c:otherwise>
 				</c:choose>	
 					<span class="subject" style="width: 200px;"><span class="hide">문의유형</span>문의유형 : ${counselList.qna_type}  </span>
+					
+					<c:choose>
+					<c:when test="${not empty counselList.payment_id }">
 					<span class="subject" style="width: 200px;"><span class="hide">주문번호</span>주문 번호 : ${counselList.payment_id} </span>				
+					</c:when>
+					<c:otherwise>
+					<span class="subject" style="width: 200px;"><span class="hide"></span> ${counselList.payment_id} </span>
+					</c:otherwise>
+					</c:choose>
+					
 					<span class="date" style="top: 14px; padding-left:20px;  float: right;" ><span class="hide">문의일자</span>문의 일자 : <br>${counselList.qna_date}</span>
 					<span class="add_comments" onclick="javascript:addComment('${counselList.qna_id}')"  ><span>답변 작성</span></span>
 				</div>

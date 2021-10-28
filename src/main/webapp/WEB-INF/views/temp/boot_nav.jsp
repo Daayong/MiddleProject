@@ -31,9 +31,9 @@
 						      	</c:otherwise>
 							</c:choose>
 							
-							<li><a href="${pageContext.request.contextPath}/cs/csMain">회원관리</a></li>
+							<li><a href="${pageContext.request.contextPath}/cs/csMain">고객행복센터</a></li>
 							<li><a href="${pageContext.request.contextPath}/management/product_insert">상품관리</a></li>
-							<li><a href="${pageContext.request.contextPath}/">게시물관리</a></li>
+							<li><a href="${pageContext.request.contextPath}/management/member_CounselList">게시물관리</a></li>
 		
 						</ul>
 					</c:when>
