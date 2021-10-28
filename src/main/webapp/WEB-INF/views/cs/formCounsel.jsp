@@ -214,7 +214,7 @@
 								<!-- 선택된 상품이 있을 때 -->
 								<div class="pro_box pro_info"  style="display: none;">
 									<span class="txt">20211025712679/<span class="hide">상품명</span>*투움바 스테이크 파스타 외 1건	</span>
-									<button type="button" class="btn_cancle"><span class="hide">선택취소</span></button>
+									<button type="button" onclick="javascript:cancelCheck();" class="btn_cancle"><span class="hide">선택취소</span></button>
 								</div>
 								<!-- //선택된 상품이 있을 때 -->
 								<button type="button" class="btn sub green" onclick="javascipt:openProdListModal();"><span>조회</span></button>
@@ -542,6 +542,11 @@ function closeProdListModal(){
 	$(".ui_modal_wrap").hide();
 	$(".no_pro").hide();
 	$(".pro_info").show();
+}
+
+function cancelCheck() {
+	$(".pro_info").hide();
+	$(".no_pro").show();
 }
 
 

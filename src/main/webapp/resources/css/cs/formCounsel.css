@@ -264,6 +264,18 @@
     font-weight: normal;
 }
 
+.my_activity .input_order.pro_inquiry .order_list .pro_box .btn_cancle {
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    width: 24px;
+    height: 24px;
+    margin-top: -12px;
+    background: url(/mp/resources/images/pd/ico_set1.png) no-repeat -560px 0;
+    background-size: 800px 800px
+;
+}
+
 .input_order dl.one_dep dt {
     width: 260px;
     float: left;
