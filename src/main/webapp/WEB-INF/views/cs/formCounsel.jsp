@@ -202,7 +202,7 @@
 					<dl class="one_dep row1 orderSelectArea">
 						<dt>주문/상품 선택</dt>
 						<dd>
-							<div class="order_list" name="cslPrdList">
+							<div class="order_list" id="order_list" name="cslPrdList">
 		
 									
 								<!-- 선택된 상품이 없을 때 -->
@@ -213,11 +213,15 @@
 	
 								<!-- 선택된 상품이 있을 때 -->
 								<div class="pro_box pro_info"  style="display: none;">
-									<span class="txt">20211025712679/<span class="hide">상품명</span>*투움바 스테이크 파스타 외 1건	</span>
+									<input type="text" id="input_payment_id" readonly="readonly" style="outline: none; border: none;" name="payment_id" value="">
+									<span class="txt">/
+									<input type="text" id="input_product_name" readonly="readonly" style="outline: none; border: none;" name="qna_product_name" value="">
+									
+									<span class="hide">상품명</span></span>
 									<button type="button" onclick="javascript:cancelCheck();" class="btn_cancle"><span class="hide">선택취소</span></button>
 								</div>
 								<!-- //선택된 상품이 있을 때 -->
-								<button type="button" class="btn sub green" onclick="javascipt:openProdListModal();"><span>조회</span></button>
+								<button type="button" class="btn sub green" id="lookUp_payment" ><span>조회</span></button>
 							</div>
 						</dd>
 					</dl>
@@ -393,7 +397,8 @@
 									<div class="top">
 										<div class="tit">
 											<div class="rad_wrap">
-												<input type="checkbox" id="oreder_payment_id" name="order" value="${paymentList.payment_id}" data-odr-nm="${paymentList.payment_id}" onchange="javascript:closeProdListModal();" class="accessibility-keyboard">
+												
+												<input type="checkbox" id="order_payment_id" name="order" value="${paymentList.payment_id}" data-prd_nm="${paymentList.product_name}" onchange="javascript:closeProdListModal();" class="accessibility-keyboard">
 												<label for="oreder_payment_id" class="order_num">주문번호<span class="ff_avr">${paymentList.payment_id}</span></label>
 											</div>
 										</div>
@@ -406,7 +411,7 @@
 										<c:if test="${paymentList.payment_id eq paymentListA.payment_id}">
 											<li>
 												<div class="rad_wrap">
-													<input type="checkbox" id="oreder_payment_id1" name="prod" value="${paymentListA.payment_id}" data-prd-nm="${paymentListA.product_name}" onchange="javascript:closeProdListModal();" class="accessibility-keyboard">
+													<input type="checkbox" id="order_payment_id" name="prod" value="${paymentListA.payment_id}" data-prd-nm="${paymentListA.product_name}" onchange="javascript:closeProdListModal();" class="accessibility-keyboard">
 													<label for="oreder_payment_id1">
 														<div class="img">
 															<img src="/mp/resources/upload/menu/main/${paymentListA.product_id}/${paymentListA.product_name}.jpg" alt="닭한마리와 칼국수" onerror="cj.com.noImg(this)">
@@ -514,28 +519,35 @@ $("#inquiry_cate9").on("click", function() {
 
 /* modal 창 */
 
+$(document).ready(function(){
 
-function openProdListModal() {
-	$(".ui_modal_wrap").css({"display" : "block"});
-}
+    $( "#lookUp_payment").click(function () {
+    	$(".ui_modal_wrap").css({"display" : "block"});	
+        $( ".pro_box" ).each( function () {
+            this.reset();
+        });
+    });
+});
+
+
+
 
 $(".ui_modal_close").on("click", function() {
 	$(".ui_modal_wrap").css({"display" : "none"});
 })
 
-$("#oreder_payment_id").on("click", function() {
-	let payment_id = $('#oreder_payment_id').val();
-	let product_name = $('#product_name').text();
+$("#order_payment_id").on("click", function() {
+	var payment_id = $('input:checkbox[id="order_payment_id"]').val();
+	var product_name = $('#order_payment_id').data("prd_nm");
 	
-	alert(payment_id+product_name);
+	
+	
+	$("#input_payment_id").val(payment_id);
+	$("#input_product_name").val(product_name);
+	
 });
 
-$("#oreder_payment_id1").on("click", function() {
-	let payment_id = $('#oreder_payment_id').val();
-	let product_name = $('#product_name').text();
-	
-	alert(payment_id+product_name);
-});
+
 
 
 function closeProdListModal(){

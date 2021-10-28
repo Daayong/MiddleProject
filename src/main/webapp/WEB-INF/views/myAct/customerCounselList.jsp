@@ -64,15 +64,13 @@
 				<div class="list_acco ui_accordion" data-accord-group="info" data-single-open="true" ui-modules="Accordion">
 				
 				
-					<ul id="myInqDataArea">
+<ul id="myInqDataArea">
 	
-
 	<!-- loop -->
 	<c:forEach var="qnaList" items="${qnaList}">
 	<li>
 		<div class="head" >
 			<a class="link_cnt ui_accord_toggle" data-open-text="내용 더 보기" data-close-text="내용 닫기">
-			<input type="hidden" name="cusCslSeq" value="486099">
 				<div class="tit">
 				<c:choose>
 					<c:when test="${empty qnaList.qna_answer}">
@@ -89,13 +87,14 @@
 			</a>
 			
 			<div class="etc_info" data-qna_id = "${qnaList.qna_id }">
-					<span class="prd_txt num" id="prdOrdNo" ><span class="cusOdrNo">${qnaList.payment_id}</span></span>
-				<a href="../member/myOrderList"><span class="prd_txt name hiddenEmpty"><span class="hide">연관주문상품</span><span class="cusPrdNm"></span></span></a>
 				
-				<div class="add_sec" style="display : none;">
-					<div class="added_file">
-					</div>
-				</div>
+					<span style="cursor: pointer;" onclick="location.href = '../member/myOrderList'" class="prd_txt num" id="prdOrdNo" ><span class="cusOdrNo">${qnaList.payment_id}</span>
+					
+					
+					<span class="cusPrdNm"> &nbsp; ${qnaList.qna_product_name}</span>
+					
+					</span>
+				
 				<button type="button" class="btn sm white delete" name="MycounselDelete"><span>삭제</span></button>
 			</div>
 		</div>
@@ -107,7 +106,7 @@
 					<span class="hide">답변내용</span>
 					${qnaList.qna_answer}
 					</div>
-					<span class="date"><span class="hide">답변일자</span>${qnaList.qna_answer_date }</span>
+					<span class="date"><span class="hide">답변일자</span>${qnaList.qna_answer_date}</span>
 					</div>
 				</div>
 

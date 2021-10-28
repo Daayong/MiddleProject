@@ -13,10 +13,10 @@
   	<selectKey order="BEFORE" resultType="Long" keyProperty="qna_id">
   		SELECT qna_seq.nextval FROM dual
   	</selectKey>
-  	INSERT INTO qna(qna_id, member_id, qna_content, qna_type, qna_email, qna_phone, qna_date, payment_id)
+  	INSERT INTO qna(qna_id, member_id, qna_content, qna_type, qna_email, qna_phone, qna_date, payment_id, qna_product_name)
   			 
   	VALUES
-  		(#{qna_id}, #{member_id}, #{qna_content}, #{qna_type}, #{qna_email}, #{qna_phone}, sysdate, #{payment_id, jdbcType=INTEGER} )
+  		(#{qna_id}, #{member_id}, #{qna_content}, #{qna_type}, #{qna_email}, #{qna_phone}, sysdate, #{payment_id, jdbcType=INTEGER}, #{qna_product_name, jdbcType=VARCHAR} )
   
   </insert>
   

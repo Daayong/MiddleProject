@@ -4,7 +4,7 @@
 <html>
 <head>
 	<link href="${pageContext.request.contextPath}/resources/css/common.css" rel="stylesheet">
-	<link href="${pageContext.request.contextPath}/resources/css/myAct/customerCounselList.css" rel="stylesheet">
+	<link href="${pageContext.request.contextPath}/resources/css/management/memberCounselList.css" rel="stylesheet">
 	<link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/management/management_product.css">
 	
 	<title>My쿡킷 - 집밥을 특별하게,쿡킷</title>
@@ -55,7 +55,7 @@
 				<div class="list_acco ui_accordion" data-accord-group="info" data-single-open="true" ui-modules="Accordion">
 				
 				
-					<ul id="myInqDataArea">
+			<ul id="myInqDataArea">
 	
 
 	<!-- loop -->
@@ -77,10 +77,10 @@
 				</c:choose>	
 					<span class="subject" style="width: 200px;"><span class="hide">문의유형</span>문의유형 : ${counselList.qna_type}  </span>
 					<span class="subject" style="width: 200px;"><span class="hide">주문번호</span>주문 번호 : ${counselList.payment_id} </span>				
-					<span class="date" style="top: 14px;" ><span class="hide">문의일자</span>문의 일자 : <br>${counselList.qna_date}</span>
+					<span class="date" style="top: 14px; padding-left:20px;  float: right;" ><span class="hide">문의일자</span>문의 일자 : <br>${counselList.qna_date}</span>
 					<span class="add_comments" onclick="javascript:addComment('${counselList.qna_id}')"  ><span>답변 작성</span></span>
 				</div>
-				<span class="hide ui_accord_text">내용 열기</span>
+			
 			</a>
 			
 			<div class="etc_info" data-qna_id = "${counselList.qna_id}">
@@ -95,16 +95,7 @@
 			</div>
 		</div>
 
-				<div class="desc ui_accord_content txtDataArea" id="qna_answer486099">
-				
-					<div class="desc_cont">
-					<div class="cont">
-					<span class="hide">답변내용</span>
-					${counselList.qna_content}
-					</div>
-					<span class="date"><span class="hide">답변일자</span>${counselList.qna_answer_date}</span>
-					</div>
-				</div>
+
 
 				</li>
 				
@@ -140,21 +131,12 @@
 
 <script type="text/javascript">
 
-/* 답변창 accord */
-$(".head").click(function() {
-	if($(this).next().css("display")=="none"){
-		$(this).next().slideDown("200");
-		$(this).parent().addClass("on");
-	}else{
-		$(this).next().slideUp("200");
-		$(this).parent().removeClass("on");
-	}
-});
+
 
 function addComment(qna_id) {
 	var url = "../management/member_addComments?qna_id="+qna_id;
 	var name = "update";
-	var option = "width = 600, height = 600, top =200, left = 480, location = no, scrollbars = yes ";
+	var option = "width = 600, height = 700, top =200, left = 480, location = no, scrollbars = yes ";
 	window.open(url, name, option);
 }
 

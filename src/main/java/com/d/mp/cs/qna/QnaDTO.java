@@ -6,13 +6,14 @@ public class QnaDTO {
 	
 	private Long qna_id;
 	private Long member_id;
+	private Long payment_id;
+	private String qna_product_name;
 	private String qna_content;
 	private String qna_type;
 	private String qna_email;
 	private Date qna_date;
 	private String qna_answer;
 	private Date qna_answer_date;
-	private Long payment_id;
 	private String qna_phone;
 	
 	
@@ -27,6 +28,12 @@ public class QnaDTO {
 	}
 	public void setMember_id(Long member_id) {
 		this.member_id = member_id;
+	}
+	public String getQna_product_name() {
+		return qna_product_name;
+	}
+	public void setQna_product_name(String qna_product_name) {
+		this.qna_product_name = qna_product_name;
 	}
 	public String getQna_content() {
 		return qna_content;
