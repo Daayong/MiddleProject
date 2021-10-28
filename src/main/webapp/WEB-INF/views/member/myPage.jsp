@@ -89,18 +89,18 @@
 								<a href="#">마케팅 수신 동의</a>  
 										<c:choose>
 											<c:when test="${member.member_marketing_sms eq 0}">
-												<em style="color:#606060">SMS</em><span class="state" style="background-color:#606060;">OFF</span>	
+												<strong style="color:#606060">SMS</strong><span class="state" style="background-color:#606060;">OFF</span>	
 											</c:when>
 											<c:otherwise>
-												<em style="color:#008A00;">SMS</em><span class="state" style="background-color:#008A00;">ON</span>	
+												<strong style="color:#008A00;">SMS</strong><span class="state" style="background-color:#008A00;">ON</span>	
 											</c:otherwise>
 										</c:choose>
 										<c:choose>
 											<c:when test="${member.member_marketing_email eq 0}">
-												<em style="color:#606060;">Email</em><span class="state" style="background-color:#606060;">OFF</span>	
+												<strong style="color:#606060;">Email</strong><span class="state" style="background-color:#606060;">OFF</span>	
 											</c:when>
 											<c:otherwise>
-												<em style="color:#008A00;">Email</em><span class="state" style="background-color:#008A00;">ON</span>	
+												<strong style="color:#008A00;">Email</strong><span class="state" style="background-color:#008A00;">ON</span>	
 											</c:otherwise>
 										</c:choose>
 							</li>
