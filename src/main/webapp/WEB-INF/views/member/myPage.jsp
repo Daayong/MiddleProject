@@ -264,7 +264,7 @@
 					</div> -->
 					<div class="prd_list col ">
 						<ul>
-							 <c:forEach var="paymentListDTOsK" items="${paymentListDTOs}"> 
+							 <c:forEach var="paymentListDTOsK" items="${paymentListDTOs}" begin="0" end="3"> 
 								<li>
 									<div class="prd_mod">
 										<a href="/mp/menu/menu_detail?product_id=${paymentListDTOsK.product_id}">

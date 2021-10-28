@@ -301,9 +301,8 @@ vertical-align:top; margin:0 7px;
 .zzim_wrap{
 	display: inline-grid;
 	margin-top: 30px;
-	margin-left: 15px;
 	grid-template-columns: repeat(4, 1fr);
-	column-gap: 36px;
+	column-gap: 47px;
 	row-gap : 60px;
 }
 .zzim_item{
