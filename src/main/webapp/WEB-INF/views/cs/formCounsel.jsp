@@ -214,10 +214,9 @@
 								<!-- 선택된 상품이 있을 때 -->
 								<div class="pro_box pro_info"  style="display: none;">
 									<input type="text" id="input_payment_id" readonly="readonly" style="outline: none; border: none;" name="payment_id" value="">
-									<span class="txt">/
+									<span>/</span> <span class="txt">
 									<input type="text" id="input_product_name" readonly="readonly" style="outline: none; border: none;" name="qna_product_name" value="">
-									
-									<span class="hide">상품명</span></span>
+									 <span class="hide">상품명</span> </span>
 									<button type="button" onclick="javascript:cancelCheck();" class="btn_cancle"><span class="hide">선택취소</span></button>
 								</div>
 								<!-- //선택된 상품이 있을 때 -->
@@ -387,14 +386,13 @@
 								
 					<c:set var="tempPaymentID"></c:set>
 							<c:forEach var="paymentList" items="${paymentListDTOs}">
-							<c:if test="${tempPaymentID ne paymentList.payment_id }">
+							<c:if test="${tempPaymentID ne paymentList.payment_id}">
 								<div class="order_prd">
 									<div class="top">
 										<div class="tit">
 											<div class="rad_wrap">
-												
-												<input type="checkbox" id="order_payment_id" name="order" value="${paymentList.payment_id}" data-prd_nm="${paymentList.product_name}" onchange="javascript:closeProdListModal();" class="accessibility-keyboard">
-												<label for="oreder_payment_id" class="order_num">주문번호<span class="ff_avr">${paymentList.payment_id}</span></label>
+												<input type="radio" id="order_payment_id" name="order_payment_id" value="" data-pay_nm="${paymentList.payment_id}"  data-prd_nm="${paymentList.product_name}" class="accessibility-keyboard">
+												<label for="order_payment_id" class="order_num">주문번호<span class="ff_avr">${paymentList.payment_id}</span></label>
 											</div>
 										</div>
 									</div>
@@ -406,8 +404,8 @@
 										<c:if test="${paymentList.payment_id eq paymentListA.payment_id}">
 											<li>
 												<div class="rad_wrap">
-													<input type="checkbox" id="order_payment_id" name="prod" value="${paymentListA.payment_id}" data-prd-nm="${paymentListA.product_name}" onchange="javascript:closeProdListModal();" class="accessibility-keyboard">
-													<label for="oreder_payment_id1">
+													<input type="radio" id="order_payment_id1" name="order_payment_id1" value="${paymentListA.product_name}"  class="accessibility-keyboard">
+													<label for="order_payment_id1">
 														<div class="img">
 															<img src="/mp/resources/upload/menu/main/${paymentListA.product_id}/${paymentListA.product_name}.jpg" alt="닭한마리와 칼국수" onerror="cj.com.noImg(this)">
 														</div>
@@ -606,12 +604,8 @@ $('.add_file_wrap').on('click', '.btn_delete', function(){
 /* modal 창 */
 
 $(document).ready(function(){
-
     $( "#lookUp_payment").click(function () {
     	$(".ui_modal_wrap").css({"display" : "block"});	
-        $( ".pro_box" ).each( function () {
-            this.reset();
-        });
     });
 });
 
@@ -622,25 +616,36 @@ $(".ui_modal_close").on("click", function() {
 	$(".ui_modal_wrap").css({"display" : "none"});
 })
 
-$("#order_payment_id").on("click", function() {
-	var payment_id = $('input:checkbox[id="order_payment_id"]').val();
-	var product_name = $('#order_payment_id').data("prd_nm");
-	
-	
-	
+
+/* Radio */
+
+
+
+
+$("input:radio[name=order_payment_id]").on("click", function() {
+	var payment_id = $('input:radio[name=order_payment_id]:checked').data("pay_nm");
+	var product_name = $('input:radio[name=order_payment_id]:checked').data("prd_nm");
+
 	$("#input_payment_id").val(payment_id);
 	$("#input_product_name").val(product_name);
+	$(".ui_modal_wrap").css({"display" : "none"});
+	$(".no_pro").hide();
+	$(".pro_info").show();
 	
 });
 
 
+$("input:radio[name=order_payment_id1]").on("click", function() {
+	var payment_id1 = $('input:radio[name=order_payment_id1]:checked').data("pay_nm1");
+	var product_name1 = $('input:radio[name=order_payment_id1]:checked').val();
 
-
-function closeProdListModal(){
-	$(".ui_modal_wrap").hide();
+	$("#input_payment_id").val(payment_id1);
+	$("#input_product_name").val(product_name1);
+	$(".ui_modal_wrap").css({"display" : "none"});
 	$(".no_pro").hide();
 	$(".pro_info").show();
-}
+	
+});
 
 function cancelCheck() {
 	$(".pro_info").hide();
