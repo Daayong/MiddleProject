@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.d.mp.review.ReviewDAO">
+
+<!-- ===== ===== ===== INSERT ===== ===== ===== -->
+	<insert id="insertReview" parameterType="ReviewDTO">
+		<selectKey order="BEFORE" resultType="Long" keyProperty="review_id">
+			SELECT review_id_seq.NEXTVAL FROM DUAL
+		</selectKey>
+		INSERT INTO review VALUES (
+			#{review_id},
+			#{product_id},
+			#{member_id},
+			#{review_tag},
+			#{review_star},
+			#{review_txt},
+			#{review_tip},
+			SYSDATE
+		)
+	</insert>
+	
+	<insert id="insertFile">
+		INSERT INTO review_file VALUES (
+		review_file_id_seq.NEXTVAL,
+		#{review_id},
+		#{review_file_name},
+		#{review_file_ori_name}
+		)
+	</insert>
+<!-- ===== ===== ===== SELECT ===== ===== ===== -->
+
+	<resultMap type="ReviewDTO" id="ReviewListDTO">
+		<id column="review_id" property="review_id"/>
+		<result column="product_name" property="product_name"/>
+		<result column="member_user_id" property="member_user_id"/>
+		<result column="review_tag" property="review_tag"/>
+		<result column="review_star" property="review_star"/>
+		<result column="review_txt" property="review_txt"/>
+		<result column="review_tip" property="review_tip"/>
+		<result column="review_date" property="review_date"/>
+		
+		<collection property="file" javaType="List" ofType="ReviewFileDTO">
+			<id column="review_file_id" property="review_file_id"/>
+			<result column="review_file_name" property="review_file_name"/>
+		</collection>
+	</resultMap>
+	
+	<select id="getBestReviewList" resultMap="ReviewListDTO">
+        SELECT 
+	        review_id,
+	        product_id,
+	        product_name,
+        	RPAD(SUBSTR(member_user_id, 1, 3), LENGTH(member_user_id), '*') AS member_user_id,
+	        review_tag,
+	        review_star,
+	        review_txt,
+	        review_tip,
+	        TO_CHAR(review_date, 'YYYY-MM-DD') AS review_date,
+            review_file_id,
+            review_file_name
+        FROM
+			review
+			LEFT JOIN review_file USING (review_id)
+			JOIN product USING (product_id)
+			JOIN member USING (member_id)
+        WHERE
+            review_star = 100 AND
+            review_id IN (        
+                SELECT review_id
+                FROM (
+                    SELECT
+                        review_id
+                    FROM
+                        review_file
+                    GROUP BY review_id
+                    HAVING COUNT(review_id) <![CDATA[>=]]> 2
+                )
+                WHERE ROWNUM <![CDATA[<=]]> 5
+            )
+        ORDER BY
+        	review_id DESC, review_file_id
+	</select>
+	
+	<select id="getReviewList" resultMap="ReviewListDTO">
+		SELECT 
+	        review_id,
+	        product_name,
+        	RPAD(SUBSTR(member_user_id, 1, 3), LENGTH(member_user_id), '*') AS member_user_id,
+	        review_tag,
+	        review_star,
+	        review_txt,
+	        review_tip,
+	        TO_CHAR(review_date, 'YYYY-MM-DD') AS review_date,
+            review_file_name
+        FROM
+			review
+			LEFT JOIN review_file USING (review_id)
+			JOIN product USING (product_id)
+			JOIN member USING (member_id)
+        ORDER BY
+        	review_id DESC, review_file_id
+	</select>
+	
+	<select id="getFamilyReviewList" resultType="FamilyReviewDTO">
+		SELECT * FROM family_review ORDER BY family_review_id
+	</select>
+	
+</mapper>

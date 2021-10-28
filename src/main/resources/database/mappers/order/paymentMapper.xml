@@ -38,6 +38,7 @@
 		</selectKey>
 		INSERT INTO payment VALUES (
 			#{payment_id},
+			#{address_id},
 			#{payment_total_product_price},
 			#{payment_total_delivery_price},
 			#{payment_use_point},
@@ -47,9 +48,13 @@
 
 <!-- ===== ===== ===== SELECT ===== ===== ===== -->
 	<select id="selectPaymentOne" resultType="PaymentDTO" parameterType="PaymentDTO">
-		SELECT * FROM payment WHERE payment_id = #{payment_id}
+		SELECT *
+		FROM payment
+		JOIN address USING (address_id)
+		WHERE payment_id = #{payment_id}
 	</select>
 	
+<!-- ===== 주문/배송 조회 ===== -->
 	<select id="getPaymentList" resultType="PaymentListDTO" parameterType="MemberDTO">
 		SELECT
             payment_id,
@@ -58,20 +63,91 @@
             payment_use_point,
             payment_total_payment_price,
             TO_CHAR(TO_DATE(SUBSTR(payment_id, 1, 12), 'YYYYMMDDHH24MI'), 'YYYY-MM-DD(DY) HH24:MI') AS payment_date,
+            cart_id,
             TO_CHAR(cart_delivery_date, 'YYYY-MM-DD(DY)') AS cart_delivery_date,
             cart_state,
             cart_quantity,
             product_id,
             product_name,
             product_price,
-            product_file_name
+            product_file_name,
+            address,
+            recipient_name,
+            recipient_phone
         FROM
             payment pay
             JOIN cart c USING (payment_id)
             JOIN product p USING (product_id)
             JOIN product_file pf USING (product_id)
+            JOIN address a USING (address_id)
         WHERE
-            member_id = #{member_id} AND
+            c.member_id = #{member_id} AND
+            product_file_path = 'main'
+        ORDER BY
+            payment_id, c.cart_delivery_date
+	</select>
+	
+<!-- ===== 주문상세 ===== -->
+	<select id="getPaymentOne" resultType="PaymentListDTO" parameterType="PaymentDTO">
+		SELECT
+            payment_id,
+            payment_total_product_price,
+            payment_total_delivery_price,
+            payment_use_point,
+            payment_total_payment_price,
+            TO_CHAR(TO_DATE(SUBSTR(payment_id, 1, 12), 'YYYYMMDDHH24MI'), 'YYYY-MM-DD(DY) HH24:MI') AS payment_date,
+            cart_id,
+            TO_CHAR(cart_delivery_date, 'YYYY-MM-DD(DY)') AS cart_delivery_date,
+            cart_state,
+            cart_quantity,
+            product_id,
+            product_name,
+            product_price,
+            product_file_name,
+            address,
+            recipient_name,
+            recipient_phone
+        FROM
+            payment pay
+            JOIN cart c USING (payment_id)
+            JOIN product p USING (product_id)
+            JOIN product_file pf USING (product_id)
+            JOIN address a USING (address_id)
+        WHERE
+            payment_id = #{payment_id} AND
+            product_file_path = 'main'
+        ORDER BY
+            payment_id, c.cart_delivery_date
+	</select>
+	
+<!-- ===== 리뷰작성 ===== -->
+	<select id="getPaymentReview" resultType="PaymentListDTO" parameterType="CartDTO">
+		SELECT
+            payment_id,
+            payment_total_product_price,
+            payment_total_delivery_price,
+            payment_use_point,
+            payment_total_payment_price,
+            TO_CHAR(TO_DATE(SUBSTR(payment_id, 1, 12), 'YYYYMMDDHH24MI'), 'YYYY-MM-DD(DY) HH24:MI') AS payment_date,
+            cart_id,
+            TO_CHAR(cart_delivery_date, 'YYYY-MM-DD(DY)') AS cart_delivery_date,
+            cart_state,
+            cart_quantity,
+            product_id,
+            product_name,
+            product_price,
+            product_file_name,
+            address,
+            recipient_name,
+            recipient_phone
+        FROM
+            payment pay
+            JOIN cart c USING (payment_id)
+            JOIN product p USING (product_id)
+            JOIN product_file pf USING (product_id)
+            JOIN address a USING (address_id)
+        WHERE
+            cart_id = #{cart_id} AND
             product_file_path = 'main'
         ORDER BY
             payment_id, c.cart_delivery_date

@@ -7,6 +7,7 @@ public class PaymentListDTO {
     private Long 	payment_use_point				;
     private Long	payment_total_payment_price		;
 	private String	payment_date          			;
+	private Long	cart_id							;
 	private String 	cart_delivery_date				;
 	private String	cart_state						;
 	private String 	cart_quantity 					;
@@ -14,7 +15,9 @@ public class PaymentListDTO {
 	private String 	product_name            		;
 	private Long 	product_price           		;
 	private String 	product_file_name       		;
-	
+    private String	address							;
+    private String	recipient_name					;
+    private String	recipient_phone					;
 	
 	public Long getPayment_id() {
 		return payment_id;
@@ -51,6 +54,12 @@ public class PaymentListDTO {
 	}
 	public void setPayment_date(String payment_date) {
 		this.payment_date = payment_date;
+	}
+	public Long getCart_id() {
+		return cart_id;
+	}
+	public void setCart_id(Long cart_id) {
+		this.cart_id = cart_id;
 	}
 	public String getCart_delivery_date() {
 		return cart_delivery_date;
@@ -93,6 +102,24 @@ public class PaymentListDTO {
 	}
 	public void setProduct_file_name(String product_file_name) {
 		this.product_file_name = product_file_name;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	public String getRecipient_name() {
+		return recipient_name;
+	}
+	public void setRecipient_name(String recipient_name) {
+		this.recipient_name = recipient_name;
+	}
+	public String getRecipient_phone() {
+		return recipient_phone;
+	}
+	public void setRecipient_phone(String recipient_phone) {
+		this.recipient_phone = recipient_phone;
 	}	
 	
 	

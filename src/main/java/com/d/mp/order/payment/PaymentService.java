@@ -26,4 +26,12 @@ public class PaymentService {
 		return paymentDAO.getPaymentList(memberDTO);
 	}
 	
+	public List<PaymentListDTO> getPaymentOne(PaymentDTO paymentDTO) throws Exception {
+		return paymentDAO.getPaymentOne(paymentDTO);
+	}
+	
+	public PaymentListDTO getPaymentReview(CartDTO cartDTO) throws Exception {
+		return paymentDAO.getPaymentReview(cartDTO);
+	}
+	
 }

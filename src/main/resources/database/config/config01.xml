@@ -33,6 +33,9 @@
 	  		<typeAlias type="com.d.mp.order.cart.CartListDTO" alias="CartListDTO"/>
 	  		<typeAlias type="com.d.mp.order.payment.PaymentDTO" alias="PaymentDTO"/>
 	  		<typeAlias type="com.d.mp.order.payment.PaymentListDTO" alias="PaymentListDTO"/>
+	  		<typeAlias type="com.d.mp.review.ReviewDTO" alias="ReviewDTO"/>
+	  		<typeAlias type="com.d.mp.review.FamilyReviewDTO" alias="FamilyReviewDTO"/>
+	  		<typeAlias type="com.d.mp.review.ReviewFileDTO" alias="ReviewFileDTO"/>
 			  
 			<typeAlias type="java.util.List" alias="List"/>
 	  		<typeAlias type="java.lang.Long" alias="Long"/>

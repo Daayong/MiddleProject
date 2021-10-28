@@ -388,6 +388,7 @@ public class MemberController {
 /*--------------------------------- 주문상세 시작 --------------------------------------*/	
 	@GetMapping("myOrder")
  	public String myOrder(Model model, PaymentDTO paymentDTO) throws Exception{
+		model.addAttribute("paymentListDTOs", paymentService.getPaymentOne(paymentDTO));
 		return "member/myOrder";
 	}
 

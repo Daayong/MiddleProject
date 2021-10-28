@@ -1,5 +1,7 @@
 <%@page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 
 <html>
 <head>
@@ -41,49 +43,52 @@
 					<div class="slide_wrap ">
 						<div class="slide_list">
 							<div class="slide_track" style="opacity: 1; width: 25000px; transform: translate3d(-568px, 0px, 0px); transition: transform 1200ms ease 0s;">
-							<c:forEach var="i" begin="0" end="9">
+							
+							<!-- best_review Loop START -->
+							<c:forEach begin="0" end="1">
+							<c:forEach items="${bestReviewDTOs}" var="bestReviewDTOs">
 							
 							
-								<div class="slide_contents" data-slide_contents_index = ${i-1}>
+								<div class="slide_contents">
 									<div class="item">
-										<a href="javascript:openDetail()">
+										<a href="javascript:;" class="openDetail" data-review_id="${bestReviewDTOs.review_id}">
 											<div class="img_wrap">
 												<div class="best_flag">
 													<span class="flag_txt">Best</span>
 											 	</div>
-											 	<img alt="select product_name from product" src="/mp/resources/images/temp/review_temp${i % 5}.jpg">
+											 	<img alt="select product_name from product" src="../resources/upload/review/${bestReviewDTOs.file[0].review_file_name}">
 											</div>
 											
 											<div class="txt_wrap">
 											
-												<span class="tit">product_name ${i} index : ${i - 1}
+												<span class="tit">${bestReviewDTOs.product_name}
 												</span>
 												<div class="etc_info">
 																		
 													<div class="rating_star">
 														<span class="star"> <!-- background image 커스텀 영역 -->
-															<span style="width:100.0%;"> <!-- background image 활성화 영역 (20%에 한개씩 점수가 채워 집니다.) -->
+															<span style="width:${bestReviewDTOs.review_star}%;"> <!-- background image 활성화 영역 (20%에 한개씩 점수가 채워 집니다.) -->
 															</span>
 														</span>
 													</div>
 													
 													<div class="user_id">
-														member_userId****
+														${bestReviewDTOs.member_user_id}
 													</div>
 													
 												</div>
 												
 												<div class="txt">
-													select contents from review where bestReview;select contents from review where bestReview<br>select contents from review where bestReview;
+													${bestReviewDTOs.review_txt}
 												</div>
 												
 											</div>
 										</a>
 									</div>
-								</div>
-							
-							
+								</div>							
 							</c:forEach>
+							</c:forEach>
+							<!-- best_review Loop END -->
 							</div>
 							<div class="slide_nav_count">
 								<span class="num">
@@ -116,36 +121,31 @@
 						
 						<div class="slide_wrap">
 							<div class="slide_list">
-								<div class="slide_track" style="opacity: 1; width: 25000px; transform: translate3d(-348px, 0px, 0px); transition: transform 1200ms ease 0s;">
+								<div class="slide_track" style="opacity: 1; width: 25000px; transform: translate3d(-349px, 0px, 0px); transition: transform 1200ms ease 0s;">
 								
-								<c:forEach var="i" begin="0" end="4">
-								
-								
+								<!-- family_review Loop START -->		
+								<c:forEach items="${familyReviewDTOs}" var="familyReviewDTOs">			
 									<div class="slide_contents" data-slide_contents_index = "1">
 										<div class="item">
-											<a href="https://www.instagram.com/p/CC5GfQhnEEf/" target="_blank">
+											<a href="${familyReviewDTOs.family_review_url}" target="_blank">
 												<div class="img_wrap">
-												 	<img src="/mp/resources/images/temp/@family_01.png">
+												 	<img src="/mp/resources/images/family/${familyReviewDTOs.family_review_img}">
 												</div>
 												
 												<div class="txt_wrap">
 												
 													<strong class="review_title">
-														주말의 낙,캠핑에 쿡킷이<br>
-														필수템이 되었어요
+														${familyReviewDTOs.family_review_tit}
 													</strong>
 													<p class="review_txt">
-														맛있는 음식과 함께할 때 캠핑의 매력은 배가 돼요!<br>
-														바쁜 캠린이들이 가장 쉽게 만드는 캠핑 요리,쿡킷!<br>
-														오일까지 챙겨줘서 짐이 정말 많이 줄었어요.<br>
-														캠핑장에서 받는 부러움의 시선은 덤
+														${familyReviewDTOs.family_review_txt}
 													</p>	
 													<div class="family_info_box">
-														<div class="thumb"><img src="/mp/resources/images/temp/@family_thumb_01.png" alt="">
+														<div class="thumb"><img src="/mp/resources/images/family/${familyReviewDTOs.family_review_thumb_img}" alt="">
 														</div>
 														<p>
-															<span>도시캠퍼 김지혜님</span>
-															<em>@jjihye13</em>
+															<span>${familyReviewDTOs.family_review_name}</span>
+															<em>${familyReviewDTOs.family_review_uid}</em>
 														</p>
 													</div>												
 												</div>
@@ -153,6 +153,7 @@
 										</div>
 									</div>
 								</c:forEach>
+								<!-- family_review Loop END -->
 								
 								</div>
 								<div class="slide_nav_count">
@@ -170,20 +171,6 @@
 								</div>
 							</div>
 						</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 					</div>
 				</div>
 				
@@ -205,45 +192,51 @@
 					
 					<div class="review_top">
 						<p class="total">
-							리뷰 <span class="rvwTotalCnt">159,649</span>건
+							리뷰 <span class="rvwTotalCnt"><fmt:formatNumber value="${reviewDTOs.size()}" pattern="#,###"/></span>건
 						</p>
-						<div class="list_sort">
-							<input type="checkbox" id="sorting_photo" onchange="loadList(1)" class="">
-							<label for="sorting_photo">포토리뷰만 보기</label>
-						</div>
+<!-- 						<div class="list_sort"> -->
+<!-- 							<input type="checkbox" id="sorting_photo" onchange="loadList(1)" class=""> -->
+<!-- 							<label for="sorting_photo">포토리뷰만 보기</label> -->
+<!-- 						</div> -->
 					</div>
 					
 					<ul class="review_area">
-<!-- ===== ===== ===== 이미지 없는 케이스 ===== ===== ===== -->
-						<c:forEach begin="1" end="5">
+						<!-- taste_review Loop START -->
+						<c:forEach items="${reviewDTOs}" var="reviewDTOs">
 						<li>
-							<div class="review_module">
-							
+							<c:choose>
+								<c:when test="${empty reviewDTOs.file}">
+									<div class="review_module">
+								</c:when>
+								<c:otherwise>
+									<div class="review_module photo">  <!-- 개발 요청 사항 : 이미지 있는 케이스에 photo 클래스 추가 -->
+								</c:otherwise>
+							</c:choose>
 								<div class="top_wrap">
 									<p class="title">
-										<span class="name">select product_name where products</span>
+										<span class="name">${reviewDTOs.product_name}</span>
 									</p>
-									<time datetime="YYYY-MM-DD">2021-09-27</time>
-								</div>	
+									<time datetime="YYYY-MM-DD">${reviewDTOs.review_date}</time>
+								</div>
 								
 								<div class="etc_info">
 								
 									<div class="rating_star">
 										<span class="star"> <!-- background image 커스텀 영역 -->
-											<span style="width:80.0%;"> <!-- background image 활성화 영역 (20%에 한개씩 점수가 채워 집니다.) -->
+											<span style="width:${reviewDTOs.review_star}%;"> <!-- background image 활성화 영역 (20%에 한개씩 점수가 채워 집니다.) -->
 											</span>
 										</span>
 									</div>
 									
 									<div class="user_id">
 										<a href="#">
-											"userID****"
+											${reviewDTOs.member_user_id}
 										</a>
 									</div>
 									
-									<div class="purchase_num"> <!-- 구매 횟수 : 1회 구매 표시 안함  -->
+									<!-- <div class="purchase_num"> 구매 횟수 : 1회 구매 표시 안함 
 										"구매 purchase_num회"
-									</div>
+									</div> -->
 								</div>	
 										
 								<div class="link_wrap">
@@ -252,135 +245,106 @@
 										
 											<div class="txt_contents">
 												<p class="txt">
-													select contents from reviews where user_num = ? and product_num = ?
+													${reviewDTOs.review_txt}
 												</p>
 											</div>
 											
 											<div class="tag_wrap">
-												<span class="tag">#select tag from reviews ~</span>
-												<span class="tag">#select tag from reviews ~</span>
+											
+												<c:choose>
+													<c:when test="${reviewDTOs.review_tag.substring(0,1) eq 0}">
+														<span class="tag">#약간 짭짤했어요</span>
+													</c:when>
+													<c:when test="${reviewDTOs.review_tag.substring(0,1) eq 1}">
+														<span class="tag">#적당했어요</span>
+													</c:when>
+													<c:when test="${reviewDTOs.review_tag.substring(0,1) eq 2}">
+														<span class="tag">#아주 짭짤했어요</span>
+													</c:when>
+												</c:choose>
+												
+												<c:if test="${reviewDTOs.review_tag.substring(1,2) eq 1}">
+													<span class="tag">#조리하기 쉬워요</span>
+												</c:if>
+												
+												<c:if test="${reviewDTOs.review_tag.substring(2,3) eq 1}">
+													<span class="tag">#재료가 신선해요</span>
+												</c:if>
+												
+												<c:if test="${reviewDTOs.review_tag.substring(3,4) eq 1}">
+													<span class="tag">#양이 많아요</span>
+												</c:if>
+												
+												<c:if test="${reviewDTOs.review_tag.substring(4,5) eq 1}">
+													<span class="tag">#맛있어요</span>
+												</c:if>
+												
 											</div>
 											
-											<div class="tip_wrap">
-												<div class="tip_ico">
-												</div>
-												<div class="tip_txt">
-													select tip from reviews ~
-												</div>
-											</div>
-											
+											<c:if test="${not empty reviewDTOs.review_tip}">
+												<div class="tip_wrap">
+													<div class="tip_ico">
+													</div>
+													
+													<div class="tip_txt">
+														${reviewDTOs.review_tip}
+													</div>
+												</div>											
+											</c:if>
 										</div>
+											
+										<!-- ===== 이미지 START ===== -->
+										<c:if test="${not empty reviewDTOs.file}">
+											<div class="img_wrap">										
+												<!-- 첫번째 이미지 -->
+												<div class="thumb_img">													
+													<div class="img">
+														<img src="../resources/upload/review/${reviewDTOs.file[0].review_file_name}" onerror="">
+													</div>
+													<span class="lang">${fn:length(reviewDTOs.file)}</span> <!-- 총 사진 개수 : .review_module .img_wrap 안에 있는 .img 갯수 체크 -->
+												</div>
+												
+												<!-- 큰 이미지 영역 -->
+												<div class="bigger_img">
+													<c:forEach items="${reviewDTOs.file}" var="file">										
+														<div class="img">
+															<img src="../resources/upload/review/${file.review_file_name}" onerror="">
+														</div>
+													</c:forEach>										
+												</div>
+												<!-- //큰 이미지 영역 -->
+											</div>
+										</c:if>
+										<!-- ===== 이미지 END ===== -->
 									</a>
 								</div>	
 											
 							</div>
-						</li>
+						</li>		
 						</c:forEach>
-						
-<!-- ===== ===== ===== 이미지 있는 케이스 ===== ===== ===== -->
-						<c:forEach begin="1" end="5">
-						<li>
-							<div class="review_module photo"> <!-- 개발 요청 사항 : 이미지 있는 케이스에 photo 클래스 추가 -->
-							
-								<div class="top_wrap">
-									<p class="title">
-										<span class="name">select product_name where products</span>
-									</p>
-									<time datetime="YYYY-MM-DD">2021-09-27</time>
-								</div>	
-								
-								<div class="etc_info">
-								
-									<div class="rating_star">
-										<span class="star"> <!-- background image 커스텀 영역 -->
-											<span style="width:80.0%;"> <!-- background image 활성화 영역 (20%에 한개씩 점수가 채워 집니다.) -->
-											</span>
-										</span>
-									</div>
-									
-									<div class="user_id">
-										<a href="#">
-											"userID****"
-										</a>
-									</div>
-									
-									<div class="purchase_num"> <!-- 구매 횟수 : 1회 구매 표시 안함  -->
-										"구매 purchase_num회"
-									</div>
-								</div>	
-										
-								<div class="link_wrap">
-									<a href="javascript:;" class="link_more">
-										<div class="txt_wrap">
-										
-											<div class="txt_contents">
-												<p class="txt">
-													select contents from reviews where user_num = ? and product_num = ?
-												</p>
-											</div>
-											
-											<div class="tag_wrap">
-												<span class="tag">#select tag from reviews ~</span>
-												<span class="tag">#select tag from reviews ~</span>
-											</div>
-											
-											<div class="tip_wrap">
-												<div class="tip_ico">
-												</div>
-												<div class="tip_txt">
-													select tip from reviews ~
-												</div>
-											</div>
-											
-										</div>
-											
-<!-- 											이미지 -->
-										<div class="img_wrap">
-										
-											<!-- 첫번째 이미지 -->
-											<div class="thumb_img">													
-												<div class="img">
-													<img src="/mp/resources/images/temp/review_temp0.jpg" alt="1번 이미지" onerror="">
-												</div>
-												<span class="lang">1</span> <!-- 총 사진 개수 : .review_module .img_wrap 안에 있는 .img 갯수 체크 -->
-											</div>
-											
-											<!-- 큰 이미지 영역 -->
-											<div class="bigger_img">												
-												<div class="img">
-													<img src="/mp/resources/images/temp/review_temp0.jpg" alt="1번 이미지" onerror="">
-												</div>												
-											</div>
-											<!-- //큰 이미지 영역 -->
-										</div>
-									</a>
-								</div>	
-											
-							</div>
-						</li>
-						</c:forEach>
+						<!-- taste_review Loop End -->
 					</ul>
 					
 					
 					
 <!-- ===== ===== ===== pagination ===== ===== ===== -->
 					<div class="pagination">
-						<a class="btn_first" href="#"></a>
-						<a class="btn_prev" href="#"></a>
-						<span class="page_num">
-							<strong>11</strong>
-							<a href="#">12</a>
-							<a href="#">13</a>
-							<a href="#">14</a>
-							<a href="#">15</a>
-							<a href="#">16</a>
-							<a href="#">17</a>
-							<a href="#">18</a>
-							<a href="#">19</a>
-							<a href="#">20</a>
-						</span>
-						<a class="btn_next" href="#"></a>
-						<a class="btn_last" href="#"></a>						
+<!-- 						<a class="btn_first" href="#"></a> -->
+<!-- 						<a class="btn_prev" href="#"></a> -->
+<!-- 						<span class="page_num"> -->
+<!-- 							<strong>11</strong> -->
+<!-- 							<a href="#">12</a> -->
+<!-- 							<a href="#">13</a> -->
+<!-- 							<a href="#">14</a> -->
+<!-- 							<a href="#">15</a> -->
+<!-- 							<a href="#">16</a> -->
+<!-- 							<a href="#">17</a> -->
+<!-- 							<a href="#">18</a> -->
+<!-- 							<a href="#">19</a> -->
+<!-- 							<a href="#">20</a> -->
+<!-- 						</span> -->
+<!-- 						<a class="btn_next" href="#"></a> -->
+<!-- 						<a class="btn_last" href="#"></a>						 -->
 					</div>
 					
 					

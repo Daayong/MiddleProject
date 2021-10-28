@@ -30,4 +30,12 @@ public class PaymentDAO {
 		return sqlSession.selectList(NAMESPACE + "getPaymentList", memberDTO);
 	}
 	
+	public List<PaymentListDTO> getPaymentOne(PaymentDTO paymentDTO) throws Exception {
+		return sqlSession.selectList(NAMESPACE + "getPaymentOne", paymentDTO);
+	}
+	
+	public PaymentListDTO getPaymentReview(CartDTO cartDTO) throws Exception {
+		return sqlSession.selectOne(NAMESPACE + "getPaymentReview", cartDTO);
+	}
+	
 }

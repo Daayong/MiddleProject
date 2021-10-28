@@ -65,7 +65,7 @@
 					
 			        <div class="payment_info">
 			        	<div class="delivery_info">
-			        		<span>받는분</span>
+			        		<span>${paymentListDTOsJ.recipient_name}</span>
 			        	</div>
 			        	<div class="cart_info">
 			        	
@@ -110,7 +110,7 @@
 									
 									<div class="btn_wrap">
 										<c:if test="${paymentListDTOsK.cart_state eq 'deliveryComplete'}">
-											<a href="javascript:;" class="wirteReview"><span>리뷰작성</span></a>
+											<a href="../review/reviewWrite?cart_id=${paymentListDTOsK.cart_id}" class="wirteReview"><span>리뷰작성</span></a>
 										</c:if>
 									</div>										        				
 			        			</li>

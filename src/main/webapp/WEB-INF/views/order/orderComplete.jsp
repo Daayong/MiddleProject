@@ -158,25 +158,25 @@
 							<div class="detail_content">
 								<dl>
 									<dt>
-									<strong>"받는분"</strong>
+									<strong>${paymentDTO.recipient_name}</strong>
 									</dt>
 									<dd>
 										<ul>
 											<li>
 												<!-- 배송주소 -->
-												<span>[04001]  서울 마포구 월드컵북로 21 풍성빌딩 2, 3, 4 층</span>
+												<span>${paymentDTO.address}</span>
 											</li>
 											<li>
 												<!-- 휴대폰 -->
-												<span>010-1234-5678</span>
+												<span>${paymentDTO.recipient_phone}</span>
 											</li>
-											<li class="method">
-												<!-- 배송방법 -->
+											<!-- <li class="method">
+												배송방법
 												<div class="detail">
 													<span>공동현관 비밀번호 있음 <span>#1234#</span></span>
 													<span>배송완료 메시지 <span>오전7시</span></span>
 												</div>
-											</li>
+											</li> -->
 										</ul>
 									</dd>
 								</dl>
@@ -287,7 +287,7 @@
 <!-- ===== ===== ===== btn_wrap ===== ===== ===== -->
 				<div class="btn_wrap">
 					<button type="button" class="btn white" id="compBtnMenu"><span>쇼핑 계속하기</span></button>
-					<button type="button" class="btn green" id="compBtnOdrDtl"><span>주문상세 조회</span></button>
+					<button type="button" class="btn green" id="compBtnOdrDtl" data-payment_id="${paymentDTO.payment_id}"><span>주문상세 조회</span></button>
 				</div>
 				
 			</div>

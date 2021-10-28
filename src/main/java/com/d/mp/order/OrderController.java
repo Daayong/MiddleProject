@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.d.mp.address.AddressDTO;
+import com.d.mp.address.AddressService;
 import com.d.mp.member.MemberDTO;
 import com.d.mp.member.MemberService;
 import com.d.mp.order.cart.CartDTO;
@@ -30,6 +32,9 @@ public class OrderController {
 	@Autowired
 	private MemberService memberService;
 	
+	@Autowired
+	private AddressService addressService;
+	
 	@RequestMapping("cartList")
 	public String cartList(Model model, HttpSession session) throws Exception {	
 		MemberDTO memberDTO = (MemberDTO) session.getAttribute("member");
@@ -47,16 +52,17 @@ public class OrderController {
 	@RequestMapping("orders")
 	public String orders(Model model, HttpSession session) throws Exception {
 		MemberDTO memberDTO = (MemberDTO) session.getAttribute("member");
+		model.addAttribute("addressDTO", addressService.getAddressDefault(memberDTO));
 		model.addAttribute("cartListDTOs", cartService.getCartListChecked(memberDTO));
 		return "order/orders";
 	}
 	
 	@RequestMapping("insertPayment")
 	@ResponseBody
-	public Long insertPayment(Model model, HttpSession session, PaymentDTO paymentDTO, int save_point) throws Exception {
+	public Long insertPayment(Model model, HttpSession session, AddressDTO addressDTO, PaymentDTO paymentDTO, int save_point) throws Exception {
 		MemberDTO memberDTO = (MemberDTO) session.getAttribute("member");
 		
-		paymentDTO.setMember_id(memberDTO.getMember_id());		
+		paymentDTO.setMember_id(memberDTO.getMember_id());	
 		paymentService.insertPayment(paymentDTO);		
 		cartService.updateCartStatePayment(paymentDTO, memberDTO);
 		

@@ -116,6 +116,7 @@ let setTotalPaymentPrice = function(){
 
 //===== ===== ===== 결제하기 버튼 클릭 ===== ===== =====
 $('#orderBtn').click(function(){
+	let address_id = Number($('.delivery_location').data('address_id'))
 	let total_product_price = Number($('.total_product_price').data('total_product_price'));
 	let total_delivery_price = Number($('.total_delivery_price').data('total_delivery_price'));
 	let use_point = Number($('.use_point').data('use_point'));
@@ -127,6 +128,7 @@ $('#orderBtn').click(function(){
 		type : 'GET',
 		url : './insertPayment',
 		data : {
+			address_id						: address_id			,
 			payment_total_product_price     : total_product_price 	,
 			payment_total_delivery_price    : total_delivery_price	,
 			payment_use_point               : use_point           	,

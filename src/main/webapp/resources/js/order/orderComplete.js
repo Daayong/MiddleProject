@@ -142,5 +142,6 @@ $('#compBtnMenu').click(function(){ //'COOKTI 메뉴' 로 이동
 });
 
 $('#compBtnOdrDtl').click(function(){ //주문번호 조회하여 '주문/배송조회' or '취소/반품조회' 로 이동
-	$(location).attr('href', '#');
+	let payment_id = $(this).data('payment_id');
+	$(location).attr('href', '../member/myOrder?payment_id=' + payment_id);
 });

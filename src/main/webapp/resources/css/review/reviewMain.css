@@ -126,13 +126,14 @@ background:linear-gradient(90deg, rgba(247,247,247,0) 0%, rgba(247,247,247,0.66)
 
 .review_module .link_more .txt_wrap {float:right; width:100%;}
 .review_module.photo .link_more .txt_wrap {width:974px;}
-.review_module .link_more .txt_wrap .txt_contents {max-height:44px; font-size:14px; line-height:22px;}
+.review_module .link_more .txt_wrap .txt_contents {max-height:44px; font-size:14px; line-height:22px; color: #606060; overflow: hidden;}
 .review_module .link_more .txt_wrap .tag_wrap { display:none; padding-top:8px; color:#008A00; font-size:13px; line-height:21px;}
+.review_module .link_more .txt_wrap .tag_wrap span { margin-right: 5px;}
 
 .review_module .link_more .tip_wrap {position:relative; margin-top:8px; padding:8px 16px 8px 47px; -ms-border-radius:0 8px 8px 8px; -moz-border-radius:0 8px 8px 8px; -webkit-border-radius:0 8px 8px 8px; border-radius:0 8px 8px 8px; background-color:#f7f7f7;}
 .review_module .link_more .tip_wrap .tip_ico {position:absolute; left:16px; top:14px; width:31px;}
 .review_module .link_more .tip_wrap .tip_ico:before {content:''; position:absolute; left:0; top:0; width:23px; height:10px; background:url('/mp/resources/images/pd/ico_set.png') -490px -130px no-repeat; background-size:800px 800px;}
-.review_module .link_more .tip_wrap .txt_tip{color:#606060; font-size:13px; line-height:21px; vertical-align:top;}
+.review_module .link_more .tip_wrap .tip_txt{color:#606060; font-size:13px; line-height:21px; vertical-align:top;}
 
 
 .review_module .link_more .img_wrap {float:left; width:206px;}
@@ -146,6 +147,7 @@ background:linear-gradient(90deg, rgba(247,247,247,0) 0%, rgba(247,247,247,0.66)
 .review_module .link_more .bigger_img .img:first-child {margin-top:0;}
 .review_module .link_more .bigger_img img {width:780px;}
 
+.review_module.open .link_more .txt_wrap .txt_contents { max-height: none; }
 .review_module.open .link_more .img_wrap,
 .review_module.photo.open .link_more .txt_wrap {width:100%;}
 .review_module.open .link_more .img_wrap {margin-top:16px;}
