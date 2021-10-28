@@ -54,8 +54,8 @@
 	
 			<form class="w-100" action="./faqUpload" method="POST" enctype="multipart/form-data">
 		
-				<select class="form-select" style="width: 8%; line-height:2.5; margin: 30 0 15" name="faq_type" aria-label="Default select example">
-  					<option selected disabled="disabled">문의 유형</option>
+				<select class="form-select" id="faq_type" style="width: 8%; line-height:2.5; margin: 30 0 15" name="faq_type" aria-label="Default select example">
+  					<option value="disable" selected disabled="disabled">문의 유형</option>
   					<option value="배송">배송</option>
   					<option value="결제/영수증">결제/영수증</option>
   					<option value="주문">주문</option>
@@ -69,7 +69,7 @@
 		
 			<div class="mb-3">
 		  		<label for=faq_subject" class="form-label">Subject</label>
-		  		<input type="text" class="form-control" name="faq_subject" id="subject" placeholder="Enter Subject">
+		  		<input type="text" class="form-control" name="faq_subject" id="faq_subject" placeholder="Enter Subject">
 			</div>
 			
 			<div class="mb-3">
@@ -80,7 +80,7 @@
 		
 		<!-- button 추가 -->
 		<div align="left" class="mt-3" style="margin-bottom: 50px">
-			<button type="submit" class="btn btn-primary">ADD</button>
+			<button type="submit" id="submit_check" class="btn btn-primary">ADD</button>
 		</div>
 		
 		</form>
@@ -94,6 +94,30 @@
 	$('#faq_content').summernote({
 		 height: 500
 	});
+	
+	
+	 $("#submit_check").on("click", function() {
+			/* 내용 검사 */
+			
+
+			if($("#faq_subject").val() == ""){
+				alert('제목을 입력해주세요');
+				$("#faq_subject").focus();
+				return false;
+			}
+			
+			
+			
+			if($("#faq_content").val() == ""){
+				alert('내용을 입력해주세요');
+				$("#faq_content").focus();
+				return false;
+			}
+		
+			
+	});
+
+		
 		
 </script>
 	
