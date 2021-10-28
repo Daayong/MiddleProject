@@ -34,6 +34,22 @@ public class CartDAO {
 		return sqlSession.selectList(NAMESPACE + "getCartListPaymentId", paymentDTO);
 	}
 	
+	// 주문 정보 유무 및 상태 조회(결제완료상태) 
+	public List<CartDTO> getPayFinish(MemberDTO memberDTO)throws Exception{
+		return sqlSession.selectList(NAMESPACE+"getPayFinish", memberDTO);
+	}
+	
+	// 주문 정보 유무 및 상태 조회(기타완료상태) 
+	public List<CartDTO> getState(MemberDTO memberDTO)throws Exception{
+		return sqlSession.selectList(NAMESPACE+"getState", memberDTO);
+	}
+	
+	
+	// payment_id 별 분리 후 개수 select 
+	public List<CartDTO> getOrderCount(MemberDTO memberDTO)throws Exception{
+		return sqlSession.selectList(NAMESPACE+"getOrderCount", memberDTO);
+	}
+	
 	public void deleteCartOne(CartDTO cartDTO) throws Exception {
 		sqlSession.delete(NAMESPACE + "deleteCartOne", cartDTO);
 	}

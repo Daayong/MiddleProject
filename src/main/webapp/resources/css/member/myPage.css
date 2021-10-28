@@ -266,6 +266,7 @@ vertical-align:top; margin:0 7px;
 #order_state .item.ing .circle {background-color:#BDD61A;}
 #order_state .item.ing .circle i.ico {display:none;}
 #order_state .item.ing .circle .num {display:block;}
+#order_state .item .circle .num.hide {display:none;}
 #order_state .item.ing .tit {color:#101010;}
 
 

@@ -21,6 +21,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.d.mp.address.AddressDTO;
 import com.d.mp.cs.notice.NoticeService;
+import com.d.mp.order.cart.CartDTO;
 import com.d.mp.order.cart.CartService;
 import com.d.mp.order.payment.PaymentDTO;
 import com.d.mp.order.payment.PaymentService;
@@ -75,7 +76,7 @@ public class MemberController {
 
 	// myCookit
 	@GetMapping("myPage")
-	public ModelAndView myPage(HttpSession session) throws Exception{
+	public ModelAndView myPage(HttpSession session,CartDTO cartDTO) throws Exception{
 		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
 		String id ="";	
 		ModelAndView mv = new ModelAndView();
@@ -85,8 +86,15 @@ public class MemberController {
 				id=addressDTO.getAddress();
 			}
 			cartService.updateCartStateBeforePayment(memberDTO);
+			List<CartDTO> cl=cartService.getOrderCount(memberDTO);
+			int count=cl.size();
+			List<CartDTO> paymentState=cartService.getPayFinish(memberDTO);
+			List<CartDTO> etcState=cartService.getState(memberDTO);
+			
 			mv.addObject("paymentListDTOs", paymentService.getPaymentList(memberDTO));
-			System.out.println(id);	
+			mv.addObject("getOrderCount",count);
+			mv.addObject("paymentState", paymentState);
+			mv.addObject("etcState",etcState);
 			mv.addObject("address", addressDTO);
 			mv.setViewName("member/myPage");
 		}else {

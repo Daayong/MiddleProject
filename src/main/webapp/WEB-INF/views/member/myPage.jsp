@@ -86,23 +86,21 @@
 						<ul>	
 							<li><a href="#">신메뉴 출시 알림</a> SMS <span class="state" style="background-color:#606060;">OFF</span></li>
 							<li>
-								<a href="#">마케팅 수신 동의</a> 
-									SMS 
+								<a href="#">마케팅 수신 동의</a>  
 										<c:choose>
 											<c:when test="${member.member_marketing_sms eq 0}">
-												<span class="state" style="background-color:#606060;">OFF</span>	
+												<em style="color:#606060">SMS</em><span class="state" style="background-color:#606060;">OFF</span>	
 											</c:when>
 											<c:otherwise>
-												<span class="state" style="background-color:#008A00;">ON</span>	
+												<em style="color:#008A00;">SMS</em><span class="state" style="background-color:#008A00;">ON</span>	
 											</c:otherwise>
 										</c:choose>
-									Email  
 										<c:choose>
 											<c:when test="${member.member_marketing_email eq 0}">
-												<span class="state" style="background-color:#606060;">OFF</span>	
+												<em style="color:#606060;">Email</em><span class="state" style="background-color:#606060;">OFF</span>	
 											</c:when>
 											<c:otherwise>
-												<span class="state" style="background-color:#008A00;">ON</span>	
+												<em style="color:#008A00;">Email</em><span class="state" style="background-color:#008A00;">ON</span>	
 											</c:otherwise>
 										</c:choose>
 							</li>
@@ -124,16 +122,39 @@
 					</div>
 					<div id="order_state">
 						<ul>
-							<c:if test="${!empty paymentListDTOs}">
 							<c:choose>
-								<c:when test="${paymentListDTOs.cart_state eq 'payment' }">
+								<c:when test="${!empty paymentState}">
+									<li class="item">
+									<a href="/mp/member/myOrderList">
+									<span class="circle" style="background-color:#BDD61A;">
+									<span class="num">
+										${getOrderCount}
+									</span>
+									</span>
+									</a>
+									<span class="tit">주문/결제</span>
+									</li>
+								</c:when>
+								<c:otherwise>
+									<li class="item">
+										<span class="circle">
+											<i class="ico ico02"></i>
+										</span>
+										<span class="tit">주문/결제</span>
+									</li>
+								</c:otherwise>
+							</c:choose>
+							
+				
+							<c:choose>
+								<c:when test="${!empty etcState}">
 									<li class="item">
 									<span class="circle" style="background-color:#BDD61A;">
 									<span class="num">
-										1
+										${getOrderCount}
 									</span>
 									</span>
-									<span class="tit">주문/결제</span>
+									<span class="tit">재료준비</span>
 									</li>
 								</c:when>
 								<c:otherwise>
@@ -141,116 +162,73 @@
 										<span class="circle">
 											<i class="ico ico03"></i>
 										</span>
-										<span class="tit">주문/결제</span>
+										<span class="tit">재료준비</span>
 									</li>
 								</c:otherwise>
 							</c:choose>
 							
-							<li class="item">
-								<span class="circle">
-									<i class="ico ico03"></i>
+							<c:choose>
+								<c:when test="${!empty etcState}">
+									<li class="item">
+									<span class="circle" style="background-color:#BDD61A;">
 									<span class="num">
-										0
-										<span class="hide">개</span>
+										${getOrderCount}
 									</span>
-								</span>
-								<span class="tit">재료준비</span>
-							</li>
-							<li class="item">
-								<span class="circle">
-									<i class="ico ico04"></i>
-									<span class="num">
-										0
-										<span class="hide">개</span>
 									</span>
-								</span>
-								<span class="tit">배송준비</span>
-							</li>
-							<li class="item">
-								<span class="circle">
-									<i class="ico ico05"></i>
-									<span class="num">
-										0
-										<span class="hide">개</span>
-									</span>
-								</span>
-								<span class="tit">배송중</span>
-							</li>
-							<li class="item">
-								<span class="circle">
-									<i class="ico ico06"></i>
-									<span class="num">
-										0
-										<span class="hide">개</span>
-									</span>
-								</span>
-								<span class="tit">배송완료</span>
-							</li>
-							</c:if>
-							<c:if test="${empty paymentListDTOs}">
-							<li class="item">
-								<c:choose>
-									<c:when test="${paymentListDTOs.cart_state eq 'payment'}">
-										<span class="circle" style="background-color:#BDD61A;">
-										<span class="num">
-											0
-											<span class="hide">개</span>
-										</span>
-										</span>
-									</c:when>
-									<c:otherwise>
+									<span class="tit">배송준비</span>
+									</li>
+								</c:when>
+								<c:otherwise>
+									<li class="item">
 										<span class="circle">
-										<i class="ico ico02"></i>
-										<span class="num">
-											0
-											<span class="hide">개</span>
+											<i class="ico ico04"></i>
 										</span>
+										<span class="tit">배송준비</span>
+									</li>
+								</c:otherwise>
+							</c:choose>
+							
+							<c:choose>
+								<c:when test="${!empty etcState}">
+									<li class="item">
+									<span class="circle" style="background-color:#BDD61A;">
+									<span class="num">
+										${getOrderCount}
+									</span>
+									</span>
+									<span class="tit">배송중</span>
+									</li>
+								</c:when>
+								<c:otherwise>
+									<li class="item">
+										<span class="circle">
+											<i class="ico ico05"></i>
 										</span>
-									</c:otherwise>
-								</c:choose>
-								<span class="tit">주문/결제</span>
-							</li>
-							<li class="item">
-								<span class="circle">
-									<i class="ico ico03"></i>
+										<span class="tit">배송중</span>
+									</li>
+								</c:otherwise>
+							</c:choose>
+							
+							<c:choose>
+								<c:when test="${!empty etcState}">
+									<li class="item">
+									<span class="circle" style="background-color:#BDD61A;">
 									<span class="num">
-										0
-										<span class="hide">개</span>
+										${getOrderCount}
 									</span>
-								</span>
-								<span class="tit">재료준비</span>
-							</li>
-							<li class="item">
-								<span class="circle">
-									<i class="ico ico04"></i>
-									<span class="num">
-										0
-										<span class="hide">개</span>
 									</span>
-								</span>
-								<span class="tit">배송준비</span>
-							</li>
-							<li class="item">
-								<span class="circle">
-									<i class="ico ico05"></i>
-									<span class="num">
-										0
-										<span class="hide">개</span>
-									</span>
-								</span>
-								<span class="tit">배송중</span>
-							</li>
-							<li class="item">
-								<span class="circle">
-									<i class="ico ico06"></i>
-									<span class="num">
-										0
-										<span class="hide">개</span>
-									</span>
-								</span>
-								<span class="tit">배송완료</span>
-							</li>
-							</c:if>
+									<span class="tit">배송완료</span>
+									</li>
+								</c:when>
+								<c:otherwise>
+									<li class="item">
+										<span class="circle">
+											<i class="ico ico03"></i>
+										</span>
+										<span class="tit">배송완료</span>
+									</li>
+								</c:otherwise>
+							</c:choose>
 						</ul>
 					</div>	
 				</div>
