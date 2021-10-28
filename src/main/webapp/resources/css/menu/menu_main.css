@@ -209,7 +209,7 @@
 /* 등록된 물품이 없을때 */
 .no_item{
 	position: absolute;
-	top: 650px;
+	top: 400px;
 	left: 50%;
 	transform: translate(-50%, 0%);
 	font-size: 24px;
