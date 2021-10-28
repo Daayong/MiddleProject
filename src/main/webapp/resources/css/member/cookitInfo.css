@@ -1,0 +1,67 @@
+@charset "UTF-8";
+
+
+#content {padding:0 0; overflow:hidden;}
+
+#my_wrapper .top {min-width:1260px; background:url('../../images/etc/bg_intro_cookit_0.jpg'); background-size:400px 200px; margin:0 auto;}
+.top .intro_img_wrap {position:relative; left:50%; width:2560px; height:640px; margin-left:-1280px;}
+.intro_img_wrap img {width:100%;}
+
+.tit {margin-bottom:24px; color:#101010; font-weight:700; font-size:15px; line-height:23px;}
+.major {color:#101010; font-weight:700; font-size:36px; line-height:50px;}
+strong.major {display:block; margin-bottom:6px;}
+.txt {padding-top:10px; font-size:17px; line-height:26px;}
+.bp{padding:70px 64px 96px;}
+
+.type01 {position:relative; height:auto; overflow:hidden; margin:0 auto 30px;  }
+.type01 .ck_img_wrap {position:relative; z-index:999; width:2560px; height:780px; margin:0 auto; background-color:#000; overflow:hidden;  }
+.intro_cookit_dimmed{display:inline-block; height:780px;  overflow:hidden; z-index:1; }	
+.intro_cookit_dimmed img{position:absolute; top:-150%; opacity:0.5; background-color:#000; z-index:1;  }
+.et{width:1180px; display:inline-block;  position:relative; height:780px;   margin-left:380px;  }
+.wrap{position:absolute; z-index:5; left:50%; top:50%; transform: translate(-50%, -50%); }
+.type01 .ck_txt_wrap {position:relative;  }
+.type01 .ck_txt_wrap .tit,
+.type01 .ck_txt_wrap .major,
+.type01 .ck_txt_wrap .txt {color:#fff;}
+
+.type01 .list_tp {width:1096px; margin-top:64px;}
+.type01 .list_tp:after{content:'';display:table;clear:both;}
+.type01 .list_tp li {position:relative; float:left; width:250px; height:266px; margin-right:24px; background:#fff; border-radius:2px; padding:104px 24px 0; text-align:center;}
+.type01 .list_tp .sub_txt {color:#101010; font-size:14px; line-height:22px;}
+.type01 .list_tp strong {display:block; margin-top:2px; color:#101010; font-weight:500; font-size:17px; line-height:24px;}
+.type01 .list_tp p {margin-top:8px; font-size:14px; line-height:22px}
+.type01 .list_tp li::before {content:''; position:absolute; left:50%; top:44px; width:48px; height:48px; margin-left:-24px; background:url('../../images/etc/ico_set (1).png') no-repeat;background-size:300px 300px;}
+.type01 .list_tp li.tp01::before {background-position:0 0 }
+.type01 .list_tp li.tp02::before {background-position:-60px 0 }
+.type01 .list_tp li.tp03::before {background-position:0 -60px }
+.type01 .list_tp li.tp04::before {background-position:-60px -60px }
+
+ .type02 {position:relative; width:1180px; margin:0 auto; padding:120px 64px 450px;}
+ .type02 .intro_txt_wrap {padding-bottom:80px;}
+ .type02 .intro_img_wrap {position:absolute; left:0; bottom:0; width:1550px; height:450px;}
+
+ .type03 {position:relative; width:1180px; margin:0 auto 140px; padding:120px 64px 640px;}
+ .type03 .intro_txt_wrap {padding-bottom:72px;}
+ .type03 .intro_movie_wrap {position:absolute; left:0; bottom:0; width:1180px; height:640px;}
+ .type03 .intro_movie_wrap video {width:1180px; height:640px;}
+
+ .type04 {position:relative; width:100%; min-width:1260px; height:640px; margin:0 auto; padding-top:120px; overflow:hidden; background:url('../../images/etc/intro_cookit_4.jpg') center no-repeat; background-size:cover;}
+ .type04 .intro_txt_wrap {width:1180px; margin:0 auto; padding-left:64px;}
+ .type04 .tit,
+ .type04 .major,
+ .type04 .txt {color:#fff;}
+ .type04 .intro_img_wrap {position:relative; z-index:0; min-width:1920px; height:640px; margin:0 auto; overflow:hidden;}
+ .type04 .intro_img_wrap img {position:relative; width:100%; -ms-transform:translateY(-50%); -moz-transform:translateY(-50%); transform:translateY(-50%);}
+
+ .type05 {position:relative; width:1180px; margin:0 auto 100px; padding:120px 64px 640px;}
+ .type05 .intro_txt_wrap {padding-bottom:72px;}
+ .type05 .intro_img_wrap {position:absolute; left:0; bottom:0; width:1180px; height:640px;}
+ .type05 .txt {padding-bottom:10px;}
+ .type05 .btn_link {color:#008A00; text-decoration:underline;}
+ .type05 .btn_link::after {border-bottom:1.5px solid #008A00; border-right:1.5px solid #008A00;}
+
+
+
+
+
+

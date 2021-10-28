@@ -41,6 +41,16 @@ public class CartService {
 		return cartDAO.getState(memberDTO);
 	}
 	
+	// 주문 정보 유무 및 상태 조회 (배송완료상태) 
+	public List<CartDTO> getDState(MemberDTO memberDTO)throws Exception{
+		return cartDAO.getDState(memberDTO);
+	}
+	
+	// payment_id 별 분리 후 개수 select 배송완료  
+	public List<CartDTO> getDOrderCount(MemberDTO memberDTO)throws Exception{
+		return cartDAO.getDOrderCount(memberDTO);
+	}
+	
 	// payment_id 별 분리 후 개수 select 
 	public List<CartDTO> getOrderCount(MemberDTO memberDTO)throws Exception{
 		return cartDAO.getOrderCount(memberDTO);

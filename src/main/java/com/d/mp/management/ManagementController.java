@@ -132,6 +132,7 @@ public class ManagementController {
 		ModelAndView mv = new ModelAndView();
 		qnaDTO  = qnaService.getOneCounselList(qnaDTO);
 		mv.addObject("counselList", qnaDTO);
+		System.out.println("여기지롱");
 		mv.setViewName("management/member_addComments");
 		return mv;
 	}
@@ -141,7 +142,7 @@ public class ManagementController {
 	@PostMapping("member_addComments")
 	@ResponseBody
 	public int setCounselComment(QnaDTO qnaDTO) throws Exception{
-		
+		System.out.println("맞게들어왔지롱");
 		return qnaService.setCounselComment(qnaDTO);
 	}
 }

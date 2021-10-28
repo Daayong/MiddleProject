@@ -71,7 +71,7 @@
 			
 			<ul class="menu_ul">
 				<li class="menu_li">
-					<a href="#">COOKIT소개</a>
+					<a href="${pageContext.request.contextPath}/member/cookitInfo">COOKIT소개</a>
 				</li>
 				<li class="menu_li">
 					<a href="${pageContext.request.contextPath}/menu/menu_main">COOKIT 메뉴</a>

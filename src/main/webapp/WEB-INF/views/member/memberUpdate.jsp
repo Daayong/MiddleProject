@@ -40,7 +40,7 @@
 		
 		<!-- 메인 컨텐츠(여기서부터 변경되야함)  -->	
 		<div class="cont_area">
-			<form id="form1" name="form1" method="post" action="update">
+			<form id="form1" name="form1" method="post" action="update" >
 				<h3 class="h3">기본정보</h3>
 				<div class="table_col">
 					<input type="hidden" name="member_id" value="${member.member_id}">
@@ -140,25 +140,25 @@
 								<div id="phone_num">
 										<div class="select w120">
 											<select class="select_wrap"  id="member_phone_f" name="member_phone_f">
-											<option class="se" value="010">010</option>
-											<option class="se" value="011">011</option>
-											<option class="se" value="016">016</option>
-											<option class="se" value="017">017</option>
-											<option class="se" value="018">018</option>
-											<option class="se" value="019">019</option>
-											<option class="se" value="070">070</option>
+											<option class="sp" value="010">010</option>
+											<option class="sp" value="011">011</option>
+											<option class="sp" value="016">016</option>
+											<option class="sp" value="017">017</option>
+											<option class="sp" value="018">018</option>
+											<option class="sp" value="019">019</option>
+											<option class="sp" value="070">070</option>
 											</select>
 											<span class="symbol">-</span>
 										</div>
 										<div class="select w100">
 											<span class="input_txt">
-												<input type="text" id="member_phone_m" name="member_phone_m" class="text put" value="${member.member_phone_m}" placeholder="${member.member_phone_m}">
+												<input type="text" id="member_phone_m" name="member_phone_m" class="text put" value="${member.member_phone_m}" placeholder="${member.member_phone_m}"maxlength="4" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
 											</span>
 											<span class="symbol">-</span>
 										</div>
 										<div class="select w100">
 											<span class="input_txt">
-												<input type="text" id="member_phone_b" name="member_phone_b" class="text put" value="${member.member_phone_b}" placeholder="${member.member_phone_b}">
+												<input type="text" id="member_phone_b" name="member_phone_b" class="text put" value="${member.member_phone_b}" placeholder="${member.member_phone_b}"maxlength="4" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
 											</span>
 										</div>
 									</div>
@@ -175,13 +175,13 @@
 								<div id="email_ad">
 										<div class="select w180">
 											<span class="input_txt">
-												<input type="text" id="member_email_f" name="member_email_f" placeholder="이메일 아이디" class="text put" value="${member.member_email_f}" placeholder="${member.member_email_f}">
+												<input type="text" id="member_email_f" name="member_email_f" placeholder="이메일 아이디" class="text put" value="${member.member_email_f}" placeholder="${member.member_email_f}" onkeyup="this.value=this.value.replace(/[^a-zA-Z-_0-9]/g,'');">
 											</span>
 											<span class="symbol">@</span>
 										</div>
 										<div class="select w180">
 											<span class="input_txt">
-												<input type="text" id="member_email_b2"  name="member_email_b" value="${member.member_email_b}" class="text put" placeholder="${member.member_email_b}" >
+												<input type="text" id="member_email_b2"  name="member_email_b" value="${member.member_email_b}" class="text put" placeholder="${member.member_email_b}" onkeyup="this.value=this.value.replace(/[^a-zA-Z-_0-9_.]/g,'');">
 											</span>
 											<select class="select_wrap"  id="member_email_b" onchange="javascript:changeSelect(this);" >						
 											<option class="ee" value="1">직접입력</option>
@@ -296,13 +296,14 @@
 		
 		
 		 //수정페이지 폼에 들어와있을때 원래 입력되어있는 데이터로 selected 되어있기 phone 
-		 const member_phone_f = '${member.member_phone_f}';
-		 $('.se').each(function() {
+		 const member_phone_f='${member.member_phone_f}';
+		 $('.sp').each(function() {
 			 const value= $(this).val();
 			 if(value==member_phone_f){
 				 $(this).prop("selected", true);
 			 }
 		});
+		 
 		 //수정페이지 폼에 들어와있을때 원래 입력되어있는 데이터로 selected 되어있기 email
 		 const member_email_b = '${member.member_email_b}';
 		 $('.ee').each(function() {
@@ -323,7 +324,7 @@
 		function checkInput(){
 			//패스워드 4글자 이상 여부 확인        
 		    if(pw1.value.trim().length < 4){
-		       	alert("비밀번호를 입력해 주세요.");
+		       	alert("비밀번호를 확인해 주세요.");
 		       	msg_pwd.classList.remove('hide');
 		        pw1.focus();
 		        return false;
@@ -383,6 +384,7 @@
 					$("#member_marketing_email").val(0);
 					console.log($("#member_marketing_email").val());
 				}
+			
 				form1.submit();
 			}else{
 				return false;

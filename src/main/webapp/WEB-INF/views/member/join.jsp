@@ -92,7 +92,7 @@
 								<td>
 									<div class="input_group">
 										<span class="input_txt w250">
-											<input type="text" value="" name="member_user_id" id="member_user_id" maxlength="12" class="text" placeholder="아이디를 입력해주세요.">
+											<input type="text" value="" name="member_user_id" id="member_user_id" maxlength="12" class="text" placeholder="아이디를 입력해주세요." onkeyup="this.value=this.value.replace(/[^a-zA-Z-_0-9]/g,'');">
 										</span>
 										<button type="button" class="btn btn_search" id="idCheck">중복확인</button>
 										<button type="button" class="btn btn_search" style="background-color:#fff; color:000; font-weight:300;">
@@ -339,13 +339,13 @@
 										</div>
 										<div class="select w120">
 											<span class="input_txt">
-												<input type="text" onkeypress="javascript:checkInputNum();" id="member_phone_m" value="" name="member_phone_m" class="text put">
+												<input type="text" onkeypress="javascript:checkInputNum();" id="member_phone_m" value="" name="member_phone_m" class="text put" maxlength="4" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
 											</span>
 											<span class="symbol">-</span>
 										</div>
 										<div class="select w120">
 											<span class="input_txt">
-												<input type="text" id="member_phone_b" onkeypress="javascript:checkInputNum();" value="" name="member_phone_b" class="text put">
+												<input type="text" id="member_phone_b" onkeypress="javascript:checkInputNum();" value="" name="member_phone_b" class="text put"maxlength="4" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
 											</span>
 										</div>
 									</div>
@@ -365,13 +365,13 @@
 								<div id="email_ad">
 										<div class="select w180">
 											<span class="input_txt">
-												<input type="text" id="member_email_f" val="" name="member_email_f" placeholder="이메일 아이디" class="text put">
+												<input type="text" id="member_email_f" val="" name="member_email_f" placeholder="이메일 아이디" class="text put"onkeyup="this.value=this.value.replace(/[^a-zA-Z-_0-9]/g,'');">
 											</span>
 											<span class="symbol">@</span>
 										</div>
 										<div class="select w180">
 											<span class="input_txt">
-												<input type="text" id="member_email_b2" value="" name="member_email_b2" placeholder="이메일 도메인" class="text put">
+												<input type="text" id="member_email_b2" value="" name="member_email_b2" placeholder="이메일 도메인" class="text put" onkeyup="this.value=this.value.replace(/[^a-zA-Z-_0-9_.]/g,'');">
 											</span>
 											<select class="select_wrap" onchange="chooseDomain();" id="member_email_b" name="member_email_b">
 											<option value="">직접입력</option>
@@ -460,27 +460,32 @@
 	$(function(){
 		$('#idCheck').click(function(){
 			var member_user_id = $("#member_user_id").val();
-					
-			$.ajax({
-				url:'./idCheck',
-				type:'get',
-				data:{member_user_id:member_user_id},
-				success:function(data){
-					console.log("1=중복 / 0=중복x /2=비어있음:" +data);
-					if(data ==1){
-						//1.아이디가 중복될때
-						$("#msg_id01").css("display","none");
-						$("#msg_id02").text("이미 사용중인 아이디입니다. 다른 아이디로 입력해주세요.");
-						check=true;
-					}else if(data==0){						
-						$("#msg_id02").text("사용 가능한 아이디 입니다.");
-						check=false;
-					}else{
-						$("#msg_id02").text("아이디를 입력하세요.");
-						check=true;
+			if(member_user_id.trim().length<4){
+				$("#msg_id01").css("display","none");
+				$("#msg_id02").text("아이디는 4글자 이상 입력해야 합니다.");
+				return false;
+			}else{		
+				$.ajax({
+					url:'./idCheck',
+					type:'get',
+					data:{member_user_id:member_user_id},
+					success:function(data){
+						console.log("1=중복 / 0=중복x /2=비어있음:" +data);
+						if(data ==1){
+							//1.아이디가 중복될때
+							$("#msg_id01").css("display","none");
+							$("#msg_id02").text("이미 사용중인 아이디입니다. 다른 아이디로 입력해주세요.");
+							check=true;
+						}else if(data==0){						
+							$("#msg_id02").text("사용 가능한 아이디 입니다.");
+							check=false;
+						}else{
+							$("#msg_id02").text("아이디를 입력하세요.");
+							check=true;
+						}
 					}
-				}
-			});
+				});
+			}
 		});	
 	});
 	 
@@ -544,14 +549,14 @@
 	            return false;
 	        }
 	    //아이디 입력 유효성 검사    
-		if( member_user_id.value.trim()=="") {
+		if( member_user_id.value.trim().length<4) {
 	        	alert("아이디를 입력해 주세요.");
 	            member_user_id.focus();
 	            return false;
 	        }
 		//패스워드 4글자 이상 여부 확인        
 	    if(pw1.value.trim().length < 4){
-	       	alert("비밀번호를 입력해 주세요.");
+	       	alert("비밀번호를 확인해주세요.");
 	       	msg_pwd.classList.remove('hide');
 	        pw1.focus();
 	        return false;
