@@ -49,9 +49,11 @@
 				</div>
 					
 					<c:forEach items="${counselList.file}" var="file">
+					<c:if test="${not empty file.qna_file_name }">
 					<div class="img added_file" style="margin-top: 10px;">
 						<a style="text-decoration: underline;" href="../resources/upload/formCounsel/${file.qna_file_name}" target="blank">첨부 이미지</a>
 					</div>
+					</c:if>
 					</c:forEach>		
 			<div class="ta" style="margin-top: 15px; margin-bottom: 20px;" >
 				<span>문의내용: ${counselList.qna_content} </span>
