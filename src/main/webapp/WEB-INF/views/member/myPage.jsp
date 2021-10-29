@@ -294,7 +294,7 @@
 				<div id="shopPick" class="rpd box">
 					<h4 class="h4_tit">
 						쇼핑찜
-						<a href="#" class="btn_link">더보기</a>
+						<a href="myZzimList" class="btn_link">더보기</a>
 					</h4>
 					
 					<c:if test="${empty zzim}">

@@ -1,0 +1,126 @@
+@charset "UTF-8";
+
+/* 쇼핑찜 */
+.content {min-height:900px; padding:52px 0 140px; }
+.content:after { content: ''; display: block; clear: both; }
+
+.rigth_content { width: 940px; float: right;}
+
+.rigth_content h3{display:block;padding-bottom:36px;font-size:36px;line-height:50px;font-weight:700;color:#101010;}
+
+.shp_zzim .top_sec {position:relative; z-index:2; padding-bottom:16px; border-bottom:2px solid #202020;}
+.shp_zzim .top_sec .total {display:inline-block; font-size:22px; line-height:32px; color:#101010; font-weight:700; vertical-align:middle;}
+.shp_zzim .top_sec .total .side_desc {color:#606060; font-size:14px; line-height:22px; font-weight:400;}
+.shp_zzim .top_sec .total em.state {margin-right:12px; color:#EE0700; font-weight:500;}
+.shp_zzim .top_sec .total em.state.gray {color:#606060;}
+.shp_zzim .top_sec .side_info {position:absolute; top:0; right:2px;}
+.shp_zzim .top_sec .side_info .btn {width:88px;}
+
+.shp_zzim_list .prd_list.row li {padding:0 32px; border-left:1px solid #ccc; border-right:1px solid #ccc; border-top:0;}
+.shp_zzim_list .prd_list.row li:first-child {padding-top:10px;}
+.shp_zzim_list .prd_list.row li:last-child {padding-bottom:10px; border-bottom:1px solid #ccc;}
+.shp_zzim_list .prd_list.row .prd_mod {padding:16px 344px 16px 104px; border-top:1px solid #ccc;}
+.shp_zzim_list .prd_list.row li:first-child .prd_mod {border-top:0;}
+.shp_zzim_list .prd_list.row .prd_mod .info_wrap {width:428px; padding:0;}
+.shp_zzim_list .prd_list.row .prd_mod .info_wrap .flag span:before {display:none;}
+/* .shp_zzim_list .prd_list.row .prd_mod .info_wrap .flag span:after {content:''; display:inline-block; width:3px; height:3px; background-color:#CCC; border-radius:50%; margin:0 4px 0; vertical-align:middle;} */
+.shp_zzim_list .prd_list.row .prd_mod .info_wrap .flag span:first-child:before,
+.shp_zzim_list .prd_list.row .prd_mod .info_wrap .flag strong:first-child:before{display:none;}
+.shp_zzim_list .prd_list.row .prd_mod .info_wrap .price .price_name {display:inline-block; margin-right:8px; color:#EE0700;  vertical-align:top;}
+.shp_zzim_list .prd_list.row .prd_mod .info_wrap .etc_info {height:20px; margin-top:6px; font-size:0;}
+.shp_zzim_list .prd_list.row .prd_mod .info_wrap .etc_info .txt {position:relative; display:inline-block; padding:0 8px; color:#606060; font-size:13px; line-height:20px; vertical-align:middle;}
+.shp_zzim_list .prd_list.row .prd_mod .info_wrap .etc_info .txt:first-child {padding-left:0;}
+.shp_zzim_list .prd_list.row .prd_mod .info_wrap .etc_info .txt:first-child:before {display:none;}
+.shp_zzim_list .prd_list.row .prd_mod .info_wrap .etc_info .txt.spice i.ico {display:inline-block; width:20px; height:20px; margin-top:-2px; background:url('/cjkit/web/images/pd/ico_set.png') no-repeat;  background-size:800px 800px; vertical-align:middle;}
+.shp_zzim_list .prd_list.row .prd_mod .info_wrap .etc_info .txt.spice i.ico.step01 {background-position:-84px 0;} /* 약간매운맛 */
+.shp_zzim_list .prd_list.row .prd_mod .info_wrap .etc_info .txt.spice i.ico.step02 {background-position:-104px 0;} /* 적당히매운맛 */
+.shp_zzim_list .prd_list.row .prd_mod .info_wrap .etc_info .txt.spice i.ico.step03 {background-position:-124px 0;} /* 아주매운맛 */
+.shp_zzim_list .prd_list.row .prd_mod .info_wrap .price del {display:inline-block; padding-left:6px; font-size:13px; line-height:20px; font-weight:400; vertical-align:middle;}
+.shp_zzim_list .prd_list.row .prd_mod .prd_del {right:0;}
+.shp_zzim_list .prd_list.row .prd_mod .prd_price {right:32px; position: absolute; top: 50%; height: auto; color: #101010; font-size: 18px; line-height: 27px; font-weight: 700; text-align: right; vertical-align: top; transform: translate(0, -50%);}
+.shp_zzim_list .prd_list.row .prd_mod .prd_price .btn {width:100px; border: 1px solid #ccc;}
+.shp_zzim_list .prd_list.row li.no_data {padding:80px 0 0 0; border:0;}
+.shp_zzim_list .prd_list.row .no_data .ico {background:url('/cjkit/web/images/my/ico_set.png') -720px 0 no-repeat; background-size:800px 800px;}
+
+.btn{
+	display: inline-block;
+}
+.btn.white{
+	color: #101010;
+	background-color: #FFFFFF;
+}
+.btn.sm{
+	height: 32px;
+	padding: 4px 13px 5px;
+	font-weight: 500;
+	font-size: 13px;
+	line-height: 21px;
+}
+.prd_mod{
+	position: relative;
+	padding:16px 344px 16px 104px;
+	display: table-cell;
+	height: 80px;
+	vertical-align: middle;
+}
+.prd_mod .img_wrap{
+	position: absolute;
+	left: 0;
+	top: 50%;
+	transform: translate(0, -50%);
+	width: 80px;
+	text-align: center;
+}
+.prd_mod a{
+	display: table-cell;
+	height: 80px;
+	vertical-align: middle;
+	color: inherit;
+	text-decoration: none;
+}
+.prd_mod .img_wrap img{
+	width: 80px;
+	height: 80px;
+}
+.prd_mod .info_wrap .flag{
+	color: #606060;
+	font-size: 13px;
+	line-height: 21px;
+}
+.prd_mod .info_wrap .tit{
+	margin-top: 4px;
+	font-size: 17px;
+	line-height: 24px;
+	color: #101010;
+	font-weight: 500;
+}
+.prd_mod .info_wrap .price{
+	margin-top: 8px;
+	font-size: 18px;
+	line-height: 27px;
+	color: #101010;
+	font-weight: 700;
+	list-style: none;
+}
+.prd_mod .info_wrap span{
+	display: block;
+}
+.prd_mod .prd_del{
+	right: 0;
+	position: absolute;
+	top: 50%;
+	display: block;
+	width: 24px;
+	height: 24px;
+	margin-top: -12px;
+}
+.prd_mod .prd_del:after{
+	content: '';
+	position: absolute;
+	left: 4px;
+	top: 4px;
+	width: 16px;
+	height: 16px;
+	background: url("../../images/common/ico_set.png") -324px 0 no-repeat;
+	background-size: 800px 800px;
+}

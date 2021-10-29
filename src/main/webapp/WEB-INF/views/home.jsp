@@ -80,7 +80,7 @@
             <!-- 쿠폰 발급이 안된 케이스 -->
             <div class="ma_no_coupon mbrCpnNoDataArea">
                 <a href="javascript:void(0);">
-                    <strong>10월 27일(수)에 받을 수 있어요</strong>
+                    <strong>10월 30일(금)에 받을 수 있어요</strong>
                     <p>오전 7시까지 주문하시면 다음날 배송됩니다.</p>
 
                     <span class="link_time"><span>00:00:00</span>남은시간</span>
@@ -145,6 +145,7 @@
 				<!-- c:foreach -->
 				
 				<c:forEach items="${prd_mDTO}" var="m_dto" varStatus="num">
+				<a href="./menu/menu_detail?product_id=${m_dto.product_id}">
 					<div class="item">
 						<div class="img_wrap">
 							<img alt="test" src="./resources/upload/menu/main/${m_dto.product_id}/${m_dto.product_name}.jpg">
@@ -162,6 +163,7 @@
 							</div>
 						</div>
 					</div>
+				</a>
 				</c:forEach>
 						
 				<!-- c:foreach end -->
@@ -198,10 +200,10 @@
 							<li>
 								<div class="rv_mod">
 									<a href="#">
-										<strong class="tit">Product_name</strong>
+										<strong class="tit">얼큰 닭 한마리</strong>
 										
 										<div class="txt_wrap">
-											my cookit
+											양도 풍성해서 다음날 또 먹을 수 있을 정도였어요 칼국수가 일품이네요.
 										</div>
 										<div class="rating_wrap">
 											<span class="rating_star">
@@ -273,6 +275,7 @@
 				<div class="main_product_list">
 					<ul>
 						<c:forEach items="${prd_mDTO}" var="m_dto" begin="0" end="8">
+						<a href="./menu/menu_detail?product_id=${m_dto.product_id}">
 							<li class="item">
 								<div class="item_module">
 									<div class="img_wrap">
@@ -294,6 +297,7 @@
 									</div>
 								</div>
 							</li>
+						</a>
 						</c:forEach>
 					</ul>
 				</div>
