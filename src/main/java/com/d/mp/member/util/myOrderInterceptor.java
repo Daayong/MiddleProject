@@ -26,14 +26,17 @@ public class myOrderInterceptor extends HandlerInterceptorAdapter {
 
 		String session_id = Long.toString(memberDTO.getMember_id());
 		String member_id = parameter.substring(parameter.length()-session_id.length(), parameter.length());
+
+		System.out.println("session_id : " + session_id);
+		System.out.println("member_id : " + member_id);
 		
 		//로그인 id와 파싱한 id가 다를경우
-		if(session_id != member_id) {
+		if(!session_id.equals(member_id)) {
 			response.sendRedirect(request.getContextPath()+"/member/myOrderList");
 			return false;
 		}
 		
-		return true; 		
+		return true;
 	}
 
 	@Override

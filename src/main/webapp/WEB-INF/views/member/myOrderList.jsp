@@ -66,7 +66,7 @@
 				
 					<div class="payment_date_wrap">
 						<h4>주문일 ${fn:substring(paymentListDTOsI.payment_date, 0, 13)}</h4>
-						<a href="javascript:;" class="odrDtlLink" data-payment_id="${paymentListDTOsI.payment_id}">주문상세</a>
+						<a href="./myOrder?payment_id=${paymentListDTOsI.payment_id}" class="odrDtlLink" data-payment_id="${paymentListDTOsI.payment_id}">주문상세</a>
 			        </div>
 			        
 					<!-- ===== Loop J START ===== -->
@@ -165,10 +165,10 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script type="text/javascript">
-	$('.odrDtlLink').click(function(){
+	/* $('.odrDtlLink').click(function(){
 		let payment_id = $(this).data('payment_id');
 		location.href = "./myOrder?payment_id=" + payment_id;		
-	});
+	}); */
 </script>
 
 </body>
