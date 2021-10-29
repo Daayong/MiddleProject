@@ -62,6 +62,7 @@ public class FaqController {
 	
 
 	@RequestMapping(value = "/faqTypeList")
+	@ResponseBody
 	public ModelAndView getTypeList(FaqDTO faqDTO, HttpServletRequest request, HttpServletResponse response ) throws Exception{
 		
 	

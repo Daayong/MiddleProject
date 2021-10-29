@@ -54,5 +54,17 @@ public class BoardFileManager {
 		file.delete();
 		
 	}
+	
+	public String boardFileSave(String realPath, MultipartFile multipartFile) throws Exception{
+		String fileName = "";
+		fileName +=UUID.randomUUID().toString();
+		fileName +="_" + multipartFile.getOriginalFilename();
+		
+		File file = new File(realPath + fileName);
+		
+		multipartFile.transferTo(file);
+		
+		return fileName;
+	}
 
 }

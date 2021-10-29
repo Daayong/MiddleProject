@@ -21,12 +21,9 @@ public class NoticeController {
 	
 	
 	@GetMapping("noticeMain")
-	public ModelAndView getNoticeList(BoardPager pager) throws Exception{
+	public ModelAndView getNoticeList() throws Exception{
 		ModelAndView mv = new ModelAndView();
-				
-		List<NoticeDTO> ar = noticeService.getNoticeList(pager);
-		
-		mv.addObject("pager", pager);
+		List<NoticeDTO> ar = noticeService.getNoticeList();
 		mv.addObject("noticelist", ar);
 		mv.setViewName("cs/noticeMain");
 		
@@ -38,7 +35,6 @@ public class NoticeController {
 		ModelAndView mv = new ModelAndView();
 		
 		noticeDTO = noticeService.getNoticeView(noticeDTO);
-		List<NoticeFileDTO> files = noticeService.getFile(noticeDTO);
 		mv.addObject("dto", noticeDTO);
 		
 		return mv;
@@ -53,15 +49,11 @@ public class NoticeController {
 	}
 	
 	@PostMapping("noticeUpload")
-	public ModelAndView setInsert(NoticeDTO noticeDTO, MultipartFile [] files) throws Exception{
-		
-		for(MultipartFile multipartFile : files) {
-			System.out.println(multipartFile.getOriginalFilename());
-			
-		}
+	public ModelAndView setInsert(NoticeDTO noticeDTO) throws Exception{
+	
 		
 		ModelAndView mv = new ModelAndView();
-		int result = noticeService.setInsert(noticeDTO, files);
+		int result = noticeService.setInsert(noticeDTO);
 		mv.setViewName("redirect:./noticeMain");
 		
 		return mv;

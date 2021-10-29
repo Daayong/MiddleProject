@@ -9,7 +9,7 @@
 	<title>My쿡킷 - 집밥을 특별하게,쿡킷</title>
 	
 	<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-	<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<style>	
 		.wrapper{
 			position:relative;
@@ -214,10 +214,9 @@
 								<!-- 선택된 상품이 있을 때 -->
 								<div class="pro_box pro_info"  style="display: none;">
 									<input type="text" id="input_payment_id" readonly="readonly" style="outline: none; border: none;" name="payment_id" value="">
-									<span class="txt">/
+									<span>/</span> <span class="txt">
 									<input type="text" id="input_product_name" readonly="readonly" style="outline: none; border: none;" name="qna_product_name" value="">
-									
-									<span class="hide">상품명</span></span>
+									 <span class="hide">상품명</span> </span>
 									<button type="button" onclick="javascript:cancelCheck();" class="btn_cancle"><span class="hide">선택취소</span></button>
 								</div>
 								<!-- //선택된 상품이 있을 때 -->
@@ -237,32 +236,6 @@
 									<li class="bul_dot"><i class="bullet"></i> 고객님의 개인정보(이름,핸드폰 번호, 계좌번호 등) 입력 시 관리자에 의해 임의 삭제될 수 있습니다.</li>
 									<li class="bul_dot"><i class="bullet"></i> 개인정보 및 환불계좌번호 변경 등 개인정보 관련 문의는 행복고객센터로 연락 부탁 드립니다.</li>
 								</ul>
-							</div>
-						</dd>
-					</dl>
-						<dl class="one_dep">
-						<dt>첨부파일</dt>
-						<dd>
-							<div class="scroll">
-								<div class="add_file_wrap" style="width: 276px;" >
-									<ul>
-										<li>
-											<div class="add_file_frame">	
-												<input type="file" class="trans_add_file" name="file" accept="image/*" multiple="multiple" title="파일 추가 선택">
-											<span class="add_file" style="width: 128px; height: 128px;"><span class="hide">파일 추가 선택</span></span>	
-											</div>
-										</li>
-										
-									</ul>
-								</div>
-							</div>
-							<div class="file_info">
-								<ul class="bul_list">
-									<li class="bul_dot">
-										<i class="bullet"></i> 최대 5장 등록 (PNG, JPEG, JPG, GIF 포맷)
-									</li>
-								</ul>
-								<span class="file_size"><span class="now">0</span>/30MB</span>
 							</div>
 						</dd>
 					</dl>
@@ -349,6 +322,33 @@
 					</dl>
 				</div>
 	
+				<div class="input_taste_form file " style="border-bottom: 1px solid #e0e0e0; padding-bottom: 30px;">
+							<div class="left" style="margin-top: 22px; color: #101010; font-size: 17px; line-height: 24px; font-weight: 700; ">
+								첨부파일
+							
+							<div class="right" style="margin-left: 260px; ">
+								
+								<div class="add_file_wrap">
+									
+									<div class="multipartFile_wrap" style="">
+										<input type="file" id="add_file1" class="add_file" name="multipartFile" data-num="1">
+										<label for="add_file1" style="margin-top: -22px;"></label>
+									</div>
+									
+									<ul>
+										<!-- #add_file change 이벤트 추가 li 영역 -->
+									</ul>
+								</div>
+								
+								<div class="file_info">
+									<div class="dot"></div>
+									<span> 최대 5장 등록 (PNG, JPEG, JPG, GIF 포맷)</span>
+								</div>
+							</div>
+						</div>
+						</div>
+				
+	
 				<div class="btn_wrap">
 					<button type="button" class="btn white" onclick="location.href ='../myAct/customerCounselList'" ><span>취소</span></button>
 					<button type="submit" id="submit_check" class="btn green"><span>확인</span></button>
@@ -362,6 +362,7 @@
 			
 	</div>	
 
+</div>
 	</section>
  	<c:import url="../temp/boot_footer.jsp"></c:import>
  	
@@ -385,14 +386,13 @@
 								
 					<c:set var="tempPaymentID"></c:set>
 							<c:forEach var="paymentList" items="${paymentListDTOs}">
-							<c:if test="${tempPaymentID ne paymentList.payment_id }">
+							<c:if test="${tempPaymentID ne paymentList.payment_id}">
 								<div class="order_prd">
 									<div class="top">
 										<div class="tit">
 											<div class="rad_wrap">
-												
-												<input type="checkbox" id="order_payment_id" name="order" value="${paymentList.payment_id}" data-prd_nm="${paymentList.product_name}" onchange="javascript:closeProdListModal();" class="accessibility-keyboard">
-												<label for="oreder_payment_id" class="order_num">주문번호<span class="ff_avr">${paymentList.payment_id}</span></label>
+												<input type="radio" id="order_payment_id" name="order_payment_id" value="" data-pay_nm="${paymentList.payment_id}"  data-prd_nm="${paymentList.product_name}" class="accessibility-keyboard">
+												<label for="order_payment_id" class="order_num">주문번호<span class="ff_avr">${paymentList.payment_id}</span></label>
 											</div>
 										</div>
 									</div>
@@ -404,8 +404,8 @@
 										<c:if test="${paymentList.payment_id eq paymentListA.payment_id}">
 											<li>
 												<div class="rad_wrap">
-													<input type="checkbox" id="order_payment_id" name="prod" value="${paymentListA.payment_id}" data-prd-nm="${paymentListA.product_name}" onchange="javascript:closeProdListModal();" class="accessibility-keyboard">
-													<label for="oreder_payment_id1">
+													<input type="radio" id="order_payment_id1" name="order_payment_id1" value="" data-pay_num="${paymentListA.payment_id}"  data-prd_num="${paymentListA.product_name}"  class="accessibility-keyboard">
+													<label for="order_payment_id1">
 														<div class="img">
 															<img src="/mp/resources/upload/menu/main/${paymentListA.product_id}/${paymentListA.product_name}.jpg" alt="닭한마리와 칼국수" onerror="cj.com.noImg(this)">
 														</div>
@@ -510,15 +510,102 @@ $("#inquiry_cate9").on("click", function() {
 });
 
 
+
+$('.multipartFile_wrap').on('change', '.add_file', function(){
+	const multipartFile_wrap = $(this).parent();
+	const ul = multipartFile_wrap.siblings('ul');
+
+	const label = $(this).siblings('label');
+	label.addClass('hidden')
+	
+	if (ul.find('li').length < 4){
+		addInput(multipartFile_wrap, $(this).data('num'));		
+	}
+	addLi(ul);
+	
+	setNum(multipartFile_wrap, ul);
+	
+	let lastLi = ul.find('li').last();
+	readURL(this, lastLi.find('img'));	
+	
+});
+
+function addInput(multipartFile_wrap, finalNum){
+	finalNum++
+	let Html
+		="<input type='file' id='add_file"+finalNum+"' class='add_file' name='multipartFile' data-num='"+finalNum+"'>"
+		+"<label for='add_file"+finalNum+"'></label>"
+	multipartFile_wrap.append(Html);
+}
+
+function addLi(ul){
+	let Html
+		="<li>"
+		+"<div class='dim_div'><span class='num'></span></div>"
+		+"<img src=''>"
+		+"<button type='button' class='btn_delete'></button>"
+		+"</li>";	
+	ul.append(Html);
+}
+
+function setNum(multipartFile_wrap, ul){
+	let cnt = 1;
+	multipartFile_wrap.find('.add_file').each(function(){
+		$(this).data('num', cnt);
+		$(this).attr('id', 'add_file' + cnt);
+		$(this).next().attr('for', 'add_file' + cnt);
+		cnt++;
+		console.log($(this).data('num'));
+	});
+	console.log("==============");
+	cnt = 1;
+	ul.find('.num').each(function(){
+		$(this).html(cnt++);
+	});
+}
+
+function readURL(input, img_tag) {
+	if (input.files && input.files[0]) {
+		
+		var reader = new FileReader();			
+		reader.onload = function(e) {
+			img_tag.attr('src', e.target.result);
+		}
+		
+		reader.readAsDataURL(input.files[0]);
+	}		
+}		
+
+$('.add_file_wrap').on('click', '.btn_delete', function(){
+	const ul = $(this).parents('ul');
+	const li = $(this).parent('li');
+	const multipartFile_wrap = ul.siblings('.multipartFile_wrap');
+	
+	let delNum = li.find('.num').html();
+	multipartFile_wrap.find('input').each(function(){
+		if($(this).data('num') == delNum){
+			$(this).next().remove();
+			$(this).remove();
+			return;
+		}
+	})
+	li.remove();		
+	setNum(multipartFile_wrap, ul);
+	
+	let lastNum = Number(multipartFile_wrap.children('input').last().data('num'));
+	if(ul.find('li').length == 4){
+		addInput(multipartFile_wrap, lastNum);			
+	}
+});
+
+
+
+
 /* modal 창 */
 
 $(document).ready(function(){
-
     $( "#lookUp_payment").click(function () {
     	$(".ui_modal_wrap").css({"display" : "block"});	
-        $( ".pro_box" ).each( function () {
-            this.reset();
-        });
     });
 });
 
@@ -529,25 +616,36 @@ $(".ui_modal_close").on("click", function() {
 	$(".ui_modal_wrap").css({"display" : "none"});
 })
 
-$("#order_payment_id").on("click", function() {
-	var payment_id = $('input:checkbox[id="order_payment_id"]').val();
-	var product_name = $('#order_payment_id').data("prd_nm");
-	
-	
-	
+
+/* Radio */
+
+
+
+
+$("input:radio[name=order_payment_id]").on("click", function() {
+	var payment_id = $('input:radio[name=order_payment_id]:checked').data("pay_nm");
+	var product_name = $('input:radio[name=order_payment_id]:checked').data("prd_nm");
+
 	$("#input_payment_id").val(payment_id);
 	$("#input_product_name").val(product_name);
+	$(".ui_modal_wrap").css({"display" : "none"});
+	$(".no_pro").hide();
+	$(".pro_info").show();
 	
 });
 
 
+$("input:radio[name=order_payment_id1]").on("click", function() {
+	var payment_id1 = $('input:radio[name=order_payment_id1]:checked').data("pay_num");
+	var product_name1 = $('input:radio[name=order_payment_id1]:checked').data("prd_num");
 
-
-function closeProdListModal(){
-	$(".ui_modal_wrap").hide();
+	$("#input_payment_id").val(payment_id1);
+	$("#input_product_name").val(product_name1);
+	$(".ui_modal_wrap").css({"display" : "none"});
 	$(".no_pro").hide();
 	$(".pro_info").show();
-}
+	
+});
 
 function cancelCheck() {
 	$(".pro_info").hide();

@@ -110,7 +110,7 @@
 							<span class="page_num">
 								
 							
-									<a href="./noticeMain?pn=1"><strong class="on">1</strong></a>							
+									<a href="#"><strong class="on">1</strong></a>							
 		
 								
 								

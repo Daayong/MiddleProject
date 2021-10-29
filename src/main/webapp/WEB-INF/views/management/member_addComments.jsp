@@ -22,13 +22,17 @@
 
 	.btn{width:100px; height:40px; align-content:center; border:1px solid #202020;margin-left:2px; margin-top:30px; color:#101010; }
 	.green{background-color:#BDD61A; border:1px solid #BDD61A; margin-left:7px; }
+
+.added_file:before { content: '';    position: absolute; top: 199px; left: 10; width: 18px; height: 18px; background: url(/mp/resources/images/pd/ico_set1.png) -142px -32px no-repeat; background-size: 800px 800px;}
+
+.added_file > a {display: inline-block; margin-right: 8px; margin-left:20px; padding: 0; font-size: 13px; line-height: 21px; color: #101010; text-decoration: underline;}
 	</style>
 
 </head>
 <body>
 
 	<div class="addWrap">
-		<form id="member_addComments" name="member_addComments" method="post" >
+		<form style="margin-left: 15px;" id="member_addComments" name="member_addComments" method="post" >
 			<h3 class="table_col" style="padding-top: 20px; color: #101010; font-size: large;">1:1문의 내역 답변 작성</h3>
 			
 			<div class="table" style="margin-top: 20px; border-top: 3px solid #101010; padding-top: 20px;">
@@ -37,11 +41,18 @@
 					
 					<div class="th" style="margin-top: 10px;">
 					<span style="color: #101010;" class="subject" >문의유형 : ${counselList.qna_type} <br> </span>
+					<c:if test="${not empty counselList.payment_id }">
 					<span style="color: #101010" class="subject" >주문 번호 : ${counselList.payment_id} | </span>
-					<span style="color: #101010" class="subject" >상품명 : ${counselList.qna_product_name}  </span>				
+					</c:if>
+					<span style="color: #101010" class="subject" >상품명 : ${counselList.qna_product_name} </span>		
 					</div>
 				</div>
-			
+					
+					<c:forEach items="${counselList.file}" var="file">
+					<div class="img added_file" style="margin-top: 10px;">
+						<a style="text-decoration: underline;" href="../resources/upload/formCounsel/${file.qna_file_name}" target="blank">첨부 이미지</a>
+					</div>
+					</c:forEach>		
 			<div class="ta" style="margin-top: 15px; margin-bottom: 20px;" >
 				<span>문의내용: ${counselList.qna_content} </span>
 			</div>
@@ -59,7 +70,7 @@
 							</c:when>
 							
 							<c:otherwise>
-								<textarea id="qna_answer" name="qna_answer" spellcheck="false" style="outline: none;" cols="60" rows="8" title="qna_content" placeholder="이전 답변 : ${counselList.qna_answer }"  class="ui_inputLimit" maxlength="1000"></textarea>
+								<textarea id="qna_answer" name="qna_answer" spellcheck="false" style="outline: none;" cols="60" rows="8" title="qna_content" class="ui_inputLimit" maxlength="1000">이전 답변 : ${counselList.qna_answer } </textarea>
 							</c:otherwise>
 							</c:choose>
 								
@@ -72,7 +83,7 @@
 	
 		<div class="btn_wrap" align="center">
 			<button type="button" class="btn" id="cancel" name="cancel">취소</button>
-			<button type="submit" class="btn green "   onclick="checkInput('${counselList.qna_id}');" id="setComments" name="setComments">추가</button>
+			<button type="button" class="btn green "   onclick="checkInput('${counselList.qna_id}');" id="setComments" name="setComments">추가</button>
 		</div>
 		</form>
 	</div>
@@ -89,27 +100,28 @@
 		return false; 
 	});
 
-	const commentsForm = document.getElementById('commentsForm');
+	
 	
 	 function checkInput(qna_id){
 		   
 	     if(confirm('답변을 작성하시겠습니까?') == true){   
 
-	             var member_id=member_id.val();
-	             
+	             var member_id=$("#member_id").val();
+	             var qna_answer =$("#qna_answer").val();
 	            $.ajax({
 	               url:'./member_addComments',
 	               type:'post',
 	               data:{
 	                  member_id:member_id,   
-	                  qna_id:qna_id
+	                  qna_id:qna_id,
+	                  qna_answer:qna_answer
 	               },
 	               success:function(data){
 	                  
 	                  if(data >0){
 	                     alert("답변이 작성되었습니다.");
-	                     window.close();
 	                     opener.location.reload();
+	                     window.close();
 	                     
 	                  }else{
 	                     alert("답변 작성에 실패했습니다.");
