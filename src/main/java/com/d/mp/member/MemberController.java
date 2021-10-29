@@ -383,7 +383,27 @@ public class MemberController {
 		addressDTO.setRecipient_phone(pf + "-" + pm + "-" + pb);
 		return memberService.setAddressUpdate(addressDTO);
 	}
-
+	
+	
+	// 마이 찜목록
+	@GetMapping("myZzimList")
+	public ModelAndView getZzimList(HttpSession session) throws Exception{
+		
+		MemberDTO memberDTO = (MemberDTO)session.getAttribute("member");
+		ModelAndView mv = new ModelAndView();
+		
+		// 수빈 찜목록 추가
+		ZzimDTO zzimDTO = new ZzimDTO();
+		zzimDTO.setMember_id(memberDTO.getMember_id());
+		
+		List<ProductDTO> prdAr = productService.getZzim(zzimDTO);
+		
+		mv.addObject("zzim", prdAr);
+		// 수빈 찜목록 추가	
+		mv.setViewName("member/myZzimList");
+		
+		return mv;
+	}
 
 /*--------------------------------- 주문/배송 조회 시작 --------------------------------------*/	
 	@GetMapping("myOrderList")
