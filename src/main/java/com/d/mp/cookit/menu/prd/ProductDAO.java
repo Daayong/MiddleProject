@@ -73,6 +73,11 @@ public class ProductDAO {
 		return sqlSession.insert(NAMESPACE + "setZzim", map);
 	}
 	
+	//특정 zzim_id 찜목록에서 삭제
+	public int deleteZzimOne(ZzimDTO zzimDTO) throws Exception{
+		return sqlSession.delete(NAMESPACE + "deleteZzimOne", zzimDTO);
+	}
+	
 	//특정 멤버가 찜한 상품목록 불러오기
 	public List<ProductDTO> getZzim(ZzimDTO zzimDTO) throws Exception{
 		return sqlSession.selectList(NAMESPACE + "getZzim", zzimDTO);

@@ -409,10 +409,22 @@ public class MemberController {
 		zzimDTO.setMember_id(memberDTO.getMember_id());
 		
 		List<ProductDTO> prdAr = productService.getZzim(zzimDTO);
-		
 		mv.addObject("zzim", prdAr);
 		// 수빈 찜목록 추가	
 		mv.setViewName("member/myZzimList");
+		
+		return mv;
+	}
+	
+	// 찜목록 하나 제거
+	@ResponseBody
+	@GetMapping("deleteZzim")
+	public ModelAndView deleteZzimOne(ZzimDTO zzimDTO) throws Exception{
+		
+		productService.deleteZzimOne(zzimDTO);	
+		ModelAndView mv = new ModelAndView();
+		
+		mv.setViewName("redirect:/member/myZzimList");
 		
 		return mv;
 	}

@@ -200,6 +200,14 @@
   			)			
   	</insert>
   	
+  	<!-- 특정 zzim_id 찜목록에서 삭제 -->
+  	<delete id="deleteZzimOne" parameterType="ZzimDTO">
+  		DELETE FROM 
+  			zzim
+  		WHERE 
+  			zzim_id = #{zzim_id}
+  	</delete>
+  	
   	<!-- 특정 멤버가 찜한 상품목록 불러오기 -->
   	<select id="getZzim" parameterType="ZzimDTO" resultType="ProductDTO">
   		SELECT *
@@ -210,6 +218,7 @@
   		WHERE
   			z.member_id = #{member_id}
   	</select>
+  	
   	
   	<!-- 특정 id 상품의 주문가능한 일자의 첫번째 일자 가져오기 -->
   	<select id="getDateOne" parameterType="ProductDTO" resultType="ProductDTO">

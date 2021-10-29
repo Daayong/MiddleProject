@@ -157,4 +157,13 @@ public class ProductDTO {
 	public void setDate(String date) {
 		this.date = date;
 	}
+	
+	private Long zzim_id;
+
+	public Long getZzim_id() {
+		return zzim_id;
+	}
+	public void setZzim_id(Long zzim_id) {
+		this.zzim_id = zzim_id;
+	}
 }
