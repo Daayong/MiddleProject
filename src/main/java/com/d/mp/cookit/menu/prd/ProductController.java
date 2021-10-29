@@ -188,12 +188,13 @@ public class ProductController {
 		
 		
 		for(ProductDTO prdAr_each : prdAr) {
-			
+						
 			// 품절이아닌 주문일자가 지나가버리면.
 			boolean isEndDate = false;
 			String state = "";
 			
 			prdDate = productService.getDate(prdAr_each);
+			
 			
 			for(ProductDTO prdDate_each : prdDate) {
 				
@@ -211,6 +212,7 @@ public class ProductController {
 					
 					prdDate_each.setProduct_date_state("상품준비중");
 					productService.doDateState(prdDate_each);
+					
 				}else if(compare_count == -1) {
 
 					prdDate_each.setProduct_date_state("판매가능");
@@ -228,7 +230,7 @@ public class ProductController {
 				
 				if(state.equals("판매가능")) {
 					isEndDate = false;
-					break;
+					continue;
 				}else if(state.equals("주문마감")) {
 					isEndDate = true;
 				}
