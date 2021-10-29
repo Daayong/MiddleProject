@@ -22,6 +22,11 @@
 			margin:-117 auto -290;
 			padding: 117 0 290;
 		}
+		.noAd{margin-top:90px; }
+		.noAd .ico{display: block; width: 80px;height: 80px;margin: 0 auto 24px;background: url(../resources/images/common/ico_set.png) 0 -100px no-repeat; background-size: 800px 800px;}
+		.noAd strong{display: block;font-size: 20px;line-height: 30px;color: #101010;font-weight: 700; text-align:center; margin-bottom:30px;  }
+	
+		
 	</style>
 	
 </head>
@@ -43,8 +48,16 @@
 			<div class="rigth_content">
 				<h3>주문/배송 조회</h3>
 				
-				
+				<c:choose>
+				<c:when test="${empty paymentListDTOs}">
+					<div class="noAd">
+						<span class="ico"></span>
+						<strong>주문/배송 내역이 없습니다.</strong>
+					</div>	
+				</c:when>
+				<c:otherwise>
 				<!-- ===== Loop I START ===== -->
+				
 				<c:set var="tempPaymentID"></c:set>
 				<c:forEach var="paymentListDTOsI" items="${paymentListDTOs}">
 				<c:if test="${tempPaymentID ne paymentListDTOsI.payment_id}">
@@ -136,6 +149,8 @@
 				</c:if>
 				</c:forEach>	
 				<!-- ===== Loop I END ===== -->
+				</c:otherwise>
+				</c:choose>
 			</div>
 
 		</div>	

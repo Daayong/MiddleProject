@@ -210,13 +210,15 @@
 							</c:choose>
 							
 							<c:choose>
-								<c:when test="${!empty etcState}">
+								<c:when test="${!empty deliveryState}">
 									<li class="item">
+									<a href="/mp/member/myOrderList">
 									<span class="circle" style="background-color:#BDD61A;">
 									<span class="num">
-										${getOrderCount}
+										${getDOrderCount}
 									</span>
 									</span>
+									</a>
 									<span class="tit">배송완료</span>
 									</li>
 								</c:when>
@@ -259,28 +261,34 @@
 						최근 구매한 메뉴
 						<a href="#" class="btn_link">더보기</a>
 					</h4>
-					<!-- <div class="no_data_txt">
-						<strong>최근 구매한 메뉴가 없습니다.</strong>
-					</div> -->
-					<div class="prd_list col ">
-						<ul>
-							 <c:forEach var="paymentListDTOsK" items="${paymentListDTOs}" begin="0" end="3"> 
-								<li>
-									<div class="prd_mod">
-										<a href="/mp/menu/menu_detail?product_id=${paymentListDTOsK.product_id}">
-											<div class="img_wrap">
-												<img src="/mp/resources/upload/menu/main/${paymentListDTOsK.product_id}/${paymentListDTOsK.product_file_name}" > 
+					<c:choose>
+						<c:when test="${empty paymentListDTOs}">
+							<div class="no_data_txt">
+								<strong>최근 구매한 메뉴가 없습니다.</strong>
+							</div> 					
+						</c:when>
+						<c:otherwise>
+							<div class="prd_list col ">
+								<ul>
+									 <c:forEach var="paymentListDTOsK" items="${paymentListDTOs}" begin="0" end="3"> 
+										<li>
+											<div class="prd_mod">
+												<a href="/mp/menu/menu_detail?product_id=${paymentListDTOsK.product_id}">
+													<div class="img_wrap">
+														<img src="/mp/resources/upload/menu/main/${paymentListDTOsK.product_id}/${paymentListDTOsK.product_file_name}" > 
+													</div>
+													<div class="info_wrap">
+														<span class="tit mt_elps">${paymentListDTOsK.product_name}</span>
+														<span class="price"><fmt:formatNumber value="${paymentListDTOsK.product_price * paymentListDTOsK.cart_quantity}" pattern="#,###"/>원</span>
+													</div>
+												</a>
 											</div>
-											<div class="info_wrap">
-												<span class="tit mt_elps">${paymentListDTOsK.product_name}</span>
-												<span class="price"><fmt:formatNumber value="${paymentListDTOsK.product_price * paymentListDTOsK.cart_quantity}" pattern="#,###"/>원</span>
-											</div>
-										</a>
-									</div>
-								</li>
-							 </c:forEach> 
-						</ul>
-					</div>
+										</li>
+									 </c:forEach> 
+								</ul>
+							</div>					
+						</c:otherwise>
+					</c:choose>
 				</div>
 <!-- 나의 쇼핑찜 -->				
 				<div id="shopPick" class="rpd box">

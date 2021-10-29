@@ -155,7 +155,7 @@
 				 var phone_b=$("#member_phone_b").val();
 				 var address=$("#address").val();
 				 var member_id=$("#member_id").val();
-				 
+				 var default_check='0';
 				 let f = '010';
 					$('.se').each(function(){
 						 if($(this).prop('selected')){
@@ -173,6 +173,7 @@
 						member_phone_f: f,
 						address:address,
 						member_id:member_id,	
+						default_check:default_check
 					},
 					success:function(data){
 						console.log(data);

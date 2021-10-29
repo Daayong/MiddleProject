@@ -6,8 +6,14 @@ import com.d.mp.address.AddressDTO;
 
 public class MemberDTO {
 
-	//private AddressDTO addressDTO;
+	private AddressDTO addressDTO;
 	
+	public AddressDTO getAddressDTO() {
+		return addressDTO;
+	}
+	public void setAddressDTO(AddressDTO addressDTO) {
+		this.addressDTO = addressDTO;
+	}
 	private Long member_id;
 	private String member_user_id; 
 	private String member_password; 

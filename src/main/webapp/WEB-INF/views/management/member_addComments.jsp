@@ -65,12 +65,11 @@
 							<c:choose>
 							
 							<c:when test="${empty counselList.qna_answer }">
-							
 								<textarea id="qna_answer" name="qna_answer" spellcheck="false" style="outline: none;" cols="60" rows="8" title="qna_content" placeholder="답변을 입력해주세요"  class="ui_inputLimit" maxlength="1000"></textarea>
 							</c:when>
 							
 							<c:otherwise>
-								<textarea id="qna_answer" name="qna_answer" spellcheck="false" style="outline: none;" cols="60" rows="8" title="qna_content" class="ui_inputLimit" maxlength="1000">이전 답변 : ${counselList.qna_answer } </textarea>
+								<textarea id="qna_answer" name="qna_answer" spellcheck="false" style="outline: none;" cols="60" rows="8" title="qna_content" class="ui_inputLimit" maxlength="1000">이전 답변 : ${counselList.qna_answer} </textarea>
 							</c:otherwise>
 							</c:choose>
 								
@@ -83,7 +82,7 @@
 	
 		<div class="btn_wrap" align="center">
 			<button type="button" class="btn" id="cancel" name="cancel">취소</button>
-			<button type="button" class="btn green "   onclick="checkInput('${counselList.qna_id}');" id="setComments" name="setComments">추가</button>
+			<button type="button" class="btn green" onclick="checkInput('${counselList.qna_id}');" id="setComments" name="setComments">추가</button>
 		</div>
 		</form>
 	</div>
@@ -99,8 +98,6 @@
 		}
 		return false; 
 	});
-
-	
 	
 	 function checkInput(qna_id){
 		   
@@ -108,6 +105,7 @@
 
 	             var member_id=$("#member_id").val();
 	             var qna_answer =$("#qna_answer").val();
+
 	            $.ajax({
 	               url:'./member_addComments',
 	               type:'post',
@@ -117,21 +115,17 @@
 	                  qna_answer:qna_answer
 	               },
 	               success:function(data){
-	                  
+	            	   console.log(data);
 	                  if(data >0){
 	                     alert("답변이 작성되었습니다.");
 	                     opener.location.reload();
 	                     window.close();
-	                     
 	                  }else{
 	                     alert("답변 작성에 실패했습니다.");
 	                  }
 	               }
 	            });
 	         
-	        
-	        	
-	          
 	         }else{
 	            return false;
 	         }
