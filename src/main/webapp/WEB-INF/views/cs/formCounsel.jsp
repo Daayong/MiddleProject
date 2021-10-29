@@ -391,7 +391,7 @@
 									<div class="top">
 										<div class="tit">
 											<div class="rad_wrap">
-												<input type="radio" id="order_payment_id" name="order_payment_id" value="" data-pay_nm="${paymentList.payment_id}"  data-prd_nm="${paymentList.product_name}" class="accessibility-keyboard">
+												<input type="radio" id="order_payment_id" name="order_payment_id" value="" data-pay_nm="${paymentList.payment_id}"  data-prd_nm="${paymentList.product_name}" style="cursor: pointer; width: 390px; height: 77px;">
 												<label for="order_payment_id" class="order_num">주문번호<span class="ff_avr">${paymentList.payment_id}</span></label>
 											</div>
 										</div>
@@ -404,7 +404,7 @@
 										<c:if test="${paymentList.payment_id eq paymentListA.payment_id}">
 											<li>
 												<div class="rad_wrap">
-													<input type="radio" id="order_payment_id1" name="order_payment_id1" value="" data-pay_num="${paymentListA.payment_id}"  data-prd_num="${paymentListA.product_name}"  class="accessibility-keyboard">
+													<input type="radio" id="order_payment_id1" name="order_payment_id1" value="" data-pay_num="${paymentListA.payment_id}"  data-prd_num="${paymentListA.product_name}"  style="cursor: pointer; width: 390px; height: 77px;">
 													<label for="order_payment_id1">
 														<div class="img">
 															<img src="/mp/resources/upload/menu/main/${paymentListA.product_id}/${paymentListA.product_name}.jpg" alt="닭한마리와 칼국수" onerror="cj.com.noImg(this)">
