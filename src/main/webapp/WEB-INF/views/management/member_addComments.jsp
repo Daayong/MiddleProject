@@ -44,7 +44,9 @@
 					<c:if test="${not empty counselList.payment_id }">
 					<span style="color: #101010" class="subject" >주문 번호 : ${counselList.payment_id} | </span>
 					</c:if>
-					<span style="color: #101010" class="subject" >상품명 : ${counselList.qna_product_name} </span>		
+					<c:if test="${not empty counselList.qna_product_name }">
+					<span style="color: #101010" class="subject" >상품명 : ${counselList.qna_product_name} </span>
+					</c:if>		
 					</div>
 				</div>
 					
