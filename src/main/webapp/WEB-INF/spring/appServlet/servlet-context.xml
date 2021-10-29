@@ -30,6 +30,12 @@
 			<mapping path="/member/memberDelete" />
 			<mapping path="/member/memberUpdateConfirm" />
 			<mapping path="/member/memberUpdate" />
+			
+			<mapping path="/cs/formCounsel"/>
+			
+			<mapping path="/order/cartList"/>			
+			<mapping path="/member/myOrderList"/>
+			
 			<beans:ref bean="loginInterceptor"/>
 		</interceptor>
 	</interceptors> 
@@ -41,9 +47,27 @@
 		<interceptor>
 			<mapping path="/menu/menu_insert"/>
 			<mapping path="/management/cookit_management"/>
+			<mapping path="/event/eventUpload" />
+			
+			<mapping path="/event/winnerUpload" />
+			<mapping path="/cs/faqUpload" />
+			<mapping path="/cs/noticeUpload" />
+			<mapping path="/management/member_CounselList" />
+			
 			<beans:ref bean="productInterceptor"/>
 		</interceptor>
 	</interceptors>
+	
+	<!-- myOrder Interceptors -->
+	<beans:bean id="myOrderInterceptor" class="com.d.mp.member.util.myOrderInterceptor"></beans:bean>
+	<interceptors>
+		<interceptor>
+			<mapping path="/member/myOrder"/>
+			
+			<beans:ref bean="myOrderInterceptor"/>
+		</interceptor>
+	</interceptors>
+	
 	
 </beans:beans>
 
