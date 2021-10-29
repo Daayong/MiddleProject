@@ -144,7 +144,7 @@
 				
 				<!-- c:foreach -->
 				
-				<c:forEach items="${prd_mDTO}" var="m_dto" varStatus="num">
+				<c:forEach items="${prd_mDTO}" var="m_dto" varStatus="num" begin="0" end="5">
 				<a href="./menu/menu_detail?product_id=${m_dto.product_id}">
 					<div class="item">
 						<div class="img_wrap">

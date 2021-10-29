@@ -44,9 +44,8 @@
 				<div class="order_view shp_zzim">
 					<h3>쇼핑찜</h3>
 					<div class="top_sec">
-						<span class="total">총 <span id="wishProdListCnt">0</span>개</span>
+						<span class="total"><br><span id="wishProdListCnt"></span></span>
 						<span class="side_info" id="delBtnArea">
-							<button class="btn sm white ui_allSelect"><span>전체삭제</span></button>
 						</span>
 					</div>
 					<div class="shp_zzim_list">
@@ -73,7 +72,7 @@
 												<button type="button" class="btn sm white cart_btn">장바구니 담기</button>
 											</div>
 											<button type="button" class="prd_del"></button>
-											
+											<input type="hidden" id="id" value="${zzim.zzim_id}">
 										</div>						
 									</li>
 								</c:forEach>
@@ -100,7 +99,27 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script type="text/javascript">
 	
-
+	$(".prd_del").on("click", function (){
+		
+		let zzim_id = $(this).next().val();
+		
+		
+		$.ajax({
+			url: 'deleteZzim?zzim_id=' + zzim_id,
+			type: 'get',
+			success : async function(result){
+				let a = $(result).find(".rigth_content").html();
+				$(".rigth_content").html(a);
+			},
+			error:function(request,status,error){
+				
+		        alert("code:"+request.status+"\n"+"message:"+request.responseText+"\n"+"error:"+error);
+		        
+		    }		
+		});
+		
+		
+	})
 	
 </script>
 
