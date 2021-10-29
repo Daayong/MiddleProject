@@ -74,13 +74,13 @@
 										</div>
 										<div class="select">
 											<span class="input_txt">
-												<input type="text" id="member_phone_m" name="member_phone_m" class="phone box" value="${member_phone_m}" placeholder="${member_phone_m}">
+												<input type="text" id="member_phone_m" name="member_phone_m" class="phone box" value="${member_phone_m}" placeholder="${member_phone_m}" maxlength="4" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
 											</span>
 											<span class="symbol">-</span>
 										</div>
 										<div class="select">
 											<span class="input_txt">
-												<input type="text" id="member_phone_b" name="member_phone_b" class="phone box" value="${member_phone_b}" placeholder="${member_phone_b}">
+												<input type="text" id="member_phone_b" name="member_phone_b" class="phone box" value="${member_phone_b}" placeholder="${member_phone_b}" maxlength="4" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
 											</span>
 										</div>
 									</div> 

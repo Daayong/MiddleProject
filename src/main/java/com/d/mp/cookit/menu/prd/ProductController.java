@@ -228,7 +228,7 @@ public class ProductController {
 				
 				if(state.equals("판매가능")) {
 					isEndDate = false;
-					break;
+					continue;
 				}else if(state.equals("주문마감")) {
 					isEndDate = true;
 				}
