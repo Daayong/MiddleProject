@@ -58,7 +58,7 @@
 											<div class="img_wrap">
 												<img src="../resources/upload/menu/main/${zzim.product_id}/${zzim.product_name}.jpg">
 											</div>
-											<a>
+											<a href="../menu/menu_detail?product_id=${zzim.product_id}">
 												<div class="info_wrap">
 													<div class="flag">
 														<span class="tit">${zzim.product_name}</span>
@@ -69,7 +69,6 @@
 												</div>
 											</a>
 											<div class="prd_price">
-												<button type="button" class="btn sm white cart_btn">장바구니 담기</button>
 											</div>
 											<button type="button" class="prd_del"></button>
 											<input type="hidden" id="id" value="${zzim.zzim_id}">
