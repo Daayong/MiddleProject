@@ -404,7 +404,7 @@
 										<c:if test="${paymentList.payment_id eq paymentListA.payment_id}">
 											<li>
 												<div class="rad_wrap">
-													<input type="radio" id="order_payment_id1" name="order_payment_id1" value="${paymentListA.product_name}"  class="accessibility-keyboard">
+													<input type="radio" id="order_payment_id1" name="order_payment_id1" value="" data-pay_num="${paymentListA.payment_id}"  data-prd_num="${paymentListA.product_name}"  class="accessibility-keyboard">
 													<label for="order_payment_id1">
 														<div class="img">
 															<img src="/mp/resources/upload/menu/main/${paymentListA.product_id}/${paymentListA.product_name}.jpg" alt="닭한마리와 칼국수" onerror="cj.com.noImg(this)">
@@ -636,8 +636,8 @@ $("input:radio[name=order_payment_id]").on("click", function() {
 
 
 $("input:radio[name=order_payment_id1]").on("click", function() {
-	var payment_id1 = $('input:radio[name=order_payment_id1]:checked').data("pay_nm1");
-	var product_name1 = $('input:radio[name=order_payment_id1]:checked').val();
+	var payment_id1 = $('input:radio[name=order_payment_id1]:checked').data("pay_num");
+	var product_name1 = $('input:radio[name=order_payment_id1]:checked').data("prd_num");
 
 	$("#input_payment_id").val(payment_id1);
 	$("#input_product_name").val(product_name1);
