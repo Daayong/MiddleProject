@@ -30,9 +30,6 @@ public class FaqController {
 	@GetMapping( value =  {"faqList", "csMain"})
 	public ModelAndView getList() throws Exception{
 		
-
-		
-		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("cs/faqList");
 		List<FaqDTO> ar = faqService.getList();
@@ -61,27 +58,17 @@ public class FaqController {
 	
 	
 
-	@RequestMapping(value = "/faqTypeList")
+	@GetMapping("faqTypeList")
 	@ResponseBody
-	public ModelAndView getTypeList(FaqDTO faqDTO, HttpServletRequest request, HttpServletResponse response ) throws Exception{
-		
+	public ModelAndView getTypeList(FaqDTO faqDTO) throws Exception{
 	
-		String faq_type = request.getParameter("faq_type");
-		
-		faqDTO.setFaq_type(faq_type);
-		
-		Map<String, Object> m = new HashMap<String, Object>();
-		
-		m.put("faq_type", "%" + faq_type + "%");
-	
-		
-		List<FaqDTO> ar = faqService.getTypeList(m, faqDTO);
+		List<FaqDTO> ar = faqService.getTypeList(faqDTO);
 		
 		ModelAndView mv = new ModelAndView();
-		mv.addObject("faq_type", faq_type);
+	
 		mv.addObject("faqlist", ar);
 	
-		mv.setViewName("cs/faqList");
+		mv.setViewName("common/faqTypeList");
 		
 		return mv;
 	}

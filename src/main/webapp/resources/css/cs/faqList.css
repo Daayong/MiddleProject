@@ -115,6 +115,17 @@ div.input_wrap{
 	z-index:1; 
 	}
 	
+	
+.f_type .cate_wrap .fType.on{	
+	position:absolute;
+ 	border:3px solid #303030;
+	color:#101010;
+	font-weight:700;
+	line-height:50px;
+	box-shadow:0 2px 2px 0 rgba(0, 0, 0, .12);
+	z-index:1; 
+	}
+	
 
 
 .f_type .cate_wrap .tab_item button {

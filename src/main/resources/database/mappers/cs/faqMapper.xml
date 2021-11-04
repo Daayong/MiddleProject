@@ -25,9 +25,9 @@
   
 
 
-  <select id="getTypeList" parameterType="Map" resultType="FaqDTO">
+  <select id="getTypeList" parameterType="FaqDTO" resultType="FaqDTO">
   
-  	SELECT * FROM faq WHERE faq_type LIKE #{faq_type} 
+  	SELECT * FROM faq WHERE faq_type LIKE '%' || #{faq_type} ||'%' 
   
   </select>
   

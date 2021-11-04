@@ -10,7 +10,7 @@
 <link href="${pageContext.request.contextPath}/resources/css/cs/faqList.css" rel="stylesheet">
 <link href="${pageContext.request.contextPath}/resources/css/paging.css" rel="stylesheet">
 
-<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 
 	<title>고객행복센터 - 집밥을 특별하게, 쿡킷</title>
@@ -69,7 +69,7 @@
 						<div class="box_search">
 						<div class="sch_wrap">
 							<div class="input_wrap">
-									<input type="text" class="txt" id="fn_txt_srch" placeholder="검색어를 입력해주세요" name="key"  ><!-- value 사용자 입력 값 나중에 추가 -->
+									<input type="text" class="txt" id="fn_txt_srch" placeholder="검색어를 입력해주세요" name="keyword"  ><!-- value 사용자 입력 값 나중에 추가 -->
 									<button class="ico del"><span class="hide">입력 삭제</span></button>
 									<button type="button" class="btn btn_srch"><span class="hide">검색</span></button>
 								</div>
@@ -84,48 +84,48 @@
 							
 							<ul>
 											
-							<li class="tab_item "  id="all" >
-							 <button class="" type="button" value="전체"><span>전체</span></button>
+							<li class="tab_item"  id="all" >
+							 <button class="fType on" type="button" data-faq_type=""><span>전체</span></button>
 							</li>
 						
 							<li class="tab_item" id="ship" >
-								 <button class="" type="button" value="배송"><span>배송</span></button>
+								 <button class="fType" type="button" data-faq_type="배송"><span>배송</span></button>
 							</li>
 						
 							<li class="tab_item" id="pay" >
-								<button class="" type="button" value="결제/영수증"><span>결제/영수증</span></button> 
+								<button class="fType" type="button" data-faq_type="결제/영수증"><span>결제/영수증</span></button> 
 								 
 							</li>
 							<li class="tab_item "  id="order" >
-								 <button class="" type="button" value="주문"><span>주문</span></button> 
+								 <button class="fType" type="button" data-faq_type="주문"><span>주문</span></button> 
 								 
 							</li>
 						
 							<li class="tab_item " id="cancel" >
-								<button class="" type="button" value="취소/반품"><span>취소/반품</span></button> 
+								<button class="fType" type="button" data-faq_type="취소/반품"><span>취소/반품</span></button> 
 								 
 							</li>
 						
 							
 							<li class="tab_item" id="rv">
-								<button class="" type="button" value="리뷰/포인트"><span>리뷰/포인트</span></button> 
+								<button class="fType" type="button" data-faq_type="리뷰/포인트"><span>리뷰/포인트</span></button> 
 							 
 							</li>
 							
 					
 							<li class="tab_item" id="gift">
-								<button class="" type="button" value="선물하기"><span>선물하기</span></button> 
+								<button class="fType" type="button" data-faq_type="선물하기"><span>선물하기</span></button> 
 								 
 							</li>
 					
 							
 							<li class="tab_item " id="mem">
-								 <button class="" type="button" value="회원"><span>회원</span></button> 
+								 <button class="fType" type="button" data-faq_type="회원"><span>회원</span></button> 
 								 
 							</li>
 							
 							<li class="tab_item "  id="etc" >
-								<button class="" type="button" value="기타"><span>기타</span></button> 
+								<button class="fType" type="button" data-faq_type="기타"><span>기타</span></button> 
 								 
 							</li>	
 					</ul>
@@ -138,7 +138,7 @@
                   
               <div class="faq_view">
               
-				<div class="list_acco ui_accordion" data-accord-group="faq_list">
+			<div class="list_acco ui_accordion" data-accord-group="faq_list">
 				
 				<ul class="faqListArea" id="item_wrap">
 				
@@ -169,7 +169,7 @@
            		
            		</c:forEach>
 
-			</ul>
+			</ul> 
 			</div>	
 								
 				</div>
@@ -222,41 +222,39 @@
 		}
 	});
 	
-			
-	 $(function(){
-		 
-		 
-	    	$("button").on('click',function(){
-	    			let faq_type = $(this).val();  //버튼이 클릭 되었을 때 그 버튼의 value를 let faq_type로 가져와서	
-	    	
-	    			$.ajax({
-	    				 url : './faqTypeList',  
-	    	              type : "post", 
-	    	              cache: false,
-	    	              headers: {"cache-control":"no-cache", "pragma": "no-cache"},
-	    	              data : {"faq_type" : faq_type
-	    	              }, 
-	    	              success : function(data){ 
-	    	           		
-	    	            	  
-	    	               $('body').html(data);
-	    	               
-	    	              },
-	    	              error : function(data){
-	    	            	 alert('error');
-	    	               
-	    	              }//error
-	    			})//ajax
-					
-	    			$(".tab_item").click(function() {
-	    				$(this).addClass("on");
-	    				$(".tab_item").not(this).removeClass("on");
-	    			});
+	
 
-					    			
-	    		});//click
+		 
+	    	$(".fType").on('click',function(){
+	    			var faq_type = $(this).attr('data-faq_type');  
+	    			console.log(faq_type);
+	    			
+	    			$.ajax({
+	    	              type : "get", 
+	    				 url : './faqTypeList',  
+	    	              data : { 
+	    	            	  faq_type : faq_type
+	    	              }, 
+	    	              success : function(result){ 
+	    	           		result = result.trim();
+	    	     
+	    	               $('.faq_view').html(result);
+	    	    	               
+	    	              },
+	    	              error : function(result){
+	    	            	 alert('error');
+
+	    	              }
+	    			})
+   			
+	    		});
 	    		
-	    });//ready
+	    		$(".fType").click(function() {
+	           		
+					$(".fType").removeClass("on");
+    				$(this).addClass("on");
+    	                
+				});
 
 	
 	    

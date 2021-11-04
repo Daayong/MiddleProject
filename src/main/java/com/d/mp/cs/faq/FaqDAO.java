@@ -37,17 +37,8 @@ public class FaqDAO {
 	}
 	
 	
-	public List<FaqDTO> getTypeList(Map<String, Object> m, FaqDTO faqDTO) throws Exception{
-		Object obj = m.get("faq_type");
-		List<FaqDTO> ar = null;
-		
-		if(obj.equals("%전체%")) {
-			ar = sqlSession.selectList(NAMESPACE+"getList", m);
-		}else {
-			ar = sqlSession.selectList(NAMESPACE+"getTypeList", faqDTO);
-		}
-		
-		return ar;
+	public List<FaqDTO> getTypeList(FaqDTO faqDTO) throws Exception{
+		return sqlSession.selectList(NAMESPACE+"getTypeList", faqDTO);
 	}
 	
 	public int setDelete(FaqDTO faqDTO) throws Exception{

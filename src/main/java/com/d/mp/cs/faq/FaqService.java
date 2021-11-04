@@ -28,8 +28,8 @@ public class FaqService {
 		return faqDAO.setInsert(faqDTO);
 	}
 	
-	public List<FaqDTO> getTypeList(Map<String, Object> m, FaqDTO faqDTO) throws Exception{
-		return faqDAO.getTypeList(m,faqDTO);
+	public List<FaqDTO> getTypeList( FaqDTO faqDTO) throws Exception{
+		return faqDAO.getTypeList(faqDTO);
 	}
 	
 	public int setDelete(FaqDTO faqDTO) throws Exception{
