@@ -212,6 +212,7 @@
 	
 	
 	/* Q 선택시 답변 아래로 */
+	
 	$(".head").click(function() {
 		if($(this).next().css("display")=="none"){
 			$(this).next().slideDown("50");
@@ -221,40 +222,50 @@
 			$(this).parent().removeClass("on");
 		}
 	});
-	
-	
 
-		 
-	    	$(".fType").on('click',function(){
-	    			var faq_type = $(this).attr('data-faq_type');  
-	    			console.log(faq_type);
+	
+	/* 문의유형에 따른 list ajax로 불러오기 */
+
+	    $(".fType").on('click',function(){
+	    	var faq_type = $(this).attr('data-faq_type');  
+	    	console.log(faq_type);
 	    			
-	    			$.ajax({
-	    	              type : "get", 
-	    				 url : './faqTypeList',  
-	    	              data : { 
-	    	            	  faq_type : faq_type
-	    	              }, 
-	    	              success : function(result){ 
-	    	           		result = result.trim();
+	    	$.ajax({
+	    	      	type : "get", 
+	    			url : './faqTypeList',  
+	    	        data : { 
+	    	            	faq_type : faq_type
+	    	         }, 
+	    	         success : function(result){ 
+	    	         result = result.trim();
 	    	     
-	    	               $('.faq_view').html(result);
+	    	            $('.faq_view').html(result);
 	    	    	               
-	    	              },
-	    	              error : function(result){
-	    	            	 alert('error');
+	    	           	$(".head").click(function() {
+	    	        		if($(this).next().css("display")=="none"){
+	    	        			$(this).next().slideDown("50");
+	    	        			$(this).parent().addClass("on");
+	    	        		}else{
+	    	        			$(this).next().slideUp("50");
+	    	        			$(this).parent().removeClass("on");
+	    	        		}
+	    	        	});
 
-	    	              }
-	    			})
-   			
+	    	           },
+	    	             error : function(result){
+	    	            	alert('error');
+	    	           }
+	    			})	
 	    		});
+	
+	/* 문의유형 선택에 따른 tab 변화 */
 	    		
-	    		$(".fType").click(function() {
+	$(".fType").click(function() {
 	           		
-					$(".fType").removeClass("on");
-    				$(this).addClass("on");
+		$(".fType").removeClass("on");
+    	$(this).addClass("on");
     	                
-				});
+	});
 
 	
 	    
